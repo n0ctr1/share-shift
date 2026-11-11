@@ -1,0 +1,5416 @@
+{
+ "burst": {
+  "chainflip-amm": {
+   "cv": 0.6895660947621522,
+   "max_day": 77451031.0,
+   "median_day": 18461187.5,
+   "top10_dates": [
+    "2026-08-31",
+    "2026-09-27",
+    "2026-09-29",
+    "2026-10-29",
+    "2026-10-30",
+    "2026-10-31",
+    "2026-11-02",
+    "2026-11-03",
+    "2026-11-04",
+    "2026-11-05"
+   ],
+   "top10_share": 0.2807133144965537
+  },
+  "maya-protocol": {
+   "cv": 1.698987893350018,
+   "max_day": 43987513.0,
+   "median_day": 221284.5,
+   "top10_dates": [
+    "2026-10-11",
+    "2026-10-13",
+    "2026-10-14",
+    "2026-10-20",
+    "2026-10-21",
+    "2026-10-23",
+    "2026-10-25",
+    "2026-10-26",
+    "2026-10-27",
+    "2026-10-29"
+   ],
+   "top10_share": 0.572613327491425
+  },
+  "near-intents": {
+   "cv": 0.3594849723838062,
+   "max_day": 303419794.0,
+   "median_day": 131394063.5,
+   "top10_dates": [
+    "2026-09-04",
+    "2026-09-09",
+    "2026-09-17",
+    "2026-09-18",
+    "2026-09-21",
+    "2026-09-22",
+    "2026-09-23",
+    "2026-09-29",
+    "2026-10-08",
+    "2026-10-09"
+   ],
+   "top10_share": 0.1961846693488021
+  },
+  "thorchain-dex": {
+   "cv": 1.2885893444713956,
+   "max_day": 508392298.0,
+   "median_day": 35656753.5,
+   "top10_dates": [
+    "2026-09-10",
+    "2026-09-25",
+    "2026-09-26",
+    "2026-09-28",
+    "2026-09-29",
+    "2026-11-04",
+    "2026-11-06",
+    "2026-11-07",
+    "2026-11-09",
+    "2026-11-10"
+   ],
+   "top10_share": 0.4559705552317314
+  }
+ },
+ "capture_trend": [
+  {
+   "capture": 0.07790973240954711,
+   "from": "2025-11-16",
+   "to": "2026-02-13"
+  },
+  {
+   "capture": 0.12027092652729265,
+   "from": "2026-02-14",
+   "to": "2026-05-14"
+  },
+  {
+   "capture": 0.19588534147988806,
+   "from": "2026-05-15",
+   "to": "2026-08-12"
+  },
+  {
+   "capture": 0.2706981404409915,
+   "from": "2026-08-13",
+   "to": "2026-11-10"
+  }
+ ],
+ "channels": {
+  "app_fee_bps": 43.02514797990408,
+  "app_fees": 15753878.622099983,
+  "buyback_share_of_app_fees": 0.06613900902974376,
+  "calibration": {
+   "sampled_at": "2026-11-11T18:44:52.644Z",
+   "share_of_swaps": 0.178,
+   "share_of_volume": 0.947435357284648,
+   "swaps": 1000
+  },
+  "channel_count": 172,
+  "channels": [
+   {
+    "channel": "swapkit",
+    "fee_bps": 80.26400632274647,
+    "multi_venue": true,
+    "share": 0.37757728435824695,
+    "swaps": 109991,
+    "usd": 1382518593.781537
+   },
+   {
+    "channel": "(none)",
+    "fee_bps": 10.5297857150732,
+    "multi_venue": false,
+    "share": 0.17296014933618586,
+    "swaps": 53054,
+    "usd": 633302458.4541205
+   },
+   {
+    "channel": "lifi",
+    "fee_bps": 5.396916593054276,
+    "multi_venue": false,
+    "share": 0.08622467855240445,
+    "swaps": 19114,
+    "usd": 315716083.2494122
+   },
+   {
+    "channel": "rango",
+    "fee_bps": 17.03081175772438,
+    "multi_venue": false,
+    "share": 0.08336639830306755,
+    "swaps": 32661,
+    "usd": 305250343.50645274
+   },
+   {
+    "channel": "zodl",
+    "fee_bps": 66.97463074997941,
+    "multi_venue": false,
+    "share": 0.07219747569547123,
+    "swaps": 12576,
+    "usd": 264354760.49023995
+   },
+   {
+    "channel": "new.intents-referral.near",
+    "fee_bps": 7.421969133387843,
+    "multi_venue": false,
+    "share": 0.05222160068524711,
+    "swaps": 6247,
+    "usd": 191212069.51604548
+   },
+   {
+    "channel": "stableflow",
+    "fee_bps": 1.35811436012747,
+    "multi_venue": false,
+    "share": 0.018071450472786244,
+    "swaps": 1760,
+    "usd": 66169542.84655561
+   },
+   {
+    "channel": "near-intents.intents-referral.near",
+    "fee_bps": 5.3070986286864095,
+    "multi_venue": false,
+    "share": 0.015644805359823908,
+    "swaps": 3424,
+    "usd": 57284257.29532949
+   }
+  ],
+  "coverage_of_all_intents_volume": 0.30257846436694186,
+  "days": 90,
+  "halt": {
+   "daily_after": {
+    "after_1": 32381071.230699092,
+    "after_2": 36777375.67221571
+   },
+   "daily_before": 24200536.723016217,
+   "daily_during": 36853050.17462703,
+   "gain_daily": 12652513.451610811,
+   "movers": [
+    {
+     "before": 3852545.085678379,
+     "channel": "new.intents-referral.near",
+     "delta": 7271785.32733784,
+     "during": 11124330.413016219,
+     "share_of_gain": 0.5747304956559487
+    },
+    {
+     "before": 888731.0386135135,
+     "channel": "(none)",
+     "delta": 1360733.1903108102,
+     "during": 2249464.228924324,
+     "share_of_gain": 0.10754647252618199
+    },
+    {
+     "before": 1728649.986527027,
+     "channel": "lifi",
+     "delta": 1197179.3022054052,
+     "during": 2925829.2887324323,
+     "share_of_gain": 0.09461987981945125
+    },
+    {
+     "before": 1779123.2629648647,
+     "channel": "near-intents.intents-referral.near",
+     "delta": 1094757.1341135139,
+     "during": 2873880.3970783786,
+     "share_of_gain": 0.08652487415250593
+    },
+    {
+     "before": 0.0,
+     "channel": "aurora-widget-cmpsluszo00ws0ci8cenwbwv5",
+     "delta": 687694.8451351351,
+     "during": 687694.8451351351,
+     "share_of_gain": 0.05435242948092528
+    }
+   ],
+   "multi_venue_daily": {
+    "after_1": 11302521.482044261,
+    "after_2": 12917227.838687269,
+    "before": 10431143.214372972,
+    "during": 9771799.966213513
+   },
+   "multi_venue_delta": -659343.2481594589,
+   "multi_venue_share_of_gain": -0.052111641744630344
+  },
+  "hhi": 0.195965566725315,
+  "min_usd": 1000,
+  "multi_venue_share": 0.37757728435824695,
+  "recipient_count": 247,
+  "recipients": [
+   {
+    "fee_usd": 6594647.229782169,
+    "recipient": "ledgerswapkit.near",
+    "share": 0.4186046743137282
+   },
+   {
+    "fee_usd": 1770505.1573709894,
+    "recipient": "zodlswaps.near",
+    "share": 0.11238534965524459
+   },
+   {
+    "fee_usd": 1614710.530765623,
+    "recipient": "trustswapkit.near",
+    "share": 0.10249606268391975
+   },
+   {
+    "fee_usd": 1041945.920440558,
+    "recipient": "buybacks.multisignature.near",
+    "share": 0.06613900902974376
+   },
+   {
+    "fee_usd": 814488.572728235,
+    "recipient": "tangemswapkit.near",
+    "share": 0.05170082823830111
+   },
+   {
+    "fee_usd": 759201.8098890969,
+    "recipient": "thorswap.near",
+    "share": 0.048191421814312276
+   },
+   {
+    "fee_usd": 406647.70163720095,
+    "recipient": "swapkit.near",
+    "share": 0.025812545049493027
+   },
+   {
+    "fee_usd": 334939.0762925,
+    "recipient": "hvlnear.near",
+    "share": 0.021260737392164372
+   }
+  ],
+  "top3_share": 0.6367621122468372,
+  "top_channel_share": 0.37757728435824695,
+  "volume": 3661551293.0851994,
+  "window": [
+   "2026-08-13",
+   "2026-11-10"
+  ]
+ },
+ "claims": [
+  {
+   "claim": "NEAR Intents is the largest venue in the peer set, with more than 50% of volume.",
+   "id": "C1",
+   "threshold": 0.5,
+   "unit": "share",
+   "value": 0.5808907009163305,
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "Most of the year-on-year volume gain came from taking share, not from market growth.",
+   "id": "C2",
+   "threshold": 0.5,
+   "unit": "share",
+   "value": 0.44481872670247646,
+   "verdict": "REFUTED"
+  },
+  {
+   "claim": "The peer-set market itself grew more than 25% year on year.",
+   "id": "C3",
+   "threshold": 0.25,
+   "unit": "growth",
+   "value": 1.277695118951391,
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "Intents charges at least the median take rate of its rivals (it is not winning on price alone).",
+   "id": "C4",
+   "threshold": 13.006602761109704,
+   "unit": "bps",
+   "value": 15.500541663271859,
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "NEAR keeps more than 50% of the gross fees Intents generates.",
+   "id": "C5",
+   "threshold": 0.5,
+   "unit": "share",
+   "value": 0.2706981404409915,
+   "verdict": "REFUTED"
+  },
+  {
+   "claim": "The lead is stable: weekly share never fell below 40% in the last 26 undistorted weeks.",
+   "id": "C6",
+   "threshold": 0.4,
+   "unit": "share",
+   "value": 0.23170715280135012,
+   "verdict": "REFUTED"
+  },
+  {
+   "claim": "When its largest rival stopped trading, Intents picked up more than 33% of the flow that rival had carried.",
+   "id": "C7",
+   "threshold": 0.33,
+   "unit": "share",
+   "value": 0.45022106634930686,
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "Intents daily volume is steadier than every rival's (lower standard deviation relative to its mean).",
+   "id": "C8",
+   "threshold": 0.6895660947621522,
+   "unit": "ratio",
+   "value": 0.3594849723838062,
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "The share of fees reaching NEAR rose in every one of the last 4 consecutive 90-day windows.",
+   "id": "C9",
+   "threshold": 0.07790973240954711,
+   "unit": "share",
+   "value": 0.2706981404409915,
+   "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "No single distribution channel carries more than 33% of 1Click swap volume.",
+   "id": "C10",
+   "threshold": 0.33,
+   "unit": "share",
+   "value": 0.37757728435824695,
+   "verdict": "REFUTED"
+  },
+  {
+   "claim": "Intents is also the largest venue when the four big bridges are added to the peer set.",
+   "id": "C11",
+   "threshold": 0.3467789389090459,
+   "unit": "share",
+   "value": 0.1776959194931343,
+   "verdict": "REFUTED"
+  }
+ ],
+ "co_movement": {
+  "pearson_r": 0.11147838253785115,
+  "weeks": 52
+ },
+ "context_notes": [
+  {
+   "date": "2026-11-04",
+   "from": "2026-10-31",
+   "name": "THORChain",
+   "slug": "thorchain-dex",
+   "source": "https://www.crowdfundinsider.com/2026/11/321170-thorchain-brings-bitcoin-and-ethereum-swaps-back-online-lifting-rune-15/",
+   "to": "2026-11-03",
+   "top10_days_after": 5,
+   "what": "THORChain suspended swaps again on 2026-10-31 and restored most routes around 2026-11-04"
+  }
+ ],
+ "crosscheck": {
+  "days": 399,
+  "own_api_total": 15697236030.02,
+  "pearson_r": 0.9991702025938626,
+  "provider_total": 15723579300.0,
+  "ratio": 1.0016782107327442,
+  "source": "https://gateway.liquify.com/chain/thorchain_midgard/v2/history/swaps?interval=day&count=400",
+  "zero_days_in_both": 38,
+  "zero_days_in_one_only": 0
+ },
+ "fee_table": [
+  {
+   "days_reported": 90,
+   "fees_window": 262788571.0,
+   "in_peer_set": false,
+   "name": "Relay"
+  },
+  {
+   "days_reported": 90,
+   "fees_window": 18757458.0,
+   "in_peer_set": true,
+   "name": "NEAR Intents"
+  },
+  {
+   "days_reported": 90,
+   "fees_window": 8073989.0,
+   "in_peer_set": true,
+   "name": "THORChain"
+  },
+  {
+   "days_reported": 90,
+   "fees_window": 6096350.0,
+   "in_peer_set": true,
+   "name": "Chainflip"
+  },
+  {
+   "days_reported": 90,
+   "fees_window": 1576564.0,
+   "in_peer_set": false,
+   "name": "deBridge"
+  },
+  {
+   "days_reported": 90,
+   "fees_window": 1000981.0,
+   "in_peer_set": false,
+   "name": "Stargate V2"
+  },
+  {
+   "days_reported": 90,
+   "fees_window": 727919.0,
+   "in_peer_set": true,
+   "name": "Maya Protocol"
+  },
+  {
+   "days_reported": 90,
+   "fees_window": 291014.0,
+   "in_peer_set": false,
+   "name": "Across"
+  }
+ ],
+ "halt": {
+  "absorbed_fraction": 0.45022106634930686,
+  "daily_volume": {
+   "after_1": {
+    "chainflip-amm": 10205947.702702703,
+    "maya-protocol": 1784573.2162162163,
+    "near-intents": 71039501.7027027,
+    "thorchain-dex": 21917536.72972973
+   },
+   "after_2": {
+    "chainflip-amm": 14238127.081081081,
+    "maya-protocol": 843777.2972972973,
+    "near-intents": 92451481.21621622,
+    "thorchain-dex": 21913961.35135135
+   },
+   "before": {
+    "chainflip-amm": 13956703.513513513,
+    "maya-protocol": 2666458.378378378,
+    "near-intents": 56926663.62162162,
+    "thorchain-dex": 48062548.62162162
+   },
+   "during": {
+    "chainflip-amm": 13386159.162162162,
+    "maya-protocol": 5460938.189189189,
+    "near-intents": 78565435.51351352,
+    "thorchain-dex": 0.0
+   }
+  },
+  "days": 37,
+  "first_day": "2026-05-16",
+  "last_day": "2026-06-21",
+  "last_period": "after_2",
+  "lost_daily": 48062548.62162162,
+  "market_change": -0.19899160297108842,
+  "others_growth": {
+   "chainflip-amm": -0.0408795924337666,
+   "maya-protocol": 1.0480117872720327
+  },
+  "periods": {
+   "after_1": [
+    "2026-06-22",
+    "2026-07-28"
+   ],
+   "after_2": [
+    "2026-07-29",
+    "2026-09-03"
+   ],
+   "before": [
+    "2026-04-09",
+    "2026-05-15"
+   ],
+   "during": [
+    "2026-05-16",
+    "2026-06-21"
+   ]
+  },
+  "placebo": [
+   {
+    "lookback_days": 180,
+    "percentile": 0.8958333333333334,
+    "placebo_count": 144,
+    "placebo_median": -0.12875811034763524
+   },
+   {
+    "lookback_days": 365,
+    "percentile": 0.5197568389057751,
+    "placebo_count": 329,
+    "placebo_median": 0.35576561872472223
+   }
+  ],
+  "rival": "THORChain",
+  "rival_recovery": 0.4559467190113394,
+  "rival_slug": "thorchain-dex",
+  "source": "https://www.theblock.co/news/ecosystems/2026-06-23-thorchain-resumes-trading-after-exploit-405767",
+  "subject_after_vs_before": 0.6240453125923531,
+  "subject_growth": 0.3801166363045585,
+  "subject_growth_first_week": 0.12228654407947848,
+  "subject_take_bps": {
+   "after_1": 15.071101117714917,
+   "after_2": 13.429478022439296,
+   "before": 18.066606335084643,
+   "during": 12.43874827763902
+  },
+  "what": "THORChain halted trading after a $10.7M vault exploit and resumed on 2026-06-23"
+ },
+ "implied_value": {
+  "fraction_of_subject_mcap": 0.09508967987518417,
+  "implied_value": 461329792.54010355,
+  "rival_median_mcap_to_revenue": 22.402778864073824
+ },
+ "meta": {
+  "fetched_at": "2026-11-11T19:08:39Z",
+  "first_day": "2024-12-10",
+  "last_day": "2026-11-10",
+  "min_month_volume": 50000000.0,
+  "peers": [
+   {
+    "name": "NEAR Intents",
+    "slug": "near-intents"
+   },
+   {
+    "name": "THORChain",
+    "slug": "thorchain-dex"
+   },
+   {
+    "name": "Chainflip",
+    "slug": "chainflip-amm"
+   },
+   {
+    "name": "Maya Protocol",
+    "slug": "maya-protocol"
+   }
+  ],
+  "subject": "near-intents",
+  "subject_methodology": {
+   "Fees": "Gross fees charged on NEAR Intents swaps - the protocol fee plus the affiliate (distribution) fee each frontend collects, summed across all integrators.",
+   "HoldersRevenue": "Since 2026-02-23, NEAR's captured Intents revenue is used to buy back $NEAR on the open market (not burned), returning value to holders.",
+   "ProtocolRevenue": "Captured revenue held by the treasury before the 2026-02-23 buyback program.",
+   "Revenue": "NEAR's net captured revenue, measured as NEAR/wNEAR swept into its revenue wallets (reconciles with revenue.near.org and the on-chain buyback). Split by destination wallet into front-end affiliate revenue and Other. Transfers between those wallets are excluded.",
+   "SupplySideRevenue": "Gross fees minus NEAR's captured revenue - the affiliate fees kept by solvers and third-party distribution channels (e.g. SwapKit)."
+  },
+  "window": [
+   "2026-08-13",
+   "2026-11-10"
+  ],
+  "window_days": 90
+ },
+ "monthly": [
+  {
+   "capture": null,
+   "chainflip-amm": {
+    "fees": 313417.0,
+    "revenue": 103602.0,
+    "volume": 169978450.0
+   },
+   "complete": false,
+   "days": 22,
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "month": "2024-12",
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 2970992.0
+   },
+   "share": {
+    "chainflip-amm": 0.05413581959361713,
+    "maya-protocol": 0.0,
+    "near-intents": 0.0009462204586880263,
+    "thorchain-dex": 0.9449179599476949
+   },
+   "thorchain-dex": {
+    "fees": 4059188.0,
+    "revenue": 212892.0,
+    "volume": 2966902347.0
+   },
+   "total_volume": 3139851789.0
+  },
+  {
+   "capture": null,
+   "chainflip-amm": {
+    "fees": 366858.0,
+    "revenue": 128289.0,
+    "volume": 225239782.0
+   },
+   "complete": true,
+   "days": 31,
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "month": "2025-01",
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 6405486.0
+   },
+   "share": {
+    "chainflip-amm": 0.04723764656634393,
+    "maya-protocol": 0.0,
+    "near-intents": 0.0013433687471499332,
+    "thorchain-dex": 0.9514189846865061
+   },
+   "thorchain-dex": {
+    "fees": 7215639.0,
+    "revenue": 403635.0,
+    "volume": 4536580890.0
+   },
+   "total_volume": 4768226158.0
+  },
+  {
+   "capture": null,
+   "chainflip-amm": {
+    "fees": 517615.0,
+    "revenue": 139430.0,
+    "volume": 232922200.0
+   },
+   "complete": true,
+   "days": 28,
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "month": "2025-02",
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 13194437.0
+   },
+   "share": {
+    "chainflip-amm": 0.03904435343719782,
+    "maya-protocol": 0.0,
+    "near-intents": 0.002211761101487278,
+    "thorchain-dex": 0.958743885461315
+   },
+   "thorchain-dex": {
+    "fees": 8639817.0,
+    "revenue": 622060.0,
+    "volume": 5719463005.0
+   },
+   "total_volume": 5965579642.0
+  },
+  {
+   "capture": null,
+   "chainflip-amm": {
+    "fees": 683122.0,
+    "revenue": 181426.0,
+    "volume": 316652489.0
+   },
+   "complete": true,
+   "days": 31,
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "month": "2025-03",
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 23456822.0
+   },
+   "share": {
+    "chainflip-amm": 0.06291105906177291,
+    "maya-protocol": 0.0,
+    "near-intents": 0.004660293430516803,
+    "thorchain-dex": 0.9324286475077103
+   },
+   "thorchain-dex": {
+    "fees": 7442355.0,
+    "revenue": 468120.0,
+    "volume": 4693226540.0
+   },
+   "total_volume": 5033335851.0
+  },
+  {
+   "capture": null,
+   "chainflip-amm": {
+    "fees": 830506.0,
+    "revenue": 196514.0,
+    "volume": 334008511.0
+   },
+   "complete": true,
+   "days": 30,
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "month": "2025-04",
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 45321918.0
+   },
+   "share": {
+    "chainflip-amm": 0.14102274004332754,
+    "maya-protocol": 0.0,
+    "near-intents": 0.01913550358714963,
+    "thorchain-dex": 0.8398417563695229
+   },
+   "thorchain-dex": {
+    "fees": 4024837.0,
+    "revenue": 279303.0,
+    "volume": 1989142279.0
+   },
+   "total_volume": 2368472708.0
+  },
+  {
+   "capture": null,
+   "chainflip-amm": {
+    "fees": 676060.0,
+    "revenue": 152703.0,
+    "volume": 240627898.0
+   },
+   "complete": true,
+   "days": 31,
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "month": "2025-05",
+   "near-intents": {
+    "fees": 96.0,
+    "revenue": 0.0,
+    "volume": 90736625.0
+   },
+   "share": {
+    "chainflip-amm": 0.06858332893445754,
+    "maya-protocol": 0.0,
+    "near-intents": 0.025861588994878403,
+    "thorchain-dex": 0.905555082070664
+   },
+   "thorchain-dex": {
+    "fees": 4787137.0,
+    "revenue": 364655.0,
+    "volume": 3177183425.0
+   },
+   "total_volume": 3508547948.0
+  },
+  {
+   "capture": null,
+   "chainflip-amm": {
+    "fees": 848434.0,
+    "revenue": 172506.0,
+    "volume": 296089734.0
+   },
+   "complete": true,
+   "days": 30,
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "month": "2025-06",
+   "near-intents": {
+    "fees": 95436.98,
+    "revenue": 0.0,
+    "volume": 184121616.0
+   },
+   "share": {
+    "chainflip-amm": 0.09624221600113995,
+    "maya-protocol": 0.0,
+    "near-intents": 0.05984764178804979,
+    "thorchain-dex": 0.8439101422108103
+   },
+   "thorchain-dex": {
+    "fees": 3956251.0,
+    "revenue": 210500.0,
+    "volume": 2596294432.0
+   },
+   "total_volume": 3076505782.0
+  },
+  {
+   "capture": null,
+   "chainflip-amm": {
+    "fees": 944263.0,
+    "revenue": 182735.0,
+    "volume": 312106351.0
+   },
+   "complete": true,
+   "days": 31,
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "month": "2025-07",
+   "near-intents": {
+    "fees": 217997.0,
+    "revenue": 0.0,
+    "volume": 235933309.0
+   },
+   "share": {
+    "chainflip-amm": 0.13092119861179422,
+    "maya-protocol": 0.0,
+    "near-intents": 0.09896841736080794,
+    "thorchain-dex": 0.7701103840273978
+   },
+   "thorchain-dex": {
+    "fees": 2572388.0,
+    "revenue": 171358.0,
+    "volume": 1835885589.0
+   },
+   "total_volume": 2383925249.0
+  },
+  {
+   "capture": null,
+   "chainflip-amm": {
+    "fees": 1216566.0,
+    "revenue": 256679.0,
+    "volume": 480208763.0
+   },
+   "complete": true,
+   "days": 31,
+   "maya-protocol": {
+    "fees": 41659.0,
+    "revenue": 4166.0,
+    "volume": 15821655.0
+   },
+   "month": "2025-08",
+   "near-intents": {
+    "fees": 419519.0,
+    "revenue": 0.0,
+    "volume": 331560249.0
+   },
+   "share": {
+    "chainflip-amm": 0.1947157597615721,
+    "maya-protocol": 0.006415388079893235,
+    "near-intents": 0.13444154035725295,
+    "thorchain-dex": 0.6644273118012817
+   },
+   "thorchain-dex": {
+    "fees": 2771657.0,
+    "revenue": 165133.0,
+    "volume": 1638613217.0
+   },
+   "total_volume": 2466203884.0
+  },
+  {
+   "capture": 2.5247247699344553e-05,
+   "chainflip-amm": {
+    "fees": 1199143.0,
+    "revenue": 252224.0,
+    "volume": 452876525.0
+   },
+   "complete": true,
+   "days": 30,
+   "maya-protocol": {
+    "fees": 161961.0,
+    "revenue": 16196.35,
+    "volume": 38632651.0
+   },
+   "month": "2025-09",
+   "near-intents": {
+    "fees": 712949.0,
+    "revenue": 18.0,
+    "volume": 483791180.0
+   },
+   "share": {
+    "chainflip-amm": 0.22710280949207023,
+    "maya-protocol": 0.01937301470909016,
+    "near-intents": 0.2426055008823517,
+    "thorchain-dex": 0.5109186749164879
+   },
+   "thorchain-dex": {
+    "fees": 2753688.0,
+    "revenue": 144696.0,
+    "volume": 1018847255.0
+   },
+   "total_volume": 1994147611.0
+  },
+  {
+   "capture": 7.209666721139704e-06,
+   "chainflip-amm": {
+    "fees": 1581620.0,
+    "revenue": 345242.0,
+    "volume": 618712671.0
+   },
+   "complete": true,
+   "days": 31,
+   "maya-protocol": {
+    "fees": 34153.0,
+    "revenue": 3415.75,
+    "volume": 59777183.0
+   },
+   "month": "2025-10",
+   "near-intents": {
+    "fees": 2496648.0,
+    "revenue": 18.0,
+    "volume": 1723102048.0
+   },
+   "share": {
+    "chainflip-amm": 0.15993736968462013,
+    "maya-protocol": 0.015452415740449884,
+    "near-intents": 0.4454222810886995,
+    "thorchain-dex": 0.3791879334862304
+   },
+   "thorchain-dex": {
+    "fees": 3616431.0,
+    "revenue": 219077.0,
+    "volume": 1466876563.0
+   },
+   "total_volume": 3868468465.0
+  },
+  {
+   "capture": 0.09899947048836234,
+   "chainflip-amm": {
+    "fees": 1564201.0,
+    "revenue": 322512.0,
+    "volume": 586761483.0
+   },
+   "complete": true,
+   "days": 30,
+   "maya-protocol": {
+    "fees": 99925.0,
+    "revenue": 9989.71,
+    "volume": 124989325.0
+   },
+   "month": "2025-11",
+   "near-intents": {
+    "fees": 7758092.0,
+    "revenue": 768047.0,
+    "volume": 3661054797.0
+   },
+   "share": {
+    "chainflip-amm": 0.10703965636543747,
+    "maya-protocol": 0.022801112180957494,
+    "near-intents": 0.6678660047730441,
+    "thorchain-dex": 0.2022932266805609
+   },
+   "thorchain-dex": {
+    "fees": 2239561.0,
+    "revenue": 187657.0,
+    "volume": 1108914936.0
+   },
+   "total_volume": 5481720541.0
+  },
+  {
+   "capture": 0.04290696256435595,
+   "chainflip-amm": {
+    "fees": 1275277.0,
+    "revenue": 265658.0,
+    "volume": 488013490.0
+   },
+   "complete": true,
+   "days": 31,
+   "maya-protocol": {
+    "fees": 34749.0,
+    "revenue": 3473.0,
+    "volume": 54660582.0
+   },
+   "month": "2025-12",
+   "near-intents": {
+    "fees": 4116558.0,
+    "revenue": 176629.0,
+    "volume": 2009785103.0
+   },
+   "share": {
+    "chainflip-amm": 0.12201506328177704,
+    "maya-protocol": 0.013666454941130344,
+    "near-intents": 0.5024944218761612,
+    "thorchain-dex": 0.36182405990093136
+   },
+   "thorchain-dex": {
+    "fees": 1941748.0,
+    "revenue": 239418.0,
+    "volume": 1447157568.0
+   },
+   "total_volume": 3999616743.0
+  },
+  {
+   "capture": 0.08145630929271734,
+   "chainflip-amm": {
+    "fees": 933625.0,
+    "revenue": 229270.0,
+    "volume": 401016554.0
+   },
+   "complete": true,
+   "days": 31,
+   "maya-protocol": {
+    "fees": 52661.0,
+    "revenue": 5270.0,
+    "volume": 56775718.0
+   },
+   "month": "2026-01",
+   "near-intents": {
+    "fees": 4410217.0,
+    "revenue": 359240.0,
+    "volume": 2724468717.0
+   },
+   "share": {
+    "chainflip-amm": 0.09381593389029706,
+    "maya-protocol": 0.013282411794058131,
+    "near-intents": 0.6373766232110569,
+    "thorchain-dex": 0.25552503110458785
+   },
+   "thorchain-dex": {
+    "fees": 2286044.0,
+    "revenue": 187014.0,
+    "volume": 1092242684.0
+   },
+   "total_volume": 4274503673.0
+  },
+  {
+   "capture": 0.16038864182158863,
+   "chainflip-amm": {
+    "fees": 1169349.0,
+    "revenue": 295942.0,
+    "volume": 480095637.0
+   },
+   "complete": true,
+   "days": 28,
+   "maya-protocol": {
+    "fees": 162846.0,
+    "revenue": 16286.0,
+    "volume": 121449505.0
+   },
+   "month": "2026-02",
+   "near-intents": {
+    "fees": 4134501.0,
+    "revenue": 663127.0,
+    "volume": 2378261095.0
+   },
+   "share": {
+    "chainflip-amm": 0.12321321803420318,
+    "maya-protocol": 0.031169173777996755,
+    "near-intents": 0.6103642279933859,
+    "thorchain-dex": 0.23525338019441422
+   },
+   "thorchain-dex": {
+    "fees": 1685018.0,
+    "revenue": 277045.0,
+    "volume": 916655885.0
+   },
+   "total_volume": 3896462122.0
+  },
+  {
+   "capture": 0.15694770610284411,
+   "chainflip-amm": {
+    "fees": 793176.0,
+    "revenue": 177133.0,
+    "volume": 301840448.0
+   },
+   "complete": true,
+   "days": 31,
+   "maya-protocol": {
+    "fees": 43756.0,
+    "revenue": 4373.25,
+    "volume": 45667008.0
+   },
+   "month": "2026-03",
+   "near-intents": {
+    "fees": 3590113.0,
+    "revenue": 563460.0,
+    "volume": 2079695033.0
+   },
+   "share": {
+    "chainflip-amm": 0.09264360967283618,
+    "maya-protocol": 0.01401653254927016,
+    "near-intents": 0.6383188739362995,
+    "thorchain-dex": 0.2550209838415942
+   },
+   "thorchain-dex": {
+    "fees": 1278003.0,
+    "revenue": 135448.0,
+    "volume": 830879197.0
+   },
+   "total_volume": 3258081686.0
+  },
+  {
+   "capture": 0.08067333882920477,
+   "chainflip-amm": {
+    "fees": 852536.0,
+    "revenue": 193264.0,
+    "volume": 337638561.0
+   },
+   "complete": true,
+   "days": 30,
+   "maya-protocol": {
+    "fees": 73232.0,
+    "revenue": 7325.38,
+    "volume": 74962390.0
+   },
+   "month": "2026-04",
+   "near-intents": {
+    "fees": 3207256.0,
+    "revenue": 258740.05,
+    "volume": 1895540502.0
+   },
+   "share": {
+    "chainflip-amm": 0.08642456233061296,
+    "maya-protocol": 0.01918794976444269,
+    "near-intents": 0.4851971225682969,
+    "thorchain-dex": 0.40919036533664743
+   },
+   "thorchain-dex": {
+    "fees": 2437770.0,
+    "revenue": 268493.0,
+    "volume": 1598601629.0
+   },
+   "total_volume": 3906743082.0
+  },
+  {
+   "capture": 0.20637915684228372,
+   "chainflip-amm": {
+    "fees": 1076205.0,
+    "revenue": 297934.0,
+    "volume": 495191258.0
+   },
+   "complete": true,
+   "days": 31,
+   "maya-protocol": {
+    "fees": 42127.0,
+    "revenue": 4210.0,
+    "volume": 59766276.0
+   },
+   "month": "2026-05",
+   "near-intents": {
+    "fees": 3002309.0,
+    "revenue": 619614.0,
+    "volume": 1995687999.0
+   },
+   "share": {
+    "chainflip-amm": 0.1701819430639275,
+    "maya-protocol": 0.020539823381484204,
+    "near-intents": 0.685856335168141,
+    "thorchain-dex": 0.12342189838644724
+   },
+   "thorchain-dex": {
+    "fees": 662436.0,
+    "revenue": 195436.0,
+    "volume": 359130023.0
+   },
+   "total_volume": 2909775556.0
+  },
+  {
+   "capture": 0.19907211618182588,
+   "chainflip-amm": {
+    "fees": 913679.0,
+    "revenue": 209489.0,
+    "volume": 344419856.0
+   },
+   "complete": true,
+   "days": 30,
+   "maya-protocol": {
+    "fees": 184664.0,
+    "revenue": 18466.0,
+    "volume": 191362291.0
+   },
+   "month": "2026-06",
+   "near-intents": {
+    "fees": 3111812.0,
+    "revenue": 619475.0,
+    "volume": 2354692014.0
+   },
+   "share": {
+    "chainflip-amm": 0.11495649139133308,
+    "maya-protocol": 0.06387070075880664,
+    "near-intents": 0.7859219714575102,
+    "thorchain-dex": 0.03525083639235009
+   },
+   "thorchain-dex": {
+    "fees": 200104.0,
+    "revenue": 27314.0,
+    "volume": 105614636.0
+   },
+   "total_volume": 2996088797.0
+  },
+  {
+   "capture": 0.154302391292189,
+   "chainflip-amm": {
+    "fees": 1027543.0,
+    "revenue": 186724.0,
+    "volume": 320987990.0
+   },
+   "complete": true,
+   "days": 31,
+   "maya-protocol": {
+    "fees": 35081.0,
+    "revenue": 3512.79,
+    "volume": 50031076.0
+   },
+   "month": "2026-07",
+   "near-intents": {
+    "fees": 3271913.0,
+    "revenue": 504864.0,
+    "volume": 2205579711.0
+   },
+   "share": {
+    "chainflip-amm": 0.0950528787963129,
+    "maya-protocol": 0.014815500739068522,
+    "near-intents": 0.6531294237684402,
+    "thorchain-dex": 0.2370021966961784
+   },
+   "thorchain-dex": {
+    "fees": 1097314.0,
+    "revenue": 136187.0,
+    "volume": 800342501.0
+   },
+   "total_volume": 3376941278.0
+  },
+  {
+   "capture": 0.1884979704063748,
+   "chainflip-amm": {
+    "fees": 1391398.0,
+    "revenue": 265658.0,
+    "volume": 437699297.0
+   },
+   "complete": true,
+   "days": 31,
+   "maya-protocol": {
+    "fees": 213729.0,
+    "revenue": 21374.0,
+    "volume": 30092150.0
+   },
+   "month": "2026-08",
+   "near-intents": {
+    "fees": 3836975.0,
+    "revenue": 723262.0,
+    "volume": 2777327253.0
+   },
+   "share": {
+    "chainflip-amm": 0.11339378638938616,
+    "maya-protocol": 0.0077959065789803324,
+    "near-intents": 0.7195160134335391,
+    "thorchain-dex": 0.15929429359809436
+   },
+   "thorchain-dex": {
+    "fees": 763241.0,
+    "revenue": 101694.47,
+    "volume": 614874964.0
+   },
+   "total_volume": 3859993664.0
+  },
+  {
+   "capture": 0.25110090485779557,
+   "chainflip-amm": {
+    "fees": 1632583.0,
+    "revenue": 310766.0,
+    "volume": 532249647.0
+   },
+   "complete": true,
+   "days": 30,
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "month": "2026-09",
+   "near-intents": {
+    "fees": 7325792.0,
+    "revenue": 1839513.0,
+    "volume": 4803094377.0
+   },
+   "share": {
+    "chainflip-amm": 0.06838191925086526,
+    "maya-protocol": 0.0,
+    "near-intents": 0.6170878904167671,
+    "thorchain-dex": 0.3145301903323676
+   },
+   "thorchain-dex": {
+    "fees": 3501250.0,
+    "revenue": 977852.26,
+    "volume": 2448141038.0
+   },
+   "total_volume": 7783485062.0
+  },
+  {
+   "capture": 0.34275124466271223,
+   "chainflip-amm": {
+    "fees": 2319361.0,
+    "revenue": 403260.0,
+    "volume": 724509231.0
+   },
+   "complete": true,
+   "days": 31,
+   "maya-protocol": {
+    "fees": 495654.0,
+    "revenue": 49565.0,
+    "volume": 527825431.0
+   },
+   "month": "2026-10",
+   "near-intents": {
+    "fees": 6388076.0,
+    "revenue": 2189521.0,
+    "volume": 3985641601.0
+   },
+   "share": {
+    "chainflip-amm": 0.10589349368720648,
+    "maya-protocol": 0.0771464000098372,
+    "near-intents": 0.5825371101654895,
+    "thorchain-dex": 0.2344229961374669
+   },
+   "thorchain-dex": {
+    "fees": 1989989.0,
+    "revenue": 514060.0,
+    "volume": 1603891030.0
+   },
+   "total_volume": 6841867293.0
+  },
+  {
+   "capture": 0.22980617935359757,
+   "chainflip-amm": {
+    "fees": 1090832.0,
+    "revenue": 202836.0,
+    "volume": 354382959.0
+   },
+   "complete": false,
+   "days": 10,
+   "maya-protocol": {
+    "fees": 34970.0,
+    "revenue": 3497.25,
+    "volume": 40810841.0
+   },
+   "month": "2026-11",
+   "near-intents": {
+    "fees": 2158284.0,
+    "revenue": 495987.0,
+    "volume": 1313099238.0
+   },
+   "share": {
+    "chainflip-amm": 0.10208078133750899,
+    "maya-protocol": 0.011755651423184958,
+    "near-intents": 0.3782410885866769,
+    "thorchain-dex": 0.5079224786526292
+   },
+   "thorchain-dex": {
+    "fees": 2061134.0,
+    "revenue": 628668.0,
+    "volume": 1763300286.0
+   },
+   "total_volume": 3471593324.0
+  }
+ ],
+ "predictions": [
+  {
+   "current": 0.5808907009163305,
+   "due": "2027-02-28",
+   "id": "P1",
+   "metric": "share_trailing",
+   "op": ">=",
+   "status": "PENDING",
+   "text": "NEAR Intents still holds at least 50% of peer-set volume over the trailing 90 days.",
+   "value": 0.5
+  },
+  {
+   "current": 0.2706981404409915,
+   "due": "2027-02-28",
+   "id": "P2",
+   "metric": "capture_trailing",
+   "op": ">=",
+   "status": "PENDING",
+   "text": "NEAR's captured revenue is at least 30% of gross Intents fees over the trailing 90 days.",
+   "value": 0.3
+  },
+  {
+   "current": 15.500541663271859,
+   "due": "2027-05-31",
+   "id": "P3",
+   "metric": "take_rate_trailing_bps",
+   "op": ">=",
+   "status": "PENDING",
+   "text": "The Intents take rate has not been competed below 12 bps over the trailing 90 days.",
+   "value": 12.0
+  }
+ ],
+ "quality_flags": [
+  {
+   "cause": "THORChain halted trading after a $10.7M vault exploit and resumed on 2026-06-23",
+   "material": true,
+   "median_prior_8w": 135309584.5,
+   "peer": "THORChain",
+   "volume": 0.0,
+   "week": "2026-05-18"
+  },
+  {
+   "cause": "THORChain halted trading after a $10.7M vault exploit and resumed on 2026-06-23",
+   "material": true,
+   "median_prior_8w": 135309584.5,
+   "peer": "THORChain",
+   "volume": 0.0,
+   "week": "2026-05-25"
+  },
+  {
+   "cause": "THORChain halted trading after a $10.7M vault exploit and resumed on 2026-06-23",
+   "material": true,
+   "median_prior_8w": 130008692.0,
+   "peer": "THORChain",
+   "volume": 0.0,
+   "week": "2026-06-01"
+  },
+  {
+   "cause": "THORChain halted trading after a $10.7M vault exploit and resumed on 2026-06-23",
+   "material": true,
+   "median_prior_8w": 121736410.0,
+   "peer": "THORChain",
+   "volume": 0.0,
+   "week": "2026-06-08"
+  },
+  {
+   "cause": "THORChain halted trading after a $10.7M vault exploit and resumed on 2026-06-23",
+   "material": true,
+   "median_prior_8w": 52138267.0,
+   "peer": "THORChain",
+   "volume": 0.0,
+   "week": "2026-06-15"
+  },
+  {
+   "cause": null,
+   "material": false,
+   "median_prior_8w": 54385284.0,
+   "peer": "Chainflip",
+   "volume": 9132507.0,
+   "week": "2025-02-24"
+  },
+  {
+   "cause": null,
+   "material": false,
+   "median_prior_8w": 9840169.0,
+   "peer": "Maya Protocol",
+   "volume": 0.0,
+   "week": "2026-08-24"
+  },
+  {
+   "cause": null,
+   "material": false,
+   "median_prior_8w": 9840169.0,
+   "peer": "Maya Protocol",
+   "volume": 0.0,
+   "week": "2026-08-31"
+  },
+  {
+   "cause": null,
+   "material": false,
+   "median_prior_8w": 5928165.5,
+   "peer": "Maya Protocol",
+   "volume": 0.0,
+   "week": "2026-09-07"
+  },
+  {
+   "cause": null,
+   "material": false,
+   "median_prior_8w": 3943083.5,
+   "peer": "Maya Protocol",
+   "volume": 0.0,
+   "week": "2026-09-14"
+  },
+  {
+   "cause": null,
+   "material": false,
+   "median_prior_8w": 1772637.0,
+   "peer": "Maya Protocol",
+   "volume": 0.0,
+   "week": "2026-09-21"
+  }
+ ],
+ "recent": {
+  "change": {
+   "chainflip-amm": 0.6168378358368689,
+   "maya-protocol": 4.005237593380188,
+   "near-intents": -0.20681798050544653,
+   "thorchain-dex": 0.32475821336467536
+  },
+  "days": 30
+ },
+ "sensitivity": [
+  {
+   "capture": 0.3049208611079143,
+   "days": 30,
+   "leader": "NEAR Intents",
+   "share": 0.46416847363395664,
+   "take_bps": 15.862722159944173
+  },
+  {
+   "capture": 0.2706981404409915,
+   "days": 90,
+   "leader": "NEAR Intents",
+   "share": 0.5808907009163305,
+   "take_bps": 15.500541663271859
+  },
+  {
+   "capture": 0.24661611199785755,
+   "days": 180,
+   "leader": "NEAR Intents",
+   "share": 0.6254197635992069,
+   "take_bps": 14.813073232571812
+  },
+  {
+   "capture": 0.1732176756990327,
+   "days": 365,
+   "leader": "NEAR Intents",
+   "share": 0.6064993022089917,
+   "take_bps": 16.41594501984004
+  }
+ ],
+ "stability": {
+  "excluded_weeks": [
+   "2026-05-18",
+   "2026-05-25",
+   "2026-06-01",
+   "2026-06-08",
+   "2026-06-15"
+  ],
+  "first_week": "2026-04-06",
+  "latest_share": 0.37589480713095696,
+  "latest_week": "2026-11-02",
+  "max": 0.8399679617985196,
+  "mean": 0.6216692790996603,
+  "min": 0.23170715280135012,
+  "min_week": "2026-04-20",
+  "stdev": 0.12980341062985484,
+  "weeks": 26
+ },
+ "suspensions": [
+  {
+   "days": 2,
+   "from": "2026-11-01",
+   "rival": "THORChain",
+   "rival_before": 42094631.5,
+   "rival_during": 1790330.5,
+   "subject_before": 121965046.35714285,
+   "subject_change": -0.027527258484465245,
+   "subject_during": 118607683.0,
+   "to": "2026-11-02"
+  }
+ ],
+ "trailing": {
+  "capture": 0.2706981404409915,
+  "fees": {
+   "chainflip-amm": 6096350.0,
+   "maya-protocol": 727919.0,
+   "near-intents": 18757458.0,
+   "thorchain-dex": 8073989.0
+  },
+  "market_volume": 20832082352.0,
+  "revenue": {
+   "chainflip-amm": 1120356.0,
+   "maya-protocol": 72792.25,
+   "near-intents": 5077609.0,
+   "thorchain-dex": 2186377.73
+  },
+  "rival_take_median_bps": 13.006602761109704,
+  "share": {
+   "chainflip-amm": 0.09332366938408117,
+   "maya-protocol": 0.02780255767107194,
+   "near-intents": 0.5808907009163305,
+   "thorchain-dex": 0.2979830720285163
+  },
+  "take_bps": {
+   "chainflip-amm": 31.357786749958617,
+   "maya-protocol": 12.567984065324076,
+   "near-intents": 15.500541663271859,
+   "thorchain-dex": 13.006602761109704
+  },
+  "volume": {
+   "chainflip-amm": 1944126366.0,
+   "maya-protocol": 579185171.0,
+   "near-intents": 12101162919.0,
+   "thorchain-dex": 6207607896.0
+  }
+ },
+ "valuation": {
+  "chainflip-amm": {
+   "fees_annualized": 24724086.11111111,
+   "market_cap": 33886165.689131275,
+   "mcap_to_fees": 1.3705730329867558,
+   "mcap_to_revenue": 7.457890982552695,
+   "revenue_annualized": 4543666.0
+  },
+  "maya-protocol": {
+   "fees_annualized": 2952115.9444444445,
+   "market_cap": 12301013.273172792,
+   "mcap_to_fees": 4.166846256943917,
+   "mcap_to_revenue": 41.66826221896369,
+   "revenue_annualized": 295213.0138888889
+  },
+  "near-intents": {
+   "fees_annualized": 76071913.0,
+   "market_cap": 4851523247.797768,
+   "mcap_to_fees": 63.77548633222577,
+   "mcap_to_revenue": 235.59632226630663,
+   "revenue_annualized": 20592525.388888888
+  },
+  "thorchain-dex": {
+   "fees_annualized": 32744510.944444444,
+   "market_cap": 198644910.34957644,
+   "mcap_to_fees": 6.06651022171639,
+   "mcap_to_revenue": 22.402778864073824,
+   "revenue_annualized": 8866976.349444443
+  }
+ },
+ "weekly": [
+  {
+   "chainflip-amm": {
+    "fees": 129775.0,
+    "revenue": 42245.0,
+    "volume": 68348892.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 1021001.0
+   },
+   "share": {
+    "chainflip-amm": 0.050312876263463945,
+    "maya-protocol": 0.0,
+    "near-intents": 0.0007515776112050646,
+    "thorchain-dex": 0.948935546125331
+   },
+   "take_bps": {
+    "chainflip-amm": 18.98714027434417,
+    "maya-protocol": null,
+    "near-intents": null,
+    "thorchain-dex": 13.610876914148932
+   },
+   "thorchain-dex": {
+    "fees": 1754588.0,
+    "revenue": 94842.0,
+    "volume": 1289107242.0
+   },
+   "total_volume": 1358477135.0,
+   "week": "2024-12-16"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 80163.0,
+    "revenue": 30013.0,
+    "volume": 46640582.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 872180.0
+   },
+   "share": {
+    "chainflip-amm": 0.07119961109621223,
+    "maya-protocol": 0.0,
+    "near-intents": 0.0013314344320552085,
+    "thorchain-dex": 0.9274689544717326
+   },
+   "take_bps": {
+    "chainflip-amm": 17.18739273021936,
+    "maya-protocol": null,
+    "near-intents": null,
+    "thorchain-dex": 13.652982329160329
+   },
+   "thorchain-dex": {
+    "fees": 829494.0,
+    "revenue": 42528.0,
+    "volume": 607555170.0
+   },
+   "total_volume": 655067932.0,
+   "week": "2024-12-23"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 55349.0,
+    "revenue": 16529.0,
+    "volume": 28784510.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 687690.0
+   },
+   "share": {
+    "chainflip-amm": 0.05204881943763874,
+    "maya-protocol": 0.0,
+    "near-intents": 0.0012434970280567495,
+    "thorchain-dex": 0.9467076835343045
+   },
+   "take_bps": {
+    "chainflip-amm": 19.228744904811652,
+    "maya-protocol": null,
+    "near-intents": null,
+    "thorchain-dex": 14.612319113393118
+   },
+   "thorchain-dex": {
+    "fees": 765038.0,
+    "revenue": 37928.0,
+    "volume": 523556866.0
+   },
+   "total_volume": 553029066.0,
+   "week": "2024-12-30"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 75468.0,
+    "revenue": 25611.0,
+    "volume": 44604932.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 561882.0
+   },
+   "share": {
+    "chainflip-amm": 0.045297158142752994,
+    "maya-protocol": 0.0,
+    "near-intents": 0.0005706018745094452,
+    "thorchain-dex": 0.9541322399827376
+   },
+   "take_bps": {
+    "chainflip-amm": 16.919205257391717,
+    "maya-protocol": null,
+    "near-intents": null,
+    "thorchain-dex": 14.6999105254814
+   },
+   "thorchain-dex": {
+    "fees": 1381132.0,
+    "revenue": 83337.0,
+    "volume": 939551297.0
+   },
+   "total_volume": 984718111.0,
+   "week": "2025-01-06"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 95367.0,
+    "revenue": 32410.0,
+    "volume": 56546351.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 1600401.0
+   },
+   "share": {
+    "chainflip-amm": 0.043453468892918956,
+    "maya-protocol": 0.0,
+    "near-intents": 0.0012298401902130942,
+    "thorchain-dex": 0.955316690916868
+   },
+   "take_bps": {
+    "chainflip-amm": 16.86527924675458,
+    "maya-protocol": null,
+    "near-intents": null,
+    "thorchain-dex": 16.160291701862253
+   },
+   "thorchain-dex": {
+    "fees": 2008985.0,
+    "revenue": 104096.0,
+    "volume": 1243161347.0
+   },
+   "total_volume": 1301308099.0,
+   "week": "2025-01-13"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 68775.0,
+    "revenue": 25343.0,
+    "volume": 45328003.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 3290477.0
+   },
+   "share": {
+    "chainflip-amm": 0.03148279863461151,
+    "maya-protocol": 0.0,
+    "near-intents": 0.0022854177979740376,
+    "thorchain-dex": 0.9662317835674145
+   },
+   "take_bps": {
+    "chainflip-amm": 15.172739906498858,
+    "maya-protocol": null,
+    "near-intents": null,
+    "thorchain-dex": 16.627651458624076
+   },
+   "thorchain-dex": {
+    "fees": 2313159.0,
+    "revenue": 141164.0,
+    "volume": 1391151965.0
+   },
+   "total_volume": 1439770445.0,
+   "week": "2025-01-20"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 145680.0,
+    "revenue": 51678.0,
+    "volume": 84904858.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 826803.0
+   },
+   "share": {
+    "chainflip-amm": 0.06823479507767695,
+    "maya-protocol": 0.0,
+    "near-intents": 0.0006644700268459142,
+    "thorchain-dex": 0.9311007348954772
+   },
+   "take_bps": {
+    "chainflip-amm": 17.158028813851853,
+    "maya-protocol": null,
+    "near-intents": null,
+    "thorchain-dex": 17.78695348107145
+   },
+   "thorchain-dex": {
+    "fees": 2060748.0,
+    "revenue": 129628.0,
+    "volume": 1158572772.0
+   },
+   "total_volume": 1244304433.0,
+   "week": "2025-01-27"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 187107.0,
+    "revenue": 46131.0,
+    "volume": 78300096.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 2916351.0
+   },
+   "share": {
+    "chainflip-amm": 0.09607890941584527,
+    "maya-protocol": 0.0,
+    "near-intents": 0.0035785374203603755,
+    "thorchain-dex": 0.9003425531637944
+   },
+   "take_bps": {
+    "chainflip-amm": 23.89613928442693,
+    "maya-protocol": null,
+    "near-intents": null,
+    "thorchain-dex": 10.362421710159628
+   },
+   "thorchain-dex": {
+    "fees": 760332.0,
+    "revenue": 59974.0,
+    "volume": 733739681.0
+   },
+   "total_volume": 814956128.0,
+   "week": "2025-02-03"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 109248.0,
+    "revenue": 30195.0,
+    "volume": 52224217.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 2812291.0
+   },
+   "share": {
+    "chainflip-amm": 0.09232379094618867,
+    "maya-protocol": 0.0,
+    "near-intents": 0.00497166604458326,
+    "thorchain-dex": 0.9027045430092281
+   },
+   "take_bps": {
+    "chainflip-amm": 20.919030724768934,
+    "maya-protocol": null,
+    "near-intents": null,
+    "thorchain-dex": 13.420045258459503
+   },
+   "thorchain-dex": {
+    "fees": 685264.0,
+    "revenue": 45522.0,
+    "volume": 510627190.0
+   },
+   "total_volume": 565663698.0,
+   "week": "2025-02-10"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 151917.0,
+    "revenue": 42490.0,
+    "volume": 71895704.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 3516842.0
+   },
+   "share": {
+    "chainflip-amm": 0.07412440897948536,
+    "maya-protocol": 0.0,
+    "near-intents": 0.003625861076820824,
+    "thorchain-dex": 0.9222497299436938
+   },
+   "take_bps": {
+    "chainflip-amm": 21.13019158975062,
+    "maya-protocol": null,
+    "near-intents": null,
+    "thorchain-dex": 14.504935230273034
+   },
+   "thorchain-dex": {
+    "fees": 1297496.0,
+    "revenue": 96600.0,
+    "volume": 894520368.0
+   },
+   "total_volume": 969932914.0,
+   "week": "2025-02-17"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 20987.0,
+    "revenue": 5594.0,
+    "volume": 9132507.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 7573285.0
+   },
+   "share": {
+    "chainflip-amm": 0.0019491812342494592,
+    "maya-protocol": 0.0,
+    "near-intents": 0.0016163913155087552,
+    "thorchain-dex": 0.9964344274502418
+   },
+   "take_bps": {
+    "chainflip-amm": 22.980546305631083,
+    "maya-protocol": null,
+    "near-intents": null,
+    "thorchain-dex": 15.18181989282421
+   },
+   "thorchain-dex": {
+    "fees": 7087782.0,
+    "revenue": 486591.0,
+    "volume": 4668598396.0
+   },
+   "total_volume": 4685304188.0,
+   "week": "2025-02-24"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 160086.0,
+    "revenue": 42163.0,
+    "volume": 69746971.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 5140234.0
+   },
+   "share": {
+    "chainflip-amm": 0.05334369582365877,
+    "maya-protocol": 0.0,
+    "near-intents": 0.003931340315243637,
+    "thorchain-dex": 0.9427249638610976
+   },
+   "take_bps": {
+    "chainflip-amm": 22.952394592160854,
+    "maya-protocol": null,
+    "near-intents": null,
+    "thorchain-dex": 15.508141962748258
+   },
+   "thorchain-dex": {
+    "fees": 1911556.0,
+    "revenue": 123063.0,
+    "volume": 1232614458.0
+   },
+   "total_volume": 1307501663.0,
+   "week": "2025-03-03"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 196160.0,
+    "revenue": 53513.0,
+    "volume": 91835068.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 4160178.0
+   },
+   "share": {
+    "chainflip-amm": 0.14958533691777554,
+    "maya-protocol": 0.0,
+    "near-intents": 0.006776296259375749,
+    "thorchain-dex": 0.8436383668228488
+   },
+   "take_bps": {
+    "chainflip-amm": 21.360032095800268,
+    "maya-protocol": null,
+    "near-intents": null,
+    "thorchain-dex": 16.492259433035727
+   },
+   "thorchain-dex": {
+    "fees": 854193.0,
+    "revenue": 55253.0,
+    "volume": 517935704.0
+   },
+   "total_volume": 613930950.0,
+   "week": "2025-03-10"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 146652.0,
+    "revenue": 39932.0,
+    "volume": 73311615.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 3049606.0
+   },
+   "share": {
+    "chainflip-amm": 0.11419018715417012,
+    "maya-protocol": 0.0,
+    "near-intents": 0.004750066955781565,
+    "thorchain-dex": 0.8810597458900483
+   },
+   "take_bps": {
+    "chainflip-amm": 20.003924344048347,
+    "maya-protocol": null,
+    "near-intents": null,
+    "thorchain-dex": 18.67941624784544
+   },
+   "thorchain-dex": {
+    "fees": 1056605.0,
+    "revenue": 64727.0,
+    "volume": 565652045.0
+   },
+   "total_volume": 642013266.0,
+   "week": "2025-03-17"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 162497.0,
+    "revenue": 39907.0,
+    "volume": 72330834.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 6363377.0
+   },
+   "share": {
+    "chainflip-amm": 0.10115054941050174,
+    "maya-protocol": 0.0,
+    "near-intents": 0.008898820102864434,
+    "thorchain-dex": 0.8899506304866338
+   },
+   "take_bps": {
+    "chainflip-amm": 22.46579930213441,
+    "maya-protocol": null,
+    "near-intents": null,
+    "thorchain-dex": 17.79364460671243
+   },
+   "thorchain-dex": {
+    "fees": 1132364.0,
+    "revenue": 67168.0,
+    "volume": 636386769.0
+   },
+   "total_volume": 715080980.0,
+   "week": "2025-03-24"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 192264.0,
+    "revenue": 42226.0,
+    "volume": 73896808.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 3853919.0
+   },
+   "share": {
+    "chainflip-amm": 0.16601559718532413,
+    "maya-protocol": 0.0,
+    "near-intents": 0.008658163750305252,
+    "thorchain-dex": 0.8253262390643706
+   },
+   "take_bps": {
+    "chainflip-amm": 26.017903236091065,
+    "maya-protocol": null,
+    "near-intents": null,
+    "thorchain-dex": 19.969679309637016
+   },
+   "thorchain-dex": {
+    "fees": 733624.0,
+    "revenue": 96349.0,
+    "volume": 367368944.0
+   },
+   "total_volume": 445119671.0,
+   "week": "2025-03-31"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 266118.0,
+    "revenue": 57735.0,
+    "volume": 98659184.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 8783942.0
+   },
+   "share": {
+    "chainflip-amm": 0.1408154539950337,
+    "maya-protocol": 0.0,
+    "near-intents": 0.012537249249862478,
+    "thorchain-dex": 0.8466472967551039
+   },
+   "take_bps": {
+    "chainflip-amm": 26.97346452814773,
+    "maya-protocol": null,
+    "near-intents": null,
+    "thorchain-dex": 22.988197029575993
+   },
+   "thorchain-dex": {
+    "fees": 1363624.0,
+    "revenue": 68449.0,
+    "volume": 593184406.0
+   },
+   "total_volume": 700627532.0,
+   "week": "2025-04-07"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 147884.0,
+    "revenue": 40106.0,
+    "volume": 66377327.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 12005370.0
+   },
+   "share": {
+    "chainflip-amm": 0.12665493945056677,
+    "maya-protocol": 0.0,
+    "near-intents": 0.022907511934484055,
+    "thorchain-dex": 0.8504375486149491
+   },
+   "take_bps": {
+    "chainflip-amm": 22.27929425359355,
+    "maya-protocol": null,
+    "near-intents": null,
+    "thorchain-dex": 20.451635933319082
+   },
+   "thorchain-dex": {
+    "fees": 911524.0,
+    "revenue": 56026.0,
+    "volume": 445697353.0
+   },
+   "total_volume": 524080050.0,
+   "week": "2025-04-14"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 182032.0,
+    "revenue": 46850.0,
+    "volume": 78621797.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 9180737.0
+   },
+   "share": {
+    "chainflip-amm": 0.1527047106549316,
+    "maya-protocol": 0.0,
+    "near-intents": 0.017831464564261035,
+    "thorchain-dex": 0.8294638247808074
+   },
+   "take_bps": {
+    "chainflip-amm": 23.152866882449914,
+    "maya-protocol": null,
+    "near-intents": null,
+    "thorchain-dex": 17.575623566912345
+   },
+   "thorchain-dex": {
+    "fees": 750583.0,
+    "revenue": 44941.0,
+    "volume": 427059101.0
+   },
+   "total_volume": 514861635.0,
+   "week": "2025-04-21"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 113110.0,
+    "revenue": 29128.0,
+    "volume": 44132526.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 19383657.0
+   },
+   "share": {
+    "chainflip-amm": 0.08180773316066543,
+    "maya-protocol": 0.0,
+    "near-intents": 0.03593116422871115,
+    "thorchain-dex": 0.8822611026106234
+   },
+   "take_bps": {
+    "chainflip-amm": 25.629622922558298,
+    "maya-protocol": null,
+    "near-intents": null,
+    "thorchain-dex": 19.10626163133647
+   },
+   "thorchain-dex": {
+    "fees": 909363.0,
+    "revenue": 47008.0,
+    "volume": 475950250.0
+   },
+   "total_volume": 539466433.0,
+   "week": "2025-04-28"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 163237.0,
+    "revenue": 42006.0,
+    "volume": 60405717.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 2.0,
+    "revenue": 0.0,
+    "volume": 10472324.0
+   },
+   "share": {
+    "chainflip-amm": 0.10224960406826616,
+    "maya-protocol": 0.0,
+    "near-intents": 0.017726649659246682,
+    "thorchain-dex": 0.8800237462724871
+   },
+   "take_bps": {
+    "chainflip-amm": 27.02343554667185,
+    "maya-protocol": null,
+    "near-intents": 0.0019097957626215537,
+    "thorchain-dex": 18.862288167726046
+   },
+   "thorchain-dex": {
+    "fees": 980630.0,
+    "revenue": 141933.0,
+    "volume": 519889205.0
+   },
+   "total_volume": 590767246.0,
+   "week": "2025-05-05"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 147288.0,
+    "revenue": 33727.0,
+    "volume": 56419111.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 6.0,
+    "revenue": 0.0,
+    "volume": 14923193.0
+   },
+   "share": {
+    "chainflip-amm": 0.06814921199480543,
+    "maya-protocol": 0.0,
+    "near-intents": 0.01802587501593913,
+    "thorchain-dex": 0.9138249129892554
+   },
+   "take_bps": {
+    "chainflip-amm": 26.10604764757814,
+    "maya-protocol": null,
+    "near-intents": 0.004020587283163865,
+    "thorchain-dex": 13.595887753878726
+   },
+   "thorchain-dex": {
+    "fees": 1028575.0,
+    "revenue": 59274.0,
+    "volume": 756533901.0
+   },
+   "total_volume": 827876205.0,
+   "week": "2025-05-12"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 161237.0,
+    "revenue": 33858.0,
+    "volume": 55572950.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 45.0,
+    "revenue": 0.0,
+    "volume": 19589704.0
+   },
+   "share": {
+    "chainflip-amm": 0.047249256678434395,
+    "maya-protocol": 0.0,
+    "near-intents": 0.016655566288105147,
+    "thorchain-dex": 0.9360951770334605
+   },
+   "take_bps": {
+    "chainflip-amm": 29.01357584940155,
+    "maya-protocol": null,
+    "near-intents": 0.02297125061205621,
+    "thorchain-dex": 13.056640896033066
+   },
+   "thorchain-dex": {
+    "fees": 1437540.0,
+    "revenue": 86893.0,
+    "volume": 1101002939.0
+   },
+   "total_volume": 1176165593.0,
+   "week": "2025-05-19"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 178055.0,
+    "revenue": 31835.0,
+    "volume": 54877179.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 43.64,
+    "revenue": 0.0,
+    "volume": 39252659.0
+   },
+   "share": {
+    "chainflip-amm": 0.07280482352292786,
+    "maya-protocol": 0.0,
+    "near-intents": 0.052075980642165766,
+    "thorchain-dex": 0.8751191958349064
+   },
+   "take_bps": {
+    "chainflip-amm": 32.44609202670567,
+    "maya-protocol": null,
+    "near-intents": 0.011117718165284039,
+    "thorchain-dex": 15.88259742135966
+   },
+   "thorchain-dex": {
+    "fees": 1047660.0,
+    "revenue": 61105.0,
+    "volume": 659627624.0
+   },
+   "total_volume": 753757462.0,
+   "week": "2025-05-26"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 227064.0,
+    "revenue": 40914.0,
+    "volume": 70869566.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 171.34,
+    "revenue": 0.0,
+    "volume": 13096070.0
+   },
+   "share": {
+    "chainflip-amm": 0.11892844362987573,
+    "maya-protocol": 0.0,
+    "near-intents": 0.021976926213544284,
+    "thorchain-dex": 0.8590946301565799
+   },
+   "take_bps": {
+    "chainflip-amm": 32.0397051676597,
+    "maya-protocol": null,
+    "near-intents": 0.1308331430726928,
+    "thorchain-dex": 14.721080190337114
+   },
+   "thorchain-dex": {
+    "fees": 753624.0,
+    "revenue": 40330.0,
+    "volume": 511935259.0
+   },
+   "total_volume": 595900895.0,
+   "week": "2025-06-02"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 249559.0,
+    "revenue": 50659.0,
+    "volume": 91779521.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 12060.0,
+    "revenue": 0.0,
+    "volume": 22141750.0
+   },
+   "share": {
+    "chainflip-amm": 0.1173416175839661,
+    "maya-protocol": 0.0,
+    "near-intents": 0.02830858924552223,
+    "thorchain-dex": 0.8543497931705116
+   },
+   "take_bps": {
+    "chainflip-amm": 27.191142128536494,
+    "maya-protocol": null,
+    "near-intents": 5.446723949100681,
+    "thorchain-dex": 15.774801922625665
+   },
+   "thorchain-dex": {
+    "fees": 1054128.0,
+    "revenue": 54247.0,
+    "volume": 668235332.0
+   },
+   "total_volume": 782156603.0,
+   "week": "2025-06-09"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 166441.0,
+    "revenue": 39495.0,
+    "volume": 68632710.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 51203.0,
+    "revenue": 0.0,
+    "volume": 51409671.0
+   },
+   "share": {
+    "chainflip-amm": 0.08599200937367356,
+    "maya-protocol": 0.0,
+    "near-intents": 0.06441274008456717,
+    "thorchain-dex": 0.8495952505417593
+   },
+   "take_bps": {
+    "chainflip-amm": 24.250973041862984,
+    "maya-protocol": null,
+    "near-intents": 9.959799198092515,
+    "thorchain-dex": 16.316457092238068
+   },
+   "thorchain-dex": {
+    "fees": 1106397.0,
+    "revenue": 56858.0,
+    "volume": 678086544.0
+   },
+   "total_volume": 798128925.0,
+   "week": "2025-06-16"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 142613.0,
+    "revenue": 31171.0,
+    "volume": 46963907.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 25682.0,
+    "revenue": 0.0,
+    "volume": 89669317.0
+   },
+   "share": {
+    "chainflip-amm": 0.06256898010901618,
+    "maya-protocol": 0.0,
+    "near-intents": 0.11946445835015529,
+    "thorchain-dex": 0.8179665615408286
+   },
+   "take_bps": {
+    "chainflip-amm": 30.36651103154599,
+    "maya-protocol": null,
+    "near-intents": 2.864078913414719,
+    "thorchain-dex": 13.786285738720961
+   },
+   "thorchain-dex": {
+    "fees": 846424.0,
+    "revenue": 47720.0,
+    "volume": 613960871.0
+   },
+   "total_volume": 750594095.0,
+   "week": "2025-06-23"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 170780.0,
+    "revenue": 32356.0,
+    "volume": 53515639.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 28215.0,
+    "revenue": 0.0,
+    "volume": 47233323.0
+   },
+   "share": {
+    "chainflip-amm": 0.14963286449963492,
+    "maya-protocol": 0.0,
+    "near-intents": 0.1320671406040109,
+    "thorchain-dex": 0.7182999948963542
+   },
+   "take_bps": {
+    "chainflip-amm": 31.91216683407256,
+    "maya-protocol": null,
+    "near-intents": 5.973536945516198,
+    "thorchain-dex": 14.006996546079309
+   },
+   "thorchain-dex": {
+    "fees": 359836.0,
+    "revenue": 21524.0,
+    "volume": 256897329.0
+   },
+   "total_volume": 357646291.0,
+   "week": "2025-06-30"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 240870.0,
+    "revenue": 43606.0,
+    "volume": 74651847.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 25986.0,
+    "revenue": 0.0,
+    "volume": 30523843.0
+   },
+   "share": {
+    "chainflip-amm": 0.1503299711569937,
+    "maya-protocol": 0.0,
+    "near-intents": 0.06146731289569572,
+    "thorchain-dex": 0.7882027159473106
+   },
+   "take_bps": {
+    "chainflip-amm": 32.26577903692055,
+    "maya-protocol": null,
+    "near-intents": 8.513344797376922,
+    "thorchain-dex": 13.410101933928027
+   },
+   "thorchain-dex": {
+    "fees": 524886.0,
+    "revenue": 30215.0,
+    "volume": 391410895.0
+   },
+   "total_volume": 496586585.0,
+   "week": "2025-07-07"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 206683.0,
+    "revenue": 41980.0,
+    "volume": 71149088.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 51586.0,
+    "revenue": 0.0,
+    "volume": 45822314.0
+   },
+   "share": {
+    "chainflip-amm": 0.12487178890184916,
+    "maya-protocol": 0.0,
+    "near-intents": 0.08042147104966753,
+    "thorchain-dex": 0.7947067400484833
+   },
+   "take_bps": {
+    "chainflip-amm": 29.049283105357585,
+    "maya-protocol": null,
+    "near-intents": 11.25783390162269,
+    "thorchain-dex": 15.714951796235717
+   },
+   "thorchain-dex": {
+    "fees": 711582.0,
+    "revenue": 58686.0,
+    "volume": 452805716.0
+   },
+   "total_volume": 569777118.0,
+   "week": "2025-07-14"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 215404.0,
+    "revenue": 40227.0,
+    "volume": 66824980.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 76217.0,
+    "revenue": 0.0,
+    "volume": 70922436.0
+   },
+   "share": {
+    "chainflip-amm": 0.09125437287979038,
+    "maya-protocol": 0.0,
+    "near-intents": 0.09684974720960739,
+    "thorchain-dex": 0.8118958799106022
+   },
+   "take_bps": {
+    "chainflip-amm": 32.23405379245905,
+    "maya-protocol": null,
+    "near-intents": 10.746528785333883,
+    "thorchain-dex": 13.112205764775098
+   },
+   "thorchain-dex": {
+    "fees": 779581.0,
+    "revenue": 49019.0,
+    "volume": 594546039.0
+   },
+   "total_volume": 732293455.0,
+   "week": "2025-07-21"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 231425.0,
+    "revenue": 48472.0,
+    "volume": 87858745.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 102903.0,
+    "revenue": 0.0,
+    "volume": 99529752.0
+   },
+   "share": {
+    "chainflip-amm": 0.17246964580192423,
+    "maya-protocol": 0.0,
+    "near-intents": 0.195380221675069,
+    "thorchain-dex": 0.6321501325230068
+   },
+   "take_bps": {
+    "chainflip-amm": 26.340576569811006,
+    "maya-protocol": null,
+    "near-intents": 10.3389185577394,
+    "thorchain-dex": 14.420086208804454
+   },
+   "thorchain-dex": {
+    "fees": 464366.0,
+    "revenue": 27055.0,
+    "volume": 322027201.0
+   },
+   "total_volume": 509415698.0,
+   "week": "2025-07-28"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 242663.0,
+    "revenue": 49975.0,
+    "volume": 93092948.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 108020.0,
+    "revenue": 0.0,
+    "volume": 68771776.0
+   },
+   "share": {
+    "chainflip-amm": 0.16472704924324774,
+    "maya-protocol": 0.0,
+    "near-intents": 0.12169097633150046,
+    "thorchain-dex": 0.7135819744252518
+   },
+   "take_bps": {
+    "chainflip-amm": 26.066743530347754,
+    "maya-protocol": null,
+    "near-intents": 15.707024928365962,
+    "thorchain-dex": 12.502770074547083
+   },
+   "thorchain-dex": {
+    "fees": 504199.0,
+    "revenue": 33923.0,
+    "volume": 403269833.0
+   },
+   "total_volume": 565134557.0,
+   "week": "2025-08-04"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 242208.0,
+    "revenue": 52573.0,
+    "volume": 96168884.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 81275.0,
+    "revenue": 0.0,
+    "volume": 71838529.0
+   },
+   "share": {
+    "chainflip-amm": 0.18717526820997388,
+    "maya-protocol": 0.0,
+    "near-intents": 0.13982065065229402,
+    "thorchain-dex": 0.6730040811377321
+   },
+   "take_bps": {
+    "chainflip-amm": 25.18569311878466,
+    "maya-protocol": null,
+    "near-intents": 11.313566846559455,
+    "thorchain-dex": 14.790802247826214
+   },
+   "thorchain-dex": {
+    "fees": 511441.0,
+    "revenue": 28704.0,
+    "volume": 345783137.0
+   },
+   "total_volume": 513790550.0,
+   "week": "2025-08-11"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 357667.0,
+    "revenue": 71073.0,
+    "volume": 133321746.0
+   },
+   "maya-protocol": {
+    "fees": 7414.0,
+    "revenue": 741.0,
+    "volume": 7460376.0
+   },
+   "near-intents": {
+    "fees": 92503.0,
+    "revenue": 0.0,
+    "volume": 80457766.0
+   },
+   "share": {
+    "chainflip-amm": 0.23284862169323484,
+    "maya-protocol": 0.013029669360265417,
+    "near-intents": 0.14052081134323588,
+    "thorchain-dex": 0.6136008976032639
+   },
+   "take_bps": {
+    "chainflip-amm": 26.82735643141067,
+    "maya-protocol": 9.937836913313753,
+    "near-intents": 11.497087801319266,
+    "thorchain-dex": 23.331700673022656
+   },
+   "thorchain-dex": {
+    "fees": 819709.0,
+    "revenue": 54055.0,
+    "volume": 351328440.0
+   },
+   "total_volume": 572568328.0,
+   "week": "2025-08-18"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 279157.0,
+    "revenue": 63680.0,
+    "volume": 123177078.0
+   },
+   "maya-protocol": {
+    "fees": 34245.0,
+    "revenue": 3425.0,
+    "volume": 8361279.0
+   },
+   "near-intents": {
+    "fees": 77131.0,
+    "revenue": 0.0,
+    "volume": 59618573.0
+   },
+   "share": {
+    "chainflip-amm": 0.21079354975603037,
+    "maya-protocol": 0.014308698578728681,
+    "near-intents": 0.10202556220775938,
+    "thorchain-dex": 0.6728721894574816
+   },
+   "take_bps": {
+    "chainflip-amm": 22.663063983381715,
+    "maya-protocol": 40.956652684356065,
+    "near-intents": 12.937411299663278,
+    "thorchain-dex": 18.373547568717242
+   },
+   "thorchain-dex": {
+    "fees": 722434.0,
+    "revenue": 36664.0,
+    "volume": 393192440.0
+   },
+   "total_volume": 584349370.0,
+   "week": "2025-08-25"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 224650.0,
+    "revenue": 47962.0,
+    "volume": 92318495.0
+   },
+   "maya-protocol": {
+    "fees": 77415.0,
+    "revenue": 7741.0,
+    "volume": 12419550.0
+   },
+   "near-intents": {
+    "fees": 100337.0,
+    "revenue": 0.0,
+    "volume": 71408641.0
+   },
+   "share": {
+    "chainflip-amm": 0.23040662968149037,
+    "maya-protocol": 0.030996461301289125,
+    "near-intents": 0.17822023964911354,
+    "thorchain-dex": 0.5603766693681069
+   },
+   "take_bps": {
+    "chainflip-amm": 24.33423551802919,
+    "maya-protocol": 62.33317632281363,
+    "near-intents": 14.051100622402267,
+    "thorchain-dex": 26.224147979854976
+   },
+   "thorchain-dex": {
+    "fees": 588810.0,
+    "revenue": 32408.0,
+    "volume": 224529697.0
+   },
+   "total_volume": 400676383.0,
+   "week": "2025-09-01"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 323085.0,
+    "revenue": 67020.0,
+    "volume": 112785766.0
+   },
+   "maya-protocol": {
+    "fees": 79558.0,
+    "revenue": 7956.0,
+    "volume": 14261668.0
+   },
+   "near-intents": {
+    "fees": 166128.0,
+    "revenue": 0.0,
+    "volume": 126894883.0
+   },
+   "share": {
+    "chainflip-amm": 0.2529235315087253,
+    "maya-protocol": 0.03198197399984834,
+    "near-intents": 0.2845634079281468,
+    "thorchain-dex": 0.43053108656327954
+   },
+   "take_bps": {
+    "chainflip-amm": 28.645902001499017,
+    "maya-protocol": 55.7844986995911,
+    "near-intents": 13.091780856127981,
+    "thorchain-dex": 39.44589606935151
+   },
+   "thorchain-dex": {
+    "fees": 757306.0,
+    "revenue": 59735.0,
+    "volume": 191986005.0
+   },
+   "total_volume": 445928322.0,
+   "week": "2025-09-08"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 289048.0,
+    "revenue": 61180.0,
+    "volume": 109716434.0
+   },
+   "maya-protocol": {
+    "fees": 2769.0,
+    "revenue": 276.35,
+    "volume": 4878641.0
+   },
+   "near-intents": {
+    "fees": 165294.0,
+    "revenue": 0.0,
+    "volume": 120904655.0
+   },
+   "share": {
+    "chainflip-amm": 0.26373763729006405,
+    "maya-protocol": 0.011727333851612743,
+    "near-intents": 0.2906320127672973,
+    "thorchain-dex": 0.43390301609102594
+   },
+   "take_bps": {
+    "chainflip-amm": 26.345004978925946,
+    "maya-protocol": 5.675760934243778,
+    "near-intents": 13.671433907983113,
+    "thorchain-dex": 31.553921437922074
+   },
+   "thorchain-dex": {
+    "fees": 569568.0,
+    "revenue": 33628.0,
+    "volume": 180506249.0
+   },
+   "total_volume": 416005979.0,
+   "week": "2025-09-15"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 261657.0,
+    "revenue": 55601.0,
+    "volume": 100331667.0
+   },
+   "maya-protocol": {
+    "fees": 1288.0,
+    "revenue": 130.0,
+    "volume": 4345481.0
+   },
+   "near-intents": {
+    "fees": 205720.0,
+    "revenue": 18.0,
+    "volume": 116263984.0
+   },
+   "share": {
+    "chainflip-amm": 0.19327671020202478,
+    "maya-protocol": 0.00837103874617577,
+    "near-intents": 0.22396837423722707,
+    "thorchain-dex": 0.5743838768145724
+   },
+   "take_bps": {
+    "chainflip-amm": 26.07920388684462,
+    "maya-protocol": 2.9639986919744903,
+    "near-intents": 17.694215605066486,
+    "thorchain-dex": 20.707534343362802
+   },
+   "thorchain-dex": {
+    "fees": 617432.0,
+    "revenue": 15124.0,
+    "volume": 298167802.0
+   },
+   "total_volume": 519108934.0,
+   "week": "2025-09-22"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 416672.0,
+    "revenue": 83519.0,
+    "volume": 150173856.0
+   },
+   "maya-protocol": {
+    "fees": 6126.0,
+    "revenue": 613.0,
+    "volume": 16384372.0
+   },
+   "near-intents": {
+    "fees": 481852.0,
+    "revenue": 18.0,
+    "volume": 350920478.0
+   },
+   "share": {
+    "chainflip-amm": 0.14562820187023315,
+    "maya-protocol": 0.015888428896258716,
+    "near-intents": 0.34029836864935203,
+    "thorchain-dex": 0.4981850005841561
+   },
+   "take_bps": {
+    "chainflip-amm": 27.745974638887876,
+    "maya-protocol": 3.738928779204964,
+    "near-intents": 13.73108810139031,
+    "thorchain-dex": 22.465514348436958
+   },
+   "thorchain-dex": {
+    "fees": 1154133.0,
+    "revenue": 67397.0,
+    "volume": 513735400.0
+   },
+   "total_volume": 1031214106.0,
+   "week": "2025-09-29"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 423929.0,
+    "revenue": 87454.0,
+    "volume": 157635631.0
+   },
+   "maya-protocol": {
+    "fees": 5477.0,
+    "revenue": 548.75,
+    "volume": 10401931.0
+   },
+   "near-intents": {
+    "fees": 502831.0,
+    "revenue": 0.0,
+    "volume": 366959092.0
+   },
+   "share": {
+    "chainflip-amm": 0.19596968178969884,
+    "maya-protocol": 0.012931486968630865,
+    "near-intents": 0.45619671157390057,
+    "thorchain-dex": 0.3349021196677697
+   },
+   "take_bps": {
+    "chainflip-amm": 26.89296812596893,
+    "maya-protocol": 5.265368516672529,
+    "near-intents": 13.702644544367905,
+    "thorchain-dex": 24.597203243420026
+   },
+   "thorchain-dex": {
+    "fees": 662627.0,
+    "revenue": 45806.0,
+    "volume": 269391196.0
+   },
+   "total_volume": 804387850.0,
+   "week": "2025-10-06"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 319679.0,
+    "revenue": 75112.0,
+    "volume": 135704186.0
+   },
+   "maya-protocol": {
+    "fees": 7098.0,
+    "revenue": 710.0,
+    "volume": 8908466.0
+   },
+   "near-intents": {
+    "fees": 387713.0,
+    "revenue": 0.0,
+    "volume": 296831114.0
+   },
+   "share": {
+    "chainflip-amm": 0.1596976371383986,
+    "maya-protocol": 0.010483545221867814,
+    "near-intents": 0.34931293523221624,
+    "thorchain-dex": 0.48050588240751735
+   },
+   "take_bps": {
+    "chainflip-amm": 23.55704782754454,
+    "maya-protocol": 7.9677017345073775,
+    "near-intents": 13.061737187025482,
+    "thorchain-dex": 19.660689915418857
+   },
+   "thorchain-dex": {
+    "fees": 802772.0,
+    "revenue": 34202.0,
+    "volume": 408313240.0
+   },
+   "total_volume": 849757006.0,
+   "week": "2025-10-13"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 340233.0,
+    "revenue": 76835.0,
+    "volume": 134339529.0
+   },
+   "maya-protocol": {
+    "fees": 9744.0,
+    "revenue": 974.0,
+    "volume": 15058406.0
+   },
+   "near-intents": {
+    "fees": 562305.0,
+    "revenue": 0.0,
+    "volume": 360691246.0
+   },
+   "share": {
+    "chainflip-amm": 0.1769212146050347,
+    "maya-protocol": 0.019831478488626694,
+    "near-intents": 0.47501977872591294,
+    "thorchain-dex": 0.32822752818042567
+   },
+   "take_bps": {
+    "chainflip-amm": 25.326350518915397,
+    "maya-protocol": 6.470804413162987,
+    "near-intents": 15.589649214830127,
+    "thorchain-dex": 33.0427583577659
+   },
+   "thorchain-dex": {
+    "fees": 823522.0,
+    "revenue": 54692.0,
+    "volume": 249229193.0
+   },
+   "total_volume": 759318374.0,
+   "week": "2025-10-20"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 245967.0,
+    "revenue": 54710.0,
+    "volume": 99199182.0
+   },
+   "maya-protocol": {
+    "fees": 14367.0,
+    "revenue": 1435.0,
+    "volume": 20889938.0
+   },
+   "near-intents": {
+    "fees": 912236.0,
+    "revenue": 0.0,
+    "volume": 593841155.0
+   },
+   "share": {
+    "chainflip-amm": 0.11022802462785058,
+    "maya-protocol": 0.0232124555254727,
+    "near-intents": 0.6598636817224082,
+    "thorchain-dex": 0.20669583812426856
+   },
+   "take_bps": {
+    "chainflip-amm": 24.795264944825856,
+    "maya-protocol": 6.8774737387923315,
+    "near-intents": 15.361616356818516,
+    "thorchain-dex": 26.7837643654062
+   },
+   "thorchain-dex": {
+    "fees": 498218.0,
+    "revenue": 27487.0,
+    "volume": 186014928.0
+   },
+   "total_volume": 899945203.0,
+   "week": "2025-10-27"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 409700.0,
+    "revenue": 87277.0,
+    "volume": 163160060.0
+   },
+   "maya-protocol": {
+    "fees": 28652.0,
+    "revenue": 2864.0,
+    "volume": 44960405.0
+   },
+   "near-intents": {
+    "fees": 1834207.0,
+    "revenue": 423175.0,
+    "volume": 966923998.0
+   },
+   "share": {
+    "chainflip-amm": 0.1198592138716793,
+    "maya-protocol": 0.033028418833949434,
+    "near-intents": 0.7103132364252699,
+    "thorchain-dex": 0.1367991308691014
+   },
+   "take_bps": {
+    "chainflip-amm": 25.1103119231508,
+    "maya-protocol": 6.372718395219082,
+    "near-intents": 18.96950539849979,
+    "thorchain-dex": 25.459059358807153
+   },
+   "thorchain-dex": {
+    "fees": 474098.0,
+    "revenue": 40794.0,
+    "volume": 186219763.0
+   },
+   "total_volume": 1361264226.0,
+   "week": "2025-11-03"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 388831.0,
+    "revenue": 81857.0,
+    "volume": 149281120.0
+   },
+   "maya-protocol": {
+    "fees": 31998.0,
+    "revenue": 3199.71,
+    "volume": 27984684.0
+   },
+   "near-intents": {
+    "fees": 1706720.0,
+    "revenue": 151339.0,
+    "volume": 906270141.0
+   },
+   "share": {
+    "chainflip-amm": 0.11856956079941813,
+    "maya-protocol": 0.022227403512182276,
+    "near-intents": 0.7198234618282389,
+    "thorchain-dex": 0.13937957386016075
+   },
+   "take_bps": {
+    "chainflip-amm": 26.046897290159666,
+    "maya-protocol": 11.434111601903384,
+    "near-intents": 18.832353873170362,
+    "thorchain-dex": 17.17140377676172
+   },
+   "thorchain-dex": {
+    "fees": 301326.0,
+    "revenue": 20282.0,
+    "volume": 175481285.0
+   },
+   "total_volume": 1259017230.0,
+   "week": "2025-11-10"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 378270.0,
+    "revenue": 73472.0,
+    "volume": 129811488.0
+   },
+   "maya-protocol": {
+    "fees": 17965.0,
+    "revenue": 1796.0,
+    "volume": 30141241.0
+   },
+   "near-intents": {
+    "fees": 2861336.0,
+    "revenue": 193533.0,
+    "volume": 1058013914.0
+   },
+   "share": {
+    "chainflip-amm": 0.08537358489208004,
+    "maya-protocol": 0.019823097608018665,
+    "near-intents": 0.6958277891697912,
+    "thorchain-dex": 0.19897552833011017
+   },
+   "take_bps": {
+    "chainflip-amm": 29.139947922020585,
+    "maya-protocol": 5.960272173265858,
+    "near-intents": 27.044408037907903,
+    "thorchain-dex": 23.49069232821313
+   },
+   "thorchain-dex": {
+    "fees": 710698.0,
+    "revenue": 51294.0,
+    "volume": 302544510.0
+   },
+   "total_volume": 1520511153.0,
+   "week": "2025-11-17"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 323243.0,
+    "revenue": 67979.0,
+    "volume": 123893265.0
+   },
+   "maya-protocol": {
+    "fees": 13582.0,
+    "revenue": 1358.0,
+    "volume": 12764376.0
+   },
+   "near-intents": {
+    "fees": 1081010.0,
+    "revenue": 0.0,
+    "volume": 532024724.0
+   },
+   "share": {
+    "chainflip-amm": 0.1150139733653317,
+    "maya-protocol": 0.011849567458643366,
+    "near-intents": 0.4938951075010732,
+    "thorchain-dex": 0.37924135167495177
+   },
+   "take_bps": {
+    "chainflip-amm": 26.09044163942245,
+    "maya-protocol": 10.640551484851276,
+    "near-intents": 20.31879255295662,
+    "thorchain-dex": 15.890796455178151
+   },
+   "thorchain-dex": {
+    "fees": 649170.0,
+    "revenue": 68581.0,
+    "volume": 408519486.0
+   },
+   "total_volume": 1077201851.0,
+   "week": "2025-11-24"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 361985.0,
+    "revenue": 68250.0,
+    "volume": 125252227.0
+   },
+   "maya-protocol": {
+    "fees": 10342.0,
+    "revenue": 1034.0,
+    "volume": 18125204.0
+   },
+   "near-intents": {
+    "fees": 1372277.0,
+    "revenue": 176629.0,
+    "volume": 539992454.0
+   },
+   "share": {
+    "chainflip-amm": 0.11117857195459174,
+    "maya-protocol": 0.016088610521117954,
+    "near-intents": 0.47931754460521947,
+    "thorchain-dex": 0.39341527291907086
+   },
+   "take_bps": {
+    "chainflip-amm": 28.900484140693163,
+    "maya-protocol": 5.705866813967997,
+    "near-intents": 25.4128921586745,
+    "thorchain-dex": 12.566847913219336
+   },
+   "thorchain-dex": {
+    "fees": 556983.0,
+    "revenue": 71507.0,
+    "volume": 443216154.0
+   },
+   "total_volume": 1126586039.0,
+   "week": "2025-12-01"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 318945.0,
+    "revenue": 64227.0,
+    "volume": 117928418.0
+   },
+   "maya-protocol": {
+    "fees": 9212.0,
+    "revenue": 920.0,
+    "volume": 14543259.0
+   },
+   "near-intents": {
+    "fees": 883110.0,
+    "revenue": 0.0,
+    "volume": 389054193.0
+   },
+   "share": {
+    "chainflip-amm": 0.11056478403446728,
+    "maya-protocol": 0.013635155272686881,
+    "near-intents": 0.36476104365912,
+    "thorchain-dex": 0.5110390170337259
+   },
+   "take_bps": {
+    "chainflip-amm": 27.04564390917209,
+    "maya-protocol": 6.334206108823339,
+    "near-intents": 22.698894290030182,
+    "thorchain-dex": 11.616618031554431
+   },
+   "thorchain-dex": {
+    "fees": 633192.0,
+    "revenue": 87581.0,
+    "volume": 545074305.0
+   },
+   "total_volume": 1066600175.0,
+   "week": "2025-12-08"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 267951.0,
+    "revenue": 59763.0,
+    "volume": 111049674.0
+   },
+   "maya-protocol": {
+    "fees": 7374.0,
+    "revenue": 738.0,
+    "volume": 10707111.0
+   },
+   "near-intents": {
+    "fees": 903401.0,
+    "revenue": 0.0,
+    "volume": 447538404.0
+   },
+   "share": {
+    "chainflip-amm": 0.14668938741581694,
+    "maya-protocol": 0.01414339634696411,
+    "near-intents": 0.5911690864379521,
+    "thorchain-dex": 0.24799812979926683
+   },
+   "take_bps": {
+    "chainflip-amm": 24.128931706724327,
+    "maya-protocol": 6.887011818594203,
+    "near-intents": 20.185999501396978,
+    "thorchain-dex": 15.77868608951288
+   },
+   "thorchain-dex": {
+    "fees": 296236.0,
+    "revenue": 32110.0,
+    "volume": 187744403.0
+   },
+   "total_volume": 757039592.0,
+   "week": "2025-12-15"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 262861.0,
+    "revenue": 59809.0,
+    "volume": 109219788.0
+   },
+   "maya-protocol": {
+    "fees": 5951.0,
+    "revenue": 595.0,
+    "volume": 8172532.0
+   },
+   "near-intents": {
+    "fees": 617804.0,
+    "revenue": 0.0,
+    "volume": 462213780.0
+   },
+   "share": {
+    "chainflip-amm": 0.14777758986303408,
+    "maya-protocol": 0.011057676490257622,
+    "near-intents": 0.6253888572818203,
+    "thorchain-dex": 0.21577587636488807
+   },
+   "take_bps": {
+    "chainflip-amm": 24.067158965736137,
+    "maya-protocol": 7.2817090223690775,
+    "near-intents": 13.36619604893649,
+    "thorchain-dex": 15.446200494278417
+   },
+   "thorchain-dex": {
+    "fees": 246330.0,
+    "revenue": 27678.0,
+    "volume": 159476112.0
+   },
+   "total_volume": 739082212.0,
+   "week": "2025-12-22"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 125830.0,
+    "revenue": 29076.0,
+    "volume": 50868077.0
+   },
+   "maya-protocol": {
+    "fees": 7175.0,
+    "revenue": 717.0,
+    "volume": 8546610.0
+   },
+   "near-intents": {
+    "fees": 721870.0,
+    "revenue": 0.0,
+    "volume": 359172945.0
+   },
+   "share": {
+    "chainflip-amm": 0.08730690706967364,
+    "maya-protocol": 0.014668887228246184,
+    "near-intents": 0.616462834462093,
+    "thorchain-dex": 0.2815613712399871
+   },
+   "take_bps": {
+    "chainflip-amm": 24.736535646904837,
+    "maya-protocol": 8.395141465446534,
+    "near-intents": 20.098117356807037,
+    "thorchain-dex": 17.722299017361216
+   },
+   "thorchain-dex": {
+    "fees": 290730.0,
+    "revenue": 29533.0,
+    "volume": 164047565.0
+   },
+   "total_volume": 582635197.0,
+   "week": "2025-12-29"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 174406.0,
+    "revenue": 41691.0,
+    "volume": 74185578.0
+   },
+   "maya-protocol": {
+    "fees": 14720.0,
+    "revenue": 1472.0,
+    "volume": 15667067.0
+   },
+   "near-intents": {
+    "fees": 1033510.0,
+    "revenue": 0.0,
+    "volume": 609262606.0
+   },
+   "share": {
+    "chainflip-amm": 0.09196585679281086,
+    "maya-protocol": 0.019422039686546256,
+    "near-intents": 0.7552863923579695,
+    "thorchain-dex": 0.13332571116267344
+   },
+   "take_bps": {
+    "chainflip-amm": 23.509421197742775,
+    "maya-protocol": 9.39550459572299,
+    "near-intents": 16.963292836652442,
+    "thorchain-dex": 17.12882798886886
+   },
+   "thorchain-dex": {
+    "fees": 184219.0,
+    "revenue": 18394.0,
+    "volume": 107549098.0
+   },
+   "total_volume": 806664349.0,
+   "week": "2026-01-05"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 240243.0,
+    "revenue": 60586.0,
+    "volume": 108392844.0
+   },
+   "maya-protocol": {
+    "fees": 14856.0,
+    "revenue": 1487.0,
+    "volume": 16099086.0
+   },
+   "near-intents": {
+    "fees": 991628.0,
+    "revenue": 355826.0,
+    "volume": 611972758.0
+   },
+   "share": {
+    "chainflip-amm": 0.08741144757748481,
+    "maya-protocol": 0.012982816577212604,
+    "near-intents": 0.49351435648986014,
+    "thorchain-dex": 0.40609137935544243
+   },
+   "take_bps": {
+    "chainflip-amm": 22.164101534230433,
+    "maya-protocol": 9.227853059484247,
+    "near-intents": 16.20379317603546,
+    "thorchain-dex": 24.07255299163922
+   },
+   "thorchain-dex": {
+    "fees": 1212211.0,
+    "revenue": 88696.0,
+    "volume": 503565617.0
+   },
+   "total_volume": 1240030305.0,
+   "week": "2026-01-12"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 182228.0,
+    "revenue": 43129.0,
+    "volume": 78342618.0
+   },
+   "maya-protocol": {
+    "fees": 6665.0,
+    "revenue": 668.0,
+    "volume": 8410325.0
+   },
+   "near-intents": {
+    "fees": 1100259.0,
+    "revenue": 0.0,
+    "volume": 688681303.0
+   },
+   "share": {
+    "chainflip-amm": 0.08138758329213298,
+    "maya-protocol": 0.00873721154495256,
+    "near-intents": 0.7154484792638303,
+    "thorchain-dex": 0.19442672589908425
+   },
+   "take_bps": {
+    "chainflip-amm": 23.260391936353212,
+    "maya-protocol": 7.924782930505064,
+    "near-intents": 15.97631582572527,
+    "thorchain-dex": 20.140996055887246
+   },
+   "thorchain-dex": {
+    "fees": 376944.0,
+    "revenue": 32609.0,
+    "volume": 187152611.0
+   },
+   "total_volume": 962586857.0,
+   "week": "2026-01-19"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 322806.0,
+    "revenue": 83273.0,
+    "volume": 135289606.0
+   },
+   "maya-protocol": {
+    "fees": 18547.0,
+    "revenue": 1855.0,
+    "volume": 17331806.0
+   },
+   "near-intents": {
+    "fees": 1042751.0,
+    "revenue": 6523.0,
+    "volume": 699824235.0
+   },
+   "share": {
+    "chainflip-amm": 0.12229477148329644,
+    "maya-protocol": 0.015667051718391625,
+    "near-intents": 0.6326047316435953,
+    "thorchain-dex": 0.2294334451547166
+   },
+   "take_bps": {
+    "chainflip-amm": 23.86036958375058,
+    "maya-protocol": 10.701135242340008,
+    "near-intents": 14.900184186962317,
+    "thorchain-dex": 17.82649504081264
+   },
+   "thorchain-dex": {
+    "fees": 452459.0,
+    "revenue": 40366.0,
+    "volume": 253812653.0
+   },
+   "total_volume": 1106258300.0,
+   "week": "2026-01-26"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 431599.0,
+    "revenue": 118527.0,
+    "volume": 184616808.0
+   },
+   "maya-protocol": {
+    "fees": 24634.0,
+    "revenue": 2463.0,
+    "volume": 20770855.0
+   },
+   "near-intents": {
+    "fees": 1441752.0,
+    "revenue": 387194.0,
+    "volume": 918284731.0
+   },
+   "share": {
+    "chainflip-amm": 0.13272491130295247,
+    "maya-protocol": 0.014932605093906112,
+    "near-intents": 0.6601742322011687,
+    "thorchain-dex": 0.1921682514019728
+   },
+   "take_bps": {
+    "chainflip-amm": 23.378098921523982,
+    "maya-protocol": 11.85988732770028,
+    "near-intents": 15.700489742761496,
+    "thorchain-dex": 26.560328880589992
+   },
+   "thorchain-dex": {
+    "fees": 709960.0,
+    "revenue": 163655.0,
+    "volume": 267300907.0
+   },
+   "total_volume": 1390973301.0,
+   "week": "2026-02-02"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 233735.0,
+    "revenue": 59152.0,
+    "volume": 102538877.0
+   },
+   "maya-protocol": {
+    "fees": 69691.0,
+    "revenue": 6970.0,
+    "volume": 46408064.0
+   },
+   "near-intents": {
+    "fees": 918248.0,
+    "revenue": 66860.0,
+    "volume": 585769078.0
+   },
+   "share": {
+    "chainflip-amm": 0.11296125473668424,
+    "maya-protocol": 0.0511251272952828,
+    "near-intents": 0.6453085110033988,
+    "thorchain-dex": 0.19060510696463415
+   },
+   "take_bps": {
+    "chainflip-amm": 22.79476885630413,
+    "maya-protocol": 15.01700221754564,
+    "near-intents": 15.675938428419398,
+    "thorchain-dex": 15.105747340432387
+   },
+   "thorchain-dex": {
+    "fees": 261358.0,
+    "revenue": 29976.0,
+    "volume": 173018914.0
+   },
+   "total_volume": 907734933.0,
+   "week": "2026-02-09"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 170667.0,
+    "revenue": 43844.0,
+    "volume": 71863600.0
+   },
+   "maya-protocol": {
+    "fees": 5522.0,
+    "revenue": 553.0,
+    "volume": 6144147.0
+   },
+   "near-intents": {
+    "fees": 623204.0,
+    "revenue": 9116.0,
+    "volume": 347144643.0
+   },
+   "share": {
+    "chainflip-amm": 0.11272647690788938,
+    "maya-protocol": 0.009637814483468373,
+    "near-intents": 0.5445370477242583,
+    "thorchain-dex": 0.33309866088438406
+   },
+   "take_bps": {
+    "chainflip-amm": 23.7487406698245,
+    "maya-protocol": 8.987415177403795,
+    "near-intents": 17.9522862462838,
+    "thorchain-dex": 13.988391753028234
+   },
+   "thorchain-dex": {
+    "fees": 297046.0,
+    "revenue": 34871.0,
+    "volume": 212351788.0
+   },
+   "total_volume": 637504178.0,
+   "week": "2026-02-16"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 306582.0,
+    "revenue": 64106.0,
+    "volume": 107281198.0
+   },
+   "maya-protocol": {
+    "fees": 55768.0,
+    "revenue": 5577.0,
+    "volume": 42343077.0
+   },
+   "near-intents": {
+    "fees": 1121013.0,
+    "revenue": 200548.0,
+    "volume": 502768291.0
+   },
+   "share": {
+    "chainflip-amm": 0.11629036743107399,
+    "maya-protocol": 0.04589892799754397,
+    "near-intents": 0.5449893400060943,
+    "thorchain-dex": 0.29282136456528773
+   },
+   "take_bps": {
+    "chainflip-amm": 28.57742136697616,
+    "maya-protocol": 13.170511911545777,
+    "near-intents": 22.296811872728068,
+    "thorchain-dex": 15.73876996463975
+   },
+   "thorchain-dex": {
+    "fees": 425161.0,
+    "revenue": 49509.0,
+    "volume": 270136104.0
+   },
+   "total_volume": 922528670.0,
+   "week": "2026-02-23"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 244567.0,
+    "revenue": 58759.0,
+    "volume": 97519187.0
+   },
+   "maya-protocol": {
+    "fees": 5538.0,
+    "revenue": 553.0,
+    "volume": 6429901.0
+   },
+   "near-intents": {
+    "fees": 950772.0,
+    "revenue": 61947.0,
+    "volume": 469401009.0
+   },
+   "share": {
+    "chainflip-amm": 0.11239537899189485,
+    "maya-protocol": 0.007410758662040155,
+    "near-intents": 0.5410064001634145,
+    "thorchain-dex": 0.3391874621826505
+   },
+   "take_bps": {
+    "chainflip-amm": 25.078859609442805,
+    "maya-protocol": 8.61288533058285,
+    "near-intents": 20.255005459521712,
+    "thorchain-dex": 15.30122943485504
+   },
+   "thorchain-dex": {
+    "fees": 450306.0,
+    "revenue": 48025.0,
+    "volume": 294293999.0
+   },
+   "total_volume": 867644096.0,
+   "week": "2026-03-02"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 147467.0,
+    "revenue": 30574.0,
+    "volume": 51781162.0
+   },
+   "maya-protocol": {
+    "fees": 10540.0,
+    "revenue": 1053.0,
+    "volume": 12289336.0
+   },
+   "near-intents": {
+    "fees": 672923.0,
+    "revenue": 106136.0,
+    "volume": 401050199.0
+   },
+   "share": {
+    "chainflip-amm": 0.07742634758554381,
+    "maya-protocol": 0.01837576377161132,
+    "near-intents": 0.5996746868489649,
+    "thorchain-dex": 0.3045232017938801
+   },
+   "take_bps": {
+    "chainflip-amm": 28.478889678064775,
+    "maya-protocol": 8.576541482794514,
+    "near-intents": 16.77902172042059,
+    "thorchain-dex": 15.99556859055307
+   },
+   "thorchain-dex": {
+    "fees": 325764.0,
+    "revenue": 32766.0,
+    "volume": 203658906.0
+   },
+   "total_volume": 668779603.0,
+   "week": "2026-03-09"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 158649.0,
+    "revenue": 33560.0,
+    "volume": 57961391.0
+   },
+   "maya-protocol": {
+    "fees": 15975.0,
+    "revenue": 1598.19,
+    "volume": 13756465.0
+   },
+   "near-intents": {
+    "fees": 754142.0,
+    "revenue": 71440.0,
+    "volume": 495662517.0
+   },
+   "share": {
+    "chainflip-amm": 0.07730240515033132,
+    "maya-protocol": 0.018346830752670386,
+    "near-intents": 0.6610590954755897,
+    "thorchain-dex": 0.24329166862140855
+   },
+   "take_bps": {
+    "chainflip-amm": 27.371496312088162,
+    "maya-protocol": 11.612721727565912,
+    "near-intents": 15.214828116607414,
+    "thorchain-dex": 13.865621262219237
+   },
+   "thorchain-dex": {
+    "fees": 252937.0,
+    "revenue": 28612.0,
+    "volume": 182420243.0
+   },
+   "total_volume": 749800616.0,
+   "week": "2026-03-16"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 151142.0,
+    "revenue": 34720.0,
+    "volume": 60597188.0
+   },
+   "maya-protocol": {
+    "fees": 2779.0,
+    "revenue": 277.06,
+    "volume": 4837318.0
+   },
+   "near-intents": {
+    "fees": 845169.0,
+    "revenue": 298237.0,
+    "volume": 485221446.0
+   },
+   "share": {
+    "chainflip-amm": 0.09404627352524414,
+    "maya-protocol": 0.007507472652965133,
+    "near-intents": 0.7530591820668391,
+    "thorchain-dex": 0.14538707175495164
+   },
+   "take_bps": {
+    "chainflip-amm": 24.942081470843167,
+    "maya-protocol": 5.744918981964799,
+    "near-intents": 17.41821197243619,
+    "thorchain-dex": 17.54652706019549
+   },
+   "thorchain-dex": {
+    "fees": 164372.0,
+    "revenue": 15540.0,
+    "volume": 93677797.0
+   },
+   "total_volume": 644333749.0,
+   "week": "2026-03-23"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 194134.0,
+    "revenue": 41244.0,
+    "volume": 72736564.0
+   },
+   "maya-protocol": {
+    "fees": 10071.0,
+    "revenue": 1007.38,
+    "volume": 10620927.0
+   },
+   "near-intents": {
+    "fees": 786140.0,
+    "revenue": 58685.0,
+    "volume": 527101835.0
+   },
+   "share": {
+    "chainflip-amm": 0.09804327845796879,
+    "maya-protocol": 0.014316190456051224,
+    "near-intents": 0.7104926208036348,
+    "thorchain-dex": 0.1771479102823451
+   },
+   "take_bps": {
+    "chainflip-amm": 26.690015217105937,
+    "maya-protocol": 9.482223161876549,
+    "near-intents": 14.914385566500636,
+    "thorchain-dex": 16.728365333455667
+   },
+   "thorchain-dex": {
+    "fees": 219849.0,
+    "revenue": 25879.0,
+    "volume": 131422883.0
+   },
+   "total_volume": 741882209.0,
+   "week": "2026-03-30"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 139978.0,
+    "revenue": 31292.0,
+    "volume": 56255360.0
+   },
+   "maya-protocol": {
+    "fees": 23273.0,
+    "revenue": 2328.0,
+    "volume": 27214476.0
+   },
+   "near-intents": {
+    "fees": 889002.0,
+    "revenue": 60385.0,
+    "volume": 520189451.0
+   },
+   "share": {
+    "chainflip-amm": 0.07764925202219243,
+    "maya-protocol": 0.03756413087705611,
+    "near-intents": 0.7180173014622059,
+    "thorchain-dex": 0.16676931563854555
+   },
+   "take_bps": {
+    "chainflip-amm": 24.88260674182869,
+    "maya-protocol": 8.551698735628788,
+    "near-intents": 17.089965940120535,
+    "thorchain-dex": 13.607557183431656
+   },
+   "thorchain-dex": {
+    "fees": 164408.0,
+    "revenue": 19629.0,
+    "volume": 120821098.0
+   },
+   "total_volume": 724480385.0,
+   "week": "2026-04-06"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 261619.0,
+    "revenue": 55069.0,
+    "volume": 97246182.0
+   },
+   "maya-protocol": {
+    "fees": 16640.0,
+    "revenue": 1665.0,
+    "volume": 18626947.0
+   },
+   "near-intents": {
+    "fees": 692615.0,
+    "revenue": 65667.0,
+    "volume": 422332585.0
+   },
+   "share": {
+    "chainflip-amm": 0.1435575655223929,
+    "maya-protocol": 0.02749762622490043,
+    "near-intents": 0.6234593121957125,
+    "thorchain-dex": 0.20548549605699423
+   },
+   "take_bps": {
+    "chainflip-amm": 26.902752850492373,
+    "maya-protocol": 8.933294328909616,
+    "near-intents": 16.39975281566304,
+    "thorchain-dex": 15.084454192980408
+   },
+   "thorchain-dex": {
+    "fees": 209970.0,
+    "revenue": 23728.0,
+    "volume": 139196286.0
+   },
+   "total_volume": 677402000.0,
+   "week": "2026-04-13"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 179958.0,
+    "revenue": 40799.0,
+    "volume": 72302168.0
+   },
+   "maya-protocol": {
+    "fees": 26788.0,
+    "revenue": 2679.0,
+    "volume": 20068824.0
+   },
+   "near-intents": {
+    "fees": 684514.0,
+    "revenue": 56830.05,
+    "volume": 370792288.0
+   },
+   "share": {
+    "chainflip-amm": 0.045181439935031466,
+    "maya-protocol": 0.012540956809520814,
+    "near-intents": 0.23170715280135012,
+    "thorchain-dex": 0.7105704504540976
+   },
+   "take_bps": {
+    "chainflip-amm": 24.88971008448875,
+    "maya-protocol": 13.34806663310217,
+    "near-intents": 18.460847815691356,
+    "thorchain-dex": 15.40515404130384
+   },
+   "thorchain-dex": {
+    "fees": 1751719.0,
+    "revenue": 187990.0,
+    "volume": 1137099308.0
+   },
+   "total_volume": 1600262588.0,
+   "week": "2026-04-20"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 246457.0,
+    "revenue": 65375.0,
+    "volume": 106032859.0
+   },
+   "maya-protocol": {
+    "fees": 6008.0,
+    "revenue": 600.0,
+    "volume": 8311957.0
+   },
+   "near-intents": {
+    "fees": 621952.0,
+    "revenue": 66418.0,
+    "volume": 357776570.0
+   },
+   "share": {
+    "chainflip-amm": 0.17060945431248187,
+    "maya-protocol": 0.013374141387990054,
+    "near-intents": 0.5756712206872727,
+    "thorchain-dex": 0.2403451836122554
+   },
+   "take_bps": {
+    "chainflip-amm": 23.24345512554745,
+    "maya-protocol": 7.228141339037244,
+    "near-intents": 17.38381023665133,
+    "thorchain-dex": 22.2887981809861
+   },
+   "thorchain-dex": {
+    "fees": 332935.0,
+    "revenue": 157675.0,
+    "volume": 149373240.0
+   },
+   "total_volume": 621494626.0,
+   "week": "2026-04-27"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 325575.0,
+    "revenue": 95408.0,
+    "volume": 155802992.0
+   },
+   "maya-protocol": {
+    "fees": 15567.0,
+    "revenue": 1556.0,
+    "volume": 23965695.0
+   },
+   "near-intents": {
+    "fees": 802972.0,
+    "revenue": 94097.0,
+    "volume": 412549058.0
+   },
+   "share": {
+    "chainflip-amm": 0.19323246764113475,
+    "maya-protocol": 0.02972311586663756,
+    "near-intents": 0.5116581618687119,
+    "thorchain-dex": 0.2653862546235158
+   },
+   "take_bps": {
+    "chainflip-amm": 20.89658201172414,
+    "maya-protocol": 6.49553455470413,
+    "near-intents": 19.463673093637265,
+    "thorchain-dex": 14.195735376044452
+   },
+   "thorchain-dex": {
+    "fees": 303761.0,
+    "revenue": 36758.0,
+    "volume": 213980461.0
+   },
+   "total_volume": 806298206.0,
+   "week": "2026-05-04"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 203596.0,
+    "revenue": 57645.0,
+    "volume": 88080629.0
+   },
+   "maya-protocol": {
+    "fees": 2677.0,
+    "revenue": 267.0,
+    "volume": 6072325.0
+   },
+   "near-intents": {
+    "fees": 652255.0,
+    "revenue": 91253.0,
+    "volume": 369759771.0
+   },
+   "share": {
+    "chainflip-amm": 0.15501987692449498,
+    "maya-protocol": 0.010687152042766792,
+    "near-intents": 0.6507686745975605,
+    "thorchain-dex": 0.1835242964351778
+   },
+   "take_bps": {
+    "chainflip-amm": 23.114730481772558,
+    "maya-protocol": 4.408525564754851,
+    "near-intents": 17.639966571701496,
+    "thorchain-dex": 16.510809613215567
+   },
+   "thorchain-dex": {
+    "fees": 172169.0,
+    "revenue": 19767.0,
+    "volume": 104276534.0
+   },
+   "total_volume": 568189259.0,
+   "week": "2026-05-11"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 270755.0,
+    "revenue": 79483.0,
+    "volume": 143402564.0
+   },
+   "maya-protocol": {
+    "fees": 4597.0,
+    "revenue": 460.0,
+    "volume": 6136460.0
+   },
+   "near-intents": {
+    "fees": 693984.0,
+    "revenue": 170976.0,
+    "volume": 469403888.0
+   },
+   "share": {
+    "chainflip-amm": 0.23168948415068044,
+    "maya-protocol": 0.00991442002327995,
+    "near-intents": 0.7583960958260396,
+    "thorchain-dex": 0.0
+   },
+   "take_bps": {
+    "chainflip-amm": 18.880764223992536,
+    "maya-protocol": 7.4912897664125575,
+    "near-intents": 14.784368381712254,
+    "thorchain-dex": null
+   },
+   "thorchain-dex": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "total_volume": 618942912.0,
+   "week": "2026-05-18"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 176433.0,
+    "revenue": 39840.0,
+    "volume": 67248389.0
+   },
+   "maya-protocol": {
+    "fees": 18461.0,
+    "revenue": 1845.0,
+    "volume": 21681705.0
+   },
+   "near-intents": {
+    "fees": 643687.0,
+    "revenue": 236043.0,
+    "volume": 620518411.0
+   },
+   "share": {
+    "chainflip-amm": 0.09478966905427477,
+    "maya-protocol": 0.030561351313299335,
+    "near-intents": 0.8746489796324259,
+    "thorchain-dex": 0.0
+   },
+   "take_bps": {
+    "chainflip-amm": 26.236018828644355,
+    "maya-protocol": 8.514551784557534,
+    "near-intents": 10.3733747232844,
+    "thorchain-dex": null
+   },
+   "thorchain-dex": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "total_volume": 709448505.0,
+   "week": "2026-05-25"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 415307.0,
+    "revenue": 93426.0,
+    "volume": 151334687.0
+   },
+   "maya-protocol": {
+    "fees": 89153.0,
+    "revenue": 8916.0,
+    "volume": 81574405.0
+   },
+   "near-intents": {
+    "fees": 977956.0,
+    "revenue": 312166.0,
+    "volume": 753497166.0
+   },
+   "share": {
+    "chainflip-amm": 0.1534202421899071,
+    "maya-protocol": 0.0826985882727439,
+    "near-intents": 0.763881169537349,
+    "thorchain-dex": 0.0
+   },
+   "take_bps": {
+    "chainflip-amm": 27.442948357239473,
+    "maya-protocol": 10.929040794106927,
+    "near-intents": 12.978894203299498,
+    "thorchain-dex": null
+   },
+   "thorchain-dex": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "total_volume": 986406258.0,
+   "week": "2026-06-01"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 134654.0,
+    "revenue": 33571.0,
+    "volume": 53905904.0
+   },
+   "maya-protocol": {
+    "fees": 52825.0,
+    "revenue": 5282.0,
+    "volume": 52217656.0
+   },
+   "near-intents": {
+    "fees": 581454.0,
+    "revenue": 107032.0,
+    "volume": 511536223.0
+   },
+   "share": {
+    "chainflip-amm": 0.08727442757917105,
+    "maya-protocol": 0.08454112998320307,
+    "near-intents": 0.8281844424376259,
+    "thorchain-dex": 0.0
+   },
+   "take_bps": {
+    "chainflip-amm": 24.979453085509892,
+    "maya-protocol": 10.116310084849461,
+    "near-intents": 11.36681966704047,
+    "thorchain-dex": null
+   },
+   "thorchain-dex": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "total_volume": 617659783.0,
+   "week": "2026-06-08"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 125762.0,
+    "revenue": 27183.0,
+    "volume": 47497103.0
+   },
+   "maya-protocol": {
+    "fees": 31622.0,
+    "revenue": 3162.0,
+    "volume": 40444487.0
+   },
+   "near-intents": {
+    "fees": 591743.0,
+    "revenue": 105594.0,
+    "volume": 467454334.0
+   },
+   "share": {
+    "chainflip-amm": 0.08551935825874012,
+    "maya-protocol": 0.07282100075332926,
+    "near-intents": 0.8416596409879307,
+    "thorchain-dex": 0.0
+   },
+   "take_bps": {
+    "chainflip-amm": 26.47782539495093,
+    "maya-protocol": 7.818618146893543,
+    "near-intents": 12.658840809891817,
+    "thorchain-dex": null
+   },
+   "thorchain-dex": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "total_volume": 555395924.0,
+   "week": "2026-06-15"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 176697.0,
+    "revenue": 41612.0,
+    "volume": 68464794.0
+   },
+   "maya-protocol": {
+    "fees": 10370.0,
+    "revenue": 1037.0,
+    "volume": 15396905.0
+   },
+   "near-intents": {
+    "fees": 694555.0,
+    "revenue": 72446.0,
+    "volume": 462764375.0
+   },
+   "share": {
+    "chainflip-amm": 0.11041133424870166,
+    "maya-protocol": 0.02483017511672504,
+    "near-intents": 0.7462876772333021,
+    "thorchain-dex": 0.1184708134012712
+   },
+   "take_bps": {
+    "chainflip-amm": 25.808446893157964,
+    "maya-protocol": 6.735119817911457,
+    "near-intents": 15.008826035928111,
+    "thorchain-dex": 22.11186067688737
+   },
+   "thorchain-dex": {
+    "fees": 162439.0,
+    "revenue": 22145.0,
+    "volume": 73462384.0
+   },
+   "total_volume": 620088458.0,
+   "week": "2026-06-22"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 219716.0,
+    "revenue": 44929.0,
+    "volume": 74341301.0
+   },
+   "maya-protocol": {
+    "fees": 2587.0,
+    "revenue": 259.0,
+    "volume": 6262627.0
+   },
+   "near-intents": {
+    "fees": 909077.0,
+    "revenue": 88058.0,
+    "volume": 529868355.0
+   },
+   "share": {
+    "chainflip-amm": 0.1015665819135197,
+    "maya-protocol": 0.008556127073822936,
+    "near-intents": 0.7239168128291087,
+    "thorchain-dex": 0.1659604781835487
+   },
+   "take_bps": {
+    "chainflip-amm": 29.555038322506626,
+    "maya-protocol": 4.13085435233489,
+    "near-intents": 17.156657713593784,
+    "thorchain-dex": 12.902988294154941
+   },
+   "thorchain-dex": {
+    "fees": 156738.0,
+    "revenue": 19998.0,
+    "volume": 121474186.0
+   },
+   "total_volume": 731946469.0,
+   "week": "2026-06-29"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 240364.0,
+    "revenue": 42017.0,
+    "volume": 73264158.0
+   },
+   "maya-protocol": {
+    "fees": 11386.0,
+    "revenue": 1139.0,
+    "volume": 16825203.0
+   },
+   "near-intents": {
+    "fees": 753153.0,
+    "revenue": 108431.0,
+    "volume": 522224078.0
+   },
+   "share": {
+    "chainflip-amm": 0.09232664620125654,
+    "maya-protocol": 0.02120292660219094,
+    "near-intents": 0.6581007549050574,
+    "thorchain-dex": 0.22836967229149516
+   },
+   "take_bps": {
+    "chainflip-amm": 32.80785674217398,
+    "maya-protocol": 6.767228900596326,
+    "near-intents": 14.422027473041945,
+    "thorchain-dex": 17.94257762639872
+   },
+   "thorchain-dex": {
+    "fees": 325153.0,
+    "revenue": 33796.0,
+    "volume": 181218667.0
+   },
+   "total_volume": 793532106.0,
+   "week": "2026-07-06"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 200262.0,
+    "revenue": 36168.0,
+    "volume": 61780266.0
+   },
+   "maya-protocol": {
+    "fees": 7737.0,
+    "revenue": 775.0,
+    "volume": 12164900.0
+   },
+   "near-intents": {
+    "fees": 681293.0,
+    "revenue": 134567.0,
+    "volume": 515164294.0
+   },
+   "share": {
+    "chainflip-amm": 0.07912007918961184,
+    "maya-protocol": 0.015579211836571067,
+    "near-intents": 0.6597550055375364,
+    "thorchain-dex": 0.24554570343628063
+   },
+   "take_bps": {
+    "chainflip-amm": 32.41520520484648,
+    "maya-protocol": 6.360101603794524,
+    "near-intents": 13.224771358086397,
+    "thorchain-dex": 12.957176887915088
+   },
+   "thorchain-dex": {
+    "fees": 248431.0,
+    "revenue": 32300.0,
+    "volume": 191732352.0
+   },
+   "total_volume": 780841812.0,
+   "week": "2026-07-13"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 239417.0,
+    "revenue": 44499.0,
+    "volume": 76716958.0
+   },
+   "maya-protocol": {
+    "fees": 12988.0,
+    "revenue": 1300.0,
+    "volume": 14127222.0
+   },
+   "near-intents": {
+    "fees": 741971.0,
+    "revenue": 122584.0,
+    "volume": 470404954.0
+   },
+   "share": {
+    "chainflip-amm": 0.0990945966253596,
+    "maya-protocol": 0.018248004118292933,
+    "near-intents": 0.6076177990164944,
+    "thorchain-dex": 0.2750396002398531
+   },
+   "take_bps": {
+    "chainflip-amm": 31.207832823611177,
+    "maya-protocol": 9.193598005326171,
+    "near-intents": 15.773026914168085,
+    "thorchain-dex": 12.310249220108314
+   },
+   "thorchain-dex": {
+    "fees": 262122.0,
+    "revenue": 34623.0,
+    "volume": 212929889.0
+   },
+   "total_volume": 774179023.0,
+   "week": "2026-07-20"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 237224.0,
+    "revenue": 41930.0,
+    "volume": 72120960.0
+   },
+   "maya-protocol": {
+    "fees": 1558.0,
+    "revenue": 156.79,
+    "volume": 3545274.0
+   },
+   "near-intents": {
+    "fees": 571331.0,
+    "revenue": 92391.0,
+    "volume": 419713332.0
+   },
+   "share": {
+    "chainflip-amm": 0.11198887373361846,
+    "maya-protocol": 0.005505074285437694,
+    "near-intents": 0.6517276439701342,
+    "thorchain-dex": 0.23077840801080968
+   },
+   "take_bps": {
+    "chainflip-amm": 32.892518346954894,
+    "maya-protocol": 4.3945827600349086,
+    "near-intents": 13.612410100901917,
+    "thorchain-dex": 11.231210859437056
+   },
+   "thorchain-dex": {
+    "fees": 166920.0,
+    "revenue": 24297.0,
+    "volume": 148621553.0
+   },
+   "total_volume": 644001119.0,
+   "week": "2026-07-27"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 208683.0,
+    "revenue": 37096.0,
+    "volume": 61663080.0
+   },
+   "maya-protocol": {
+    "fees": 5708.0,
+    "revenue": 572.0,
+    "volume": 7515438.0
+   },
+   "near-intents": {
+    "fees": 551816.0,
+    "revenue": 102154.0,
+    "volume": 457931297.0
+   },
+   "share": {
+    "chainflip-amm": 0.09050965670130849,
+    "maya-protocol": 0.01103123154633159,
+    "near-intents": 0.6721559235162263,
+    "thorchain-dex": 0.22630318823613363
+   },
+   "take_bps": {
+    "chainflip-amm": 33.84245483683267,
+    "maya-protocol": 7.595033050635239,
+    "near-intents": 12.050191887190449,
+    "thorchain-dex": 10.922865659071668
+   },
+   "thorchain-dex": {
+    "fees": 168406.0,
+    "revenue": 24965.0,
+    "volume": 154177489.0
+   },
+   "total_volume": 681287304.0,
+   "week": "2026-08-03"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 206489.0,
+    "revenue": 44057.0,
+    "volume": 69950868.0
+   },
+   "maya-protocol": {
+    "fees": 15598.0,
+    "revenue": 1559.0,
+    "volume": 17070507.0
+   },
+   "near-intents": {
+    "fees": 508873.0,
+    "revenue": 88122.0,
+    "volume": 457276829.0
+   },
+   "share": {
+    "chainflip-amm": 0.10676180301723212,
+    "maya-protocol": 0.026053688222114443,
+    "near-intents": 0.6979141236966858,
+    "thorchain-dex": 0.16927038506396763
+   },
+   "take_bps": {
+    "chainflip-amm": 29.519147639454594,
+    "maya-protocol": 9.13739703220297,
+    "near-intents": 11.128335566725163,
+    "thorchain-dex": 10.970832772351821
+   },
+   "thorchain-dex": {
+    "fees": 121674.0,
+    "revenue": 17874.0,
+    "volume": 110906804.0
+   },
+   "total_volume": 655205008.0,
+   "week": "2026-08-10"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 500378.0,
+    "revenue": 94154.0,
+    "volume": 152074844.0
+   },
+   "maya-protocol": {
+    "fees": 191942.0,
+    "revenue": 19195.0,
+    "volume": 4340893.0
+   },
+   "near-intents": {
+    "fees": 1391260.0,
+    "revenue": 283767.0,
+    "volume": 860544463.0
+   },
+   "share": {
+    "chainflip-amm": 0.12550220740845436,
+    "maya-protocol": 0.003582391665145536,
+    "near-intents": 0.710178138861829,
+    "thorchain-dex": 0.16073726206457115
+   },
+   "take_bps": {
+    "chainflip-amm": 32.903403800302435,
+    "maya-protocol": 442.17169140082467,
+    "near-intents": 16.167206458453503,
+    "thorchain-dex": 12.6401759381793
+   },
+   "thorchain-dex": {
+    "fees": 246193.0,
+    "revenue": 32832.0,
+    "volume": 194770232.0
+   },
+   "total_volume": 1211730432.0,
+   "week": "2026-08-17"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 337145.0,
+    "revenue": 60817.0,
+    "volume": 104444021.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 1132729.0,
+    "revenue": 206367.0,
+    "volume": 785560430.0
+   },
+   "share": {
+    "chainflip-amm": 0.10585986407719433,
+    "maya-protocol": 0.0,
+    "near-intents": 0.7962094866514411,
+    "thorchain-dex": 0.09793064927136452
+   },
+   "take_bps": {
+    "chainflip-amm": 32.27997129677725,
+    "maya-protocol": null,
+    "near-intents": 14.419374458563295,
+    "thorchain-dex": 15.963530524263513
+   },
+   "thorchain-dex": {
+    "fees": 154241.0,
+    "revenue": 17007.47,
+    "volume": 96620857.0
+   },
+   "total_volume": 986625308.0,
+   "week": "2026-08-24"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 400707.0,
+    "revenue": 76039.0,
+    "volume": 130728110.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 1092132.0,
+    "revenue": 348876.0,
+    "volume": 1019350783.0
+   },
+   "share": {
+    "chainflip-amm": 0.09986462689278956,
+    "maya-protocol": 0.0,
+    "near-intents": 0.7786931641340787,
+    "thorchain-dex": 0.12144220897313168
+   },
+   "take_bps": {
+    "chainflip-amm": 30.65193859224309,
+    "maya-protocol": null,
+    "near-intents": 10.713995792359146,
+    "thorchain-dex": 21.47579653324245
+   },
+   "thorchain-dex": {
+    "fees": 341410.0,
+    "revenue": 52601.0,
+    "volume": 158974313.0
+   },
+   "total_volume": 1309053206.0,
+   "week": "2026-08-31"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 199009.0,
+    "revenue": 36014.0,
+    "volume": 63138679.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 1165568.0,
+    "revenue": 217908.0,
+    "volume": 909878844.0
+   },
+   "share": {
+    "chainflip-amm": 0.040987875731989136,
+    "maya-protocol": 0.0,
+    "near-intents": 0.5906680592579063,
+    "thorchain-dex": 0.36834406501010447
+   },
+   "take_bps": {
+    "chainflip-amm": 31.519348068717118,
+    "maya-protocol": null,
+    "near-intents": 12.810145083448056,
+    "thorchain-dex": 11.821099137125113
+   },
+   "thorchain-dex": {
+    "fees": 670736.0,
+    "revenue": 213909.0,
+    "volume": 567405782.0
+   },
+   "total_volume": 1540423305.0,
+   "week": "2026-09-07"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 266183.0,
+    "revenue": 46411.0,
+    "volume": 74822763.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 2023036.0,
+    "revenue": 446287.0,
+    "volume": 1163216436.0
+   },
+   "share": {
+    "chainflip-amm": 0.05403012009472989,
+    "maya-protocol": 0.0,
+    "near-intents": 0.8399679617985196,
+    "thorchain-dex": 0.10600191810675053
+   },
+   "take_bps": {
+    "chainflip-amm": 35.57513640601591,
+    "maya-protocol": null,
+    "near-intents": 17.39174187528416,
+    "thorchain-dex": 13.040218081952073
+   },
+   "thorchain-dex": {
+    "fees": 191424.0,
+    "revenue": 51088.0,
+    "volume": 146795091.0
+   },
+   "total_volume": 1384834290.0,
+   "week": "2026-09-14"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 567980.0,
+    "revenue": 110886.0,
+    "volume": 200755958.0
+   },
+   "maya-protocol": {
+    "fees": 0.0,
+    "revenue": 0.0,
+    "volume": 0.0
+   },
+   "near-intents": {
+    "fees": 2248167.0,
+    "revenue": 606702.0,
+    "volume": 1279579539.0
+   },
+   "share": {
+    "chainflip-amm": 0.07886733955729462,
+    "maya-protocol": 0.0,
+    "near-intents": 0.5026851257529279,
+    "thorchain-dex": 0.41844753468977747
+   },
+   "take_bps": {
+    "chainflip-amm": 28.292061947172694,
+    "maya-protocol": null,
+    "near-intents": 17.56957603242826,
+    "thorchain-dex": 15.51724465550916
+   },
+   "thorchain-dex": {
+    "fees": 1652825.0,
+    "revenue": 483392.26,
+    "volume": 1065153664.0
+   },
+   "total_volume": 2545489161.0,
+   "week": "2026-09-21"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 506715.0,
+    "revenue": 99425.0,
+    "volume": 162704433.0
+   },
+   "maya-protocol": {
+    "fees": 6038.0,
+    "revenue": 604.0,
+    "volume": 9755340.0
+   },
+   "near-intents": {
+    "fees": 1721249.0,
+    "revenue": 541373.0,
+    "volume": 944889347.0
+   },
+   "share": {
+    "chainflip-amm": 0.09271112350705403,
+    "maya-protocol": 0.005558720896026874,
+    "near-intents": 0.5384103637189568,
+    "thorchain-dex": 0.36331979187796226
+   },
+   "take_bps": {
+    "chainflip-amm": 31.143281756803763,
+    "maya-protocol": 6.189430609286811,
+    "near-intents": 18.21640814837126,
+    "thorchain-dex": 12.769157130785072
+   },
+   "thorchain-dex": {
+    "fees": 814177.0,
+    "revenue": 214637.0,
+    "volume": 637612171.0
+   },
+   "total_volume": 1754961291.0,
+   "week": "2026-09-28"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 356269.0,
+    "revenue": 65394.0,
+    "volume": 113196410.0
+   },
+   "maya-protocol": {
+    "fees": 79520.0,
+    "revenue": 7952.0,
+    "volume": 84934714.0
+   },
+   "near-intents": {
+    "fees": 1794703.0,
+    "revenue": 570229.0,
+    "volume": 1150847031.0
+   },
+   "share": {
+    "chainflip-amm": 0.06816235505544115,
+    "maya-protocol": 0.051144290991210296,
+    "near-intents": 0.6929940970877281,
+    "thorchain-dex": 0.18769925686562045
+   },
+   "take_bps": {
+    "chainflip-amm": 31.473524646232157,
+    "maya-protocol": 9.362485167136725,
+    "near-intents": 15.594626841419032,
+    "thorchain-dex": 12.980273579168802
+   },
+   "thorchain-dex": {
+    "fees": 404608.0,
+    "revenue": 93167.0,
+    "volume": 311709917.0
+   },
+   "total_volume": 1660688072.0,
+   "week": "2026-10-05"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 508305.0,
+    "revenue": 81980.0,
+    "volume": 149946689.0
+   },
+   "maya-protocol": {
+    "fees": 123531.0,
+    "revenue": 12353.0,
+    "volume": 134198672.0
+   },
+   "near-intents": {
+    "fees": 1413386.0,
+    "revenue": 489623.0,
+    "volume": 875929514.0
+   },
+   "share": {
+    "chainflip-amm": 0.09718926981853543,
+    "maya-protocol": 0.0869820536170501,
+    "near-intents": 0.5677414449489085,
+    "thorchain-dex": 0.24808723161550592
+   },
+   "take_bps": {
+    "chainflip-amm": 33.899047947634244,
+    "maya-protocol": 9.205083638979676,
+    "near-intents": 16.13584172481714,
+    "thorchain-dex": 11.27653228791839
+   },
+   "thorchain-dex": {
+    "fees": 431617.0,
+    "revenue": 120039.0,
+    "volume": 382756852.0
+   },
+   "total_volume": 1542831727.0,
+   "week": "2026-10-12"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 519414.0,
+    "revenue": 90504.0,
+    "volume": 162220612.0
+   },
+   "maya-protocol": {
+    "fees": 138180.0,
+    "revenue": 13817.0,
+    "volume": 154701155.0
+   },
+   "near-intents": {
+    "fees": 1183968.0,
+    "revenue": 401502.0,
+    "volume": 773669340.0
+   },
+   "share": {
+    "chainflip-amm": 0.11568089242569898,
+    "maya-protocol": 0.11031870394920212,
+    "near-intents": 0.5517101593329061,
+    "thorchain-dex": 0.2222902442921928
+   },
+   "take_bps": {
+    "chainflip-amm": 32.0189890542393,
+    "maya-protocol": 8.932060009506717,
+    "near-intents": 15.303281890426213,
+    "thorchain-dex": 12.171271560058939
+   },
+   "thorchain-dex": {
+    "fees": 379403.0,
+    "revenue": 107421.0,
+    "volume": 311720101.0
+   },
+   "total_volume": 1402311208.0,
+   "week": "2026-10-19"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 782686.0,
+    "revenue": 141339.0,
+    "volume": 257782242.0
+   },
+   "maya-protocol": {
+    "fees": 155616.0,
+    "revenue": 15562.0,
+    "volume": 150956187.0
+   },
+   "near-intents": {
+    "fees": 1353292.0,
+    "revenue": 459323.0,
+    "volume": 876962554.0
+   },
+   "share": {
+    "chainflip-amm": 0.14388534246624568,
+    "maya-protocol": 0.08425864596170912,
+    "near-intents": 0.48949088359765086,
+    "thorchain-dex": 0.2823651279743943
+   },
+   "take_bps": {
+    "chainflip-amm": 30.362293148183575,
+    "maya-protocol": 10.308686453507201,
+    "near-intents": 15.431582498333219,
+    "thorchain-dex": 12.947122077417765
+   },
+   "thorchain-dex": {
+    "fees": 654969.0,
+    "revenue": 161509.0,
+    "volume": 505879991.0
+   },
+   "total_volume": 1791580974.0,
+   "week": "2026-10-26"
+  },
+  {
+   "chainflip-amm": {
+    "fees": 872750.0,
+    "revenue": 160104.0,
+    "volume": 284448534.0
+   },
+   "maya-protocol": {
+    "fees": 26285.0,
+    "revenue": 2629.25,
+    "volume": 29713566.0
+   },
+   "near-intents": {
+    "fees": 1448259.0,
+    "revenue": 347966.0,
+    "volume": 912182473.0
+   },
+   "share": {
+    "chainflip-amm": 0.11721637938839617,
+    "maya-protocol": 0.012244452717897113,
+    "near-intents": 0.37589480713095696,
+    "thorchain-dex": 0.49464436076274976
+   },
+   "take_bps": {
+    "chainflip-amm": 30.682176059307796,
+    "maya-protocol": 8.84612772495903,
+    "near-intents": 15.87685625264146,
+    "thorchain-dex": 12.094798344306723
+   },
+   "thorchain-dex": {
+    "fees": 1451801.0,
+    "revenue": 446075.0,
+    "volume": 1200351555.0
+   },
+   "total_volume": 2426696128.0,
+   "week": "2026-11-02"
+  }
+ ],
+ "wide": {
+  "fee_leader": "Relay",
+  "market_volume": 68100398442.0,
+  "prior": {
+   "market_growth": 1.8153715169905862,
+   "market_volume": 24188778650.0,
+   "subject_share": 0.15153564390486496,
+   "venues_without_full_history": [
+    "Relay"
+   ]
+  },
+  "subject_rank_fees": 2,
+  "subject_rank_volume": 3,
+  "subject_share": 0.1776959194931343,
+  "venues": [
+   {
+    "fees": 262788571.0,
+    "kind": "bridge",
+    "name": "Relay",
+    "share": 0.3467789389090459,
+    "slug": "relay",
+    "take_bps": 111.2766664830447,
+    "volume": 23615783911.0
+   },
+   {
+    "fees": 291014.0,
+    "kind": "bridge",
+    "name": "Across",
+    "share": 0.3031168938986573,
+    "slug": "across",
+    "take_bps": 0.14097889022086435,
+    "volume": 20642381249.0
+   },
+   {
+    "fees": 18757458.0,
+    "kind": "swap",
+    "name": "NEAR Intents",
+    "share": 0.1776959194931343,
+    "slug": "near-intents",
+    "take_bps": 15.500541663271859,
+    "volume": 12101162919.0
+   },
+   {
+    "fees": 8073989.0,
+    "kind": "swap",
+    "name": "THORChain",
+    "share": 0.09115376764332618,
+    "slug": "thorchain-dex",
+    "take_bps": 13.006602761109704,
+    "volume": 6207607896.0
+   },
+   {
+    "fees": 1000981.0,
+    "kind": "bridge",
+    "name": "Stargate V2",
+    "share": 0.029664353501845257,
+    "slug": "stargate-v2",
+    "take_bps": 4.954973011063962,
+    "volume": 2020154293.0
+   },
+   {
+    "fees": 6096350.0,
+    "kind": "swap",
+    "name": "Chainflip",
+    "share": 0.02854794407195401,
+    "slug": "chainflip-amm",
+    "take_bps": 31.357786749958617,
+    "volume": 1944126366.0
+   },
+   {
+    "fees": 1576564.0,
+    "kind": "bridge",
+    "name": "deBridge",
+    "share": 0.014537310495226602,
+    "slug": "debridge",
+    "take_bps": 15.924942985437637,
+    "volume": 989996637.0
+   },
+   {
+    "fees": 727919.0,
+    "kind": "swap",
+    "name": "Maya Protocol",
+    "share": 0.00850487198681051,
+    "slug": "maya-protocol",
+    "take_bps": 12.567984065324076,
+    "volume": 579185171.0
+   }
+  ],
+  "weekly_share": {
+   "2024-12-16": 0.0004035091744471136,
+   "2024-12-23": 0.0005796141157320313,
+   "2024-12-30": 0.0004802349712639646,
+   "2025-01-06": 0.0003247960363963034,
+   "2025-01-13": 0.0006250918767113955,
+   "2025-01-20": 0.0012576283018391398,
+   "2025-01-27": 0.0003870530807907406,
+   "2025-02-03": 0.0013243085279683359,
+   "2025-02-10": 0.0020235245588557,
+   "2025-02-17": 0.00159061218871835,
+   "2025-02-24": 0.0013399592355365418,
+   "2025-03-03": 0.002601260189627506,
+   "2025-03-10": 0.0030335700175795227,
+   "2025-03-17": 0.0022417976057498715,
+   "2025-03-24": 0.003790182590850911,
+   "2025-03-31": 0.0030377115411129377,
+   "2025-04-07": 0.005532394766315207,
+   "2025-04-14": 0.008870228975011161,
+   "2025-04-21": 0.007189555824222881,
+   "2025-04-28": 0.015807463043637716,
+   "2025-05-05": 0.006072589917283104,
+   "2025-05-12": 0.007552577640940204,
+   "2025-05-19": 0.009121081295597537,
+   "2025-05-26": 0.026621315978476327,
+   "2025-06-02": 0.00974677529372799,
+   "2025-06-09": 0.013312163799888102,
+   "2025-06-16": 0.03409899900975104,
+   "2025-06-23": 0.06941724203343795,
+   "2025-06-30": 0.04517043598513076,
+   "2025-07-07": 0.02149453333582062,
+   "2025-07-14": 0.028202309492729172,
+   "2025-07-21": 0.04997714871251913,
+   "2025-07-28": 0.0949960377877599,
+   "2025-08-04": 0.054861778636239755,
+   "2025-08-11": 0.05951548837300533,
+   "2025-08-18": 0.06867317273680497,
+   "2025-08-25": 0.05221755931748857,
+   "2025-09-01": 0.056981901473531896,
+   "2025-09-08": 0.09013518921363005,
+   "2025-09-15": 0.06925931466457773,
+   "2025-09-22": 0.04907734102841922,
+   "2025-09-29": 0.17822225976831957,
+   "2025-10-06": 0.13484264145413463,
+   "2025-10-13": 0.13896403229402815,
+   "2025-10-20": 0.17332753761700584,
+   "2025-10-27": 0.2751199616878686,
+   "2025-11-03": 0.33632865682847357,
+   "2025-11-10": 0.3846103601201767,
+   "2025-11-17": 0.4281839240942293,
+   "2025-11-24": 0.25174776815663186,
+   "2025-12-01": 0.24514762536867676,
+   "2025-12-08": 0.20609186624792522,
+   "2025-12-15": 0.28720754916742014,
+   "2025-12-22": 0.29802459263016234,
+   "2025-12-29": 0.2608808186817921,
+   "2026-01-05": 0.33950382584559563,
+   "2026-01-12": 0.23405473639512214,
+   "2026-01-19": 0.3383180826590225,
+   "2026-01-26": 0.2894021232302298,
+   "2026-02-02": 0.32718223263576496,
+   "2026-02-09": 0.3130831268266606,
+   "2026-02-16": 0.27594619485552985,
+   "2026-02-23": 0.2952009900801368,
+   "2026-03-02": 0.2806845766103061,
+   "2026-03-09": 0.29468170140264166,
+   "2026-03-16": 0.3461163018803765,
+   "2026-03-23": 0.3685610596266145,
+   "2026-03-30": 0.3811105893089924,
+   "2026-04-06": 0.34760822936712427,
+   "2026-04-13": 0.2582224558331835,
+   "2026-04-20": 0.15320496425925925,
+   "2026-04-27": 0.27525423691884915,
+   "2026-05-04": 0.2764937786428781,
+   "2026-05-11": 0.290318087111783,
+   "2026-05-18": 0.3122574589879368,
+   "2026-05-25": 0.3977537459267419,
+   "2026-06-01": 0.36262327417953355,
+   "2026-06-08": 0.3382418163587142,
+   "2026-06-15": 0.24885232813874286,
+   "2026-06-22": 0.2632974710767339,
+   "2026-06-29": 0.2923662345462795,
+   "2026-07-06": 0.24585600225834361,
+   "2026-07-13": 0.2229697172027788,
+   "2026-07-20": 0.15742992082467805,
+   "2026-07-27": 0.13399893828833326,
+   "2026-08-03": 0.16612725410443005,
+   "2026-08-10": 0.17811725638300807,
+   "2026-08-17": 0.1645856005948176,
+   "2026-08-24": 0.14006221959557782,
+   "2026-08-31": 0.12723729518924248,
+   "2026-09-07": 0.13668219339429277,
+   "2026-09-14": 0.2000415425313032,
+   "2026-09-21": 0.1941366537768432,
+   "2026-09-28": 0.1778242713203516,
+   "2026-10-05": 0.2448424260915381,
+   "2026-10-12": 0.19826730580363264,
+   "2026-10-19": 0.21401432464238604,
+   "2026-10-26": 0.21183491702170792,
+   "2026-11-02": 0.1877845720585792
+  }
+ },
+ "windows_clean": true,
+ "yoy": {
+  "market_growth": 1.277695118951391,
+  "market_now": 20832082352.0,
+  "market_prior": 9146124158.0,
+  "prior_window": [
+   "2025-08-13",
+   "2025-11-10"
+  ],
+  "share_effect_fraction": 0.44481872670247646,
+  "share_points_change": {
+   "chainflip-amm": -0.08282391588468203,
+   "maya-protocol": 0.008373457657754584,
+   "near-intents": 0.18012398436198918,
+   "thorchain-dex": -0.10567352613506176
+  },
+  "share_prior": {
+   "chainflip-amm": 0.1761475852687632,
+   "maya-protocol": 0.019429100013317355,
+   "near-intents": 0.4007667165543414,
+   "thorchain-dex": 0.4036565981635781
+  },
+  "shift_share": {
+   "market_effect": 4683343095.200681,
+   "share_effect": 3752357675.799319,
+   "total": 8435700771.0
+  },
+  "subject_growth": 2.3014016869885845,
+  "subject_now": 12101162919.0,
+  "subject_prior": 3665462148.0
+ }
+}

@@ -1,0 +1,97 @@
+{
+ "fetched_at": "2026-11-11T19:08:39Z",
+ "files": {
+  "crosscheck_midgard": {
+   "path": "raw/crosscheck_midgard.json",
+   "sha256": "e021de6cc646bf666048ad5a6e89c0a8354c5498f7c8ea1f9f85e82ca340a97b"
+  },
+  "explorer_daily": {
+   "path": "raw/explorer_daily.json",
+   "sha256": "8250d61c0867cf2d195b19862dd7ed0ccd1d3235fca199f79cd49b21341de326"
+  },
+  "fees_across": {
+   "path": "raw/fees_across.json",
+   "sha256": "f801167e5932b3870fa840781fd69ec2d05041a5f5000bbcc58706f39740527d"
+  },
+  "fees_chainflip-amm": {
+   "path": "raw/fees_chainflip-amm.json",
+   "sha256": "8f5f8b6ee0bc30520ed6384154e19fbf6c786e8cf4142d80d215957241973af2"
+  },
+  "fees_debridge": {
+   "path": "raw/fees_debridge.json",
+   "sha256": "4cd047bcd433139772cd927147a653fa1a749be81686e360cd2d726dee1c7f37"
+  },
+  "fees_maya-protocol": {
+   "path": "raw/fees_maya-protocol.json",
+   "sha256": "4e36ec8af031d0de2ae6b2eb72f59b1fa8ff536685c759921a2628bdc2da092c"
+  },
+  "fees_near-intents": {
+   "path": "raw/fees_near-intents.json",
+   "sha256": "fc1a21120c3e57b97068a0428878b28672936617c0bad4447048c3956afb5654"
+  },
+  "fees_relay": {
+   "path": "raw/fees_relay.json",
+   "sha256": "8975d678b8279f31ddfef430825bf0a4f7a2be517806d12f33f68a84598ad733"
+  },
+  "fees_stargate-v2": {
+   "path": "raw/fees_stargate-v2.json",
+   "sha256": "43d1bdcc8d3bb861e932974d388cd696cfb07dcf7ae44e5ebdc817c720f878fd"
+  },
+  "fees_thorchain-dex": {
+   "path": "raw/fees_thorchain-dex.json",
+   "sha256": "72af56b357a4c2405e6f8060fd5e7c3f870b9917416fa3210bd89c9b1c7ff955"
+  },
+  "mcap": {
+   "path": "raw/mcap.json",
+   "sha256": "095417f1d719c8819917946d484a2228c81be2b8b6bd7dc29d1cdc8a4995686c"
+  },
+  "revenue_chainflip-amm": {
+   "path": "raw/revenue_chainflip-amm.json",
+   "sha256": "19c586a58fe411a26d5ff496f30c42f7808fa5084680eedc146fab2b89ac715b"
+  },
+  "revenue_maya-protocol": {
+   "path": "raw/revenue_maya-protocol.json",
+   "sha256": "3be214b04cfd1bae05f519de940868375c26815c2bcafbaabbf23709d3832aab"
+  },
+  "revenue_near-intents": {
+   "path": "raw/revenue_near-intents.json",
+   "sha256": "246e2e985e89b46ab45922202ec8ca2c8506526a2870ef4fa36c51bb1903b947"
+  },
+  "revenue_thorchain-dex": {
+   "path": "raw/revenue_thorchain-dex.json",
+   "sha256": "d9cb9fef91e6c6053e897f17cc0b181aa36fc9f76f3c0c26be9153909898ff3a"
+  },
+  "volume_chainflip-amm": {
+   "path": "raw/volume_chainflip-amm.json",
+   "sha256": "29a1189a85b8f3407cd4e07b2afa10df4b8ab5031ab33a69ec798c4943b4ae74"
+  },
+  "volume_maya-protocol": {
+   "path": "raw/volume_maya-protocol.json",
+   "sha256": "b2251b3a41b2b8a6938a836503a604ec334c0fb6af74c7e55582cbd80a0bf4f4"
+  },
+  "volume_near-intents": {
+   "path": "raw/volume_near-intents.json",
+   "sha256": "74b2ac7eb5e5287e328a095d8d8279eb9aa1f55da9138f755d8715d1cd213a9a"
+  },
+  "volume_thorchain-dex": {
+   "path": "raw/volume_thorchain-dex.json",
+   "sha256": "26e647ec36fb5209ee7663e43473bfefaa6f800772c86223639af79c4e897d5f"
+  },
+  "widevolume_across": {
+   "path": "raw/widevolume_across.json",
+   "sha256": "0716a7984b5549e8a746c58cf9ce1e8b47c7b999c9d20b2dbbf1efec8becd932"
+  },
+  "widevolume_debridge": {
+   "path": "raw/widevolume_debridge.json",
+   "sha256": "fff5894dce01650fdad323cc2328a6db50e34714bff7badd99cf76d9f1e0efaf"
+  },
+  "widevolume_relay": {
+   "path": "raw/widevolume_relay.json",
+   "sha256": "ef0d8c148074c040db8966e24bc799de2ee97c8336ea80bfd8f9e21e97bd8dd6"
+  },
+  "widevolume_stargate-v2": {
+   "path": "raw/widevolume_stargate-v2.json",
+   "sha256": "a908d99dc13cced9c06c96d2458ca8481ba53e32770b23c61272168aafff88cf"
+  }
+ }
+}
