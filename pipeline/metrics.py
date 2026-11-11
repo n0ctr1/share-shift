@@ -418,7 +418,10 @@ def channel_report(explorer, table, subject, window, halt):
     ranked = sorted(ch.items(), key=lambda kv: -kv[1]["usd"])
     top = [{"channel": name, "usd": c["usd"], "share": c["usd"] / total, "swaps": c["swaps"],
             "fee_bps": 1e4 * c["fee_usd"] / c["usd"] if c["usd"] else None,
-            "multi_venue": name in config.MULTI_VENUE_CHANNELS}
+            "multi_venue": name in config.MULTI_VENUE_CHANNELS,
+            "routes_to_rivals": config.CHANNEL_NOTES.get(name, {}).get("routes_to_rivals", "unknown"),
+            "note": config.CHANNEL_NOTES.get(name, {}).get("note", "operator not identified"),
+            "source": config.CHANNEL_NOTES.get(name, {}).get("source")}
            for name, c in ranked[:config.TOP_N]]
     rec_ranked = sorted(rec.items(), key=lambda kv: -kv[1])
     recipients = [{"recipient": name, "fee_usd": v, "share": v / fees if fees else None}
@@ -440,6 +443,10 @@ def channel_report(explorer, table, subject, window, halt):
         "top3_share": sum(c["share"] for c in top[:3]),
         "hhi": sum((c["usd"] / total) ** 2 for c in ch.values()),
         "multi_venue_share": multi / total,
+        "multi_venue_channels": sorted(name for name in ch if name in config.MULTI_VENUE_CHANNELS),
+        "known_share": sum(c["usd"] for name, c in ch.items()
+                           if config.CHANNEL_NOTES.get(name, {}).get("routes_to_rivals")
+                           in ("yes", "no", "other")) / total,
         "app_fees": fees,
         "app_fee_bps": 1e4 * fees / total if total else None,
         "recipients": recipients,

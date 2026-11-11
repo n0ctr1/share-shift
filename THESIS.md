@@ -78,24 +78,24 @@ The halt itself is reported at https://www.theblock.co/news/ecosystems/2026-06-2
 
 The Explorer API lists 1Click swaps. Counting those of $1,000 or more, $3.66B moved in the window, 30% of the Intents volume DefiLlama reports. 172 channels brought them; the largest, swapkit, brought 38% and the top three 64%.
 
-38% of that volume came through swapkit, which also routes swaps to THORChain, Chainflip and Maya (https://swapkit.dev/blog/swapkit-near-intents-integration/). For that share, the user chose a wallet and the wallet's router chose Intents; it can choose otherwise tomorrow.
+55% of that volume came through front ends that are documented as also routing to rival venues (lifi, rango, swapkit). For that share, the user chose a wallet or an aggregator and its router chose Intents; it can choose otherwise tomorrow. Channels whose routing could be established one way or the other cover 64% of the volume; the rest is unlabelled or its operator was not identified.
 
 App fees on those swaps came to $15.75M, or 43.0 bps of their volume, paid to 247 accounts. The largest: ledgerswapkit.near 42%; zodlswaps.near 11%; trustswapkit.near 10%; buybacks.multisignature.near 7%; tangemswapkit.near 5%. NEAR's buyback account (buybacks.multisignature.near) received 6.6% of them.
 
-| Channel | Volume | Share | Swaps | App fee | Also routes to rivals |
-| --- | --- | --- | --- | --- | --- |
-| swapkit | $1.38B | 37.8% | 109991 | 80.3 bps | yes |
-| (none) | $633.30M | 17.3% | 53054 | 10.5 bps | not checked |
-| lifi | $315.72M | 8.6% | 19114 | 5.4 bps | not checked |
-| rango | $305.25M | 8.3% | 32661 | 17.0 bps | not checked |
-| zodl | $264.35M | 7.2% | 12576 | 67.0 bps | not checked |
-| new.intents-referral.near | $191.21M | 5.2% | 6247 | 7.4 bps | not checked |
-| stableflow | $66.17M | 1.8% | 1760 | 1.4 bps | not checked |
-| near-intents.intents-referral.near | $57.28M | 1.6% | 3424 | 5.3 bps | not checked |
+| Channel | Volume | Share | Swaps | App fee | Routes to rivals | Basis |
+| --- | --- | --- | --- | --- | --- | --- |
+| swapkit | $1.38B | 37.8% | 109991 | 80.3 bps | yes | THORChain, Chainflip, Maya ([source](https://swapkit.dev/blog/swapkit-near-intents-integration/)) |
+| (none) | $633.30M | 17.3% | 53054 | 10.5 bps | unlabelled | no referral on the swap |
+| lifi | $315.72M | 8.6% | 19114 | 5.4 bps | yes | Across, Relay, Stargate, Chainflip ([source](https://docs.li.fi/introduction/solana-ecosystem)) |
+| rango | $305.25M | 8.3% | 32661 | 17.0 bps | yes | THORChain, Maya, Chainflip ([source](https://blog.thorchain.org/protocol-spotlight-rango-exchange)) |
+| zodl | $264.35M | 7.2% | 12576 | 67.0 bps | no | Zodl wallet (formerly Zashi); swaps go through NEAR Intents ([source](https://electriccoin.co/blog/zashi-swaps-decentralized-on-ramp-is-live)) |
+| new.intents-referral.near | $191.21M | 5.2% | 6247 | 7.4 bps | unknown | operator not identified |
+| stableflow | $66.17M | 1.8% | 1760 | 1.4 bps | other | also quotes Circle CCTP and USDT0 ([source](https://defillama.com/protocol/stableflow)) |
+| near-intents.intents-referral.near | $57.28M | 1.6% | 3424 | 5.3 bps | unknown | operator not identified |
 
-By channel: in the 1Click data Intents went from $24.20M to $36.85M a day when THORChain halted. The channels that grew most: new.intents-referral.near $3.85M to $11.12M a day; (none) $888.73K to $2.25M a day; lifi $1.73M to $2.93M a day. The largest of them accounts for 57% of the gain. Channels that also route to the rivals went from $10.43M to $9.77M a day: they did not carry the gain.
+By channel: in the 1Click data Intents went from $24.20M to $36.85M a day when THORChain halted. The channels that grew most: new.intents-referral.near $3.85M to $11.12M a day; (none) $888.73K to $2.25M a day; lifi $1.73M to $2.93M a day. The largest of them accounts for 57% of the gain. Channels that also route to the rivals went from $14.13M to $14.58M a day, 4% of the gain.
 
-This cuts against the obvious story. If shared routers had moved the halted rival's users to Intents, their volume would have risen; it did not. The gain arrived through other channels, so it is better read as users finding Intents themselves than as a router flipping a switch. What the routers do explain is the fee split and the size of one channel.
+This cuts against the obvious story. If shared routers had moved the halted rival's users to Intents, their volume would have risen sharply; it barely moved. The gain arrived through other channels, so it is better read as users finding Intents themselves than as a router flipping a switch. What the routers do explain is the fee split and the weight of a few channels.
 
 ## Evidence against
 

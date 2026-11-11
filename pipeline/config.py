@@ -80,12 +80,45 @@ CONTEXT_NOTES = [
     },
 ]
 
-# Distribution channels (the `referral` field of a 1Click swap) that are
-# documented as routing to the rival venues too. A swap that arrives through
-# one of these could have gone elsewhere at no cost to the user.
-MULTI_VENUE_CHANNELS = {
-    "swapkit": "https://swapkit.dev/blog/swapkit-near-intents-integration/",
+# Distribution channels (the `referral` field of a 1Click swap): does the
+# front end behind each one also send swaps to any of the other seven venues
+# in this analysis? A swap that arrives through such a channel could have gone
+# elsewhere at no cost to the user. Each answer cites what it rests on.
+#   "yes"        documented as routing to at least one rival venue
+#   "no"         documented as using NEAR Intents only for swaps
+#   "other"      routes elsewhere too, but to none of the seven rivals
+#   "unlabelled" the swap carried no referral, so there is nothing to look up
+#   "unknown"    the operator of the channel could not be identified
+CHANNEL_NOTES = {
+    "swapkit": {
+        "routes_to_rivals": "yes",
+        "note": "THORChain, Chainflip, Maya",
+        "source": "https://swapkit.dev/blog/swapkit-near-intents-integration/",
+    },
+    "lifi": {
+        "routes_to_rivals": "yes",
+        "note": "Across, Relay, Stargate, Chainflip",
+        "source": "https://docs.li.fi/introduction/solana-ecosystem",
+    },
+    "rango": {
+        "routes_to_rivals": "yes",
+        "note": "THORChain, Maya, Chainflip",
+        "source": "https://blog.thorchain.org/protocol-spotlight-rango-exchange",
+    },
+    "zodl": {
+        "routes_to_rivals": "no",
+        "note": "Zodl wallet (formerly Zashi); swaps go through NEAR Intents",
+        "source": "https://electriccoin.co/blog/zashi-swaps-decentralized-on-ramp-is-live",
+    },
+    "stableflow": {
+        "routes_to_rivals": "other",
+        "note": "also quotes Circle CCTP and USDT0",
+        "source": "https://defillama.com/protocol/stableflow",
+    },
+    "(none)": {"routes_to_rivals": "unlabelled", "note": "no referral on the swap", "source": None},
 }
+MULTI_VENUE_CHANNELS = {name: v["source"] for name, v in CHANNEL_NOTES.items()
+                        if v["routes_to_rivals"] == "yes"}
 # The account that receives NEAR's own cut of 1Click app fees.
 BUYBACK_ACCOUNT = "buybacks.multisignature.near"
 # How many channels and fee recipients to list by name; the rest are "other".

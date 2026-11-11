@@ -131,7 +131,8 @@ swap.
   rest on DefiLlama's adapters.
 - Three outside facts are cited rather than computed, all in
   `pipeline/config.py`: what the THORChain halt was, a later short suspension,
-  and that SwapKit also routes to the rival venues.
+  and which distribution channels also route to rival venues (each with its
+  source, in `CHANNEL_NOTES`).
 - Claim thresholds were chosen after a first look at the data. The dated
   predictions in `THESIS.md` are the part fixed in advance.
 

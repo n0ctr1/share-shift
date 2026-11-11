@@ -165,13 +165,14 @@ def findings(m):
             % ("$%s" % format(int(c["min_usd"]), ","), usd(c["volume"]), pct(c["coverage_of_all_intents_volume"]),
                c["channel_count"], top["channel"], pct(top["share"]), pct(c["top3_share"]))
         )
-        multi = [x for x in config.MULTI_VENUE_CHANNELS]
+        multi = c["multi_venue_channels"]
         out["routers"] = (
-            "%s of that volume came through %s, which also routes swaps to THORChain, "
-            "Chainflip and Maya (%s). For that share, the user chose a wallet and the "
-            "wallet's router chose Intents; it can choose otherwise tomorrow."
-            % (pct(c["multi_venue_share"]), ", ".join(multi),
-               ", ".join(config.MULTI_VENUE_CHANNELS[x] for x in multi))
+            "%s of that volume came through front ends that are documented as also routing "
+            "to rival venues (%s). For that share, the user chose a wallet or an aggregator "
+            "and its router chose Intents; it can choose otherwise tomorrow. Channels whose "
+            "routing could be established one way or the other cover %s of the volume; the "
+            "rest is unlabelled or its operator was not identified."
+            % (pct(c["multi_venue_share"]), ", ".join(multi), pct(c["known_share"]))
         )
         out["fee_recipients"] = (
             "App fees on those swaps came to %s, or %s of their volume, paid to %d accounts. "
@@ -197,11 +198,11 @@ def findings(m):
             )
             out["channel_reading"] = (
                 "This cuts against the obvious story. If shared routers had moved the halted "
-                "rival's users to Intents, their volume would have risen; it did not. The gain "
-                "arrived through other channels, so it is better read as users finding Intents "
-                "themselves than as a router flipping a switch. What the routers do explain is "
-                "the fee split and the size of one channel."
-                if ch["multi_venue_delta"] <= 0 else
+                "rival's users to Intents, their volume would have risen sharply; it barely "
+                "moved. The gain arrived through other channels, so it is better read as users "
+                "finding Intents themselves than as a router flipping a switch. What the "
+                "routers do explain is the fee split and the weight of a few channels."
+                if (ch["multi_venue_share_of_gain"] or 0) < 0.25 else
                 "Shared routers carried %s of the gain, which fits the reading that the same "
                 "front ends re-routed their users when the rival stopped."
                 % pct(ch["multi_venue_share_of_gain"])
@@ -451,12 +452,13 @@ def thesis_markdown(m, text):
         add(text["fee_recipients"])
         add("")
         c = m["channels"]
-        add("| Channel | Volume | Share | Swaps | App fee | Also routes to rivals |")
-        add("| --- | --- | --- | --- | --- | --- |")
+        add("| Channel | Volume | Share | Swaps | App fee | Routes to rivals | Basis |")
+        add("| --- | --- | --- | --- | --- | --- | --- |")
         for row in c["channels"]:
-            add("| %s | %s | %s | %d | %s | %s |" % (
+            basis = row["note"] + ((" ([source](%s))" % row["source"]) if row["source"] else "")
+            add("| %s | %s | %s | %d | %s | %s | %s |" % (
                 row["channel"], usd(row["usd"]), pct(row["share"], 1), row["swaps"],
-                bps(row["fee_bps"]), "yes" if row["multi_venue"] else "not checked"))
+                bps(row["fee_bps"]), row["routes_to_rivals"], basis))
         add("")
         if "halt_channels" in text:
             add(text["halt_channels"])

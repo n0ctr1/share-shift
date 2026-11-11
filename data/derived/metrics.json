@@ -111,7 +111,10 @@
     "channel": "swapkit",
     "fee_bps": 80.26400632274647,
     "multi_venue": true,
+    "note": "THORChain, Chainflip, Maya",
+    "routes_to_rivals": "yes",
     "share": 0.37757728435824695,
+    "source": "https://swapkit.dev/blog/swapkit-near-intents-integration/",
     "swaps": 109991,
     "usd": 1382518593.781537
    },
@@ -119,23 +122,32 @@
     "channel": "(none)",
     "fee_bps": 10.5297857150732,
     "multi_venue": false,
+    "note": "no referral on the swap",
+    "routes_to_rivals": "unlabelled",
     "share": 0.17296014933618586,
+    "source": null,
     "swaps": 53054,
     "usd": 633302458.4541205
    },
    {
     "channel": "lifi",
     "fee_bps": 5.396916593054276,
-    "multi_venue": false,
+    "multi_venue": true,
+    "note": "Across, Relay, Stargate, Chainflip",
+    "routes_to_rivals": "yes",
     "share": 0.08622467855240445,
+    "source": "https://docs.li.fi/introduction/solana-ecosystem",
     "swaps": 19114,
     "usd": 315716083.2494122
    },
    {
     "channel": "rango",
     "fee_bps": 17.03081175772438,
-    "multi_venue": false,
+    "multi_venue": true,
+    "note": "THORChain, Maya, Chainflip",
+    "routes_to_rivals": "yes",
     "share": 0.08336639830306755,
+    "source": "https://blog.thorchain.org/protocol-spotlight-rango-exchange",
     "swaps": 32661,
     "usd": 305250343.50645274
    },
@@ -143,7 +155,10 @@
     "channel": "zodl",
     "fee_bps": 66.97463074997941,
     "multi_venue": false,
+    "note": "Zodl wallet (formerly Zashi); swaps go through NEAR Intents",
+    "routes_to_rivals": "no",
     "share": 0.07219747569547123,
+    "source": "https://electriccoin.co/blog/zashi-swaps-decentralized-on-ramp-is-live",
     "swaps": 12576,
     "usd": 264354760.49023995
    },
@@ -151,7 +166,10 @@
     "channel": "new.intents-referral.near",
     "fee_bps": 7.421969133387843,
     "multi_venue": false,
+    "note": "operator not identified",
+    "routes_to_rivals": "unknown",
     "share": 0.05222160068524711,
+    "source": null,
     "swaps": 6247,
     "usd": 191212069.51604548
    },
@@ -159,7 +177,10 @@
     "channel": "stableflow",
     "fee_bps": 1.35811436012747,
     "multi_venue": false,
+    "note": "also quotes Circle CCTP and USDT0",
+    "routes_to_rivals": "other",
     "share": 0.018071450472786244,
+    "source": "https://defillama.com/protocol/stableflow",
     "swaps": 1760,
     "usd": 66169542.84655561
    },
@@ -167,7 +188,10 @@
     "channel": "near-intents.intents-referral.near",
     "fee_bps": 5.3070986286864095,
     "multi_venue": false,
+    "note": "operator not identified",
+    "routes_to_rivals": "unknown",
     "share": 0.015644805359823908,
+    "source": null,
     "swaps": 3424,
     "usd": 57284257.29532949
    }
@@ -220,17 +244,23 @@
     }
    ],
    "multi_venue_daily": {
-    "after_1": 11302521.482044261,
-    "after_2": 12917227.838687269,
-    "before": 10431143.214372972,
-    "during": 9771799.966213513
+    "after_1": 16194782.398755088,
+    "after_2": 19380545.7165876,
+    "before": 14130816.434105406,
+    "during": 14575417.728327027
    },
-   "multi_venue_delta": -659343.2481594589,
-   "multi_venue_share_of_gain": -0.052111641744630344
+   "multi_venue_delta": 444601.2942216217,
+   "multi_venue_share_of_gain": 0.03513936546457643
   },
   "hhi": 0.195965566725315,
+  "known_share": 0.6374372873819764,
   "min_usd": 1000,
-  "multi_venue_share": 0.37757728435824695,
+  "multi_venue_channels": [
+   "lifi",
+   "rango",
+   "swapkit"
+  ],
+  "multi_venue_share": 0.5471683612137189,
   "recipient_count": 247,
   "recipients": [
    {

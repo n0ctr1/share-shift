@@ -586,9 +586,17 @@ footer p { margin: 0 0 6px; }
     var EXQ = 'GET explorer.near-intents.org/api/v0/transactions?statuses=SUCCESS&minUsdPrice=' + c.min_usd;
     var f4 = el('div', {class: 'figure'});
     f4.appendChild(el('h3', {}, 'Distribution channels, 1Click swaps'));
-    f4.appendChild(table(['Channel', 'Volume', 'Share', 'Swaps', 'App fee', 'Also routes to rivals'],
-      c.channels.map(function (r) { return [r.channel, usd(r.usd), pct(r.share, 1), r.swaps.toLocaleString('en-US'), bps(r.fee_bps), r.multi_venue ? 'yes' : 'not checked']; }),
-      [0, 1, 1, 1, 1, 0]));
+    var LABEL = {yes: 'Yes', no: 'No', other: 'Other bridges only', unlabelled: 'Unlabelled', unknown: 'Operator not identified'};
+    f4.appendChild(table(['Channel', 'Volume', 'Share', 'Swaps', 'App fee', 'Routes to rivals', 'Basis'],
+      c.channels.map(function (r) { return [r.channel, usd(r.usd), pct(r.share, 1), r.swaps.toLocaleString('en-US'), bps(r.fee_bps), LABEL[r.routes_to_rivals] || r.routes_to_rivals, r.note]; }),
+      [0, 1, 1, 1, 1, 0, 0]));
+    var srcs = c.channels.filter(function (r) { return r.source; });
+    if (srcs.length) {
+      var sp2 = el('p', {class: 'src'}); sp2.appendChild(document.createTextNode('Routing sources: '));
+      srcs.forEach(function (r, i) { if (i) sp2.appendChild(document.createTextNode(', ')); sp2.appendChild(el('a', {href: r.source, rel: 'noopener'}, r.channel)); });
+      sp2.appendChild(document.createTextNode('. Rivals are the other seven venues in this analysis.'));
+      f4.appendChild(sp2);
+    }
     source(f4, EXQ, 'metrics.channel_report()');
     s.appendChild(f4);
     var f5 = el('div', {class: 'figure'});
