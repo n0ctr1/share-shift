@@ -146,7 +146,7 @@ def fetch_all(log=print):
         if os.path.exists(path):
             files[name] = path
     for fname in sorted(os.listdir(RAW_DIR)):
-        if fname.startswith(("intents_events_", "tee_run", "near_anchor")) and fname.endswith(".json"):
+        if fname.startswith(("intents_events_", "tee_run", "near_anchor", "actions_")) and fname.endswith(".json"):
             files[fname[:-5]] = os.path.join(RAW_DIR, fname)
 
     manifest = {

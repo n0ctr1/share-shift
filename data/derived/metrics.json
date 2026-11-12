@@ -1,5 +1,11 @@
 {
  "basis": {
+  "breakpoints": {
+   "assumes": "Intents halved; Chainflip and Maya at their measured factors",
+   "thorchain_double_share_for_c1": 0.33469670791310047,
+   "thorchain_double_share_for_lead": 0.02595228864383814,
+   "thorchain_double_share_measured": 0.801947491646412
+  },
   "scenarios": [
    {
     "id": "reported",
@@ -13,18 +19,18 @@
     "id": "one_side",
     "label": "One side of each swap for every venue (Intents halved, routed pairs counted once)",
     "leader": "NEAR Intents",
-    "runner_up_share": 0.29420422620523506,
-    "share": 0.5732017290804489,
-    "wide_share": 0.10463774920383624
+    "runner_up_share": 0.31619039246382635,
+    "share": 0.5553459852758119,
+    "wide_share": 0.10402717002442058
    },
    {
     "id": "measured",
     "label": "One side of each swap, every factor measured from the venue's own records (Intents from intents.near events)",
     "leader": "NEAR Intents",
-    "runner_up_share": 0.31841343442324493,
-    "share": 0.5380817434124994,
+    "runner_up_share": 0.34133383177599985,
+    "share": 0.5199871271302059,
     "subject_factor": 0.43367890086069,
-    "wide_share": 0.09203576761802709
+    "wide_share": 0.09149120912667295
    },
    {
     "id": "worst",
@@ -38,9 +44,9 @@
     "id": "best",
     "label": "Intents as reported, rivals' routed pairs counted once",
     "leader": "NEAR Intents",
-    "runner_up_share": 0.18700985434156633,
-    "share": 0.7287072197860991,
-    "wide_share": 0.18945169903754155
+    "runner_up_share": 0.20329264064532615,
+    "share": 0.7141124746946019,
+    "wide_share": 0.18845038029656377
    }
   ],
   "subject_notes": [
@@ -82,7 +88,11 @@
     "source": "https://midgard.mayachain.info/v2/history/swaps?interval=day&count=400"
    },
    "thorchain-dex": {
+    "actions_factor": 0.5549551275139073,
     "days": 90,
+    "double_share_actions": 0.801947491646412,
+    "double_share_actions_p05": 0.7477549364828948,
+    "double_share_actions_p95": 0.8486898520717647,
     "leg_shares": {
      "fromSecuredVolume": 0.0042250752823048635,
      "fromTradeVolume": 0.24877313586847036,
@@ -92,9 +102,11 @@
      "toTradeVolume": 0.24866150552458882
     },
     "name": "THORChain",
-    "once_factor": 0.5002812780075807,
+    "once_factor": 0.5549551275139073,
+    "pair_sum_factor": 0.5002812780075807,
     "paired_share": 0.9994374439848387,
-    "source": "https://gateway.liquify.com/chain/thorchain_midgard/v2/history/swaps?interval=day&count=400"
+    "source": "https://gateway.liquify.com/chain/thorchain_midgard/v2/history/swaps?interval=day&count=400",
+    "swaps_read": 8886
    }
   }
  },
@@ -417,7 +429,7 @@
    "id": "C1",
    "threshold": 0.5,
    "unit": "share",
-   "value": 0.5732017290804489,
+   "value": 0.5553459852758119,
    "verdict": "SUPPORTED"
   },
   {
@@ -465,7 +477,7 @@
    "id": "C7",
    "threshold": 0.33,
    "unit": "share",
-   "value": 0.44996793418130343,
+   "value": 0.4056373605972532,
    "verdict": "SUPPORTED"
   },
   {
@@ -657,7 +669,7 @@
  ],
  "halt": {
   "absorbed_by_basis": {
-   "one_side": 0.44996793418130343,
+   "one_side": 0.4056373605972532,
    "reported": 0.45022106634930686,
    "worst": 0.22511053317465343
   },
@@ -1815,7 +1827,7 @@
   "instructions": 361269283,
   "once_maya_build": 0.5033367336444565,
   "once_maya_tee": 0.5033,
-  "once_thorchain_build": 0.5002812780075807,
+  "once_thorchain_build": 0.5549551275139073,
   "once_thorchain_tee": 0.5003,
   "request_id": 2991,
   "request_tx": "Aw6Vz41optzWmAEDvmzq7wk3YHypfhFt3pssrxPnDjk7",

@@ -1,6 +1,10 @@
 {
  "fetched_at": "2026-11-11T23:58:12Z",
  "files": {
+  "actions_thorchain-dex": {
+   "path": "raw/actions_thorchain-dex.json",
+   "sha256": "98a8b0f97733abf74b044854b269a273bf085490f38a667e388cd93765ddb056"
+  },
   "crosscheck_midgard": {
    "path": "raw/crosscheck_midgard.json",
    "sha256": "e021de6cc646bf666048ad5a6e89c0a8354c5498f7c8ea1f9f85e82ca340a97b"

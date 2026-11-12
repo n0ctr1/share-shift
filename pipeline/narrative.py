@@ -264,7 +264,15 @@ def findings(m):
     if b:
         sc = {x["id"]: x for x in b["scenarios"]}
         legs = "; ".join(
-            ("%s: %s of its reported volume is matched pairs of legs into and out of its own "
+            (("%s: matching daily totals of legs into and out of RUNE pairs up to %s of its "
+              "reported volume, an upper bound; reading %s individual swaps, %s of their value "
+              "(90%% interval %s to %s) went through two pools, so counting each swap once "
+              "leaves %s"
+              % (v["name"], pct(v["paired_share"]), "{:,}".format(v["swaps_read"]),
+                 pct(v["double_share_actions"]), pct(v["double_share_actions_p05"]),
+                 pct(v["double_share_actions_p95"]), pct(v["actions_factor"])))
+             if "actions_factor" in v else
+             "%s: %s of its reported volume is matched pairs of legs into and out of its own "
              "token, so counting each swap once leaves %s"
              % (v["name"], pct(v["paired_share"]), pct(v["once_factor"])))
             if "provider_vs_indexer" not in v["leg_shares"] else
@@ -593,6 +601,16 @@ def thesis_markdown(m, text):
         add("")
         if "events" in text:
             add(text["events"])
+            add("")
+        bp = m["basis"].get("breakpoints")
+        if bp:
+            add("Where the conclusion would break: counting one side for every venue, Intents "
+                "would fall to 50%% only if fewer than %s of THORChain's swap value went through "
+                "two pools, and would lose the lead only below %s (%s). Measured from individual "
+                "swaps, the figure is %s."
+                % (pct(bp["thorchain_double_share_for_c1"]),
+                   pct(bp["thorchain_double_share_for_lead"]), bp["assumes"],
+                   pct(bp.get("thorchain_double_share_measured"))))
             add("")
         if "tee" in text:
             add(text["tee"])

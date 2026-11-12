@@ -4,9 +4,9 @@
 
 ## In three lines
 
-1. **It is the largest swap venue, at a normal price.** Over the 90 days to 2026-11-10, NEAR Intents settled $12.10B of the $20.83B that the four venues moved, a 58% share; THORChain was second with 30%. One year earlier its share was 40%. Counting one side of each swap for every venue gives 57%. Only one reading puts Intents behind: halving Intents while leaving rivals as reported (41%, THORChain first). The data refutes it twice: the rivals' own indexers count both halves of almost every routed swap, and intents.near's events show the Intents figure does too.
+1. **It is the largest swap venue, at a normal price.** Over the 90 days to 2026-11-10, NEAR Intents settled $12.10B of the $20.83B that the four venues moved, a 58% share; THORChain was second with 30%. One year earlier its share was 40%. Counting one side of each swap for every venue gives 56%. Only one reading puts Intents behind: halving Intents while leaving rivals as reported (41%, THORChain first). The data refutes it twice: the rivals' own indexers count both halves of almost every routed swap, and intents.near's events show the Intents figure does too.
 2. **The token sees little of it so far, but more each quarter.** Of $18.76M in gross Intents fees over the window, $5.08M (27%) reached NEAR's revenue wallets; the rest stayed with solvers and the third-party front ends that distribute Intents. Over consecutive 90-day windows the share reaching NEAR was 8%, 12%, 20%, 27% (oldest first, the last ending 2026-11-10).
-3. **The one real test is not conclusive.** THORChain was halted for 37 days after an exploit. Intents grew +38% over those days and kept the higher level afterwards, equal to 45% of the flow THORChain lost. But growth of that size was ordinary for Intents over the year before (52nd percentile), so the halt shows Intents could absorb the flow, not that the halt caused the gain.
+3. **The one real test is not conclusive.** THORChain was halted for 37 days after an exploit. Intents grew +38% over those days and kept the higher level afterwards, equal to 41% of the flow THORChain lost. But growth of that size was ordinary for Intents over the year before (52nd percentile), so the halt shows Intents could absorb the flow, not that the halt caused the gain.
 
 ## The claim
 
@@ -30,13 +30,13 @@ Thresholds are in `pipeline/config.py`. A verdict is one number compared with on
 
 | # | Claim | Measured | Threshold | Verdict |
 | --- | --- | --- | --- | --- |
-| C1 | NEAR Intents is the largest swap venue with more than 50% of volume, whether volume is taken as reported or one side of each swap is counted for every venue. | 57.3% | 50.0% | **SUPPORTED** |
+| C1 | NEAR Intents is the largest swap venue with more than 50% of volume, whether volume is taken as reported or one side of each swap is counted for every venue. | 55.5% | 50.0% | **SUPPORTED** |
 | C2 | Most of the year-on-year volume gain came from taking share, not from market growth. | 44.5% | 50.0% | **REFUTED** |
 | C3 | The peer-set market itself grew more than 25% year on year. | +128% | +25% | **SUPPORTED** |
 | C4 | Intents charges at least the median take rate of its rivals (it is not winning on price alone). | 15.5 bps | 13.0 bps | **SUPPORTED** |
 | C5 | NEAR keeps more than 50% of the gross fees Intents generates. | 27.1% | 50.0% | **REFUTED** |
 | C6 | The lead is stable: weekly share never fell below 40% in the last 26 undistorted weeks. | 23.2% | 40.0% | **REFUTED** |
-| C7 | When its largest rival stopped trading, Intents picked up more than 33% of the flow that rival had carried. | 45.0% | 33.0% | **SUPPORTED** |
+| C7 | When its largest rival stopped trading, Intents picked up more than 33% of the flow that rival had carried. | 40.6% | 33.0% | **SUPPORTED** |
 | C8 | Intents daily volume is steadier than every rival's (lower standard deviation relative to its mean). | 0.36 | 0.69 | **SUPPORTED** |
 | C9 | The share of fees reaching NEAR rose in every one of the last 4 consecutive 90-day windows. | 3 of 3 rises | 3 of 3 | **SUPPORTED** |
 | C10 | No single distribution channel carries more than 33% of 1Click swap volume. | 37.8% | 33.0% | **REFUTED** |
@@ -114,19 +114,21 @@ This cuts against the obvious story. If shared routers had moved the halted riva
 
 ### How volume is counted
 
-Venues do not count volume the same way. THORChain: 100% of its reported volume is matched pairs of legs into and out of its own token, so counting each swap once leaves 50%; Chainflip: its reported volume equals input value plus the routed USDC leg (99.6% of the indexer's two-leg sum), so counting each swap once leaves 57%; Maya Protocol: 99% of its reported volume is matched pairs of legs into and out of its own token, so counting each swap once leaves 50% (from each venue's own indexer). For NEAR Intents, DefiLlama reads it from NEAR's own Dune table dune.near.dataset_near_intents_metrics (column volume_amount_usd). Two public re-computations from intents.near events disagree on what that figure counts: one finds public swaps counted once are 46% of it (92% counting both sides), the other finds it within about 1% of public net volume before confidential intents launched. This analysis cannot settle which is right, so this analysis rebuilt it itself (below). The bridges in the wider set are taken as one-sided, as their adapters report deposits.
+Venues do not count volume the same way. THORChain: matching daily totals of legs into and out of RUNE pairs up to 100% of its reported volume, an upper bound; reading 8,886 individual swaps, 80% of their value (90% interval 75% to 85%) went through two pools, so counting each swap once leaves 55%; Chainflip: its reported volume equals input value plus the routed USDC leg (99.6% of the indexer's two-leg sum), so counting each swap once leaves 57%; Maya Protocol: 99% of its reported volume is matched pairs of legs into and out of its own token, so counting each swap once leaves 50% (from each venue's own indexer). For NEAR Intents, DefiLlama reads it from NEAR's own Dune table dune.near.dataset_near_intents_metrics (column volume_amount_usd). Two public re-computations from intents.near events disagree on what that figure counts: one finds public swaps counted once are 46% of it (92% counting both sides), the other finds it within about 1% of public net volume before confidential intents launched. This analysis cannot settle which is right, so this analysis rebuilt it itself (below). The bridges in the wider set are taken as one-sided, as their adapters report deposits.
 
 Rebuilt from intents.near itself: every transaction touching the contract on 2026-08-20 and 2026-08-27 was listed (93,116 and 83,785), a seeded random sample of 4,000 and 4,000 was read, and every DIP-4 token_diff event was valued at that day's price. The days are before confidential intents launched, so almost all flow is public. 2026-08-20: $115.04M both sides (90% interval $83.56M to $155.39M) against $136.22M reported; 2026-08-27: $118.59M both sides (90% interval $88.35M to $154.58M) against $133.22M reported. Counting one side would give only 43% of the reported figure. The reported figure counts both sides, like THORChain's, Maya's and Chainflip's, so comparing reported volumes compares like with like.
 
-The headline number was also recomputed inside a trusted execution environment. tee/share-check, a WASI program in this repository (SHA-256 7634f3997a76...), fetched DefiLlama's and Midgard's data by itself inside an Intel TDX enclave run by OutLayer, requested by transaction Aw6Vz41optzWmAEDvmzq7wk3YHypfhFt3pssrxPnDjk7 on NEAR mainnet (block 224,147,600). It returned an Intents share of 58.09% against 58.09% in this build, THORChain's one-side factor 0.5003 against 0.5003, and every venue's volume to the same $0.1M. The result was delivered on chain by worker.outlayer.near with a key scoped to outlayer.near; OutLayer's register contract adds such a key only after verifying a TDX quote against its allowlist of measurements. `python3 -m pipeline.tee_verify` repeats every check from public RPC.
+Where the conclusion would break: counting one side for every venue, Intents would fall to 50% only if fewer than 33% of THORChain's swap value went through two pools, and would lose the lead only below 3% (Intents halved; Chainflip and Maya at their measured factors). Measured from individual swaps, the figure is 80%.
+
+The headline number was also recomputed inside a trusted execution environment. tee/share-check, a WASI program in this repository (SHA-256 7634f3997a76...), fetched DefiLlama's and Midgard's data by itself inside an Intel TDX enclave run by OutLayer, requested by transaction Aw6Vz41optzWmAEDvmzq7wk3YHypfhFt3pssrxPnDjk7 on NEAR mainnet (block 224,147,600). It returned an Intents share of 58.09% against 58.09% in this build, THORChain's one-side factor 0.5003 against 0.5550, and every venue's volume to the same $0.1M. The result was delivered on chain by worker.outlayer.near with a key scoped to outlayer.near; OutLayer's register contract adds such a key only after verifying a TDX quote against its allowlist of measurements. `python3 -m pipeline.tee_verify` repeats every check from public RPC.
 
 | Counting basis | Intents share, four venues | Largest | Intents share, all eight |
 | --- | --- | --- | --- |
 | As reported by every venue | 58.1% | NEAR Intents | 17.8% |
-| One side of each swap for every venue (Intents halved, routed pairs counted once) | 57.3% | NEAR Intents | 10.5% |
-| One side of each swap, every factor measured from the venue's own records (Intents from intents.near events) | 53.8% | NEAR Intents | 9.2% |
+| One side of each swap for every venue (Intents halved, routed pairs counted once) | 55.5% | NEAR Intents | 10.4% |
+| One side of each swap, every factor measured from the venue's own records (Intents from intents.near events) | 52.0% | NEAR Intents | 9.1% |
 | Intents halved, rivals left as reported (refuted: rivals' indexers and intents.near events both show two-sided counting) | 40.9% | THORChain | 9.8% |
-| Intents as reported, rivals' routed pairs counted once | 72.9% | NEAR Intents | 18.9% |
+| Intents as reported, rivals' routed pairs counted once | 71.4% | NEAR Intents | 18.8% |
 
 ### All eight venues
 

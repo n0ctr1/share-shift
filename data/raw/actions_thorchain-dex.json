@@ -1,0 +1,15 @@
+{
+ "double_value_share": 0.801947491646412,
+ "double_value_share_p05": 0.7477549364828948,
+ "double_value_share_p95": 0.8486898520717647,
+ "method": "value-weighted share of two-pool swaps among the 50 swaps before each of `points` evenly spaced moments; inPriceUSD from Midgard",
+ "once_factor": 0.5549551275139073,
+ "points": 180,
+ "range": [
+  "2026-08-13",
+  "2026-11-10"
+ ],
+ "source": "https://gateway.liquify.com/chain/thorchain_midgard/v2/actions?type=swap&limit=50&timestamp=0",
+ "swaps_read": 8886,
+ "value_read_usd": 4308145.645401366
+}

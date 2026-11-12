@@ -302,6 +302,18 @@ def counting_basis(raw, table, subject, names, window, wide_volumes=None):
         venues[slug] = {"name": names[slug], "days": len(days), "leg_shares": shares,
                         "paired_share": paired / total, "once_factor": factor[slug],
                         "source": config.LEG_SOURCES.get(slug)}
+        actions = raw.get("actions_" + slug)
+        if actions:
+            # Pairing daily totals is an upper bound on routed swaps; reading
+            # individual swaps measures it, so that factor is the one used.
+            v = venues[slug]
+            v["pair_sum_factor"] = factor[slug]
+            v["double_share_actions"] = actions["double_value_share"]
+            v["double_share_actions_p05"] = actions["double_value_share_p05"]
+            v["double_share_actions_p95"] = actions["double_value_share_p95"]
+            v["actions_factor"] = actions["once_factor"]
+            v["swaps_read"] = actions["swaps_read"]
+            factor[slug] = v["once_factor"] = actions["once_factor"]
     if not venues:
         return None
     vol = {s: sum(v for d, v in zip(table["dates"], table[s]["volume"]) if first <= d <= last_)
@@ -365,13 +377,15 @@ def onchain_check(raw, table, subject, window):
     }
 
 
-def shares_measured(basis, table, subject, names, window, subject_factor, wide_volumes):
+def shares_measured(basis, table, subject, names, window, subject_factor, wide_volumes,
+                    overrides=None):
     """Every venue scaled by the one-side factor measured from its own records."""
     slugs = [p["slug"] for p in config.PEERS]
     first, last_ = window
     vol = {s: sum(v for d, v in zip(table["dates"], table[s]["volume"]) if first <= d <= last_)
            for s in slugs}
     factor = {s: basis["venues"].get(s, {}).get("once_factor", 1.0) for s in slugs}
+    factor.update(overrides or {})
     factor[subject] = subject_factor
     adj = {s: vol[s] * factor[s] for s in slugs}
     total = sum(adj.values())
@@ -880,6 +894,26 @@ def _compute(raw, fetched_at):
         measured = shares_measured(basis, table, subject, names, [start_date, end_date],
                                    events["one_ratio_mean"], bridge_volume or None)
         basis["scenarios"].insert(2, measured)
+        if "thorchain-dex" in basis["venues"]:
+            # How much of THORChain's value would have to be single-pool swaps for
+            # the one-side reading to fail C1, or to lose Intents the lead?
+            slugs_ = [p["slug"] for p in config.PEERS]
+            vol_ = {s_: sum(v for d, v in zip(table["dates"], table[s_]["volume"])
+                            if start_date <= d <= end_date) for s_ in slugs_}
+            fac = {s_: basis["venues"].get(s_, {}).get("once_factor", 1.0) for s_ in slugs_}
+            fac[subject] = 0.5
+            others = sum(vol_[s_] * fac[s_] for s_ in slugs_ if s_ not in (subject, "thorchain-dex"))
+            mine = vol_[subject] * 0.5
+            thor = vol_["thorchain-dex"]
+            # share = mine / (mine + others + thor * f) ; f = 1 / (1 + p)
+            f_c1 = (mine / t["leader_share"] - mine - others) / thor
+            f_lead = mine / thor
+            basis["breakpoints"] = {
+                "thorchain_double_share_for_c1": (1 / f_c1 - 1) if 0 < f_c1 else None,
+                "thorchain_double_share_for_lead": (1 / f_lead - 1) if 0 < f_lead < 1 else 0.0,
+                "thorchain_double_share_measured": basis["venues"]["thorchain-dex"].get("double_share_actions"),
+                "assumes": "Intents halved; Chainflip and Maya at their measured factors",
+            }
         for x in basis["scenarios"]:
             if x["id"] == "worst":
                 x["label"] = ("Intents halved, rivals left as reported (refuted: rivals' indexers "

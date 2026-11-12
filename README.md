@@ -59,7 +59,7 @@ Needs Python 3.9 or newer. No packages to install. No key needed for steps 1 to 
 
 | Step | Do | See |
 | --- | --- | --- |
-| 1 | `python3 -m unittest discover -s tests` | `Ran 24 tests` and `OK` |
+| 1 | `python3 -m unittest discover -s tests` | `Ran 25 tests` and `OK` |
 | 2 | `python3 build.py --offline` | Fourteen lines `C1` to `C14`, each `SUPPORTED` or `REFUTED`, then `wrote THESIS.md, docs/index.html, data/derived/metrics.json` |
 | 3 | `git status --short` | Nothing: the offline build reproduces the committed files byte for byte |
 | 4 | `python3 build.py` | The same fourteen lines computed on today's data; `git diff THESIS.md` shows which numbers moved |
@@ -75,8 +75,9 @@ Step 2 uses the snapshot in `data/raw/`, whose hashes are checked against
 
 | 9 | Optional. `python3 -m pipeline.intents_events --day 2026-08-20 --sample 4000` | `93116 transactions on intents.near`, then `both sides ...M (90%: ...)`; about 15 minutes, no key |
 | 10 | Optional. `python3 -m pipeline.chainflip --from 2026-08-13 --to 2026-11-10` | `wrote data/raw/legs_chainflip-amm.json`; a few minutes, no key |
+| 11 | Optional. `python3 -m pipeline.thorchain_actions --from 2026-08-13 --to 2026-11-10 --points 180` | `double-swap value share ...% (90%: ...)`; about 15 minutes, no key |
 
-Steps 7 to 10 are not needed to reproduce the thesis: the Explorer aggregates are
+Steps 7 to 11 are not needed to reproduce the thesis: the Explorer aggregates are
 committed. The Explorer key is free from https://partners.near-intents.org.
 
 ## Checking the TEE run

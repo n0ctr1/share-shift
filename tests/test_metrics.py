@@ -179,6 +179,24 @@ class CountingBasis(unittest.TestCase):
         self.assertAlmostEqual(sc["worst"], 50.0 / 350.0)
         self.assertAlmostEqual(sc["best"], 100.0 / 350.0)
 
+    def test_measured_swap_actions_replace_the_pair_sum_bound(self):
+        days = 30
+        vols = {p["slug"]: [100.0] * days for p in config.PEERS}
+        raw, dates = make_raw(days, vols)
+        rival = config.PEERS[1]["slug"]
+        raw["legs_" + rival] = {"series": {d: {"totalVolume": 100.0, "toRuneVolume": 50.0,
+                                               "toAssetVolume": 50.0, "fromTradeVolume": 0.0,
+                                               "toTradeVolume": 0.0, "fromSecuredVolume": 0.0,
+                                               "toSecuredVolume": 0.0} for d in dates}}
+        raw["actions_" + rival] = {"double_value_share": 0.8, "double_value_share_p05": 0.75,
+                                   "double_value_share_p95": 0.85, "once_factor": 1 / 1.8,
+                                   "swaps_read": 100}
+        table = metrics.build_table(raw, "2030-01-01T00:00:00Z")
+        names = {p["slug"]: p["name"] for p in config.PEERS}
+        b = metrics.counting_basis(raw, table, config.SUBJECT, names, [dates[0], dates[-1]])
+        self.assertAlmostEqual(b["venues"][rival]["pair_sum_factor"], 0.5)
+        self.assertAlmostEqual(b["venues"][rival]["once_factor"], 1 / 1.8)
+
 
 class Onchain(unittest.TestCase):
     def test_inflows_are_priced_daily_and_compared(self):
