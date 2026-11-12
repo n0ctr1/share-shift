@@ -1,0 +1,63 @@
+{
+ "dates": [
+  {
+   "day": "2026-08-27",
+   "intents_executed": 31,
+   "token_diff": 79,
+   "transfer": 48,
+   "versions": [
+    "0.3.0",
+    "0.3.1"
+   ]
+  },
+  {
+   "day": "2026-09-15",
+   "intents_executed": 32,
+   "token_diff": 31,
+   "transfer": 55,
+   "versions": [
+    "0.3.0",
+    "0.3.1"
+   ]
+  },
+  {
+   "day": "2026-10-01",
+   "intents_executed": 19,
+   "token_diff": 14,
+   "transfer": 29,
+   "versions": [
+    "0.3.0",
+    "0.3.1"
+   ]
+  },
+  {
+   "day": "2026-10-15",
+   "intents_executed": 41,
+   "token_diff": 36,
+   "transfer": 83,
+   "versions": [
+    "0.4.3"
+   ]
+  },
+  {
+   "day": "2026-10-25",
+   "intents_executed": 34,
+   "token_diff": 52,
+   "transfer": 50,
+   "versions": [
+    "0.4.3"
+   ]
+  },
+  {
+   "day": "2026-11-05",
+   "intents_executed": 88,
+   "token_diff": 0,
+   "transfer": 133,
+   "versions": [
+    "0.4.3"
+   ]
+  }
+ ],
+ "method": "60 intents.near transactions listed just after 12:00 UTC on each date (FastNear), DIP-4 events in their receipts counted by event and version",
+ "source": "https://tx.main.fastnear.com/v0"
+}

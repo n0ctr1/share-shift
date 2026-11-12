@@ -1,0 +1,22 @@
+{
+ "both_sides_usd": 1328087.1223125416,
+ "both_sides_usd_p05": 662409.911037653,
+ "both_sides_usd_p95": 2143237.6965802526,
+ "day": "2026-11-05",
+ "method": "seeded random sample of the day's intents.near transactions; token_diff events valued at the day's price; scaled by the full transaction count",
+ "one_side_usd": 664043.5611562708,
+ "price_basis": {
+  "current": 23,
+  "historical": 160,
+  "stable": 47
+ },
+ "sampled": 4000,
+ "sources": {
+  "prices": "coins.llama.fi",
+  "tokens": "https://1click.chaindefuser.com/v0/tokens",
+  "transactions": "https://tx.main.fastnear.com/v0"
+ },
+ "token_diff_events_in_sample": 153,
+ "transactions_in_day": 262395,
+ "unpriced_legs_in_sample": 0
+}

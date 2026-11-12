@@ -45,6 +45,18 @@
    "path": "raw/fees_thorchain-dex.json",
    "sha256": "72af56b357a4c2405e6f8060fd5e7c3f870b9917416fa3210bd89c9b1c7ff955"
   },
+  "intents_event_format": {
+   "path": "raw/intents_event_format.json",
+   "sha256": "1eab7de84160af2c3003a6cddcb1a8634c7f403c5af3b5d37190e45c541fa87c"
+  },
+  "intents_events_2026-08-06": {
+   "path": "raw/intents_events_2026-08-06.json",
+   "sha256": "64d6974e30d4ff538a9460e00121cdc6cb43174916b327d5020ff647d156be94"
+  },
+  "intents_events_2026-08-13": {
+   "path": "raw/intents_events_2026-08-13.json",
+   "sha256": "825fe63b9ad42a61a3b5234db8b03050fa77b57b388e794f322472fdbe2afb92"
+  },
   "intents_events_2026-08-20": {
    "path": "raw/intents_events_2026-08-20.json",
    "sha256": "b366817baf6c03e0f20e5e703e673dcc24d380b65951d3955329cd8202449d78"
@@ -52,6 +64,14 @@
   "intents_events_2026-08-27": {
    "path": "raw/intents_events_2026-08-27.json",
    "sha256": "c907733f2e50fec548abfa326267f239b40d97b6c177e119bf087bcd5d429a26"
+  },
+  "intents_events_2026-10-15": {
+   "path": "raw/intents_events_2026-10-15.json",
+   "sha256": "6e974f9aec8a9ee1d31d56c7b78c3b5efa65065d6d54847d964106e5b0ec669e"
+  },
+  "intents_events_2026-11-05": {
+   "path": "raw/intents_events_2026-11-05.json",
+   "sha256": "fe2315ad5231e5ea3123e54455cb8c471f3d8a254ceba60c7e2fb185351e5673"
   },
   "legs_chainflip-amm": {
    "path": "raw/legs_chainflip-amm.json",

@@ -500,10 +500,17 @@ def events_check(raw, table, subject):
         })
     if not days:
         return None
-    return {"days": days,
-            "one_ratio_mean": sum(d["one_ratio"] for d in days) / len(days),
+    valid = [d for d in days if d["day"] <= config.EVENTS_VALID_UNTIL]
+    later = [d for d in days if d["day"] > config.EVENTS_VALID_UNTIL]
+    if not valid:
+        return None
+    return {"days": valid, "later_days": later,
+            "valid_until": config.EVENTS_VALID_UNTIL,
+            "format": raw.get("intents_event_format"),
+            "both_ratio_mean": sum(d["both_ratio"] for d in valid) / len(valid),
+            "one_ratio_mean": sum(d["one_ratio"] for d in valid) / len(valid),
             "both_sides": all(d["reported_in_both_interval"] and not d["reported_in_one_interval"]
-                              for d in days)}
+                              for d in valid)}
 
 
 def wide_report(raw, table, subject, names, last, w, yoy_prior_end):
@@ -968,8 +975,8 @@ def _compute(raw, fetched_at):
             }
         for x in basis["scenarios"]:
             if x["id"] == "worst":
-                x["label"] = ("Intents halved, rivals left as reported (refuted: rivals' indexers "
-                              "and intents.near events both show two-sided counting)")
+                x["label"] = ("Intents halved, rivals left as reported (inconsistent with the "
+                              "rivals' indexers and with intents.near events)")
     if basis and halt and halt["absorbed_fraction"] is not None:
         f_rival = basis["venues"].get(halt["rival_slug"], {}).get("once_factor", 1.0)
         halt["absorbed_by_basis"] = {
@@ -1072,8 +1079,9 @@ def _compute(raw, fetched_at):
         claims.append({
             "id": "C13",
             "claim": "The reported Intents volume counts both sides of each swap, like the "
-                     "rivals' figures: on every day rebuilt from intents.near events it sits "
-                     "inside the both-sides interval and outside the one-side interval.",
+                     "rivals' figures: on every day rebuilt from intents.near token_diff events "
+                     "(through August, where the method applies) it sits inside the both-sides "
+                     "interval and outside the one-side interval.",
             "value": sum(1 for d in events["days"] if d["reported_in_both_interval"]
                          and not d["reported_in_one_interval"]),
             "unit": "count", "threshold": len(events["days"]),

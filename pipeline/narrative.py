@@ -293,8 +293,9 @@ def findings(m):
         out["basis_short"] = (
             "Counting one side of each swap for every venue gives %s. Only one reading puts "
             "Intents behind: halving Intents while leaving rivals as reported (%s, %s first). "
-            "The data refutes it twice: the rivals' own indexers count both halves of almost "
-            "every routed swap, and intents.near's events show the Intents figure does too."
+            "The data is against it: the rivals' own indexers count both halves of routed "
+            "swaps, and on every day where the event method applies, intents.near's events "
+            "put the Intents figure at both sides too."
             % (pct(sc["one_side"]["share"]), pct(sc["worst"]["share"]), sc["worst"]["leader"])
             if sc["worst"]["leader"] != names[s] else
             "Counting one side of each swap for every venue gives %s; even halving Intents "
@@ -306,18 +307,33 @@ def findings(m):
                  % (d["day"], usd(d["both"]), usd(d["both_p05"]), usd(d["both_p95"]), usd(d["reported"]))
                  for d in ev["days"]]
         out["events"] = (
-            "Rebuilt from intents.near itself: every transaction touching the contract on %s "
-            "was listed (%s), a seeded random sample of %s was read, and every DIP-4 "
-            "token_diff event was valued at that day's price. The days are before "
-            "confidential intents launched, so almost all flow is public. %s. Counting one "
-            "side would give only %s of the reported figure. The reported figure counts both "
-            "sides, like THORChain's, Maya's and Chainflip's, so comparing reported volumes "
-            "compares like with like."
-            % (" and ".join(d["day"] for d in ev["days"]),
-               " and ".join("{:,}".format(d["transactions"]) for d in ev["days"]),
-               " and ".join("{:,}".format(d["sampled"]) for d in ev["days"]),
-               "; ".join(parts), pct(ev["one_ratio_mean"]))
+            "Rebuilt from intents.near itself: on %d days every transaction touching the contract "
+            "was listed, a seeded random sample of 4,000 a day was read, and every DIP-4 "
+            "token_diff event was valued at that day's price. %s. On average the both-sides "
+            "figure is %.2f times the reported one, and the one-side figure %.2f: the reported "
+            "figure counts both sides, like THORChain's, Maya's and Chainflip's."
+            % (len(ev["days"]), "; ".join(parts), ev["both_ratio_mean"], ev["one_ratio_mean"])
         )
+        out["events_others"] = (
+            "This agrees with the two other public re-computations rather than contradicting "
+            "them. NearQuery's SQL defines its leg sum over user and solver entries as the "
+            "definition that reproduces NEAR's reported volume, and halves it for net volume; "
+            "soldano finds both legs at 92% of the reported figure. Their lower figures (46% "
+            "once, about 35% unseen) are about flow that public token_diff events do not show "
+            "after August, not about the counting basis."
+        )
+        if ev["later_days"]:
+            later = "; ".join("%s: %.2f of reported" % (d["day"], d["both_ratio"]) for d in ev["later_days"])
+            out["events_limit"] = (
+                "The method has a limit, found while extending it. After %s the contract "
+                "increasingly settles swaps through transfer intents instead of token_diff "
+                "events (event version 0.4.3 by mid-October, no token_diff at all in a 5 November "
+                "sample; data/raw/intents_event_format.json). Counted the same way, later days "
+                "fall short (%s). Any token_diff-based count, including the residuals above, "
+                "understates volume from then on, so those days are shown but not used, and the "
+                "share of truly confidential flow after August is not established here."
+                % (ev["valid_until"], later)
+            )
     tk = m.get("token")
     if tk:
         out["token"] = (
@@ -639,6 +655,11 @@ def thesis_markdown(m, text):
         if "events" in text:
             add(text["events"])
             add("")
+            add(text["events_others"])
+            add("")
+            if "events_limit" in text:
+                add(text["events_limit"])
+                add("")
         bp = m["basis"].get("breakpoints")
         if bp:
             add("Where the conclusion would break: counting one side for every venue, Intents "

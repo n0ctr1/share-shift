@@ -146,7 +146,7 @@ def fetch_all(log=print):
         if os.path.exists(path):
             files[name] = path
     for fname in sorted(os.listdir(RAW_DIR)):
-        if fname.startswith(("intents_events_", "tee_run", "near_anchor", "actions_", "near_supply",
+        if fname.startswith(("intents_events_", "intents_event_format", "tee_run", "near_anchor", "actions_", "near_supply",
                              "near_l1_daily", "bq_")) and fname.endswith(".json"):
             files[fname[:-5]] = os.path.join(RAW_DIR, fname)
 

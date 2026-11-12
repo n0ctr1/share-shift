@@ -538,7 +538,7 @@ footer p { margin: 0 0 6px; }
   if (M.basis) {
     var fb = el('div', {class: 'figure'});
     fb.appendChild(el('h3', {}, 'How volume is counted changes the share, not the leader'));
-    fb.appendChild(prose([T.basis, T.events, T.tee]));
+    fb.appendChild(prose([T.basis, T.events, T.events_others, T.events_limit]));
     fb.appendChild(table(['Counting basis', 'Intents share, four venues', 'Largest', 'Intents share, all eight'],
       M.basis.scenarios.map(function (x) { return [x.label, pct(x.share, 1), x.leader, pct(x.wide_share, 1)]; }), [0, 1, 0, 1]));
     var bs = el('p', {class: 'src'}); bs.appendChild(document.createTextNode('Leg data: '));

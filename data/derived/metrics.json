@@ -27,14 +27,14 @@
     "id": "measured",
     "label": "One side of each swap, every factor measured from the venue's own records (Intents from intents.near events)",
     "leader": "NEAR Intents",
-    "runner_up_share": 0.34133383177599985,
-    "share": 0.5199871271302059,
-    "subject_factor": 0.43367890086069,
-    "wide_share": 0.09149120912667295
+    "runner_up_share": 0.31616807322631035,
+    "share": 0.555377372499471,
+    "subject_factor": 0.5000635576321353,
+    "wide_share": 0.1040390177117954
    },
    {
     "id": "worst",
-    "label": "Intents halved, rivals left as reported (refuted: rivals' indexers and intents.near events both show two-sided counting)",
+    "label": "Intents halved, rivals left as reported (inconsistent with the rivals' indexers and with intents.near events)",
     "leader": "THORChain",
     "runner_up_share": 0.4199578879807587,
     "share": 0.40933471529741683,
@@ -533,15 +533,15 @@
    "verdict": "SUPPORTED"
   },
   {
-   "claim": "The reported Intents volume counts both sides of each swap, like the rivals' figures: on every day rebuilt from intents.near events it sits inside the both-sides interval and outside the one-side interval.",
+   "claim": "The reported Intents volume counts both sides of each swap, like the rivals' figures: on every day rebuilt from intents.near token_diff events (through August, where the method applies) it sits inside the both-sides interval and outside the one-side interval.",
    "display": {
-    "threshold": "2 of 2",
-    "value": "2 of 2 days"
+    "threshold": "4 of 4",
+    "value": "4 of 4 days"
    },
    "id": "C13",
-   "threshold": 2,
+   "threshold": 4,
    "unit": "count",
-   "value": 2,
+   "value": 4,
    "verdict": "SUPPORTED"
   },
   {
@@ -592,8 +592,37 @@
   "zero_days_in_one_only": 0
  },
  "events": {
+  "both_ratio_mean": 1.0001271152642706,
   "both_sides": true,
   "days": [
+   {
+    "both": 89058827.76648228,
+    "both_p05": 60037605.80828378,
+    "both_p95": 126231034.3980523,
+    "both_ratio": 1.061876065276051,
+    "day": "2026-08-06",
+    "one": 44529413.88324114,
+    "one_ratio": 0.5309380326380255,
+    "reported": 83869324.0,
+    "reported_in_both_interval": true,
+    "reported_in_one_interval": false,
+    "sampled": 4000,
+    "transactions": 64919
+   },
+   {
+    "both": 83983235.7277257,
+    "both_p05": 56056289.445474066,
+    "both_p95": 113678879.7458264,
+    "both_ratio": 1.2039167923382708,
+    "day": "2026-08-13",
+    "one": 41991617.86386285,
+    "one_ratio": 0.6019583961691354,
+    "reported": 69758339.0,
+    "reported_in_both_interval": true,
+    "reported_in_one_interval": false,
+    "sampled": 4000,
+    "transactions": 66689
+   },
    {
     "both": 115042327.74385773,
     "both_p05": 83559907.50403021,
@@ -623,7 +652,101 @@
     "transactions": 83785
    }
   ],
-  "one_ratio_mean": 0.43367890086069
+  "format": {
+   "dates": [
+    {
+     "day": "2026-08-27",
+     "intents_executed": 31,
+     "token_diff": 79,
+     "transfer": 48,
+     "versions": [
+      "0.3.0",
+      "0.3.1"
+     ]
+    },
+    {
+     "day": "2026-09-15",
+     "intents_executed": 32,
+     "token_diff": 31,
+     "transfer": 55,
+     "versions": [
+      "0.3.0",
+      "0.3.1"
+     ]
+    },
+    {
+     "day": "2026-10-01",
+     "intents_executed": 19,
+     "token_diff": 14,
+     "transfer": 29,
+     "versions": [
+      "0.3.0",
+      "0.3.1"
+     ]
+    },
+    {
+     "day": "2026-10-15",
+     "intents_executed": 41,
+     "token_diff": 36,
+     "transfer": 83,
+     "versions": [
+      "0.4.3"
+     ]
+    },
+    {
+     "day": "2026-10-25",
+     "intents_executed": 34,
+     "token_diff": 52,
+     "transfer": 50,
+     "versions": [
+      "0.4.3"
+     ]
+    },
+    {
+     "day": "2026-11-05",
+     "intents_executed": 88,
+     "token_diff": 0,
+     "transfer": 133,
+     "versions": [
+      "0.4.3"
+     ]
+    }
+   ],
+   "method": "60 intents.near transactions listed just after 12:00 UTC on each date (FastNear), DIP-4 events in their receipts counted by event and version",
+   "source": "https://tx.main.fastnear.com/v0"
+  },
+  "later_days": [
+   {
+    "both": 60721566.23862446,
+    "both_p05": 46803247.579418786,
+    "both_p95": 77363267.43794914,
+    "both_ratio": 0.6093902226445338,
+    "day": "2026-10-15",
+    "one": 30360783.11931223,
+    "one_ratio": 0.3046951113222669,
+    "reported": 99643158.0,
+    "reported_in_both_interval": false,
+    "reported_in_one_interval": false,
+    "sampled": 4000,
+    "transactions": 63812
+   },
+   {
+    "both": 1328087.1223125416,
+    "both_p05": 662409.911037653,
+    "both_p95": 2143237.6965802526,
+    "both_ratio": 0.010136501882808352,
+    "day": "2026-11-05",
+    "one": 664043.5611562708,
+    "one_ratio": 0.005068250941404176,
+    "reported": 131020261.0,
+    "reported_in_both_interval": false,
+    "reported_in_one_interval": false,
+    "sampled": 4000,
+    "transactions": 262395
+   }
+  ],
+  "one_ratio_mean": 0.5000635576321353,
+  "valid_until": "2026-08-31"
  },
  "fee_table": [
   {

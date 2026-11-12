@@ -144,6 +144,12 @@ SUBJECT_BASIS_NOTES = [
     {"finding": "public net swap volume matches the reported volume within about 1% before confidential intents launched",
      "source": "https://github.com/EmekaManuel/nearquery"},
 ]
+# The event method counts DIP-4 token_diff swaps. Through August swaps settle
+# that way (contract events v0.3.x); from September the contract increasingly
+# settles them through transfer intents (v0.4.3 by mid-October, no token_diff
+# in a 5 November sample, see data/raw/intents_event_format.json). Days after
+# this date are shown but not used for C13.
+EVENTS_VALID_UNTIL = "2026-08-31"
 SUBJECT_VOLUME_SOURCE = ("DefiLlama reads it from NEAR's own Dune table "
                          "dune.near.dataset_near_intents_metrics (column volume_amount_usd)")
 
