@@ -5,6 +5,9 @@ with every number rebuilt from public data by one command.
 
 Built at NEAR HACKATHON, track `thesis` (Investment Thesis).
 
+- Live dashboard: https://n0ctr1.github.io/share-shift/
+- Full argument: [`THESIS.md`](THESIS.md)
+
 ## What it is
 
 - `THESIS.md`: the claim, the evidence for it, the evidence against it, and
