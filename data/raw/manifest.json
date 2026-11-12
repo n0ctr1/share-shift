@@ -5,6 +5,10 @@
    "path": "raw/actions_thorchain-dex.json",
    "sha256": "98a8b0f97733abf74b044854b269a273bf085490f38a667e388cd93765ddb056"
   },
+  "bq_intents_flows": {
+   "path": "raw/bq_intents_flows.json",
+   "sha256": "cda5e0bc6935d93d6e4bb164f83ed59f867847d8b7b74fc99b2b8ff8d46a94dc"
+  },
   "bq_intents_legs": {
    "path": "raw/bq_intents_legs.json",
    "sha256": "fb190516e3b262b69224160770ca107a45d46832ef5edb38dce6e2df58b4aaf5"
@@ -17,13 +21,13 @@
    "path": "raw/bq_prices.json",
    "sha256": "923d58921ee17a47c4e3d11eac01207910902d4aaac0ba9e77e260f7245393e8"
   },
+  "channels_report": {
+   "path": "raw/channels_report.json",
+   "sha256": "6cd5f818c8e1ee947a869b1b9b8c8263cd5954ef67ba0195e56382279ec80b0e"
+  },
   "crosscheck_midgard": {
    "path": "raw/crosscheck_midgard.json",
    "sha256": "e021de6cc646bf666048ad5a6e89c0a8354c5498f7c8ea1f9f85e82ca340a97b"
-  },
-  "explorer_daily": {
-   "path": "raw/explorer_daily.json",
-   "sha256": "8250d61c0867cf2d195b19862dd7ed0ccd1d3235fca199f79cd49b21341de326"
   },
   "fees_across": {
    "path": "raw/fees_across.json",
@@ -132,6 +136,10 @@
   "revenue_thorchain-dex": {
    "path": "raw/revenue_thorchain-dex.json",
    "sha256": "d9cb9fef91e6c6053e897f17cc0b181aa36fc9f76f3c0c26be9153909898ff3a"
+  },
+  "tdx_quote": {
+   "path": "raw/tdx_quote.json",
+   "sha256": "1cd337ecbf14b2e6a314588bc9dd928c9b0dc36d98135fc6968c282e21e2763c"
   },
   "tee_run": {
    "path": "raw/tee_run.json",

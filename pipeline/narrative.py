@@ -172,7 +172,9 @@ def findings(m):
             "them; the largest, %s, brought %s and the top three %s."
             % ("$%s" % format(int(c["min_usd"]), ","), usd(c["volume"]), pct(c["coverage_of_all_intents_volume"]),
                c["channel_count"], top["channel"], pct(top["share"]), pct(c["top3_share"]))
-        )
+            + " These are window totals from data/raw/channels_report.json (%s to %s); the API's "
+              "daily data is not kept, as its terms do not allow storing it beyond 24 hours."
+            % tuple(c["window"]))
         multi = c["multi_venue_channels"]
         out["routers"] = (
             "%s of that volume came through front ends that are documented as also routing "
@@ -368,8 +370,8 @@ def findings(m):
                 "The method stops working after %s: the contract increasingly settles swaps "
                 "through transfer intents instead of token_diff events (event version 0.4.3; "
                 "data/raw/intents_event_format.json), so later sampled days fall short (%s) and "
-                "are shown but not used. The full-day series below dates the break exactly; "
-                "how much of the later flow is truly confidential is not established here."
+                "are shown but not used. The full-day series below dates the break exactly and "
+                "rebuilds the later flow from those transfers."
                 % (ev["valid_until"], later)
             )
     bq = m.get("bq")
@@ -394,6 +396,53 @@ def findings(m):
                usd(last["transfer_usd"]), last["day"], pct(bq["token_diff_over_reported"]),
                pct(1 - bq["token_diff_over_reported"]))
         )
+    oc = (bq or {}).get("onchain")
+    if oc and oc.get("from_method_change"):
+        f, b0 = oc["from_method_change"], oc["before_method_change"]
+        routed_from = next((d["day"] for d in bq["days"]
+                            if d.get("routed_usd", 0) > 0.05 * d["reported"]), None)
+        sc_ = {x["id"]: x for x in (m.get("basis") or {}).get("scenarios", [])}
+        out["onchain_rebuild"] = (
+            "The later flow is not hidden; it moved. From September most swaps settle as plain "
+            "transfers through a few 1Click router accounts: the user's deposit goes to a router "
+            "and the router pays the other asset back. Counting those two transfers as the two "
+            "sides of the swap, as the two token_diff entries are for a direct fill, and adding "
+            "token_diff, rebuilds the reported figure for every day from %s to %s: median %.2f "
+            "of reported, within 10%% on %d of %d days and within 20%% on %d. Transfers between "
+            "routers and solvers are the routers' own hedging and are left out. Routed swaps "
+            "start on %s, before DefiLlama's figure includes them, so for the rest of August the "
+            "chain shows more than is reported (median %.2f). The rule is fixed before it is "
+            "graded again: the two queries' hashes are in the third seal."
+            % (bq["first_day_off"], bq["days"][-1]["day"],
+               f["median"], f["within_10pct"], f["days"], f["within_20pct"],
+               routed_from or "n/a", b0["median"] if b0 else float("nan")))
+        if "onchain" in sc_:
+            out["onchain_share"] = (
+                "With Intents volume taken from intents.near itself for every day of the window, "
+                "its share is %s, against %s as reported. Taking each day the lower of the "
+                "on-chain and the reported figure, and one side of each swap for every venue, "
+                "gives %s, still first. C1 is graded on the lowest of these readings."
+                % (pct(sc_["onchain"]["share"]), pct(sc_["reported"]["share"]),
+                   pct(sc_["onchain_low"]["share"])))
+    mt = m.get("market_test")
+    if mt:
+        rows_ = {r["slug"]: r for r in mt["rows"]}
+        sub = rows_.get(s)
+        bridges = [r for r in mt["rows"] if r["kind"] == "bridge"]
+        grew = max(bridges, key=lambda r: r["gain"]) if bridges else None
+        out["market_test"] = (
+            "Which market is the right one can be tested, not only argued. A venue that serves "
+            "the same users as the halted rival should gain while it is down and give part of "
+            "that back when it returns. Over the halt, against an earlier period of the same "
+            "length to remove each venue's own trend: %s gained %s of the flow THORChain lost "
+            "(trend-adjusted %s) and gave back %s of its gain when THORChain returned. Venues that "
+            "pass both tests: %s. Of the four bridges, none passes. %s"
+            % (sub["name"], pct(sub["diversion"]), pct(sub["diversion_trend_adjusted"]),
+               pct(sub["gave_back"]) if sub["gave_back"] is not None else "none",
+               ", ".join(mt["substitutes"]) or "none",
+               ("%s grew most (%s a day more) but kept growing after THORChain came back, so the "
+                "test cannot tell its own growth from substitution; the other three lost volume "
+                "during the halt." % (grew["name"], usd(grew["gain"]))) if grew and grew["gain"] > 0 else ""))
     for p in m.get("predictions") or []:
         if p["seal"] == "v2" and p["metric"] == "share_window":
             out["tee_prediction"] = tee_prediction_text(p)
@@ -440,9 +489,25 @@ def findings(m):
             "What that proves is narrow: the published program, unmodified, produced the "
             "published numbers from what those APIs served at that moment. It does not prove "
             "the APIs are right; the primary-source checks do that (each venue's own indexer, "
-            "intents.near's events, the revenue wallets, block-header supply). This repository "
-            "checks the worker's key on chain but does not re-verify the TDX quote itself."
+            "intents.near's events, the revenue wallets, block-header supply)."
         )
+        tdx = tee.get("tdx")
+        if tdx:
+            oc_ = tdx["onchain_collateral"]
+            out["tdx"] = (
+                "The TDX quote behind that key is verified here too, not taken from OutLayer "
+                "(pipeline/tdx.py). The key was added by transaction %s on %s; the quote passed "
+                "to it carries the SHA-256 of that exact key, is signed by an attestation key "
+                "bound to Intel's Quoting Enclave, whose report is signed by a PCK certificate "
+                "that chains to Intel's SGX Root CA (pinned by public-key hash). Against Intel's "
+                "current collateral nothing is revoked and the TDX TCB level is %s; the five "
+                "measurements were on OutLayer's allowlist at that block. %d of %d checks pass. "
+                "One finding about OutLayer itself: the Intel collateral its contract held at "
+                "that block was issued on %s, past its next update (%s), and for %s platform, so "
+                "the contract's own check was weaker than this one."
+                % (tdx["registration_tx"], tdx["registration_time"][:10], tdx["tcb_status"],
+                   tdx["checks_passed"], tdx["checks_total"], oc_["issued"][:10],
+                   oc_["next_update"][:10], "the same" if oc_["fmspc_matches"] else "another"))
     if h:
         p365 = next((x for x in h["placebo"] if x["lookback_days"] == 365), None)
         absorbed = (h.get("absorbed_by_basis") or {}).get("one_side", h["absorbed_fraction"])
@@ -537,26 +602,29 @@ def findings(m):
     gaps = [f for f in m["quality_flags"] if not f.get("cause")]
     out["limits"] = [
         "The headline peer set is four venues that swap native assets. The wider set adds "
-        "four bridges that mostly move the same asset between chains; which set is the "
-        "right market is a judgement, so both are shown. Fee methodologies differ between "
+        "four bridges that mostly move the same asset between chains. Which set is the right "
+        "market is tested with the halt (only swap venues behaved as substitutes) but one "
+        "event is thin evidence, so both sets are shown. Fee methodologies differ between "
         "venues, and Relay's fee figure is far above the rest and has not been reconciled.",
         "One halt is one event. It shows what happened once when a rival stopped; it is not "
         "a law about what happens next time, and the placebo check above shows the growth "
         "could also be Intents' own trend.",
         "%d other weeks are flagged because a venue's volume fell below 20%% of its own prior "
         "eight-week median, with no explanation found. They stay in the data." % len(gaps),
-        "Claim thresholds were set after a first look at the data and are not "
-        "pre-registered. The dated predictions are sealed: their SHA-256 is in "
-        "predictions/predictions.json.sha256, timestamped on Bitcoin through OpenTimestamps "
-        "and tagged predictions-v1 in git, and the build refuses to run if they change.",
+        "Claim thresholds and the call's rule were set after a first look at the data and are "
+        "not pre-registered. What is sealed: the first predictions (written on NEAR and "
+        "timestamped on Bitcoin), the thresholds (second seal) and, in a third seal made before "
+        "its window, the call's rule, the on-chain counting method and P6 to P8. The build "
+        "refuses to run if any of them changes.",
         "NEAR's market cap prices the whole L1, so the valuation line compares Intents "
         "revenue with rival multiples and is not a price target.",
         "Volume, fees and revenue come from DefiLlama adapters. Checked against primary "
         "sources: THORChain's volume (Midgard), every rival's counting factor (each venue's "
         "indexer), Intents volume through August (intents.near events) and captured revenue "
         "(the revenue wallets). Fees and the bridges' figures are not checked; an adapter "
-        "error there is an error here. After August, Intents volume rests on NEAR's own "
-        "Dune table, which public events no longer fully reproduce.",
+        "error there is an error here. Intents volume is rebuilt from intents.near for every "
+        "day of the window, but the router rule behind it was found by looking at the data; it "
+        "is sealed now, and P8 tests it on days not yet seen.",
     ]
     return out
 
@@ -752,6 +820,12 @@ def methods_markdown(m, text):
             if "bq" in text:
                 add(text["bq"])
                 add("")
+            if "onchain_rebuild" in text:
+                add(text["onchain_rebuild"])
+                add("")
+            if "onchain_share" in text:
+                add(text["onchain_share"])
+                add("")
         bp = m["basis"].get("breakpoints")
         if bp:
             add("Where the conclusion would break: counting one side for every venue, Intents "
@@ -780,6 +854,23 @@ def methods_markdown(m, text):
         for v in m["wide"]["venues"]:
             add("| %s | %s | %s | %s | %s | %s |" % (v["name"], v["kind"], usd(v["volume"]),
                                                   pct(v["share"], 1), usd(v["fees"]), bps(v["take_bps"])))
+        add("")
+    if "market_test" in text:
+        mt = m["market_test"]
+        add("### Which market: a substitution test")
+        add("")
+        add(text["market_test"])
+        add("")
+        add("| Venue | Kind | Daily, pre | Before | During halt | After | Gain / lost flow | "
+            "Trend-adjusted | Gave back | Substitute |")
+        add("| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |")
+        for r in mt["rows"]:
+            d = r["daily"]
+            add("| %s | %s | %s | %s | %s | %s | %s | %s | %s | %s |" % (
+                r["name"], r["kind"], usd(d["pre"]), usd(d["before"]), usd(d["during"]),
+                usd(d["after_1"]), pct(r["diversion"]), pct(r["diversion_trend_adjusted"]),
+                pct(r["gave_back"]) if r["gave_back"] is not None else "n/a",
+                "yes" if r["substitute"] else "no"))
         add("")
     add("### How much the window matters")
     add("")
@@ -816,6 +907,23 @@ def methods_markdown(m, text):
             "It makes any later change to them visible."
             % (sv["sealed_on"], sv["data_seen_through"], m["meta"]["seal_v2_sha256"],
                "{:,}".format(btc["block"]), btc["time_utc"]))
+    if m["meta"].get("seal_v3_sha256"):
+        s3 = m["meta"]["seal_v3"]
+        add("")
+        add("A third seal, made on %s with data seen through %s, fixes what a reader could "
+            "suspect of being tuned after the fact: the investment call's rule, the on-chain "
+            "counting method (the SHA-256 of both BigQuery queries and the router rule of %d "
+            "senders) and P6 to P8, three predictions on %s to their due date, a window that "
+            "starts after the seal. `predictions/predictions-v3.json`, SHA-256 `%s`, timestamped "
+            "through OpenTimestamps.%s"
+            % (s3["sealed_on"], s3["data_seen_through"], s3["router_min_senders"],
+               s3["window_starts"], m["meta"]["seal_v3_sha256"],
+               (" Written on NEAR mainnet at `%s` by transaction `%s` (block %s)."
+                % (m["meta"]["near_anchor_v3"]["key"], m["meta"]["near_anchor_v3"]["tx"],
+                   "{:,}".format(m["meta"]["near_anchor_v3"]["block_height"])))
+               if m["meta"].get("near_anchor_v3") else
+               " Its hash is to be written on NEAR mainnet by the author "
+               "(`python3 -m pipeline.anchor --account noctrl.near --seal v3`)."))
     anchor = m["meta"].get("near_anchor")
     if anchor:
         add("")
@@ -827,9 +935,8 @@ def methods_markdown(m, text):
     add("| # | Due | Prediction | Now | Status |")
     add("| --- | --- | --- | --- | --- |")
     for p in m["predictions"]:
-        unit = "bps" if p["metric"].endswith("bps") else "share"
         add("| %s | %s | %s | %s | %s |" % (p["id"], p["due"], p["text"],
-                                           fmt_value(p["current"], unit), p["status"]))
+                                           pred_value(p), p["status"]))
     add("")
     if "tee_prediction" in text:
         add(text["tee_prediction"])
@@ -848,8 +955,11 @@ def methods_markdown(m, text):
         "listed in the README.")
     if "tee" in text:
         add("- **The computation:** %s %s" % (text["tee"], text["tee_scope"]))
-    add("- **The predictions:** sealed by hash and timestamped on Bitcoin; the first seal is "
-        "also written on NEAR mainnet. See the predictions section.")
+    if "tdx" in text:
+        add("- **The enclave:** %s `python3 -m pipeline.tdx` repeats it (needs the `cryptography` "
+            "package)." % text["tdx"])
+    add("- **The predictions:** sealed by hash and timestamped on Bitcoin; the first and third "
+        "seals are also written on NEAR mainnet. See the predictions section.")
     add("")
     add("## What this analysis cannot say")
     add("")
@@ -877,6 +987,16 @@ def methods_markdown(m, text):
             % (flag["peer"], flag["week"], usd(flag["volume"]), usd(flag["median_prior_8w"])))
     add("")
     return "\n".join(lines)
+
+
+def pred_value(p):
+    if p["current"] is None:
+        return "n/a"
+    if p["metric"] == "onchain_ratio_window":
+        return "%.2f" % p["current"]
+    if p["metric"] == "lead_window":
+        return "%+.1f pts" % (100 * p["current"])
+    return fmt_value(p["current"], "bps" if p["metric"].endswith("bps") else "share")
 
 
 def tee_prediction_text(p):
@@ -1044,19 +1164,27 @@ def thesis_markdown(m, text):
         w = m["wide"]
         add("- **Bridges are bigger.** With the four large bridges added, Intents has %s of the "
             "eight venues' volume and ranks %d of %d. %s"
-            % (pct(w["subject_share"]), w["subject_rank_volume"], len(w["venues"]), M("All eight venues")))
+            % (pct(w["subject_share"]), w["subject_rank_volume"], len(w["venues"]), M("All eight venues"))
+            + (" When THORChain halted, no bridge behaved as a substitute; swap venues did. %s"
+               % M("Which market: a substitution test") if m.get("market_test") else ""))
     add("")
     add("## Why these numbers can be trusted")
     add("")
     bq = m.get("bq")
     if bq and bq.get("valid"):
-        add("- **Volume is counted the same way for every venue.** Each rival's double counting "
-            "is measured from its own indexer, and Intents' reported figure equals both sides of "
-            "intents.near's own events on %d of %d days through %s (NEAR's public BigQuery "
-            "dataset). After that date the events no longer cover all swaps, which is stated as "
-            "a limit. %s" % (bq["valid"]["within_5pct"], bq["valid"]["days"],
-                             m["events"]["valid_until"] if m.get("events") else "August",
-                             M("How volume is counted")))
+        oc = bq.get("onchain") or {}
+        sc_ = {x["id"]: x for x in (m.get("basis") or {}).get("scenarios", [])}
+        add("- **Intents volume is rebuilt from the chain for every day, not taken on trust.** "
+            "Each rival's double counting is measured from its own indexer. For Intents, every "
+            "log line intents.near wrote (NEAR's public BigQuery dataset) rebuilds the reported "
+            "figure: token_diff events through August, and from September the transfers through "
+            "1Click routers that replaced them (median %.2f of reported, within 20%% on %d of %d "
+            "days). With on-chain volume the share is %s; the strictest reading gives %s. %s"
+            % (oc.get("from_method_change", {}).get("median", float("nan")),
+               oc.get("from_method_change", {}).get("within_20pct", 0),
+               oc.get("from_method_change", {}).get("days", 0),
+               pct(sc_.get("onchain", {}).get("share")), pct(sc_.get("onchain_low", {}).get("share")),
+               M("How volume is counted")))
     if m.get("onchain"):
         add("- **Revenue matches the chain.** Transfers into NEAR's three revenue wallets come to "
             "%s of the revenue figure used. %s"
@@ -1064,31 +1192,41 @@ def thesis_markdown(m, text):
     if m.get("token"):
         add("- **Supply and activity come from the chain.** Issuance is read from block headers; "
             "L1 activity is counted by two indexers that agree. %s" % M("What it means for the NEAR token"))
+    tdx = (m.get("tee") or {}).get("tdx")
+    if tdx:
+        add("- **The TEE run is checked down to Intel's root.** The headline share was recomputed "
+            "inside an Intel TDX enclave through OutLayer. This repository verifies the enclave's "
+            "quote itself: it binds the key that delivered the result, chains to Intel's root CA, "
+            "and its TCB is %s against Intel's current collateral (%d of %d checks pass). %s"
+            % (tdx["tcb_status"], tdx["checks_passed"], tdx["checks_total"], M("How this can be checked")))
     add("- **Anyone can rebuild it.** `python3 build.py --offline` reproduces this file and the "
-        "dashboard byte for byte from the committed snapshot; the predictions are sealed on "
-        "Bitcoin; the headline share was recomputed in a TEE. %s" % M("How this can be checked"))
+        "dashboard byte for byte from the committed snapshot; the predictions, the call's rule "
+        "and the on-chain method are sealed on Bitcoin. %s" % M("How this can be checked"))
     add("")
     add("## Dated predictions")
     add("")
     add("| # | Due | Prediction | Now | Status |")
     add("| --- | --- | --- | --- | --- |")
     for p in m["predictions"]:
-        unit = "bps" if p["metric"].endswith("bps") else "share"
         add("| %s | %s | %s | %s | %s |" % (p["id"], p["due"], p["text"],
-                                           fmt_value(p["current"], unit), p["status"]))
+                                           pred_value(p), p["status"]))
     add("")
     add("P1 to P3 are sealed by hash, timestamped on Bitcoin and written on NEAR mainnet; P4 and "
         "P5 are in a second seal, timestamped on Bitcoin after the first of their two days had "
-        "ended. %s %s" % (text.get("tee_prediction", ""), M("What would change my mind")))
+        "ended. P6 to P8 are in a third seal made before their window starts, together with the "
+        "call's rule and the on-chain method. %s %s"
+        % (text.get("tee_prediction", ""), M("What would change my mind")))
     add("")
     add("## What this cannot say")
     add("")
-    add("- After August, Intents volume rests on NEAR's own Dune table, which public events no "
-        "longer fully reproduce.")
-    add("- Which market is the right one, swap venues or swap venues and bridges, is a "
-        "judgement; both are shown.")
-    add("- Claim thresholds and the call's rule were set after a first look at the data; the "
-        "thresholds are sealed so later changes show, the call's rule is not.")
+    add("- The on-chain router rule that rebuilds Intents volume after August was found by "
+        "looking at the data. It is sealed now and P8 tests it on days not yet seen.")
+    add("- Which market is the right one is tested once, with the THORChain halt: only swap "
+        "venues behaved as substitutes, no bridge did. One event is thin evidence, so both "
+        "market sets are shown. %s" % M("Which market: a substitution test"))
+    add("- Claim thresholds and the call's rule were set after a first look at the data. They "
+        "are sealed so any later change shows, and P6 to P8 grade the thesis on days after the "
+        "seal.")
     add("")
     add("Every other limit: %s" % M("What this analysis cannot say"))
     add("")

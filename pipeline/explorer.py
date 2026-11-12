@@ -1,13 +1,21 @@
-"""Pull 1Click swap history from the NEAR Intents Explorer API and aggregate it.
+"""Pull 1Click swap history from the NEAR Intents Explorer API and reduce it to one report.
 
     python3 -m pipeline.explorer --from 2026-04-09 --to 2026-11-10
+
+The API terms (1ClickSwap API, section 4.1(e)) do not allow caching or storing
+API data for more than 24 hours. So the pull is kept out of the repository and
+short-lived: daily aggregates go to data/private/explorer_daily.json (ignored
+by git), the channel report for the thesis window is computed from them at
+once and written to data/raw/channels_report.json, and the daily file and the
+progress file are then deleted. Only that report, a handful of window totals
+(top channels, their shares and fee rates, top fee recipients, and the change
+during the THORChain halt), is committed and read by the build.
 
 Needs INTENTS_EXPLORER_JWT in .env (free, from partners.near-intents.org).
 The API allows one request every five seconds, so a long range takes a while;
 progress is saved and an interrupted run continues where it stopped.
 
-Only daily aggregates are written to data/raw/explorer_daily.json. No
-address, hash or single transaction is stored.
+No address, hash or single transaction is stored at any point.
 """
 
 import argparse
@@ -22,8 +30,9 @@ import urllib.parse
 import urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(ROOT, "data", "raw", "explorer_daily.json")
-PROGRESS = os.path.join(ROOT, "data", "explorer_progress.json")
+OUT = os.path.join(ROOT, "data", "private", "explorer_daily.json")
+PROGRESS = os.path.join(ROOT, "data", "private", "explorer_progress.json")
+REPORT = os.path.join(ROOT, "data", "raw", "channels_report.json")
 URL = "https://explorer.near-intents.org/api/v0/transactions"
 PAGE = 1000
 PAUSE = 5.2
@@ -110,7 +119,28 @@ def calibrate(key, log=print):
     return out
 
 
+def report(daily, log=print):
+    """The thesis window's channel report from the daily aggregates, then delete them."""
+    from . import fetch, metrics
+    manifest, raw = fetch.load_all()
+    raw.pop("channels_report", None)
+    raw["explorer_daily"] = daily
+    result = metrics.compute(raw, manifest["fetched_at"])
+    body = {"source": daily["source"], "filters": daily["filters"], "range": daily["range"],
+            "note": "Window totals computed from 1Click Explorer API daily aggregates by "
+                    "pipeline/explorer.py; the aggregates themselves are not kept (API terms 4.1(e)).",
+            "report": result["channels"]}
+    with open(REPORT, "w") as fh:
+        json.dump(body, fh, indent=1, sort_keys=True)
+        fh.write("\n")
+    for path in (OUT, PROGRESS):
+        if os.path.exists(path):
+            os.remove(path)
+    log("wrote %s; deleted the daily aggregates" % os.path.relpath(REPORT, ROOT))
+
+
 def run(first_day, last_day, log=print):
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
     key = read_key()
     if not key:
         raise RuntimeError("INTENTS_EXPLORER_JWT is not set in .env")
@@ -163,8 +193,8 @@ def run(first_day, last_day, log=print):
     with open(OUT, "w") as fh:
         json.dump(out, fh, indent=1, sort_keys=True)
         fh.write("\n")
-    os.remove(PROGRESS)
-    log("wrote %s (%d days, %d pages)" % (os.path.relpath(OUT, ROOT), len(agg), state["pages"]))
+    log("pulled %d days in %d pages" % (len(agg), state["pages"]))
+    report(out, log)
 
 
 if __name__ == "__main__":

@@ -626,13 +626,16 @@ footer p { margin: 0 0 6px; }
   }
   if (M.bq) {
     var bd = M.bq.days;
-    figure(s, {title: 'Reported Intents volume against intents.near events, every day', text: [T.bq],
+    var onc = M.bq.onchain;
+    figure(s, {title: onc ? 'Reported Intents volume against the volume rebuilt from intents.near, every day' : 'Reported Intents volume against intents.near events, every day',
+      text: [T.bq, T.onchain_rebuild, T.onchain_share],
       kind: 'line', unit: 'usd', x: bd.map(function (d) { return d.day; }), xLabel: '', xHead: 'Day',
       band: M.bq.first_day_off ? {from: bd[0].day, to: bd.filter(function (d) { return d.day < M.bq.first_day_off; }).slice(-1)[0].day, label: 'token_diff matches'} : null,
       series: [
         {name: 'Reported (DefiLlama)', color: COLORS[0], values: bd.map(function (d) { return d.reported; })},
         {name: 'token_diff, both sides', color: COLORS[1], values: bd.map(function (d) { return d.token_diff_usd; })},
-        {name: 'Transfer intents', color: COLORS[2], values: bd.map(function (d) { return d.transfer_usd; })}],
+        onc ? {name: 'Rebuilt on chain (token_diff + routed swaps)', color: COLORS[2], values: bd.map(function (d) { return d.onchain_usd; })}
+            : {name: 'Transfer intents', color: COLORS[2], values: bd.map(function (d) { return d.transfer_usd; })}],
       query: 'BigQuery ' + M.bq.dataset + '.execution_outcomes, intents.near DIP-4 events (pipeline/bq.py)', fn: 'metrics.bq_check()'});
   }
   figure(s, {title: 'Share of native cross-chain swap volume, by week', text: [T.share, T.stability], band: band,
@@ -651,6 +654,15 @@ footer p { margin: 0 0 6px; }
     f3.appendChild(table(['Venue', 'Kind', 'Volume', 'Share', 'Gross fees', 'Take rate'],
       M.wide.venues.map(function (v) { return [v.name, v.kind, usd(v.volume), pct(v.share, 1), usd(v.fees), bps(v.take_bps)]; }), [0, 0, 1, 1, 1, 1]));
     source(f3, VOL + ', /summary/bridges/{venue}, ' + FEE, 'metrics.wide_report()');
+    if (M.market_test) {
+      f3.appendChild(el('h3', {}, 'Which market: who behaved as a substitute when THORChain halted'));
+      f3.appendChild(prose([T.market_test]));
+      f3.appendChild(table(['Venue', 'Kind', 'Before', 'During halt', 'After', 'Gain / lost flow', 'Trend-adjusted', 'Gave back', 'Substitute'],
+        M.market_test.rows.map(function (r) { return [r.name, r.kind, usd(r.daily.before), usd(r.daily.during), usd(r.daily.after_1),
+          pct(r.diversion), pct(r.diversion_trend_adjusted), r.gave_back == null ? 'n/a' : pct(r.gave_back), r.substitute ? 'yes' : 'no']; }),
+        [0, 0, 1, 1, 1, 1, 1, 1, 0]));
+      source(f3, VOL + ', /summary/bridges/{venue}', 'metrics.market_test()');
+    }
     s.appendChild(f3);
   }
   figure(s, {title: 'Weekly volume of the four swap venues', text: [T.volume, T.burst, T.recent], band: band,
@@ -747,7 +759,10 @@ footer p { margin: 0 0 6px; }
   // ---------- 7. predictions ----------
   s = section('predictions', 'Predictions', 'What would change the conclusion', 'Dated predictions, graded by re-running the build');
   s.appendChild(rowsBlock(['#', 'Prediction', 'Now', 'Due', 'Status'], M.predictions.map(function (p) {
-    return [p.id, p.text, unitFmt(p.current, /bps$/.test(p.metric) ? 'bps' : 'share'), p.due, p.status];
+    var now = p.current == null ? 'n/a' : p.metric === 'onchain_ratio_window' ? p.current.toFixed(2)
+      : p.metric === 'lead_window' ? (p.current >= 0 ? '+' : '') + (100 * p.current).toFixed(1) + ' pts'
+      : unitFmt(p.current, /bps$/.test(p.metric) ? 'bps' : 'share');
+    return [p.id, p.text, now, p.due, p.status];
   })));
   var seal = el('p', {class: 'src'});
   seal.appendChild(document.createTextNode('Sealed: SHA-256 '));
@@ -758,7 +773,17 @@ footer p { margin: 0 0 6px; }
     seal.appendChild(el('a', {href: M.meta.near_anchor.explorer, rel: 'noopener'}, 'this transaction'));
     seal.appendChild(document.createTextNode(' (' + M.meta.near_anchor.key + ' on ' + M.meta.near_anchor.contract + ')'));
   }
-  seal.appendChild(document.createTextNode('. P4 and P5 are in a second seal, timestamped on Bitcoin but not written on NEAR. The build stops if either seal changes.'));
+  seal.appendChild(document.createTextNode('. P4 and P5 are in a second seal, timestamped on Bitcoin but not written on NEAR.'));
+  if (M.meta.seal_v3_sha256) {
+    seal.appendChild(document.createTextNode(' P6 to P8, the call’s rule and the on-chain counting method are in a third seal made before their window starts (SHA-256 '));
+    seal.appendChild(el('code', {}, M.meta.seal_v3_sha256.slice(0, 16) + '\u2026'));
+    if (M.meta.near_anchor_v3) {
+      seal.appendChild(document.createTextNode('), written on NEAR mainnet by '));
+      seal.appendChild(el('a', {href: M.meta.near_anchor_v3.explorer, rel: 'noopener'}, 'this transaction'));
+      seal.appendChild(document.createTextNode('.'));
+    } else seal.appendChild(document.createTextNode(', OpenTimestamps proof).'));
+  }
+  seal.appendChild(document.createTextNode(' The build stops if any seal changes.'));
   s.appendChild(seal);
   if (T.tee_prediction) s.appendChild(prose([T.tee_prediction]));
 
@@ -768,7 +793,8 @@ footer p { margin: 0 0 6px; }
   [['Every number', 'python3 build.py --offline rebuilds THESIS.md, METHODS.md and this page from the committed snapshot, byte for byte; python3 build.py refetches.'],
    ['The data', 'THORChain, Maya and Chainflip volume against their own indexers; Intents volume against intents.near events, sampled and on every day from NEAR’s public BigQuery dataset; captured revenue against the revenue wallets; NEAR supply against block headers; L1 activity in two indexers.'],
    ['The computation', T.tee ? T.tee + ' ' + T.tee_scope : null],
-   ['The predictions', 'Sealed by SHA-256 and timestamped on Bitcoin through OpenTimestamps; the first seal is also tagged in git and written on NEAR mainnet. The build stops if either seal changes.']]
+   ['The enclave', T.tdx ? T.tdx + ' python3 -m pipeline.tdx repeats it.' : null],
+   ['The predictions', 'Sealed by SHA-256 and timestamped on Bitcoin through OpenTimestamps; the first and third seals are also written on NEAR mainnet. The build stops if any seal changes.']]
     .forEach(function (r) { if (!r[1]) return; var li = el('li'); li.appendChild(el('b', {}, r[0] + '. ')); li.appendChild(document.createTextNode(r[1])); ul2.appendChild(li); });
   s.appendChild(ul2);
 

@@ -1,0 +1,229 @@
+{
+ "filters": {
+  "minUsdPrice": 1000,
+  "statuses": "SUCCESS"
+ },
+ "note": "Window totals computed from 1Click Explorer API daily aggregates by pipeline/explorer.py; the aggregates themselves are not kept (API terms 4.1(e)).",
+ "range": [
+  "2026-04-09",
+  "2026-11-10"
+ ],
+ "report": {
+  "app_fee_bps": 43.02514797990408,
+  "app_fees": 15753878.622099983,
+  "buyback_share_of_app_fees": 0.06613900902974376,
+  "calibration": {
+   "sampled_at": "2026-11-11T18:44:52.644Z",
+   "share_of_swaps": 0.178,
+   "share_of_volume": 0.947435357284648,
+   "swaps": 1000
+  },
+  "channel_count": 172,
+  "channels": [
+   {
+    "channel": "swapkit",
+    "fee_bps": 80.26400632274647,
+    "multi_venue": true,
+    "note": "THORChain, Chainflip, Maya",
+    "routes_to_rivals": "yes",
+    "share": 0.37757728435824695,
+    "source": "https://swapkit.dev/blog/swapkit-near-intents-integration/",
+    "swaps": 109991,
+    "usd": 1382518593.781537
+   },
+   {
+    "channel": "(none)",
+    "fee_bps": 10.5297857150732,
+    "multi_venue": false,
+    "note": "no referral on the swap",
+    "routes_to_rivals": "unlabelled",
+    "share": 0.17296014933618586,
+    "source": null,
+    "swaps": 53054,
+    "usd": 633302458.4541205
+   },
+   {
+    "channel": "lifi",
+    "fee_bps": 5.396916593054276,
+    "multi_venue": true,
+    "note": "Across, Relay, Stargate, Chainflip",
+    "routes_to_rivals": "yes",
+    "share": 0.08622467855240445,
+    "source": "https://docs.li.fi/introduction/solana-ecosystem",
+    "swaps": 19114,
+    "usd": 315716083.2494122
+   },
+   {
+    "channel": "rango",
+    "fee_bps": 17.03081175772438,
+    "multi_venue": true,
+    "note": "THORChain, Maya, Chainflip",
+    "routes_to_rivals": "yes",
+    "share": 0.08336639830306755,
+    "source": "https://blog.thorchain.org/protocol-spotlight-rango-exchange",
+    "swaps": 32661,
+    "usd": 305250343.50645274
+   },
+   {
+    "channel": "zodl",
+    "fee_bps": 66.97463074997941,
+    "multi_venue": false,
+    "note": "Zodl wallet (formerly Zashi); swaps go through NEAR Intents",
+    "routes_to_rivals": "no",
+    "share": 0.07219747569547123,
+    "source": "https://electriccoin.co/blog/zashi-swaps-decentralized-on-ramp-is-live",
+    "swaps": 12576,
+    "usd": 264354760.49023995
+   },
+   {
+    "channel": "new.intents-referral.near",
+    "fee_bps": 7.421969133387843,
+    "multi_venue": false,
+    "note": "operator not identified",
+    "routes_to_rivals": "unknown",
+    "share": 0.05222160068524711,
+    "source": null,
+    "swaps": 6247,
+    "usd": 191212069.51604548
+   },
+   {
+    "channel": "stableflow",
+    "fee_bps": 1.35811436012747,
+    "multi_venue": false,
+    "note": "also quotes Circle CCTP and USDT0",
+    "routes_to_rivals": "other",
+    "share": 0.018071450472786244,
+    "source": "https://defillama.com/protocol/stableflow",
+    "swaps": 1760,
+    "usd": 66169542.84655561
+   },
+   {
+    "channel": "near-intents.intents-referral.near",
+    "fee_bps": 5.3070986286864095,
+    "multi_venue": false,
+    "note": "operator not identified",
+    "routes_to_rivals": "unknown",
+    "share": 0.015644805359823908,
+    "source": null,
+    "swaps": 3424,
+    "usd": 57284257.29532949
+   }
+  ],
+  "coverage_of_all_intents_volume": 0.30257846436694186,
+  "days": 90,
+  "halt": {
+   "daily_after": {
+    "after_1": 32381071.230699092,
+    "after_2": 36777375.67221571
+   },
+   "daily_before": 24200536.723016217,
+   "daily_during": 36853050.17462703,
+   "gain_daily": 12652513.451610811,
+   "movers": [
+    {
+     "before": 3852545.085678379,
+     "channel": "new.intents-referral.near",
+     "delta": 7271785.32733784,
+     "during": 11124330.413016219,
+     "share_of_gain": 0.5747304956559487
+    },
+    {
+     "before": 888731.0386135135,
+     "channel": "(none)",
+     "delta": 1360733.1903108102,
+     "during": 2249464.228924324,
+     "share_of_gain": 0.10754647252618199
+    },
+    {
+     "before": 1728649.986527027,
+     "channel": "lifi",
+     "delta": 1197179.3022054052,
+     "during": 2925829.2887324323,
+     "share_of_gain": 0.09461987981945125
+    },
+    {
+     "before": 1779123.2629648647,
+     "channel": "near-intents.intents-referral.near",
+     "delta": 1094757.1341135139,
+     "during": 2873880.3970783786,
+     "share_of_gain": 0.08652487415250593
+    },
+    {
+     "before": 0.0,
+     "channel": "aurora-widget-cmpsluszo00ws0ci8cenwbwv5",
+     "delta": 687694.8451351351,
+     "during": 687694.8451351351,
+     "share_of_gain": 0.05435242948092528
+    }
+   ],
+   "multi_venue_daily": {
+    "after_1": 16194782.398755088,
+    "after_2": 19380545.7165876,
+    "before": 14130816.434105406,
+    "during": 14575417.728327027
+   },
+   "multi_venue_delta": 444601.2942216217,
+   "multi_venue_share_of_gain": 0.03513936546457643
+  },
+  "hhi": 0.195965566725315,
+  "known_share": 0.6374372873819764,
+  "min_usd": 1000,
+  "multi_venue_channels": [
+   "lifi",
+   "rango",
+   "swapkit"
+  ],
+  "multi_venue_share": 0.5471683612137189,
+  "recipient_count": 247,
+  "recipients": [
+   {
+    "fee_usd": 6594647.229782169,
+    "recipient": "ledgerswapkit.near",
+    "share": 0.4186046743137282
+   },
+   {
+    "fee_usd": 1770505.1573709894,
+    "recipient": "zodlswaps.near",
+    "share": 0.11238534965524459
+   },
+   {
+    "fee_usd": 1614710.530765623,
+    "recipient": "trustswapkit.near",
+    "share": 0.10249606268391975
+   },
+   {
+    "fee_usd": 1041945.920440558,
+    "recipient": "buybacks.multisignature.near",
+    "share": 0.06613900902974376
+   },
+   {
+    "fee_usd": 814488.572728235,
+    "recipient": "tangemswapkit.near",
+    "share": 0.05170082823830111
+   },
+   {
+    "fee_usd": 759201.8098890969,
+    "recipient": "thorswap.near",
+    "share": 0.048191421814312276
+   },
+   {
+    "fee_usd": 406647.70163720095,
+    "recipient": "swapkit.near",
+    "share": 0.025812545049493027
+   },
+   {
+    "fee_usd": 334939.0762925,
+    "recipient": "hvlnear.near",
+    "share": 0.021260737392164372
+   }
+  ],
+  "top3_share": 0.6367621122468372,
+  "top_channel_share": 0.37757728435824695,
+  "volume": 3661551293.0851994,
+  "window": [
+   "2026-08-13",
+   "2026-11-10"
+  ]
+ },
+ "source": "https://explorer.near-intents.org/api/v0/transactions"
+}

@@ -263,6 +263,124 @@ class Events(unittest.TestCase):
         self.assertAlmostEqual(bq["unpriced_leg_share"]["token_diff"], 0.25)
 
 
+class OnChain(unittest.TestCase):
+    def setUp(self):
+        vols = {p["slug"]: [100.0] * 10 for p in config.PEERS}
+        vols[config.SUBJECT] = [200.0] * 10
+        self.raw, self.dates = make_raw(10, vols)
+        d = self.dates
+        leg = lambda day, asset, neg: {"day": day, "event": "token_diff", "asset": asset,
+                                       "pos_raw": "0", "neg_raw": str(neg), "n": "1"}
+        flow = lambda day, sc, rc, raw_: {"day": day, "sc": sc, "rc": rc, "asset": "usdc",
+                                          "raw": str(raw_), "n": "1"}
+        self.raw["bq_intents_legs"] = {"dataset": "d", "range": [d[0], d[9]],
+                                       "rows": [leg(x, "usdc", 120 * 10 ** 6) for x in d]}
+        # each day: $40 in and $40 out between routers and users (counted),
+        # $500 between routers and solvers (the router's hedging, not counted)
+        self.raw["bq_intents_flows"] = {"rows": [r for x in d for r in (
+            flow(x, "other", "router", 40 * 10 ** 6), flow(x, "router", "other", 40 * 10 ** 6),
+            flow(x, "router", "solver", 500 * 10 ** 6), flow(x, "other", "other", 9 * 10 ** 6))]}
+        self.raw["bq_prices"] = {"prices": {"usdc": {"stable": True, "decimals": 6, "daily": {}}}}
+
+    def test_routed_swaps_count_both_sides_and_hedging_is_left_out(self):
+        table = metrics.build_table(self.raw, "2030-01-01T00:00:00Z")
+        bq = metrics.bq_check(self.raw, table, config.SUBJECT)
+        self.assertAlmostEqual(bq["days"][0]["routed_usd"], 80.0)
+        self.assertAlmostEqual(bq["days"][0]["onchain_usd"], 200.0)
+        self.assertAlmostEqual(bq["onchain"]["all"]["mean"], 1.0)
+
+    def test_share_with_on_chain_volume_and_its_lower_reading(self):
+        table = metrics.build_table(self.raw, "2030-01-01T00:00:00Z")
+        bq = metrics.bq_check(self.raw, table, config.SUBJECT)
+        names = {p["slug"]: p["name"] for p in config.PEERS}
+        for x in bq["days"]:
+            x["onchain_usd"] = 100.0           # chain says half of what is reported
+        fac = {p["slug"]: 1.0 for p in config.PEERS}
+        fac[config.SUBJECT] = 0.5
+        on, low = metrics.shares_onchain(table, config.SUBJECT, names, [self.dates[0], self.dates[9]],
+                                         bq, None, fac)
+        rivals = 100.0 * (len(config.PEERS) - 1)
+        self.assertAlmostEqual(on["share"], 100.0 / (100.0 + rivals))
+        self.assertAlmostEqual(low["share"], 50.0 / (50.0 + rivals))
+        bq["days"] = bq["days"][1:]             # one window day without BigQuery data
+        self.assertIsNone(metrics.shares_onchain(table, config.SUBJECT, names,
+                                                 [self.dates[0], self.dates[9]], bq, None, fac))
+
+
+class MarketTest(unittest.TestCase):
+    def test_a_venue_that_was_already_growing_is_not_a_substitute(self):
+        days = 40
+        dates = [("2026-01-%02d" % (i + 1)) if i < 31 else ("2026-02-%02d" % (i - 30)) for i in range(days)]
+        P = {"before": [dates[10], dates[19]], "during": [dates[20], dates[29]],
+             "after_1": [dates[30], dates[39]], "after_2": [dates[30], dates[39]]}
+        rival = next(p["slug"] for p in config.PEERS if p["slug"] != config.SUBJECT)
+        vol = {p["slug"]: [10.0] * days for p in config.PEERS}
+        vol[config.SUBJECT] = [10.0] * 20 + [20.0] * 10 + [15.0] * 10   # gains, gives some back
+        table = {"dates": dates, **{s: {"volume": v} for s, v in vol.items()}}
+        bridge = config.WIDE_PEERS[0]
+        grow = {d: float(i) for i, d in enumerate(dates)}                 # steady growth throughout
+        raw = {"widevolume_" + bridge["slug"]: {"series": grow}}
+        names = {p["slug"]: p["name"] for p in config.PEERS}
+        halt = {"periods": P, "rival_slug": rival, "lost_daily": 10.0}
+        m = metrics.market_test(raw, table, halt, names)
+        by = {r["slug"]: r for r in m["rows"]}
+        self.assertTrue(by[config.SUBJECT]["substitute"])
+        self.assertAlmostEqual(by[config.SUBJECT]["gave_back"], 0.5)
+        self.assertFalse(by[bridge["slug"]]["substitute"])
+        self.assertAlmostEqual(by[bridge["slug"]]["diversion_trend_adjusted"], 0.0)
+
+
+class SealV3(unittest.TestCase):
+    def test_lead_and_onchain_ratio_predictions_are_graded(self):
+        days = 120
+        vols = {p["slug"]: [100.0] * days for p in config.PEERS}
+        vols[config.SUBJECT] = [300.0] * days
+        raw, dates = make_raw(days, vols)
+        saved = config.PREDICTIONS_V3
+        try:
+            config.PREDICTIONS_V3 = [
+                {"id": "Pd", "due": dates[100], "window_days": 2, "metric": "lead_window",
+                 "op": ">", "value": 0.0, "text": "d"},
+                {"id": "Pe", "due": dates[100], "window_days": 2, "metric": "onchain_ratio_window",
+                 "op": "between", "value": [0.9, 1.2], "text": "e"}]
+            m = metrics.compute(raw, "2030-01-01T00:00:00Z")
+        finally:
+            config.PREDICTIONS_V3 = saved
+        got = {p["id"]: (p["status"], p["current"]) for p in m["predictions"] if p["seal"] == "v3"}
+        self.assertEqual(got["Pd"][0], "MET")
+        self.assertAlmostEqual(got["Pd"][1], 200.0 / 600.0)
+        self.assertEqual(got["Pe"][0], "PENDING")      # no BigQuery days for the window
+
+    def test_the_sealed_files_match_config(self):
+        from pipeline import seal
+        self.assertEqual(seal.mismatches(), [])
+
+
+class Tdx(unittest.TestCase):
+    def test_recorded_quote_binds_the_worker_key_and_fails_when_altered(self):
+        try:
+            from cryptography.hazmat.primitives.asymmetric import ec
+        except ImportError:
+            self.skipTest("cryptography is not installed")
+        import hashlib
+        import json
+        from pipeline import tdx
+        path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                            "data", "raw", "tdx_quote.json")
+        w = json.load(open(path))["workers"][0]
+        q = bytes.fromhex(w["quote_hex"])
+        p = tdx.parse_quote(q)
+        key = tdx.b58decode(w["worker_public_key"].split(":", 1)[1])
+        self.assertEqual(p["body"]["report_data"][:32], hashlib.sha256(key).digest())
+        att = ec.EllipticCurvePublicKey.from_encoded_point(ec.SECP256R1(), b"\x04" + p["attestation_key"])
+        self.assertTrue(tdx.ec_verify(att, p["signature"], p["signed"]))
+        self.assertTrue(tdx.chain_ok(tdx.chain(p["pck_chain_pem"])))
+        bad = bytearray(q)
+        bad[48 + 184] ^= 1                              # one bit of MRTD
+        pb = tdx.parse_quote(bytes(bad))
+        self.assertFalse(tdx.ec_verify(att, pb["signature"], pb["signed"]))
+
+
 class Call(unittest.TestCase):
     def out(self, share90, share30, offset, trend):
         return {"trailing": {"share": {config.SUBJECT: share90}},

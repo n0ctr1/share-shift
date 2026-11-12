@@ -139,15 +139,15 @@ def fetch_all(log=print):
         mcap = {p["slug"]: None for p in config.PEERS}
     files["mcap"] = _write("mcap", {"source": url, "usd_market_cap": mcap})
 
-    # The Explorer snapshot is refreshed separately (python3 -m pipeline.explorer,
+    # The Explorer channel report is refreshed separately (python3 -m pipeline.explorer,
     # needs a key and about an hour). If one is on disk it stays in the manifest.
-    for name in ("explorer_daily", "onchain_revenue", "legs_chainflip-amm"):
+    for name in ("channels_report", "onchain_revenue", "legs_chainflip-amm"):
         path = os.path.join(RAW_DIR, name + ".json")
         if os.path.exists(path):
             files[name] = path
     for fname in sorted(os.listdir(RAW_DIR)):
         if fname.startswith(("intents_events_", "intents_event_format", "tee_run", "near_anchor", "actions_", "near_supply",
-                             "near_l1_daily", "bq_")) and fname.endswith(".json"):
+                             "near_l1_daily", "bq_", "tdx_quote")) and fname.endswith(".json"):
             files[fname[:-5]] = os.path.join(RAW_DIR, fname)
 
     manifest = {

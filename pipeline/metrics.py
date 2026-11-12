@@ -200,6 +200,64 @@ def placebo(values, at, n, lookback):
     }
 
 
+def market_test(raw, table, halt, names):
+    """Which venues behave like substitutes for the halted rival?
+
+    A venue that serves the same users should gain while the rival is down and
+    give part of that back when it returns. Each venue's daily mean is compared
+    over the halt's periods, plus one earlier period of the same length
+    ("pre") so a venue already growing before the halt is not read as a
+    substitute: its trend-adjusted gain subtracts the pre-to-before change.
+    Bridges are included, which is the point: if the market were "swaps plus
+    bridges", bridges should behave like the swap venues do.
+    """
+    if not halt or "periods" not in halt:
+        return None
+    P = halt["periods"]
+    first = datetime.date.fromisoformat(P["before"][0])
+    span = (datetime.date.fromisoformat(P["before"][1]) - first).days
+    pre = [(first - datetime.timedelta(days=span + 1)).isoformat(),
+           (first - datetime.timedelta(days=1)).isoformat()]
+    series = {p["slug"]: dict(zip(table["dates"], table[p["slug"]]["volume"])) for p in config.PEERS
+              if p["slug"] != halt["rival_slug"]}
+    kinds = {s: "swap" for s in series}
+    for p in config.WIDE_PEERS:
+        vs = (raw.get("widevolume_" + p["slug"]) or {}).get("series")
+        if vs:
+            series[p["slug"]] = {d: float(v) for d, v in vs.items()}
+            kinds[p["slug"]] = "bridge"
+            names = dict(names, **{p["slug"]: p["name"]})
+
+    def mean(s, a, b):
+        v = [x for d, x in s.items() if a <= d <= b]
+        return sum(v) / len(v) if v else None
+    lost = halt["lost_daily"]
+    rows = []
+    for slug, s in series.items():
+        m = {k: mean(s, *v) for k, v in dict(P, pre=pre).items()}
+        if None in (m["pre"], m["before"], m["during"], m["after_1"]):
+            continue
+        gain = m["during"] - m["before"]
+        trend = m["before"] - m["pre"]
+        adj = gain - trend
+        back = m["during"] - m["after_1"]
+        rows.append({"slug": slug, "name": names[slug], "kind": kinds[slug],
+                     "daily": m, "gain": gain, "trend_before": trend,
+                     "diversion": gain / lost, "diversion_trend_adjusted": adj / lost,
+                     "gave_back": back / gain if gain > 0 else None,
+                     "substitute": gain > 0 and adj > 0 and back > 0})
+    rows.sort(key=lambda r: -r["diversion_trend_adjusted"])
+    swap = [r for r in rows if r["kind"] == "swap"]
+    bridge = [r for r in rows if r["kind"] == "bridge"]
+    return {
+        "periods": dict(P, pre=pre), "lost_daily": lost, "rows": rows,
+        "swap_diversion_adjusted": sum(r["diversion_trend_adjusted"] for r in swap),
+        "bridge_diversion_adjusted": sum(r["diversion_trend_adjusted"] for r in bridge),
+        "substitutes": [r["name"] for r in rows if r["substitute"]],
+        "bridges_substituting": [r["name"] for r in bridge if r["substitute"]],
+    }
+
+
 def halt_experiment(table, subject, slugs, names):
     """What happened to everyone's volume when a large rival stopped trading.
 
@@ -399,6 +457,46 @@ def shares_measured(basis, table, subject, names, window, subject_factor, wide_v
     return out
 
 
+def shares_onchain(table, subject, names, window, bq, wide_volumes, measured=None):
+    """The window's shares with Intents volume taken from intents.near itself.
+
+    `onchain`: every day's Intents volume is the on-chain reconstruction from
+    BigQuery, rivals as reported. `onchain_low`: each day the lower of the
+    on-chain and the reported figure, and one side of each swap counted for
+    every venue at the factors measured from their own records. Returns None
+    unless BigQuery covers every day of the window.
+    """
+    if not bq or not bq.get("onchain"):
+        return None
+    first, last_ = window
+    on = {d["day"]: d["onchain_usd"] for d in bq["days"]}
+    dates = [d for d in table["dates"] if first <= d <= last_]
+    if any(d not in on for d in dates):
+        return None
+    slugs = [p["slug"] for p in config.PEERS]
+    vol = {s: sum(v for d, v in zip(table["dates"], table[s]["volume"]) if first <= d <= last_)
+           for s in slugs}
+    rep = dict(zip(table["dates"], table[subject]["volume"]))
+    out = []
+    for sid, label, intents, factors in (
+            ("onchain", "Intents volume rebuilt from intents.near events for every day (BigQuery), "
+                        "rivals as reported", sum(on[d] for d in dates), None),
+            ("onchain_low", "Each day the lower of the on-chain and the reported Intents volume, "
+                            "one side of each swap for every venue at measured factors",
+             sum(min(on[d], rep[d]) for d in dates), measured)):
+        adj = dict(vol, **{subject: intents})
+        if factors:
+            adj = {s: adj[s] * factors[s] for s in slugs}
+        total = sum(adj.values())
+        row = {"id": sid, "label": label, "share": adj[subject] / total,
+               "leader": names[max(adj, key=adj.get)],
+               "runner_up_share": max(v for s, v in adj.items() if s != subject) / total}
+        if wide_volumes:
+            row["wide_share"] = adj[subject] / (total + wide_volumes * (0.5 if factors else 1.0))
+        out.append(row)
+    return out
+
+
 def token_check(raw, window):
     """Net new NEAR supply over the window against the NEAR swept into the
     buyback wallet and into all three revenue wallets; L1 activity."""
@@ -489,7 +587,32 @@ def tee_check(raw, trailing, basis, window):
         "once_thorchain_tee": out.get("once_thorchain"), "once_thorchain_build": once.get("thorchain-dex"),
         "once_maya_tee": out.get("once_maya"), "once_maya_build": once.get("maya-protocol"),
         "volumes": rows, "explorer": tee.get("explorer"),
+        "tdx": tdx_summary(raw, (tee.get("worker") or {}).get("public_key")),
     }
+
+
+def tdx_summary(raw, public_key):
+    """Our own check of the Intel TDX quote behind the worker key (pipeline/tdx.py)."""
+    rec = raw.get("tdx_quote")
+    if not rec or not public_key:
+        return None
+    for w in rec["workers"]:
+        if any(r["request_tx"] for r in w["runs"]) and w["checks"]:
+            fresh, onchain = w["collateral_intel_now"], w["collateral_onchain"]
+            return {
+                "registration_tx": w["registration_tx"], "registration_time": w["registration_time"],
+                "explorer": w["explorer"], "fmspc": w["fmspc"], "measurements": w["measurements"],
+                "checks_passed": sum(1 for v in w["checks"].values() if v),
+                "checks_total": len(w["checks"]), "all_pass": all(w["checks"].values()),
+                "tcb_status": (fresh.get("tcb") or {}).get("status"),
+                "tcb_date": (fresh.get("tcb") or {}).get("tcb_date"),
+                "intel_collateral_issued": fresh.get("issued"),
+                "onchain_collateral": {"issued": onchain["issued"], "next_update": onchain["next_update"],
+                                       "fmspc_matches": onchain["tcb_info_fmspc_matches"],
+                                       "current": onchain["current_at_check_time"]},
+                "runs": [r["run"] for r in w["runs"]],
+            }
+    return None
 
 
 def investment_call(out):
@@ -615,15 +738,35 @@ def bq_check(raw, table, subject):
         # transfer: every movement between accounts inside the contract.
         raw_amt = int(r["neg_raw"] if r["event"] == "token_diff" else r["pos_raw"])
         d[r["event"]] += raw_amt / 10 ** p["decimals"] * price
+    # From September most swaps settle as transfers through 1Click router
+    # accounts. A user's deposit into a router and the router's payout back are
+    # the two sides of that swap, as the two token_diff entries are for a direct
+    # fill. Router-to-solver transfers are the router's own hedging and are not
+    # added: counting them too would count the same swap twice.
+    routed = {}
+    for r in (raw.get("bq_intents_flows") or {}).get("rows", []):
+        if {r["sc"], r["rc"]} != {"router", "other"}:
+            continue
+        p = P.get(r["asset"])
+        price = 1.0 if p and p["stable"] else (p["daily"].get(r["day"]) if p else None)
+        if price is None:
+            continue
+        routed[r["day"]] = routed.get(r["day"], 0.0) + int(r["raw"]) / 10 ** p["decimals"] * price
+    have_flows = bool(raw.get("bq_intents_flows"))
     days = []
     for day in sorted(by_day):
         if day not in idx:
             continue
         rep = table[subject]["volume"][idx[day]]
         b = by_day[day]
-        days.append({"day": day, "reported": rep, "token_diff_usd": b["token_diff"],
-                     "transfer_usd": b["transfer"], "intents_executed": b["intents"],
-                     "ratio": b["token_diff"] / rep if rep else None})
+        row = {"day": day, "reported": rep, "token_diff_usd": b["token_diff"],
+               "transfer_usd": b["transfer"], "intents_executed": b["intents"],
+               "ratio": b["token_diff"] / rep if rep else None}
+        if have_flows:
+            row["routed_usd"] = routed.get(day, 0.0)
+            row["onchain_usd"] = b["token_diff"] + row["routed_usd"]
+            row["onchain_ratio"] = row["onchain_usd"] / rep if rep else None
+        days.append(row)
     if not days:
         return None
     tol = 0.05
@@ -639,7 +782,31 @@ def bq_check(raw, table, subject):
         months.setdefault(d["day"][:7], []).append(d)
     first_off = next((d["day"] for d in days if d["ratio"] is not None and abs(d["ratio"] - 1) > tol), None)
     rep_total = sum(d["reported"] for d in days)
+    onchain = None
+    if have_flows:
+        def osum(rows):
+            r = [x["onchain_ratio"] for x in rows if x["onchain_ratio"] is not None]
+            return {"days": len(r), "mean": sum(r) / len(r), "median": statistics.median(r),
+                    "min": min(r), "max": max(r),
+                    "within_10pct": sum(1 for v in r if abs(v - 1) <= 0.10),
+                    "within_20pct": sum(1 for v in r if abs(v - 1) <= 0.20)} if r else None
+        months_ = {}
+        for d in days:
+            months_.setdefault(d["day"][:7], []).append(d)
+        onchain = {
+            "rule": "token_diff (both sides) plus transfers between 1Click routers and other "
+                    "non-solver accounts (both directions); a router is a receiver with at least "
+                    "500 distinct senders that day",
+            "all": osum(days),
+            "from_method_change": osum(later),
+            "before_method_change": osum(valid),
+            "by_month": {k: osum(v) for k, v in sorted(months_.items())},
+            "first_routed_day": next((d["day"] for d in days if d["routed_usd"] > 0), None),
+            "total_over_reported": sum(d["onchain_usd"] for d in days) / rep_total,
+            "bytes_billed": raw["bq_intents_flows"].get("bytes_billed"),
+        }
     return {
+        "onchain": onchain,
         "dataset": legs["dataset"], "range": legs["range"],
         "bytes_billed": legs.get("bytes_billed"), "days": days,
         "valid": summary(valid), "later_by_month": {k: summary(v) for k, v in sorted(months.items())},
@@ -1034,6 +1201,7 @@ def _compute(raw, fetched_at):
 
     # --- natural experiment and recent momentum -------------------------
     halt = halt_experiment(table, subject, slugs, names)
+    market_t = market_test(raw, table, halt, names)
 
     def change_30d(slug):
         now_ = window_sum(table[slug]["volume"], last, 30)
@@ -1074,19 +1242,6 @@ def _compute(raw, fetched_at):
         series_ = (raw.get("widevolume_" + p["slug"]) or {}).get("series") or {}
         bridge_volume += sum(v for d, v in series_.items() if start_date <= d <= end_date)
     basis = counting_basis(raw, table, subject, names, [start_date, end_date], bridge_volume or None)
-    if basis:
-        by_id = {x["id"]: x for x in basis["scenarios"]}
-        like = [by_id["reported"], by_id["one_side"]]
-        c1_value = min(x["share"] for x in like)
-        c1_ok = all(x["share"] > t["leader_share"] and x["leader"] == names[subject] for x in like)
-        c1_text = ("NEAR Intents is the largest swap venue with more than %d%% of volume, "
-                   "whether volume is taken as reported or one side of each swap is counted "
-                   "for every venue." % round(100 * t["leader_share"]))
-    else:
-        c1_value = share[subject]
-        c1_ok = share[subject] > t["leader_share"] and share[subject] == max(share.values())
-        c1_text = ("NEAR Intents is the largest venue in the peer set, with more than "
-                   "%d%% of volume." % round(100 * t["leader_share"]))
     events = events_check(raw, table, subject)
     bq = bq_check(raw, table, subject)
     if basis and events:
@@ -1117,6 +1272,31 @@ def _compute(raw, fetched_at):
             if x["id"] == "worst":
                 x["label"] = ("Intents halved, rivals left as reported (inconsistent with the "
                               "rivals' indexers and with intents.near events)")
+    if basis:
+        slugs_ = [p["slug"] for p in config.PEERS]
+        fac_ = {s_: basis["venues"].get(s_, {}).get("once_factor", 1.0) for s_ in slugs_}
+        fac_[subject] = events["one_ratio_mean"] if events else 0.5
+        extra = shares_onchain(table, subject, names, [start_date, end_date], bq,
+                               bridge_volume or None, fac_)
+        if extra:
+            at = next(i for i, x in enumerate(basis["scenarios"]) if x["id"] == "worst")
+            basis["scenarios"][at:at] = extra
+        by_id = {x["id"]: x for x in basis["scenarios"]}
+        like = [by_id[k] for k in ("reported", "one_side", "onchain", "onchain_low") if k in by_id]
+        c1_value = min(x["share"] for x in like)
+        c1_ok = all(x["share"] > t["leader_share"] and x["leader"] == names[subject] for x in like)
+        c1_text = ("NEAR Intents is the largest swap venue with more than %d%% of volume, "
+                   "whether volume is taken as reported, one side of each swap is counted "
+                   "for every venue, or Intents volume is rebuilt from intents.near itself."
+                   % round(100 * t["leader_share"])) if extra else (
+                  "NEAR Intents is the largest swap venue with more than %d%% of volume, "
+                  "whether volume is taken as reported or one side of each swap is counted "
+                  "for every venue." % round(100 * t["leader_share"]))
+    else:
+        c1_value = share[subject]
+        c1_ok = share[subject] > t["leader_share"] and share[subject] == max(share.values())
+        c1_text = ("NEAR Intents is the largest venue in the peer set, with more than "
+                   "%d%% of volume." % round(100 * t["leader_share"]))
     if basis and halt and halt["absorbed_fraction"] is not None:
         f_rival = basis["venues"].get(halt["rival_slug"], {}).get("once_factor", 1.0)
         halt["absorbed_by_basis"] = {
@@ -1193,6 +1373,10 @@ def _compute(raw, fetched_at):
     if raw.get("explorer_daily"):
         channels = channel_report(raw["explorer_daily"], table, subject,
                                   [start_date, end_date], halt)
+    elif raw.get("channels_report"):
+        # The committed report keeps only window totals (see pipeline/explorer.py);
+        # it describes its own window, which may end before this build's.
+        channels = raw["channels_report"]["report"]
     if channels:
         claims.append({
             "id": "C10",
@@ -1289,28 +1473,43 @@ def _compute(raw, fetched_at):
             status = "MET" if value is not None and value >= p["value"] else "MISSED"
         predictions.append({**p, "seal": "v1", "current": value, "status": status})
     idx_ = {d: i for i, d in enumerate(table["dates"])}
-    for p in config.PREDICTIONS_V2:
-        value = None
-        if p["due"] in idx_:
-            hi = idx_[p["due"]]
-            lo = hi - p["window_days"] + 1
-            v_sub = sum(table[subject]["volume"][lo:hi + 1])
-            v_all = sum(sum(table[x]["volume"][lo:hi + 1]) for x in slugs)
-            f_sub = sum(table[subject]["fees"][lo:hi + 1])
-            value = {"share_window": v_sub / v_all if v_all else None,
-                     "take_rate_window_bps": 1e4 * f_sub / v_sub if v_sub else None}[p["metric"]]
-        if value is None:
-            status = "PENDING"
-        else:
-            status = "MET" if value >= p["value"] else "MISSED"
-        entry = {**p, "seal": "v2", "current": value, "status": status}
-        if p["metric"] == "share_window":
-            tp = tee_prediction_check(raw, table, p)
-            if tp:
-                tp["valid"] = tp["right_days"] and tp["after_due_day"] and tp["checks_pass"]
-                tp["agrees_with_build"] = tp["valid"] and tp["volumes_agree"] and tp["status"] == status
-                entry["tee"] = tp
-        predictions.append(entry)
+    onchain_days = {d["day"]: d for d in (bq or {}).get("days", []) if "onchain_usd" in d}
+    for seal_id, plist in (("v2", config.PREDICTIONS_V2), ("v3", getattr(config, "PREDICTIONS_V3", []))):
+        for p in plist:
+            value = None
+            if p["due"] in idx_:
+                hi = idx_[p["due"]]
+                lo = hi - p["window_days"] + 1
+                v_sub = sum(table[subject]["volume"][lo:hi + 1])
+                v_riv = [sum(table[x]["volume"][lo:hi + 1]) for x in slugs if x != subject]
+                v_all = v_sub + sum(v_riv)
+                f_sub = sum(table[subject]["fees"][lo:hi + 1])
+                window_days_ = table["dates"][lo:hi + 1]
+                if p["metric"] == "share_window":
+                    value = v_sub / v_all if v_all else None
+                elif p["metric"] == "take_rate_window_bps":
+                    value = 1e4 * f_sub / v_sub if v_sub else None
+                elif p["metric"] == "lead_window":
+                    value = (v_sub - max(v_riv)) / v_all if v_all else None
+                elif p["metric"] == "onchain_ratio_window":
+                    if all(d in onchain_days for d in window_days_) and v_sub:
+                        value = sum(onchain_days[d]["onchain_usd"] for d in window_days_) / v_sub
+            if value is None:
+                status = "PENDING"
+            elif p["op"] == "between":
+                status = "MET" if p["value"][0] <= value <= p["value"][1] else "MISSED"
+            elif p["op"] == ">":
+                status = "MET" if value > p["value"] else "MISSED"
+            else:
+                status = "MET" if value >= p["value"] else "MISSED"
+            entry = {**p, "seal": seal_id, "current": value, "status": status}
+            if seal_id == "v2" and p["metric"] == "share_window":
+                tp = tee_prediction_check(raw, table, p)
+                if tp:
+                    tp["valid"] = tp["right_days"] and tp["after_due_day"] and tp["checks_pass"]
+                    tp["agrees_with_build"] = tp["valid"] and tp["volumes_agree"] and tp["status"] == status
+                    entry["tee"] = tp
+            predictions.append(entry)
 
     claims.sort(key=lambda c: int(c["id"][1:]))
     return {
@@ -1332,6 +1531,7 @@ def _compute(raw, fetched_at):
         },
         "sensitivity": sensitivity,
         "halt": halt,
+        "market_test": market_t,
         "recent": recent,
         "burst": burst,
         "capture_trend": capture_trend,

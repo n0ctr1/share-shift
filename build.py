@@ -36,11 +36,16 @@ def main(argv):
     result = metrics.compute(raw, manifest["fetched_at"])
     if "near_anchor" in raw:
         result["meta"]["near_anchor"] = raw["near_anchor"]
+    if "near_anchor_v3" in raw:
+        result["meta"]["near_anchor_v3"] = raw["near_anchor_v3"]
     if os.path.exists(sealed):
         result["meta"]["predictions_sha256"] = hashlib.sha256(open(sealed, "rb").read()).hexdigest()
     if os.path.exists(seal.JSON_PATH_V2):
         result["meta"]["seal_v2_sha256"] = hashlib.sha256(open(seal.JSON_PATH_V2, "rb").read()).hexdigest()
         result["meta"]["seal_v2"] = dict(config_seal_v2())
+    if os.path.exists(seal.JSON_PATH_V3):
+        result["meta"]["seal_v3_sha256"] = hashlib.sha256(open(seal.JSON_PATH_V3, "rb").read()).hexdigest()
+        result["meta"]["seal_v3"] = dict(config.SEAL_V3)
     text = narrative.findings(result)
 
     os.makedirs(os.path.join(ROOT, "data", "derived"), exist_ok=True)

@@ -27,6 +27,7 @@ import urllib.request
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SEALED = os.path.join(ROOT, "predictions", "predictions.json")
 SEALED_V2 = os.path.join(ROOT, "predictions", "predictions-v2.json")
+SEALED_V3 = os.path.join(ROOT, "predictions", "predictions-v3.json")
 RPC = "https://rpc.mainnet.fastnear.com"
 KEY = "share_shift"
 
@@ -36,7 +37,8 @@ def digest(path=SEALED):
         return hashlib.sha256(fh.read()).hexdigest()
 
 
-FIELDS = {"v1": ("predictions_sha256", SEALED), "v2": ("predictions_v2_sha256", SEALED_V2)}
+FIELDS = {"v1": ("predictions_sha256", SEALED), "v2": ("predictions_v2_sha256", SEALED_V2),
+          "v3": ("predictions_v3_sha256", SEALED_V3)}
 
 
 def payload(account, which="v1"):
@@ -63,7 +65,7 @@ def main(argv):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--account", required=True)
     ap.add_argument("--verify", action="store_true")
-    ap.add_argument("--seal", choices=["v1", "v2"], default="v1")
+    ap.add_argument("--seal", choices=sorted(FIELDS), default="v1")
     args = ap.parse_args(argv)
     field, path = FIELDS[args.seal]
     if args.verify:

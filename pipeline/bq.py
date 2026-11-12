@@ -2,6 +2,7 @@
 
     python3 -m pipeline.bq schema                     table metadata and columns (free)
     python3 -m pipeline.bq legs --from 2026-08-13 --to 2026-11-10 [--max-gb 300]
+    python3 -m pipeline.bq flows --from 2026-08-13 --to 2026-11-10 [--max-gb 300]
     python3 -m pipeline.bq l1   --from 2025-08-13 --to 2026-11-10 [--max-gb 50]
     python3 -m pipeline.bq prices                     price the assets in the legs file
 
@@ -9,13 +10,16 @@ Dataset: bigquery-public-data.crypto_near_mainnet_us. Every query filters on
 block_date (the partition column), is dry-run first to print the bytes it will
 scan, and is sent with maximumBytesBilled so it cannot cost more than --max-gb.
 The BigQuery sandbox's free tier (1 TB of queries a month, no billing account)
-covers all of them (about 150 GB for the committed snapshot).
+covers all of them (about 270 GB for the committed snapshot).
 
 Auth: an OAuth access token from `gcloud auth print-access-token` (or the
 BQ_TOKEN environment variable). It is held in memory only. The project billed
 for the queries is BQ_PROJECT or `gcloud config get-value project`; neither is
 written to the output.
 
+`flows` writes data/raw/bq_intents_flows.json: per day, sender class, receiver
+class (router, solver, other) and asset, the summed raw amounts of DIP-4
+transfer entries; see FLOWS_SQL.
 `legs` writes data/raw/bq_intents_legs.json: per day, event and asset, the
 summed positive and negative raw amounts of every DIP-4 token_diff and
 transfer entry emitted by intents.near in successful receipts, and the number
@@ -73,6 +77,44 @@ SELECT CAST(block_date AS STRING) AS day, event, asset,
 FROM legs
 GROUP BY day, event, asset
 ORDER BY day, event, asset
+""" % DATASET
+
+# Transfers between account classes. From September most swaps settle as plain
+# `transfer` entries routed through a few 1Click router accounts instead of
+# token_diff. A router is any receiver with at least 500 distinct senders that
+# day; "solver" is an account whose name starts with "solver". Amounts are
+# summed per day, sender class, receiver class and asset; no account is stored.
+FLOWS_SQL = """
+WITH ev AS (
+  SELECT block_date, SAFE.PARSE_JSON(SUBSTR(l.element, 12)) AS j
+  FROM `%s.execution_outcomes`, UNNEST(logs.list) AS l
+  WHERE block_date BETWEEN @a AND @b
+    AND executor_account_id = 'intents.near'
+    AND STARTS_WITH(l.element, 'EVENT_JSON:{"standard":"dip4"')
+    AND NOT STARTS_WITH(UPPER(status), 'FAIL')
+),
+d AS (
+  SELECT block_date, JSON_VALUE(x, '$.account_id') AS s, JSON_VALUE(x, '$.receiver_id') AS r, x.tokens AS t
+  FROM ev, UNNEST(JSON_QUERY_ARRAY(j, '$.data')) AS x
+  WHERE JSON_VALUE(j, '$.event') = 'transfer'
+),
+routers AS (
+  SELECT block_date, r AS h FROM d GROUP BY block_date, r HAVING COUNT(DISTINCT s) >= 500
+),
+c AS (
+  SELECT d.block_date,
+         IF(hs.h IS NOT NULL, 'router', IF(STARTS_WITH(d.s, 'solver'), 'solver', 'other')) AS sc,
+         IF(hr.h IS NOT NULL, 'router', IF(STARTS_WITH(d.r, 'solver'), 'solver', 'other')) AS rc, t
+  FROM d
+  LEFT JOIN routers hs ON hs.block_date = d.block_date AND hs.h = d.s
+  LEFT JOIN routers hr ON hr.block_date = d.block_date AND hr.h = d.r
+)
+SELECT CAST(block_date AS STRING) AS day, sc, rc, TRIM(k, '"') AS asset,
+       CAST(SUM(SAFE_CAST(JSON_VALUE(t[TRIM(k, '"')]) AS BIGNUMERIC)) AS STRING) AS raw,
+       COUNT(*) AS n
+FROM c, UNNEST(JSON_KEYS(t, 1)) AS k
+GROUP BY day, sc, rc, asset
+ORDER BY day, sc, rc, asset
 """ % DATASET
 
 L1_SQL = """
@@ -186,7 +228,7 @@ def write(name, body):
 
 def main(argv):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("what", choices=["schema", "legs", "l1", "prices"])
+    ap.add_argument("what", choices=["schema", "legs", "flows", "l1", "prices"])
     ap.add_argument("--from", dest="first")
     ap.add_argument("--to", dest="last")
     ap.add_argument("--max-gb", type=float, default=300)
@@ -204,14 +246,12 @@ def main(argv):
             for f in meta["schema"]["fields"]:
                 print("  %-28s %s" % (f["name"], f["type"]))
         return
-    sql = LEGS_SQL if a.what == "legs" else L1_SQL
+    sql = {"legs": LEGS_SQL, "flows": FLOWS_SQL, "l1": L1_SQL}[a.what]
     rows, scan, billed = query(sql, {"a": a.first, "b": a.last}, a.max_gb)
     meta = {"dataset": DATASET, "range": [a.first, a.last], "sql": sql.strip(),
             "bytes_processed": scan, "bytes_billed": billed}
-    if a.what == "legs":
-        write("bq_intents_legs.json", dict(meta, rows=rows))
-    else:
-        write("bq_l1_daily.json", dict(meta, rows=rows))
+    name = {"legs": "bq_intents_legs.json", "flows": "bq_intents_flows.json", "l1": "bq_l1_daily.json"}[a.what]
+    write(name, dict(meta, rows=rows))
 
 
 if __name__ == "__main__":

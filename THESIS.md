@@ -23,7 +23,7 @@ No price target: this measures the business and the token's cut of it, not a fai
 
 | # | Claim | Measured | Threshold | Verdict |
 | --- | --- | --- | --- | --- |
-| C1 | NEAR Intents is the largest swap venue with more than 50% of volume, whether volume is taken as reported or one side of each swap is counted for every venue. | 55.5% | 50.0% | **SUPPORTED** |
+| C1 | NEAR Intents is the largest swap venue with more than 50% of volume, whether volume is taken as reported, one side of each swap is counted for every venue, or Intents volume is rebuilt from intents.near itself. | 55.2% | 50.0% | **SUPPORTED** |
 | C2 | Most of the year-on-year volume gain came from taking share, not from market growth. | 44.5% | 50.0% | **REFUTED** |
 | C3 | The peer-set market itself grew more than 25% year on year. | +128% | +25% | **SUPPORTED** |
 | C4 | Intents charges at least the median take rate of its rivals (it is not winning on price alone). | 15.5 bps | 13.0 bps | **SUPPORTED** |
@@ -49,14 +49,15 @@ No price target: this measures the business and the token's cut of it, not a fai
 - **Most fees do not reach NEAR.** Of $18.76M in gross Intents fees over the window, $5.08M (27%) reached NEAR's revenue wallets; the rest stayed with solvers and the third-party front ends that distribute Intents. Over consecutive 90-day windows the share reaching NEAR was 8%, 12%, 20%, 27% (oldest first, the last ending 2026-11-10). [details](METHODS.md#evidence-against)
 - **Buybacks are small next to issuance.** NEAR's supply grew 7.96M over 90 days (from block headers); buybacks took 1.00M, 13% of it. [details](METHODS.md#what-it-means-for-the-near-token)
 - **The rival is coming back.** In the last 30 days Intents volume changed by -21% against the 30 days before, while THORChain changed by +32%. [details](METHODS.md#evidence-against)
-- **Bridges are bigger.** With the four large bridges added, Intents has 18% of the eight venues' volume and ranks 3 of 8. [details](METHODS.md#all-eight-venues)
+- **Bridges are bigger.** With the four large bridges added, Intents has 18% of the eight venues' volume and ranks 3 of 8. [details](METHODS.md#all-eight-venues) When THORChain halted, no bridge behaved as a substitute; swap venues did. [details](METHODS.md#which-market-a-substitution-test)
 
 ## Why these numbers can be trusted
 
-- **Volume is counted the same way for every venue.** Each rival's double counting is measured from its own indexer, and Intents' reported figure equals both sides of intents.near's own events on 19 of 19 days through 2026-08-31 (NEAR's public BigQuery dataset). After that date the events no longer cover all swaps, which is stated as a limit. [details](METHODS.md#how-volume-is-counted)
+- **Intents volume is rebuilt from the chain for every day, not taken on trust.** Each rival's double counting is measured from its own indexer. For Intents, every log line intents.near wrote (NEAR's public BigQuery dataset) rebuilds the reported figure: token_diff events through August, and from September the transfers through 1Click routers that replaced them (median 1.04 of reported, within 20% on 69 of 71 days). With on-chain volume the share is 60%; the strictest reading gives 55%. [details](METHODS.md#how-volume-is-counted)
 - **Revenue matches the chain.** Transfers into NEAR's three revenue wallets come to 98.5% of the revenue figure used. [details](METHODS.md#evidence-against)
 - **Supply and activity come from the chain.** Issuance is read from block headers; L1 activity is counted by two indexers that agree. [details](METHODS.md#what-it-means-for-the-near-token)
-- **Anyone can rebuild it.** `python3 build.py --offline` reproduces this file and the dashboard byte for byte from the committed snapshot; the predictions are sealed on Bitcoin; the headline share was recomputed in a TEE. [details](METHODS.md#how-this-can-be-checked)
+- **The TEE run is checked down to Intel's root.** The headline share was recomputed inside an Intel TDX enclave through OutLayer. This repository verifies the enclave's quote itself: it binds the key that delivered the result, chains to Intel's root CA, and its TCB is UpToDate against Intel's current collateral (13 of 13 checks pass). [details](METHODS.md#how-this-can-be-checked)
+- **Anyone can rebuild it.** `python3 build.py --offline` reproduces this file and the dashboard byte for byte from the committed snapshot; the predictions, the call's rule and the on-chain method are sealed on Bitcoin. [details](METHODS.md#how-this-can-be-checked)
 
 ## Dated predictions
 
@@ -67,13 +68,16 @@ No price target: this measures the business and the token's cut of it, not a fai
 | P3 | 2027-05-31 | The Intents take rate has not been competed below 12 bps over the trailing 90 days. | 15.5 bps | PENDING |
 | P4 | 2026-11-12 | NEAR Intents holds at least 40% of the four swap venues' volume over 2026-11-11 and 2026-11-12, days after the data this thesis was built on. | n/a | PENDING |
 | P5 | 2026-11-12 | The Intents take rate stays at or above 12 bps over 2026-11-11 and 2026-11-12. | n/a | PENDING |
+| P6 | 2026-12-10 | NEAR Intents keeps at least 40% of the four swap venues' volume over 2026-11-13 to 2026-12-10 (the thesis's kill line). | n/a | PENDING |
+| P7 | 2026-12-10 | NEAR Intents is still the largest of the four swap venues over 2026-11-13 to 2026-12-10 (its share minus the largest rival's is above zero). | n/a | PENDING |
+| P8 | 2026-12-10 | Intents volume rebuilt from intents.near events with the sealed BigQuery method stays within 0.90 to 1.20 times the reported volume over 2026-11-13 to 2026-12-10, so the headline keeps an on-chain check. | n/a | PENDING |
 
-P1 to P3 are sealed by hash, timestamped on Bitcoin and written on NEAR mainnet; P4 and P5 are in a second seal, timestamped on Bitcoin after the first of their two days had ended. P4 is also graded a second time, inside the TEE: the same committed WASM, run through OutLayer after 2026-11-12 has ended, on tee/share-check/input-p4.json (2026-11-11 to 2026-11-12). That run is not made yet. [details](METHODS.md#what-would-change-my-mind)
+P1 to P3 are sealed by hash, timestamped on Bitcoin and written on NEAR mainnet; P4 and P5 are in a second seal, timestamped on Bitcoin after the first of their two days had ended. P6 to P8 are in a third seal made before their window starts, together with the call's rule and the on-chain method. P4 is also graded a second time, inside the TEE: the same committed WASM, run through OutLayer after 2026-11-12 has ended, on tee/share-check/input-p4.json (2026-11-11 to 2026-11-12). That run is not made yet. [details](METHODS.md#what-would-change-my-mind)
 
 ## What this cannot say
 
-- After August, Intents volume rests on NEAR's own Dune table, which public events no longer fully reproduce.
-- Which market is the right one, swap venues or swap venues and bridges, is a judgement; both are shown.
-- Claim thresholds and the call's rule were set after a first look at the data; the thresholds are sealed so later changes show, the call's rule is not.
+- The on-chain router rule that rebuilds Intents volume after August was found by looking at the data. It is sealed now and P8 tests it on days not yet seen.
+- Which market is the right one is tested once, with the THORChain halt: only swap venues behaved as substitutes, no bridge did. One event is thin evidence, so both market sets are shown. [details](METHODS.md#which-market-a-substitution-test)
+- Claim thresholds and the call's rule were set after a first look at the data. They are sealed so any later change shows, and P6 to P8 grade the thesis on days after the seal.
 
 Every other limit: [details](METHODS.md#what-this-analysis-cannot-say)

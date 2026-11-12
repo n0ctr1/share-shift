@@ -1,0 +1,52 @@
+{
+ "call_rule": {
+  "buyback_offset_accumulate": 0.5,
+  "review_after_days": 30,
+  "share_30d_hold": 0.5,
+  "share_90d_kill": 0.4
+ },
+ "note": "The investment-call rule, the on-chain counting method and three predictions on 2026-11-13 to 2026-12-10, all fixed before that window.",
+ "onchain_method": {
+  "flows_sql_sha256": "f22755bf00bf3769af1247f2bcfa5edbd588f250ca787d4bfae29c0e552261e1",
+  "legs_sql_sha256": "07354919ee5bfbf489b2b99406003bec3329860e79e0a5700bc2772f64facd0e",
+  "rule": "Intents volume = token_diff (both sides) + transfers between 1Click routers and other non-solver accounts (both directions)"
+ },
+ "predictions": [
+  {
+   "due": "2026-12-10",
+   "id": "P6",
+   "metric": "share_window",
+   "op": ">=",
+   "text": "NEAR Intents keeps at least 40% of the four swap venues' volume over 2026-11-13 to 2026-12-10 (the thesis's kill line).",
+   "value": 0.4,
+   "window_days": 28
+  },
+  {
+   "due": "2026-12-10",
+   "id": "P7",
+   "metric": "lead_window",
+   "op": ">",
+   "text": "NEAR Intents is still the largest of the four swap venues over 2026-11-13 to 2026-12-10 (its share minus the largest rival's is above zero).",
+   "value": 0.0,
+   "window_days": 28
+  },
+  {
+   "due": "2026-12-10",
+   "id": "P8",
+   "metric": "onchain_ratio_window",
+   "op": "between",
+   "text": "Intents volume rebuilt from intents.near events with the sealed BigQuery method stays within 0.90 to 1.20 times the reported volume over 2026-11-13 to 2026-12-10, so the headline keeps an on-chain check.",
+   "value": [
+    0.9,
+    1.2
+   ],
+   "window_days": 28
+  }
+ ],
+ "seal": {
+  "data_seen_through": "2026-11-11",
+  "router_min_senders": 500,
+  "sealed_on": "2026-11-12",
+  "window_starts": "2026-11-13"
+ }
+}

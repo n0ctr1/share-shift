@@ -33,6 +33,22 @@
     "wide_share": 0.1040390177117954
    },
    {
+    "id": "onchain",
+    "label": "Intents volume rebuilt from intents.near events for every day (BigQuery), rivals as reported",
+    "leader": "NEAR Intents",
+    "runner_up_share": 0.28737179915390226,
+    "share": 0.5958153176289185,
+    "wide_share": 0.18688052964631083
+   },
+   {
+    "id": "onchain_low",
+    "label": "Each day the lower of the on-chain and the reported Intents volume, one side of each swap for every venue at measured factors",
+    "leader": "NEAR Intents",
+    "runner_up_share": 0.3186200999614621,
+    "share": 0.5519291224641033,
+    "wide_share": 0.17324095678967963
+   },
+   {
     "id": "worst",
     "label": "Intents halved, rivals left as reported (inconsistent with the rivals' indexers and with intents.near events)",
     "leader": "THORChain",
@@ -118,720 +134,990 @@
    {
     "day": "2026-08-13",
     "intents_executed": 118589,
+    "onchain_ratio": 1.0007769724935998,
+    "onchain_usd": 69812539.3106022,
     "ratio": 1.0000113733290128,
     "reported": 69758339.0,
+    "routed_usd": 53406.926061370206,
     "token_diff_usd": 69759132.38454083,
     "transfer_usd": 30837973.056376632
    },
    {
     "day": "2026-08-14",
     "intents_executed": 119776,
+    "onchain_ratio": 0.9987962230899017,
+    "onchain_usd": 77827709.885462,
     "ratio": 0.9979388992576019,
     "reported": 77921510.0,
+    "routed_usd": 66803.96757178432,
     "token_diff_usd": 77760905.91789022,
     "transfer_usd": 32835866.363129966
    },
    {
     "day": "2026-08-15",
     "intents_executed": 81319,
+    "onchain_ratio": 1.0011138090126024,
+    "onchain_usd": 31780196.687781814,
     "ratio": 1.0004974112499887,
     "reported": 31744839.0,
+    "routed_usd": 19567.447734134024,
     "token_diff_usd": 31760629.240047682,
     "transfer_usd": 34601312.511457406
    },
    {
     "day": "2026-08-16",
     "intents_executed": 104005,
+    "onchain_ratio": 1.0007325068351645,
+    "onchain_usd": 50176001.360915184,
     "ratio": 1.0000002565035435,
     "reported": 50139274.0,
+    "routed_usd": 36714.500013741024,
     "token_diff_usd": 50139286.860901445,
     "transfer_usd": 18595319.25828656
    },
    {
     "day": "2026-08-17",
     "intents_executed": 131599,
+    "onchain_ratio": 1.1727606689217656,
+    "onchain_usd": 105721870.45926902,
     "ratio": 1.0045619605193232,
     "reported": 90147865.0,
+    "routed_usd": 15162754.458237734,
     "token_diff_usd": 90559116.00103128,
     "transfer_usd": 46179800.903510846
    },
    {
     "day": "2026-08-18",
     "intents_executed": 125603,
+    "onchain_ratio": 1.1027508771259253,
+    "onchain_usd": 89179956.36281566,
     "ratio": 1.000988581696862,
     "reported": 80870447.0,
+    "routed_usd": 8229562.31909442,
     "token_diff_usd": 80950394.04372124,
     "transfer_usd": 33281427.66418625
    },
    {
     "day": "2026-08-19",
     "intents_executed": 146781,
+    "onchain_ratio": 1.3101548223979986,
+    "onchain_usd": 175798586.46717066,
     "ratio": 1.0013814245876016,
     "reported": 134181536.0,
+    "routed_usd": 41431688.79413811,
     "token_diff_usd": 134366897.67303255,
     "transfer_usd": 97828057.21878792
    },
    {
     "day": "2026-08-20",
     "intents_executed": 163447,
+    "onchain_ratio": 1.1131537866813948,
+    "onchain_usd": 151629268.26744372,
     "ratio": 1.0344379981411265,
     "reported": 136215921.0,
+    "routed_usd": 10722343.63325387,
     "token_diff_usd": 140906924.63418984,
     "transfer_usd": 47369386.61606093
    },
    {
     "day": "2026-08-21",
     "intents_executed": 157801,
+    "onchain_ratio": 1.1747054064463747,
+    "onchain_usd": 194305433.40428445,
     "ratio": 1.0291429365452864,
     "reported": 165407797.0,
+    "routed_usd": 24077167.472217824,
     "token_diff_usd": 170228265.93206662,
     "transfer_usd": 107013054.39013052
    },
    {
     "day": "2026-08-22",
     "intents_executed": 129966,
+    "onchain_ratio": 1.1672785603306797,
+    "onchain_usd": 166228831.70925212,
     "ratio": 1.0200428727384832,
     "reported": 142407166.0,
+    "routed_usd": 20967417.004066095,
     "token_diff_usd": 145261414.70518604,
     "transfer_usd": 57704874.18389148
    },
    {
     "day": "2026-08-23",
     "intents_executed": 125662,
+    "onchain_ratio": 1.1095376369615984,
+    "onchain_usd": 123506774.05511902,
     "ratio": 0.9970338847332565,
     "reported": 111313731.0,
+    "routed_usd": 12523212.412036302,
     "token_diff_usd": 110983561.64308272,
     "transfer_usd": 52802419.00350316
    },
    {
     "day": "2026-08-24",
     "intents_executed": 144691,
+    "onchain_ratio": 1.0913400556453643,
+    "onchain_usd": 158945154.64757267,
     "ratio": 1.0037491300144756,
     "reported": 145642189.0,
+    "routed_usd": 12756934.14541881,
     "token_diff_usd": 146188220.50215384,
     "transfer_usd": 58852207.946184136
    },
    {
     "day": "2026-08-25",
     "intents_executed": 152169,
+    "onchain_ratio": 1.09972425462885,
+    "onchain_usd": 159627731.46835968,
     "ratio": 1.0034648642080544,
     "reported": 145152506.0,
+    "routed_usd": 13972291.745610898,
     "token_diff_usd": 145655439.7227488,
     "transfer_usd": 58039090.371265836
    },
    {
     "day": "2026-08-26",
     "intents_executed": 119403,
+    "onchain_ratio": 1.1594830417309616,
+    "onchain_usd": 146107292.91630852,
     "ratio": 0.9962382478322996,
     "reported": 126010720.0,
+    "routed_usd": 20570594.015421994,
     "token_diff_usd": 125536698.90088652,
     "transfer_usd": 66698539.520933546
    },
    {
     "day": "2026-08-27",
     "intents_executed": 140687,
+    "onchain_ratio": 1.1414395850141348,
+    "onchain_usd": 152064127.02478114,
     "ratio": 1.0082290804156426,
     "reported": 133221354.0,
+    "routed_usd": 17746483.789634354,
     "token_diff_usd": 134317643.2351468,
     "transfer_usd": 60321712.99770454
    },
    {
     "day": "2026-08-28",
     "intents_executed": 127089,
+    "onchain_ratio": 1.1755411129324154,
+    "onchain_usd": 130041029.91753349,
     "ratio": 1.0001898783854366,
     "reported": 110622273.0,
+    "routed_usd": 19397752.138942927,
     "token_diff_usd": 110643277.77859056,
     "transfer_usd": 58281958.771006376
    },
    {
     "day": "2026-08-29",
     "intents_executed": 105909,
+    "onchain_ratio": 1.3571235002728368,
+    "onchain_usd": 76819916.01950991,
     "ratio": 0.9939736993440642,
     "reported": 56604956.0,
+    "routed_usd": 20556078.502981927,
     "token_diff_usd": 56263837.51652798,
     "transfer_usd": 64126245.57107769
    },
    {
     "day": "2026-08-30",
     "intents_executed": 124199,
+    "onchain_ratio": 1.4702157357506942,
+    "onchain_usd": 100425191.17938477,
     "ratio": 1.0039562098666857,
     "reported": 68306432.0,
+    "routed_usd": 31848524.599148277,
     "token_diff_usd": 68576666.5802365,
     "transfer_usd": 79226005.57703888
    },
    {
     "day": "2026-08-31",
     "intents_executed": 164298,
+    "onchain_ratio": 1.2624738986632515,
+    "onchain_usd": 156116067.93876642,
     "ratio": 0.9984211515759305,
     "reported": 123658848.0,
+    "routed_usd": 32652458.51605347,
     "token_diff_usd": 123463609.42271295,
     "transfer_usd": 89765251.35531443
    },
    {
     "day": "2026-09-01",
     "intents_executed": 151439,
+    "onchain_ratio": 1.0184625534919933,
+    "onchain_usd": 133745062.67897299,
     "ratio": 0.8248025985709413,
     "reported": 131320550.0,
+    "routed_usd": 25431531.793207765,
     "token_diff_usd": 108313530.88576522,
     "transfer_usd": 66314900.00629623
    },
    {
     "day": "2026-09-02",
     "intents_executed": 139668,
+    "onchain_ratio": 0.957449792816754,
+    "onchain_usd": 137131289.45021212,
     "ratio": 0.7978269071739374,
     "reported": 143225567.0,
+    "routed_usd": 22862078.302368578,
     "token_diff_usd": 114269211.14784355,
     "transfer_usd": 69288648.59317581
    },
    {
     "day": "2026-09-03",
     "intents_executed": 156234,
+    "onchain_ratio": 0.9814161613189658,
+    "onchain_usd": 166358868.16335192,
     "ratio": 0.7906349555639164,
     "reported": 169508996.0,
+    "routed_usd": 32339130.64320786,
     "token_diff_usd": 134019737.52014408,
     "transfer_usd": 90528966.61665487
    },
    {
     "day": "2026-09-04",
     "intents_executed": 154500,
+    "onchain_ratio": 0.8251926050804119,
+    "onchain_usd": 172780507.7438806,
     "ratio": 0.5241327245245881,
     "reported": 209382036.0,
+    "routed_usd": 63036530.74869519,
     "token_diff_usd": 109743976.9951854,
     "transfer_usd": 194592254.55881947
    },
    {
     "day": "2026-09-05",
     "intents_executed": 132552,
+    "onchain_ratio": 0.9637217794026863,
+    "onchain_usd": 97571374.5355288,
     "ratio": 0.7902727443872405,
     "reported": 101244339.0,
+    "routed_usd": 17560732.900326665,
     "token_diff_usd": 80010641.63520212,
     "transfer_usd": 52117197.083532855
    },
    {
     "day": "2026-09-06",
     "intents_executed": 135006,
+    "onchain_ratio": 0.9569007910809175,
+    "onchain_usd": 134933008.2849738,
     "ratio": 0.7383056119192315,
     "reported": 141010447.0,
+    "routed_usd": 30824203.92563446,
     "token_diff_usd": 104108804.35933936,
     "transfer_usd": 92167799.36915965
    },
    {
     "day": "2026-09-07",
     "intents_executed": 150594,
+    "onchain_ratio": 1.0803528744697397,
+    "onchain_usd": 118017242.40192913,
     "ratio": 0.91053398222694,
     "reported": 109239532.0,
+    "routed_usd": 18550936.313361883,
     "token_diff_usd": 99466306.08856724,
     "transfer_usd": 54885795.306032375
    },
    {
     "day": "2026-09-08",
     "intents_executed": 111744,
+    "onchain_ratio": 1.0989109290129493,
+    "onchain_usd": 115102341.71539456,
     "ratio": 0.7850291180261839,
     "reported": 104742194.0,
+    "routed_usd": 32876669.539447095,
     "token_diff_usd": 82225672.17594746,
     "transfer_usd": 69829328.87859435
    },
    {
     "day": "2026-09-09",
     "intents_executed": 105666,
+    "onchain_ratio": 1.0319939739918116,
+    "onchain_usd": 205227321.67881563,
     "ratio": 0.8773438628866415,
     "reported": 198864845.0,
+    "routed_usd": 30754470.37416244,
     "token_diff_usd": 174472851.3046532,
     "transfer_usd": 71262673.85718942
    },
    {
     "day": "2026-09-10",
     "intents_executed": 98095,
+    "onchain_ratio": 1.0427440696566892,
+    "onchain_usd": 157216312.73096257,
     "ratio": 0.8450180288615506,
     "reported": 150771716.0,
+    "routed_usd": 29811494.468569044,
     "token_diff_usd": 127404818.26239352,
     "transfer_usd": 79916731.79415308
    },
    {
     "day": "2026-09-11",
     "intents_executed": 96153,
+    "onchain_ratio": 1.1306777324098383,
+    "onchain_usd": 166494817.50869197,
     "ratio": 0.8879064846466393,
     "reported": 147252230.0,
+    "routed_usd": 35748607.61301358,
     "token_diff_usd": 130746209.8956784,
     "transfer_usd": 76503882.11787449
    },
    {
     "day": "2026-09-12",
     "intents_executed": 83449,
+    "onchain_ratio": 1.0994662106238318,
+    "onchain_usd": 122786043.43997468,
     "ratio": 0.8652590671777124,
     "reported": 111677869.0,
+    "routed_usd": 26155754.684639912,
     "token_diff_usd": 96630288.75533476,
     "transfer_usd": 52846834.358601615
    },
    {
     "day": "2026-09-13",
     "intents_executed": 61501,
+    "onchain_ratio": 0.9815409153653698,
+    "onchain_usd": 85718417.68459699,
     "ratio": 0.7468332383483333,
     "reported": 87330458.0,
+    "routed_usd": 20497128.93001388,
     "token_diff_usd": 65221288.754583105,
     "transfer_usd": 59767546.345365435
    },
    {
     "day": "2026-09-14",
     "intents_executed": 79463,
+    "onchain_ratio": 1.1285071295976408,
+    "onchain_usd": 136899078.0127198,
     "ratio": 0.812889059053197,
     "reported": 121309892.0,
+    "routed_usd": 38287594.05099487,
     "token_diff_usd": 98611483.96172495,
     "transfer_usd": 79037958.11814736
    },
    {
     "day": "2026-09-15",
     "intents_executed": 82021,
+    "onchain_ratio": 1.0819720725206123,
+    "onchain_usd": 142244246.7559532,
     "ratio": 0.8387927755283312,
     "reported": 131467577.0,
+    "routed_usd": 31970192.952138577,
     "token_diff_usd": 110274053.8038146,
     "transfer_usd": 69579008.84073082
    },
    {
     "day": "2026-09-16",
     "intents_executed": 87249,
+    "onchain_ratio": 1.18230121636771,
+    "onchain_usd": 158569616.06649625,
     "ratio": 0.9331913889625888,
     "reported": 134119473.0,
+    "routed_usd": 33410478.77069583,
     "token_diff_usd": 125159137.29580043,
     "transfer_usd": 91270564.36861189
    },
    {
     "day": "2026-09-17",
     "intents_executed": 101975,
+    "onchain_ratio": 1.109759056844056,
+    "onchain_usd": 336722864.4172578,
     "ratio": 0.8264037783755018,
     "reported": 303419794.0,
+    "routed_usd": 85975600.22174135,
     "token_diff_usd": 250747264.1955164,
     "transfer_usd": 191746037.6766381
    },
    {
     "day": "2026-09-18",
     "intents_executed": 107103,
+    "onchain_ratio": 1.0766913579861532,
+    "onchain_usd": 245319721.17279947,
     "ratio": 0.8121182486790478,
     "reported": 227845909.0,
+    "routed_usd": 60281900.58703378,
     "token_diff_usd": 185037820.5857657,
     "transfer_usd": 152743151.4671565
    },
    {
     "day": "2026-09-19",
     "intents_executed": 84604,
+    "onchain_ratio": 1.172311207126534,
+    "onchain_usd": 148288215.46791252,
     "ratio": 0.7517814333412034,
     "reported": 126492193.0,
+    "routed_usd": 53193733.30790039,
     "token_diff_usd": 95094482.16001214,
     "transfer_usd": 114023501.12544715
    },
    {
     "day": "2026-09-20",
     "intents_executed": 80376,
+    "onchain_ratio": 1.0497598708188014,
+    "onchain_usd": 124461207.80055067,
     "ratio": 0.6776269239623353,
     "reported": 118561598.0,
+    "routed_usd": 44120676.8477517,
     "token_diff_usd": 80340530.95279896,
     "transfer_usd": 100129233.0963739
    },
    {
     "day": "2026-09-21",
     "intents_executed": 138015,
+    "onchain_ratio": 1.0494042828653862,
+    "onchain_usd": 284207467.05823416,
     "ratio": 0.6996183858241461,
     "reported": 270827432.0,
+    "routed_usd": 94731616.24549544,
     "token_diff_usd": 189475850.81273872,
     "transfer_usd": 221726291.10870588
    },
    {
     "day": "2026-09-22",
     "intents_executed": 112468,
+    "onchain_ratio": 1.0252834839874962,
+    "onchain_usd": 228881888.87786657,
     "ratio": 0.6603580855694353,
     "reported": 223237663.0,
+    "routed_usd": 81465093.1121918,
     "token_diff_usd": 147416795.76567477,
     "transfer_usd": 201188318.79514447
    },
    {
     "day": "2026-09-23",
     "intents_executed": 116914,
+    "onchain_ratio": 1.126544857395941,
+    "onchain_usd": 242245155.09016067,
     "ratio": 0.6875398045410859,
     "reported": 215033741.0,
+    "routed_usd": 94400898.83328217,
     "token_diff_usd": 147844256.2568785,
     "transfer_usd": 217715317.6388254
    },
    {
     "day": "2026-09-24",
     "intents_executed": 100603,
+    "onchain_ratio": 0.9981306126595173,
+    "onchain_usd": 175492976.22396028,
     "ratio": 0.7052898384435746,
     "reported": 175821655.0,
+    "routed_usd": 51487749.57412839,
     "token_diff_usd": 124005226.6498319,
     "transfer_usd": 125855073.24842882
    },
    {
     "day": "2026-09-25",
     "intents_executed": 105378,
+    "onchain_ratio": 1.1124271109337651,
+    "onchain_usd": 200818528.05700898,
     "ratio": 0.6714969857742695,
     "reported": 180522864.0,
+    "routed_usd": 79597969.01767057,
     "token_diff_usd": 121220559.0393384,
     "transfer_usd": 172316203.9918924
    },
    {
     "day": "2026-09-26",
     "intents_executed": 89831,
+    "onchain_ratio": 1.0293560278734848,
+    "onchain_usd": 96294574.43981495,
     "ratio": 0.7168156221102006,
     "reported": 93548366.0,
+    "routed_usd": 29237644.26813223,
     "token_diff_usd": 67056930.17168273,
     "transfer_usd": 73612582.88872294
    },
    {
     "day": "2026-09-27",
     "intents_executed": 123746,
+    "onchain_ratio": 1.1248498597499792,
+    "onchain_usd": 135643190.16485602,
     "ratio": 0.777740810775174,
     "reported": 120587818.0,
+    "routed_usd": 41857122.82392689,
     "token_diff_usd": 93786067.34092912,
     "transfer_usd": 96193320.21409725
    },
    {
     "day": "2026-09-28",
     "intents_executed": 132673,
+    "onchain_ratio": 1.0051304425889367,
+    "onchain_usd": 168725394.5228376,
     "ratio": 0.7412505340996504,
     "reported": 167864177.0,
+    "routed_usd": 44295983.66538937,
     "token_diff_usd": 124429410.85744825,
     "transfer_usd": 105161671.9386593
    },
    {
     "day": "2026-09-29",
     "intents_executed": 131844,
+    "onchain_ratio": 1.1444038029397607,
+    "onchain_usd": 244540825.71472433,
     "ratio": 0.784099554696645,
     "reported": 213684038.0,
+    "routed_usd": 76991266.67314336,
     "token_diff_usd": 167549559.04158098,
     "transfer_usd": 150954576.2738107
    },
    {
     "day": "2026-09-30",
     "intents_executed": 105020,
+    "onchain_ratio": 1.087780077484366,
+    "onchain_usd": 188381109.85293663,
     "ratio": 0.7671465243651321,
     "reported": 173179408.0,
+    "routed_usd": 55527128.91412549,
     "token_diff_usd": 132853980.93881115,
     "transfer_usd": 135771146.43412876
    },
    {
     "day": "2026-10-01",
     "intents_executed": 74801,
+    "onchain_ratio": 0.9713989684213169,
+    "onchain_usd": 121460506.82382114,
     "ratio": 0.5949392939097412,
     "reported": 125036685.0,
+    "routed_usd": 47071269.73710641,
     "token_diff_usd": 74389237.08671473,
     "transfer_usd": 121889887.51081665
    },
    {
     "day": "2026-10-02",
     "intents_executed": 79675,
+    "onchain_ratio": 1.1437888933978813,
+    "onchain_usd": 141986884.440812,
     "ratio": 0.6877750087991469,
     "reported": 124137317.0,
+    "routed_usd": 56608340.1488345,
     "token_diff_usd": 85378544.29197748,
     "transfer_usd": 117388261.48872088
    },
    {
     "day": "2026-10-03",
     "intents_executed": 64728,
+    "onchain_ratio": 1.137421375105969,
+    "onchain_usd": 87164565.02528402,
     "ratio": 0.7367393670601801,
     "reported": 76633486.0,
+    "routed_usd": 30705659.054028846,
     "token_diff_usd": 56458905.97125517,
     "transfer_usd": 62035170.55250511
    },
    {
     "day": "2026-10-04",
     "intents_executed": 62658,
+    "onchain_ratio": 1.720650775163801,
+    "onchain_usd": 110731166.05847418,
     "ratio": 0.714372995847626,
     "reported": 64354236.0,
+    "routed_usd": 64758237.69166904,
     "token_diff_usd": 45972928.36680514,
     "transfer_usd": 95447403.14330485
    },
    {
     "day": "2026-10-05",
     "intents_executed": 77320,
+    "onchain_ratio": 1.069027388532089,
+    "onchain_usd": 125265420.1679698,
     "ratio": 0.838887164876648,
     "reported": 117176998.0,
+    "routed_usd": 26967140.526993148,
     "token_diff_usd": 98298279.64097665,
     "transfer_usd": 63625337.2558155
    },
    {
     "day": "2026-10-06",
     "intents_executed": 95878,
+    "onchain_ratio": 1.086767367760612,
+    "onchain_usd": 137187858.0554852,
     "ratio": 0.6452216214511597,
     "reported": 126234797.0,
+    "routed_usd": 55738437.65158721,
     "token_diff_usd": 81449420.40389799,
     "transfer_usd": 126903851.94533747
    },
    {
     "day": "2026-10-07",
     "intents_executed": 92161,
+    "onchain_ratio": 1.0575726453622147,
+    "onchain_usd": 126600179.08476251,
     "ratio": 0.6470670638739,
     "reported": 119708258.0,
+    "routed_usd": 49140908.05924321,
     "token_diff_usd": 77459271.0255193,
     "transfer_usd": 114663980.54387371
    },
    {
     "day": "2026-10-08",
     "intents_executed": 151015,
+    "onchain_ratio": 0.9226479050648346,
+    "onchain_usd": 236261888.0800259,
     "ratio": 0.49300259232835864,
     "reported": 256069392.0,
+    "routed_usd": 110019014.00807925,
     "token_diff_usd": 126242874.07194667,
     "transfer_usd": 254308837.09367597
    },
    {
     "day": "2026-10-09",
     "intents_executed": 112361,
+    "onchain_ratio": 0.95159199041855,
+    "onchain_usd": 243319974.64127636,
     "ratio": 0.6144874515988028,
     "reported": 255697796.0,
+    "routed_usd": 86196887.59780581,
     "token_diff_usd": 157123087.04347056,
     "transfer_usd": 223935131.29525793
    },
    {
     "day": "2026-10-10",
     "intents_executed": 92050,
+    "onchain_ratio": 1.174273340012048,
+    "onchain_usd": 179881601.75548196,
     "ratio": 0.634018926016978,
     "reported": 153185460.0,
+    "routed_usd": 82759120.92486523,
     "token_diff_usd": 97122480.83061674,
     "transfer_usd": 154908687.47072026
    },
    {
     "day": "2026-10-11",
     "intents_executed": 84939,
+    "onchain_ratio": 0.9578029706546619,
+    "onchain_usd": 117593617.99413578,
     "ratio": 0.6953688114826666,
     "reported": 122774330.0,
+    "routed_usd": 32220178.061455082,
     "token_diff_usd": 85373439.9326807,
     "transfer_usd": 93822944.11429492
    },
    {
     "day": "2026-10-12",
     "intents_executed": 102304,
+    "onchain_ratio": 0.9949740915239165,
+    "onchain_usd": 138800701.5953034,
     "ratio": 0.6230568695950517,
     "reported": 139501825.0,
+    "routed_usd": 51883131.20800666,
     "token_diff_usd": 86917570.38729672,
     "transfer_usd": 129845845.8250959
    },
    {
     "day": "2026-10-13",
     "intents_executed": 101422,
+    "onchain_ratio": 1.054353456044359,
+    "onchain_usd": 140906137.584794,
     "ratio": 0.66752378102978,
     "reported": 133642221.0,
+    "routed_usd": 51696776.91765655,
     "token_diff_usd": 89209360.66713747,
     "transfer_usd": 111836055.97637764
    },
    {
     "day": "2026-10-14",
     "intents_executed": 101912,
+    "onchain_ratio": 0.895182116366844,
+    "onchain_usd": 130188278.62360474,
     "ratio": 0.5344035850020581,
     "reported": 145432171.0,
+    "routed_usd": 52468805.06657239,
     "token_diff_usd": 77719473.55703235,
     "transfer_usd": 143449164.6360773
    },
    {
     "day": "2026-10-15",
     "intents_executed": 80567,
+    "onchain_ratio": 0.950064127619406,
+    "onchain_usd": 94667389.97851263,
     "ratio": 0.6490455511299477,
     "reported": 99643158.0,
+    "routed_usd": 29994441.57807418,
     "token_diff_usd": 64672948.40043845,
     "transfer_usd": 77758452.60385917
    },
    {
     "day": "2026-10-16",
     "intents_executed": 75908,
+    "onchain_ratio": 0.9848096590197772,
+    "onchain_usd": 86835554.26130182,
     "ratio": 0.5632979832506699,
     "reported": 88174962.0,
+    "routed_usd": 37166775.99349735,
     "token_diff_usd": 49668778.26780446,
     "transfer_usd": 85440906.68730515
    },
    {
     "day": "2026-10-17",
     "intents_executed": 65175,
+    "onchain_ratio": 1.0829797648831303,
+    "onchain_usd": 141575627.08647478,
     "ratio": 0.8626580631170879,
     "reported": 130727860.0,
+    "routed_usd": 28802184.583432943,
     "token_diff_usd": 112773442.50304183,
     "transfer_usd": 67327128.20778638
    },
    {
     "day": "2026-10-18",
     "intents_executed": 61038,
+    "onchain_ratio": 0.9756436250923048,
+    "onchain_usd": 135426473.94721672,
     "ratio": 0.7902516990567913,
     "reported": 138807317.0,
+    "routed_usd": 25733755.846452083,
     "token_diff_usd": 109692718.10076463,
     "transfer_usd": 67703403.05721377
    },
    {
     "day": "2026-10-19",
     "intents_executed": 75640,
+    "onchain_ratio": 1.0312249603594503,
+    "onchain_usd": 100722752.0239668,
     "ratio": 0.6389870097906394,
     "reported": 97672919.0,
+    "routed_usd": 38311025.57463347,
     "token_diff_usd": 62411726.44933333,
     "transfer_usd": 85862565.46710606
    },
    {
     "day": "2026-10-20",
     "intents_executed": 62064,
+    "onchain_ratio": 0.9225458786319702,
+    "onchain_usd": 112045100.17200041,
     "ratio": 0.6495331751484372,
     "reported": 121452063.0,
+    "routed_usd": 33157956.06328237,
     "token_diff_usd": 78887144.10871804,
     "transfer_usd": 88233704.59959546
    },
    {
     "day": "2026-10-21",
     "intents_executed": 86385,
+    "onchain_ratio": 1.0041618482898098,
+    "onchain_usd": 152082369.45111883,
     "ratio": 0.5564232960941423,
     "reported": 151452049.0,
+    "routed_usd": 67810921.14632727,
     "token_diff_usd": 84271448.30479155,
     "transfer_usd": 152038948.76351187
    },
    {
     "day": "2026-10-22",
     "intents_executed": 74016,
+    "onchain_ratio": 0.8964736925523137,
+    "onchain_usd": 118569764.8032522,
     "ratio": 0.5250356693290322,
     "reported": 132262403.0,
+    "routed_usd": 49127285.51708101,
     "token_diff_usd": 69442479.2861712,
     "transfer_usd": 127694586.86594638
    },
    {
     "day": "2026-10-23",
     "intents_executed": 72896,
+    "onchain_ratio": 0.9927613476967271,
+    "onchain_usd": 94854144.41363747,
     "ratio": 0.6870501129433743,
     "reported": 95545767.0,
+    "routed_usd": 29209414.405026153,
     "token_diff_usd": 65644730.00861132,
     "transfer_usd": 76056739.2684042
    },
    {
     "day": "2026-10-24",
     "intents_executed": 74448,
+    "onchain_ratio": 0.9560034846929913,
+    "onchain_usd": 82210691.76715605,
     "ratio": 0.6162992713809528,
     "reported": 85994134.0,
+    "routed_usd": 29212569.639920037,
     "token_diff_usd": 52998122.127236016,
     "transfer_usd": 71656688.80909339
    },
    {
     "day": "2026-10-25",
     "intents_executed": 66133,
+    "onchain_ratio": 0.9579143838864059,
+    "onchain_usd": 85532180.12678911,
     "ratio": 0.6277986145906848,
     "reported": 89290005.0,
+    "routed_usd": 29476038.690993793,
     "token_diff_usd": 56056141.435795315,
     "transfer_usd": 70015137.44654489
    },
    {
     "day": "2026-10-26",
     "intents_executed": 79860,
+    "onchain_ratio": 1.0008026583655827,
+    "onchain_usd": 134430028.84875068,
     "ratio": 0.6801659607286804,
     "reported": 134322214.0,
+    "routed_usd": 43068631.11623726,
     "token_diff_usd": 91361397.73251341,
     "transfer_usd": 104815871.48102546
    },
    {
     "day": "2026-10-27",
     "intents_executed": 80672,
+    "onchain_ratio": 1.0022818574593295,
+    "onchain_usd": 141586495.6566952,
     "ratio": 0.597590740949127,
     "reported": 141264151.0,
+    "routed_usd": 57168346.99105583,
     "token_diff_usd": 84418148.66563936,
     "transfer_usd": 121365499.28356579
    },
    {
     "day": "2026-10-28",
     "intents_executed": 76459,
+    "onchain_ratio": 1.0728499315771318,
+    "onchain_usd": 120573265.20483056,
     "ratio": 0.624437709289529,
     "reported": 112385956.0,
+    "routed_usd": 50395236.28387677,
     "token_diff_usd": 70178028.9209538,
     "transfer_usd": 107685511.6808514
    },
    {
     "day": "2026-10-29",
     "intents_executed": 92202,
+    "onchain_ratio": 0.9143605830959103,
+    "onchain_usd": 129586677.43686157,
     "ratio": 0.32354304458432687,
     "reported": 141723823.0,
+    "routed_usd": 83732920.25331134,
     "token_diff_usd": 45853757.183550246,
     "transfer_usd": 208012133.17778677
    },
    {
     "day": "2026-10-30",
     "intents_executed": 145681,
+    "onchain_ratio": 1.060551953139707,
+    "onchain_usd": 203524752.74276024,
     "ratio": 0.4717432309767103,
     "reported": 191904557.0,
+    "routed_usd": 112995076.98442599,
     "token_diff_usd": 90529675.75833426,
     "transfer_usd": 209473392.22647488
    },
    {
     "day": "2026-10-31",
     "intents_executed": 88289,
+    "onchain_ratio": 1.316578192955858,
+    "onchain_usd": 96680669.56758167,
     "ratio": 0.3883740667397123,
     "reported": 73433291.0,
+    "routed_usd": 68161083.70783095,
     "token_diff_usd": 28519585.859750714,
     "transfer_usd": 116020804.34704916
    },
    {
     "day": "2026-11-01",
     "intents_executed": 102131,
+    "onchain_ratio": 1.1125068789556711,
+    "onchain_usd": 91146088.8079462,
     "ratio": 0.47883114745606925,
     "reported": 81928562.0,
+    "routed_usd": 51916141.45606049,
     "token_diff_usd": 39229947.35188571,
     "transfer_usd": 105064214.27996193
    },
    {
     "day": "2026-11-02",
     "intents_executed": 87945,
+    "onchain_ratio": 1.047908450787771,
+    "onchain_usd": 162726354.20742422,
     "ratio": 0.4012392147215834,
     "reported": 155286804.0,
+    "routed_usd": 100419198.9138398,
     "token_diff_usd": 62307155.293584436,
     "transfer_usd": 223328258.33530676
    },
    {
     "day": "2026-11-03",
     "intents_executed": 123556,
+    "onchain_ratio": 1.0254688303030612,
+    "onchain_usd": 141424230.69614428,
     "ratio": 0.1814317268189689,
     "reported": 137911779.0,
+    "routed_usd": 116402658.48349828,
     "token_diff_usd": 25021572.21264601,
     "transfer_usd": 237582732.46339515
    },
    {
     "day": "2026-11-04",
     "intents_executed": 193535,
+    "onchain_ratio": 1.1657270095264325,
+    "onchain_usd": 167843011.51233712,
     "ratio": 0.07540072650613316,
     "reported": 143981404.0,
+    "routed_usd": 156986709.04736406,
     "token_diff_usd": 10856302.464973068,
     "transfer_usd": 272927367.2415724
    },
    {
     "day": "2026-11-05",
     "intents_executed": 332921,
+    "onchain_ratio": 1.176435987441098,
+    "onchain_usd": 154136950.12432536,
     "ratio": 0.02743411469332599,
     "reported": 131020261.0,
+    "routed_usd": 150542525.25690186,
     "token_diff_usd": 3594424.867423506,
     "transfer_usd": 257460160.1469715
    },
    {
     "day": "2026-11-06",
     "intents_executed": 119214,
+    "onchain_ratio": 1.0088703467887645,
+    "onchain_usd": 142811621.55279028,
     "ratio": 0.01992041979648531,
     "reported": 141555971.0,
+    "routed_usd": 139991767.1857712,
     "token_diff_usd": 2819854.3670191006,
     "transfer_usd": 241989758.01057658
    },
    {
     "day": "2026-11-07",
     "intents_executed": 105679,
+    "onchain_ratio": 1.0288605567462317,
+    "onchain_usd": 118064500.05975883,
     "ratio": 0.004225124962468024,
     "reported": 114752674.0,
+    "routed_usd": 117579655.67233147,
     "token_diff_usd": 484844.38742735534,
     "transfer_usd": 207538736.34564152
    },
    {
     "day": "2026-11-08",
     "intents_executed": 92475,
+    "onchain_ratio": 1.1832225151613414,
+    "onchain_usd": 103737353.84079908,
     "ratio": 0.029283729739193614,
     "reported": 87673580.0,
+    "routed_usd": 101169944.41881151,
     "token_diff_usd": 2567409.4219875704,
     "transfer_usd": 186549180.2767392
    },
    {
     "day": "2026-11-09",
     "intents_executed": 120937,
+    "onchain_ratio": 1.0082602715078728,
+    "onchain_usd": 167606431.1833894,
     "ratio": 0.021521395998214586,
     "reported": 166233299.0,
+    "routed_usd": 164028858.52752078,
     "token_diff_usd": 3577572.6558686085,
     "transfer_usd": 286602669.23525834
    },
    {
     "day": "2026-11-10",
     "intents_executed": 129250,
+    "onchain_ratio": 1.0848160358409509,
+    "onchain_usd": 165710969.412545,
     "ratio": 0.08011049163927211,
     "reported": 152754904.0,
+    "routed_usd": 153473698.95279518,
     "token_diff_usd": 12237270.459749814,
     "transfer_usd": 276818728.2361618
    }
@@ -859,6 +1145,77 @@
     "min": 0.004225124962468024,
     "within_5pct": 0
    }
+  },
+  "onchain": {
+   "all": {
+    "days": 90,
+    "max": 1.720650775163801,
+    "mean": 1.0742675936622634,
+    "median": 1.0590622992509608,
+    "min": 0.8251926050804119,
+    "within_10pct": 56,
+    "within_20pct": 84
+   },
+   "before_method_change": {
+    "days": 19,
+    "max": 1.4702157357506942,
+    "mean": 1.1531106555229218,
+    "median": 1.1414395850141348,
+    "min": 0.9987962230899017,
+    "within_10pct": 6,
+    "within_20pct": 15
+   },
+   "by_month": {
+    "2026-08": {
+     "days": 19,
+     "max": 1.4702157357506942,
+     "mean": 1.1531106555229218,
+     "median": 1.1414395850141348,
+     "min": 0.9987962230899017,
+     "within_10pct": 6,
+     "within_20pct": 15
+    },
+    "2026-09": {
+     "days": 30,
+     "max": 1.18230121636771,
+     "mean": 1.0557814286154033,
+     "median": 1.0632256144024774,
+     "min": 0.8251926050804119,
+     "within_10pct": 20,
+     "within_20pct": 30
+    },
+    "2026-10": {
+     "days": 31,
+     "max": 1.720650775163801,
+     "mean": 1.040627781714416,
+     "median": 1.0008026583655827,
+     "min": 0.895182116366844,
+     "within_10pct": 24,
+     "within_20pct": 29
+    },
+    "2026-11": {
+     "days": 10,
+     "max": 1.1832225151613414,
+     "mean": 1.0842076883059195,
+     "median": 1.066362243314361,
+     "min": 1.0082602715078728,
+     "within_10pct": 6,
+     "within_20pct": 10
+    }
+   },
+   "bytes_billed": 117341945856,
+   "first_routed_day": "2026-08-13",
+   "from_method_change": {
+    "days": 71,
+    "max": 1.720650775163801,
+    "mean": 1.0531687461220873,
+    "median": 1.0427440696566892,
+    "min": 0.8251926050804119,
+    "within_10pct": 50,
+    "within_20pct": 69
+   },
+   "rule": "token_diff (both sides) plus transfers between 1Click routers and other non-solver accounts (both directions); a router is a receiver with at least 500 distinct senders that day",
+   "total_over_reported": 1.0635665895717792
   },
   "range": [
    "2026-08-13",
@@ -1214,11 +1571,11 @@
  },
  "claims": [
   {
-   "claim": "NEAR Intents is the largest swap venue with more than 50% of volume, whether volume is taken as reported or one side of each swap is counted for every venue.",
+   "claim": "NEAR Intents is the largest swap venue with more than 50% of volume, whether volume is taken as reported, one side of each swap is counted for every venue, or Intents volume is rebuilt from intents.near itself.",
    "id": "C1",
    "threshold": 0.5,
    "unit": "share",
-   "value": 0.5553459852758119,
+   "value": 0.5519291224641033,
    "verdict": "SUPPORTED"
   },
   {
@@ -1670,6 +2027,166 @@
   "implied_value": 452724203.5339738,
   "rival_median_mcap_to_revenue": 21.984880192414394
  },
+ "market_test": {
+  "bridge_diversion_adjusted": 0.44537617981555666,
+  "bridges_substituting": [],
+  "lost_daily": 48062548.62162162,
+  "periods": {
+   "after_1": [
+    "2026-06-22",
+    "2026-07-28"
+   ],
+   "after_2": [
+    "2026-07-29",
+    "2026-09-03"
+   ],
+   "before": [
+    "2026-04-09",
+    "2026-05-15"
+   ],
+   "during": [
+    "2026-05-16",
+    "2026-06-21"
+   ],
+   "pre": [
+    "2026-03-03",
+    "2026-04-08"
+   ]
+  },
+  "rows": [
+   {
+    "daily": {
+     "after_1": 150230163.75675675,
+     "after_2": 241978314.8108108,
+     "before": 64141700.10810811,
+     "during": 105603717.43243243,
+     "pre": 60931142.027027026
+    },
+    "diversion": 0.8626678882707447,
+    "diversion_trend_adjusted": 0.7958683078665385,
+    "gain": 41462017.32432432,
+    "gave_back": -1.0763211537742412,
+    "kind": "bridge",
+    "name": "Relay",
+    "slug": "relay",
+    "substitute": false,
+    "trend_before": 3210558.081081085
+   },
+   {
+    "daily": {
+     "after_1": 71039501.7027027,
+     "after_2": 92451481.21621622,
+     "before": 56926663.62162162,
+     "during": 78565435.51351352,
+     "pre": 69256967.27027027
+    },
+    "diversion": 0.45022106634930686,
+    "diversion_trend_adjusted": 0.7067680868937332,
+    "gain": 21638771.891891897,
+    "gave_back": 0.3477985649282992,
+    "kind": "swap",
+    "name": "NEAR Intents",
+    "slug": "near-intents",
+    "substitute": true,
+    "trend_before": -12330303.64864865
+   },
+   {
+    "daily": {
+     "after_1": 6840283.810810811,
+     "after_2": 14280842.54054054,
+     "before": 8734952.054054054,
+     "during": 8281498.972972973,
+     "pre": 12417246.756756756
+    },
+    "diversion": -0.009434644938431082,
+    "diversion_trend_adjusted": 0.06717999178614266,
+    "gain": -453453.08108108025,
+    "gave_back": null,
+    "kind": "bridge",
+    "name": "Stargate V2",
+    "slug": "stargate-v2",
+    "substitute": false,
+    "trend_before": -3682294.702702703
+   },
+   {
+    "daily": {
+     "after_1": 1784573.2162162163,
+     "after_2": 843777.2972972973,
+     "before": 2666458.378378378,
+     "during": 5460938.189189189,
+     "pre": 1423006.1081081082
+    },
+    "diversion": 0.05814256403277113,
+    "diversion_trend_adjusted": 0.0322710215130537,
+    "gain": 2794479.810810811,
+    "gave_back": 1.3155811535121755,
+    "kind": "swap",
+    "name": "Maya Protocol",
+    "slug": "maya-protocol",
+    "substitute": true,
+    "trend_before": 1243452.27027027
+   },
+   {
+    "daily": {
+     "after_1": 10205947.702702703,
+     "after_2": 14238127.081081081,
+     "before": 13956703.513513513,
+     "during": 13386159.162162162,
+     "pre": 9412709.945945946
+    },
+    "diversion": -0.01187087176427184,
+    "diversion_trend_adjusted": -0.1064142053552705,
+    "gain": -570544.3513513505,
+    "gave_back": null,
+    "kind": "swap",
+    "name": "Chainflip",
+    "slug": "chainflip-amm",
+    "substitute": false,
+    "trend_before": 4543993.567567566
+   },
+   {
+    "daily": {
+     "after_1": 7015477.567567567,
+     "after_2": 11320312.54054054,
+     "before": 11104444.18918919,
+     "during": 7679881.810810811,
+     "pre": 6656506.378378378
+    },
+    "diversion": -0.07125220107112237,
+    "diversion_trend_adjusted": -0.16379697737559498,
+    "gain": -3424562.378378379,
+    "gave_back": null,
+    "kind": "bridge",
+    "name": "deBridge",
+    "slug": "debridge",
+    "substitute": false,
+    "trend_before": 4447937.810810812
+   },
+   {
+    "daily": {
+     "after_1": 53184553.324324325,
+     "after_2": 218638525.54054055,
+     "before": 26333658.91891892,
+     "during": 20024652.54054054,
+     "pre": 20440778.91891892
+    },
+    "diversion": -0.13126657989044266,
+    "diversion_trend_adjusted": -0.25387514246152953,
+    "gain": -6309006.37837838,
+    "gave_back": null,
+    "kind": "bridge",
+    "name": "Across",
+    "slug": "across",
+    "substitute": false,
+    "trend_before": 5892880.0
+   }
+  ],
+  "substitutes": [
+   "NEAR Intents",
+   "Maya Protocol"
+  ],
+  "swap_diversion_adjusted": 0.6326249030515163
+ },
  "meta": {
   "fetched_at": "2026-11-11T23:58:12Z",
   "first_day": "2024-12-10",
@@ -1710,6 +2227,13 @@
    "sealed_on": "2026-11-12"
   },
   "seal_v2_sha256": "4e9e2e5b883c27a959ba47feca6a62ad5003eab235cf63218ad5a9fce723cb35",
+  "seal_v3": {
+   "data_seen_through": "2026-11-11",
+   "router_min_senders": 500,
+   "sealed_on": "2026-11-12",
+   "window_starts": "2026-11-13"
+  },
+  "seal_v3_sha256": "22fb6be08719f7bd12f8820daa6450a15c9364ea4248dbad6f515a74a9473e20",
   "subject": "near-intents",
   "subject_methodology": {
    "Fees": "Gross fees charged on NEAR Intents swaps - the protocol fee plus the affiliate (distribution) fee each frontend collects, summed across all integrators.",
@@ -2593,6 +3117,45 @@
    "text": "The Intents take rate stays at or above 12 bps over 2026-11-11 and 2026-11-12.",
    "value": 12.0,
    "window_days": 2
+  },
+  {
+   "current": null,
+   "due": "2026-12-10",
+   "id": "P6",
+   "metric": "share_window",
+   "op": ">=",
+   "seal": "v3",
+   "status": "PENDING",
+   "text": "NEAR Intents keeps at least 40% of the four swap venues' volume over 2026-11-13 to 2026-12-10 (the thesis's kill line).",
+   "value": 0.4,
+   "window_days": 28
+  },
+  {
+   "current": null,
+   "due": "2026-12-10",
+   "id": "P7",
+   "metric": "lead_window",
+   "op": ">",
+   "seal": "v3",
+   "status": "PENDING",
+   "text": "NEAR Intents is still the largest of the four swap venues over 2026-11-13 to 2026-12-10 (its share minus the largest rival's is above zero).",
+   "value": 0.0,
+   "window_days": 28
+  },
+  {
+   "current": null,
+   "due": "2026-12-10",
+   "id": "P8",
+   "metric": "onchain_ratio_window",
+   "op": "between",
+   "seal": "v3",
+   "status": "PENDING",
+   "text": "Intents volume rebuilt from intents.near events with the sealed BigQuery method stays within 0.90 to 1.20 times the reported volume over 2026-11-13 to 2026-12-10, so the headline keeps an on-chain check.",
+   "value": [
+    0.9,
+    1.2
+   ],
+   "window_days": 28
   }
  ],
  "quality_flags": [
@@ -2778,6 +3341,34 @@
   "share_build": 0.5808907009163305,
   "share_diff": 9.299083669422892e-06,
   "share_tee": 0.5809,
+  "tdx": {
+   "all_pass": true,
+   "checks_passed": 13,
+   "checks_total": 13,
+   "explorer": "https://nearblocks.io/txns/DXvVB74UDHSUL11KFyP59bJF5jJvz3KKKAYW1ngG4stP",
+   "fmspc": "b0c06f000000",
+   "intel_collateral_issued": "2026-11-12T16:33:55Z",
+   "measurements": {
+    "mrtd": "7fe60787222bd394cb516abca2435f22f035ab2cc9c0a4b4b3b148e46297f3d931a237b72f359052c6e657d8c1409173",
+    "rtmr0": "573aadb4d478839c803c4b1d3e03dd748976b63a89622f377e32a54dd60546e88ec2097f595ceafc324f48a0d0d31db6",
+    "rtmr1": "e7b3ffa0e72b50557d85f7ecd8dc98a4ffc3dd6f82d01f122ef522d61361abeac310d70d2877e56be9c9408d9bcc320c",
+    "rtmr2": "764489f277a8540189761e72b4238ba36d4d647e11bd958d8ab5522af2a4867b0ff63e06b0c4967f1857236244040a5d",
+    "rtmr3": "4c7ccf9ca551cc9104e2260c82a75bef53d3f6f2dc501d778f08fffa2e96886040d098abbd3694b6ae9b2f271df92495"
+   },
+   "onchain_collateral": {
+    "current": false,
+    "fmspc_matches": false,
+    "issued": "2026-06-07T06:11:19Z",
+    "next_update": "2026-07-07T06:11:19Z"
+   },
+   "registration_time": "2026-11-11T11:09:06Z",
+   "registration_tx": "DXvVB74UDHSUL11KFyP59bJF5jJvz3KKKAYW1ngG4stP",
+   "runs": [
+    "headline"
+   ],
+   "tcb_date": "2025-08-13T00:00:00Z",
+   "tcb_status": "UpToDate"
+  },
   "volumes": [
    {
     "build_musd": 1944.1,

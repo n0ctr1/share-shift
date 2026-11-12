@@ -48,7 +48,26 @@ def canonical_v2():
     return (json.dumps(body, indent=1, sort_keys=True) + "\n").encode()
 
 
-SEALS = [(JSON_PATH, canonical), (JSON_PATH_V2, canonical_v2)]
+JSON_PATH_V3 = os.path.join(DIR, "predictions-v3.json")
+
+
+def canonical_v3():
+    from . import bq
+    body = {"seal": config.SEAL_V3,
+            "call_rule": config.CALL,
+            "onchain_method": {
+                "legs_sql_sha256": hashlib.sha256(bq.LEGS_SQL.strip().encode()).hexdigest(),
+                "flows_sql_sha256": hashlib.sha256(bq.FLOWS_SQL.strip().encode()).hexdigest(),
+                "rule": "Intents volume = token_diff (both sides) + transfers between 1Click "
+                        "routers and other non-solver accounts (both directions)",
+            },
+            "predictions": config.PREDICTIONS_V3,
+            "note": "The investment-call rule, the on-chain counting method and three "
+                    "predictions on 2026-11-13 to 2026-12-10, all fixed before that window."}
+    return (json.dumps(body, indent=1, sort_keys=True) + "\n").encode()
+
+
+SEALS = [(JSON_PATH, canonical), (JSON_PATH_V2, canonical_v2), (JSON_PATH_V3, canonical_v3)]
 
 
 def mismatches():

@@ -17,7 +17,23 @@ buybacks cover half of new NEAR and the 30-day share is back above 50%, and to
 AVOID if the 90-day share falls below 40% or the share of fees reaching NEAR
 stops rising. The rule is `CALL` in `pipeline/config.py`; the build computes the
 call from the data (`metrics.investment_call()`), so a re-run can change it.
-Figures here are as of the committed snapshot (data to 2026-11-10).
+Figures here are as of the committed snapshot (data to 2026-11-10). The rule,
+the on-chain counting method and three predictions on 2026-11-13 to 2026-12-10
+are sealed (third seal), so none of them can be tuned after that window starts.
+
+What a careful reader should not have to take on trust, and does not:
+
+- **Intents volume** is rebuilt from every log line `intents.near` wrote, for
+  every day of the window (NEAR's public BigQuery dataset), not only from
+  DefiLlama. The headline holds on the chain's own numbers: 60%, or 55% on the
+  strictest reading (`metrics.shares_onchain()`).
+- **The market definition** is tested: when THORChain halted, swap venues
+  behaved as its substitutes and no bridge did (`metrics.market_test()`).
+- **The TEE run** is checked down to Intel's root CA: the TDX quote behind the
+  OutLayer worker key is verified here, with Intel's current collateral
+  (`pipeline/tdx.py`).
+- **Explorer API data** is not kept beyond the report built from it (the API
+  terms forbid storing it for more than 24 hours).
 
 ## What it is
 
@@ -63,7 +79,9 @@ for Intents, by ranking it against every other stretch of the same length
 
 The sixth uses the NEAR Intents Explorer API: 1Click swaps grouped by
 distribution channel and by the account that receives the app fee
-(`metrics.channel_report`).
+(`metrics.channel_report`). Only the window totals of that report are committed
+(`data/raw/channels_report.json`); the daily aggregates it is built from are
+deleted once the report is written.
 
 Fourteen claims are tested against fixed thresholds. The current result is in
 `THESIS.md`; it includes the claims that fail. The tests behind each are in
@@ -82,18 +100,18 @@ Needs Python 3.9 or newer. No packages to install. No key needed for steps 1 to 
 
 | Step | Do | See |
 | --- | --- | --- |
-| 1 | `python3 -m unittest discover -s tests` | `Ran 32 tests` and `OK` |
+| 1 | `python3 -m unittest discover -s tests` | `Ran 38 tests` and `OK` |
 | 2 | `python3 build.py --offline` | Fourteen lines `C1` to `C14`, each `SUPPORTED` or `REFUTED`, then `wrote THESIS.md, METHODS.md, docs/index.html, data/derived/metrics.json` |
 | 3 | `git status --short` | Nothing: the offline build reproduces the committed files byte for byte |
 | 4 | `python3 build.py` | The same fourteen lines computed on today's data; `git diff THESIS.md METHODS.md` shows which numbers moved |
 | 5 | Open `docs/index.html` in a browser, or https://n0ctr1.github.io/share-shift/ | A row of six headline numbers; the call with what would change it; fourteen claims with verdicts; six charts (three with the THORChain halt shaded, one with the days on which intents.near's token_diff events match the reported volume) and one split bar; tables for the halt, the counting bases, all eight venues, channels and fee recipients. Hovering a chart shows every series' value for that week or month |
 | 6 | Change `WINDOW = 90` to `WINDOW = 30` in `pipeline/config.py`, then run step 2 | Every figure in `THESIS.md` and `METHODS.md` is recomputed for a 30-day window |
-| 7 | Optional. Put `INTENTS_EXPLORER_JWT=...` in `.env`, then `python3 -m pipeline.explorer --from 2026-04-09 --to 2026-11-10` | `page 5, reached ...` lines, then `wrote data/raw/explorer_daily.json`. About three hours: the API allows one request per five seconds. An interrupted run resumes. Then run `python3 build.py` so the manifest picks up the new file |
+| 7 | Optional. Put `INTENTS_EXPLORER_JWT=...` in `.env`, then `python3 -m pipeline.explorer --from 2026-04-09 --to 2026-11-10` | `page 5, reached ...` lines, then `wrote data/raw/channels_report.json; deleted the daily aggregates`. About three hours: the API allows one request per five seconds. An interrupted run resumes. Then run `python3 build.py` so the manifest picks up the new file |
 | 8 | Optional. `python3 -m pipeline.onchain --from 2026-08-13 --to 2026-11-10` | Per-wallet progress lines, then `wrote data/raw/onchain_revenue.json`. About 30 minutes on NearBlocks' free tier; no key |
 | 9 | Optional. `python3 -m pipeline.intents_events --day 2026-08-20 --sample 4000` | `93116 transactions on intents.near`, then `both sides ...M (90%: ...)`; about 15 minutes, no key |
 | 10 | Optional. `python3 -m pipeline.chainflip --from 2026-08-13 --to 2026-11-10` | `wrote data/raw/legs_chainflip-amm.json`; a few minutes, no key |
 | 11 | Optional. `python3 -m pipeline.thorchain_actions --from 2026-08-13 --to 2026-11-10 --points 180` | `double-swap value share ...% (90%: ...)`; about 15 minutes, no key |
-| 12 | Optional. `gcloud auth login`, `gcloud config set project <id>`, then `python3 -m pipeline.bq legs --from 2026-08-13 --to 2026-11-10`, `python3 -m pipeline.bq prices` and `python3 -m pipeline.bq l1 --from 2025-08-13 --to 2026-11-10` | `dry run: 117.34 GB to scan`, then `wrote data/raw/bq_intents_legs.json`; `wrote data/raw/bq_prices.json`; `dry run: 30.42 GB to scan`, then `wrote data/raw/bq_l1_daily.json`. A few minutes each; the BigQuery sandbox's free monthly terabyte covers all three, no billing account |
+| 12 | Optional. `gcloud auth login`, `gcloud config set project <id>`, then `python3 -m pipeline.bq legs --from 2026-08-13 --to 2026-11-10`, `python3 -m pipeline.bq flows --from 2026-08-13 --to 2026-11-10`, `python3 -m pipeline.bq prices` and `python3 -m pipeline.bq l1 --from 2025-08-13 --to 2026-11-10` | `dry run: 117.34 GB to scan`, then `wrote data/raw/bq_intents_legs.json`; the same for `bq_intents_flows.json`; `wrote data/raw/bq_prices.json`; `dry run: 30.42 GB to scan`, then `wrote data/raw/bq_l1_daily.json`. A few minutes each; the BigQuery sandbox's free monthly terabyte covers all four, no billing account |
 
 Step 2 uses the snapshot in `data/raw/`, whose hashes are checked against
 `data/raw/manifest.json`. Edit any raw file and the build stops with
@@ -116,7 +134,8 @@ checking the run needs no Rust toolchain.
 | 1 | `sha256sum tee/share-check/dist/share-check.wasm` | `7634f3997a76a5ff6c930374c81d33baaa3f06cbece6e8fae9ab0217e4fdaf0d`, the hash in `data/raw/tee_run.json` |
 | 2 | `python3 -m pipeline.tee_verify` | five `PASS` lines: the chain ran the committed WASM, on our input, it completed, the result was delivered by a key scoped to `outlayer.near` on `worker.outlayer.near`, and it matches the recorded run. Nothing is written |
 | 3 | Open the request on https://nearblocks.io/txns/Aw6Vz41optzWmAEDvmzq7wk3YHypfhFt3pssrxPnDjk7 | the `execution_completed` event and the returned JSON |
-| 4 | Optional. `sh tee/share-check/rebuild.sh` | `IDENTICAL`: the source rebuilds to the same bytes. Needs rustup (the toolchain is pinned to 1.99.1 in `rust-toolchain.toml`) and a host C linker |
+| 4 | `pip install cryptography`, then `python3 -m pipeline.tdx` | thirteen `PASS` lines: the worker key was added by `register_worker_key` transaction `DXvVB74UDHSUL11KFyP59bJF5jJvz3KKKAYW1ngG4stP`; the TDX quote in it carries SHA-256 of that key, is signed by its attestation key, which is bound to Intel's Quoting Enclave, whose report is signed by a PCK certificate chaining to Intel's SGX Root CA (pinned by public-key hash); nothing is revoked, the QE and TDX module match Intel's signed identities, the TCB is `UpToDate` against Intel's current collateral, and the five measurements were on OutLayer's allowlist at that block. It also prints what OutLayer's contract had stored: June collateral for another FMSPC, past its next update |
+| 5 | Optional. `sh tee/share-check/rebuild.sh` | `IDENTICAL`: the source rebuilds to the same bytes. Needs rustup (the toolchain is pinned to 1.99.1 in `rust-toolchain.toml`) and a host C linker |
 
 The same WASM grades prediction P4 a second time, on its own two days. Once
 DefiLlama shows a complete 2026-11-12 for all four venues, the run is:
@@ -146,9 +165,12 @@ produced the published numbers from what DefiLlama and Midgard served at that
 moment. It does not prove those APIs are right; the primary-source checks above
 do that. OutLayer's register contract adds a worker key only after checking an
 Intel TDX quote against an allowlist of measurements, and only such a key can
-deliver results; this repository checks the key on chain but does not
-re-verify the TDX quote itself. The TEE run is a reproducibility check, not
-evidence for the thesis.
+deliver results. This repository does not rely on that: `pipeline/tdx.py`
+re-verifies the quote itself, from the registration transaction to Intel's
+root CA, and finds the contract's own collateral out of date (step 4). What it
+cannot show: that OutLayer's allowlisted image does only what its documentation
+says, since those measurements are OutLayer's. The TEE run is a
+reproducibility check, not evidence for the thesis.
 
 ## Checking the predictions were not edited
 
@@ -160,6 +182,8 @@ evidence for the thesis.
 | 4 | `python3 -m pipeline.seal --check` | `sealed predictions match config` |
 | 5 | `python3 -m pipeline.anchor --account noctrl.near --verify` | `anchored on NEAR: noctrl.near/share_shift/predictions_sha256 = 5415cf8f...` read from `social.near` over public RPC; written by transaction `F75hY9zdcipcUSrgXPjLx7mAw2Rzer4vAgA9VLo8MmhE` |
 | 6 | `python3 -m pipeline.ots --file predictions/predictions-v2.json` and `python3 -m pipeline.seal --check` | `predictions-v2.json existed by Bitcoin block 975532 (unix time 1794471987)`, 2026-11-12 08:26 UTC: the second seal (claim thresholds and P4, P5). The first of P4 and P5's two days, 11 November, had ended by then; the second had not. The second seal is not written on NEAR |
+| 7 | `python3 -m pipeline.ots --upgrade --file predictions/predictions-v3.json`, then `python3 -m pipeline.ots --file predictions/predictions-v3.json` | the third seal (the call's rule, the SHA-256 of both BigQuery queries, P6 to P8 on 2026-11-13 to 2026-12-10), sealed 2026-11-12; its Bitcoin block appears a few hours after sealing |
+| 8 | `python3 -m pipeline.anchor --account noctrl.near --seal v3 --verify` | `anchored on NEAR: noctrl.near/share_shift/predictions_v3_sha256 = 22fb6be0...` once the author has signed the write (`python3 -m pipeline.anchor --account noctrl.near --seal v3` prints the command) |
 
 ## How a number gets into the thesis
 
@@ -182,10 +206,10 @@ under the chart.
 | --- | --- |
 | `pipeline/config.py` | Peer sets, window length, claim thresholds, dated predictions, cited events |
 | `pipeline/fetch.py` | Downloads the public series and writes the hashed snapshot |
-| `pipeline/explorer.py` | Downloads 1Click swaps and keeps only daily aggregates |
+| `pipeline/explorer.py` | Downloads 1Click swaps, writes the channel report and deletes what it downloaded |
 | `pipeline/seal.py`, `pipeline/ots.py`, `pipeline/anchor.py` | Seal the predictions; upgrade and verify the OpenTimestamps proof; anchor and check the hash on NEAR |
 | `pipeline/onchain.py`, `pipeline/intents_events.py`, `pipeline/bq.py`, `pipeline/chainflip.py`, `pipeline/thorchain_actions.py` | Primary-source checks: revenue wallets, intents.near events (sampled, and every day from BigQuery), Chainflip legs, THORChain swap actions |
-| `pipeline/tee_verify.py`, `tee/share-check/` | The program that ran in the TEE, and the on-chain check of that run |
+| `pipeline/tee_verify.py`, `pipeline/tdx.py`, `tee/share-check/` | The program that ran in the TEE, the on-chain check of that run, and the check of the TDX quote behind it |
 | `pipeline/metrics.py` | All arithmetic: shares, shift-share split, halt experiment, placebo, channels, verdicts |
 | `pipeline/narrative.py` | Turns metrics into the sentences, `THESIS.md` and `METHODS.md` |
 | `pipeline/template.html` | Dashboard layout and chart code (no libraries) |
@@ -209,21 +233,30 @@ under the chart.
 | Token decimals and CoinGecko ids; historical prices | `1click.chaindefuser.com/v0/tokens`; `coins.llama.fi/prices/historical`, `coins.llama.fi/chart` | no |
 | Chainflip swaps with routed legs | `explorer-service-processor.chainflip.io/graphql` | no |
 | TEE run: request, result, worker key | NEAR archival RPC (`EXPERIMENTAL_tx_status`, `view_access_key`), FastNear transactions API | no |
+| TDX quote, allowlist, stored collateral | `register_worker_key` arguments; `worker.outlayer.near` views `get_approved_measurements`, `get_collateral` at that block | no |
+| Intel collateral now | `api.trustedservices.intel.com/tdx/certification/v4` (`/tcb`, `/qe/identity`), PCK CRL, root CA CRL | no |
 | Token market caps | `api.coingecko.com/api/v3/simple/price` | no |
 | 1Click swaps by channel and fee recipient | `explorer.near-intents.org/api/v0/transactions` | yes, free |
 
 If CoinGecko or Midgard does not answer, the build still completes and the
 affected sentence says the value is unavailable.
 
-`data/raw/explorer_daily.json` holds sums per day, per channel and per fee
-recipient account. It contains no user address, transaction hash or single
-swap.
+`data/raw/channels_report.json` holds window totals only: the top channels
+with their volume, share and fee rate, the top fee-recipient accounts, and the
+change in each channel's daily volume during the THORChain halt. It contains no
+user address, transaction hash, single swap or daily series. The API's terms
+(1ClickSwap API, section 4.1(e)) do not allow storing API data for more than
+24 hours, so `pipeline/explorer.py` keeps its daily aggregates in the ignored
+`data/private/` folder and deletes them as soon as the report is written.
 
 ## Limits
 
-- Which venues make up "the market" is a judgement. Both a narrow set (four
-  swap venues) and a wide set (plus four bridges) are reported, and the answer
-  differs: first in one, third in the other.
+- Which venues make up "the market" is tested once, with the THORChain halt
+  (`metrics.market_test()`): Intents and Maya gained while it was down and gave
+  part back when it returned; no bridge did both, and Relay, which grew most,
+  kept growing after THORChain came back. One event is thin evidence, so both
+  a narrow set (four swap venues) and a wide set (plus four bridges) are
+  reported, and the answer differs: first in one, third in the other.
 - The Explorer API covers 1Click swaps, about 30% of Intents volume in the
   window, and only swaps of $1,000 or more were fetched (about 95% of 1Click
   volume in a calibration sample).
@@ -232,10 +265,12 @@ swap.
 - THORChain's volume and NEAR's captured revenue were checked against primary
   sources (Midgard; transfers into the revenue wallets). Intents volume was
   rebuilt from `intents.near` events on every day of the window (NEAR's public
-  BigQuery dataset) and on six sampled days. The method only works through
-  August: from 1 September swaps increasingly settle through transfer intents,
-  and transfer events also carry plain transfers, so after August the share of
-  Intents volume that public events cannot see is not established here.
+  BigQuery dataset) and on six sampled days. Through August token_diff events
+  match the reported figure; from 1 September swaps settle as transfers through
+  1Click routers, and counting those (both directions, router-to-solver hedging
+  left out) matches it again (median 1.04 of reported). That router rule was
+  found by looking at the data; it is sealed now (third seal) and P8 tests it
+  on 2026-11-13 to 2026-12-10.
 - Three outside facts are cited rather than computed, all in
   `pipeline/config.py`: what the THORChain halt was, a later short suspension,
   and which distribution channels also route to rival venues (each with its
@@ -245,7 +280,8 @@ swap.
   later change is visible, and two short predictions (P4, P5) resolve on the two
   days after the data was seen, before the hackathon deadline. The seal's
   Bitcoin timestamp came after the first of those days had ended, so only the
-  second is a day that had not yet happened.
+  second is a day that had not yet happened. The call's rule and P6 to P8 are
+  in a third seal made before their window starts.
 
 ## Disclosure
 
@@ -253,8 +289,9 @@ swap.
   is no earlier baseline.
 - AI coding tools were used to speed up writing the code. The author directed
   the work and is responsible for every decision and result in this repository.
-- No third-party libraries: Python standard library, and plain HTML, CSS and
-  JavaScript in the dashboard.
+- No third-party libraries in the build: Python standard library, and plain
+  HTML, CSS and JavaScript in the dashboard. The optional TDX quote check
+  (`pipeline/tdx.py`) needs the `cryptography` package for ECDSA and X.509.
 
 ## License
 

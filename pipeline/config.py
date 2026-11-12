@@ -241,9 +241,56 @@ SEAL_V2_BITCOIN = {"block": 975532, "time_utc": "2026-11-12 08:26"}
 #   ACCUMULATE  the position holds AND the token captures enough of it
 #   AVOID       the position is lost OR capture stops rising
 #   WATCH       otherwise: the business leads, the token link is not there yet
+# Since the third seal (below) the rule is sealed: changing it stops the build.
 CALL = {
     "share_90d_kill": 0.40,          # AVOID below this 90-day share (the thesis's kill line)
     "share_30d_hold": 0.50,          # ACCUMULATE needs the 30-day share at or above this
     "buyback_offset_accumulate": 0.50,  # ACCUMULATE needs buybacks >= this share of new NEAR
     "review_after_days": 30,         # next review: this many days after the data ends
 }
+
+
+# Third seal, 2026-11-12. Everything a reader could suspect of being tuned after
+# the fact is fixed here before the days it is graded on: the investment-call
+# rule above, the on-chain counting method (the SHA-256 of the two BigQuery
+# queries in pipeline/bq.py and the router rule), and three predictions on a
+# window that starts after the seal: 2026-11-13 to 2026-12-10, the call's
+# review date. The seal's hash is also written on NEAR under the author's
+# account (python3 -m pipeline.anchor --seal v3). Any later change to CALL,
+# to those queries or to these predictions makes the build stop
+# (predictions/predictions-v3.json).
+PREDICTIONS_V3 = [
+    {
+        "id": "P6",
+        "due": "2026-12-10",
+        "window_days": 28,
+        "metric": "share_window",
+        "op": ">=",
+        "value": 0.40,
+        "text": "NEAR Intents keeps at least 40% of the four swap venues' volume over "
+                "2026-11-13 to 2026-12-10 (the thesis's kill line).",
+    },
+    {
+        "id": "P7",
+        "due": "2026-12-10",
+        "window_days": 28,
+        "metric": "lead_window",
+        "op": ">",
+        "value": 0.0,
+        "text": "NEAR Intents is still the largest of the four swap venues over "
+                "2026-11-13 to 2026-12-10 (its share minus the largest rival's is above zero).",
+    },
+    {
+        "id": "P8",
+        "due": "2026-12-10",
+        "window_days": 28,
+        "metric": "onchain_ratio_window",
+        "op": "between",
+        "value": [0.90, 1.20],
+        "text": "Intents volume rebuilt from intents.near events with the sealed BigQuery "
+                "method stays within 0.90 to 1.20 times the reported volume over "
+                "2026-11-13 to 2026-12-10, so the headline keeps an on-chain check.",
+    },
+]
+SEAL_V3 = {"sealed_on": "2026-11-12", "data_seen_through": "2026-11-11",
+           "window_starts": "2026-11-13", "router_min_senders": 500}
