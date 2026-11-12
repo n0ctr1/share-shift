@@ -41,6 +41,10 @@
    "path": "raw/fees_thorchain-dex.json",
    "sha256": "72af56b357a4c2405e6f8060fd5e7c3f870b9917416fa3210bd89c9b1c7ff955"
   },
+  "legs_chainflip-amm": {
+   "path": "raw/legs_chainflip-amm.json",
+   "sha256": "1215924ef81efe232c70e0661d169af322321318339035ca4b723c751852e79d"
+  },
   "legs_maya-protocol": {
    "path": "raw/legs_maya-protocol.json",
    "sha256": "8c25a71b7327aad724be97f09a82b2902a7ba3b4aa7ce852593f1e923bebcfb1"

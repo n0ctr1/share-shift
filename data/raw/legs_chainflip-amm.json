@@ -1,0 +1,539 @@
+{
+ "note": "Per day: onceVolume = sum of swap input values in USD (each swap once); secondLegVolume = sum of intermediate (USDC) leg values for routed swaps.",
+ "pages": 414,
+ "range": [
+  "2026-08-13",
+  "2026-11-10"
+ ],
+ "series": {
+  "2026-08-13": {
+   "onceVolume": 6524884.683583545,
+   "secondLegVolume": 3172536.6685695588,
+   "swaps": 908,
+   "totalVolume": 9697421.352153104
+  },
+  "2026-08-14": {
+   "onceVolume": 6319394.557520482,
+   "secondLegVolume": 4082021.9035458593,
+   "swaps": 898,
+   "totalVolume": 10401416.461066341
+  },
+  "2026-08-15": {
+   "onceVolume": 7012222.051618061,
+   "secondLegVolume": 2584970.511891963,
+   "swaps": 696,
+   "totalVolume": 9597192.563510023
+  },
+  "2026-08-16": {
+   "onceVolume": 8007898.366489116,
+   "secondLegVolume": 3265468.952307656,
+   "swaps": 757,
+   "totalVolume": 11273367.318796773
+  },
+  "2026-08-17": {
+   "onceVolume": 5619347.392083854,
+   "secondLegVolume": 3520391.5320353634,
+   "swaps": 2027,
+   "totalVolume": 9139738.924119217
+  },
+  "2026-08-18": {
+   "onceVolume": 6932374.059329473,
+   "secondLegVolume": 4679016.813397004,
+   "swaps": 1142,
+   "totalVolume": 11611390.872726478
+  },
+  "2026-08-19": {
+   "onceVolume": 19323716.703769237,
+   "secondLegVolume": 9961445.348699778,
+   "swaps": 2384,
+   "totalVolume": 29285162.052469015
+  },
+  "2026-08-20": {
+   "onceVolume": 12907510.896806989,
+   "secondLegVolume": 8633681.932811672,
+   "swaps": 1850,
+   "totalVolume": 21541192.829618663
+  },
+  "2026-08-21": {
+   "onceVolume": 20894840.28975819,
+   "secondLegVolume": 13865582.35748432,
+   "swaps": 2734,
+   "totalVolume": 34760422.64724251
+  },
+  "2026-08-22": {
+   "onceVolume": 19438175.952819362,
+   "secondLegVolume": 14544783.110240309,
+   "swaps": 2517,
+   "totalVolume": 33982959.06305967
+  },
+  "2026-08-23": {
+   "onceVolume": 6487608.936817394,
+   "secondLegVolume": 5841009.189524178,
+   "swaps": 933,
+   "totalVolume": 12328618.126341572
+  },
+  "2026-08-24": {
+   "onceVolume": 45241.087982768804,
+   "secondLegVolume": 32246.3446222878,
+   "swaps": 39,
+   "totalVolume": 77487.4326050566
+  },
+  "2026-08-25": {
+   "onceVolume": 4919987.96194829,
+   "secondLegVolume": 2330664.1408744343,
+   "swaps": 926,
+   "totalVolume": 7250652.102822724
+  },
+  "2026-08-26": {
+   "onceVolume": 7123311.79125481,
+   "secondLegVolume": 5554891.106206032,
+   "swaps": 1114,
+   "totalVolume": 12678202.897460843
+  },
+  "2026-08-27": {
+   "onceVolume": 16141957.172293067,
+   "secondLegVolume": 12933805.279712515,
+   "swaps": 2227,
+   "totalVolume": 29075762.45200558
+  },
+  "2026-08-28": {
+   "onceVolume": 9729606.64966311,
+   "secondLegVolume": 7905855.262367561,
+   "swaps": 1559,
+   "totalVolume": 17635461.91203067
+  },
+  "2026-08-29": {
+   "onceVolume": 13979019.581264472,
+   "secondLegVolume": 10063494.655148018,
+   "swaps": 1840,
+   "totalVolume": 24042514.236412488
+  },
+  "2026-08-30": {
+   "onceVolume": 8535733.062814025,
+   "secondLegVolume": 5486777.349229042,
+   "swaps": 1354,
+   "totalVolume": 14022510.412043069
+  },
+  "2026-08-31": {
+   "onceVolume": 20307184.93041755,
+   "secondLegVolume": 15329426.605840655,
+   "swaps": 2366,
+   "totalVolume": 35636611.536258206
+  },
+  "2026-09-01": {
+   "onceVolume": 8914562.587131025,
+   "secondLegVolume": 5676438.73450241,
+   "swaps": 1573,
+   "totalVolume": 14591001.321633436
+  },
+  "2026-09-02": {
+   "onceVolume": 8879450.51656106,
+   "secondLegVolume": 7554372.633996926,
+   "swaps": 1291,
+   "totalVolume": 16433823.150557986
+  },
+  "2026-09-03": {
+   "onceVolume": 12885616.246100763,
+   "secondLegVolume": 11035318.247841151,
+   "swaps": 2008,
+   "totalVolume": 23920934.493941914
+  },
+  "2026-09-04": {
+   "onceVolume": 13728876.938293764,
+   "secondLegVolume": 8927859.963936588,
+   "swaps": 1879,
+   "totalVolume": 22656736.902230352
+  },
+  "2026-09-05": {
+   "onceVolume": 5605487.081272515,
+   "secondLegVolume": 4518958.236779182,
+   "swaps": 1129,
+   "totalVolume": 10124445.318051696
+  },
+  "2026-09-06": {
+   "onceVolume": 4880013.613336616,
+   "secondLegVolume": 3620374.333812387,
+   "swaps": 994,
+   "totalVolume": 8500387.947149003
+  },
+  "2026-09-07": {
+   "onceVolume": 4993362.020351501,
+   "secondLegVolume": 4285776.567746858,
+   "swaps": 977,
+   "totalVolume": 9279138.588098358
+  },
+  "2026-09-08": {
+   "onceVolume": 8514245.329721684,
+   "secondLegVolume": 7323108.366097105,
+   "swaps": 1330,
+   "totalVolume": 15837353.69581879
+  },
+  "2026-09-09": {
+   "onceVolume": 5944390.39949113,
+   "secondLegVolume": 4514173.775626159,
+   "swaps": 1162,
+   "totalVolume": 10458564.17511729
+  },
+  "2026-09-10": {
+   "onceVolume": 4244941.013573939,
+   "secondLegVolume": 3496388.5595496986,
+   "swaps": 1226,
+   "totalVolume": 7741329.573123638
+  },
+  "2026-09-11": {
+   "onceVolume": 7709017.56865496,
+   "secondLegVolume": 6263460.080392467,
+   "swaps": 1529,
+   "totalVolume": 13972477.649047427
+  },
+  "2026-09-12": {
+   "onceVolume": 3944143.820904114,
+   "secondLegVolume": 2075855.7701310955,
+   "swaps": 554,
+   "totalVolume": 6019999.59103521
+  },
+  "2026-09-15": {
+   "onceVolume": 2787609.7224653605,
+   "secondLegVolume": 995263.7030468173,
+   "swaps": 547,
+   "totalVolume": 3782873.425512178
+  },
+  "2026-09-16": {
+   "onceVolume": 8572639.502552127,
+   "secondLegVolume": 3100291.7151356363,
+   "swaps": 1269,
+   "totalVolume": 11672931.217687763
+  },
+  "2026-09-17": {
+   "onceVolume": 10905351.320502844,
+   "secondLegVolume": 6648139.326747776,
+   "swaps": 1657,
+   "totalVolume": 17553490.64725062
+  },
+  "2026-09-18": {
+   "onceVolume": 12350539.842326336,
+   "secondLegVolume": 9252958.310013922,
+   "swaps": 1883,
+   "totalVolume": 21603498.152340256
+  },
+  "2026-09-19": {
+   "onceVolume": 6301219.761522924,
+   "secondLegVolume": 5218781.581307755,
+   "swaps": 1164,
+   "totalVolume": 11520001.342830678
+  },
+  "2026-09-20": {
+   "onceVolume": 5310448.273637773,
+   "secondLegVolume": 3641783.0912753954,
+   "swaps": 1110,
+   "totalVolume": 8952231.364913167
+  },
+  "2026-09-21": {
+   "onceVolume": 18372036.593607996,
+   "secondLegVolume": 14446507.504238581,
+   "swaps": 2363,
+   "totalVolume": 32818544.097846575
+  },
+  "2026-09-22": {
+   "onceVolume": 15307817.871374566,
+   "secondLegVolume": 13585038.183040611,
+   "swaps": 2045,
+   "totalVolume": 28892856.054415178
+  },
+  "2026-09-23": {
+   "onceVolume": 9443670.137469882,
+   "secondLegVolume": 7267108.15258368,
+   "swaps": 1429,
+   "totalVolume": 16710778.290053561
+  },
+  "2026-09-24": {
+   "onceVolume": 9489786.634510214,
+   "secondLegVolume": 5697958.69490883,
+   "swaps": 1392,
+   "totalVolume": 15187745.329419043
+  },
+  "2026-09-25": {
+   "onceVolume": 18877690.691104982,
+   "secondLegVolume": 16341388.569007406,
+   "swaps": 2236,
+   "totalVolume": 35219079.26011239
+  },
+  "2026-09-26": {
+   "onceVolume": 10946353.932039808,
+   "secondLegVolume": 9518060.550420657,
+   "swaps": 1563,
+   "totalVolume": 20464414.482460465
+  },
+  "2026-09-27": {
+   "onceVolume": 28299624.855635017,
+   "secondLegVolume": 24611994.19909885,
+   "swaps": 2993,
+   "totalVolume": 52911619.05473387
+  },
+  "2026-09-28": {
+   "onceVolume": 18722394.428243954,
+   "secondLegVolume": 15014768.491608225,
+   "swaps": 2326,
+   "totalVolume": 33737162.91985218
+  },
+  "2026-09-29": {
+   "onceVolume": 36397192.515988775,
+   "secondLegVolume": 14219468.863657046,
+   "swaps": 3835,
+   "totalVolume": 50616661.379645824
+  },
+  "2026-09-30": {
+   "onceVolume": 8695564.89226433,
+   "secondLegVolume": 5669789.962115141,
+   "swaps": 1866,
+   "totalVolume": 14365354.854379471
+  },
+  "2026-10-01": {
+   "onceVolume": 12874752.992838906,
+   "secondLegVolume": 9208752.225911299,
+   "swaps": 2198,
+   "totalVolume": 22083505.218750205
+  },
+  "2026-10-02": {
+   "onceVolume": 11958481.887053916,
+   "secondLegVolume": 9511934.888514014,
+   "swaps": 2046,
+   "totalVolume": 21470416.77556793
+  },
+  "2026-10-03": {
+   "onceVolume": 6868772.125735161,
+   "secondLegVolume": 5063179.564750235,
+   "swaps": 1322,
+   "totalVolume": 11931951.690485395
+  },
+  "2026-10-04": {
+   "onceVolume": 5248156.841049959,
+   "secondLegVolume": 3825603.787878179,
+   "swaps": 1239,
+   "totalVolume": 9073760.628928138
+  },
+  "2026-10-05": {
+   "onceVolume": 10952228.65346624,
+   "secondLegVolume": 9526981.567979129,
+   "swaps": 1988,
+   "totalVolume": 20479210.221445367
+  },
+  "2026-10-06": {
+   "onceVolume": 11574460.271817937,
+   "secondLegVolume": 7990966.82543383,
+   "swaps": 1644,
+   "totalVolume": 19565427.097251765
+  },
+  "2026-10-07": {
+   "onceVolume": 11599861.327534284,
+   "secondLegVolume": 8998866.861072466,
+   "swaps": 1639,
+   "totalVolume": 20598728.18860675
+  },
+  "2026-10-08": {
+   "onceVolume": 9337200.526143786,
+   "secondLegVolume": 5337341.882317503,
+   "swaps": 1287,
+   "totalVolume": 14674542.408461288
+  },
+  "2026-10-09": {
+   "onceVolume": 10751840.62344882,
+   "secondLegVolume": 7752263.313362345,
+   "swaps": 1656,
+   "totalVolume": 18504103.936811164
+  },
+  "2026-10-10": {
+   "onceVolume": 4912258.860753746,
+   "secondLegVolume": 4592753.592584955,
+   "swaps": 871,
+   "totalVolume": 9505012.453338701
+  },
+  "2026-10-11": {
+   "onceVolume": 5587357.092789622,
+   "secondLegVolume": 4623841.284095823,
+   "swaps": 981,
+   "totalVolume": 10211198.376885444
+  },
+  "2026-10-12": {
+   "onceVolume": 5340408.241709414,
+   "secondLegVolume": 4579183.125552025,
+   "swaps": 1178,
+   "totalVolume": 9919591.36726144
+  },
+  "2026-10-13": {
+   "onceVolume": 14687803.2417674,
+   "secondLegVolume": 13650075.93732337,
+   "swaps": 2287,
+   "totalVolume": 28337879.179090768
+  },
+  "2026-10-14": {
+   "onceVolume": 11753269.400431285,
+   "secondLegVolume": 10223091.223684875,
+   "swaps": 1857,
+   "totalVolume": 21976360.62411616
+  },
+  "2026-10-15": {
+   "onceVolume": 11626923.669969155,
+   "secondLegVolume": 8615443.256917883,
+   "swaps": 2037,
+   "totalVolume": 20242366.926887035
+  },
+  "2026-10-16": {
+   "onceVolume": 13760636.240030447,
+   "secondLegVolume": 10865985.460556619,
+   "swaps": 2081,
+   "totalVolume": 24626621.700587064
+  },
+  "2026-10-17": {
+   "onceVolume": 11947603.18141368,
+   "secondLegVolume": 10643994.047821285,
+   "swaps": 1885,
+   "totalVolume": 22591597.229234964
+  },
+  "2026-10-18": {
+   "onceVolume": 12174199.637547366,
+   "secondLegVolume": 10589118.296196317,
+   "swaps": 2322,
+   "totalVolume": 22763317.933743685
+  },
+  "2026-10-19": {
+   "onceVolume": 16322975.771541286,
+   "secondLegVolume": 13942453.681835745,
+   "swaps": 3205,
+   "totalVolume": 30265429.45337703
+  },
+  "2026-10-20": {
+   "onceVolume": 14233086.864934787,
+   "secondLegVolume": 10763847.669669064,
+   "swaps": 2225,
+   "totalVolume": 24996934.53460385
+  },
+  "2026-10-21": {
+   "onceVolume": 17260950.793776628,
+   "secondLegVolume": 13160440.050678486,
+   "swaps": 3004,
+   "totalVolume": 30421390.844455115
+  },
+  "2026-10-22": {
+   "onceVolume": 9791384.50759894,
+   "secondLegVolume": 7643172.579592443,
+   "swaps": 1661,
+   "totalVolume": 17434557.087191384
+  },
+  "2026-10-23": {
+   "onceVolume": 14669934.800944977,
+   "secondLegVolume": 13497666.066856798,
+   "swaps": 2137,
+   "totalVolume": 28167600.867801774
+  },
+  "2026-10-24": {
+   "onceVolume": 8248954.004374829,
+   "secondLegVolume": 6442043.471266813,
+   "swaps": 1494,
+   "totalVolume": 14690997.475641642
+  },
+  "2026-10-25": {
+   "onceVolume": 9300684.93820735,
+   "secondLegVolume": 7485499.61035489,
+   "swaps": 1565,
+   "totalVolume": 16786184.54856224
+  },
+  "2026-10-26": {
+   "onceVolume": 9441576.150623888,
+   "secondLegVolume": 8661154.136055559,
+   "swaps": 1610,
+   "totalVolume": 18102730.286679447
+  },
+  "2026-10-27": {
+   "onceVolume": 7706612.052506834,
+   "secondLegVolume": 6511890.121944515,
+   "swaps": 1436,
+   "totalVolume": 14218502.17445135
+  },
+  "2026-10-28": {
+   "onceVolume": 9904810.827026673,
+   "secondLegVolume": 8624996.894348102,
+   "swaps": 1681,
+   "totalVolume": 18529807.721374772
+  },
+  "2026-10-29": {
+   "onceVolume": 20155968.542748265,
+   "secondLegVolume": 16477934.809755597,
+   "swaps": 2664,
+   "totalVolume": 36633903.352503866
+  },
+  "2026-10-30": {
+   "onceVolume": 42376582.405057944,
+   "secondLegVolume": 35277804.36275338,
+   "swaps": 5201,
+   "totalVolume": 77654386.76781133
+  },
+  "2026-10-31": {
+   "onceVolume": 37624334.358874306,
+   "secondLegVolume": 32913201.815308783,
+   "swaps": 3739,
+   "totalVolume": 70537536.17418309
+  },
+  "2026-11-01": {
+   "onceVolume": 13470801.068448883,
+   "secondLegVolume": 9614775.234139599,
+   "swaps": 1546,
+   "totalVolume": 23085576.30258848
+  },
+  "2026-11-02": {
+   "onceVolume": 25571294.94565258,
+   "secondLegVolume": 22081400.99187615,
+   "swaps": 3555,
+   "totalVolume": 47652695.93752873
+  },
+  "2026-11-03": {
+   "onceVolume": 40464152.98633455,
+   "secondLegVolume": 36957422.63081763,
+   "swaps": 4673,
+   "totalVolume": 77421575.61715218
+  },
+  "2026-11-04": {
+   "onceVolume": 35285522.26803122,
+   "secondLegVolume": 22938326.493512344,
+   "swaps": 4082,
+   "totalVolume": 58223848.76154356
+  },
+  "2026-11-05": {
+   "onceVolume": 21969542.875369355,
+   "secondLegVolume": 18444144.3175148,
+   "swaps": 3391,
+   "totalVolume": 40413687.192884155
+  },
+  "2026-11-06": {
+   "onceVolume": 15192053.624325732,
+   "secondLegVolume": 13181600.870280875,
+   "swaps": 2468,
+   "totalVolume": 28373654.494606607
+  },
+  "2026-11-07": {
+   "onceVolume": 11363489.859136952,
+   "secondLegVolume": 7668429.04590296,
+   "swaps": 2001,
+   "totalVolume": 19031918.905039914
+  },
+  "2026-11-08": {
+   "onceVolume": 9240420.284411417,
+   "secondLegVolume": 5069600.956603731,
+   "swaps": 1579,
+   "totalVolume": 14310021.241015147
+  },
+  "2026-11-09": {
+   "onceVolume": 14147477.838094417,
+   "secondLegVolume": 10788401.878897553,
+   "swaps": 2708,
+   "totalVolume": 24935879.71699197
+  },
+  "2026-11-10": {
+   "onceVolume": 14728185.762736892,
+   "secondLegVolume": 7431935.704675187,
+   "swaps": 2471,
+   "totalVolume": 22160121.46741208
+  }
+ },
+ "source": "https://explorer-service-processor.chainflip.io/graphql"
+}

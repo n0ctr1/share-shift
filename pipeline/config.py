@@ -133,6 +133,7 @@ TOP_N = 8
 LEG_SOURCES = {
     "thorchain-dex": "https://gateway.liquify.com/chain/thorchain_midgard/v2/history/swaps?interval=day&count=400",
     "maya-protocol": "https://midgard.mayachain.info/v2/history/swaps?interval=day&count=400",
+    "chainflip-amm": "https://explorer-service-processor.chainflip.io/graphql",
 }
 # Leg types that are the two halves of one routed swap.
 LEG_PAIRS = [("toRuneVolume", "toAssetVolume"), ("fromTradeVolume", "toTradeVolume"),

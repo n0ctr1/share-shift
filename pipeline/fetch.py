@@ -109,6 +109,8 @@ def fetch_all(log=print):
 
     # Leg breakdown of the two venues that route through their own token.
     for slug, url in config.LEG_SOURCES.items():
+        if url.endswith("/graphql"):
+            continue  # fetched by its own script (pipeline/chainflip.py)
         try:
             log("fetch legs    " + slug)
             payload = _get(url, tries=2)
@@ -139,7 +141,7 @@ def fetch_all(log=print):
 
     # The Explorer snapshot is refreshed separately (python3 -m pipeline.explorer,
     # needs a key and about an hour). If one is on disk it stays in the manifest.
-    for name in ("explorer_daily", "onchain_revenue"):
+    for name in ("explorer_daily", "onchain_revenue", "legs_chainflip-amm"):
         path = os.path.join(RAW_DIR, name + ".json")
         if os.path.exists(path):
             files[name] = path

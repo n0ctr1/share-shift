@@ -284,13 +284,20 @@ def counting_basis(raw, table, subject, names, window, wide_volumes=None):
         if not days:
             continue
         total = sum(legs[d]["totalVolume"] for d in days)
-        paired = 0.0
         shares = {}
-        for a, b in config.LEG_PAIRS:
-            va = sum(legs[d].get(a, 0.0) for d in days)
-            vb = sum(legs[d].get(b, 0.0) for d in days)
-            shares[a], shares[b] = va / total, vb / total
-            paired += 2 * min(va, vb)
+        if "onceVolume" in legs[days[0]]:
+            # the indexer already separates each swap's first leg from its routed leg
+            once = sum(legs[d]["onceVolume"] for d in days)
+            paired = 2 * (total - once)
+            reported = sum(v for d, v in zip(table["dates"], table[slug]["volume"]) if d in days)
+            shares["provider_vs_indexer"] = reported / total if total else None
+        else:
+            paired = 0.0
+            for a, b in config.LEG_PAIRS:
+                va = sum(legs[d].get(a, 0.0) for d in days)
+                vb = sum(legs[d].get(b, 0.0) for d in days)
+                shares[a], shares[b] = va / total, vb / total
+                paired += 2 * min(va, vb)
         factor[slug] = 1 - paired / total / 2
         venues[slug] = {"name": names[slug], "days": len(days), "leg_shares": shares,
                         "paired_share": paired / total, "once_factor": factor[slug],

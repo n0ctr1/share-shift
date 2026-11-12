@@ -264,9 +264,13 @@ def findings(m):
     if b:
         sc = {x["id"]: x for x in b["scenarios"]}
         legs = "; ".join(
-            "%s: %s of its reported volume is matched pairs of legs into and out of its own "
-            "token, so counting each swap once leaves %s"
-            % (v["name"], pct(v["paired_share"]), pct(v["once_factor"]))
+            ("%s: %s of its reported volume is matched pairs of legs into and out of its own "
+             "token, so counting each swap once leaves %s"
+             % (v["name"], pct(v["paired_share"]), pct(v["once_factor"])))
+            if "provider_vs_indexer" not in v["leg_shares"] else
+            ("%s: its reported volume equals input value plus the routed USDC leg "
+             "(%s of the indexer's two-leg sum), so counting each swap once leaves %s"
+             % (v["name"], pct(v["leg_shares"]["provider_vs_indexer"], 1), pct(v["once_factor"])))
             for v in b["venues"].values())
         out["basis"] = (
             "Venues do not count volume the same way. %s (from each venue's own indexer). "

@@ -13,9 +13,9 @@
     "id": "one_side",
     "label": "One side of each swap for every venue (Intents halved, routed pairs counted once)",
     "leader": "NEAR Intents",
-    "runner_up_share": 0.272613164160988,
-    "share": 0.5311355961221405,
-    "wide_share": 0.10314645819580116
+    "runner_up_share": 0.29420422620523506,
+    "share": 0.5732017290804489,
+    "wide_share": 0.10463774920383624
    },
    {
     "id": "worst",
@@ -29,9 +29,9 @@
     "id": "best",
     "label": "Intents as reported, rivals' routed pairs counted once",
     "leader": "NEAR Intents",
-    "runner_up_share": 0.17804638913197948,
-    "share": 0.6937799597466495,
-    "wide_share": 0.1870041052654014
+    "runner_up_share": 0.18700985434156633,
+    "share": 0.7287072197860991,
+    "wide_share": 0.18945169903754155
    }
   ],
   "subject_notes": [
@@ -45,10 +45,18 @@
    }
   ],
   "subject_source": "DefiLlama reads it from NEAR's own Dune table dune.near.dataset_near_intents_metrics (column volume_amount_usd)",
-  "unverified": [
-   "Chainflip"
-  ],
+  "unverified": [],
   "venues": {
+   "chainflip-amm": {
+    "days": 88,
+    "leg_shares": {
+     "provider_vs_indexer": 0.9958704355632497
+    },
+    "name": "Chainflip",
+    "once_factor": 0.569976378680795,
+    "paired_share": 0.86004724263841,
+    "source": "https://explorer-service-processor.chainflip.io/graphql"
+   },
    "maya-protocol": {
     "days": 90,
     "leg_shares": {
@@ -400,7 +408,7 @@
    "id": "C1",
    "threshold": 0.5,
    "unit": "share",
-   "value": 0.5311355961221405,
+   "value": 0.5732017290804489,
    "verdict": "SUPPORTED"
   },
   {
