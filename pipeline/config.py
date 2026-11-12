@@ -200,3 +200,32 @@ PREDICTIONS = [
                 "over the trailing 90 days.",
     },
 ]
+
+
+# Second seal, 2026-11-12. The claim thresholds above were chosen after looking
+# at data through 2026-11-10; they are sealed here as they stand, with two
+# short predictions on days nobody had seen, so the build can grade them before
+# the hackathon deadline. Any later change to THRESHOLDS or to these
+# predictions makes the build stop (predictions/predictions-v2.json).
+PREDICTIONS_V2 = [
+    {
+        "id": "P4",
+        "due": "2026-11-12",
+        "window_days": 2,
+        "metric": "share_window",
+        "op": ">=",
+        "value": 0.40,
+        "text": "NEAR Intents holds at least 40% of the four swap venues' volume over "
+                "2026-11-11 and 2026-11-12, days after the data this thesis was built on.",
+    },
+    {
+        "id": "P5",
+        "due": "2026-11-12",
+        "window_days": 2,
+        "metric": "take_rate_window_bps",
+        "op": ">=",
+        "value": 12.0,
+        "text": "The Intents take rate stays at or above 12 bps over 2026-11-11 and 2026-11-12.",
+    },
+]
+SEAL_V2 = {"sealed_on": "2026-11-12", "data_seen_through": "2026-11-10"}

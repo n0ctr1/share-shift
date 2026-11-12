@@ -172,6 +172,8 @@ The thesis gets stronger if the dated predictions below hold, and weaker if they
 
 The predictions are sealed. `predictions/predictions.json` holds them as written; its SHA-256 is `5415cf8f10704e6bfd688cd453143339258f0907ded84c0e87ddc61faeb46389`. That hash is timestamped on Bitcoin through OpenTimestamps (`predictions/predictions.json.ots`) and the commit is tagged `predictions-v1`. `python3 build.py` stops if `pipeline/config.py` no longer matches the sealed file.
 
+A second seal, made on 2026-11-12 with data seen only through 2026-11-10, fixes the claim thresholds as they stand and adds P4 and P5, which resolve on days nobody had seen and are graded by the build before the hackathon deadline: `predictions/predictions-v2.json`, SHA-256 `4e9e2e5b883c27a959ba47feca6a62ad5003eab235cf63218ad5a9fce723cb35`, with its own OpenTimestamps proof. This does not make the thresholds pre-registered: they were set after a first look. It makes any later change to them visible, and P4 and P5 test the thesis on new days.
+
 The same hash is written on NEAR mainnet at `noctrl.near/share_shift/predictions_sha256` on `social.near`, by transaction `F75hY9zdcipcUSrgXPjLx7mAw2Rzer4vAgA9VLo8MmhE` (block 224,148,508, 2026-11-12T02:02:04Z). `python3 -m pipeline.anchor --account noctrl.near --verify` reads it back from public RPC.
 
 | # | Due | Prediction | Now | Status |
@@ -179,6 +181,8 @@ The same hash is written on NEAR mainnet at `noctrl.near/share_shift/predictions
 | P1 | 2027-02-28 | NEAR Intents still holds at least 50% of peer-set volume over the trailing 90 days. | 58.1% | PENDING |
 | P2 | 2027-02-28 | NEAR's captured revenue is at least 30% of gross Intents fees over the trailing 90 days. | 27.1% | PENDING |
 | P3 | 2027-05-31 | The Intents take rate has not been competed below 12 bps over the trailing 90 days. | 15.5 bps | PENDING |
+| P4 | 2026-11-12 | NEAR Intents holds at least 40% of the four swap venues' volume over 2026-11-11 and 2026-11-12, days after the data this thesis was built on. | n/a | PENDING |
+| P5 | 2026-11-12 | The Intents take rate stays at or above 12 bps over 2026-11-11 and 2026-11-12. | n/a | PENDING |
 
 It would be refuted outright by: a trailing 90-day share below 40%, a take rate pushed below the rival median, or a capture ratio that stops rising.
 

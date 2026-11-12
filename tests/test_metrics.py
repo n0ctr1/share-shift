@@ -270,6 +270,33 @@ class Token(unittest.TestCase):
         self.assertAlmostEqual(t["multiple_to_offset"], 2.5)
 
 
+class ShortPredictions(unittest.TestCase):
+    def test_window_predictions_are_graded_once_the_due_day_is_in_the_data(self):
+        days = 10
+        vols = {p["slug"]: [100.0] * days for p in config.PEERS}
+        vols[config.SUBJECT] = [300.0] * days          # 300 of 600 = 50%
+        fees = {p["slug"]: [0.0] * days for p in config.PEERS}
+        fees[config.SUBJECT] = [0.6] * days            # 20 bps
+        raw, dates = make_raw(days, vols, fees)
+        saved = config.PREDICTIONS_V2
+        try:
+            config.PREDICTIONS_V2 = [
+                {"id": "Pa", "due": dates[5], "window_days": 2, "metric": "share_window",
+                 "op": ">=", "value": 0.40, "text": "a"},
+                {"id": "Pb", "due": dates[5], "window_days": 2, "metric": "take_rate_window_bps",
+                 "op": ">=", "value": 25.0, "text": "b"},
+                {"id": "Pc", "due": "2099-01-01", "window_days": 2, "metric": "share_window",
+                 "op": ">=", "value": 0.40, "text": "c"}]
+            m = metrics.compute(raw, "2030-01-01T00:00:00Z")
+        finally:
+            config.PREDICTIONS_V2 = saved
+        got = {p["id"]: (p["status"], p["current"]) for p in m["predictions"] if p["seal"] == "v2"}
+        self.assertEqual(got["Pa"][0], "MET")
+        self.assertAlmostEqual(got["Pa"][1], 0.5)
+        self.assertEqual(got["Pb"][0], "MISSED")
+        self.assertEqual(got["Pc"][0], "PENDING")
+
+
 class Table(unittest.TestCase):
     def test_fetch_day_is_excluded(self):
         vols = {p["slug"]: [10.0] * 10 for p in config.PEERS}

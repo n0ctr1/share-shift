@@ -13,7 +13,11 @@ import sys
 
 import hashlib
 
-from pipeline import fetch, metrics, narrative, seal
+from pipeline import config, fetch, metrics, narrative, seal
+
+
+def config_seal_v2():
+    return config.SEAL_V2
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -25,14 +29,18 @@ def main(argv):
     manifest, raw = fetch.load_all()
 
     sealed = os.path.join(ROOT, "predictions", "predictions.json")
-    if os.path.exists(sealed) and open(sealed, "rb").read() != seal.canonical():
-        sys.exit("pipeline/config.py PREDICTIONS differ from the sealed predictions/predictions.json")
+    bad = seal.mismatches()
+    if bad:
+        sys.exit("pipeline/config.py no longer matches the sealed %s" % ", ".join(bad))
 
     result = metrics.compute(raw, manifest["fetched_at"])
     if "near_anchor" in raw:
         result["meta"]["near_anchor"] = raw["near_anchor"]
     if os.path.exists(sealed):
         result["meta"]["predictions_sha256"] = hashlib.sha256(open(sealed, "rb").read()).hexdigest()
+    if os.path.exists(seal.JSON_PATH_V2):
+        result["meta"]["seal_v2_sha256"] = hashlib.sha256(open(seal.JSON_PATH_V2, "rb").read()).hexdigest()
+        result["meta"]["seal_v2"] = dict(config_seal_v2())
     text = narrative.findings(result)
 
     os.makedirs(os.path.join(ROOT, "data", "derived"), exist_ok=True)

@@ -916,6 +916,11 @@
    }
   ],
   "predictions_sha256": "5415cf8f10704e6bfd688cd453143339258f0907ded84c0e87ddc61faeb46389",
+  "seal_v2": {
+   "data_seen_through": "2026-11-10",
+   "sealed_on": "2026-11-12"
+  },
+  "seal_v2_sha256": "4e9e2e5b883c27a959ba47feca6a62ad5003eab235cf63218ad5a9fce723cb35",
   "subject": "near-intents",
   "subject_methodology": {
    "Fees": "Gross fees charged on NEAR Intents swaps - the protocol fee plus the affiliate (distribution) fee each frontend collects, summed across all integrators.",
@@ -1749,6 +1754,7 @@
    "id": "P1",
    "metric": "share_trailing",
    "op": ">=",
+   "seal": "v1",
    "status": "PENDING",
    "text": "NEAR Intents still holds at least 50% of peer-set volume over the trailing 90 days.",
    "value": 0.5
@@ -1759,6 +1765,7 @@
    "id": "P2",
    "metric": "capture_trailing",
    "op": ">=",
+   "seal": "v1",
    "status": "PENDING",
    "text": "NEAR's captured revenue is at least 30% of gross Intents fees over the trailing 90 days.",
    "value": 0.3
@@ -1769,9 +1776,34 @@
    "id": "P3",
    "metric": "take_rate_trailing_bps",
    "op": ">=",
+   "seal": "v1",
    "status": "PENDING",
    "text": "The Intents take rate has not been competed below 12 bps over the trailing 90 days.",
    "value": 12.0
+  },
+  {
+   "current": null,
+   "due": "2026-11-12",
+   "id": "P4",
+   "metric": "share_window",
+   "op": ">=",
+   "seal": "v2",
+   "status": "PENDING",
+   "text": "NEAR Intents holds at least 40% of the four swap venues' volume over 2026-11-11 and 2026-11-12, days after the data this thesis was built on.",
+   "value": 0.4,
+   "window_days": 2
+  },
+  {
+   "current": null,
+   "due": "2026-11-12",
+   "id": "P5",
+   "metric": "take_rate_window_bps",
+   "op": ">=",
+   "seal": "v2",
+   "status": "PENDING",
+   "text": "The Intents take rate stays at or above 12 bps over 2026-11-11 and 2026-11-12.",
+   "value": 12.0,
+   "window_days": 2
   }
  ],
  "quality_flags": [

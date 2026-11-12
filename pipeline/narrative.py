@@ -729,6 +729,16 @@ def thesis_markdown(m, text):
         "(`predictions/predictions.json.ots`) and the commit is tagged `predictions-v1`. "
         "`python3 build.py` stops if `pipeline/config.py` no longer matches the sealed file."
         % m["meta"].get("predictions_sha256", "n/a"))
+    if m["meta"].get("seal_v2_sha256"):
+        sv = m["meta"]["seal_v2"]
+        add("")
+        add("A second seal, made on %s with data seen only through %s, fixes the claim "
+            "thresholds as they stand and adds P4 and P5, which resolve on days nobody had seen "
+            "and are graded by the build before the hackathon deadline: "
+            "`predictions/predictions-v2.json`, SHA-256 `%s`, with its own OpenTimestamps proof. "
+            "This does not make the thresholds pre-registered: they were set after a first look. "
+            "It makes any later change to them visible, and P4 and P5 test the thesis on new days."
+            % (sv["sealed_on"], sv["data_seen_through"], m["meta"]["seal_v2_sha256"]))
     anchor = m["meta"].get("near_anchor")
     if anchor:
         add("")

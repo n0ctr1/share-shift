@@ -1,0 +1,41 @@
+{
+ "claim_thresholds": {
+  "absorbed": 0.33,
+  "buyback_offset": 0.5,
+  "capture": 0.5,
+  "events_both": 1.0,
+  "leader_share": 0.5,
+  "onchain_match": 0.05,
+  "pie_growth": 0.25,
+  "share_effect": 0.5,
+  "share_floor": 0.4,
+  "take_rate_vs_peers": 1.0,
+  "tee_match": 0.001,
+  "top_channel": 0.33
+ },
+ "note": "Claim thresholds as they stood when this was sealed, and two predictions on days after the data the thesis was built on.",
+ "predictions": [
+  {
+   "due": "2026-11-12",
+   "id": "P4",
+   "metric": "share_window",
+   "op": ">=",
+   "text": "NEAR Intents holds at least 40% of the four swap venues' volume over 2026-11-11 and 2026-11-12, days after the data this thesis was built on.",
+   "value": 0.4,
+   "window_days": 2
+  },
+  {
+   "due": "2026-11-12",
+   "id": "P5",
+   "metric": "take_rate_window_bps",
+   "op": ">=",
+   "text": "The Intents take rate stays at or above 12 bps over 2026-11-11 and 2026-11-12.",
+   "value": 12.0,
+   "window_days": 2
+  }
+ ],
+ "seal": {
+  "data_seen_through": "2026-11-10",
+  "sealed_on": "2026-11-12"
+ }
+}

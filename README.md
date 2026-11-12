@@ -66,7 +66,7 @@ Needs Python 3.9 or newer. No packages to install. No key needed for steps 1 to 
 
 | Step | Do | See |
 | --- | --- | --- |
-| 1 | `python3 -m unittest discover -s tests` | `Ran 26 tests` and `OK` |
+| 1 | `python3 -m unittest discover -s tests` | `Ran 27 tests` and `OK` |
 | 2 | `python3 build.py --offline` | Fourteen lines `C1` to `C14`, each `SUPPORTED` or `REFUTED`, then `wrote THESIS.md, docs/index.html, data/derived/metrics.json` |
 | 3 | `git status --short` | Nothing: the offline build reproduces the committed files byte for byte |
 | 4 | `python3 build.py` | The same fourteen lines computed on today's data; `git diff THESIS.md` shows which numbers moved |
@@ -124,6 +124,7 @@ evidence for the thesis.
 | 2 | `git show predictions-v1:predictions/predictions.json \| sha256sum` | the same hash, from the tagged commit |
 | 3 | `python3 -m pipeline.ots` | `bitcoin block 975496 ... merkle root matches` (three lines, one per calendar), then `predictions.json existed by Bitcoin block 975496 (unix time 1794442654)`, 2026-11-12 00:17 UTC. Standard library only; block headers come from Blockstream's public API. The official client gives the same result: `pip install opentimestamps-client`, then `ots verify predictions/predictions.json.ots` |
 | 4 | `python3 -m pipeline.seal --check` | `sealed predictions match config` |
+| 6 | `python3 -m pipeline.ots --file predictions/predictions-v2.json` and `python3 -m pipeline.seal --check` | the second seal (claim thresholds and P4, P5, sealed 2026-11-12); its Bitcoin attestation completes a few hours after sealing |
 | 5 | `python3 -m pipeline.anchor --account noctrl.near --verify` | `anchored on NEAR: noctrl.near/share_shift/predictions_sha256 = 5415cf8f...` read from `social.near` over public RPC; written by transaction `F75hY9zdcipcUSrgXPjLx7mAw2Rzer4vAgA9VLo8MmhE` |
 
 ## How a number gets into the thesis
@@ -203,8 +204,9 @@ swap.
   and which distribution channels also route to rival venues (each with its
   source, in `CHANNEL_NOTES`).
 - Claim thresholds were chosen after a first look at the data and are not
-  pre-registered. The dated predictions are sealed: see "Checking the
-  predictions were not edited" below.
+  pre-registered. They are sealed as they stand (second seal, 2026-11-12), so a
+  later change is visible, and two short predictions (P4, P5) resolve on days
+  after the data was seen, before the hackathon deadline.
 
 ## Disclosure
 

@@ -2,6 +2,7 @@
 
     python3 -m pipeline.ots --upgrade   ask the calendars for the Bitcoin part
     python3 -m pipeline.ots             verify against Bitcoin block headers
+    add --file predictions/predictions-v2.json for the second seal
 
 A small, standard-library reader for detached .ots files, so checking the
 proof does not need the opentimestamps client. Verification replays every
@@ -175,12 +176,16 @@ def verify(digest, node):
 
 
 def main(argv):
+    global PROOF, SEALED
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--upgrade", action="store_true")
+    ap.add_argument("--file", default=os.path.relpath(SEALED, ROOT))
     args = ap.parse_args(argv)
+    SEALED = os.path.join(ROOT, args.file)
+    PROOF = SEALED + ".ots"
     digest, node = load()
     if hashlib.sha256(open(SEALED, "rb").read()).digest() != digest:
-        sys.exit("the proof is not for predictions/predictions.json")
+        sys.exit("the proof is not for %s" % args.file)
     if args.upgrade:
         if upgrade(node):
             with open(PROOF, "wb") as fh:
@@ -193,7 +198,7 @@ def main(argv):
     if not all(r[0] for r in results):
         sys.exit("a Bitcoin attestation does not match its block")
     first = min(results, key=lambda r: r[2])
-    print("predictions.json existed by Bitcoin block %d (unix time %d)" % (first[1], first[2]))
+    print("%s existed by Bitcoin block %d (unix time %d)" % (os.path.basename(SEALED), first[1], first[2]))
 
 
 if __name__ == "__main__":

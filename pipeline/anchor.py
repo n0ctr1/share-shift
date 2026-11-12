@@ -26,17 +26,22 @@ import urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SEALED = os.path.join(ROOT, "predictions", "predictions.json")
+SEALED_V2 = os.path.join(ROOT, "predictions", "predictions-v2.json")
 RPC = "https://rpc.mainnet.fastnear.com"
 KEY = "share_shift"
 
 
-def digest():
-    with open(SEALED, "rb") as fh:
+def digest(path=SEALED):
+    with open(path, "rb") as fh:
         return hashlib.sha256(fh.read()).hexdigest()
 
 
-def payload(account):
-    return {"data": {account: {KEY: {"predictions_sha256": digest()}}}}
+FIELDS = {"v1": ("predictions_sha256", SEALED), "v2": ("predictions_v2_sha256", SEALED_V2)}
+
+
+def payload(account, which="v1"):
+    field, path = FIELDS[which]
+    return {"data": {account: {KEY: {field: digest(path)}}}}
 
 
 def view_get(account):
@@ -58,19 +63,21 @@ def main(argv):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--account", required=True)
     ap.add_argument("--verify", action="store_true")
+    ap.add_argument("--seal", choices=["v1", "v2"], default="v1")
     args = ap.parse_args(argv)
+    field, path = FIELDS[args.seal]
     if args.verify:
-        stored = view_get(args.account).get(args.account, {}).get(KEY, {}).get("predictions_sha256")
-        if stored == digest():
-            print("anchored on NEAR: %s/%s/predictions_sha256 = %s" % (args.account, KEY, stored))
+        stored = view_get(args.account).get(args.account, {}).get(KEY, {}).get(field)
+        if stored == digest(path):
+            print("anchored on NEAR: %s/%s/%s = %s" % (args.account, KEY, field, stored))
         else:
-            sys.exit("not anchored or different: found %r, expected %s" % (stored, digest()))
+            sys.exit("not anchored or different: found %r, expected %s" % (stored, digest(path)))
         return
     print("Sign this from %s (near-cli-rs):\n" % args.account)
     print("near contract call-function as-transaction social.near set json-args '%s' "
           "prepaid-gas '30 Tgas' attached-deposit '0.05 NEAR' sign-as %s "
           "network-config mainnet sign-with-keychain send"
-          % (json.dumps(payload(args.account), separators=(",", ":")), args.account))
+          % (json.dumps(payload(args.account, args.seal), separators=(",", ":")), args.account))
 
 
 if __name__ == "__main__":

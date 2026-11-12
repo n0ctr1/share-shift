@@ -1147,7 +1147,23 @@ def _compute(raw, fetched_at):
             status = "PENDING"
         else:
             status = "MET" if value is not None and value >= p["value"] else "MISSED"
-        predictions.append({**p, "current": value, "status": status})
+        predictions.append({**p, "seal": "v1", "current": value, "status": status})
+    idx_ = {d: i for i, d in enumerate(table["dates"])}
+    for p in config.PREDICTIONS_V2:
+        value = None
+        if p["due"] in idx_:
+            hi = idx_[p["due"]]
+            lo = hi - p["window_days"] + 1
+            v_sub = sum(table[subject]["volume"][lo:hi + 1])
+            v_all = sum(sum(table[x]["volume"][lo:hi + 1]) for x in slugs)
+            f_sub = sum(table[subject]["fees"][lo:hi + 1])
+            value = {"share_window": v_sub / v_all if v_all else None,
+                     "take_rate_window_bps": 1e4 * f_sub / v_sub if v_sub else None}[p["metric"]]
+        if value is None:
+            status = "PENDING"
+        else:
+            status = "MET" if value >= p["value"] else "MISSED"
+        predictions.append({**p, "seal": "v2", "current": value, "status": status})
 
     claims.sort(key=lambda c: int(c["id"][1:]))
     return {
