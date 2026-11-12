@@ -63,7 +63,7 @@ Needs Python 3.9 or newer. No packages to install. No key needed for steps 1 to 
 | 2 | `python3 build.py --offline` | Fourteen lines `C1` to `C14`, each `SUPPORTED` or `REFUTED`, then `wrote THESIS.md, docs/index.html, data/derived/metrics.json` |
 | 3 | `git status --short` | Nothing: the offline build reproduces the committed files byte for byte |
 | 4 | `python3 build.py` | The same fourteen lines computed on today's data; `git diff THESIS.md` shows which numbers moved |
-| 5 | Open `docs/index.html` in a browser | Six tiles, a table of fourteen claims with verdicts, tables for the halt and for channels, six charts with the halt shaded; hovering a chart shows every series' value for that week or month |
+| 5 | Open `docs/index.html` in a browser, or https://n0ctr1.github.io/share-shift/ | A row of six headline numbers; fourteen claims with verdicts; five charts (three with the THORChain halt shaded) and one split bar; tables for the halt, the counting bases, all eight venues, channels and fee recipients. Hovering a chart shows every series' value for that week or month |
 | 6 | Change `WINDOW = 90` to `WINDOW = 30` in `pipeline/config.py`, then run step 2 | Every figure in `THESIS.md` is recomputed for a 30-day window |
 | 7 | Optional. Put `INTENTS_EXPLORER_JWT=...` in `.env`, then `python3 -m pipeline.explorer --from 2026-04-09 --to 2026-11-10` | `page 5, reached ...` lines, then `wrote data/raw/explorer_daily.json`. About three hours: the API allows one request per five seconds. An interrupted run resumes. Then run `python3 build.py` so the manifest picks up the new file |
 
