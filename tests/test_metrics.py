@@ -272,7 +272,7 @@ class Token(unittest.TestCase):
 
 class ShortPredictions(unittest.TestCase):
     def test_window_predictions_are_graded_once_the_due_day_is_in_the_data(self):
-        days = 10
+        days = 120
         vols = {p["slug"]: [100.0] * days for p in config.PEERS}
         vols[config.SUBJECT] = [300.0] * days          # 300 of 600 = 50%
         fees = {p["slug"]: [0.0] * days for p in config.PEERS}
@@ -281,9 +281,9 @@ class ShortPredictions(unittest.TestCase):
         saved = config.PREDICTIONS_V2
         try:
             config.PREDICTIONS_V2 = [
-                {"id": "Pa", "due": dates[5], "window_days": 2, "metric": "share_window",
+                {"id": "Pa", "due": dates[100], "window_days": 2, "metric": "share_window",
                  "op": ">=", "value": 0.40, "text": "a"},
-                {"id": "Pb", "due": dates[5], "window_days": 2, "metric": "take_rate_window_bps",
+                {"id": "Pb", "due": dates[100], "window_days": 2, "metric": "take_rate_window_bps",
                  "op": ">=", "value": 25.0, "text": "b"},
                 {"id": "Pc", "due": "2099-01-01", "window_days": 2, "metric": "share_window",
                  "op": ">=", "value": 0.40, "text": "c"}]
