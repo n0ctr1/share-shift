@@ -163,7 +163,7 @@ def run(tx_hash, sender, record=False, which="headline"):
         with open(OUT, "w") as fh:
             json.dump(out, fh, indent=1, sort_keys=True)
             fh.write("\n")
-    else:
+    elif os.path.exists(OUT):
         recorded = json.load(open(OUT))
         checks["matches_recorded_run"] = (recorded.get("output") == output
                                           and recorded.get("wasm_sha256") == wasm_sha

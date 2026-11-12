@@ -116,6 +116,11 @@ after the second day ended and passes the chain checks; it then shows whether
 the enclave's per-venue volumes and verdict match its own. `python3 -m
 pipeline.tee_verify` checks every recorded run.
 
+A first P4 request (`BzF2oeQkfo9Qdpk8nu5ZLUNHVn2wT3vb17tWaDkNyHXr`, 2026-11-12
+14:26 UTC) passes the chain checks but ran before 2026-11-12 had ended: DefiLlama
+had no Intents point for that day yet and only part of Chainflip's. It returned
+a share of 30.41% on incomplete days and is not used.
+
 An earlier request from the same account (`9Nb8MpaWCCBwHxc6DHFqJBTi919eupKnagGSVHH5MtqU`)
 ran the same code with an empty input, because the CLI read the JSON argument as
 a project name; it returned zeros and is not used.
