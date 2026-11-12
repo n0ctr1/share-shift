@@ -598,6 +598,26 @@ footer p { margin: 0 0 6px; }
     series: [{name: 'Reaching NEAR', color: COLORS[0], values: capMonths.map(function (r) { return r.capture; })}],
     query: REV + ' ÷ ' + FEE, fn: 'metrics.monthly()'});
 
+  // ---------- 4b. the token ----------
+  if (M.token) {
+    s = section('token', 'The NEAR token', 'Evidence', 'For the token, buybacks cover a fraction of issuance');
+    s.appendChild(prose([T.token, T.token_l1]));
+    var tk = M.token, ft = el('div', {class: 'figure'});
+    ft.appendChild(el('h3', {}, 'NEAR issued against NEAR bought back, ' + tk.window_days + ' days'));
+    var tot = tk.net_issued_near, bar = el('div', {class: 'split'}), a1 = el('div'), a2 = el('div'), a3 = el('div');
+    a1.style.cssText = 'background:var(--s1);flex:' + tk.bought_back_near;
+    a2.style.cssText = 'background:var(--s3);flex:' + Math.max(0, tk.captured_near - tk.bought_back_near);
+    a3.style.cssText = 'background:var(--ink-3);opacity:.45;flex:' + Math.max(0, tot - tk.captured_near);
+    bar.appendChild(a1); bar.appendChild(a2); bar.appendChild(a3); ft.appendChild(bar);
+    var lb = el('div', {class: 'splitlab'});
+    lb.appendChild(el('span', {}, 'Bought back: ' + (tk.bought_back_near / 1e6).toFixed(2) + 'M NEAR (' + pct(tk.offset_buyback) + ')'));
+    lb.appendChild(el('span', {}, 'Other captured revenue: ' + ((tk.captured_near - tk.bought_back_near) / 1e6).toFixed(2) + 'M'));
+    lb.appendChild(el('span', {}, 'Net new supply: ' + (tot / 1e6).toFixed(2) + 'M NEAR'));
+    ft.appendChild(lb);
+    source(ft, 'NEAR archival RPC block headers (total_supply); NearBlocks transfers into the revenue wallets', 'metrics.token_check()');
+    s.appendChild(ft);
+  }
+
   // ---------- 5. distribution ----------
   if (M.channels) {
     var c = M.channels;

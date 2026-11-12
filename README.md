@@ -43,7 +43,7 @@ The sixth uses the NEAR Intents Explorer API: 1Click swaps grouped by
 distribution channel and by the account that receives the app fee
 (`metrics.channel_report`).
 
-Fourteen claims are tested against fixed thresholds. The current result is in
+Fifteen claims are tested against fixed thresholds. The current result is in
 `THESIS.md`; it includes the claims that fail.
 
 ## How NEAR fits in
@@ -59,11 +59,11 @@ Needs Python 3.9 or newer. No packages to install. No key needed for steps 1 to 
 
 | Step | Do | See |
 | --- | --- | --- |
-| 1 | `python3 -m unittest discover -s tests` | `Ran 25 tests` and `OK` |
-| 2 | `python3 build.py --offline` | Fourteen lines `C1` to `C14`, each `SUPPORTED` or `REFUTED`, then `wrote THESIS.md, docs/index.html, data/derived/metrics.json` |
+| 1 | `python3 -m unittest discover -s tests` | `Ran 26 tests` and `OK` |
+| 2 | `python3 build.py --offline` | Fifteen lines `C1` to `C15`, each `SUPPORTED` or `REFUTED`, then `wrote THESIS.md, docs/index.html, data/derived/metrics.json` |
 | 3 | `git status --short` | Nothing: the offline build reproduces the committed files byte for byte |
-| 4 | `python3 build.py` | The same fourteen lines computed on today's data; `git diff THESIS.md` shows which numbers moved |
-| 5 | Open `docs/index.html` in a browser, or https://n0ctr1.github.io/share-shift/ | A row of six headline numbers; fourteen claims with verdicts; five charts (three with the THORChain halt shaded) and one split bar; tables for the halt, the counting bases, all eight venues, channels and fee recipients. Hovering a chart shows every series' value for that week or month |
+| 4 | `python3 build.py` | The same fifteen lines computed on today's data; `git diff THESIS.md` shows which numbers moved |
+| 5 | Open `docs/index.html` in a browser, or https://n0ctr1.github.io/share-shift/ | A row of six headline numbers; fifteen claims with verdicts; five charts (three with the THORChain halt shaded) and one split bar; tables for the halt, the counting bases, all eight venues, channels and fee recipients. Hovering a chart shows every series' value for that week or month |
 | 6 | Change `WINDOW = 90` to `WINDOW = 30` in `pipeline/config.py`, then run step 2 | Every figure in `THESIS.md` is recomputed for a 30-day window |
 | 7 | Optional. Put `INTENTS_EXPLORER_JWT=...` in `.env`, then `python3 -m pipeline.explorer --from 2026-04-09 --to 2026-11-10` | `page 5, reached ...` lines, then `wrote data/raw/explorer_daily.json`. About three hours: the API allows one request per five seconds. An interrupted run resumes. Then run `python3 build.py` so the manifest picks up the new file |
 
@@ -155,6 +155,8 @@ under the chart.
 | Daily revenue per venue | `api.llama.fi/summary/fees/{venue}?dataType=dailyRevenue` | no |
 | THORChain volume, cross-check and leg breakdown | THORChain Midgard `/v2/history/swaps` | no |
 | Maya leg breakdown | Maya Midgard `/v2/history/swaps` | no |
+| NEAR total supply at the window's edges | NEAR archival RPC block headers (`total_supply`) | no |
+| Daily L1 transactions and active accounts | `api.nearblocks.io/v1/charts` | no |
 | Transfers into NEAR's three revenue wallets | `api.nearblocks.io/v1/account/{wallet}/txns`, `/ft-txns` | no |
 | intents.near transactions and event logs | FastNear `tx.main.fastnear.com/v0/account`, `/v0/transactions` | no |
 | Token decimals and CoinGecko ids; historical prices | `1click.chaindefuser.com/v0/tokens`; `coins.llama.fi/prices/historical` | no |

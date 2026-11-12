@@ -252,6 +252,24 @@ class Tee(unittest.TestCase):
         self.assertEqual([r["build_musd"] for r in t["volumes"]], [60.0, 40.0])
 
 
+class Token(unittest.TestCase):
+    def test_buyback_is_compared_with_net_new_supply(self):
+        raw = {"near_supply": {"points": [
+                   {"day": "2025-08-13", "total_supply_near": 100.0},
+                   {"day": "2025-11-11", "total_supply_near": 120.0},
+                   {"day": "2026-08-13", "total_supply_near": 1000.0},
+                   {"day": "2026-11-11", "total_supply_near": 1010.0}]},
+               "onchain_revenue": {"buyback_wallet": "b.near", "days": {
+                   "2026-09-01": {"b.near": {"near": 2.0, "wnear": 0.0}, "a.near": {"near": 1.0, "wnear": 1.0}},
+                   "2027-01-01": {"b.near": {"near": 50.0, "wnear": 0.0}}}}}
+        t = metrics.token_check(raw, ["2026-08-13", "2026-11-10"])
+        self.assertAlmostEqual(t["net_issued_near"], 10.0)
+        self.assertAlmostEqual(t["net_issued_prior_near"], 20.0)
+        self.assertAlmostEqual(t["offset_buyback"], 0.2)
+        self.assertAlmostEqual(t["offset_captured"], 0.4)
+        self.assertAlmostEqual(t["multiple_to_offset"], 2.5)
+
+
 class Table(unittest.TestCase):
     def test_fetch_day_is_excluded(self):
         vols = {p["slug"]: [10.0] * 10 for p in config.PEERS}

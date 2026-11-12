@@ -555,6 +555,14 @@
    "unit": "share",
    "value": 9.299083669422892e-06,
    "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "The NEAR bought back with Intents revenue covers at least half of the NEAR newly issued in the same window.",
+   "id": "C15",
+   "threshold": 0.5,
+   "unit": "share",
+   "value": 0.12605764127510188,
+   "verdict": "REFUTED"
   }
  ],
  "co_movement": {
@@ -1861,6 +1869,52 @@
   ],
   "wasm_sha256": "7634f3997a76a5ff6c930374c81d33baaa3f06cbece6e8fae9ab0217e4fdaf0d",
   "worker": "worker.outlayer.near"
+ },
+ "token": {
+  "annual_issuance_rate": 0.024755620879666655,
+  "bought_back_near": 1002939.719846116,
+  "captured_near": 1448845.8952533694,
+  "l1": {
+   "active_accounts": 71745.22222222222,
+   "active_accounts_prior": 291030.3888888889,
+   "source": "https://api.nearblocks.io/v1/charts",
+   "txns_per_day": 741871.9333333333,
+   "txns_per_day_prior": 4643881.744444445
+  },
+  "multiple_to_offset": 5.491404811568248,
+  "net_issued_near": 7956199.320415258,
+  "net_issued_prior_near": 14266931.041665077,
+  "offset_buyback": 0.12605764127510188,
+  "offset_captured": 0.1821027650144076,
+  "supply_end": 1311369614.474151,
+  "supply_points": [
+   {
+    "day": "2025-08-13",
+    "height": 159380576,
+    "time": "2025-08-13T00:00:00Z",
+    "total_supply_near": 1265361814.3699994
+   },
+   {
+    "day": "2025-11-11",
+    "height": 172104799,
+    "time": "2025-11-11T00:00:00Z",
+    "total_supply_near": 1279628745.4116645
+   },
+   {
+    "day": "2026-08-13",
+    "height": 211084654,
+    "time": "2026-08-13T00:00:00Z",
+    "total_supply_near": 1303413415.1537356
+   },
+   {
+    "day": "2026-11-11",
+    "height": 223988378,
+    "time": "2026-11-11T00:00:00Z",
+    "total_supply_near": 1311369614.474151
+   }
+  ],
+  "supply_start": 1303413415.1537356,
+  "window_days": 90
  },
  "trailing": {
   "capture": 0.2706981404409915,

@@ -160,6 +160,7 @@ THRESHOLDS = {
     "onchain_match": 0.05,       # C12: provider revenue within 5% of transfers into NEAR's wallets
     "events_both": 1.0,          # C13: the reported figure sits inside the both-sides interval
     "tee_match": 0.001,          # C14: TEE share within 0.1 point of the build
+    "buyback_offset": 0.50,      # C15: NEAR bought back covers at least half of net new supply
     "absorbed": 0.33,            # C7: subject picked up over a third of a halted rival's flow
 }
 

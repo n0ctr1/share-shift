@@ -1,0 +1,2460 @@
+{
+ "series": [
+  {
+   "active_accounts": 332420,
+   "date": "2025-07-09",
+   "txns": 4576165
+  },
+  {
+   "active_accounts": 333705,
+   "date": "2025-07-10",
+   "txns": 4713058
+  },
+  {
+   "active_accounts": 332288,
+   "date": "2025-07-11",
+   "txns": 4778058
+  },
+  {
+   "active_accounts": 331019,
+   "date": "2025-07-12",
+   "txns": 3925395
+  },
+  {
+   "active_accounts": 334042,
+   "date": "2025-07-13",
+   "txns": 2272640
+  },
+  {
+   "active_accounts": 343207,
+   "date": "2025-07-14",
+   "txns": 3832640
+  },
+  {
+   "active_accounts": 342543,
+   "date": "2025-07-15",
+   "txns": 4806572
+  },
+  {
+   "active_accounts": 356571,
+   "date": "2025-07-16",
+   "txns": 4837616
+  },
+  {
+   "active_accounts": 346083,
+   "date": "2025-07-17",
+   "txns": 4892308
+  },
+  {
+   "active_accounts": 346033,
+   "date": "2025-07-18",
+   "txns": 4865080
+  },
+  {
+   "active_accounts": 326848,
+   "date": "2025-07-19",
+   "txns": 4586524
+  },
+  {
+   "active_accounts": 342912,
+   "date": "2025-07-20",
+   "txns": 4634768
+  },
+  {
+   "active_accounts": 344125,
+   "date": "2025-07-21",
+   "txns": 4886481
+  },
+  {
+   "active_accounts": 348000,
+   "date": "2025-07-22",
+   "txns": 4767942
+  },
+  {
+   "active_accounts": 346444,
+   "date": "2025-07-23",
+   "txns": 5240127
+  },
+  {
+   "active_accounts": 345606,
+   "date": "2025-07-24",
+   "txns": 5381716
+  },
+  {
+   "active_accounts": 322797,
+   "date": "2025-07-25",
+   "txns": 5283100
+  },
+  {
+   "active_accounts": 339124,
+   "date": "2025-07-26",
+   "txns": 4855734
+  },
+  {
+   "active_accounts": 341823,
+   "date": "2025-07-27",
+   "txns": 4918823
+  },
+  {
+   "active_accounts": 348450,
+   "date": "2025-07-28",
+   "txns": 5827094
+  },
+  {
+   "active_accounts": 349733,
+   "date": "2025-07-29",
+   "txns": 5815172
+  },
+  {
+   "active_accounts": 348115,
+   "date": "2025-07-30",
+   "txns": 5881218
+  },
+  {
+   "active_accounts": 346511,
+   "date": "2025-07-31",
+   "txns": 5595814
+  },
+  {
+   "active_accounts": 335863,
+   "date": "2025-08-01",
+   "txns": 5697762
+  },
+  {
+   "active_accounts": 331718,
+   "date": "2025-08-02",
+   "txns": 5481203
+  },
+  {
+   "active_accounts": 332812,
+   "date": "2025-08-03",
+   "txns": 5276984
+  },
+  {
+   "active_accounts": 336555,
+   "date": "2025-08-04",
+   "txns": 5354974
+  },
+  {
+   "active_accounts": 336613,
+   "date": "2025-08-05",
+   "txns": 4999811
+  },
+  {
+   "active_accounts": 340225,
+   "date": "2025-08-06",
+   "txns": 5015345
+  },
+  {
+   "active_accounts": 339947,
+   "date": "2025-08-07",
+   "txns": 5125929
+  },
+  {
+   "active_accounts": 335408,
+   "date": "2025-08-08",
+   "txns": 4948636
+  },
+  {
+   "active_accounts": 322587,
+   "date": "2025-08-09",
+   "txns": 4790288
+  },
+  {
+   "active_accounts": 334719,
+   "date": "2025-08-10",
+   "txns": 4866005
+  },
+  {
+   "active_accounts": 338800,
+   "date": "2025-08-11",
+   "txns": 4951535
+  },
+  {
+   "active_accounts": 331954,
+   "date": "2025-08-12",
+   "txns": 5008307
+  },
+  {
+   "active_accounts": 334078,
+   "date": "2025-08-13",
+   "txns": 4976883
+  },
+  {
+   "active_accounts": 345915,
+   "date": "2025-08-14",
+   "txns": 5133268
+  },
+  {
+   "active_accounts": 343984,
+   "date": "2025-08-15",
+   "txns": 5195571
+  },
+  {
+   "active_accounts": 331618,
+   "date": "2025-08-16",
+   "txns": 4965339
+  },
+  {
+   "active_accounts": 342561,
+   "date": "2025-08-17",
+   "txns": 4999807
+  },
+  {
+   "active_accounts": 341139,
+   "date": "2025-08-18",
+   "txns": 5013328
+  },
+  {
+   "active_accounts": 340767,
+   "date": "2025-08-19",
+   "txns": 4984756
+  },
+  {
+   "active_accounts": 334579,
+   "date": "2025-08-20",
+   "txns": 4934303
+  },
+  {
+   "active_accounts": 326732,
+   "date": "2025-08-21",
+   "txns": 4925621
+  },
+  {
+   "active_accounts": 324678,
+   "date": "2025-08-22",
+   "txns": 4946062
+  },
+  {
+   "active_accounts": 324053,
+   "date": "2025-08-23",
+   "txns": 5027549
+  },
+  {
+   "active_accounts": 322260,
+   "date": "2025-08-24",
+   "txns": 4984764
+  },
+  {
+   "active_accounts": 326060,
+   "date": "2025-08-25",
+   "txns": 4954601
+  },
+  {
+   "active_accounts": 328537,
+   "date": "2025-08-26",
+   "txns": 5004186
+  },
+  {
+   "active_accounts": 328561,
+   "date": "2025-08-27",
+   "txns": 4905631
+  },
+  {
+   "active_accounts": 326532,
+   "date": "2025-08-28",
+   "txns": 4836376
+  },
+  {
+   "active_accounts": 320988,
+   "date": "2025-08-29",
+   "txns": 4742351
+  },
+  {
+   "active_accounts": 310255,
+   "date": "2025-08-30",
+   "txns": 4774224
+  },
+  {
+   "active_accounts": 314056,
+   "date": "2025-08-31",
+   "txns": 4759174
+  },
+  {
+   "active_accounts": 311868,
+   "date": "2025-09-01",
+   "txns": 4928973
+  },
+  {
+   "active_accounts": 318121,
+   "date": "2025-09-02",
+   "txns": 4950123
+  },
+  {
+   "active_accounts": 319260,
+   "date": "2025-09-03",
+   "txns": 4951963
+  },
+  {
+   "active_accounts": 291056,
+   "date": "2025-09-04",
+   "txns": 4726604
+  },
+  {
+   "active_accounts": 311068,
+   "date": "2025-09-05",
+   "txns": 4865153
+  },
+  {
+   "active_accounts": 302108,
+   "date": "2025-09-06",
+   "txns": 4830883
+  },
+  {
+   "active_accounts": 304489,
+   "date": "2025-09-07",
+   "txns": 4841481
+  },
+  {
+   "active_accounts": 312006,
+   "date": "2025-09-08",
+   "txns": 4748752
+  },
+  {
+   "active_accounts": 306005,
+   "date": "2025-09-09",
+   "txns": 4870224
+  },
+  {
+   "active_accounts": 306075,
+   "date": "2025-09-10",
+   "txns": 4895042
+  },
+  {
+   "active_accounts": 301726,
+   "date": "2025-09-11",
+   "txns": 4964681
+  },
+  {
+   "active_accounts": 303334,
+   "date": "2025-09-12",
+   "txns": 4831054
+  },
+  {
+   "active_accounts": 299216,
+   "date": "2025-09-13",
+   "txns": 4726073
+  },
+  {
+   "active_accounts": 297625,
+   "date": "2025-09-14",
+   "txns": 4649034
+  },
+  {
+   "active_accounts": 293261,
+   "date": "2025-09-15",
+   "txns": 4644068
+  },
+  {
+   "active_accounts": 297817,
+   "date": "2025-09-16",
+   "txns": 4603334
+  },
+  {
+   "active_accounts": 295987,
+   "date": "2025-09-17",
+   "txns": 4588911
+  },
+  {
+   "active_accounts": 291200,
+   "date": "2025-09-18",
+   "txns": 4514113
+  },
+  {
+   "active_accounts": 291407,
+   "date": "2025-09-19",
+   "txns": 4462434
+  },
+  {
+   "active_accounts": 284191,
+   "date": "2025-09-20",
+   "txns": 4468326
+  },
+  {
+   "active_accounts": 285420,
+   "date": "2025-09-21",
+   "txns": 4513832
+  },
+  {
+   "active_accounts": 297450,
+   "date": "2025-09-22",
+   "txns": 4547800
+  },
+  {
+   "active_accounts": 296093,
+   "date": "2025-09-23",
+   "txns": 4475363
+  },
+  {
+   "active_accounts": 293327,
+   "date": "2025-09-24",
+   "txns": 4513944
+  },
+  {
+   "active_accounts": 290785,
+   "date": "2025-09-25",
+   "txns": 4533732
+  },
+  {
+   "active_accounts": 292210,
+   "date": "2025-09-26",
+   "txns": 4592721
+  },
+  {
+   "active_accounts": 285253,
+   "date": "2025-09-27",
+   "txns": 4525562
+  },
+  {
+   "active_accounts": 286548,
+   "date": "2025-09-28",
+   "txns": 4527076
+  },
+  {
+   "active_accounts": 291148,
+   "date": "2025-09-29",
+   "txns": 4564228
+  },
+  {
+   "active_accounts": 289877,
+   "date": "2025-09-30",
+   "txns": 4475446
+  },
+  {
+   "active_accounts": 288151,
+   "date": "2025-10-01",
+   "txns": 4632736
+  },
+  {
+   "active_accounts": 290966,
+   "date": "2025-10-02",
+   "txns": 4575116
+  },
+  {
+   "active_accounts": 279048,
+   "date": "2025-10-03",
+   "txns": 4514419
+  },
+  {
+   "active_accounts": 279183,
+   "date": "2025-10-04",
+   "txns": 4457849
+  },
+  {
+   "active_accounts": 285332,
+   "date": "2025-10-05",
+   "txns": 4467062
+  },
+  {
+   "active_accounts": 286177,
+   "date": "2025-10-06",
+   "txns": 4456327
+  },
+  {
+   "active_accounts": 284782,
+   "date": "2025-10-07",
+   "txns": 4612911
+  },
+  {
+   "active_accounts": 279945,
+   "date": "2025-10-08",
+   "txns": 4580424
+  },
+  {
+   "active_accounts": 282311,
+   "date": "2025-10-09",
+   "txns": 4779971
+  },
+  {
+   "active_accounts": 270141,
+   "date": "2025-10-10",
+   "txns": 4793375
+  },
+  {
+   "active_accounts": 271597,
+   "date": "2025-10-11",
+   "txns": 4848246
+  },
+  {
+   "active_accounts": 276041,
+   "date": "2025-10-12",
+   "txns": 4867365
+  },
+  {
+   "active_accounts": 274103,
+   "date": "2025-10-13",
+   "txns": 4767320
+  },
+  {
+   "active_accounts": 277670,
+   "date": "2025-10-14",
+   "txns": 4754962
+  },
+  {
+   "active_accounts": 275570,
+   "date": "2025-10-15",
+   "txns": 4564782
+  },
+  {
+   "active_accounts": 278201,
+   "date": "2025-10-16",
+   "txns": 4786354
+  },
+  {
+   "active_accounts": 273287,
+   "date": "2025-10-17",
+   "txns": 4388829
+  },
+  {
+   "active_accounts": 265871,
+   "date": "2025-10-18",
+   "txns": 4304916
+  },
+  {
+   "active_accounts": 274624,
+   "date": "2025-10-19",
+   "txns": 4379507
+  },
+  {
+   "active_accounts": 272951,
+   "date": "2025-10-20",
+   "txns": 4821640
+  },
+  {
+   "active_accounts": 270008,
+   "date": "2025-10-21",
+   "txns": 4592452
+  },
+  {
+   "active_accounts": 269303,
+   "date": "2025-10-22",
+   "txns": 4441563
+  },
+  {
+   "active_accounts": 266769,
+   "date": "2025-10-23",
+   "txns": 4379425
+  },
+  {
+   "active_accounts": 260345,
+   "date": "2025-10-24",
+   "txns": 4378326
+  },
+  {
+   "active_accounts": 257743,
+   "date": "2025-10-25",
+   "txns": 4307497
+  },
+  {
+   "active_accounts": 265895,
+   "date": "2025-10-26",
+   "txns": 4310749
+  },
+  {
+   "active_accounts": 274422,
+   "date": "2025-10-27",
+   "txns": 4460228
+  },
+  {
+   "active_accounts": 266364,
+   "date": "2025-10-28",
+   "txns": 4472170
+  },
+  {
+   "active_accounts": 269242,
+   "date": "2025-10-29",
+   "txns": 4460424
+  },
+  {
+   "active_accounts": 265974,
+   "date": "2025-10-30",
+   "txns": 4499926
+  },
+  {
+   "active_accounts": 253889,
+   "date": "2025-10-31",
+   "txns": 4325534
+  },
+  {
+   "active_accounts": 250232,
+   "date": "2025-11-01",
+   "txns": 4294270
+  },
+  {
+   "active_accounts": 249882,
+   "date": "2025-11-02",
+   "txns": 4327572
+  },
+  {
+   "active_accounts": 255577,
+   "date": "2025-11-03",
+   "txns": 4323513
+  },
+  {
+   "active_accounts": 250396,
+   "date": "2025-11-04",
+   "txns": 4324097
+  },
+  {
+   "active_accounts": 250359,
+   "date": "2025-11-05",
+   "txns": 4247145
+  },
+  {
+   "active_accounts": 251003,
+   "date": "2025-11-06",
+   "txns": 4068138
+  },
+  {
+   "active_accounts": 247287,
+   "date": "2025-11-07",
+   "txns": 4213365
+  },
+  {
+   "active_accounts": 247576,
+   "date": "2025-11-08",
+   "txns": 4262119
+  },
+  {
+   "active_accounts": 226994,
+   "date": "2025-11-09",
+   "txns": 4156257
+  },
+  {
+   "active_accounts": 264240,
+   "date": "2025-11-10",
+   "txns": 4355752
+  },
+  {
+   "active_accounts": 260821,
+   "date": "2025-11-11",
+   "txns": 4228785
+  },
+  {
+   "active_accounts": 257073,
+   "date": "2025-11-12",
+   "txns": 4337790
+  },
+  {
+   "active_accounts": 255819,
+   "date": "2025-11-13",
+   "txns": 4351120
+  },
+  {
+   "active_accounts": 246721,
+   "date": "2025-11-14",
+   "txns": 4363339
+  },
+  {
+   "active_accounts": 245464,
+   "date": "2025-11-15",
+   "txns": 4328149
+  },
+  {
+   "active_accounts": 246092,
+   "date": "2025-11-16",
+   "txns": 4284834
+  },
+  {
+   "active_accounts": 250997,
+   "date": "2025-11-17",
+   "txns": 4366874
+  },
+  {
+   "active_accounts": 230724,
+   "date": "2025-11-18",
+   "txns": 4266045
+  },
+  {
+   "active_accounts": 248104,
+   "date": "2025-11-19",
+   "txns": 4274079
+  },
+  {
+   "active_accounts": 245664,
+   "date": "2025-11-20",
+   "txns": 4457064
+  },
+  {
+   "active_accounts": 234358,
+   "date": "2025-11-21",
+   "txns": 4286527
+  },
+  {
+   "active_accounts": 233103,
+   "date": "2025-11-22",
+   "txns": 4333041
+  },
+  {
+   "active_accounts": 234393,
+   "date": "2025-11-23",
+   "txns": 4315430
+  },
+  {
+   "active_accounts": 240156,
+   "date": "2025-11-24",
+   "txns": 4222699
+  },
+  {
+   "active_accounts": 242275,
+   "date": "2025-11-25",
+   "txns": 4331713
+  },
+  {
+   "active_accounts": 191444,
+   "date": "2025-11-26",
+   "txns": 3828036
+  },
+  {
+   "active_accounts": 237363,
+   "date": "2025-11-27",
+   "txns": 4332084
+  },
+  {
+   "active_accounts": 230475,
+   "date": "2025-11-28",
+   "txns": 4413456
+  },
+  {
+   "active_accounts": 227227,
+   "date": "2025-11-29",
+   "txns": 4031761
+  },
+  {
+   "active_accounts": 231143,
+   "date": "2025-11-30",
+   "txns": 4107373
+  },
+  {
+   "active_accounts": 234018,
+   "date": "2025-12-01",
+   "txns": 4228761
+  },
+  {
+   "active_accounts": 229497,
+   "date": "2025-12-02",
+   "txns": 4081654
+  },
+  {
+   "active_accounts": 229124,
+   "date": "2025-12-03",
+   "txns": 4105359
+  },
+  {
+   "active_accounts": 235437,
+   "date": "2025-12-04",
+   "txns": 4216807
+  },
+  {
+   "active_accounts": 224477,
+   "date": "2025-12-05",
+   "txns": 3983361
+  },
+  {
+   "active_accounts": 219165,
+   "date": "2025-12-06",
+   "txns": 3861406
+  },
+  {
+   "active_accounts": 227365,
+   "date": "2025-12-07",
+   "txns": 3879668
+  },
+  {
+   "active_accounts": 227236,
+   "date": "2025-12-08",
+   "txns": 3919127
+  },
+  {
+   "active_accounts": 226922,
+   "date": "2025-12-09",
+   "txns": 3969897
+  },
+  {
+   "active_accounts": 221290,
+   "date": "2025-12-10",
+   "txns": 3936999
+  },
+  {
+   "active_accounts": 217393,
+   "date": "2025-12-11",
+   "txns": 3881276
+  },
+  {
+   "active_accounts": 210947,
+   "date": "2025-12-12",
+   "txns": 3748277
+  },
+  {
+   "active_accounts": 208393,
+   "date": "2025-12-13",
+   "txns": 3626525
+  },
+  {
+   "active_accounts": 208069,
+   "date": "2025-12-14",
+   "txns": 3780233
+  },
+  {
+   "active_accounts": 218775,
+   "date": "2025-12-15",
+   "txns": 3843544
+  },
+  {
+   "active_accounts": 220887,
+   "date": "2025-12-16",
+   "txns": 3870281
+  },
+  {
+   "active_accounts": 265963,
+   "date": "2025-12-17",
+   "txns": 3839700
+  },
+  {
+   "active_accounts": 366653,
+   "date": "2025-12-18",
+   "txns": 4026913
+  },
+  {
+   "active_accounts": 229111,
+   "date": "2025-12-19",
+   "txns": 3876577
+  },
+  {
+   "active_accounts": 310404,
+   "date": "2025-12-20",
+   "txns": 3836808
+  },
+  {
+   "active_accounts": 208213,
+   "date": "2025-12-21",
+   "txns": 3725545
+  },
+  {
+   "active_accounts": 265530,
+   "date": "2025-12-22",
+   "txns": 3824384
+  },
+  {
+   "active_accounts": 204741,
+   "date": "2025-12-23",
+   "txns": 3755622
+  },
+  {
+   "active_accounts": 206156,
+   "date": "2025-12-24",
+   "txns": 3760062
+  },
+  {
+   "active_accounts": 203808,
+   "date": "2025-12-25",
+   "txns": 3802237
+  },
+  {
+   "active_accounts": 203100,
+   "date": "2025-12-26",
+   "txns": 3649009
+  },
+  {
+   "active_accounts": 196306,
+   "date": "2025-12-27",
+   "txns": 3645108
+  },
+  {
+   "active_accounts": 203562,
+   "date": "2025-12-28",
+   "txns": 3604294
+  },
+  {
+   "active_accounts": 196537,
+   "date": "2025-12-29",
+   "txns": 3613999
+  },
+  {
+   "active_accounts": 199536,
+   "date": "2025-12-30",
+   "txns": 3608436
+  },
+  {
+   "active_accounts": 194584,
+   "date": "2025-12-31",
+   "txns": 3621035
+  },
+  {
+   "active_accounts": 186611,
+   "date": "2026-01-01",
+   "txns": 3506624
+  },
+  {
+   "active_accounts": 192007,
+   "date": "2026-01-02",
+   "txns": 3593062
+  },
+  {
+   "active_accounts": 190454,
+   "date": "2026-01-03",
+   "txns": 3520716
+  },
+  {
+   "active_accounts": 196293,
+   "date": "2026-01-04",
+   "txns": 3541417
+  },
+  {
+   "active_accounts": 203459,
+   "date": "2026-01-05",
+   "txns": 3647154
+  },
+  {
+   "active_accounts": 197610,
+   "date": "2026-01-06",
+   "txns": 3683216
+  },
+  {
+   "active_accounts": 194287,
+   "date": "2026-01-07",
+   "txns": 3623519
+  },
+  {
+   "active_accounts": 191228,
+   "date": "2026-01-08",
+   "txns": 3718695
+  },
+  {
+   "active_accounts": 182000,
+   "date": "2026-01-09",
+   "txns": 3594342
+  },
+  {
+   "active_accounts": 177006,
+   "date": "2026-01-10",
+   "txns": 3548648
+  },
+  {
+   "active_accounts": 170319,
+   "date": "2026-01-11",
+   "txns": 3412165
+  },
+  {
+   "active_accounts": 177938,
+   "date": "2026-01-12",
+   "txns": 3523288
+  },
+  {
+   "active_accounts": 179170,
+   "date": "2026-01-13",
+   "txns": 2826774
+  },
+  {
+   "active_accounts": 173925,
+   "date": "2026-01-14",
+   "txns": 4277725
+  },
+  {
+   "active_accounts": 168488,
+   "date": "2026-01-15",
+   "txns": 3440557
+  },
+  {
+   "active_accounts": 163927,
+   "date": "2026-01-16",
+   "txns": 3413354
+  },
+  {
+   "active_accounts": 166524,
+   "date": "2026-01-17",
+   "txns": 3392056
+  },
+  {
+   "active_accounts": 170355,
+   "date": "2026-01-18",
+   "txns": 3417900
+  },
+  {
+   "active_accounts": 178071,
+   "date": "2026-01-19",
+   "txns": 3511364
+  },
+  {
+   "active_accounts": 174717,
+   "date": "2026-01-20",
+   "txns": 3577884
+  },
+  {
+   "active_accounts": 170934,
+   "date": "2026-01-21",
+   "txns": 3494194
+  },
+  {
+   "active_accounts": 170580,
+   "date": "2026-01-22",
+   "txns": 3392561
+  },
+  {
+   "active_accounts": 170480,
+   "date": "2026-01-23",
+   "txns": 3372711
+  },
+  {
+   "active_accounts": 167198,
+   "date": "2026-01-24",
+   "txns": 3426823
+  },
+  {
+   "active_accounts": 165205,
+   "date": "2026-01-25",
+   "txns": 3448570
+  },
+  {
+   "active_accounts": 169950,
+   "date": "2026-01-26",
+   "txns": 3485043
+  },
+  {
+   "active_accounts": 174298,
+   "date": "2026-01-27",
+   "txns": 3467652
+  },
+  {
+   "active_accounts": 171937,
+   "date": "2026-01-28",
+   "txns": 3480999
+  },
+  {
+   "active_accounts": 174583,
+   "date": "2026-01-29",
+   "txns": 3430439
+  },
+  {
+   "active_accounts": 167021,
+   "date": "2026-01-30",
+   "txns": 3454330
+  },
+  {
+   "active_accounts": 171914,
+   "date": "2026-01-31",
+   "txns": 3457212
+  },
+  {
+   "active_accounts": 167981,
+   "date": "2026-02-01",
+   "txns": 3410196
+  },
+  {
+   "active_accounts": 172277,
+   "date": "2026-02-02",
+   "txns": 3391098
+  },
+  {
+   "active_accounts": 363348,
+   "date": "2026-02-03",
+   "txns": 3685228
+  },
+  {
+   "active_accounts": 301580,
+   "date": "2026-02-04",
+   "txns": 3595251
+  },
+  {
+   "active_accounts": 266188,
+   "date": "2026-02-05",
+   "txns": 3637869
+  },
+  {
+   "active_accounts": 258339,
+   "date": "2026-02-06",
+   "txns": 3562713
+  },
+  {
+   "active_accounts": 252619,
+   "date": "2026-02-07",
+   "txns": 3447863
+  },
+  {
+   "active_accounts": 251386,
+   "date": "2026-02-08",
+   "txns": 3441513
+  },
+  {
+   "active_accounts": 262363,
+   "date": "2026-02-09",
+   "txns": 3435600
+  },
+  {
+   "active_accounts": 379672,
+   "date": "2026-02-10",
+   "txns": 3534923
+  },
+  {
+   "active_accounts": 380569,
+   "date": "2026-02-11",
+   "txns": 3550475
+  },
+  {
+   "active_accounts": 377569,
+   "date": "2026-02-12",
+   "txns": 3520045
+  },
+  {
+   "active_accounts": 376533,
+   "date": "2026-02-13",
+   "txns": 3596766
+  },
+  {
+   "active_accounts": 333146,
+   "date": "2026-02-14",
+   "txns": 3489869
+  },
+  {
+   "active_accounts": 592250,
+   "date": "2026-02-15",
+   "txns": 3790938
+  },
+  {
+   "active_accounts": 426088,
+   "date": "2026-02-16",
+   "txns": 3568949
+  },
+  {
+   "active_accounts": 541983,
+   "date": "2026-02-17",
+   "txns": 3673260
+  },
+  {
+   "active_accounts": 504588,
+   "date": "2026-02-18",
+   "txns": 3227703
+  },
+  {
+   "active_accounts": 146971,
+   "date": "2026-02-19",
+   "txns": 3270228
+  },
+  {
+   "active_accounts": 143359,
+   "date": "2026-02-20",
+   "txns": 3251929
+  },
+  {
+   "active_accounts": 143063,
+   "date": "2026-02-21",
+   "txns": 3202198
+  },
+  {
+   "active_accounts": 144950,
+   "date": "2026-02-22",
+   "txns": 3249572
+  },
+  {
+   "active_accounts": 155478,
+   "date": "2026-02-23",
+   "txns": 3335654
+  },
+  {
+   "active_accounts": 158821,
+   "date": "2026-02-24",
+   "txns": 3219737
+  },
+  {
+   "active_accounts": 161206,
+   "date": "2026-02-25",
+   "txns": 3793647
+  },
+  {
+   "active_accounts": 156943,
+   "date": "2026-02-26",
+   "txns": 3840625
+  },
+  {
+   "active_accounts": 157018,
+   "date": "2026-02-27",
+   "txns": 3424852
+  },
+  {
+   "active_accounts": 150870,
+   "date": "2026-02-28",
+   "txns": 3532396
+  },
+  {
+   "active_accounts": 138509,
+   "date": "2026-03-01",
+   "txns": 3595113
+  },
+  {
+   "active_accounts": 142175,
+   "date": "2026-03-02",
+   "txns": 3664541
+  },
+  {
+   "active_accounts": 149175,
+   "date": "2026-03-03",
+   "txns": 3336584
+  },
+  {
+   "active_accounts": 151854,
+   "date": "2026-03-04",
+   "txns": 3325268
+  },
+  {
+   "active_accounts": 151028,
+   "date": "2026-03-05",
+   "txns": 3325419
+  },
+  {
+   "active_accounts": 148857,
+   "date": "2026-03-06",
+   "txns": 3306784
+  },
+  {
+   "active_accounts": 146239,
+   "date": "2026-03-07",
+   "txns": 3247636
+  },
+  {
+   "active_accounts": 144938,
+   "date": "2026-03-08",
+   "txns": 3315460
+  },
+  {
+   "active_accounts": 148494,
+   "date": "2026-03-09",
+   "txns": 3351758
+  },
+  {
+   "active_accounts": 150666,
+   "date": "2026-03-10",
+   "txns": 3332900
+  },
+  {
+   "active_accounts": 148943,
+   "date": "2026-03-11",
+   "txns": 3287695
+  },
+  {
+   "active_accounts": 156082,
+   "date": "2026-03-12",
+   "txns": 3335521
+  },
+  {
+   "active_accounts": 146734,
+   "date": "2026-03-13",
+   "txns": 3269575
+  },
+  {
+   "active_accounts": 144157,
+   "date": "2026-03-14",
+   "txns": 3169552
+  },
+  {
+   "active_accounts": 141444,
+   "date": "2026-03-15",
+   "txns": 3178560
+  },
+  {
+   "active_accounts": 145991,
+   "date": "2026-03-16",
+   "txns": 3290512
+  },
+  {
+   "active_accounts": 145799,
+   "date": "2026-03-17",
+   "txns": 3219245
+  },
+  {
+   "active_accounts": 142216,
+   "date": "2026-03-18",
+   "txns": 3237808
+  },
+  {
+   "active_accounts": 143729,
+   "date": "2026-03-19",
+   "txns": 3208457
+  },
+  {
+   "active_accounts": 137325,
+   "date": "2026-03-20",
+   "txns": 3145237
+  },
+  {
+   "active_accounts": 135621,
+   "date": "2026-03-21",
+   "txns": 3114793
+  },
+  {
+   "active_accounts": 137209,
+   "date": "2026-03-22",
+   "txns": 3106917
+  },
+  {
+   "active_accounts": 139910,
+   "date": "2026-03-23",
+   "txns": 3444711
+  },
+  {
+   "active_accounts": 140101,
+   "date": "2026-03-24",
+   "txns": 3891497
+  },
+  {
+   "active_accounts": 140965,
+   "date": "2026-03-25",
+   "txns": 4232584
+  },
+  {
+   "active_accounts": 138346,
+   "date": "2026-03-26",
+   "txns": 3915239
+  },
+  {
+   "active_accounts": 136891,
+   "date": "2026-03-27",
+   "txns": 3618171
+  },
+  {
+   "active_accounts": 133798,
+   "date": "2026-03-28",
+   "txns": 4563367
+  },
+  {
+   "active_accounts": 133415,
+   "date": "2026-03-29",
+   "txns": 4191688
+  },
+  {
+   "active_accounts": 138598,
+   "date": "2026-03-30",
+   "txns": 3464917
+  },
+  {
+   "active_accounts": 139225,
+   "date": "2026-03-31",
+   "txns": 4169826
+  },
+  {
+   "active_accounts": 139048,
+   "date": "2026-04-01",
+   "txns": 3758663
+  },
+  {
+   "active_accounts": 137183,
+   "date": "2026-04-02",
+   "txns": 1063375
+  },
+  {
+   "active_accounts": 131893,
+   "date": "2026-04-03",
+   "txns": 907861
+  },
+  {
+   "active_accounts": 130579,
+   "date": "2026-04-04",
+   "txns": 908553
+  },
+  {
+   "active_accounts": 129245,
+   "date": "2026-04-05",
+   "txns": 896322
+  },
+  {
+   "active_accounts": 134018,
+   "date": "2026-04-06",
+   "txns": 959480
+  },
+  {
+   "active_accounts": 132219,
+   "date": "2026-04-07",
+   "txns": 957226
+  },
+  {
+   "active_accounts": 133993,
+   "date": "2026-04-08",
+   "txns": 971381
+  },
+  {
+   "active_accounts": 133071,
+   "date": "2026-04-09",
+   "txns": 972850
+  },
+  {
+   "active_accounts": 132673,
+   "date": "2026-04-10",
+   "txns": 992732
+  },
+  {
+   "active_accounts": 131792,
+   "date": "2026-04-11",
+   "txns": 960660
+  },
+  {
+   "active_accounts": 131282,
+   "date": "2026-04-12",
+   "txns": 992071
+  },
+  {
+   "active_accounts": 139249,
+   "date": "2026-04-13",
+   "txns": 895923
+  },
+  {
+   "active_accounts": 127401,
+   "date": "2026-04-14",
+   "txns": 785094
+  },
+  {
+   "active_accounts": 133306,
+   "date": "2026-04-15",
+   "txns": 763144
+  },
+  {
+   "active_accounts": 133652,
+   "date": "2026-04-16",
+   "txns": 1058803
+  },
+  {
+   "active_accounts": 130982,
+   "date": "2026-04-17",
+   "txns": 729376
+  },
+  {
+   "active_accounts": 129021,
+   "date": "2026-04-18",
+   "txns": 763796
+  },
+  {
+   "active_accounts": 127462,
+   "date": "2026-04-19",
+   "txns": 802962
+  },
+  {
+   "active_accounts": 129958,
+   "date": "2026-04-20",
+   "txns": 808458
+  },
+  {
+   "active_accounts": 129703,
+   "date": "2026-04-21",
+   "txns": 805053
+  },
+  {
+   "active_accounts": 129984,
+   "date": "2026-04-22",
+   "txns": 778988
+  },
+  {
+   "active_accounts": 126197,
+   "date": "2026-04-23",
+   "txns": 751971
+  },
+  {
+   "active_accounts": 121955,
+   "date": "2026-04-24",
+   "txns": 686968
+  },
+  {
+   "active_accounts": 122432,
+   "date": "2026-04-25",
+   "txns": 622133
+  },
+  {
+   "active_accounts": 118616,
+   "date": "2026-04-26",
+   "txns": 722389
+  },
+  {
+   "active_accounts": 124353,
+   "date": "2026-04-27",
+   "txns": 713204
+  },
+  {
+   "active_accounts": 120906,
+   "date": "2026-04-28",
+   "txns": 709459
+  },
+  {
+   "active_accounts": 123229,
+   "date": "2026-04-29",
+   "txns": 932580
+  },
+  {
+   "active_accounts": 119499,
+   "date": "2026-04-30",
+   "txns": 726837
+  },
+  {
+   "active_accounts": 119055,
+   "date": "2026-05-01",
+   "txns": 704350
+  },
+  {
+   "active_accounts": 128424,
+   "date": "2026-05-02",
+   "txns": 695144
+  },
+  {
+   "active_accounts": 126433,
+   "date": "2026-05-03",
+   "txns": 726605
+  },
+  {
+   "active_accounts": 129115,
+   "date": "2026-05-04",
+   "txns": 768403
+  },
+  {
+   "active_accounts": 133244,
+   "date": "2026-05-05",
+   "txns": 761084
+  },
+  {
+   "active_accounts": 128094,
+   "date": "2026-05-06",
+   "txns": 847917
+  },
+  {
+   "active_accounts": 124915,
+   "date": "2026-05-07",
+   "txns": 783747
+  },
+  {
+   "active_accounts": 124037,
+   "date": "2026-05-08",
+   "txns": 761282
+  },
+  {
+   "active_accounts": 120268,
+   "date": "2026-05-09",
+   "txns": 740471
+  },
+  {
+   "active_accounts": 119985,
+   "date": "2026-05-10",
+   "txns": 757261
+  },
+  {
+   "active_accounts": 124825,
+   "date": "2026-05-11",
+   "txns": 757788
+  },
+  {
+   "active_accounts": 123869,
+   "date": "2026-05-12",
+   "txns": 788621
+  },
+  {
+   "active_accounts": 122413,
+   "date": "2026-05-13",
+   "txns": 790516
+  },
+  {
+   "active_accounts": 120501,
+   "date": "2026-05-14",
+   "txns": 786025
+  },
+  {
+   "active_accounts": 107035,
+   "date": "2026-05-15",
+   "txns": 751448
+  },
+  {
+   "active_accounts": 111501,
+   "date": "2026-05-16",
+   "txns": 722169
+  },
+  {
+   "active_accounts": 115963,
+   "date": "2026-05-17",
+   "txns": 726935
+  },
+  {
+   "active_accounts": 118091,
+   "date": "2026-05-18",
+   "txns": 787300
+  },
+  {
+   "active_accounts": 118559,
+   "date": "2026-05-19",
+   "txns": 779071
+  },
+  {
+   "active_accounts": 119992,
+   "date": "2026-05-20",
+   "txns": 817159
+  },
+  {
+   "active_accounts": 116316,
+   "date": "2026-05-21",
+   "txns": 836842
+  },
+  {
+   "active_accounts": 125196,
+   "date": "2026-05-22",
+   "txns": 1109094
+  },
+  {
+   "active_accounts": 122630,
+   "date": "2026-05-23",
+   "txns": 879647
+  },
+  {
+   "active_accounts": 122760,
+   "date": "2026-05-24",
+   "txns": 898928
+  },
+  {
+   "active_accounts": 126133,
+   "date": "2026-05-25",
+   "txns": 898740
+  },
+  {
+   "active_accounts": 124386,
+   "date": "2026-05-26",
+   "txns": 957320
+  },
+  {
+   "active_accounts": 118211,
+   "date": "2026-05-27",
+   "txns": 831632
+  },
+  {
+   "active_accounts": 115174,
+   "date": "2026-05-28",
+   "txns": 825571
+  },
+  {
+   "active_accounts": 115762,
+   "date": "2026-05-29",
+   "txns": 864412
+  },
+  {
+   "active_accounts": 112655,
+   "date": "2026-05-30",
+   "txns": 776204
+  },
+  {
+   "active_accounts": 113585,
+   "date": "2026-05-31",
+   "txns": 761360
+  },
+  {
+   "active_accounts": 117957,
+   "date": "2026-06-01",
+   "txns": 882995
+  },
+  {
+   "active_accounts": 118358,
+   "date": "2026-06-02",
+   "txns": 971904
+  },
+  {
+   "active_accounts": 121069,
+   "date": "2026-06-03",
+   "txns": 987134
+  },
+  {
+   "active_accounts": 118953,
+   "date": "2026-06-04",
+   "txns": 1020616
+  },
+  {
+   "active_accounts": 115801,
+   "date": "2026-06-05",
+   "txns": 1055518
+  },
+  {
+   "active_accounts": 111304,
+   "date": "2026-06-06",
+   "txns": 830379
+  },
+  {
+   "active_accounts": 111870,
+   "date": "2026-06-07",
+   "txns": 845410
+  },
+  {
+   "active_accounts": 123836,
+   "date": "2026-06-08",
+   "txns": 876622
+  },
+  {
+   "active_accounts": 112294,
+   "date": "2026-06-09",
+   "txns": 804550
+  },
+  {
+   "active_accounts": 114609,
+   "date": "2026-06-10",
+   "txns": 804245
+  },
+  {
+   "active_accounts": 112200,
+   "date": "2026-06-11",
+   "txns": 804656
+  },
+  {
+   "active_accounts": 111915,
+   "date": "2026-06-12",
+   "txns": 789334
+  },
+  {
+   "active_accounts": 110134,
+   "date": "2026-06-13",
+   "txns": 734123
+  },
+  {
+   "active_accounts": 110032,
+   "date": "2026-06-14",
+   "txns": 756764
+  },
+  {
+   "active_accounts": 117898,
+   "date": "2026-06-15",
+   "txns": 851039
+  },
+  {
+   "active_accounts": 114118,
+   "date": "2026-06-16",
+   "txns": 804245
+  },
+  {
+   "active_accounts": 115824,
+   "date": "2026-06-17",
+   "txns": 823188
+  },
+  {
+   "active_accounts": 111472,
+   "date": "2026-06-18",
+   "txns": 801660
+  },
+  {
+   "active_accounts": 110263,
+   "date": "2026-06-19",
+   "txns": 812658
+  },
+  {
+   "active_accounts": 106396,
+   "date": "2026-06-20",
+   "txns": 719919
+  },
+  {
+   "active_accounts": 109135,
+   "date": "2026-06-21",
+   "txns": 722402
+  },
+  {
+   "active_accounts": 112032,
+   "date": "2026-06-22",
+   "txns": 757253
+  },
+  {
+   "active_accounts": 112986,
+   "date": "2026-06-23",
+   "txns": 757769
+  },
+  {
+   "active_accounts": 110260,
+   "date": "2026-06-24",
+   "txns": 768173
+  },
+  {
+   "active_accounts": 109728,
+   "date": "2026-06-25",
+   "txns": 743096
+  },
+  {
+   "active_accounts": 106389,
+   "date": "2026-06-26",
+   "txns": 736132
+  },
+  {
+   "active_accounts": 106056,
+   "date": "2026-06-27",
+   "txns": 697852
+  },
+  {
+   "active_accounts": 105934,
+   "date": "2026-06-28",
+   "txns": 711388
+  },
+  {
+   "active_accounts": 108811,
+   "date": "2026-06-29",
+   "txns": 796983
+  },
+  {
+   "active_accounts": 107730,
+   "date": "2026-06-30",
+   "txns": 747039
+  },
+  {
+   "active_accounts": 104101,
+   "date": "2026-07-01",
+   "txns": 720865
+  },
+  {
+   "active_accounts": 105844,
+   "date": "2026-07-02",
+   "txns": 747871
+  },
+  {
+   "active_accounts": 104465,
+   "date": "2026-07-03",
+   "txns": 739047
+  },
+  {
+   "active_accounts": 103825,
+   "date": "2026-07-04",
+   "txns": 753757
+  },
+  {
+   "active_accounts": 106184,
+   "date": "2026-07-05",
+   "txns": 737968
+  },
+  {
+   "active_accounts": 106771,
+   "date": "2026-07-06",
+   "txns": 796655
+  },
+  {
+   "active_accounts": 105153,
+   "date": "2026-07-07",
+   "txns": 819335
+  },
+  {
+   "active_accounts": 105152,
+   "date": "2026-07-08",
+   "txns": 873695
+  },
+  {
+   "active_accounts": 102571,
+   "date": "2026-07-09",
+   "txns": 823411
+  },
+  {
+   "active_accounts": 102400,
+   "date": "2026-07-10",
+   "txns": 770836
+  },
+  {
+   "active_accounts": 90183,
+   "date": "2026-07-11",
+   "txns": 715477
+  },
+  {
+   "active_accounts": 89871,
+   "date": "2026-07-12",
+   "txns": 694076
+  },
+  {
+   "active_accounts": 91883,
+   "date": "2026-07-13",
+   "txns": 794924
+  },
+  {
+   "active_accounts": 92405,
+   "date": "2026-07-14",
+   "txns": 757867
+  },
+  {
+   "active_accounts": 90939,
+   "date": "2026-07-15",
+   "txns": 725079
+  },
+  {
+   "active_accounts": 89017,
+   "date": "2026-07-16",
+   "txns": 724947
+  },
+  {
+   "active_accounts": 88616,
+   "date": "2026-07-17",
+   "txns": 711903
+  },
+  {
+   "active_accounts": 87019,
+   "date": "2026-07-18",
+   "txns": 672538
+  },
+  {
+   "active_accounts": 85909,
+   "date": "2026-07-19",
+   "txns": 664256
+  },
+  {
+   "active_accounts": 88674,
+   "date": "2026-07-20",
+   "txns": 754988
+  },
+  {
+   "active_accounts": 89928,
+   "date": "2026-07-21",
+   "txns": 737854
+  },
+  {
+   "active_accounts": 89683,
+   "date": "2026-07-22",
+   "txns": 718549
+  },
+  {
+   "active_accounts": 88801,
+   "date": "2026-07-23",
+   "txns": 732946
+  },
+  {
+   "active_accounts": 85291,
+   "date": "2026-07-24",
+   "txns": 712611
+  },
+  {
+   "active_accounts": 86103,
+   "date": "2026-07-25",
+   "txns": 718997
+  },
+  {
+   "active_accounts": 85718,
+   "date": "2026-07-26",
+   "txns": 706844
+  },
+  {
+   "active_accounts": 87128,
+   "date": "2026-07-27",
+   "txns": 698017
+  },
+  {
+   "active_accounts": 86405,
+   "date": "2026-07-28",
+   "txns": 703205
+  },
+  {
+   "active_accounts": 86375,
+   "date": "2026-07-29",
+   "txns": 705004
+  },
+  {
+   "active_accounts": 85469,
+   "date": "2026-07-30",
+   "txns": 733277
+  },
+  {
+   "active_accounts": 82072,
+   "date": "2026-07-31",
+   "txns": 708126
+  },
+  {
+   "active_accounts": 82192,
+   "date": "2026-08-01",
+   "txns": 681793
+  },
+  {
+   "active_accounts": 81729,
+   "date": "2026-08-02",
+   "txns": 671128
+  },
+  {
+   "active_accounts": 85195,
+   "date": "2026-08-03",
+   "txns": 690732
+  },
+  {
+   "active_accounts": 85551,
+   "date": "2026-08-04",
+   "txns": 696617
+  },
+  {
+   "active_accounts": 84061,
+   "date": "2026-08-05",
+   "txns": 671609
+  },
+  {
+   "active_accounts": 84184,
+   "date": "2026-08-06",
+   "txns": 675341
+  },
+  {
+   "active_accounts": 82269,
+   "date": "2026-08-07",
+   "txns": 656089
+  },
+  {
+   "active_accounts": 78514,
+   "date": "2026-08-08",
+   "txns": 656235
+  },
+  {
+   "active_accounts": 80418,
+   "date": "2026-08-09",
+   "txns": 637854
+  },
+  {
+   "active_accounts": 82610,
+   "date": "2026-08-10",
+   "txns": 672018
+  },
+  {
+   "active_accounts": 82799,
+   "date": "2026-08-11",
+   "txns": 660154
+  },
+  {
+   "active_accounts": 82166,
+   "date": "2026-08-12",
+   "txns": 685406
+  },
+  {
+   "active_accounts": 82572,
+   "date": "2026-08-13",
+   "txns": 664804
+  },
+  {
+   "active_accounts": 79800,
+   "date": "2026-08-14",
+   "txns": 639732
+  },
+  {
+   "active_accounts": 79812,
+   "date": "2026-08-15",
+   "txns": 584733
+  },
+  {
+   "active_accounts": 80163,
+   "date": "2026-08-16",
+   "txns": 615151
+  },
+  {
+   "active_accounts": 80576,
+   "date": "2026-08-17",
+   "txns": 669250
+  },
+  {
+   "active_accounts": 80055,
+   "date": "2026-08-18",
+   "txns": 673834
+  },
+  {
+   "active_accounts": 80931,
+   "date": "2026-08-19",
+   "txns": 733400
+  },
+  {
+   "active_accounts": 82216,
+   "date": "2026-08-20",
+   "txns": 758797
+  },
+  {
+   "active_accounts": 81667,
+   "date": "2026-08-21",
+   "txns": 786077
+  },
+  {
+   "active_accounts": 79636,
+   "date": "2026-08-22",
+   "txns": 804701
+  },
+  {
+   "active_accounts": 79394,
+   "date": "2026-08-23",
+   "txns": 726225
+  },
+  {
+   "active_accounts": 81373,
+   "date": "2026-08-24",
+   "txns": 805717
+  },
+  {
+   "active_accounts": 79464,
+   "date": "2026-08-25",
+   "txns": 719568
+  },
+  {
+   "active_accounts": 81506,
+   "date": "2026-08-26",
+   "txns": 655345
+  },
+  {
+   "active_accounts": 81525,
+   "date": "2026-08-27",
+   "txns": 681264
+  },
+  {
+   "active_accounts": 78375,
+   "date": "2026-08-28",
+   "txns": 654889
+  },
+  {
+   "active_accounts": 76934,
+   "date": "2026-08-29",
+   "txns": 594141
+  },
+  {
+   "active_accounts": 76955,
+   "date": "2026-08-30",
+   "txns": 623892
+  },
+  {
+   "active_accounts": 77790,
+   "date": "2026-08-31",
+   "txns": 684883
+  },
+  {
+   "active_accounts": 77130,
+   "date": "2026-09-01",
+   "txns": 670529
+  },
+  {
+   "active_accounts": 77127,
+   "date": "2026-09-02",
+   "txns": 659622
+  },
+  {
+   "active_accounts": 77607,
+   "date": "2026-09-03",
+   "txns": 703698
+  },
+  {
+   "active_accounts": 76042,
+   "date": "2026-09-04",
+   "txns": 735463
+  },
+  {
+   "active_accounts": 74288,
+   "date": "2026-09-05",
+   "txns": 674162
+  },
+  {
+   "active_accounts": 74652,
+   "date": "2026-09-06",
+   "txns": 763172
+  },
+  {
+   "active_accounts": 75711,
+   "date": "2026-09-07",
+   "txns": 746044
+  },
+  {
+   "active_accounts": 71768,
+   "date": "2026-09-08",
+   "txns": 704254
+  },
+  {
+   "active_accounts": 71964,
+   "date": "2026-09-09",
+   "txns": 772841
+  },
+  {
+   "active_accounts": 71159,
+   "date": "2026-09-10",
+   "txns": 728736
+  },
+  {
+   "active_accounts": 70014,
+   "date": "2026-09-11",
+   "txns": 846582
+  },
+  {
+   "active_accounts": 67170,
+   "date": "2026-09-12",
+   "txns": 651970
+  },
+  {
+   "active_accounts": 61501,
+   "date": "2026-09-13",
+   "txns": 626447
+  },
+  {
+   "active_accounts": 49972,
+   "date": "2026-09-14",
+   "txns": 706600
+  },
+  {
+   "active_accounts": 45247,
+   "date": "2026-09-15",
+   "txns": 706597
+  },
+  {
+   "active_accounts": 42517,
+   "date": "2026-09-16",
+   "txns": 777089
+  },
+  {
+   "active_accounts": 44749,
+   "date": "2026-09-17",
+   "txns": 840314
+  },
+  {
+   "active_accounts": 62965,
+   "date": "2026-09-18",
+   "txns": 973388
+  },
+  {
+   "active_accounts": 52391,
+   "date": "2026-09-19",
+   "txns": 839380
+  },
+  {
+   "active_accounts": 57466,
+   "date": "2026-09-20",
+   "txns": 846013
+  },
+  {
+   "active_accounts": 60298,
+   "date": "2026-09-21",
+   "txns": 871723
+  },
+  {
+   "active_accounts": 57797,
+   "date": "2026-09-22",
+   "txns": 971959
+  },
+  {
+   "active_accounts": 56105,
+   "date": "2026-09-23",
+   "txns": 869892
+  },
+  {
+   "active_accounts": 54027,
+   "date": "2026-09-24",
+   "txns": 741291
+  },
+  {
+   "active_accounts": 57300,
+   "date": "2026-09-25",
+   "txns": 715469
+  },
+  {
+   "active_accounts": 54118,
+   "date": "2026-09-26",
+   "txns": 603143
+  },
+  {
+   "active_accounts": 63589,
+   "date": "2026-09-27",
+   "txns": 1217209
+  },
+  {
+   "active_accounts": 61771,
+   "date": "2026-09-28",
+   "txns": 1129793
+  },
+  {
+   "active_accounts": 62990,
+   "date": "2026-09-29",
+   "txns": 987627
+  },
+  {
+   "active_accounts": 58749,
+   "date": "2026-09-30",
+   "txns": 923526
+  },
+  {
+   "active_accounts": 62105,
+   "date": "2026-10-01",
+   "txns": 1151492
+  },
+  {
+   "active_accounts": 118077,
+   "date": "2026-10-02",
+   "txns": 868026
+  },
+  {
+   "active_accounts": 176719,
+   "date": "2026-10-03",
+   "txns": 690438
+  },
+  {
+   "active_accounts": 177196,
+   "date": "2026-10-04",
+   "txns": 839450
+  },
+  {
+   "active_accounts": 95992,
+   "date": "2026-10-05",
+   "txns": 865681
+  },
+  {
+   "active_accounts": 124809,
+   "date": "2026-10-06",
+   "txns": 909765
+  },
+  {
+   "active_accounts": 175774,
+   "date": "2026-10-07",
+   "txns": 971068
+  },
+  {
+   "active_accounts": 82447,
+   "date": "2026-10-08",
+   "txns": 1014850
+  },
+  {
+   "active_accounts": 53950,
+   "date": "2026-10-09",
+   "txns": 680332
+  },
+  {
+   "active_accounts": 56881,
+   "date": "2026-10-10",
+   "txns": 850344
+  },
+  {
+   "active_accounts": 54865,
+   "date": "2026-10-11",
+   "txns": 1109584
+  },
+  {
+   "active_accounts": 59164,
+   "date": "2026-10-12",
+   "txns": 712621
+  },
+  {
+   "active_accounts": 55685,
+   "date": "2026-10-13",
+   "txns": 731054
+  },
+  {
+   "active_accounts": 58615,
+   "date": "2026-10-14",
+   "txns": 767812
+  },
+  {
+   "active_accounts": 55503,
+   "date": "2026-10-15",
+   "txns": 911980
+  },
+  {
+   "active_accounts": 54936,
+   "date": "2026-10-16",
+   "txns": 658427
+  },
+  {
+   "active_accounts": 54322,
+   "date": "2026-10-17",
+   "txns": 557903
+  },
+  {
+   "active_accounts": 51810,
+   "date": "2026-10-18",
+   "txns": 569735
+  },
+  {
+   "active_accounts": 53107,
+   "date": "2026-10-19",
+   "txns": 607019
+  },
+  {
+   "active_accounts": 52116,
+   "date": "2026-10-20",
+   "txns": 617990
+  },
+  {
+   "active_accounts": 53919,
+   "date": "2026-10-21",
+   "txns": 658784
+  },
+  {
+   "active_accounts": 51423,
+   "date": "2026-10-22",
+   "txns": 547267
+  },
+  {
+   "active_accounts": 51214,
+   "date": "2026-10-23",
+   "txns": 609236
+  },
+  {
+   "active_accounts": 50178,
+   "date": "2026-10-24",
+   "txns": 635438
+  },
+  {
+   "active_accounts": 49245,
+   "date": "2026-10-25",
+   "txns": 550250
+  },
+  {
+   "active_accounts": 49601,
+   "date": "2026-10-26",
+   "txns": 573801
+  },
+  {
+   "active_accounts": 61855,
+   "date": "2026-10-27",
+   "txns": 604320
+  },
+  {
+   "active_accounts": 49273,
+   "date": "2026-10-28",
+   "txns": 520096
+  },
+  {
+   "active_accounts": 49292,
+   "date": "2026-10-29",
+   "txns": 649103
+  },
+  {
+   "active_accounts": 47349,
+   "date": "2026-10-30",
+   "txns": 691420
+  },
+  {
+   "active_accounts": 46019,
+   "date": "2026-10-31",
+   "txns": 502649
+  },
+  {
+   "active_accounts": 46478,
+   "date": "2026-11-01",
+   "txns": 509345
+  },
+  {
+   "active_accounts": 48060,
+   "date": "2026-11-02",
+   "txns": 522358
+  },
+  {
+   "active_accounts": 72343,
+   "date": "2026-11-03",
+   "txns": 597189
+  },
+  {
+   "active_accounts": 79164,
+   "date": "2026-11-04",
+   "txns": 706690
+  },
+  {
+   "active_accounts": 78560,
+   "date": "2026-11-05",
+   "txns": 848794
+  },
+  {
+   "active_accounts": 78574,
+   "date": "2026-11-06",
+   "txns": 717484
+  },
+  {
+   "active_accounts": 77076,
+   "date": "2026-11-07",
+   "txns": 682432
+  },
+  {
+   "active_accounts": 79184,
+   "date": "2026-11-08",
+   "txns": 609504
+  },
+  {
+   "active_accounts": 77752,
+   "date": "2026-11-09",
+   "txns": 895302
+  },
+  {
+   "active_accounts": 177510,
+   "date": "2026-11-10",
+   "txns": 970505
+  },
+  {
+   "active_accounts": 77831,
+   "date": "2026-11-11",
+   "txns": 891297
+  }
+ ],
+ "source": "https://api.nearblocks.io/v1/charts"
+}

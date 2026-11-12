@@ -399,6 +399,58 @@ def shares_measured(basis, table, subject, names, window, subject_factor, wide_v
     return out
 
 
+def token_check(raw, window):
+    """Net new NEAR supply over the window against the NEAR swept into the
+    buyback wallet and into all three revenue wallets; L1 activity."""
+    sup = raw.get("near_supply")
+    oc = raw.get("onchain_revenue")
+    if not sup or not oc:
+        return None
+    pts = {p["day"]: p for p in sup["points"]}
+    days = sorted(pts)
+    y0, y1, w0, w1 = (pts[d] for d in days)
+    issued = w1["total_supply_near"] - w0["total_supply_near"]
+    issued_prior = y1["total_supply_near"] - y0["total_supply_near"]
+    span = (datetime.date.fromisoformat(w1["day"]) - datetime.date.fromisoformat(w0["day"])).days
+    first, last_ = window
+    bought = captured = 0.0
+    for day, wallets in oc["days"].items():
+        if not first <= day <= last_:
+            continue
+        for wallet, v in wallets.items():
+            amount = v["near"] + v["wnear"]
+            captured += amount
+            if wallet == oc["buyback_wallet"]:
+                bought += amount
+    out = {
+        "window_days": span,
+        "supply_start": w0["total_supply_near"], "supply_end": w1["total_supply_near"],
+        "net_issued_near": issued,
+        "net_issued_prior_near": issued_prior,
+        "annual_issuance_rate": issued / w0["total_supply_near"] * 365.0 / span,
+        "bought_back_near": bought,
+        "captured_near": captured,
+        "offset_buyback": bought / issued if issued else None,
+        "offset_captured": captured / issued if issued else None,
+        "multiple_to_offset": issued / captured if captured else None,
+        "supply_points": sup["points"],
+    }
+    l1 = (raw.get("near_l1_daily") or {}).get("series") or []
+    if l1:
+        def mean(a, b, k):
+            rows = [r[k] for r in l1 if a <= r["date"] <= b]
+            return sum(rows) / len(rows) if rows else None
+        shift = lambda d: (datetime.date.fromisoformat(d) - datetime.timedelta(days=365)).isoformat()
+        out["l1"] = {
+            "txns_per_day": mean(first, last_, "txns"),
+            "txns_per_day_prior": mean(shift(first), shift(last_), "txns"),
+            "active_accounts": mean(first, last_, "active_accounts"),
+            "active_accounts_prior": mean(shift(first), shift(last_), "active_accounts"),
+            "source": (raw.get("near_l1_daily") or {}).get("source"),
+        }
+    return out
+
+
 def tee_check(raw, trailing, basis, window):
     """Compare the TEE run's recomputation with this build's own numbers."""
     tee = raw.get("tee_run")
@@ -1031,6 +1083,15 @@ def _compute(raw, fetched_at):
                 "threshold": "%d of %d" % (len(events["days"]), len(events["days"]))},
             "verdict": _verdict(events["both_sides"]),
         })
+    token = token_check(raw, [start_date, end_date])
+    if token and token["offset_buyback"] is not None:
+        claims.append({
+            "id": "C15",
+            "claim": "The NEAR bought back with Intents revenue covers at least half of the NEAR "
+                     "newly issued in the same window.",
+            "value": token["offset_buyback"], "unit": "share", "threshold": t["buyback_offset"],
+            "verdict": _verdict(token["offset_buyback"] >= t["buyback_offset"]),
+        })
     tee = tee_check(raw, {"volume": vol, "share": share}, basis, [start_date, end_date])
     if tee:
         ok = all(tee["checks"].values()) and tee["same_window"] and tee["share_diff"] <= t["tee_match"]
@@ -1113,6 +1174,7 @@ def _compute(raw, fetched_at):
         "basis": basis,
         "events": events,
         "tee": tee,
+        "token": token,
         "onchain": oc,
         "wide": wide,
         "crosscheck": crosscheck(raw, table, config.MIDGARD_SLUG),

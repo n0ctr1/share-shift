@@ -73,6 +73,14 @@
    "path": "raw/near_anchor.json",
    "sha256": "25466e4d6b2ccc28396471b3564acaee3c95e731f933bafa1e6c1b3aa664ae26"
   },
+  "near_l1_daily": {
+   "path": "raw/near_l1_daily.json",
+   "sha256": "ee3cce5f5170c342c4444b20d69a5bbe2249a4db9d4aa1eb818be59adf395ed4"
+  },
+  "near_supply": {
+   "path": "raw/near_supply.json",
+   "sha256": "8e958c230c1f36647ba4440cf6d09941be10f1498905318a12cf851ca2107a8d"
+  },
   "onchain_revenue": {
    "path": "raw/onchain_revenue.json",
    "sha256": "de73b3d269c1091debfb104ad8b48e8520f935f8e1f156e26ef83dc0c0864303"

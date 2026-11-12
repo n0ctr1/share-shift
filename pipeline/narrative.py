@@ -318,6 +318,30 @@ def findings(m):
                " and ".join("{:,}".format(d["sampled"]) for d in ev["days"]),
                "; ".join(parts), pct(ev["one_ratio_mean"]))
         )
+    tk = m.get("token")
+    if tk:
+        out["token"] = (
+            "Over the %d days from %s, NEAR's total supply rose by %.2fM NEAR (from block-header "
+            "total_supply), %.1f%% a year, down from %.2fM in the same days a year earlier. In the "
+            "same window %.2fM NEAR reached the buyback wallet, %s of the new supply, and %.2fM "
+            "reached all three revenue wallets, %s. For buybacks to offset issuance, captured "
+            "revenue would have to grow %.1fx at today's take rate and capture ratio."
+            % (tk["window_days"], tk["supply_points"][2]["day"], tk["net_issued_near"] / 1e6,
+               100 * tk["annual_issuance_rate"], tk["net_issued_prior_near"] / 1e6,
+               tk["bought_back_near"] / 1e6, pct(tk["offset_buyback"]),
+               tk["captured_near"] / 1e6, pct(tk["offset_captured"]), tk["multiple_to_offset"])
+        )
+        if tk.get("l1"):
+            l1 = tk["l1"]
+            out["token_l1"] = (
+                "The L1 itself is far quieter than a year ago: %s transactions a day against %s "
+                "(%+.0f%%), and %s active accounts a day against %s (%+.0f%%). The case for the "
+                "token now runs through Intents, not through L1 gas."
+                % ("{:,.0f}".format(l1["txns_per_day"]), "{:,.0f}".format(l1["txns_per_day_prior"]),
+                   100 * (l1["txns_per_day"] / l1["txns_per_day_prior"] - 1),
+                   "{:,.0f}".format(l1["active_accounts"]), "{:,.0f}".format(l1["active_accounts_prior"]),
+                   100 * (l1["active_accounts"] / l1["active_accounts_prior"] - 1))
+            )
     tee = m.get("tee")
     if tee:
         out["tee"] = (
@@ -574,6 +598,19 @@ def thesis_markdown(m, text):
             add("")
             add(text["channel_reading"])
             add("")
+    if "token" in text:
+        add("## What it means for the NEAR token")
+        add("")
+        add(text["token"])
+        add("")
+        if "token_l1" in text:
+            add(text["token_l1"])
+            add("")
+        add("So the answer to \"should one hold NEAR on this evidence\" is not yet: the business "
+            "Intents runs is leading and growing its take to the token, but today it buys back "
+            "a fraction of what the protocol issues. The dated predictions below say what would "
+            "have to change.")
+        add("")
     add("## Evidence against")
     add("")
     add("- **Most fees do not reach NEAR.** %s %s %s" % (

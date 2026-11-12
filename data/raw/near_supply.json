@@ -1,0 +1,34 @@
+{
+ "note": "total_supply from block headers; the window is [first_day, last_day+1).",
+ "points": [
+  {
+   "day": "2025-08-13",
+   "height": 159380576,
+   "time": "2025-08-13T00:00:00Z",
+   "total_supply_near": 1265361814.3699994
+  },
+  {
+   "day": "2025-11-11",
+   "height": 172104799,
+   "time": "2025-11-11T00:00:00Z",
+   "total_supply_near": 1279628745.4116645
+  },
+  {
+   "day": "2026-08-13",
+   "height": 211084654,
+   "time": "2026-08-13T00:00:00Z",
+   "total_supply_near": 1303413415.1537356
+  },
+  {
+   "day": "2026-11-11",
+   "height": 223988378,
+   "time": "2026-11-11T00:00:00Z",
+   "total_supply_near": 1311369614.474151
+  }
+ ],
+ "source": "https://archival-rpc.mainnet.fastnear.com",
+ "window": [
+  "2026-08-13",
+  "2026-11-10"
+ ]
+}

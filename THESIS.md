@@ -12,7 +12,7 @@
 
 The long-term case for NEAR rests on NEAR Intents being a business with a durable position, not only a volume number. A durable position should be visible against competitors: a leading share, kept when it is tested, at a price rivals cannot undercut, with the fees reaching the token. This repository tests those things against the three other venues that swap native assets across chains: THORChain, Chainflip, Maya Protocol.
 
-**Result: 14 claims tested: 9 supported, 5 refuted.** The competitive position is supported by the data; the value reaching the token is not.
+**Result: 15 claims tested: 9 supported, 6 refuted.** The competitive position is supported by the data; the value reaching the token is not.
 
 ## Definitions
 
@@ -44,6 +44,7 @@ Thresholds are in `pipeline/config.py`. A verdict is one number compared with on
 | C12 | The captured-revenue figure used here matches the transfers into NEAR's three revenue wallets within 5%. | 1.5% apart | within 5% | **SUPPORTED** |
 | C13 | The reported Intents volume counts both sides of each swap, like the rivals' figures: on every day rebuilt from intents.near events it sits inside the both-sides interval and outside the one-side interval. | 2 of 2 days | 2 of 2 | **SUPPORTED** |
 | C14 | The headline share, recomputed from the public sources by our code inside an attested OutLayer TEE on NEAR mainnet, matches this build within 0.1 point. | 0.00 pt apart | within 0.1 pt | **SUPPORTED** |
+| C15 | The NEAR bought back with Intents revenue covers at least half of the NEAR newly issued in the same window. | 12.6% | 50.0% | **REFUTED** |
 
 ## Evidence for
 
@@ -99,6 +100,14 @@ App fees on those swaps came to $15.75M, or 43.0 bps of their volume, paid to 24
 By channel: in the 1Click data Intents went from $24.20M to $36.85M a day when THORChain halted. The channels that grew most: new.intents-referral.near $3.85M to $11.12M a day; (none) $888.73K to $2.25M a day; lifi $1.73M to $2.93M a day. The largest of them accounts for 57% of the gain. Channels that also route to the rivals went from $14.13M to $14.58M a day, 4% of the gain.
 
 This cuts against the obvious story. If shared routers had moved the halted rival's users to Intents, their volume would have risen sharply; it barely moved. The gain arrived through other channels, so it is better read as users finding Intents themselves than as a router flipping a switch. What the routers do explain is the fee split and the weight of a few channels.
+
+## What it means for the NEAR token
+
+Over the 90 days from 2026-08-13, NEAR's total supply rose by 7.96M NEAR (from block-header total_supply), 2.5% a year, down from 14.27M in the same days a year earlier. In the same window 1.00M NEAR reached the buyback wallet, 13% of the new supply, and 1.45M reached all three revenue wallets, 18%. For buybacks to offset issuance, captured revenue would have to grow 5.5x at today's take rate and capture ratio.
+
+The L1 itself is far quieter than a year ago: 741,872 transactions a day against 4,643,882 (-84%), and 71,745 active accounts a day against 291,030 (-75%). The case for the token now runs through Intents, not through L1 gas.
+
+So the answer to "should one hold NEAR on this evidence" is not yet: the business Intents runs is leading and growing its take to the token, but today it buys back a fraction of what the protocol issues. The dated predictions below say what would have to change.
 
 ## Evidence against
 
