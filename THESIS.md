@@ -14,7 +14,7 @@
 
 The long-term case for NEAR rests on NEAR Intents being a business with a durable position, not only a volume number. A durable position should be visible against competitors: a leading share, kept when it is tested, at a price rivals cannot undercut, with the fees reaching the token. This repository tests those things against the three other venues that swap native assets across chains: THORChain, Chainflip, Maya Protocol.
 
-**Result: 15 claims tested: 9 supported, 6 refuted.** The competitive position is supported by the data; the value reaching the token is not.
+**Result: 14 claims tested: 8 supported, 6 refuted.** The competitive position is supported by the data; the value reaching the token is not.
 
 ## Definitions
 
@@ -45,8 +45,7 @@ Thresholds are in `pipeline/config.py`. A verdict is one number compared with on
 | C11 | Intents is also the largest venue when the four big bridges are added to the peer set. | rank 3 of 8 | rank 1 | **REFUTED** |
 | C12 | The captured-revenue figure used here matches the transfers into NEAR's three revenue wallets within 5%. | 1.5% apart | within 5% | **SUPPORTED** |
 | C13 | The reported Intents volume counts both sides of each swap, like the rivals' figures: on every day rebuilt from intents.near token_diff events (through August, where the method applies) it sits inside the both-sides interval and outside the one-side interval. | 4 of 4 days | 4 of 4 | **SUPPORTED** |
-| C14 | The headline share, recomputed from the public sources by our code inside an attested OutLayer TEE on NEAR mainnet, matches this build within 0.1 point. | 0.00 pt apart | within 0.1 pt | **SUPPORTED** |
-| C15 | The NEAR bought back with Intents revenue covers at least half of the NEAR newly issued in the same window. | 12.6% | 50.0% | **REFUTED** |
+| C14 | The NEAR bought back with Intents revenue covers at least half of the NEAR newly issued in the same window. | 12.6% | 50.0% | **REFUTED** |
 
 ## Evidence for
 
@@ -135,8 +134,6 @@ The method has a limit, found while extending it. After 2026-08-31 the contract 
 
 Where the conclusion would break: counting one side for every venue, Intents would fall to 50% only if fewer than 33% of THORChain's swap value went through two pools, and would lose the lead only below 3% (Intents halved; Chainflip and Maya at their measured factors). Measured from individual swaps, the figure is 80%.
 
-The headline number was also recomputed inside a trusted execution environment. tee/share-check, a WASI program in this repository (SHA-256 7634f3997a76...), fetched DefiLlama's and Midgard's data by itself inside an Intel TDX enclave run by OutLayer, requested by transaction Aw6Vz41optzWmAEDvmzq7wk3YHypfhFt3pssrxPnDjk7 on NEAR mainnet (block 224,147,600). It returned an Intents share of 58.09% against 58.09% in this build, THORChain's one-side factor 0.5003 against 0.5550, and every venue's volume to the same $0.1M. The result was delivered on chain by worker.outlayer.near with a key scoped to outlayer.near; OutLayer's register contract adds such a key only after verifying a TDX quote against its allowlist of measurements. `python3 -m pipeline.tee_verify` repeats every check from public RPC.
-
 | Counting basis | Intents share, four venues | Largest | Intents share, all eight |
 | --- | --- | --- | --- |
 | As reported by every venue | 58.1% | NEAR Intents | 17.8% |
@@ -184,6 +181,13 @@ The same hash is written on NEAR mainnet at `noctrl.near/share_shift/predictions
 | P3 | 2027-05-31 | The Intents take rate has not been competed below 12 bps over the trailing 90 days. | 15.5 bps | PENDING |
 
 It would be refuted outright by: a trailing 90-day share below 40%, a take rate pushed below the rival median, or a capture ratio that stops rising.
+
+## How this can be checked
+
+- **Every number:** `python3 build.py --offline` rebuilds this file and the dashboard from the committed snapshot, byte for byte; `python3 build.py` refetches.
+- **The data, against primary sources:** THORChain, Maya and Chainflip volume against their own indexers; Intents volume against intents.near's events; captured revenue against the revenue wallets; supply against block headers. Scripts and outputs are listed in the README.
+- **The computation:** The headline share was also recomputed inside a trusted execution environment: tee/share-check (SHA-256 7634f3997a76...) fetched DefiLlama's and Midgard's data by itself inside an Intel TDX enclave run by OutLayer, requested by NEAR mainnet transaction Aw6Vz41optzWmAEDvmzq7wk3YHypfhFt3pssrxPnDjk7. It returned 58.09% against 58.09% in this build, and every venue's volume to the same $0.1M; the result was delivered on chain by worker.outlayer.near with a key that OutLayer's register contract adds only after checking a TDX quote against its allowlist. What that proves is narrow: the published program, unmodified, produced the published numbers from what those APIs served at that moment. It does not prove the APIs are right; the primary-source checks do that (each venue's own indexer, intents.near's events, the revenue wallets, block-header supply). This repository checks the worker's key on chain but does not re-verify the TDX quote itself.
+- **The predictions:** sealed by hash, timestamped on Bitcoin and written on NEAR mainnet; see the predictions section.
 
 ## What this analysis cannot say
 

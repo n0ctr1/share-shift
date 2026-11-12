@@ -361,19 +361,21 @@ def findings(m):
     tee = m.get("tee")
     if tee:
         out["tee"] = (
-            "The headline number was also recomputed inside a trusted execution environment. "
-            "tee/share-check, a WASI program in this repository (SHA-256 %s...), fetched "
-            "DefiLlama's and Midgard's data by itself inside an Intel TDX enclave run by "
-            "OutLayer, requested by transaction %s on NEAR mainnet (block %s). It returned an "
-            "Intents share of %s against %s in this build, THORChain's one-side factor %s "
-            "against %s, and every venue's volume to the same $0.1M. The result was delivered "
-            "on chain by %s with a key scoped to outlayer.near; OutLayer's register contract "
-            "adds such a key only after verifying a TDX quote against its allowlist of "
-            "measurements. `python3 -m pipeline.tee_verify` repeats every check from public RPC."
-            % (tee["wasm_sha256"][:12], tee["request_tx"], "{:,}".format(tee["block_height"]),
-               pct(tee["share_tee"], 2), pct(tee["share_build"], 2),
-               "%.4f" % tee["once_thorchain_tee"], "%.4f" % (tee["once_thorchain_build"] or 0),
-               tee["worker"])
+            "The headline share was also recomputed inside a trusted execution environment: "
+            "tee/share-check (SHA-256 %s...) fetched DefiLlama's and Midgard's data by itself "
+            "inside an Intel TDX enclave run by OutLayer, requested by NEAR mainnet transaction "
+            "%s. It returned %s against %s in this build, and every venue's volume to the same "
+            "$0.1M; the result was delivered on chain by %s with a key that OutLayer's register "
+            "contract adds only after checking a TDX quote against its allowlist."
+            % (tee["wasm_sha256"][:12], tee["request_tx"], pct(tee["share_tee"], 2),
+               pct(tee["share_build"], 2), tee["worker"])
+        )
+        out["tee_scope"] = (
+            "What that proves is narrow: the published program, unmodified, produced the "
+            "published numbers from what those APIs served at that moment. It does not prove "
+            "the APIs are right; the primary-source checks do that (each venue's own indexer, "
+            "intents.near's events, the revenue wallets, block-header supply). This repository "
+            "checks the worker's key on chain but does not re-verify the TDX quote itself."
         )
     if h:
         p365 = next((x for x in h["placebo"] if x["lookback_days"] == 365), None)
@@ -687,9 +689,6 @@ def thesis_markdown(m, text):
                    pct(bp["thorchain_double_share_for_lead"]), bp["assumes"],
                    pct(bp.get("thorchain_double_share_measured"))))
             add("")
-        if "tee" in text:
-            add(text["tee"])
-            add("")
         add("| Counting basis | Intents share, four venues | Largest | Intents share, all eight |")
         add("| --- | --- | --- | --- |")
         for x in m["basis"]["scenarios"]:
@@ -747,6 +746,19 @@ def thesis_markdown(m, text):
     add("")
     add("It would be refuted outright by: a trailing 90-day share below 40%, a take rate pushed "
         "below the rival median, or a capture ratio that stops rising.")
+    add("")
+    add("## How this can be checked")
+    add("")
+    add("- **Every number:** `python3 build.py --offline` rebuilds this file and the dashboard "
+        "from the committed snapshot, byte for byte; `python3 build.py` refetches.")
+    add("- **The data, against primary sources:** THORChain, Maya and Chainflip volume against "
+        "their own indexers; Intents volume against intents.near's events; captured revenue "
+        "against the revenue wallets; supply against block headers. Scripts and outputs are "
+        "listed in the README.")
+    if "tee" in text:
+        add("- **The computation:** %s %s" % (text["tee"], text["tee_scope"]))
+    add("- **The predictions:** sealed by hash, timestamped on Bitcoin and written on NEAR "
+        "mainnet; see the predictions section.")
     add("")
     add("## What this analysis cannot say")
     add("")

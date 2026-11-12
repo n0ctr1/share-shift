@@ -1094,24 +1094,18 @@ def _compute(raw, fetched_at):
     token = token_check(raw, [start_date, end_date])
     if token and token["offset_buyback"] is not None:
         claims.append({
-            "id": "C15",
+            "id": "C14",
             "claim": "The NEAR bought back with Intents revenue covers at least half of the NEAR "
                      "newly issued in the same window.",
             "value": token["offset_buyback"], "unit": "share", "threshold": t["buyback_offset"],
             "verdict": _verdict(token["offset_buyback"] >= t["buyback_offset"]),
         })
+    # The TEE run is a reproducibility check of this build, not evidence for the
+    # thesis, so it is reported in the checks section and not counted as a claim.
     tee = tee_check(raw, {"volume": vol, "share": share}, basis, [start_date, end_date])
     if tee:
-        ok = all(tee["checks"].values()) and tee["same_window"] and tee["share_diff"] <= t["tee_match"]
-        claims.append({
-            "id": "C14",
-            "claim": "The headline share, recomputed from the public sources by our code inside an "
-                     "attested OutLayer TEE on NEAR mainnet, matches this build within 0.1 point.",
-            "value": tee["share_diff"], "unit": "share", "threshold": t["tee_match"],
-            "display": {"value": "%.2f pt apart" % (100 * tee["share_diff"]),
-                        "threshold": "within %.1f pt" % (100 * t["tee_match"])},
-            "verdict": _verdict(ok),
-        })
+        tee["matches_build"] = (all(tee["checks"].values()) and tee["same_window"]
+                                and tee["share_diff"] <= t["tee_match"])
     oc = onchain_check(raw, table, subject, [start_date, end_date])
     if oc and oc["ratio"]:
         claims.append({

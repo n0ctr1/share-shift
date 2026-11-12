@@ -16,6 +16,13 @@ Built at NEAR HACKATHON, track `thesis` (Investment Thesis).
   and one sentence on what it shows.
 - `build.py`: one command that fetches the data and regenerates both files.
 
+## Why "Share Shift"
+
+The share did shift: NEAR Intents' share of native cross-chain swap volume rose
+from 40% to 58% in a year (C1). The name does not claim that the shift drove
+Intents' growth. That is tested separately and fails: C2 finds 56% of the
+volume gain came from a bigger market and 44% from the share gained.
+
 ## The problem
 
 Most write-ups of NEAR Intents look at Intents alone: its volume, its fees,
@@ -43,7 +50,7 @@ The sixth uses the NEAR Intents Explorer API: 1Click swaps grouped by
 distribution channel and by the account that receives the app fee
 (`metrics.channel_report`).
 
-Fifteen claims are tested against fixed thresholds. The current result is in
+Fourteen claims are tested against fixed thresholds. The current result is in
 `THESIS.md`; it includes the claims that fail.
 
 ## How NEAR fits in
@@ -60,10 +67,10 @@ Needs Python 3.9 or newer. No packages to install. No key needed for steps 1 to 
 | Step | Do | See |
 | --- | --- | --- |
 | 1 | `python3 -m unittest discover -s tests` | `Ran 26 tests` and `OK` |
-| 2 | `python3 build.py --offline` | Fifteen lines `C1` to `C15`, each `SUPPORTED` or `REFUTED`, then `wrote THESIS.md, docs/index.html, data/derived/metrics.json` |
+| 2 | `python3 build.py --offline` | Fourteen lines `C1` to `C14`, each `SUPPORTED` or `REFUTED`, then `wrote THESIS.md, docs/index.html, data/derived/metrics.json` |
 | 3 | `git status --short` | Nothing: the offline build reproduces the committed files byte for byte |
-| 4 | `python3 build.py` | The same fifteen lines computed on today's data; `git diff THESIS.md` shows which numbers moved |
-| 5 | Open `docs/index.html` in a browser, or https://n0ctr1.github.io/share-shift/ | A row of six headline numbers; fifteen claims with verdicts; five charts (three with the THORChain halt shaded) and one split bar; tables for the halt, the counting bases, all eight venues, channels and fee recipients. Hovering a chart shows every series' value for that week or month |
+| 4 | `python3 build.py` | The same fourteen lines computed on today's data; `git diff THESIS.md` shows which numbers moved |
+| 5 | Open `docs/index.html` in a browser, or https://n0ctr1.github.io/share-shift/ | A row of six headline numbers; fourteen claims with verdicts; five charts (three with the THORChain halt shaded) and one split bar; tables for the halt, the counting bases, all eight venues, channels and fee recipients. Hovering a chart shows every series' value for that week or month |
 | 6 | Change `WINDOW = 90` to `WINDOW = 30` in `pipeline/config.py`, then run step 2 | Every figure in `THESIS.md` is recomputed for a 30-day window |
 | 7 | Optional. Put `INTENTS_EXPLORER_JWT=...` in `.env`, then `python3 -m pipeline.explorer --from 2026-04-09 --to 2026-11-10` | `page 5, reached ...` lines, then `wrote data/raw/explorer_daily.json`. About three hours: the API allows one request per five seconds. An interrupted run resumes. Then run `python3 build.py` so the manifest picks up the new file |
 
@@ -100,10 +107,14 @@ An earlier request from the same account (`9Nb8MpaWCCBwHxc6DHFqJBTi919eupKnagGSV
 ran the same code with an empty input, because the CLI read the JSON argument as
 a project name; it returned zeros and is not used.
 
-What this proves and what it does not: OutLayer's register contract adds a worker
-key only after checking an Intel TDX quote against an allowlist of measurements,
-and only such a key can deliver results. This repository does not re-verify the
-TDX quote itself; it checks the key on chain.
+What this proves and what it does not: the published program, unmodified,
+produced the published numbers from what DefiLlama and Midgard served at that
+moment. It does not prove those APIs are right; the primary-source checks above
+do that. OutLayer's register contract adds a worker key only after checking an
+Intel TDX quote against an allowlist of measurements, and only such a key can
+deliver results; this repository checks the key on chain but does not
+re-verify the TDX quote itself. The TEE run is a reproducibility check, not
+evidence for the thesis.
 
 ## Checking the predictions were not edited
 

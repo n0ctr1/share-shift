@@ -545,20 +545,8 @@
    "verdict": "SUPPORTED"
   },
   {
-   "claim": "The headline share, recomputed from the public sources by our code inside an attested OutLayer TEE on NEAR mainnet, matches this build within 0.1 point.",
-   "display": {
-    "threshold": "within 0.1 pt",
-    "value": "0.00 pt apart"
-   },
-   "id": "C14",
-   "threshold": 0.001,
-   "unit": "share",
-   "value": 9.299083669422892e-06,
-   "verdict": "SUPPORTED"
-  },
-  {
    "claim": "The NEAR bought back with Intents revenue covers at least half of the NEAR newly issued in the same window.",
-   "id": "C15",
+   "id": "C14",
    "threshold": 0.5,
    "unit": "share",
    "value": 0.12605764127510188,
@@ -1956,6 +1944,7 @@
   },
   "explorer": "https://nearblocks.io/txns/Aw6Vz41optzWmAEDvmzq7wk3YHypfhFt3pssrxPnDjk7",
   "instructions": 361269283,
+  "matches_build": true,
   "once_maya_build": 0.5033367336444565,
   "once_maya_tee": 0.5033,
   "once_thorchain_build": 0.5549551275139073,

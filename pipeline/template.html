@@ -679,6 +679,16 @@ footer p { margin: 0 0 6px; }
   seal.appendChild(document.createTextNode('. The build stops if the predictions change.'));
   s.appendChild(seal);
 
+  // ---------- 7b. checks ----------
+  s = section('checks', 'How to check', 'Reproducibility', 'How every part of this can be checked');
+  var ul2 = el('ul', {class: 'limits'});
+  [['Every number', 'python3 build.py --offline rebuilds THESIS.md and this page from the committed snapshot, byte for byte; python3 build.py refetches.'],
+   ['The data', 'THORChain, Maya and Chainflip volume against their own indexers; Intents volume against intents.near events; captured revenue against the revenue wallets; NEAR supply against block headers.'],
+   ['The computation', T.tee ? T.tee + ' ' + T.tee_scope : null],
+   ['The predictions', 'Sealed by SHA-256, timestamped on Bitcoin through OpenTimestamps, tagged in git and written on NEAR mainnet; the build stops if they change.']]
+    .forEach(function (r) { if (!r[1]) return; var li = el('li'); li.appendChild(el('b', {}, r[0] + '. ')); li.appendChild(document.createTextNode(r[1])); ul2.appendChild(li); });
+  s.appendChild(ul2);
+
   // ---------- 8. limits ----------
   s = section('limits', 'Limits', 'Caveats', 'What this analysis cannot say');
   var ul = el('ul', {class: 'limits'});
