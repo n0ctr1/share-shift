@@ -952,6 +952,27 @@
    "top10_share": 0.4559705552317314
   }
  },
+ "call": {
+  "buyback_offset": 0.12605764127510188,
+  "call": "WATCH",
+  "capture": 0.2706981404409915,
+  "capture_falling": false,
+  "capture_prior": 0.19588534147988806,
+  "position_lost": false,
+  "revenue_multiple_needed": 3.966439439469005,
+  "review_on": "2026-12-10",
+  "rules": {
+   "buyback_offset_accumulate": 0.5,
+   "review_after_days": 30,
+   "share_30d_hold": 0.5,
+   "share_90d_kill": 0.4
+  },
+  "share_30d": 0.46416847363395664,
+  "share_90d": 0.5808907009163305,
+  "share_holds": false,
+  "share_latest_week": 0.37589480713095696,
+  "token_captures": false
+ },
  "capture_trend": [
   {
    "capture": 0.07790973240954711,

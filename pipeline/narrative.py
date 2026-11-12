@@ -303,6 +303,44 @@ def findings(m):
             "Counting one side of each swap for every venue gives %s; even halving Intents "
             "alone gives %s, still first." % (pct(sc["one_side"]["share"]), pct(sc["worst"]["share"]))
         )
+    if m.get("basis"):
+        rows = []
+        for v in m["basis"]["venues"].values():
+            if "actions_factor" in v:
+                what = ("%s of value went through two pools, read from %s individual swaps "
+                        "(90%% interval %s to %s); matched daily legs give an upper bound of %s"
+                        % (pct(v["double_share_actions"]), "{:,}".format(v["swaps_read"]),
+                           pct(v["double_share_actions_p05"]), pct(v["double_share_actions_p95"]),
+                           pct(v["paired_share"])))
+                left = v["actions_factor"]
+            elif "provider_vs_indexer" in v["leg_shares"]:
+                what = ("input value plus the routed USDC leg (%s of the indexer's two-leg sum)"
+                        % pct(v["leg_shares"]["provider_vs_indexer"], 1))
+                left = v["once_factor"]
+            else:
+                what = "%s is matched pairs of legs into and out of its own token" % pct(v["paired_share"])
+                left = v["once_factor"]
+            rows.append([v["name"], what, pct(left)])
+        rows.append(["NEAR Intents", "both sides of each swap, from intents.near's own events (below)", "50%"])
+        out["basis_rows"] = rows
+        out["basis_lead"] = ("Venues do not count volume the same way, so the share is computed on "
+                             "several bases. Each rival's factor is measured from its own indexer.")
+        out["basis_source"] = (
+            "For NEAR Intents, %s. Two public re-computations read it differently (%s); both are "
+            "reconciled below. Bridges in the wider set are taken as one-sided, as their adapters "
+            "report deposits."
+            % (config.SUBJECT_VOLUME_SOURCE,
+               "; ".join("%s: %s" % (n["source"].replace("https://github.com/", ""), n["finding"])
+                         for n in m["basis"]["subject_notes"])))
+    if m.get("events"):
+        ev_ = m["events"]
+        out["events_lead"] = (
+            "On %d days every intents.near transaction was listed, a seeded sample of 4,000 was "
+            "read, and every token_diff event was valued at that day's price. Both sides average "
+            "%.2f of the reported figure, one side %.2f: the reported figure counts both sides, "
+            "like the rivals'." % (len(ev_["days"]), ev_["both_ratio_mean"], ev_["one_ratio_mean"]))
+        out["events_rows"] = [[d["day"], usd(d["both"]), "%s to %s" % (usd(d["both_p05"]), usd(d["both_p95"])),
+                               usd(d["reported"])] for d in ev_["days"]]
     ev = m.get("events")
     if ev:
         parts = ["%s: %s both sides (90%% interval %s to %s) against %s reported"
@@ -327,13 +365,11 @@ def findings(m):
         if ev["later_days"]:
             later = "; ".join("%s: %.2f of reported" % (d["day"], d["both_ratio"]) for d in ev["later_days"])
             out["events_limit"] = (
-                "The method has a limit, found while extending it. After %s the contract "
-                "increasingly settles swaps through transfer intents instead of token_diff "
-                "events (event version 0.4.3 by mid-October, none at all in a 60-transaction sample on "
-                "5 November; data/raw/intents_event_format.json). Counted the same way, later days "
-                "fall short (%s). Any token_diff-based count, including the residuals above, "
-                "understates volume from then on, so those days are shown but not used, and the "
-                "share of truly confidential flow after August is not established here."
+                "The method stops working after %s: the contract increasingly settles swaps "
+                "through transfer intents instead of token_diff events (event version 0.4.3; "
+                "data/raw/intents_event_format.json), so later sampled days fall short (%s) and "
+                "are shown but not used. The full-day series below dates the break exactly; "
+                "how much of the later flow is truly confidential is not established here."
                 % (ev["valid_until"], later)
             )
     bq = m.get("bq")
@@ -343,7 +379,7 @@ def findings(m):
         months = ", ".join("%s %.2f" % (datetime.date.fromisoformat(k + "-01").strftime("%B"), x["mean"])
                            for k, x in mo.items() if x)
         out["bq"] = (
-            "Then every day instead of a sample: NEAR's public BigQuery dataset (%s, table "
+            "Every day, not a sample: NEAR's public BigQuery dataset (%s, table "
             "execution_outcomes) holds every log line intents.near wrote. Summing what every "
             "participant gave in token_diff events, at each day's price, lands within %d%% of "
             "the reported figure on %d of %d days through %s (mean %.3f, range %.3f to %.3f). "
@@ -469,14 +505,13 @@ def findings(m):
         one_side = next(x for x in m["basis"]["scenarios"] if x["id"] == "one_side")
     s30 = next((x for x in m["sensitivity"] if x["days"] == 30), None)
     tk_ = m.get("token") or {}
-    out["title"] = (
-        "NEAR Intents led cross-chain swaps over the last %d days on every consistent count. "
-        "Its latest weeks are below this thesis's own warning line, and buybacks cover %s of "
-        "new NEAR." % (m["meta"]["window_days"], pct(tk_.get("offset_buyback")))
-        if tk_ else
-        "NEAR Intents led cross-chain swaps over the last %d days on every consistent count. "
-        "Its latest weeks are below this thesis's own warning line." % m["meta"]["window_days"]
-    )
+    cl = m.get("call")
+    if cl:
+        out.update(call_text(m, cl, tr, s))
+    else:
+        out["title"] = (
+            "NEAR Intents led cross-chain swaps over the last %d days on every consistent count. "
+            "Its latest weeks are below this thesis's own warning line." % m["meta"]["window_days"])
     out["latest"] = (
         "Latest data, stated first because it cuts against the headline: over the 30 days to "
         "%s Intents' share of the four swap venues was %s (90 days: %s), its volume fell %.0f%% "
@@ -516,8 +551,12 @@ def findings(m):
         "and tagged predictions-v1 in git, and the build refuses to run if they change.",
         "NEAR's market cap prices the whole L1, so the valuation line compares Intents "
         "revenue with rival multiples and is not a price target.",
-        "Volume, fees and revenue come from DefiLlama adapters. Only THORChain's volume was "
-        "checked against a primary source; an adapter error elsewhere is an error here.",
+        "Volume, fees and revenue come from DefiLlama adapters. Checked against primary "
+        "sources: THORChain's volume (Midgard), every rival's counting factor (each venue's "
+        "indexer), Intents volume through August (intents.near events) and captured revenue "
+        "(the revenue wallets). Fees and the bridges' figures are not checked; an adapter "
+        "error there is an error here. After August, Intents volume rests on NEAR's own "
+        "Dune table, which public events no longer fully reproduce.",
     ]
     return out
 
@@ -544,19 +583,44 @@ def thesis_markdown(m, text):
         "Every figure below is computed by `pipeline/metrics.py`; none is typed by hand."
         % (m["meta"]["fetched_at"], m["meta"]["first_day"], m["meta"]["last_day"]))
     add("")
-    add("> " + text["latest"])
+    if "call" in text:
+        add("## The call: %s" % text["call_word"])
+        add("")
+        add("**%s.** %s" % (text["call"], text["call_line"]))
+        add("")
+        for i, r in enumerate(text["call_reasons"], 1):
+            add("%d. %s" % (i, r))
+        add("")
+        add("What would change it:")
+        add("")
+        add("| Moves the call to | When | Now |")
+        add("| --- | --- | --- |")
+        for to, when, now in text["call_triggers"]:
+            add("| %s | %s | %s |" % (to, when, now))
+        add("")
+        add(text["call_note"])
+        add("")
+    add("## Check it yourself")
     add("")
-    add("## In three lines")
+    add("- `python3 -m unittest discover -s tests`, then `python3 build.py --offline` and "
+        "`git status --short`: every number here is rebuilt from the committed snapshot, byte "
+        "for byte, and the build stops if a raw file or a sealed prediction was edited.")
+    add("- `python3 build.py` refetches everything and shows which numbers moved.")
+    add("- Primary-source, prediction and TEE checks: the last sections below, and the README.")
     add("")
-    add("1. **It is the largest swap venue, at a normal price.** %s %s"
-        % (text["share"], text.get("basis_short", "")))
-    add("2. **The token sees little of it so far, but more each quarter.** %s %s"
-        % (text["capture"], text.get("capture_trend", "")))
-    if h:
-        add("3. **The one real test is not conclusive.** %s"
-            % text.get("halt_short", text["halt"]))
+    add("## Claims and verdicts")
     add("")
-    add("## The claim")
+    add("**%s** The competitive position is supported by the data; the value reaching the "
+        "token is not. Thresholds are in `pipeline/config.py`; a verdict is one number "
+        "compared with one threshold." % verdict_line(m))
+    add("")
+    add("| # | Claim | Measured | Threshold | Verdict |")
+    add("| --- | --- | --- | --- | --- |")
+    for c in m["claims"]:
+        add("| %s | %s | %s | %s | **%s** |" % (
+            c["id"], c["claim"], claim_cells(c)[0], claim_cells(c)[1], c["verdict"]))
+    add("")
+    add("## What was tested")
     add("")
     add("The long-term case for NEAR rests on NEAR Intents being a business with a durable "
         "position, not only a volume number. A durable position should be visible against "
@@ -564,11 +628,6 @@ def thesis_markdown(m, text):
         "undercut, with the fees reaching the token. This repository tests those things "
         "against the three other venues that swap native assets across chains: %s."
         % ", ".join(names[x] for x in slugs if x != s))
-    add("")
-    add("**Result: %s** The competitive position is supported by the data; the value "
-        "reaching the token is not." % verdict_line(m))
-    add("")
-    add("## Definitions")
     add("")
     add("- **Peer set**: %s. All four settle swaps between native assets on different "
         "chains and have a daily USD volume series on DefiLlama." % ", ".join(names[x] for x in slugs))
@@ -585,16 +644,6 @@ def thesis_markdown(m, text):
         "raising its share (`metrics.shift_share`).")
     add("- **Window**: the %d days ending %s, unless a line says otherwise."
         % (m["meta"]["window_days"], m["meta"]["last_day"]))
-    add("")
-    add("## Claims and verdicts")
-    add("")
-    add("Thresholds are in `pipeline/config.py`. A verdict is one number compared with one threshold.")
-    add("")
-    add("| # | Claim | Measured | Threshold | Verdict |")
-    add("| --- | --- | --- | --- | --- |")
-    for c in m["claims"]:
-        add("| %s | %s | %s | %s | **%s** |" % (
-            c["id"], c["claim"], claim_cells(c)[0], claim_cells(c)[1], c["verdict"]))
     add("")
     add("## Evidence for")
     add("")
@@ -671,10 +720,9 @@ def thesis_markdown(m, text):
         if "token_l1" in text:
             add(text["token_l1"])
             add("")
-        add("So the answer to \"should one hold NEAR on this evidence\" is not yet: the business "
-            "Intents runs is leading and growing its take to the token, but today it buys back "
-            "a fraction of what the protocol issues. The dated predictions below say what would "
-            "have to change.")
+        add("This is the third reason for the call at the top: the business Intents runs is "
+            "leading and growing its take to the token, but today it buys back a fraction of what "
+            "the protocol issues.")
         add("")
     add("## Evidence against")
     add("")
@@ -699,11 +747,26 @@ def thesis_markdown(m, text):
     if m.get("basis"):
         add("### How volume is counted")
         add("")
-        add(text["basis"])
+        add("Venues do not count volume the same way, so the share is computed on several "
+            "bases. Each rival's factor is measured from its own indexer:")
         add("")
-        if "events" in text:
-            add(text["events"])
+        add("| Venue | What its reported volume counts | Left when each swap counts once |")
+        add("| --- | --- | --- |")
+        for row in text["basis_rows"]:
+            add("| %s | %s | %s |" % tuple(row))
+        add("")
+        add(text["basis_source"])
+        add("")
+        ev = m.get("events")
+        if ev:
+            add("**Sampled days.** " + text["events_lead"])
             add("")
+            add("| Day | Both sides | 90% interval | Reported |")
+            add("| --- | --- | --- | --- |")
+            for row in text["events_rows"]:
+                add("| %s | %s | %s | %s |" % tuple(row))
+            add("")
+        if "events" in text:
             add(text["events_others"])
             add("")
             if "events_limit" in text:
@@ -826,10 +889,15 @@ def thesis_markdown(m, text):
     add("")
     add("Flagged weeks:")
     add("")
+    halt_flags = [f for f in m["quality_flags"] if f.get("cause")]
+    if halt_flags:
+        add("- %s, %d weeks from %s to %s: no volume. Cause: the halt above."
+            % (halt_flags[0]["peer"], len(halt_flags), halt_flags[0]["week"], halt_flags[-1]["week"]))
     for flag in m["quality_flags"]:
-        add("- %s, week of %s: %s against a prior median of %s. %s"
-            % (flag["peer"], flag["week"], usd(flag["volume"]), usd(flag["median_prior_8w"]),
-               "Cause: the halt above." if flag.get("cause") else "Cause not found."))
+        if flag.get("cause"):
+            continue
+        add("- %s, week of %s: %s against a prior median of %s. Cause not found."
+            % (flag["peer"], flag["week"], usd(flag["volume"]), usd(flag["median_prior_8w"])))
     add("")
     return "\n".join(lines)
 
@@ -859,3 +927,73 @@ def tee_prediction_text(p):
                "It does not match this build (%s), so the build's grade and the TEE's are both "
                "shown." % ", ".join("%s %.1f against %s" % (v["slug"], v["tee_musd"], v["build_musd"])
                                      for v in tp["venues"] if not v["agrees"])))
+
+
+CALL_WORD = {"ACCUMULATE": "accumulate", "WATCH": "watch, not buy", "AVOID": "avoid"}
+
+
+def call_text(m, cl, tr, s):
+    """The investment call: title, one line, three reasons, what would change it."""
+    r = cl["rules"]
+    tk = m.get("token") or {}
+    one = None
+    if m.get("basis"):
+        one = next((x for x in m["basis"]["scenarios"] if x["id"] == "one_side"), None)
+    supported = sum(1 for c in m["claims"] if c["verdict"] == "SUPPORTED")
+    c4_ok = any(c["id"] == "C4" and c["verdict"] == "SUPPORTED" for c in m["claims"])
+    trend = m.get("capture_trend") or []
+    word = CALL_WORD[cl["call"]]
+    if cl["call"] == "WATCH":
+        title = ("NEAR Intents leads cross-chain swaps, but too little of it reaches the NEAR token "
+                 "yet. The call is to %s, until buybacks cover %s of new NEAR and the 30-day share "
+                 "is back above %s." % (word, pct(r["buyback_offset_accumulate"]), pct(r["share_30d_hold"])))
+        line = ("The business is real and leading; the token's cut of it is not yet large enough, "
+                "and the lead is slipping in the latest weeks.")
+    elif cl["call"] == "ACCUMULATE":
+        title = ("NEAR Intents leads cross-chain swaps and the NEAR token now captures enough of it. "
+                 "The call is to accumulate while the 90-day share stays above %s." % pct(r["share_90d_kill"]))
+        line = "The lead holds and buybacks cover at least %s of new NEAR." % pct(r["buyback_offset_accumulate"])
+    else:
+        title = ("NEAR Intents %s. The call is to avoid NEAR on the Intents case until that reverses."
+                 % ("has lost its lead in cross-chain swaps" if cl["position_lost"]
+                    else "is passing a shrinking share of its fees to the NEAR token"))
+        line = ("The 90-day share is below %s." % pct(r["share_90d_kill"]) if cl["position_lost"]
+                else "The share of fees reaching NEAR fell from one 90-day window to the next.")
+    reasons = [
+        "**The business leads.** %s of the four swap venues' volume over %d days%s, %s; "
+        "%d of %d claims hold."
+        % (pct(cl["share_90d"]), m["meta"]["window_days"],
+           (" (%s counting one side of every swap for every venue)" % pct(one["share"])) if one else "",
+           "at a take rate above its rivals' median" if c4_ok else "though below its rivals' take rate",
+           supported, len(m["claims"])),
+        "**The lead is slipping now.** The 30-day share is %s and the latest complete week %s; "
+        "over 30 days Intents' volume fell %.0f%% while THORChain's rose %.0f%%."
+        % (pct(cl["share_30d"]), pct(cl["share_latest_week"]),
+           -100 * m["recent"]["change"][s], 100 * m["recent"]["change"]["thorchain-dex"]),
+    ]
+    if tk:
+        reasons.append(
+            "**The token sees too little of it.** Over the window buybacks took %.2fM NEAR "
+            "against %.2fM newly issued (%s). Covering %s would take %.1fx today's captured "
+            "revenue. The share of fees reaching NEAR is rising: %s over consecutive 90-day windows."
+            % (tk["bought_back_near"] / 1e6, tk["net_issued_near"] / 1e6, pct(cl["buyback_offset"]),
+               pct(r["buyback_offset_accumulate"]), cl["revenue_multiple_needed"],
+               " → ".join(pct(w["capture"]) for w in trend)))
+    triggers = [
+        ("ACCUMULATE", "buybacks cover at least %s of new NEAR **and** the 30-day share is at "
+         "least %s" % (pct(r["buyback_offset_accumulate"]), pct(r["share_30d_hold"])),
+         "%s of new NEAR; 30-day share %s" % (pct(cl["buyback_offset"]), pct(cl["share_30d"]))),
+        ("AVOID", "the 90-day share falls below %s **or** the share of fees reaching NEAR falls "
+         "from one 90-day window to the next" % pct(r["share_90d_kill"]),
+         "90-day share %s (latest week %s); fees reaching NEAR %s, up from %s"
+         % (pct(cl["share_90d"]), pct(cl["share_latest_week"]), pct(cl["capture"]), pct(cl["capture_prior"]))),
+    ]
+    note = ("No price target: this measures the business and the token's cut of it, not a fair "
+            "price. Next review: %s, or sooner if a line above is crossed. The rule is `CALL` in "
+            "`pipeline/config.py`, computed by `metrics.investment_call()`; it was written on "
+            "2026-11-12, after the data was seen, and is not sealed." % cl["review_on"])
+    lede = ("%d claims tested against data: %d supported, %d refuted. Every number rebuilds from a "
+            "committed snapshot, and the key ones are checked against the chains themselves."
+            % (len(m["claims"]), supported, len(m["claims"]) - supported))
+    return {"title": title, "lede": lede, "call": cl["call"], "call_word": word, "call_line": line,
+            "call_reasons": reasons, "call_triggers": triggers, "call_note": note}

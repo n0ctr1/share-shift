@@ -8,10 +8,20 @@ Built at NEAR HACKATHON, track `thesis` (Investment Thesis).
 - Live dashboard: https://n0ctr1.github.io/share-shift/
 - Full argument: [`THESIS.md`](THESIS.md)
 
+**The call: WATCH, not buy.** NEAR Intents is the largest venue that swaps
+native assets across chains (58% of four-venue volume over 90 days), but its
+lead is slipping in the latest weeks and the NEAR token captures too little of
+it: buybacks offset 13% of newly issued NEAR. The call turns to ACCUMULATE when
+buybacks cover half of new NEAR and the 30-day share is back above 50%, and to
+AVOID if the 90-day share falls below 40% or the share of fees reaching NEAR
+stops rising. The rule is `CALL` in `pipeline/config.py`; the build computes the
+call from the data (`metrics.investment_call()`), so a re-run can change it.
+Figures here are as of the committed snapshot (data to 2026-11-10).
+
 ## What it is
 
-- `THESIS.md`: the claim, the evidence for it, the evidence against it, and
-  what would change the conclusion.
+- `THESIS.md`: the call and what would change it first, then the 14 claims
+  with verdicts, then the evidence for and against, the checks and the limits.
 - `docs/index.html`: a static dashboard. Each chart shows the query behind it
   and one sentence on what it shows.
 - `build.py`: one command that fetches the data and regenerates both files.
@@ -66,11 +76,11 @@ Needs Python 3.9 or newer. No packages to install. No key needed for steps 1 to 
 
 | Step | Do | See |
 | --- | --- | --- |
-| 1 | `python3 -m unittest discover -s tests` | `Ran 29 tests` and `OK` |
+| 1 | `python3 -m unittest discover -s tests` | `Ran 32 tests` and `OK` |
 | 2 | `python3 build.py --offline` | Fourteen lines `C1` to `C14`, each `SUPPORTED` or `REFUTED`, then `wrote THESIS.md, docs/index.html, data/derived/metrics.json` |
 | 3 | `git status --short` | Nothing: the offline build reproduces the committed files byte for byte |
 | 4 | `python3 build.py` | The same fourteen lines computed on today's data; `git diff THESIS.md` shows which numbers moved |
-| 5 | Open `docs/index.html` in a browser, or https://n0ctr1.github.io/share-shift/ | A row of six headline numbers; fourteen claims with verdicts; six charts (three with the THORChain halt shaded, one with the days on which intents.near's token_diff events match the reported volume) and one split bar; tables for the halt, the counting bases, all eight venues, channels and fee recipients. Hovering a chart shows every series' value for that week or month |
+| 5 | Open `docs/index.html` in a browser, or https://n0ctr1.github.io/share-shift/ | A row of six headline numbers; the call with what would change it; fourteen claims with verdicts; six charts (three with the THORChain halt shaded, one with the days on which intents.near's token_diff events match the reported volume) and one split bar; tables for the halt, the counting bases, all eight venues, channels and fee recipients. Hovering a chart shows every series' value for that week or month |
 | 6 | Change `WINDOW = 90` to `WINDOW = 30` in `pipeline/config.py`, then run step 2 | Every figure in `THESIS.md` is recomputed for a 30-day window |
 | 7 | Optional. Put `INTENTS_EXPLORER_JWT=...` in `.env`, then `python3 -m pipeline.explorer --from 2026-04-09 --to 2026-11-10` | `page 5, reached ...` lines, then `wrote data/raw/explorer_daily.json`. About three hours: the API allows one request per five seconds. An interrupted run resumes. Then run `python3 build.py` so the manifest picks up the new file |
 | 8 | Optional. `python3 -m pipeline.onchain --from 2026-08-13 --to 2026-11-10` | Per-wallet progress lines, then `wrote data/raw/onchain_revenue.json`. About 30 minutes on NearBlocks' free tier; no key |

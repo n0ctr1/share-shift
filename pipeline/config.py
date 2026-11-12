@@ -233,3 +233,17 @@ SEAL_V2 = {"sealed_on": "2026-11-12", "data_seen_through": "2026-11-10"}
 # Where the second seal's OpenTimestamps proof lands; check with
 # `python3 -m pipeline.ots --file predictions/predictions-v2.json`. Not sealed.
 SEAL_V2_BITCOIN = {"block": 975532, "time_utc": "2026-11-12 08:26"}
+
+
+# The investment call: a rule on computed numbers, so the call moves with the
+# data and anyone can see what would change it. Written 2026-11-12, after the
+# data was seen, and not sealed; the thresholds reuse the thesis's own lines.
+#   ACCUMULATE  the position holds AND the token captures enough of it
+#   AVOID       the position is lost OR capture stops rising
+#   WATCH       otherwise: the business leads, the token link is not there yet
+CALL = {
+    "share_90d_kill": 0.40,          # AVOID below this 90-day share (the thesis's kill line)
+    "share_30d_hold": 0.50,          # ACCUMULATE needs the 30-day share at or above this
+    "buyback_offset_accumulate": 0.50,  # ACCUMULATE needs buybacks >= this share of new NEAR
+    "review_after_days": 30,         # next review: this many days after the data ends
+}

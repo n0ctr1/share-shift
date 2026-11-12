@@ -263,6 +263,28 @@ class Events(unittest.TestCase):
         self.assertAlmostEqual(bq["unpriced_leg_share"]["token_diff"], 0.25)
 
 
+class Call(unittest.TestCase):
+    def out(self, share90, share30, offset, trend):
+        return {"trailing": {"share": {config.SUBJECT: share90}},
+                "sensitivity": [{"days": 30, "share": share30}],
+                "stability": {"latest_share": share30}, "token": {"offset_buyback": offset},
+                "capture_trend": [{"capture": c} for c in trend],
+                "meta": {"last_day": "2026-11-10"}}
+
+    def test_leading_but_not_capturing_is_watch(self):
+        c = metrics.investment_call(self.out(0.58, 0.46, 0.13, [0.2, 0.27]))
+        self.assertEqual(c["call"], "WATCH")
+        self.assertAlmostEqual(c["revenue_multiple_needed"], 0.5 / 0.13)
+        self.assertEqual(c["review_on"], "2026-12-10")
+
+    def test_holding_and_capturing_is_accumulate(self):
+        self.assertEqual(metrics.investment_call(self.out(0.6, 0.55, 0.6, [0.2, 0.3]))["call"], "ACCUMULATE")
+
+    def test_lost_lead_or_falling_capture_is_avoid(self):
+        self.assertEqual(metrics.investment_call(self.out(0.35, 0.55, 0.6, [0.2, 0.3]))["call"], "AVOID")
+        self.assertEqual(metrics.investment_call(self.out(0.6, 0.55, 0.6, [0.3, 0.2]))["call"], "AVOID")
+
+
 class Tee(unittest.TestCase):
     def test_tee_output_is_compared_with_the_build(self):
         trailing = {"volume": {"near-intents": 60e6, "thorchain-dex": 40e6}, "share": {"near-intents": 0.6}}

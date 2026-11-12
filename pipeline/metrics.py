@@ -492,6 +492,39 @@ def tee_check(raw, trailing, basis, window):
     }
 
 
+def investment_call(out):
+    """ACCUMULATE, WATCH or AVOID for NEAR, from the computed numbers and config.CALL."""
+    c = config.CALL
+    tk = out.get("token") or {}
+    share90 = out["trailing"]["share"][config.SUBJECT]
+    share30 = next((x["share"] for x in out.get("sensitivity") or [] if x["days"] == 30), None)
+    week = (out.get("stability") or {}).get("latest_share")
+    offset = tk.get("offset_buyback")
+    trend = [w["capture"] for w in out.get("capture_trend") or []]
+    capture_falling = len(trend) >= 2 and trend[-1] < trend[-2]
+    position_lost = share90 < c["share_90d_kill"]
+    holds = share30 is not None and share30 >= c["share_30d_hold"]
+    captures = offset is not None and offset >= c["buyback_offset_accumulate"]
+    if position_lost or capture_falling:
+        call = "AVOID"
+    elif holds and captures:
+        call = "ACCUMULATE"
+    else:
+        call = "WATCH"
+    last = datetime.date.fromisoformat(out["meta"]["last_day"])
+    return {
+        "call": call,
+        "share_90d": share90, "share_30d": share30, "share_latest_week": week,
+        "buyback_offset": offset, "capture": trend[-1] if trend else None,
+        "capture_prior": trend[-2] if len(trend) >= 2 else None,
+        "revenue_multiple_needed": (c["buyback_offset_accumulate"] / offset) if offset else None,
+        "position_lost": position_lost, "capture_falling": capture_falling,
+        "share_holds": holds, "token_captures": captures,
+        "rules": c,
+        "review_on": (last + datetime.timedelta(days=c["review_after_days"])).isoformat(),
+    }
+
+
 def tee_prediction_check(raw, table, p):
     """Grade a share prediction from the TEE run made for it, and compare with the build."""
     run = raw.get("tee_run_" + p["id"].lower())
@@ -841,7 +874,9 @@ def _verdict(ok):
 
 
 def compute(raw, fetched_at):
-    return _compute(raw, fetched_at)
+    out = _compute(raw, fetched_at)
+    out["call"] = investment_call(out)
+    return out
 
 
 def _compute(raw, fetched_at):
