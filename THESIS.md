@@ -12,7 +12,7 @@
 
 The long-term case for NEAR rests on NEAR Intents being a business with a durable position, not only a volume number. A durable position should be visible against competitors: a leading share, kept when it is tested, at a price rivals cannot undercut, with the fees reaching the token. This repository tests those things against the three other venues that swap native assets across chains: THORChain, Chainflip, Maya Protocol.
 
-**Result: 13 claims tested: 8 supported, 5 refuted.** The competitive position is supported by the data; the value reaching the token is not.
+**Result: 14 claims tested: 9 supported, 5 refuted.** The competitive position is supported by the data; the value reaching the token is not.
 
 ## Definitions
 
@@ -43,6 +43,7 @@ Thresholds are in `pipeline/config.py`. A verdict is one number compared with on
 | C11 | Intents is also the largest venue when the four big bridges are added to the peer set. | rank 3 of 8 | rank 1 | **REFUTED** |
 | C12 | The captured-revenue figure used here matches the transfers into NEAR's three revenue wallets within 5%. | 1.5% apart | within 5% | **SUPPORTED** |
 | C13 | The reported Intents volume counts both sides of each swap, like the rivals' figures: on every day rebuilt from intents.near events it sits inside the both-sides interval and outside the one-side interval. | 2 of 2 days | 2 of 2 | **SUPPORTED** |
+| C14 | The headline share, recomputed from the public sources by our code inside an attested OutLayer TEE on NEAR mainnet, matches this build within 0.1 point. | 0.00 pt apart | within 0.1 pt | **SUPPORTED** |
 
 ## Evidence for
 
@@ -116,6 +117,8 @@ This cuts against the obvious story. If shared routers had moved the halted riva
 Venues do not count volume the same way. THORChain: 100% of its reported volume is matched pairs of legs into and out of its own token, so counting each swap once leaves 50%; Chainflip: its reported volume equals input value plus the routed USDC leg (99.6% of the indexer's two-leg sum), so counting each swap once leaves 57%; Maya Protocol: 99% of its reported volume is matched pairs of legs into and out of its own token, so counting each swap once leaves 50% (from each venue's own indexer). For NEAR Intents, DefiLlama reads it from NEAR's own Dune table dune.near.dataset_near_intents_metrics (column volume_amount_usd). Two public re-computations from intents.near events disagree on what that figure counts: one finds public swaps counted once are 46% of it (92% counting both sides), the other finds it within about 1% of public net volume before confidential intents launched. This analysis cannot settle which is right, so this analysis rebuilt it itself (below). The bridges in the wider set are taken as one-sided, as their adapters report deposits.
 
 Rebuilt from intents.near itself: every transaction touching the contract on 2026-08-20 and 2026-08-27 was listed (93,116 and 83,785), a seeded random sample of 4,000 and 4,000 was read, and every DIP-4 token_diff event was valued at that day's price. The days are before confidential intents launched, so almost all flow is public. 2026-08-20: $115.04M both sides (90% interval $83.56M to $155.39M) against $136.22M reported; 2026-08-27: $118.59M both sides (90% interval $88.35M to $154.58M) against $133.22M reported. Counting one side would give only 43% of the reported figure. The reported figure counts both sides, like THORChain's, Maya's and Chainflip's, so comparing reported volumes compares like with like.
+
+The headline number was also recomputed inside a trusted execution environment. tee/share-check, a WASI program in this repository (SHA-256 7634f3997a76...), fetched DefiLlama's and Midgard's data by itself inside an Intel TDX enclave run by OutLayer, requested by transaction Aw6Vz41optzWmAEDvmzq7wk3YHypfhFt3pssrxPnDjk7 on NEAR mainnet (block 224,147,600). It returned an Intents share of 58.09% against 58.09% in this build, THORChain's one-side factor 0.5003 against 0.5003, and every venue's volume to the same $0.1M. The result was delivered on chain by worker.outlayer.near with a key scoped to outlayer.near; OutLayer's register contract adds such a key only after verifying a TDX quote against its allowlist of measurements. `python3 -m pipeline.tee_verify` repeats every check from public RPC.
 
 | Counting basis | Intents share, four venues | Largest | Intents share, all eight |
 | --- | --- | --- | --- |

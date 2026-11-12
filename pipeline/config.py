@@ -159,6 +159,7 @@ THRESHOLDS = {
     "top_channel": 0.33,         # C10: no single channel carries more than a third of 1Click volume
     "onchain_match": 0.05,       # C12: provider revenue within 5% of transfers into NEAR's wallets
     "events_both": 1.0,          # C13: the reported figure sits inside the both-sides interval
+    "tee_match": 0.001,          # C14: TEE share within 0.1 point of the build
     "absorbed": 0.33,            # C7: subject picked up over a third of a halted rival's flow
 }
 

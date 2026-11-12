@@ -85,6 +85,10 @@
    "path": "raw/revenue_thorchain-dex.json",
    "sha256": "d9cb9fef91e6c6053e897f17cc0b181aa36fc9f76f3c0c26be9153909898ff3a"
   },
+  "tee_run": {
+   "path": "raw/tee_run.json",
+   "sha256": "eab4471f05b10ed01ffc2a98a140f86963cd979ec3e3b1d358af19221ab55d5b"
+  },
   "volume_chainflip-amm": {
    "path": "raw/volume_chainflip-amm.json",
    "sha256": "205c774a46b0798071abb5dddfd0411aac812d3345f3a212be6658c0b3d861e4"

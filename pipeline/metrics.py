@@ -385,6 +385,33 @@ def shares_measured(basis, table, subject, names, window, subject_factor, wide_v
     return out
 
 
+def tee_check(raw, trailing, basis, window):
+    """Compare the TEE run's recomputation with this build's own numbers."""
+    tee = raw.get("tee_run")
+    if not tee or not tee.get("output"):
+        return None
+    out = tee["output"]
+    day = lambda ts: datetime.datetime.fromtimestamp(ts, datetime.timezone.utc).strftime("%Y-%m-%d")
+    same_window = [day(out["from_ts"]), day(out["to_ts"])] == list(window)
+    rows = []
+    for slug, musd in out["volume_musd"].items():
+        ours = trailing["volume"].get(slug)
+        rows.append({"slug": slug, "tee_musd": musd, "build_musd": round(ours / 1e6, 1) if ours else None})
+    once = {s: v["once_factor"] for s, v in ((basis or {}).get("venues") or {}).items()}
+    return {
+        "request_tx": tee["request_tx"], "resolve_tx": (tee.get("worker") or {}).get("resolve_tx"),
+        "sender": tee["sender"], "block_height": tee["block_height"], "request_id": tee["request_id"],
+        "wasm_sha256": tee["wasm_sha256"], "worker": (tee.get("worker") or {}).get("signer_id"),
+        "instructions": (tee.get("resources") or {}).get("instructions"),
+        "checks": tee["checks"], "same_window": same_window,
+        "share_tee": out["share_reported"], "share_build": trailing["share"][config.SUBJECT],
+        "share_diff": abs(out["share_reported"] - trailing["share"][config.SUBJECT]),
+        "once_thorchain_tee": out.get("once_thorchain"), "once_thorchain_build": once.get("thorchain-dex"),
+        "once_maya_tee": out.get("once_maya"), "once_maya_build": once.get("maya-protocol"),
+        "volumes": rows, "explorer": tee.get("explorer"),
+    }
+
+
 def events_check(raw, table, subject):
     """Days on which Intents volume was rebuilt from intents.near token_diff events."""
     idx = {d: i for i, d in enumerate(table["dates"])}
@@ -970,6 +997,18 @@ def _compute(raw, fetched_at):
                 "threshold": "%d of %d" % (len(events["days"]), len(events["days"]))},
             "verdict": _verdict(events["both_sides"]),
         })
+    tee = tee_check(raw, {"volume": vol, "share": share}, basis, [start_date, end_date])
+    if tee:
+        ok = all(tee["checks"].values()) and tee["same_window"] and tee["share_diff"] <= t["tee_match"]
+        claims.append({
+            "id": "C14",
+            "claim": "The headline share, recomputed from the public sources by our code inside an "
+                     "attested OutLayer TEE on NEAR mainnet, matches this build within 0.1 point.",
+            "value": tee["share_diff"], "unit": "share", "threshold": t["tee_match"],
+            "display": {"value": "%.2f pt apart" % (100 * tee["share_diff"]),
+                        "threshold": "within %.1f pt" % (100 * t["tee_match"])},
+            "verdict": _verdict(ok),
+        })
     oc = onchain_check(raw, table, subject, [start_date, end_date])
     if oc and oc["ratio"]:
         claims.append({
@@ -1039,6 +1078,7 @@ def _compute(raw, fetched_at):
         "channels": channels,
         "basis": basis,
         "events": events,
+        "tee": tee,
         "onchain": oc,
         "wide": wide,
         "crosscheck": crosscheck(raw, table, config.MIDGARD_SLUG),

@@ -218,6 +218,22 @@ class Events(unittest.TestCase):
         self.assertFalse(metrics.events_check(raw, table, config.SUBJECT)["both_sides"])
 
 
+class Tee(unittest.TestCase):
+    def test_tee_output_is_compared_with_the_build(self):
+        trailing = {"volume": {"near-intents": 60e6, "thorchain-dex": 40e6}, "share": {"near-intents": 0.6}}
+        basis = {"venues": {"thorchain-dex": {"once_factor": 0.5}}}
+        raw = {"tee_run": {"request_tx": "x", "sender": "a.near", "block_height": 1, "request_id": 7,
+                           "wasm_sha256": "ab" * 32, "resources": {"instructions": 5},
+                           "checks": {"code_hash_is_our_build": True}, "worker": {"signer_id": "w.near"},
+                           "output": {"from_ts": 1786579200, "to_ts": 1794268800, "share_reported": 0.6004,
+                                      "once_thorchain": 0.5, "once_maya": 1.0,
+                                      "volume_musd": {"near-intents": 60.0, "thorchain-dex": 40.0}}}}
+        t = metrics.tee_check(raw, trailing, basis, ["2026-08-13", "2026-11-10"])
+        self.assertTrue(t["same_window"])
+        self.assertAlmostEqual(t["share_diff"], 0.0004)
+        self.assertEqual([r["build_musd"] for r in t["volumes"]], [60.0, 40.0])
+
+
 class Table(unittest.TestCase):
     def test_fetch_day_is_excluded(self):
         vols = {p["slug"]: [10.0] * 10 for p in config.PEERS}

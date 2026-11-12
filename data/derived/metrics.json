@@ -531,6 +531,18 @@
    "unit": "count",
    "value": 2,
    "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "The headline share, recomputed from the public sources by our code inside an attested OutLayer TEE on NEAR mainnet, matches this build within 0.1 point.",
+   "display": {
+    "threshold": "within 0.1 pt",
+    "value": "0.00 pt apart"
+   },
+   "id": "C14",
+   "threshold": 0.001,
+   "unit": "share",
+   "value": 9.299083669422892e-06,
+   "verdict": "SUPPORTED"
   }
  ],
  "co_movement": {
@@ -1780,6 +1792,53 @@
    "to": "2026-11-02"
   }
  ],
+ "tee": {
+  "block_height": 224147600,
+  "checks": {
+   "code_hash_is_our_build": true,
+   "completed": true,
+   "delivered_by_scoped_worker_key": true,
+   "input_is_ours": true
+  },
+  "explorer": "https://nearblocks.io/txns/Aw6Vz41optzWmAEDvmzq7wk3YHypfhFt3pssrxPnDjk7",
+  "instructions": 361269283,
+  "once_maya_build": 0.5033367336444565,
+  "once_maya_tee": 0.5033,
+  "once_thorchain_build": 0.5002812780075807,
+  "once_thorchain_tee": 0.5003,
+  "request_id": 2991,
+  "request_tx": "Aw6Vz41optzWmAEDvmzq7wk3YHypfhFt3pssrxPnDjk7",
+  "resolve_tx": "vbH6GN2ifHSBNk7GM5CogXmmLFpTfW9QhRdrXDuj7fc",
+  "same_window": true,
+  "sender": "noctrl.near",
+  "share_build": 0.5808907009163305,
+  "share_diff": 9.299083669422892e-06,
+  "share_tee": 0.5809,
+  "volumes": [
+   {
+    "build_musd": 1944.1,
+    "slug": "chainflip-amm",
+    "tee_musd": 1944.1
+   },
+   {
+    "build_musd": 579.2,
+    "slug": "maya-protocol",
+    "tee_musd": 579.2
+   },
+   {
+    "build_musd": 12101.2,
+    "slug": "near-intents",
+    "tee_musd": 12101.2
+   },
+   {
+    "build_musd": 6207.6,
+    "slug": "thorchain-dex",
+    "tee_musd": 6207.6
+   }
+  ],
+  "wasm_sha256": "7634f3997a76a5ff6c930374c81d33baaa3f06cbece6e8fae9ab0217e4fdaf0d",
+  "worker": "worker.outlayer.near"
+ },
  "trailing": {
   "capture": 0.2706981404409915,
   "fees": {

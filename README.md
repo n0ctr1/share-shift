@@ -40,7 +40,7 @@ The sixth uses the NEAR Intents Explorer API: 1Click swaps grouped by
 distribution channel and by the account that receives the app fee
 (`metrics.channel_report`).
 
-Thirteen claims are tested against fixed thresholds. The current result is in
+Fourteen claims are tested against fixed thresholds. The current result is in
 `THESIS.md`; it includes the claims that fail.
 
 ## How NEAR fits in
@@ -56,11 +56,11 @@ Needs Python 3.9 or newer. No packages to install. No key needed for steps 1 to 
 
 | Step | Do | See |
 | --- | --- | --- |
-| 1 | `python3 -m unittest discover -s tests` | `Ran 23 tests` and `OK` |
-| 2 | `python3 build.py --offline` | Thirteen lines `C1` to `C13`, each `SUPPORTED` or `REFUTED`, then `wrote THESIS.md, docs/index.html, data/derived/metrics.json` |
+| 1 | `python3 -m unittest discover -s tests` | `Ran 24 tests` and `OK` |
+| 2 | `python3 build.py --offline` | Fourteen lines `C1` to `C14`, each `SUPPORTED` or `REFUTED`, then `wrote THESIS.md, docs/index.html, data/derived/metrics.json` |
 | 3 | `git status --short` | Nothing: the offline build reproduces the committed files byte for byte |
-| 4 | `python3 build.py` | The same thirteen lines computed on today's data; `git diff THESIS.md` shows which numbers moved |
-| 5 | Open `docs/index.html` in a browser | Six tiles, a table of thirteen claims with verdicts, tables for the halt and for channels, six charts with the halt shaded; hovering a chart shows every series' value for that week or month |
+| 4 | `python3 build.py` | The same fourteen lines computed on today's data; `git diff THESIS.md` shows which numbers moved |
+| 5 | Open `docs/index.html` in a browser | Six tiles, a table of fourteen claims with verdicts, tables for the halt and for channels, six charts with the halt shaded; hovering a chart shows every series' value for that week or month |
 | 6 | Change `WINDOW = 90` to `WINDOW = 30` in `pipeline/config.py`, then run step 2 | Every figure in `THESIS.md` is recomputed for a 30-day window |
 | 7 | Optional. Put `INTENTS_EXPLORER_JWT=...` in `.env`, then `python3 -m pipeline.explorer --from 2026-04-09 --to 2026-11-10` | `page 5, reached ...` lines, then `wrote data/raw/explorer_daily.json`. About three hours: the API allows one request per five seconds. An interrupted run resumes. Then run `python3 build.py` so the manifest picks up the new file |
 
@@ -75,6 +75,27 @@ Step 2 uses the snapshot in `data/raw/`, whose hashes are checked against
 
 Steps 7 to 10 are not needed to reproduce the thesis: the Explorer aggregates are
 committed. The Explorer key is free from https://partners.near-intents.org.
+
+## Checking the TEE run
+
+The headline share was recomputed inside an Intel TDX enclave by OutLayer, from
+a NEAR mainnet transaction. `tee/share-check` is the program; its input is
+`tee/share-check/input.json`; the run is recorded in `data/raw/tee_run.json`.
+
+| Step | Do | See |
+| --- | --- | --- |
+| 1 | `cd tee/share-check && cargo build --target wasm32-wasip2 --release` | `target/wasm32-wasip2/release/share-check.wasm`; `sha256sum` gives the hash in `data/raw/tee_run.json` if your toolchain matches (Rust 1.99.1) |
+| 2 | `python3 -m pipeline.tee_verify --tx Aw6Vz41optzWmAEDvmzq7wk3YHypfhFt3pssrxPnDjk7 --sender noctrl.near` | four `PASS` lines: code hash is the build, input is ours, completed, delivered by a key scoped to `outlayer.near` on `worker.outlayer.near` |
+| 3 | Open the request on https://nearblocks.io/txns/Aw6Vz41optzWmAEDvmzq7wk3YHypfhFt3pssrxPnDjk7 | the `execution_completed` event and the returned JSON |
+
+An earlier request from the same account (`9Nb8MpaWCCBwHxc6DHFqJBTi919eupKnagGSVHH5MtqU`)
+ran the same code with an empty input, because the CLI read the JSON argument as
+a project name; it returned zeros and is not used.
+
+What this proves and what it does not: OutLayer's register contract adds a worker
+key only after checking an Intel TDX quote against an allowlist of measurements,
+and only such a key can deliver results. This repository does not re-verify the
+TDX quote itself; it checks the key on chain.
 
 ## Checking the predictions were not edited
 
@@ -126,6 +147,7 @@ under the chart.
 | intents.near transactions and event logs | FastNear `tx.main.fastnear.com/v0/account`, `/v0/transactions` | no |
 | Token decimals and CoinGecko ids; historical prices | `1click.chaindefuser.com/v0/tokens`; `coins.llama.fi/prices/historical` | no |
 | Chainflip swaps with routed legs | `explorer-service-processor.chainflip.io/graphql` | no |
+| TEE run: request, result, worker key | NEAR archival RPC (`EXPERIMENTAL_tx_status`, `view_access_key`), FastNear transactions API | no |
 | Token market caps | `api.coingecko.com/api/v3/simple/price` | no |
 | 1Click swaps by channel and fee recipient | `explorer.near-intents.org/api/v0/transactions` | yes, free |
 

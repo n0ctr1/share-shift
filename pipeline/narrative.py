@@ -310,6 +310,23 @@ def findings(m):
                " and ".join("{:,}".format(d["sampled"]) for d in ev["days"]),
                "; ".join(parts), pct(ev["one_ratio_mean"]))
         )
+    tee = m.get("tee")
+    if tee:
+        out["tee"] = (
+            "The headline number was also recomputed inside a trusted execution environment. "
+            "tee/share-check, a WASI program in this repository (SHA-256 %s...), fetched "
+            "DefiLlama's and Midgard's data by itself inside an Intel TDX enclave run by "
+            "OutLayer, requested by transaction %s on NEAR mainnet (block %s). It returned an "
+            "Intents share of %s against %s in this build, THORChain's one-side factor %s "
+            "against %s, and every venue's volume to the same $0.1M. The result was delivered "
+            "on chain by %s with a key scoped to outlayer.near; OutLayer's register contract "
+            "adds such a key only after verifying a TDX quote against its allowlist of "
+            "measurements. `python3 -m pipeline.tee_verify` repeats every check from public RPC."
+            % (tee["wasm_sha256"][:12], tee["request_tx"], "{:,}".format(tee["block_height"]),
+               pct(tee["share_tee"], 2), pct(tee["share_build"], 2),
+               "%.4f" % tee["once_thorchain_tee"], "%.4f" % (tee["once_thorchain_build"] or 0),
+               tee["worker"])
+        )
     if h:
         p365 = next((x for x in h["placebo"] if x["lookback_days"] == 365), None)
         absorbed = (h.get("absorbed_by_basis") or {}).get("one_side", h["absorbed_fraction"])
@@ -576,6 +593,9 @@ def thesis_markdown(m, text):
         add("")
         if "events" in text:
             add(text["events"])
+            add("")
+        if "tee" in text:
+            add(text["tee"])
             add("")
         add("| Counting basis | Intents share, four venues | Largest | Intents share, all eight |")
         add("| --- | --- | --- | --- |")
