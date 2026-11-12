@@ -66,7 +66,7 @@ Needs Python 3.9 or newer. No packages to install. No key needed for steps 1 to 
 
 | Step | Do | See |
 | --- | --- | --- |
-| 1 | `python3 -m unittest discover -s tests` | `Ran 28 tests` and `OK` |
+| 1 | `python3 -m unittest discover -s tests` | `Ran 29 tests` and `OK` |
 | 2 | `python3 build.py --offline` | Fourteen lines `C1` to `C14`, each `SUPPORTED` or `REFUTED`, then `wrote THESIS.md, docs/index.html, data/derived/metrics.json` |
 | 3 | `git status --short` | Nothing: the offline build reproduces the committed files byte for byte |
 | 4 | `python3 build.py` | The same fourteen lines computed on today's data; `git diff THESIS.md` shows which numbers moved |
@@ -102,6 +102,20 @@ checking the run needs no Rust toolchain.
 | 3 | Open the request on https://nearblocks.io/txns/Aw6Vz41optzWmAEDvmzq7wk3YHypfhFt3pssrxPnDjk7 | the `execution_completed` event and the returned JSON |
 | 4 | Optional. `sh tee/share-check/rebuild.sh` | `IDENTICAL`: the source rebuilds to the same bytes. Needs rustup (the toolchain is pinned to 1.99.1 in `rust-toolchain.toml`) and a host C linker |
 
+The same WASM grades prediction P4 a second time, on its own two days. Once
+DefiLlama shows a complete 2026-11-12 for all four venues, the run is:
+
+```
+outlayer run --wasm "https://main.fastfs.io/noctrl.near/outlayer.near/7634f3997a76a5ff6c930374c81d33baaa3f06cbece6e8fae9ab0217e4fdaf0d.wasm" --hash 7634f3997a76a5ff6c930374c81d33baaa3f06cbece6e8fae9ab0217e4fdaf0d --compute-limit 2000000000 --input tee/share-check/input-p4.json --verbose
+```
+
+then `python3 -m pipeline.tee_verify --tx <hash> --sender <account> --record --run p4`
+writes `data/raw/tee_run_p4.json`, and `python3 build.py` grades P4 from it as
+well. The build counts that run only if it covers 2026-11-11 and 2026-11-12, ran
+after the second day ended and passes the chain checks; it then shows whether
+the enclave's per-venue volumes and verdict match its own. `python3 -m
+pipeline.tee_verify` checks every recorded run.
+
 An earlier request from the same account (`9Nb8MpaWCCBwHxc6DHFqJBTi919eupKnagGSVHH5MtqU`)
 ran the same code with an empty input, because the CLI read the JSON argument as
 a project name; it returned zeros and is not used.
@@ -123,8 +137,8 @@ evidence for the thesis.
 | 2 | `git show predictions-v1:predictions/predictions.json \| sha256sum` | the same hash, from the tagged commit |
 | 3 | `python3 -m pipeline.ots` | `bitcoin block 975496 ... merkle root matches` (three lines, one per calendar), then `predictions.json existed by Bitcoin block 975496 (unix time 1794442654)`, 2026-11-12 00:17 UTC. Standard library only; block headers come from Blockstream's public API. The official client gives the same result: `pip install opentimestamps-client`, then `ots verify predictions/predictions.json.ots` |
 | 4 | `python3 -m pipeline.seal --check` | `sealed predictions match config` |
-| 6 | `python3 -m pipeline.ots --file predictions/predictions-v2.json` and `python3 -m pipeline.seal --check` | the second seal (claim thresholds and P4, P5, sealed 2026-11-12); its Bitcoin attestation completes a few hours after sealing |
 | 5 | `python3 -m pipeline.anchor --account noctrl.near --verify` | `anchored on NEAR: noctrl.near/share_shift/predictions_sha256 = 5415cf8f...` read from `social.near` over public RPC; written by transaction `F75hY9zdcipcUSrgXPjLx7mAw2Rzer4vAgA9VLo8MmhE` |
+| 6 | `python3 -m pipeline.ots --file predictions/predictions-v2.json` and `python3 -m pipeline.seal --check` | `predictions-v2.json existed by Bitcoin block 975532 (unix time 1794471987)`, 2026-11-12 08:26 UTC: the second seal (claim thresholds and P4, P5). The first of P4 and P5's two days, 11 November, had ended by then; the second had not. The second seal is not written on NEAR |
 
 ## How a number gets into the thesis
 
@@ -207,8 +221,10 @@ swap.
   source, in `CHANNEL_NOTES`).
 - Claim thresholds were chosen after a first look at the data and are not
   pre-registered. They are sealed as they stand (second seal, 2026-11-12), so a
-  later change is visible, and two short predictions (P4, P5) resolve on days
-  after the data was seen, before the hackathon deadline.
+  later change is visible, and two short predictions (P4, P5) resolve on the two
+  days after the data was seen, before the hackathon deadline. The seal's
+  Bitcoin timestamp came after the first of those days had ended, so only the
+  second is a day that had not yet happened.
 
 ## Disclosure
 

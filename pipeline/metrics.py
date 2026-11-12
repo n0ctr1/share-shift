@@ -492,6 +492,38 @@ def tee_check(raw, trailing, basis, window):
     }
 
 
+def tee_prediction_check(raw, table, p):
+    """Grade a share prediction from the TEE run made for it, and compare with the build."""
+    run = raw.get("tee_run_" + p["id"].lower())
+    if not run or not run.get("output"):
+        return None
+    out = run["output"]
+    day = lambda ts: datetime.datetime.fromtimestamp(ts, datetime.timezone.utc).strftime("%Y-%m-%d")
+    days = [day(out["from_ts"]), day(out["to_ts"])]
+    due = datetime.date.fromisoformat(p["due"])
+    want = [(due - datetime.timedelta(days=p["window_days"] - 1)).isoformat(), p["due"]]
+    idx = {d: i for i, d in enumerate(table["dates"])}
+    venues = []
+    for slug, musd in out["volume_musd"].items():
+        build = (sum(table[slug]["volume"][idx[want[0]]:idx[want[1]] + 1]) / 1e6
+                 if want[1] in idx and slug in table else None)
+        venues.append({"slug": slug, "tee_musd": musd,
+                       "build_musd": round(build, 1) if build is not None else None,
+                       "agrees": build is not None and abs(build - musd) <= max(0.15, 0.01 * build)})
+    run_time = int(run["block_time_ns"]) / 1e9
+    share = out["share_reported"]
+    return {
+        "request_tx": run["request_tx"], "explorer": run.get("explorer"),
+        "block_height": run["block_height"],
+        "run_time_utc": datetime.datetime.fromtimestamp(run_time, datetime.timezone.utc).strftime("%Y-%m-%d %H:%M"),
+        "days": days, "right_days": days == want,
+        "after_due_day": run_time >= out["to_ts"] + 86400,
+        "checks_pass": all((run.get("checks") or {}).values()),
+        "venues": venues, "volumes_agree": all(v["agrees"] for v in venues),
+        "share": share, "status": "MET" if share >= p["value"] else "MISSED",
+    }
+
+
 def events_check(raw, table, subject):
     """Days on which Intents volume was rebuilt from intents.near token_diff events."""
     idx = {d: i for i, d in enumerate(table["dates"])}
@@ -1236,7 +1268,14 @@ def _compute(raw, fetched_at):
             status = "PENDING"
         else:
             status = "MET" if value >= p["value"] else "MISSED"
-        predictions.append({**p, "seal": "v2", "current": value, "status": status})
+        entry = {**p, "seal": "v2", "current": value, "status": status}
+        if p["metric"] == "share_window":
+            tp = tee_prediction_check(raw, table, p)
+            if tp:
+                tp["valid"] = tp["right_days"] and tp["after_due_day"] and tp["checks_pass"]
+                tp["agrees_with_build"] = tp["valid"] and tp["volumes_agree"] and tp["status"] == status
+                entry["tee"] = tp
+        predictions.append(entry)
 
     claims.sort(key=lambda c: int(c["id"][1:]))
     return {

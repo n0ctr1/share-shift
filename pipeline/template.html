@@ -687,8 +687,9 @@ footer p { margin: 0 0 6px; }
     seal.appendChild(el('a', {href: M.meta.near_anchor.explorer, rel: 'noopener'}, 'this transaction'));
     seal.appendChild(document.createTextNode(' (' + M.meta.near_anchor.key + ' on ' + M.meta.near_anchor.contract + ')'));
   }
-  seal.appendChild(document.createTextNode('. The build stops if the predictions change.'));
+  seal.appendChild(document.createTextNode('. P4 and P5 are in a second seal, timestamped on Bitcoin but not written on NEAR. The build stops if either seal changes.'));
   s.appendChild(seal);
+  if (T.tee_prediction) s.appendChild(prose([T.tee_prediction]));
 
   // ---------- 7b. checks ----------
   s = section('checks', 'How to check', 'Reproducibility', 'How every part of this can be checked');
@@ -696,7 +697,7 @@ footer p { margin: 0 0 6px; }
   [['Every number', 'python3 build.py --offline rebuilds THESIS.md and this page from the committed snapshot, byte for byte; python3 build.py refetches.'],
    ['The data', 'THORChain, Maya and Chainflip volume against their own indexers; Intents volume against intents.near events, sampled and on every day from NEAR’s public BigQuery dataset; captured revenue against the revenue wallets; NEAR supply against block headers; L1 activity in two indexers.'],
    ['The computation', T.tee ? T.tee + ' ' + T.tee_scope : null],
-   ['The predictions', 'Sealed by SHA-256, timestamped on Bitcoin through OpenTimestamps, tagged in git and written on NEAR mainnet; the build stops if they change.']]
+   ['The predictions', 'Sealed by SHA-256 and timestamped on Bitcoin through OpenTimestamps; the first seal is also tagged in git and written on NEAR mainnet. The build stops if either seal changes.']]
     .forEach(function (r) { if (!r[1]) return; var li = el('li'); li.appendChild(el('b', {}, r[0] + '. ')); li.appendChild(document.createTextNode(r[1])); ul2.appendChild(li); });
   s.appendChild(ul2);
 

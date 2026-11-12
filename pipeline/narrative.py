@@ -358,6 +358,9 @@ def findings(m):
                usd(last["transfer_usd"]), last["day"], pct(bq["token_diff_over_reported"]),
                pct(1 - bq["token_diff_over_reported"]))
         )
+    for p in m.get("predictions") or []:
+        if p["seal"] == "v2" and p["metric"] == "share_window":
+            out["tee_prediction"] = tee_prediction_text(p)
     tk = m.get("token")
     if tk:
         out["token"] = (
@@ -762,13 +765,17 @@ def thesis_markdown(m, text):
     if m["meta"].get("seal_v2_sha256"):
         sv = m["meta"]["seal_v2"]
         add("")
+        btc = config.SEAL_V2_BITCOIN
         add("A second seal, made on %s with data seen only through %s, fixes the claim "
-            "thresholds as they stand and adds P4 and P5, which resolve on days nobody had seen "
-            "and are graded by the build before the hackathon deadline: "
-            "`predictions/predictions-v2.json`, SHA-256 `%s`, with its own OpenTimestamps proof. "
+            "thresholds as they stand and adds P4 and P5 on the two days after that data, graded "
+            "by the build before the hackathon deadline: `predictions/predictions-v2.json`, "
+            "SHA-256 `%s`, timestamped in Bitcoin block %s (%s UTC). That timestamp came after "
+            "the first of the two days had ended, when its data may already have been public; "
+            "the seal cannot show it was not looked at. The second day had not yet happened. "
             "This does not make the thresholds pre-registered: they were set after a first look. "
-            "It makes any later change to them visible, and P4 and P5 test the thesis on new days."
-            % (sv["sealed_on"], sv["data_seen_through"], m["meta"]["seal_v2_sha256"]))
+            "It makes any later change to them visible."
+            % (sv["sealed_on"], sv["data_seen_through"], m["meta"]["seal_v2_sha256"],
+               "{:,}".format(btc["block"]), btc["time_utc"]))
     anchor = m["meta"].get("near_anchor")
     if anchor:
         add("")
@@ -784,6 +791,9 @@ def thesis_markdown(m, text):
         add("| %s | %s | %s | %s | %s |" % (p["id"], p["due"], p["text"],
                                            fmt_value(p["current"], unit), p["status"]))
     add("")
+    if "tee_prediction" in text:
+        add(text["tee_prediction"])
+        add("")
     add("It would be refuted outright by: a trailing 90-day share below 40%, a take rate pushed "
         "below the rival median, or a capture ratio that stops rising.")
     add("")
@@ -798,8 +808,8 @@ def thesis_markdown(m, text):
         "listed in the README.")
     if "tee" in text:
         add("- **The computation:** %s %s" % (text["tee"], text["tee_scope"]))
-    add("- **The predictions:** sealed by hash, timestamped on Bitcoin and written on NEAR "
-        "mainnet; see the predictions section.")
+    add("- **The predictions:** sealed by hash and timestamped on Bitcoin; the first seal is "
+        "also written on NEAR mainnet. See the predictions section.")
     add("")
     add("## What this analysis cannot say")
     add("")
@@ -822,3 +832,30 @@ def thesis_markdown(m, text):
                "Cause: the halt above." if flag.get("cause") else "Cause not found."))
     add("")
     return "\n".join(lines)
+
+
+def tee_prediction_text(p):
+    """How a share prediction is (or will be) graded a second time, inside the TEE."""
+    tp = p.get("tee")
+    if not tp:
+        return ("%s is also graded a second time, inside the TEE: the same committed WASM, run "
+                "through OutLayer after %s has ended, on tee/share-check/input-p4.json (%s to %s). "
+                "That run is not made yet." % (p["id"], p["due"],
+                                               (datetime.date.fromisoformat(p["due"])
+                                                - datetime.timedelta(days=p["window_days"] - 1)).isoformat(),
+                                               p["due"]))
+    if not tp["valid"]:
+        return ("A TEE run for %s (%s) is recorded but does not count: %s."
+                % (p["id"], tp["request_tx"], "; ".join(why for ok, why in [
+                    (tp["right_days"], "it covers other days"),
+                    (tp["after_due_day"], "it ran before the due day ended"),
+                    (tp["checks_pass"], "a chain check failed")] if not ok)))
+    return ("%s was also graded inside the TEE, by the same committed WASM: NEAR mainnet "
+            "transaction %s at %s UTC, after the due day ended, returned a share of %s, so %s. "
+            "%s"
+            % (p["id"], tp["request_tx"], tp["run_time_utc"], pct(tp["share"], 2), tp["status"],
+               "Its volume for each venue matches this build's to $0.1M, and so does the verdict."
+               if tp["agrees_with_build"] else
+               "It does not match this build (%s), so the build's grade and the TEE's are both "
+               "shown." % ", ".join("%s %.1f against %s" % (v["slug"], v["tee_musd"], v["build_musd"])
+                                     for v in tp["venues"] if not v["agrees"])))

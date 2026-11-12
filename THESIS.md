@@ -174,7 +174,7 @@ The thesis gets stronger if the dated predictions below hold, and weaker if they
 
 The predictions are sealed. `predictions/predictions.json` holds them as written; its SHA-256 is `5415cf8f10704e6bfd688cd453143339258f0907ded84c0e87ddc61faeb46389`. That hash is timestamped on Bitcoin through OpenTimestamps (`predictions/predictions.json.ots`) and the commit is tagged `predictions-v1`. `python3 build.py` stops if `pipeline/config.py` no longer matches the sealed file.
 
-A second seal, made on 2026-11-12 with data seen only through 2026-11-10, fixes the claim thresholds as they stand and adds P4 and P5, which resolve on days nobody had seen and are graded by the build before the hackathon deadline: `predictions/predictions-v2.json`, SHA-256 `4e9e2e5b883c27a959ba47feca6a62ad5003eab235cf63218ad5a9fce723cb35`, with its own OpenTimestamps proof. This does not make the thresholds pre-registered: they were set after a first look. It makes any later change to them visible, and P4 and P5 test the thesis on new days.
+A second seal, made on 2026-11-12 with data seen only through 2026-11-10, fixes the claim thresholds as they stand and adds P4 and P5 on the two days after that data, graded by the build before the hackathon deadline: `predictions/predictions-v2.json`, SHA-256 `4e9e2e5b883c27a959ba47feca6a62ad5003eab235cf63218ad5a9fce723cb35`, timestamped in Bitcoin block 975,532 (2026-11-12 08:26 UTC). That timestamp came after the first of the two days had ended, when its data may already have been public; the seal cannot show it was not looked at. The second day had not yet happened. This does not make the thresholds pre-registered: they were set after a first look. It makes any later change to them visible.
 
 The same hash is written on NEAR mainnet at `noctrl.near/share_shift/predictions_sha256` on `social.near`, by transaction `F75hY9zdcipcUSrgXPjLx7mAw2Rzer4vAgA9VLo8MmhE` (block 224,148,508, 2026-11-12T02:02:04Z). `python3 -m pipeline.anchor --account noctrl.near --verify` reads it back from public RPC.
 
@@ -186,6 +186,8 @@ The same hash is written on NEAR mainnet at `noctrl.near/share_shift/predictions
 | P4 | 2026-11-12 | NEAR Intents holds at least 40% of the four swap venues' volume over 2026-11-11 and 2026-11-12, days after the data this thesis was built on. | n/a | PENDING |
 | P5 | 2026-11-12 | The Intents take rate stays at or above 12 bps over 2026-11-11 and 2026-11-12. | n/a | PENDING |
 
+P4 is also graded a second time, inside the TEE: the same committed WASM, run through OutLayer after 2026-11-12 has ended, on tee/share-check/input-p4.json (2026-11-11 to 2026-11-12). That run is not made yet.
+
 It would be refuted outright by: a trailing 90-day share below 40%, a take rate pushed below the rival median, or a capture ratio that stops rising.
 
 ## How this can be checked
@@ -193,7 +195,7 @@ It would be refuted outright by: a trailing 90-day share below 40%, a take rate 
 - **Every number:** `python3 build.py --offline` rebuilds this file and the dashboard from the committed snapshot, byte for byte; `python3 build.py` refetches.
 - **The data, against primary sources:** THORChain, Maya and Chainflip volume against their own indexers; Intents volume against intents.near's events (sampled days, and every day from NEAR's public BigQuery dataset); captured revenue against the revenue wallets; supply against block headers; L1 activity in two indexers. Scripts and outputs are listed in the README.
 - **The computation:** The headline share was also recomputed inside a trusted execution environment: tee/share-check (SHA-256 7634f3997a76...) fetched DefiLlama's and Midgard's data by itself inside an Intel TDX enclave run by OutLayer, requested by NEAR mainnet transaction Aw6Vz41optzWmAEDvmzq7wk3YHypfhFt3pssrxPnDjk7. It returned 58.09% against 58.09% in this build, and every venue's volume to the same $0.1M; the result was delivered on chain by worker.outlayer.near with a key that OutLayer's register contract adds only after checking a TDX quote against its allowlist. What that proves is narrow: the published program, unmodified, produced the published numbers from what those APIs served at that moment. It does not prove the APIs are right; the primary-source checks do that (each venue's own indexer, intents.near's events, the revenue wallets, block-header supply). This repository checks the worker's key on chain but does not re-verify the TDX quote itself.
-- **The predictions:** sealed by hash, timestamped on Bitcoin and written on NEAR mainnet; see the predictions section.
+- **The predictions:** sealed by hash and timestamped on Bitcoin; the first seal is also written on NEAR mainnet. See the predictions section.
 
 ## What this analysis cannot say
 

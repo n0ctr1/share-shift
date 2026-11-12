@@ -1,8 +1,12 @@
 """Verify an OutLayer TEE run of tee/share-check from the NEAR chain alone.
 
-    python3 -m pipeline.tee_verify                     check the recorded run
-    python3 -m pipeline.tee_verify --tx <hash> --sender <account> --record
+    python3 -m pipeline.tee_verify                     check every recorded run
+    python3 -m pipeline.tee_verify --tx <hash> --sender <account> --record [--run p4]
                                                        record a new run
+
+Two runs of the same WASM: "headline" (input.json, the thesis window, recorded
+in data/raw/tee_run.json) and "p4" (input-p4.json, 2026-11-11 and 2026-11-12,
+the days of sealed prediction P4, recorded in data/raw/tee_run_p4.json).
 
 No build is needed: the WASM that ran is committed as
 tee/share-check/dist/share-check.wasm. tee/share-check/rebuild.sh rebuilds it
@@ -32,8 +36,12 @@ import urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WASM = os.path.join(ROOT, "tee", "share-check", "dist", "share-check.wasm")
-INPUT = os.path.join(ROOT, "tee", "share-check", "input.json")
-OUT = os.path.join(ROOT, "data", "raw", "tee_run.json")
+RUNS = {
+    "headline": (os.path.join(ROOT, "tee", "share-check", "input.json"),
+                 os.path.join(ROOT, "data", "raw", "tee_run.json")),
+    "p4": (os.path.join(ROOT, "tee", "share-check", "input-p4.json"),
+           os.path.join(ROOT, "data", "raw", "tee_run_p4.json")),
+}
 RPC = "https://archival-rpc.mainnet.fastnear.com"
 TX_API = "https://tx.main.fastnear.com/v0"
 CONTRACT = "outlayer.near"
@@ -90,7 +98,8 @@ def find_resolve(request_id, from_height):
     return None
 
 
-def run(tx_hash, sender, record=False):
+def run(tx_hash, sender, record=False, which="headline"):
+    INPUT, OUT = RUNS[which]
     wasm_sha = hashlib.sha256(open(WASM, "rb").read()).hexdigest()
     expected_input = json.load(open(INPUT))
     status = rpc("EXPERIMENTAL_tx_status", {"tx_hash": tx_hash, "sender_account_id": sender,
@@ -135,6 +144,7 @@ def run(tx_hash, sender, record=False):
                                               and worker["key_receiver"] == CONTRACT),
     }
     out = {
+        "run": which,
         "request_tx": tx_hash,
         "sender": sender,
         "block_height": height,
@@ -173,11 +183,18 @@ if __name__ == "__main__":
     ap.add_argument("--tx")
     ap.add_argument("--sender")
     ap.add_argument("--record", action="store_true")
+    ap.add_argument("--run", choices=sorted(RUNS), default=None)
     a = ap.parse_args()
-    if not a.tx:
-        saved = json.load(open(OUT))
-        a.tx, a.sender = saved["request_tx"], saved["sender"]
     try:
-        sys.exit(0 if run(a.tx, a.sender, a.record) else 1)
+        if a.tx:
+            sys.exit(0 if run(a.tx, a.sender, a.record, a.run or "headline") else 1)
+        ok = True
+        for which in ([a.run] if a.run else sorted(RUNS)):
+            if not os.path.exists(RUNS[which][1]):
+                continue
+            saved = json.load(open(RUNS[which][1]))
+            print("== %s run, %s" % (which, saved["request_tx"]))
+            ok = run(saved["request_tx"], saved["sender"], False, which) and ok
+        sys.exit(0 if ok else 1)
     except RuntimeError as err:
         sys.exit("error: %s" % err)

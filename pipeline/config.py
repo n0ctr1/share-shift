@@ -204,8 +204,9 @@ PREDICTIONS = [
 
 # Second seal, 2026-11-12. The claim thresholds above were chosen after looking
 # at data through 2026-11-10; they are sealed here as they stand, with two
-# short predictions on days nobody had seen, so the build can grade them before
-# the hackathon deadline. Any later change to THRESHOLDS or to these
+# short predictions on 11 and 12 November, so the build can grade them before
+# the hackathon deadline. The seal's Bitcoin timestamp (below) came after 11
+# November had ended, so only 12 November is a day that had not yet happened. Any later change to THRESHOLDS or to these
 # predictions makes the build stop (predictions/predictions-v2.json).
 PREDICTIONS_V2 = [
     {
@@ -229,3 +230,6 @@ PREDICTIONS_V2 = [
     },
 ]
 SEAL_V2 = {"sealed_on": "2026-11-12", "data_seen_through": "2026-11-10"}
+# Where the second seal's OpenTimestamps proof lands; check with
+# `python3 -m pipeline.ots --file predictions/predictions-v2.json`. Not sealed.
+SEAL_V2_BITCOIN = {"block": 975532, "time_utc": "2026-11-12 08:26"}

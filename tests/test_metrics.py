@@ -280,6 +280,24 @@ class Tee(unittest.TestCase):
 
 
 class Token(unittest.TestCase):
+    def test_prediction_run_counts_only_on_its_days_after_they_end(self):
+        import datetime
+        vols = {p["slug"]: [100e6] * 10 for p in config.PEERS}
+        raw, dates = make_raw(10, vols)
+        ts = lambda d: int(datetime.datetime.fromisoformat(d).replace(tzinfo=datetime.timezone.utc).timestamp())
+        pred = {"id": "P4", "due": dates[5], "window_days": 2, "value": 0.40}
+        raw["tee_run_p4"] = {"request_tx": "t", "block_height": 1, "checks": {"a": True},
+                             "block_time_ns": str((ts(dates[5]) + 86400 + 3600) * 10 ** 9),
+                             "output": {"from_ts": ts(dates[4]), "to_ts": ts(dates[5]),
+                                        "share_reported": 0.25,
+                                        "volume_musd": {p["slug"]: 200.0 for p in config.PEERS}}}
+        table = metrics.build_table(raw, "2030-01-01T00:00:00Z")
+        tp = metrics.tee_prediction_check(raw, table, pred)
+        self.assertTrue(tp["right_days"] and tp["after_due_day"] and tp["volumes_agree"])
+        self.assertEqual(tp["status"], "MISSED")
+        raw["tee_run_p4"]["block_time_ns"] = str((ts(dates[5]) + 3600) * 10 ** 9)
+        self.assertFalse(metrics.tee_prediction_check(raw, table, pred)["after_due_day"])
+
     def test_buyback_is_compared_with_net_new_supply(self):
         raw = {"near_supply": {"points": [
                    {"day": "2025-08-13", "total_supply_near": 100.0},
