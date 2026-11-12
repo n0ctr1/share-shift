@@ -299,6 +299,18 @@ def findings(m):
             % (h["rival"], h["days"], 100 * h["subject_growth"], pct(absorbed), h["rival"],
                ordinal(round(100 * p365["percentile"])) if p365 else "n/a")
         )
+    oc = m.get("onchain")
+    if oc:
+        out["onchain"] = (
+            "Rebuilt from the chain: %s to %s, the three revenue wallets received %.0f NEAR "
+            "from outside themselves, worth %s at each day's price, against %s in the "
+            "provider's revenue series (%s). Of that inflow, %s landed directly in the "
+            "buyback wallet; the rest went to the two treasury funds first."
+            % (oc["window"][0], oc["window"][1], oc["onchain_near"], usd(oc["onchain_usd"]),
+               usd(oc["provider_usd"]),
+               "%.1f%% of it" % (100 * oc["ratio"]) if oc["ratio"] else "n/a",
+               pct(oc["buyback_share"]))
+        )
     ct = m["capture_trend"]
     if len(ct) >= 2:
         out["capture_trend"] = (
@@ -519,6 +531,10 @@ def thesis_markdown(m, text):
     add("")
     add("- **Most fees do not reach NEAR.** %s %s %s" % (
         text["capture"], text.get("capture_trend", ""), text.get("buyback", "")))
+    if "onchain" in text:
+        r = m["onchain"]["ratio"] or 0
+        add("- **%s** %s" % ("The revenue figure checks out on chain." if 0.9 <= r <= 1.1 else
+                             "The revenue figure does not match the chain.", text["onchain"]))
     add("- **The revenue is small next to the market cap.** %s" % text["valuation"])
     add("- **The rival is coming back.** %s" % text["recent"])
     if "wide" in text:

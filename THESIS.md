@@ -12,7 +12,7 @@
 
 The long-term case for NEAR rests on NEAR Intents being a business with a durable position, not only a volume number. A durable position should be visible against competitors: a leading share, kept when it is tested, at a price rivals cannot undercut, with the fees reaching the token. This repository tests those things against the three other venues that swap native assets across chains: THORChain, Chainflip, Maya Protocol.
 
-**Result: 11 claims tested: 6 supported, 5 refuted.** The competitive position is supported by the data; the value reaching the token is not.
+**Result: 12 claims tested: 7 supported, 5 refuted.** The competitive position is supported by the data; the value reaching the token is not.
 
 ## Definitions
 
@@ -41,6 +41,7 @@ Thresholds are in `pipeline/config.py`. A verdict is one number compared with on
 | C9 | The share of fees reaching NEAR rose in every one of the last 4 consecutive 90-day windows. | 3 of 3 rises | 3 of 3 | **SUPPORTED** |
 | C10 | No single distribution channel carries more than 33% of 1Click swap volume. | 37.8% | 33.0% | **REFUTED** |
 | C11 | Intents is also the largest venue when the four big bridges are added to the peer set. | rank 3 of 8 | rank 1 | **REFUTED** |
+| C12 | The captured-revenue figure used here matches the transfers into NEAR's three revenue wallets within 5%. | 1.5% apart | within 5% | **SUPPORTED** |
 
 ## Evidence for
 
@@ -100,6 +101,7 @@ This cuts against the obvious story. If shared routers had moved the halted riva
 ## Evidence against
 
 - **Most fees do not reach NEAR.** Of $18.76M in gross Intents fees over the window, $5.08M (27%) reached NEAR's revenue wallets; the rest stayed with solvers and the third-party front ends that distribute Intents. Over consecutive 90-day windows the share reaching NEAR was 8%, 12%, 20%, 27% (oldest first, the last ending 2026-11-10). DefiLlama's adapter note on that revenue: "Since 2026-02-23, NEAR's captured Intents revenue is used to buy back $NEAR on the open market (not burned), returning value to holders."
+- **The revenue figure checks out on chain.** Rebuilt from the chain: 2026-08-13 to 2026-11-10, the three revenue wallets received 1448846 NEAR from outside themselves, worth $5.00M at each day's price, against $5.08M in the provider's revenue series (98.5% of it). Of that inflow, 69% landed directly in the buyback wallet; the rest went to the two treasury funds first.
 - **The revenue is small next to the market cap.** Annualised, NEAR's captured Intents revenue is $20.59M. The market pays a median of 22x that kind of revenue for the three rivals' tokens; at that multiple the revenue backs $452.72M, or 9.6% of NEAR's $4.72B market cap.
 - **The rival is coming back.** In the last 30 days Intents volume changed by -21% against the 30 days before, while THORChain changed by +32%; every rival grew. THORChain suspended swaps again on 2026-10-31 and restored most routes around 2026-11-04 (https://www.crowdfundinsider.com/2026/11/321170-thorchain-brings-bitcoin-and-ethereum-swaps-back-online-lifting-rune-15/); 5 of its 10 largest days in the window came on or after 2026-11-04.
 - **In the wider market it is third.** Add the four large bridges and the picture changes: of $68.10B moved by all eight venues in the window, Intents carried 18%, third after Relay (35%) and Across (30%). By gross fees it ranks 2nd. Across moved $20.64B for $291.01K in fees, 0.1 bps; Intents earned $18.76M on $12.10B, 15.5 bps. Its weekly share of this wider set peaked at 43% in the week of 2025-11-17. A year earlier Intents had 15% of this wider set (Relay has no data for the start of that window, so the earlier share is slightly overstated).

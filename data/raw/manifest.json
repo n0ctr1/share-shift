@@ -53,6 +53,10 @@
    "path": "raw/mcap.json",
    "sha256": "c8d029db33910d2d3e9827eb931377d1050489f064934a44596271708deeb181"
   },
+  "onchain_revenue": {
+   "path": "raw/onchain_revenue.json",
+   "sha256": "de73b3d269c1091debfb104ad8b48e8520f935f8e1f156e26ef83dc0c0864303"
+  },
   "revenue_chainflip-amm": {
    "path": "raw/revenue_chainflip-amm.json",
    "sha256": "d0c09c15be5acb9211449edc8aca7393640e16bffac0dddbf7b1fcc8bdb06856"

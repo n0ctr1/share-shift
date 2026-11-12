@@ -180,6 +180,22 @@ class CountingBasis(unittest.TestCase):
         self.assertAlmostEqual(sc["best"], 100.0 / 350.0)
 
 
+class Onchain(unittest.TestCase):
+    def test_inflows_are_priced_daily_and_compared(self):
+        vols = {p["slug"]: [100.0] * 10 for p in config.PEERS}
+        raw, dates = make_raw(10, vols, revenue={config.SUBJECT: [10.0] * 10})
+        raw["onchain_revenue"] = {
+            "range": [dates[0], dates[-1]], "wallets": ["a.near", "b.near"], "buyback_wallet": "b.near",
+            "source": "test", "near_price_usd": {d: 2.0 for d in dates},
+            "days": {d: {"a.near": {"near": 3.0, "wnear": 0.0}, "b.near": {"near": 1.0, "wnear": 1.0}}
+                     for d in dates}}
+        table = metrics.build_table(raw, "2030-01-01T00:00:00Z")
+        oc = metrics.onchain_check(raw, table, config.SUBJECT, [dates[0], dates[-1]])
+        self.assertAlmostEqual(oc["onchain_usd"], 100.0)     # (3 + 1 + 1) NEAR * $2 * 10 days
+        self.assertAlmostEqual(oc["ratio"], 1.0)
+        self.assertAlmostEqual(oc["buyback_share"], 0.4)
+
+
 class Table(unittest.TestCase):
     def test_fetch_day_is_excluded(self):
         vols = {p["slug"]: [10.0] * 10 for p in config.PEERS}

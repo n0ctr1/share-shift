@@ -1,0 +1,1030 @@
+{
+ "buyback_wallet": "buybacks.multisignature.near",
+ "days": {
+  "2026-08-13": {
+   "buybacks.multisignature.near": {
+    "near": 4140.145712603139,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 1299.3107919526715,
+    "wnear": 0.0
+   }
+  },
+  "2026-08-14": {
+   "buybacks.multisignature.near": {
+    "near": 6504.916953702528,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3193.8265553705714,
+    "wnear": 0.0
+   }
+  },
+  "2026-08-15": {
+   "buybacks.multisignature.near": {
+    "near": 3189.2761424487517,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 1278.565213317738,
+    "wnear": 0.0
+   }
+  },
+  "2026-08-16": {
+   "buybacks.multisignature.near": {
+    "near": 3433.260555742325,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 621.2662604733295,
+    "wnear": 0.0
+   }
+  },
+  "2026-08-17": {
+   "buybacks.multisignature.near": {
+    "near": 9952.042435983982,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 5868.063099831154,
+    "wnear": 0.0
+   }
+  },
+  "2026-08-18": {
+   "buybacks.multisignature.near": {
+    "near": 6117.720104427648,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3549.738877740786,
+    "wnear": 0.0
+   }
+  },
+  "2026-08-19": {
+   "buybacks.multisignature.near": {
+    "near": 23410.291982698654,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 11744.92284254162,
+    "wnear": 0.0
+   }
+  },
+  "2026-08-20": {
+   "buybacks.multisignature.near": {
+    "near": 15512.767841726529,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 7103.404852954835,
+    "wnear": 0.0
+   }
+  },
+  "2026-08-21": {
+   "buybacks.multisignature.near": {
+    "near": 23677.353923234845,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 12561.452560805537,
+    "wnear": 0.0
+   }
+  },
+  "2026-08-22": {
+   "buybacks.multisignature.near": {
+    "near": 16389.71583083511,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3707.8436456529716,
+    "wnear": 0.0
+   }
+  },
+  "2026-08-23": {
+   "buybacks.multisignature.near": {
+    "near": 11264.714984506954,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 4983.241299786852,
+    "wnear": 0.0
+   }
+  },
+  "2026-08-24": {
+   "buybacks.multisignature.near": {
+    "near": 13974.30172603428,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 5029.620601355786,
+    "wnear": 0.0
+   }
+  },
+  "2026-08-25": {
+   "buybacks.multisignature.near": {
+    "near": 11190.551367377575,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3414.4192633839953,
+    "wnear": 0.0
+   }
+  },
+  "2026-08-26": {
+   "buybacks.multisignature.near": {
+    "near": 11664.338935283835,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 7779.405497350199,
+    "wnear": 0.0
+   }
+  },
+  "2026-08-27": {
+   "1csfundsadmin.sputnik-dao.near": {
+    "near": 0.011600000000000001,
+    "wnear": 0.0
+   },
+   "buybacks.multisignature.near": {
+    "near": 10803.81213987878,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 2318.1143364409545,
+    "wnear": 0.0
+   }
+  },
+  "2026-08-28": {
+   "1csfundsadmin.sputnik-dao.near": {
+    "near": 1.0,
+    "wnear": 0.0
+   },
+   "buybacks.multisignature.near": {
+    "near": 10101.865181781859,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 4267.160901159719,
+    "wnear": 0.0
+   }
+  },
+  "2026-08-29": {
+   "buybacks.multisignature.near": {
+    "near": 7560.216989387698,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 6561.90010669716,
+    "wnear": 0.0
+   }
+  },
+  "2026-08-30": {
+   "buybacks.multisignature.near": {
+    "near": 8762.243244093575,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 6218.937785657597,
+    "wnear": 0.0
+   }
+  },
+  "2026-08-31": {
+   "buybacks.multisignature.near": {
+    "near": 8535.574461063698,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3925.5258547439917,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-01": {
+   "buybacks.multisignature.near": {
+    "near": 8304.381634239277,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3893.442336481663,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-02": {
+   "buybacks.multisignature.near": {
+    "near": 12497.82364614995,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3386.0221740790903,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-03": {
+   "buybacks.multisignature.near": {
+    "near": 25540.85567630746,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 7671.405237219988,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-04": {
+   "buybacks.multisignature.near": {
+    "near": 34096.33131074112,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 16174.382252297932,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-05": {
+   "buybacks.multisignature.near": {
+    "near": 10331.450052446062,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 2891.873725620456,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-06": {
+   "buybacks.multisignature.near": {
+    "near": 20495.632194793085,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 7784.590300138373,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-07": {
+   "buybacks.multisignature.near": {
+    "near": 7021.200449866268,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 2284.0414760940553,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-08": {
+   "buybacks.multisignature.near": {
+    "near": 8492.501971706024,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 2721.4514450427987,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-09": {
+   "1csfundsadmin.sputnik-dao.near": {
+    "near": 1.11862,
+    "wnear": 0.0
+   },
+   "buybacks.multisignature.near": {
+    "near": 11892.97545854665,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3945.4547510742177,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-10": {
+   "buybacks.multisignature.near": {
+    "near": 9862.029781393305,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 4533.232886074286,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-11": {
+   "buybacks.multisignature.near": {
+    "near": 12070.754936338875,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3713.2326669299628,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-12": {
+   "buybacks.multisignature.near": {
+    "near": 9216.848161732274,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 2492.9004776586607,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-13": {
+   "buybacks.multisignature.near": {
+    "near": 9846.417134817502,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3569.607858555289,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-14": {
+   "buybacks.multisignature.near": {
+    "near": 9820.766204059633,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 4285.486686375886,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-15": {
+   "buybacks.multisignature.near": {
+    "near": 11362.45756200223,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 2696.7519321481054,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-16": {
+   "buybacks.multisignature.near": {
+    "near": 11709.32813372754,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3867.9968942821833,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-17": {
+   "buybacks.multisignature.near": {
+    "near": 23626.779982476855,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 8909.357146342853,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-18": {
+   "buybacks.multisignature.near": {
+    "near": 25549.878070130962,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 8399.091745969814,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-19": {
+   "1csfundsadmin.sputnik-dao.near": {
+    "near": 263.1070043211138,
+    "wnear": 0.0
+   },
+   "buybacks.multisignature.near": {
+    "near": 11509.641270554592,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 4910.697712918443,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-20": {
+   "buybacks.multisignature.near": {
+    "near": 7536.8851834324205,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3962.815647466209,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-21": {
+   "buybacks.multisignature.near": {
+    "near": 18573.32434768568,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 9778.27068958405,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-22": {
+   "buybacks.multisignature.near": {
+    "near": 16842.484188469574,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 9408.337114484719,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-23": {
+   "buybacks.multisignature.near": {
+    "near": 16871.69984558277,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 8000.969220749198,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-24": {
+   "buybacks.multisignature.near": {
+    "near": 11886.038115773703,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 5492.941070510111,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-25": {
+   "buybacks.multisignature.near": {
+    "near": 13056.897313128691,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 5854.716382858377,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-26": {
+   "1csfundsadmin.sputnik-dao.near": {
+    "near": 0.09905615998997115,
+    "wnear": 0.0
+   },
+   "buybacks.multisignature.near": {
+    "near": 5397.392305163811,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 2797.418700577028,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-27": {
+   "buybacks.multisignature.near": {
+    "near": 5936.321398509941,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 2874.449525203846,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-28": {
+   "buybacks.multisignature.near": {
+    "near": 9910.565138665579,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3735.3058912663264,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-29": {
+   "buybacks.multisignature.near": {
+    "near": 10907.620375615214,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 4244.431618525905,
+    "wnear": 0.0
+   }
+  },
+  "2026-09-30": {
+   "buybacks.multisignature.near": {
+    "near": 13918.052537264679,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 5550.257091561393,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-01": {
+   "buybacks.multisignature.near": {
+    "near": 10164.48621016863,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 4686.326977548133,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-02": {
+   "buybacks.multisignature.near": {
+    "near": 7874.50490629554,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3706.988867301136,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-03": {
+   "buybacks.multisignature.near": {
+    "near": 3742.5898177930903,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 1607.912972876738,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-04": {
+   "buybacks.multisignature.near": {
+    "near": 4971.243500531038,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 24775.237627675462,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-05": {
+   "buybacks.multisignature.near": {
+    "near": 8263.189538105124,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 1796.6290696106353,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-06": {
+   "buybacks.multisignature.near": {
+    "near": 7344.463269494671,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 4818.861664715336,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-07": {
+   "buybacks.multisignature.near": {
+    "near": 7651.225165671668,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 4237.613900407759,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-08": {
+   "buybacks.multisignature.near": {
+    "near": 16238.33071389834,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 10371.872720909209,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-09": {
+   "buybacks.multisignature.near": {
+    "near": 16897.283871222488,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 6338.846679866089,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-10": {
+   "buybacks.multisignature.near": {
+    "near": 10674.437777523784,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 4163.06163450134,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-11": {
+   "buybacks.multisignature.near": {
+    "near": 10364.797810473374,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3463.3836195570693,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-12": {
+   "buybacks.multisignature.near": {
+    "near": 8212.099085610174,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 4126.99318022312,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-13": {
+   "buybacks.multisignature.near": {
+    "near": 7055.22913664435,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 4166.873552896175,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-14": {
+   "buybacks.multisignature.near": {
+    "near": 10688.464714750678,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 6261.900202231351,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-15": {
+   "buybacks.multisignature.near": {
+    "near": 19930.32662713999,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 11032.791820521437,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-16": {
+   "buybacks.multisignature.near": {
+    "near": 5932.766985853974,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3197.9673872488956,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-17": {
+   "buybacks.multisignature.near": {
+    "near": 4728.322811261542,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 1932.2223065168914,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-18": {
+   "buybacks.multisignature.near": {
+    "near": 6073.035707996584,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3162.6330314812103,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-19": {
+   "buybacks.multisignature.near": {
+    "near": 7653.620617008539,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3179.792144424344,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-20": {
+   "buybacks.multisignature.near": {
+    "near": 11537.94224410316,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 4339.644105846393,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-21": {
+   "buybacks.multisignature.near": {
+    "near": 7997.519013387811,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 4126.769841513317,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-22": {
+   "buybacks.multisignature.near": {
+    "near": 8221.425977965044,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3835.9540962501324,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-23": {
+   "buybacks.multisignature.near": {
+    "near": 6507.8782598873395,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 1738.1988415698388,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-24": {
+   "buybacks.multisignature.near": {
+    "near": 7209.961418929316,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3301.740203645406,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-25": {
+   "buybacks.multisignature.near": {
+    "near": 10001.794080036208,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3453.1184881178747,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-26": {
+   "buybacks.multisignature.near": {
+    "near": 13065.287920112312,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 4540.04368519845,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-27": {
+   "buybacks.multisignature.near": {
+    "near": 11701.384130964318,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 4715.418691286673,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-28": {
+   "buybacks.multisignature.near": {
+    "near": 9733.147228906619,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 2393.755047904889,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-29": {
+   "buybacks.multisignature.near": {
+    "near": 15945.782570488735,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 7500.154089922229,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-30": {
+   "buybacks.multisignature.near": {
+    "near": 12997.326396149543,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 4633.292241825398,
+    "wnear": 0.0
+   }
+  },
+  "2026-10-31": {
+   "buybacks.multisignature.near": {
+    "near": 7877.11267919054,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 2620.531454340965,
+    "wnear": 0.0
+   }
+  },
+  "2026-11-01": {
+   "buybacks.multisignature.near": {
+    "near": 5220.826338784226,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 1514.81949955318,
+    "wnear": 0.0
+   }
+  },
+  "2026-11-02": {
+   "buybacks.multisignature.near": {
+    "near": 7148.267343386603,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 1518.5569577278939,
+    "wnear": 0.0
+   }
+  },
+  "2026-11-03": {
+   "buybacks.multisignature.near": {
+    "near": 7540.619859324032,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3672.3462605853047,
+    "wnear": 0.0
+   }
+  },
+  "2026-11-04": {
+   "buybacks.multisignature.near": {
+    "near": 9232.341489140219,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3023.4514108451945,
+    "wnear": 0.0
+   }
+  },
+  "2026-11-05": {
+   "buybacks.multisignature.near": {
+    "near": 12524.785860553031,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3967.0734603791275,
+    "wnear": 0.0
+   }
+  },
+  "2026-11-06": {
+   "buybacks.multisignature.near": {
+    "near": 15624.31877706051,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 8012.1127853956705,
+    "wnear": 0.0
+   }
+  },
+  "2026-11-07": {
+   "buybacks.multisignature.near": {
+    "near": 8100.727975267256,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 3495.910700492999,
+    "wnear": 0.0
+   }
+  },
+  "2026-11-08": {
+   "buybacks.multisignature.near": {
+    "near": 7279.936654851908,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 1411.5035519892374,
+    "wnear": 0.0
+   }
+  },
+  "2026-11-09": {
+   "buybacks.multisignature.near": {
+    "near": 11790.870061027079,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 4354.614656799202,
+    "wnear": 0.0
+   }
+  },
+  "2026-11-10": {
+   "buybacks.multisignature.near": {
+    "near": 10949.600405023333,
+    "wnear": 0.0
+   },
+   "fefundsadmin.sputnik-dao.near": {
+    "near": 5186.266689761497,
+    "wnear": 0.0
+   }
+  }
+ },
+ "near_price_usd": {
+  "2026-08-13": 1.6426774248679,
+  "2026-08-14": 1.6390118166266001,
+  "2026-08-15": 1.6395488858428195,
+  "2026-08-16": 1.616586459900459,
+  "2026-08-17": 1.6010932247695553,
+  "2026-08-18": 1.63646787047346,
+  "2026-08-19": 1.5879597131538001,
+  "2026-08-20": 1.7303834026337377,
+  "2026-08-21": 1.7671618068180388,
+  "2026-08-22": 1.9661216191688484,
+  "2026-08-23": 1.8784572567196742,
+  "2026-08-24": 2.0141495518834596,
+  "2026-08-25": 1.9536374917234849,
+  "2026-08-26": 1.8603402087618055,
+  "2026-08-27": 1.900101186151192,
+  "2026-08-28": 1.9277208295241706,
+  "2026-08-29": 1.8238265545687031,
+  "2026-08-30": 1.8681154217385798,
+  "2026-08-31": 1.818123276059755,
+  "2026-09-01": 1.91972951071275,
+  "2026-09-02": 1.8864857785414904,
+  "2026-09-03": 1.8860409592252032,
+  "2026-09-04": 1.9542831243197905,
+  "2026-09-05": 2.1718932806854885,
+  "2026-09-06": 2.19166557571438,
+  "2026-09-07": 2.436852334393612,
+  "2026-09-08": 2.305430039336974,
+  "2026-09-09": 2.320387177080241,
+  "2026-09-10": 2.4848168147865453,
+  "2026-09-11": 2.4429785888589204,
+  "2026-09-12": 2.3634977407657054,
+  "2026-09-13": 2.3702719349774926,
+  "2026-09-14": 2.2993835031069256,
+  "2026-09-15": 2.468122510711336,
+  "2026-09-16": 2.3352355734561585,
+  "2026-09-17": 2.616014637728269,
+  "2026-09-18": 3.148546480125832,
+  "2026-09-19": 3.7625126088515235,
+  "2026-09-20": 3.5865306009892803,
+  "2026-09-21": 4.163360981216509,
+  "2026-09-22": 4.26685096763515,
+  "2026-09-23": 4.4120721116529396,
+  "2026-09-24": 4.333075476693107,
+  "2026-09-25": 4.589213139670827,
+  "2026-09-26": 4.950437795281758,
+  "2026-09-27": 5.035805330593034,
+  "2026-09-28": 5.38986038977869,
+  "2026-09-29": 4.818652319284116,
+  "2026-09-30": 4.886592635782179,
+  "2026-10-01": 5.335091109736817,
+  "2026-10-02": 4.807012283395656,
+  "2026-10-03": 4.690818392891492,
+  "2026-10-04": 4.829822220269547,
+  "2026-10-05": 4.913315252654953,
+  "2026-10-06": 5.289065104865807,
+  "2026-10-07": 5.0667957396624255,
+  "2026-10-08": 5.334629329884487,
+  "2026-10-09": 4.461436407898754,
+  "2026-10-10": 4.882424121398192,
+  "2026-10-11": 5.2910018341071225,
+  "2026-10-12": 5.887577099447574,
+  "2026-10-13": 5.0861700228658355,
+  "2026-10-14": 5.036515898953102,
+  "2026-10-15": 4.881085155891693,
+  "2026-10-16": 5.256841821770708,
+  "2026-10-17": 5.060826870899352,
+  "2026-10-18": 4.856513264288132,
+  "2026-10-19": 5.007467606309968,
+  "2026-10-20": 4.899896640657338,
+  "2026-10-21": 4.923929210042525,
+  "2026-10-22": 5.26112213879386,
+  "2026-10-23": 4.878253373145789,
+  "2026-10-24": 4.684547957475351,
+  "2026-10-25": 4.496169195107218,
+  "2026-10-26": 4.588817799587553,
+  "2026-10-27": 4.501462755561354,
+  "2026-10-28": 4.674921301296147,
+  "2026-10-29": 4.728523337564447,
+  "2026-10-30": 4.051593834323441,
+  "2026-10-31": 4.287444997298165,
+  "2026-11-01": 4.431226659092195,
+  "2026-11-02": 4.285643684468088,
+  "2026-11-03": 3.8633891507982865,
+  "2026-11-04": 3.832591772442751,
+  "2026-11-05": 4.005303730270458,
+  "2026-11-06": 3.658231834914787,
+  "2026-11-07": 3.7103689940305995,
+  "2026-11-08": 3.732029294711837,
+  "2026-11-09": 3.580702988989418,
+  "2026-11-10": 3.6240189312365443
+ },
+ "note": "Incoming native NEAR and wNEAR per wallet per day; transfers between the three wallets are excluded.",
+ "pages": 39,
+ "price_source": "https://coins.llama.fi/chart/coingecko:near?start=1786579200&span=90&period=1d",
+ "range": [
+  "2026-08-13",
+  "2026-11-10"
+ ],
+ "source": "https://api.nearblocks.io/v1/account/{wallet}/txns and /ft-txns",
+ "wallets": [
+  "fefundsadmin.sputnik-dao.near",
+  "1csfundsadmin.sputnik-dao.near",
+  "buybacks.multisignature.near"
+ ]
+}

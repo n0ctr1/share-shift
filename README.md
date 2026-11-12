@@ -40,7 +40,7 @@ The sixth uses the NEAR Intents Explorer API: 1Click swaps grouped by
 distribution channel and by the account that receives the app fee
 (`metrics.channel_report`).
 
-Eleven claims are tested against fixed thresholds. The current result is in
+Twelve claims are tested against fixed thresholds. The current result is in
 `THESIS.md`; it includes the claims that fail.
 
 ## How NEAR fits in
@@ -56,11 +56,11 @@ Needs Python 3.9 or newer. No packages to install. No key needed for steps 1 to 
 
 | Step | Do | See |
 | --- | --- | --- |
-| 1 | `python3 -m unittest discover -s tests` | `Ran 20 tests` and `OK` |
-| 2 | `python3 build.py --offline` | Eleven lines `C1` to `C11`, each `SUPPORTED` or `REFUTED`, then `wrote THESIS.md, docs/index.html, data/derived/metrics.json` |
+| 1 | `python3 -m unittest discover -s tests` | `Ran 21 tests` and `OK` |
+| 2 | `python3 build.py --offline` | Twelve lines `C1` to `C12`, each `SUPPORTED` or `REFUTED`, then `wrote THESIS.md, docs/index.html, data/derived/metrics.json` |
 | 3 | `git status --short` | Nothing: the offline build reproduces the committed files byte for byte |
-| 4 | `python3 build.py` | The same eleven lines computed on today's data; `git diff THESIS.md` shows which numbers moved |
-| 5 | Open `docs/index.html` in a browser | Six tiles, a table of eleven claims with verdicts, tables for the halt and for channels, six charts with the halt shaded; hovering a chart shows every series' value for that week or month |
+| 4 | `python3 build.py` | The same twelve lines computed on today's data; `git diff THESIS.md` shows which numbers moved |
+| 5 | Open `docs/index.html` in a browser | Six tiles, a table of twelve claims with verdicts, tables for the halt and for channels, six charts with the halt shaded; hovering a chart shows every series' value for that week or month |
 | 6 | Change `WINDOW = 90` to `WINDOW = 30` in `pipeline/config.py`, then run step 2 | Every figure in `THESIS.md` is recomputed for a 30-day window |
 | 7 | Optional. Put `INTENTS_EXPLORER_JWT=...` in `.env`, then `python3 -m pipeline.explorer --from 2026-04-09 --to 2026-11-10` | `page 5, reached ...` lines, then `wrote data/raw/explorer_daily.json`. About three hours: the API allows one request per five seconds. An interrupted run resumes. Then run `python3 build.py` so the manifest picks up the new file |
 
@@ -68,8 +68,10 @@ Step 2 uses the snapshot in `data/raw/`, whose hashes are checked against
 `data/raw/manifest.json`. Edit any raw file and the build stops with
 `does not match the hash in manifest.json`.
 
-Step 7 is not needed to reproduce the thesis: the Explorer aggregates are
-committed. The key is free from https://partners.near-intents.org.
+| 8 | Optional. `python3 -m pipeline.onchain --from 2026-08-13 --to 2026-11-10` | Per-wallet progress lines, then `wrote data/raw/onchain_revenue.json`. About 30 minutes on NearBlocks' free tier; no key |
+
+Steps 7 and 8 are not needed to reproduce the thesis: the Explorer aggregates are
+committed. The Explorer key is free from https://partners.near-intents.org.
 
 ## Checking the predictions were not edited
 
@@ -115,7 +117,9 @@ under the chart.
 | Daily volume, four bridges | `api.llama.fi/summary/bridges/{venue}` | no |
 | Daily gross fees per venue | `api.llama.fi/summary/fees/{venue}?dataType=dailyFees` | no |
 | Daily revenue per venue | `api.llama.fi/summary/fees/{venue}?dataType=dailyRevenue` | no |
-| THORChain volume, cross-check | THORChain Midgard `/v2/history/swaps` | no |
+| THORChain volume, cross-check and leg breakdown | THORChain Midgard `/v2/history/swaps` | no |
+| Maya leg breakdown | Maya Midgard `/v2/history/swaps` | no |
+| Transfers into NEAR's three revenue wallets | `api.nearblocks.io/v1/account/{wallet}/txns`, `/ft-txns` | no |
 | Token market caps | `api.coingecko.com/api/v3/simple/price` | no |
 | 1Click swaps by channel and fee recipient | `explorer.near-intents.org/api/v0/transactions` | yes, free |
 
@@ -136,8 +140,10 @@ swap.
   volume in a calibration sample).
 - One 37-day halt is one event, not a law. A two-day outage in the data shows
   no effect.
-- Only THORChain's volume was checked against a primary source. Other series
-  rest on DefiLlama's adapters.
+- THORChain's volume and NEAR's captured revenue were checked against primary
+  sources (Midgard; transfers into the revenue wallets). Intents volume was not
+  rebuilt from `intents.near` events; two public attempts disagree on whether
+  the reported figure is one or two sided, so shares are shown both ways.
 - Three outside facts are cited rather than computed, all in
   `pipeline/config.py`: what the THORChain halt was, a later short suspension,
   and which distribution channels also route to rival venues (each with its

@@ -490,6 +490,18 @@
    "unit": "rank",
    "value": 3,
    "verdict": "REFUTED"
+  },
+  {
+   "claim": "The captured-revenue figure used here matches the transfers into NEAR's three revenue wallets within 5%.",
+   "display": {
+    "threshold": "within 5%",
+    "value": "1.5% apart"
+   },
+   "id": "C12",
+   "threshold": 0.05,
+   "unit": "share",
+   "value": 0.015267834152400295,
+   "verdict": "SUPPORTED"
   }
  ],
  "co_movement": {
@@ -1495,6 +1507,24 @@
    "total_volume": 3471593324.0
   }
  ],
+ "onchain": {
+  "buyback_share": 0.6851057536364347,
+  "buyback_wallet": "buybacks.multisignature.near",
+  "onchain_near": 1448845.8952533694,
+  "onchain_usd": 5000084.907897265,
+  "per_wallet_usd": {
+   "1csfundsadmin.sputnik-dao.near": 994.9791861009217,
+   "buybacks.multisignature.near": 3425586.9390711184,
+   "fefundsadmin.sputnik-dao.near": 1573502.989640045
+  },
+  "provider_usd": 5077609.0,
+  "ratio": 0.9847321658475997,
+  "source": "https://api.nearblocks.io/v1/account/{wallet}/txns and /ft-txns",
+  "window": [
+   "2026-08-13",
+   "2026-11-10"
+  ]
+ },
  "predictions": [
   {
    "current": 0.5808907009163305,

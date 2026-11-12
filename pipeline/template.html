@@ -593,7 +593,7 @@ footer p { margin: 0 0 6px; }
     series: perPeer(months, function (r, k) { return r[k].volume >= M.meta.min_month_volume && r[k].fees ? 1e4 * r[k].fees / r[k].volume : null; }),
     query: FEE + ' ÷ ' + VOL, fn: 'metrics.monthly()'});
   var capMonths = months.filter(function (r) { return r.capture != null; });
-  figure(s, {title: 'Share of gross Intents fees that reaches NEAR, by month', text: [T.capture, T.capture_trend, T.valuation],
+  figure(s, {title: 'Share of gross Intents fees that reaches NEAR, by month', text: [T.capture, T.capture_trend, T.onchain, T.valuation],
     kind: 'bar', unit: 'pct', x: capMonths.map(function (r) { return r.month; }), xHead: 'Month',
     series: [{name: 'Reaching NEAR', color: COLORS[0], values: capMonths.map(function (r) { return r.capture; })}],
     query: REV + ' ÷ ' + FEE, fn: 'metrics.monthly()'});

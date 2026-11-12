@@ -156,6 +156,7 @@ THRESHOLDS = {
     "capture": 0.50,             # C5: NEAR keeps more than half of gross fees
     "share_floor": 0.40,         # C6: weekly share never fell below 40% in 26 weeks
     "top_channel": 0.33,         # C10: no single channel carries more than a third of 1Click volume
+    "onchain_match": 0.05,       # C12: provider revenue within 5% of transfers into NEAR's wallets
     "absorbed": 0.33,            # C7: subject picked up over a third of a halted rival's flow
 }
 

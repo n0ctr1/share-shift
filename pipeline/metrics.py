@@ -325,6 +325,39 @@ def counting_basis(raw, table, subject, names, window, wide_volumes=None):
             "unverified": [names[s] for s in slugs if s != subject and s not in venues]}
 
 
+def onchain_check(raw, table, subject, window):
+    """NEAR's captured revenue rebuilt from transfers into its revenue wallets,
+    against the provider's revenue series for the same days."""
+    oc = raw.get("onchain_revenue")
+    if not oc:
+        return None
+    first = max(window[0], oc["range"][0])
+    last_ = min(window[1], oc["range"][1])
+    prices = oc["near_price_usd"]
+    per_wallet = {w_: 0.0 for w_ in oc["wallets"]}
+    near_total = 0.0
+    for day, wallets in oc["days"].items():
+        if not first <= day <= last_ or day not in prices:
+            continue
+        for wallet, v in wallets.items():
+            amount = v["near"] + v["wnear"]
+            per_wallet[wallet] += amount * prices[day]
+            near_total += amount
+    onchain = sum(per_wallet.values())
+    provider = sum(v for d, v in zip(table["dates"], table[subject]["revenue"]) if first <= d <= last_)
+    return {
+        "window": [first, last_],
+        "onchain_usd": onchain,
+        "onchain_near": near_total,
+        "provider_usd": provider,
+        "ratio": onchain / provider if provider else None,
+        "per_wallet_usd": per_wallet,
+        "buyback_share": per_wallet.get(oc["buyback_wallet"], 0.0) / onchain if onchain else None,
+        "buyback_wallet": oc["buyback_wallet"],
+        "source": oc["source"],
+    }
+
+
 def wide_report(raw, table, subject, names, last, w, yoy_prior_end):
     """The subject's place among all eight venues, bridges included."""
     dates = table["dates"]
@@ -858,6 +891,18 @@ def _compute(raw, fetched_at):
             "verdict": _verdict(wide["subject_rank_volume"] == 1),
         })
 
+    oc = onchain_check(raw, table, subject, [start_date, end_date])
+    if oc and oc["ratio"]:
+        claims.append({
+            "id": "C12",
+            "claim": "The captured-revenue figure used here matches the transfers into NEAR's "
+                     "three revenue wallets within %d%%." % round(100 * t["onchain_match"]),
+            "value": abs(oc["ratio"] - 1), "unit": "share", "threshold": t["onchain_match"],
+            "display": {"value": "%.1f%% apart" % (100 * abs(oc["ratio"] - 1)),
+                        "threshold": "within %d%%" % round(100 * t["onchain_match"])},
+            "verdict": _verdict(abs(oc["ratio"] - 1) <= t["onchain_match"]),
+        })
+
     if len(capture_trend) >= 3:
         rising = all(b["capture"] > a["capture"] for a, b in zip(capture_trend, capture_trend[1:]))
         claims.append({
@@ -914,6 +959,7 @@ def _compute(raw, fetched_at):
         "capture_trend": capture_trend,
         "channels": channels,
         "basis": basis,
+        "onchain": oc,
         "wide": wide,
         "crosscheck": crosscheck(raw, table, config.MIDGARD_SLUG),
         "suspensions": (suspension_checks(table, subject, names, halt["rival_slug"],
