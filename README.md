@@ -110,7 +110,7 @@ TDX quote itself; it checks the key on chain.
 | --- | --- | --- |
 | 1 | `sha256sum predictions/predictions.json` | the hash in `predictions/predictions.json.sha256` |
 | 2 | `git show predictions-v1:predictions/predictions.json \| sha256sum` | the same hash, from the tagged commit |
-| 3 | `pip install opentimestamps-client`, then `ots upgrade predictions/predictions.json.ots` and `ots verify predictions/predictions.json.ots` | a Bitcoin block time no later than the tag date (the proof needs a few hours after sealing to confirm) |
+| 3 | `python3 -m pipeline.ots` | `bitcoin block 975496 ... merkle root matches` (three lines, one per calendar), then `predictions.json existed by Bitcoin block 975496 (unix time 1794442654)`, 2026-11-12 01:37 UTC. Standard library only; block headers come from Blockstream's public API. The official client gives the same result: `pip install opentimestamps-client`, then `ots verify predictions/predictions.json.ots` |
 | 4 | `python3 -m pipeline.seal --check` | `sealed predictions match config` |
 | 5 | `python3 -m pipeline.anchor --account noctrl.near --verify` | `anchored on NEAR: noctrl.near/share_shift/predictions_sha256 = 5415cf8f...` read from `social.near` over public RPC; written by transaction `F75hY9zdcipcUSrgXPjLx7mAw2Rzer4vAgA9VLo8MmhE` |
 
@@ -136,6 +136,9 @@ under the chart.
 | `pipeline/config.py` | Peer sets, window length, claim thresholds, dated predictions, cited events |
 | `pipeline/fetch.py` | Downloads the public series and writes the hashed snapshot |
 | `pipeline/explorer.py` | Downloads 1Click swaps and keeps only daily aggregates |
+| `pipeline/seal.py`, `pipeline/ots.py`, `pipeline/anchor.py` | Seal the predictions; upgrade and verify the OpenTimestamps proof; anchor and check the hash on NEAR |
+| `pipeline/onchain.py`, `pipeline/intents_events.py`, `pipeline/chainflip.py`, `pipeline/thorchain_actions.py` | Primary-source checks: revenue wallets, intents.near events, Chainflip legs, THORChain swap actions |
+| `pipeline/tee_verify.py`, `tee/share-check/` | The program that ran in the TEE, and the on-chain check of that run |
 | `pipeline/metrics.py` | All arithmetic: shares, shift-share split, halt experiment, placebo, channels, verdicts |
 | `pipeline/narrative.py` | Turns metrics into the sentences and into `THESIS.md` |
 | `pipeline/template.html` | Dashboard layout and chart code (no libraries) |
