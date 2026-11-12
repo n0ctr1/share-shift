@@ -1,0 +1,11 @@
+{
+ "account": "noctrl.near",
+ "block_height": 224148508,
+ "block_time": "2026-11-12T02:02:04Z",
+ "contract": "social.near",
+ "explorer": "https://nearblocks.io/txns/F75hY9zdcipcUSrgXPjLx7mAw2Rzer4vAgA9VLo8MmhE",
+ "key": "noctrl.near/share_shift/predictions_sha256",
+ "tx": "F75hY9zdcipcUSrgXPjLx7mAw2Rzer4vAgA9VLo8MmhE",
+ "value": "5415cf8f10704e6bfd688cd453143339258f0907ded84c0e87ddc61faeb46389",
+ "verify": "python3 -m pipeline.anchor --account noctrl.near --verify"
+}

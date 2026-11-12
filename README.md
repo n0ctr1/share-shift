@@ -105,6 +105,7 @@ TDX quote itself; it checks the key on chain.
 | 2 | `git show predictions-v1:predictions/predictions.json \| sha256sum` | the same hash, from the tagged commit |
 | 3 | `pip install opentimestamps-client`, then `ots upgrade predictions/predictions.json.ots` and `ots verify predictions/predictions.json.ots` | a Bitcoin block time no later than the tag date (the proof needs a few hours after sealing to confirm) |
 | 4 | `python3 -m pipeline.seal --check` | `sealed predictions match config` |
+| 5 | `python3 -m pipeline.anchor --account noctrl.near --verify` | `anchored on NEAR: noctrl.near/share_shift/predictions_sha256 = 5415cf8f...` read from `social.near` over public RPC; written by transaction `F75hY9zdcipcUSrgXPjLx7mAw2Rzer4vAgA9VLo8MmhE` |
 
 ## How a number gets into the thesis
 

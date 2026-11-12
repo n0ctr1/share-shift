@@ -158,6 +158,8 @@ The thesis gets stronger if the dated predictions below hold, and weaker if they
 
 The predictions are sealed. `predictions/predictions.json` holds them as written; its SHA-256 is `5415cf8f10704e6bfd688cd453143339258f0907ded84c0e87ddc61faeb46389`. That hash is timestamped on Bitcoin through OpenTimestamps (`predictions/predictions.json.ots`) and the commit is tagged `predictions-v1`. `python3 build.py` stops if `pipeline/config.py` no longer matches the sealed file.
 
+The same hash is written on NEAR mainnet at `noctrl.near/share_shift/predictions_sha256` on `social.near`, by transaction `F75hY9zdcipcUSrgXPjLx7mAw2Rzer4vAgA9VLo8MmhE` (block 224,148,508, 2026-11-12T02:02:04Z). `python3 -m pipeline.anchor --account noctrl.near --verify` reads it back from public RPC.
+
 | # | Due | Prediction | Now | Status |
 | --- | --- | --- | --- | --- |
 | P1 | 2027-02-28 | NEAR Intents still holds at least 50% of peer-set volume over the trailing 90 days. | 58.1% | PENDING |

@@ -29,6 +29,8 @@ def main(argv):
         sys.exit("pipeline/config.py PREDICTIONS differ from the sealed predictions/predictions.json")
 
     result = metrics.compute(raw, manifest["fetched_at"])
+    if "near_anchor" in raw:
+        result["meta"]["near_anchor"] = raw["near_anchor"]
     if os.path.exists(sealed):
         result["meta"]["predictions_sha256"] = hashlib.sha256(open(sealed, "rb").read()).hexdigest()
     text = narrative.findings(result)

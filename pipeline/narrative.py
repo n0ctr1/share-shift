@@ -637,6 +637,13 @@ def thesis_markdown(m, text):
         "(`predictions/predictions.json.ots`) and the commit is tagged `predictions-v1`. "
         "`python3 build.py` stops if `pipeline/config.py` no longer matches the sealed file."
         % m["meta"].get("predictions_sha256", "n/a"))
+    anchor = m["meta"].get("near_anchor")
+    if anchor:
+        add("")
+        add("The same hash is written on NEAR mainnet at `%s` on `%s`, by transaction `%s` "
+            "(block %s, %s). `%s` reads it back from public RPC."
+            % (anchor["key"], anchor["contract"], anchor["tx"], "{:,}".format(anchor["block_height"]),
+               anchor["block_time"], anchor["verify"]))
     add("")
     add("| # | Due | Prediction | Now | Status |")
     add("| --- | --- | --- | --- | --- |")

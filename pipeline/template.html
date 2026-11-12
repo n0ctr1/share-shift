@@ -646,6 +646,17 @@ footer p { margin: 0 0 6px; }
   s.appendChild(rowsBlock(['#', 'Prediction', 'Now', 'Due', 'Status'], M.predictions.map(function (p) {
     return [p.id, p.text, unitFmt(p.current, /bps$/.test(p.metric) ? 'bps' : 'share'), p.due, p.status];
   })));
+  var seal = el('p', {class: 'src'});
+  seal.appendChild(document.createTextNode('Sealed: SHA-256 '));
+  seal.appendChild(el('code', {}, (M.meta.predictions_sha256 || '').slice(0, 16) + '\u2026'));
+  seal.appendChild(document.createTextNode(', OpenTimestamps proof and git tag predictions-v1'));
+  if (M.meta.near_anchor) {
+    seal.appendChild(document.createTextNode(', and written on NEAR mainnet by '));
+    seal.appendChild(el('a', {href: M.meta.near_anchor.explorer, rel: 'noopener'}, 'this transaction'));
+    seal.appendChild(document.createTextNode(' (' + M.meta.near_anchor.key + ' on ' + M.meta.near_anchor.contract + ')'));
+  }
+  seal.appendChild(document.createTextNode('. The build stops if the predictions change.'));
+  s.appendChild(seal);
 
   // ---------- 8. limits ----------
   s = section('limits', 'Limits', 'Caveats', 'What this analysis cannot say');

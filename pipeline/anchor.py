@@ -8,8 +8,10 @@ signer's own account:
 
     <account>/share_shift/predictions_sha256 = <sha256 of predictions.json>
 
-No contract is deployed. The write needs a small storage deposit (0.01 NEAR
-is enough) and is signed by the account owner with their own wallet or
+No contract is deployed. The write needs a storage deposit: social.near's minimum
+for a new account is 0.02 NEAR, so 0.05 NEAR is attached; the unused part
+stays as the signer's withdrawable storage balance on social.near. The
+transaction is signed by the account owner with their own wallet or
 near-cli; this script never handles keys. --verify reads the value with a
 view call over public RPC and compares it with predictions/predictions.json.
 """
@@ -66,7 +68,7 @@ def main(argv):
         return
     print("Sign this from %s (near-cli-rs):\n" % args.account)
     print("near contract call-function as-transaction social.near set json-args '%s' "
-          "prepaid-gas '30 Tgas' attached-deposit '0.01 NEAR' sign-as %s "
+          "prepaid-gas '30 Tgas' attached-deposit '0.05 NEAR' sign-as %s "
           "network-config mainnet sign-with-keychain send"
           % (json.dumps(payload(args.account), separators=(",", ":")), args.account))
 

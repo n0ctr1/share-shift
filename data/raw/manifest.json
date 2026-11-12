@@ -65,6 +65,10 @@
    "path": "raw/mcap.json",
    "sha256": "c8d029db33910d2d3e9827eb931377d1050489f064934a44596271708deeb181"
   },
+  "near_anchor": {
+   "path": "raw/near_anchor.json",
+   "sha256": "25466e4d6b2ccc28396471b3564acaee3c95e731f933bafa1e6c1b3aa664ae26"
+  },
   "onchain_revenue": {
    "path": "raw/onchain_revenue.json",
    "sha256": "de73b3d269c1091debfb104ad8b48e8520f935f8e1f156e26ef83dc0c0864303"
