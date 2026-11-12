@@ -1,17 +1,24 @@
 """Verify an OutLayer TEE run of tee/share-check from the NEAR chain alone.
 
-    python3 -m pipeline.tee_verify --tx <hash> --sender <account>
+    python3 -m pipeline.tee_verify                     check the recorded run
+    python3 -m pipeline.tee_verify --tx <hash> --sender <account> --record
+                                                       record a new run
+
+No build is needed: the WASM that ran is committed as
+tee/share-check/dist/share-check.wasm. tee/share-check/rebuild.sh rebuilds it
+byte for byte, as a separate, optional step.
 
 Checks, with public RPC and no OutLayer API:
-  1. the request transaction ran code with the SHA-256 of our WASM build,
-     on the input in tee/share-check/input.json;
+  1. the request transaction ran code whose SHA-256 is that of the committed
+     WASM, on the input in tee/share-check/input.json;
   2. it completed, and its returned JSON is the output we record;
   3. the result was delivered by a transaction signed with a key that is an
      access key of OutLayer's register-contract account. Per OutLayer's
      WORKER_ATTESTATION.md, that contract adds a key only after verifying an
      Intel TDX quote whose report_data contains it and whose five
      measurements are on its allowlist.
-Writes data/raw/tee_run.json.
+Without --record it only compares the chain with data/raw/tee_run.json and
+writes nothing, so the offline build stays byte for byte reproducible.
 """
 
 import argparse
@@ -24,7 +31,7 @@ import time
 import urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-WASM = os.path.join(ROOT, "tee", "share-check", "target", "wasm32-wasip2", "release", "share-check.wasm")
+WASM = os.path.join(ROOT, "tee", "share-check", "dist", "share-check.wasm")
 INPUT = os.path.join(ROOT, "tee", "share-check", "input.json")
 OUT = os.path.join(ROOT, "data", "raw", "tee_run.json")
 RPC = "https://archival-rpc.mainnet.fastnear.com"
@@ -83,7 +90,7 @@ def find_resolve(request_id, from_height):
     return None
 
 
-def run(tx_hash, sender):
+def run(tx_hash, sender, record=False):
     wasm_sha = hashlib.sha256(open(WASM, "rb").read()).hexdigest()
     expected_input = json.load(open(INPUT))
     status = rpc("EXPERIMENTAL_tx_status", {"tx_hash": tx_hash, "sender_account_id": sender,
@@ -142,24 +149,35 @@ def run(tx_hash, sender):
         "checks": checks,
         "explorer": "https://nearblocks.io/txns/" + tx_hash,
     }
-    with open(OUT, "w") as fh:
-        json.dump(out, fh, indent=1, sort_keys=True)
-        fh.write("\n")
+    if record:
+        with open(OUT, "w") as fh:
+            json.dump(out, fh, indent=1, sort_keys=True)
+            fh.write("\n")
+    else:
+        recorded = json.load(open(OUT))
+        checks["matches_recorded_run"] = (recorded.get("output") == output
+                                          and recorded.get("wasm_sha256") == wasm_sha
+                                          and recorded.get("request_tx") == tx_hash)
     for k, v in checks.items():
         print("%-32s %s" % (k, "PASS" if v else "FAIL"))
     if worker:
         print("worker: %s via %s (key for %s: %s)" % (worker["signer_id"], worker["resolve_tx"],
                                                      worker["key_receiver"], worker["key_methods"]))
-    print("wrote %s" % os.path.relpath(OUT, ROOT))
+    if record:
+        print("wrote %s" % os.path.relpath(OUT, ROOT))
     return all(checks.values())
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("--tx", required=True)
-    ap.add_argument("--sender", required=True)
+    ap.add_argument("--tx")
+    ap.add_argument("--sender")
+    ap.add_argument("--record", action="store_true")
     a = ap.parse_args()
+    if not a.tx:
+        saved = json.load(open(OUT))
+        a.tx, a.sender = saved["request_tx"], saved["sender"]
     try:
-        sys.exit(0 if run(a.tx, a.sender) else 1)
+        sys.exit(0 if run(a.tx, a.sender, a.record) else 1)
     except RuntimeError as err:
         sys.exit("error: %s" % err)

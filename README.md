@@ -85,11 +85,15 @@ The headline share was recomputed inside an Intel TDX enclave by OutLayer, from
 a NEAR mainnet transaction. `tee/share-check` is the program; its input is
 `tee/share-check/input.json`; the run is recorded in `data/raw/tee_run.json`.
 
+The WASM that ran is committed as `tee/share-check/dist/share-check.wasm`, so
+checking the run needs no Rust toolchain.
+
 | Step | Do | See |
 | --- | --- | --- |
-| 1 | `cd tee/share-check && cargo build --target wasm32-wasip2 --release` | `target/wasm32-wasip2/release/share-check.wasm`; `sha256sum` gives the hash in `data/raw/tee_run.json` if your toolchain matches (Rust 1.99.1) |
-| 2 | `python3 -m pipeline.tee_verify --tx Aw6Vz41optzWmAEDvmzq7wk3YHypfhFt3pssrxPnDjk7 --sender noctrl.near` | four `PASS` lines: code hash is the build, input is ours, completed, delivered by a key scoped to `outlayer.near` on `worker.outlayer.near` |
+| 1 | `sha256sum tee/share-check/dist/share-check.wasm` | `7634f3997a76a5ff6c930374c81d33baaa3f06cbece6e8fae9ab0217e4fdaf0d`, the hash in `data/raw/tee_run.json` |
+| 2 | `python3 -m pipeline.tee_verify` | five `PASS` lines: the chain ran the committed WASM, on our input, it completed, the result was delivered by a key scoped to `outlayer.near` on `worker.outlayer.near`, and it matches the recorded run. Nothing is written |
 | 3 | Open the request on https://nearblocks.io/txns/Aw6Vz41optzWmAEDvmzq7wk3YHypfhFt3pssrxPnDjk7 | the `execution_completed` event and the returned JSON |
+| 4 | Optional. `sh tee/share-check/rebuild.sh` | `IDENTICAL`: the source rebuilds to the same bytes. Needs rustup (the toolchain is pinned to 1.99.1 in `rust-toolchain.toml`) and a host C linker |
 
 An earlier request from the same account (`9Nb8MpaWCCBwHxc6DHFqJBTi919eupKnagGSVHH5MtqU`)
 ran the same code with an empty input, because the CLI read the JSON argument as
