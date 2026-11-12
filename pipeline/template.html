@@ -89,6 +89,9 @@ h3 { margin: 0 0 8px; font: 600 18px/1.3 var(--sans); }
 .src { margin: 12px 0 0; font-size: 12.5px; color: var(--ink-3); line-height: 1.5; }
 details { margin-top: 10px; font-size: 13px; }
 summary { cursor: pointer; color: var(--ink-2); width: fit-content; padding: 4px 0; }
+details.method { font-size: 15px; margin: 16px 0 0; border-top: 1px solid var(--rule); padding-top: 6px; }
+details.method > summary { font-weight: 600; color: var(--ink); }
+details.method[open] > summary { margin-bottom: 8px; }
 summary:hover { color: var(--ink); }
 
 /* ---- charts ---- */
@@ -212,7 +215,7 @@ footer p { margin: 0 0 6px; }
   </div>
 
   <footer>
-    <p>Full argument in <code>THESIS.md</code>. Every figure on this page is rebuilt from raw data by <code>python3 build.py</code>.</p>
+    <p>Short thesis in <code>THESIS.md</code>; method and every check in <code>METHODS.md</code>. Every figure on this page is rebuilt from raw data by <code>python3 build.py</code>.</p>
     <p>Data: DefiLlama (volume, fees, revenue), THORChain Midgard (cross-check), NEAR Intents Explorer (channels), CoinGecko (market caps).</p>
   </footer>
 </div>
@@ -280,6 +283,12 @@ footer p { margin: 0 0 6px; }
     main.appendChild(s);
     toc.appendChild(el('a', {href: '#' + id}, navLabel));
     return s;
+  }
+  function method(parent, title) {  // a collapsed block for method detail
+    var d = el('details', {class: 'method'});
+    d.appendChild(el('summary', {}, title));
+    var body = el('div'); d.appendChild(body); parent.appendChild(d);
+    return body;
   }
   function source(node, query, fn) {
     var p = el('p', {class: 'src'});
@@ -571,7 +580,8 @@ footer p { margin: 0 0 6px; }
   if (M.halt) {
     var h = M.halt;
     s = section('stress-test', 'The stress test', 'Evidence', 'A rival stopped for ' + M.halt.days + ' days. The result is suggestive, not proof');
-    s.appendChild(prose([T.halt_short, T.halt, T.after_halt]));
+    s.appendChild(prose([T.halt_short, T.after_halt]));
+    method(s, 'Method: how the halt was measured').appendChild(prose([T.halt]));
     var lab = {before: 'Before', during: 'Halt', after_1: 'After, first period', after_2: 'After, second period'};
     var keys = ['before', 'during', 'after_1', 'after_2'].filter(function (k) { return h.periods[k]; });
     var fig = el('div', {class: 'figure'});
@@ -585,10 +595,7 @@ footer p { margin: 0 0 6px; }
     if (h.source) { var sp = el('p', {class: 'src'}); sp.appendChild(document.createTextNode('The halt itself is reported by '));
       sp.appendChild(el('a', {href: h.source, rel: 'noopener'}, 'The Block')); sp.appendChild(document.createTextNode('. Its dates and every volume come from the data.')); fig.appendChild(sp); }
     s.appendChild(fig);
-    var fig2 = el('div', {class: 'figure'});
-    fig2.appendChild(el('h3', {}, 'How sure is this?'));
-    fig2.appendChild(prose([T.halt_check, T.suspensions, T.crosscheck]));
-    s.appendChild(fig2);
+    method(s, 'How sure is this? Placebo test, other outages, cross-check').appendChild(prose([T.halt_check, T.suspensions, T.crosscheck]));
   }
 
   // ---------- 3. market position ----------
@@ -596,15 +603,16 @@ footer p { margin: 0 0 6px; }
   if (M.basis) {
     var fb = el('div', {class: 'figure'});
     fb.appendChild(el('h3', {}, 'How volume is counted changes the share, not the leader'));
-    if (T.basis_rows) {
-      fb.appendChild(prose([T.basis_lead]));
-      fb.appendChild(table(['Venue', 'What its reported volume counts', 'Left when each swap counts once'], T.basis_rows, [0, 0, 1]));
-      fb.appendChild(prose([T.basis_source, T.events_lead]));
-      if (T.events_rows) fb.appendChild(table(['Sampled day', 'Both sides', '90% interval', 'Reported'], T.events_rows, [0, 1, 1, 1]));
-      fb.appendChild(prose([T.events_others, T.events_limit]));
-    } else fb.appendChild(prose([T.basis, T.events, T.events_others, T.events_limit]));
+    fb.appendChild(prose([T.basis_lead + ' ' + (T.basis_short || '')]));
     fb.appendChild(table(['Counting basis', 'Intents share, four venues', 'Largest', 'Intents share, all eight'],
       M.basis.scenarios.map(function (x) { return [x.label, pct(x.share, 1), x.leader, pct(x.wide_share, 1)]; }), [0, 1, 0, 1]));
+    var mb = method(fb, 'Method: how each venue’s count was checked');
+    if (T.basis_rows) {
+      mb.appendChild(table(['Venue', 'What its reported volume counts', 'Left when each swap counts once'], T.basis_rows, [0, 0, 1]));
+      mb.appendChild(prose([T.basis_source, T.events_lead]));
+      if (T.events_rows) mb.appendChild(table(['Sampled day', 'Both sides', '90% interval', 'Reported'], T.events_rows, [0, 1, 1, 1]));
+      mb.appendChild(prose([T.events_others, T.events_limit]));
+    } else mb.appendChild(prose([T.basis, T.events, T.events_others, T.events_limit]));
     var bs = el('p', {class: 'src'}); bs.appendChild(document.createTextNode('Leg data: '));
     Object.keys(M.basis.venues).forEach(function (k, i) { var v = M.basis.venues[k]; if (i) bs.appendChild(document.createTextNode(', '));
       bs.appendChild(el('a', {href: v.source, rel: 'noopener'}, v.name + ' indexer')); });
@@ -757,7 +765,7 @@ footer p { margin: 0 0 6px; }
   // ---------- 7b. checks ----------
   s = section('checks', 'How to check', 'Reproducibility', 'How every part of this can be checked');
   var ul2 = el('ul', {class: 'limits'});
-  [['Every number', 'python3 build.py --offline rebuilds THESIS.md and this page from the committed snapshot, byte for byte; python3 build.py refetches.'],
+  [['Every number', 'python3 build.py --offline rebuilds THESIS.md, METHODS.md and this page from the committed snapshot, byte for byte; python3 build.py refetches.'],
    ['The data', 'THORChain, Maya and Chainflip volume against their own indexers; Intents volume against intents.near events, sampled and on every day from NEAR’s public BigQuery dataset; captured revenue against the revenue wallets; NEAR supply against block headers; L1 activity in two indexers.'],
    ['The computation', T.tee ? T.tee + ' ' + T.tee_scope : null],
    ['The predictions', 'Sealed by SHA-256 and timestamped on Bitcoin through OpenTimestamps; the first seal is also tagged in git and written on NEAR mainnet. The build stops if either seal changes.']]

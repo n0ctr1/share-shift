@@ -52,6 +52,8 @@ def main(argv):
 
     with open(os.path.join(ROOT, "THESIS.md"), "w") as fh:
         fh.write(narrative.thesis_markdown(result, text))
+    with open(os.path.join(ROOT, "METHODS.md"), "w") as fh:
+        fh.write(narrative.methods_markdown(result, text))
 
     with open(os.path.join(ROOT, "pipeline", "template.html")) as fh:
         template = fh.read()
@@ -64,7 +66,7 @@ def main(argv):
         manifest["fetched_at"], ", offline" if offline else ""))
     for claim in result["claims"]:
         print("%s  %-14s %s" % (claim["id"], claim["verdict"], claim["claim"]))
-    print("wrote  THESIS.md, docs/index.html, data/derived/metrics.json")
+    print("wrote  THESIS.md, METHODS.md, docs/index.html, data/derived/metrics.json")
 
 
 if __name__ == "__main__":
