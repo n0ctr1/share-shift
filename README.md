@@ -183,7 +183,7 @@ reproducibility check, not evidence for the thesis.
 | 5 | `python3 -m pipeline.anchor --account noctrl.near --verify` | `anchored on NEAR: noctrl.near/share_shift/predictions_sha256 = 5415cf8f...` read from `social.near` over public RPC; written by transaction `F75hY9zdcipcUSrgXPjLx7mAw2Rzer4vAgA9VLo8MmhE` |
 | 6 | `python3 -m pipeline.ots --file predictions/predictions-v2.json` and `python3 -m pipeline.seal --check` | `predictions-v2.json existed by Bitcoin block 975532 (unix time 1794471987)`, 2026-11-12 08:26 UTC: the second seal (claim thresholds and P4, P5). The first of P4 and P5's two days, 11 November, had ended by then; the second had not. The second seal is not written on NEAR |
 | 7 | `python3 -m pipeline.ots --upgrade --file predictions/predictions-v3.json`, then `python3 -m pipeline.ots --file predictions/predictions-v3.json` | the third seal (the call's rule, the SHA-256 of both BigQuery queries, P6 to P8 on 2026-11-13 to 2026-12-10), sealed 2026-11-12; its Bitcoin block appears a few hours after sealing |
-| 8 | `python3 -m pipeline.anchor --account noctrl.near --seal v3 --verify` | `anchored on NEAR: noctrl.near/share_shift/predictions_v3_sha256 = 22fb6be0...` once the author has signed the write (`python3 -m pipeline.anchor --account noctrl.near --seal v3` prints the command) |
+| 8 | `python3 -m pipeline.anchor --account noctrl.near --seal v3 --verify` | `anchored on NEAR: noctrl.near/share_shift/predictions_v3_sha256 = 22fb6be0...` read from `social.near` over public RPC; written by transaction `45k7GsThxpBiEv9pZxX8nmquWw8jyxjvMgnGoqY5YWB2` (block 224,246,371, 2026-11-12 17:51 UTC), before the window of P6 to P8 starts |
 
 ## How a number gets into the thesis
 

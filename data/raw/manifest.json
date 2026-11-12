@@ -109,6 +109,10 @@
    "path": "raw/near_anchor.json",
    "sha256": "25466e4d6b2ccc28396471b3564acaee3c95e731f933bafa1e6c1b3aa664ae26"
   },
+  "near_anchor_v3": {
+   "path": "raw/near_anchor_v3.json",
+   "sha256": "28c17769cc42ad39a191eff1fc48c54469121e05b3992dd92a1e39eac187bdfd"
+  },
   "near_l1_daily": {
    "path": "raw/near_l1_daily.json",
    "sha256": "ee3cce5f5170c342c4444b20d69a5bbe2249a4db9d4aa1eb818be59adf395ed4"

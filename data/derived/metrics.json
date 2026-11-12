@@ -2203,6 +2203,17 @@
    "value": "5415cf8f10704e6bfd688cd453143339258f0907ded84c0e87ddc61faeb46389",
    "verify": "python3 -m pipeline.anchor --account noctrl.near --verify"
   },
+  "near_anchor_v3": {
+   "account": "noctrl.near",
+   "block_height": 224246371,
+   "block_time": "2026-11-12T17:51:32Z",
+   "contract": "social.near",
+   "explorer": "https://nearblocks.io/txns/45k7GsThxpBiEv9pZxX8nmquWw8jyxjvMgnGoqY5YWB2",
+   "key": "noctrl.near/share_shift/predictions_v3_sha256",
+   "tx": "45k7GsThxpBiEv9pZxX8nmquWw8jyxjvMgnGoqY5YWB2",
+   "value": "22fb6be08719f7bd12f8820daa6450a15c9364ea4248dbad6f515a74a9473e20",
+   "verify": "python3 -m pipeline.anchor --account noctrl.near --seal v3 --verify"
+  },
   "peers": [
    {
     "name": "NEAR Intents",
