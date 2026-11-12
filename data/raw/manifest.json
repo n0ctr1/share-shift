@@ -5,6 +5,18 @@
    "path": "raw/actions_thorchain-dex.json",
    "sha256": "98a8b0f97733abf74b044854b269a273bf085490f38a667e388cd93765ddb056"
   },
+  "bq_intents_legs": {
+   "path": "raw/bq_intents_legs.json",
+   "sha256": "fb190516e3b262b69224160770ca107a45d46832ef5edb38dce6e2df58b4aaf5"
+  },
+  "bq_l1_daily": {
+   "path": "raw/bq_l1_daily.json",
+   "sha256": "040c87f9f0f452b04bc93e9e7e0cd42d9a3ff629bf029a6566bce97c158db5bc"
+  },
+  "bq_prices": {
+   "path": "raw/bq_prices.json",
+   "sha256": "923d58921ee17a47c4e3d11eac01207910902d4aaac0ba9e77e260f7245393e8"
+  },
   "crosscheck_midgard": {
    "path": "raw/crosscheck_midgard.json",
    "sha256": "e021de6cc646bf666048ad5a6e89c0a8354c5498f7c8ea1f9f85e82ca340a97b"

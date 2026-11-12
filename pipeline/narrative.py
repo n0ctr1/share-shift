@@ -4,6 +4,8 @@ Nothing in THESIS.md or the dashboard is typed by hand if it has a figure in
 it: the text is produced here so a re-run on new data rewrites it.
 """
 
+import datetime
+
 from . import config  # noqa: F401  (used for channel sources)
 
 
@@ -285,8 +287,8 @@ def findings(m):
             "For NEAR Intents, %s. Two public re-computations from intents.near events "
             "disagree on what that figure counts: one finds public swaps counted once are "
             "46%% of it (92%% counting both sides), the other finds it within about 1%% of "
-            "public net volume before confidential intents launched. This analysis cannot "
-            "settle which is right, so this analysis rebuilt it itself (below). The bridges in "
+            "public net volume before confidential intents launched. They cannot both be "
+            "right, so it was rebuilt here (below). The bridges in "
             "the wider set are taken as one-sided, as their adapters report deposits."
             % (legs, config.SUBJECT_VOLUME_SOURCE)
         )
@@ -327,13 +329,35 @@ def findings(m):
             out["events_limit"] = (
                 "The method has a limit, found while extending it. After %s the contract "
                 "increasingly settles swaps through transfer intents instead of token_diff "
-                "events (event version 0.4.3 by mid-October, no token_diff at all in a 5 November "
-                "sample; data/raw/intents_event_format.json). Counted the same way, later days "
+                "events (event version 0.4.3 by mid-October, none at all in a 60-transaction sample on "
+                "5 November; data/raw/intents_event_format.json). Counted the same way, later days "
                 "fall short (%s). Any token_diff-based count, including the residuals above, "
                 "understates volume from then on, so those days are shown but not used, and the "
                 "share of truly confidential flow after August is not established here."
                 % (ev["valid_until"], later)
             )
+    bq = m.get("bq")
+    if bq and bq.get("valid"):
+        v, mo = bq["valid"], bq["later_by_month"]
+        first, last = bq["days"][0], bq["days"][-1]
+        months = ", ".join("%s %.2f" % (datetime.date.fromisoformat(k + "-01").strftime("%B"), x["mean"])
+                           for k, x in mo.items() if x)
+        out["bq"] = (
+            "Then every day instead of a sample: NEAR's public BigQuery dataset (%s, table "
+            "execution_outcomes) holds every log line intents.near wrote. Summing what every "
+            "participant gave in token_diff events, at each day's price, lands within %d%% of "
+            "the reported figure on %d of %d days through %s (mean %.3f, range %.3f to %.3f). "
+            "On %s the match breaks and does not return; the monthly means fall to %s of "
+            "reported, while the value moved by transfer intents (swap settlement, but plain "
+            "transfers too) grows from %s on %s to %s on %s. Over the whole window token_diff "
+            "events alone reach %s of reported volume, so any count built on them alone misses "
+            "%s of it."
+            % (bq["dataset"], round(100 * bq["tolerance"]), v["within_5pct"], v["days"],
+               config.EVENTS_VALID_UNTIL, v["mean"], v["min"], v["max"],
+               bq["first_day_off"], months, usd(first["transfer_usd"]), first["day"],
+               usd(last["transfer_usd"]), last["day"], pct(bq["token_diff_over_reported"]),
+               pct(1 - bq["token_diff_over_reported"]))
+        )
     tk = m.get("token")
     if tk:
         out["token"] = (
@@ -352,11 +376,14 @@ def findings(m):
             out["token_l1"] = (
                 "The L1 itself is far quieter than a year ago: %s transactions a day against %s "
                 "(%+.0f%%), and %s active accounts a day against %s (%+.0f%%). The case for the "
-                "token now runs through Intents, not through L1 gas."
+                "token now runs through Intents, not through L1 gas.%s"
                 % ("{:,.0f}".format(l1["txns_per_day"]), "{:,.0f}".format(l1["txns_per_day_prior"]),
                    100 * (l1["txns_per_day"] / l1["txns_per_day_prior"] - 1),
                    "{:,.0f}".format(l1["active_accounts"]), "{:,.0f}".format(l1["active_accounts_prior"]),
-                   100 * (l1["active_accounts"] / l1["active_accounts_prior"] - 1))
+                   100 * (l1["active_accounts"] / l1["active_accounts_prior"] - 1),
+                   (" Two indexers agree on this: NEAR's BigQuery transactions table gives the "
+                    "same daily counts as NearBlocks on %d of %d days to within 1%%."
+                    % (l1["bigquery"]["within_1pct"], l1["bigquery"]["days"])) if l1.get("bigquery") else "")
             )
     tee = m.get("tee")
     if tee:
@@ -679,6 +706,9 @@ def thesis_markdown(m, text):
             if "events_limit" in text:
                 add(text["events_limit"])
                 add("")
+            if "bq" in text:
+                add(text["bq"])
+                add("")
         bp = m["basis"].get("breakpoints")
         if bp:
             add("Where the conclusion would break: counting one side for every venue, Intents "
@@ -762,8 +792,9 @@ def thesis_markdown(m, text):
     add("- **Every number:** `python3 build.py --offline` rebuilds this file and the dashboard "
         "from the committed snapshot, byte for byte; `python3 build.py` refetches.")
     add("- **The data, against primary sources:** THORChain, Maya and Chainflip volume against "
-        "their own indexers; Intents volume against intents.near's events; captured revenue "
-        "against the revenue wallets; supply against block headers. Scripts and outputs are "
+        "their own indexers; Intents volume against intents.near's events (sampled days, and "
+        "every day from NEAR's public BigQuery dataset); captured revenue against the revenue "
+        "wallets; supply against block headers; L1 activity in two indexers. Scripts and outputs are "
         "listed in the README.")
     if "tee" in text:
         add("- **The computation:** %s %s" % (text["tee"], text["tee_scope"]))

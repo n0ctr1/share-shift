@@ -66,25 +66,24 @@ Needs Python 3.9 or newer. No packages to install. No key needed for steps 1 to 
 
 | Step | Do | See |
 | --- | --- | --- |
-| 1 | `python3 -m unittest discover -s tests` | `Ran 27 tests` and `OK` |
+| 1 | `python3 -m unittest discover -s tests` | `Ran 28 tests` and `OK` |
 | 2 | `python3 build.py --offline` | Fourteen lines `C1` to `C14`, each `SUPPORTED` or `REFUTED`, then `wrote THESIS.md, docs/index.html, data/derived/metrics.json` |
 | 3 | `git status --short` | Nothing: the offline build reproduces the committed files byte for byte |
 | 4 | `python3 build.py` | The same fourteen lines computed on today's data; `git diff THESIS.md` shows which numbers moved |
-| 5 | Open `docs/index.html` in a browser, or https://n0ctr1.github.io/share-shift/ | A row of six headline numbers; fourteen claims with verdicts; five charts (three with the THORChain halt shaded) and one split bar; tables for the halt, the counting bases, all eight venues, channels and fee recipients. Hovering a chart shows every series' value for that week or month |
+| 5 | Open `docs/index.html` in a browser, or https://n0ctr1.github.io/share-shift/ | A row of six headline numbers; fourteen claims with verdicts; six charts (three with the THORChain halt shaded, one with the days on which intents.near's token_diff events match the reported volume) and one split bar; tables for the halt, the counting bases, all eight venues, channels and fee recipients. Hovering a chart shows every series' value for that week or month |
 | 6 | Change `WINDOW = 90` to `WINDOW = 30` in `pipeline/config.py`, then run step 2 | Every figure in `THESIS.md` is recomputed for a 30-day window |
 | 7 | Optional. Put `INTENTS_EXPLORER_JWT=...` in `.env`, then `python3 -m pipeline.explorer --from 2026-04-09 --to 2026-11-10` | `page 5, reached ...` lines, then `wrote data/raw/explorer_daily.json`. About three hours: the API allows one request per five seconds. An interrupted run resumes. Then run `python3 build.py` so the manifest picks up the new file |
+| 8 | Optional. `python3 -m pipeline.onchain --from 2026-08-13 --to 2026-11-10` | Per-wallet progress lines, then `wrote data/raw/onchain_revenue.json`. About 30 minutes on NearBlocks' free tier; no key |
+| 9 | Optional. `python3 -m pipeline.intents_events --day 2026-08-20 --sample 4000` | `93116 transactions on intents.near`, then `both sides ...M (90%: ...)`; about 15 minutes, no key |
+| 10 | Optional. `python3 -m pipeline.chainflip --from 2026-08-13 --to 2026-11-10` | `wrote data/raw/legs_chainflip-amm.json`; a few minutes, no key |
+| 11 | Optional. `python3 -m pipeline.thorchain_actions --from 2026-08-13 --to 2026-11-10 --points 180` | `double-swap value share ...% (90%: ...)`; about 15 minutes, no key |
+| 12 | Optional. `gcloud auth login`, `gcloud config set project <id>`, then `python3 -m pipeline.bq legs --from 2026-08-13 --to 2026-11-10`, `python3 -m pipeline.bq prices` and `python3 -m pipeline.bq l1 --from 2025-08-13 --to 2026-11-10` | `dry run: 117.34 GB to scan`, then `wrote data/raw/bq_intents_legs.json`; `wrote data/raw/bq_prices.json`; `dry run: 30.42 GB to scan`, then `wrote data/raw/bq_l1_daily.json`. A few minutes each; the BigQuery sandbox's free monthly terabyte covers all three, no billing account |
 
 Step 2 uses the snapshot in `data/raw/`, whose hashes are checked against
 `data/raw/manifest.json`. Edit any raw file and the build stops with
 `does not match the hash in manifest.json`.
 
-| 8 | Optional. `python3 -m pipeline.onchain --from 2026-08-13 --to 2026-11-10` | Per-wallet progress lines, then `wrote data/raw/onchain_revenue.json`. About 30 minutes on NearBlocks' free tier; no key |
-
-| 9 | Optional. `python3 -m pipeline.intents_events --day 2026-08-20 --sample 4000` | `93116 transactions on intents.near`, then `both sides ...M (90%: ...)`; about 15 minutes, no key |
-| 10 | Optional. `python3 -m pipeline.chainflip --from 2026-08-13 --to 2026-11-10` | `wrote data/raw/legs_chainflip-amm.json`; a few minutes, no key |
-| 11 | Optional. `python3 -m pipeline.thorchain_actions --from 2026-08-13 --to 2026-11-10 --points 180` | `double-swap value share ...% (90%: ...)`; about 15 minutes, no key |
-
-Steps 7 to 11 are not needed to reproduce the thesis: the Explorer aggregates are
+Steps 7 to 12 are not needed to reproduce the thesis: their outputs are
 committed. The Explorer key is free from https://partners.near-intents.org.
 
 ## Checking the TEE run
@@ -150,7 +149,7 @@ under the chart.
 | `pipeline/fetch.py` | Downloads the public series and writes the hashed snapshot |
 | `pipeline/explorer.py` | Downloads 1Click swaps and keeps only daily aggregates |
 | `pipeline/seal.py`, `pipeline/ots.py`, `pipeline/anchor.py` | Seal the predictions; upgrade and verify the OpenTimestamps proof; anchor and check the hash on NEAR |
-| `pipeline/onchain.py`, `pipeline/intents_events.py`, `pipeline/chainflip.py`, `pipeline/thorchain_actions.py` | Primary-source checks: revenue wallets, intents.near events, Chainflip legs, THORChain swap actions |
+| `pipeline/onchain.py`, `pipeline/intents_events.py`, `pipeline/bq.py`, `pipeline/chainflip.py`, `pipeline/thorchain_actions.py` | Primary-source checks: revenue wallets, intents.near events (sampled, and every day from BigQuery), Chainflip legs, THORChain swap actions |
 | `pipeline/tee_verify.py`, `tee/share-check/` | The program that ran in the TEE, and the on-chain check of that run |
 | `pipeline/metrics.py` | All arithmetic: shares, shift-share split, halt experiment, placebo, channels, verdicts |
 | `pipeline/narrative.py` | Turns metrics into the sentences and into `THESIS.md` |
@@ -168,10 +167,11 @@ under the chart.
 | THORChain volume, cross-check and leg breakdown | THORChain Midgard `/v2/history/swaps` | no |
 | Maya leg breakdown | Maya Midgard `/v2/history/swaps` | no |
 | NEAR total supply at the window's edges | NEAR archival RPC block headers (`total_supply`) | no |
-| Daily L1 transactions and active accounts | `api.nearblocks.io/v1/charts` | no |
+| Daily L1 transactions and active accounts | `api.nearblocks.io/v1/charts`; cross-checked in BigQuery `crypto_near_mainnet_us.transactions` | no; BigQuery needs a Google account |
+| Every intents.near DIP-4 event, every day | BigQuery `bigquery-public-data.crypto_near_mainnet_us.execution_outcomes` (dataset in `us-east1`) | a Google account; free sandbox tier |
 | Transfers into NEAR's three revenue wallets | `api.nearblocks.io/v1/account/{wallet}/txns`, `/ft-txns` | no |
 | intents.near transactions and event logs | FastNear `tx.main.fastnear.com/v0/account`, `/v0/transactions` | no |
-| Token decimals and CoinGecko ids; historical prices | `1click.chaindefuser.com/v0/tokens`; `coins.llama.fi/prices/historical` | no |
+| Token decimals and CoinGecko ids; historical prices | `1click.chaindefuser.com/v0/tokens`; `coins.llama.fi/prices/historical`, `coins.llama.fi/chart` | no |
 | Chainflip swaps with routed legs | `explorer-service-processor.chainflip.io/graphql` | no |
 | TEE run: request, result, worker key | NEAR archival RPC (`EXPERIMENTAL_tx_status`, `view_access_key`), FastNear transactions API | no |
 | Token market caps | `api.coingecko.com/api/v3/simple/price` | no |
@@ -195,10 +195,12 @@ swap.
 - One 37-day halt is one event, not a law. A two-day outage in the data shows
   no effect.
 - THORChain's volume and NEAR's captured revenue were checked against primary
-  sources (Midgard; transfers into the revenue wallets), and Intents volume was
-  rebuilt from `intents.near` events on two sampled days before confidential
-  intents launched. Two days are a sample, not a series; the 90% intervals are
-  wide (about +-30%), wide enough only to tell one-sided from two-sided.
+  sources (Midgard; transfers into the revenue wallets). Intents volume was
+  rebuilt from `intents.near` events on every day of the window (NEAR's public
+  BigQuery dataset) and on six sampled days. The method only works through
+  August: from 1 September swaps increasingly settle through transfer intents,
+  and transfer events also carry plain transfers, so after August the share of
+  Intents volume that public events cannot see is not established here.
 - Three outside facts are cited rather than computed, all in
   `pipeline/config.py`: what the THORChain halt was, a later short suspension,
   and which distribution channels also route to rival venues (each with its

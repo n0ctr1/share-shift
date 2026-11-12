@@ -1,0 +1,2287 @@
+{
+ "bytes_billed": 30416044032,
+ "bytes_processed": 30414997656,
+ "dataset": "bigquery-public-data.crypto_near_mainnet_us",
+ "range": [
+  "2025-08-13",
+  "2026-11-10"
+ ],
+ "rows": [
+  {
+   "day": "2025-08-13",
+   "signers": "334078",
+   "transactions": "4976883"
+  },
+  {
+   "day": "2025-08-14",
+   "signers": "345915",
+   "transactions": "5133268"
+  },
+  {
+   "day": "2025-08-15",
+   "signers": "343984",
+   "transactions": "5195571"
+  },
+  {
+   "day": "2025-08-16",
+   "signers": "331618",
+   "transactions": "4965339"
+  },
+  {
+   "day": "2025-08-17",
+   "signers": "342561",
+   "transactions": "4999807"
+  },
+  {
+   "day": "2025-08-18",
+   "signers": "341139",
+   "transactions": "5013328"
+  },
+  {
+   "day": "2025-08-19",
+   "signers": "340767",
+   "transactions": "4984756"
+  },
+  {
+   "day": "2025-08-20",
+   "signers": "334579",
+   "transactions": "5160311"
+  },
+  {
+   "day": "2025-08-21",
+   "signers": "326732",
+   "transactions": "4925621"
+  },
+  {
+   "day": "2025-08-22",
+   "signers": "324678",
+   "transactions": "4946062"
+  },
+  {
+   "day": "2025-08-23",
+   "signers": "324053",
+   "transactions": "5027549"
+  },
+  {
+   "day": "2025-08-24",
+   "signers": "322260",
+   "transactions": "4984764"
+  },
+  {
+   "day": "2025-08-25",
+   "signers": "326060",
+   "transactions": "4954601"
+  },
+  {
+   "day": "2025-08-26",
+   "signers": "328537",
+   "transactions": "5004186"
+  },
+  {
+   "day": "2025-08-27",
+   "signers": "328561",
+   "transactions": "4905631"
+  },
+  {
+   "day": "2025-08-28",
+   "signers": "326532",
+   "transactions": "4836376"
+  },
+  {
+   "day": "2025-08-29",
+   "signers": "320988",
+   "transactions": "4742351"
+  },
+  {
+   "day": "2025-08-30",
+   "signers": "310255",
+   "transactions": "4774224"
+  },
+  {
+   "day": "2025-08-31",
+   "signers": "314056",
+   "transactions": "4759174"
+  },
+  {
+   "day": "2025-09-01",
+   "signers": "311868",
+   "transactions": "4928973"
+  },
+  {
+   "day": "2025-09-02",
+   "signers": "318121",
+   "transactions": "4950123"
+  },
+  {
+   "day": "2025-09-03",
+   "signers": "319260",
+   "transactions": "4951963"
+  },
+  {
+   "day": "2025-09-04",
+   "signers": "291056",
+   "transactions": "4726604"
+  },
+  {
+   "day": "2025-09-05",
+   "signers": "311068",
+   "transactions": "4865153"
+  },
+  {
+   "day": "2025-09-06",
+   "signers": "302108",
+   "transactions": "4830883"
+  },
+  {
+   "day": "2025-09-07",
+   "signers": "304489",
+   "transactions": "4841481"
+  },
+  {
+   "day": "2025-09-08",
+   "signers": "312006",
+   "transactions": "4748752"
+  },
+  {
+   "day": "2025-09-09",
+   "signers": "306005",
+   "transactions": "4870224"
+  },
+  {
+   "day": "2025-09-10",
+   "signers": "306075",
+   "transactions": "4895042"
+  },
+  {
+   "day": "2025-09-11",
+   "signers": "301726",
+   "transactions": "4964681"
+  },
+  {
+   "day": "2025-09-12",
+   "signers": "303334",
+   "transactions": "4831054"
+  },
+  {
+   "day": "2025-09-13",
+   "signers": "299216",
+   "transactions": "4726073"
+  },
+  {
+   "day": "2025-09-14",
+   "signers": "297625",
+   "transactions": "4649034"
+  },
+  {
+   "day": "2025-09-15",
+   "signers": "293261",
+   "transactions": "4644068"
+  },
+  {
+   "day": "2025-09-16",
+   "signers": "297817",
+   "transactions": "4603334"
+  },
+  {
+   "day": "2025-09-17",
+   "signers": "295987",
+   "transactions": "4588911"
+  },
+  {
+   "day": "2025-09-18",
+   "signers": "291200",
+   "transactions": "4514113"
+  },
+  {
+   "day": "2025-09-19",
+   "signers": "291407",
+   "transactions": "4462434"
+  },
+  {
+   "day": "2025-09-20",
+   "signers": "284191",
+   "transactions": "4468326"
+  },
+  {
+   "day": "2025-09-21",
+   "signers": "285420",
+   "transactions": "4513832"
+  },
+  {
+   "day": "2025-09-22",
+   "signers": "297450",
+   "transactions": "4547800"
+  },
+  {
+   "day": "2025-09-23",
+   "signers": "296093",
+   "transactions": "4475363"
+  },
+  {
+   "day": "2025-09-24",
+   "signers": "293327",
+   "transactions": "4513944"
+  },
+  {
+   "day": "2025-09-25",
+   "signers": "290785",
+   "transactions": "4533732"
+  },
+  {
+   "day": "2025-09-26",
+   "signers": "292210",
+   "transactions": "4592721"
+  },
+  {
+   "day": "2025-09-27",
+   "signers": "285253",
+   "transactions": "4525562"
+  },
+  {
+   "day": "2025-09-28",
+   "signers": "286548",
+   "transactions": "4527076"
+  },
+  {
+   "day": "2025-09-29",
+   "signers": "291148",
+   "transactions": "4564228"
+  },
+  {
+   "day": "2025-09-30",
+   "signers": "289877",
+   "transactions": "4475446"
+  },
+  {
+   "day": "2025-10-01",
+   "signers": "288151",
+   "transactions": "4632736"
+  },
+  {
+   "day": "2025-10-02",
+   "signers": "290966",
+   "transactions": "4575116"
+  },
+  {
+   "day": "2025-10-03",
+   "signers": "279048",
+   "transactions": "4514419"
+  },
+  {
+   "day": "2025-10-04",
+   "signers": "279183",
+   "transactions": "4457849"
+  },
+  {
+   "day": "2025-10-05",
+   "signers": "285332",
+   "transactions": "4467062"
+  },
+  {
+   "day": "2025-10-06",
+   "signers": "286177",
+   "transactions": "4456327"
+  },
+  {
+   "day": "2025-10-07",
+   "signers": "284782",
+   "transactions": "4612911"
+  },
+  {
+   "day": "2025-10-08",
+   "signers": "279945",
+   "transactions": "4580424"
+  },
+  {
+   "day": "2025-10-09",
+   "signers": "282311",
+   "transactions": "4779971"
+  },
+  {
+   "day": "2025-10-10",
+   "signers": "270141",
+   "transactions": "4793375"
+  },
+  {
+   "day": "2025-10-11",
+   "signers": "271597",
+   "transactions": "4848246"
+  },
+  {
+   "day": "2025-10-12",
+   "signers": "276041",
+   "transactions": "4867365"
+  },
+  {
+   "day": "2025-10-13",
+   "signers": "274103",
+   "transactions": "4767320"
+  },
+  {
+   "day": "2025-10-14",
+   "signers": "277670",
+   "transactions": "4754962"
+  },
+  {
+   "day": "2025-10-15",
+   "signers": "275570",
+   "transactions": "4564782"
+  },
+  {
+   "day": "2025-10-16",
+   "signers": "278201",
+   "transactions": "4786354"
+  },
+  {
+   "day": "2025-10-17",
+   "signers": "273287",
+   "transactions": "4388829"
+  },
+  {
+   "day": "2025-10-18",
+   "signers": "265871",
+   "transactions": "4304916"
+  },
+  {
+   "day": "2025-10-19",
+   "signers": "274624",
+   "transactions": "4379507"
+  },
+  {
+   "day": "2025-10-20",
+   "signers": "272951",
+   "transactions": "4821640"
+  },
+  {
+   "day": "2025-10-21",
+   "signers": "270008",
+   "transactions": "4592452"
+  },
+  {
+   "day": "2025-10-22",
+   "signers": "269303",
+   "transactions": "4441563"
+  },
+  {
+   "day": "2025-10-23",
+   "signers": "266769",
+   "transactions": "4379425"
+  },
+  {
+   "day": "2025-10-24",
+   "signers": "260345",
+   "transactions": "4378326"
+  },
+  {
+   "day": "2025-10-25",
+   "signers": "257743",
+   "transactions": "4307497"
+  },
+  {
+   "day": "2025-10-26",
+   "signers": "265895",
+   "transactions": "4310749"
+  },
+  {
+   "day": "2025-10-27",
+   "signers": "274422",
+   "transactions": "4460228"
+  },
+  {
+   "day": "2025-10-28",
+   "signers": "266364",
+   "transactions": "4472170"
+  },
+  {
+   "day": "2025-10-29",
+   "signers": "269242",
+   "transactions": "4460424"
+  },
+  {
+   "day": "2025-10-30",
+   "signers": "265974",
+   "transactions": "4499926"
+  },
+  {
+   "day": "2025-10-31",
+   "signers": "253889",
+   "transactions": "4325534"
+  },
+  {
+   "day": "2025-11-01",
+   "signers": "250232",
+   "transactions": "4294270"
+  },
+  {
+   "day": "2025-11-02",
+   "signers": "249882",
+   "transactions": "4327572"
+  },
+  {
+   "day": "2025-11-03",
+   "signers": "255577",
+   "transactions": "4323513"
+  },
+  {
+   "day": "2025-11-04",
+   "signers": "250396",
+   "transactions": "4324097"
+  },
+  {
+   "day": "2025-11-05",
+   "signers": "250359",
+   "transactions": "4247145"
+  },
+  {
+   "day": "2025-11-06",
+   "signers": "251003",
+   "transactions": "4068138"
+  },
+  {
+   "day": "2025-11-07",
+   "signers": "247287",
+   "transactions": "4213365"
+  },
+  {
+   "day": "2025-11-08",
+   "signers": "247576",
+   "transactions": "4262119"
+  },
+  {
+   "day": "2025-11-09",
+   "signers": "226994",
+   "transactions": "4156257"
+  },
+  {
+   "day": "2025-11-10",
+   "signers": "264240",
+   "transactions": "4355752"
+  },
+  {
+   "day": "2025-11-11",
+   "signers": "260821",
+   "transactions": "4228785"
+  },
+  {
+   "day": "2025-11-12",
+   "signers": "257073",
+   "transactions": "4337790"
+  },
+  {
+   "day": "2025-11-13",
+   "signers": "255819",
+   "transactions": "4351120"
+  },
+  {
+   "day": "2025-11-14",
+   "signers": "246721",
+   "transactions": "4363339"
+  },
+  {
+   "day": "2025-11-15",
+   "signers": "245464",
+   "transactions": "4328149"
+  },
+  {
+   "day": "2025-11-16",
+   "signers": "246092",
+   "transactions": "4284834"
+  },
+  {
+   "day": "2025-11-17",
+   "signers": "250997",
+   "transactions": "4366874"
+  },
+  {
+   "day": "2025-11-18",
+   "signers": "230724",
+   "transactions": "4266045"
+  },
+  {
+   "day": "2025-11-19",
+   "signers": "248104",
+   "transactions": "4274079"
+  },
+  {
+   "day": "2025-11-20",
+   "signers": "245664",
+   "transactions": "4457064"
+  },
+  {
+   "day": "2025-11-21",
+   "signers": "234358",
+   "transactions": "4286527"
+  },
+  {
+   "day": "2025-11-22",
+   "signers": "233103",
+   "transactions": "4333041"
+  },
+  {
+   "day": "2025-11-23",
+   "signers": "234393",
+   "transactions": "4315430"
+  },
+  {
+   "day": "2025-11-24",
+   "signers": "240156",
+   "transactions": "4222699"
+  },
+  {
+   "day": "2025-11-25",
+   "signers": "242275",
+   "transactions": "4331713"
+  },
+  {
+   "day": "2025-11-26",
+   "signers": "191444",
+   "transactions": "3828036"
+  },
+  {
+   "day": "2025-11-27",
+   "signers": "237363",
+   "transactions": "4332084"
+  },
+  {
+   "day": "2025-11-28",
+   "signers": "230475",
+   "transactions": "4413456"
+  },
+  {
+   "day": "2025-11-29",
+   "signers": "227227",
+   "transactions": "4031761"
+  },
+  {
+   "day": "2025-11-30",
+   "signers": "231143",
+   "transactions": "4107373"
+  },
+  {
+   "day": "2025-12-01",
+   "signers": "234018",
+   "transactions": "4228761"
+  },
+  {
+   "day": "2025-12-02",
+   "signers": "229497",
+   "transactions": "4081654"
+  },
+  {
+   "day": "2025-12-03",
+   "signers": "229124",
+   "transactions": "4105359"
+  },
+  {
+   "day": "2025-12-04",
+   "signers": "235437",
+   "transactions": "4216807"
+  },
+  {
+   "day": "2025-12-05",
+   "signers": "224477",
+   "transactions": "3983361"
+  },
+  {
+   "day": "2025-12-06",
+   "signers": "219165",
+   "transactions": "3861406"
+  },
+  {
+   "day": "2025-12-07",
+   "signers": "227365",
+   "transactions": "3879668"
+  },
+  {
+   "day": "2025-12-08",
+   "signers": "227236",
+   "transactions": "3919127"
+  },
+  {
+   "day": "2025-12-09",
+   "signers": "226922",
+   "transactions": "3969897"
+  },
+  {
+   "day": "2025-12-10",
+   "signers": "221290",
+   "transactions": "3936999"
+  },
+  {
+   "day": "2025-12-11",
+   "signers": "217393",
+   "transactions": "3881276"
+  },
+  {
+   "day": "2025-12-12",
+   "signers": "210947",
+   "transactions": "3748277"
+  },
+  {
+   "day": "2025-12-13",
+   "signers": "208393",
+   "transactions": "3626525"
+  },
+  {
+   "day": "2025-12-14",
+   "signers": "208069",
+   "transactions": "3780233"
+  },
+  {
+   "day": "2025-12-15",
+   "signers": "218775",
+   "transactions": "3843544"
+  },
+  {
+   "day": "2025-12-16",
+   "signers": "220887",
+   "transactions": "3870281"
+  },
+  {
+   "day": "2025-12-17",
+   "signers": "265963",
+   "transactions": "3839700"
+  },
+  {
+   "day": "2025-12-18",
+   "signers": "366653",
+   "transactions": "4026913"
+  },
+  {
+   "day": "2025-12-19",
+   "signers": "229111",
+   "transactions": "3876577"
+  },
+  {
+   "day": "2025-12-20",
+   "signers": "310404",
+   "transactions": "3836808"
+  },
+  {
+   "day": "2025-12-21",
+   "signers": "208213",
+   "transactions": "3725545"
+  },
+  {
+   "day": "2025-12-22",
+   "signers": "265530",
+   "transactions": "3824384"
+  },
+  {
+   "day": "2025-12-23",
+   "signers": "204741",
+   "transactions": "3755622"
+  },
+  {
+   "day": "2025-12-24",
+   "signers": "206156",
+   "transactions": "3760062"
+  },
+  {
+   "day": "2025-12-25",
+   "signers": "203808",
+   "transactions": "3802237"
+  },
+  {
+   "day": "2025-12-26",
+   "signers": "203100",
+   "transactions": "3649009"
+  },
+  {
+   "day": "2025-12-27",
+   "signers": "196306",
+   "transactions": "3645108"
+  },
+  {
+   "day": "2025-12-28",
+   "signers": "203562",
+   "transactions": "3604294"
+  },
+  {
+   "day": "2025-12-29",
+   "signers": "196537",
+   "transactions": "3613999"
+  },
+  {
+   "day": "2025-12-30",
+   "signers": "199536",
+   "transactions": "3608436"
+  },
+  {
+   "day": "2025-12-31",
+   "signers": "194584",
+   "transactions": "3621035"
+  },
+  {
+   "day": "2026-01-01",
+   "signers": "186611",
+   "transactions": "3506624"
+  },
+  {
+   "day": "2026-01-02",
+   "signers": "192007",
+   "transactions": "3593062"
+  },
+  {
+   "day": "2026-01-03",
+   "signers": "190454",
+   "transactions": "3520716"
+  },
+  {
+   "day": "2026-01-04",
+   "signers": "196293",
+   "transactions": "3541417"
+  },
+  {
+   "day": "2026-01-05",
+   "signers": "203459",
+   "transactions": "3647154"
+  },
+  {
+   "day": "2026-01-06",
+   "signers": "197610",
+   "transactions": "3683216"
+  },
+  {
+   "day": "2026-01-07",
+   "signers": "194287",
+   "transactions": "3623519"
+  },
+  {
+   "day": "2026-01-08",
+   "signers": "191228",
+   "transactions": "3718695"
+  },
+  {
+   "day": "2026-01-09",
+   "signers": "182000",
+   "transactions": "3594342"
+  },
+  {
+   "day": "2026-01-10",
+   "signers": "177006",
+   "transactions": "3548648"
+  },
+  {
+   "day": "2026-01-11",
+   "signers": "170319",
+   "transactions": "3412165"
+  },
+  {
+   "day": "2026-01-12",
+   "signers": "177938",
+   "transactions": "3523288"
+  },
+  {
+   "day": "2026-01-13",
+   "signers": "179170",
+   "transactions": "2826774"
+  },
+  {
+   "day": "2026-01-14",
+   "signers": "173925",
+   "transactions": "4277725"
+  },
+  {
+   "day": "2026-01-15",
+   "signers": "168488",
+   "transactions": "3440557"
+  },
+  {
+   "day": "2026-01-16",
+   "signers": "163927",
+   "transactions": "3413354"
+  },
+  {
+   "day": "2026-01-17",
+   "signers": "166524",
+   "transactions": "3392056"
+  },
+  {
+   "day": "2026-01-18",
+   "signers": "170355",
+   "transactions": "3417900"
+  },
+  {
+   "day": "2026-01-19",
+   "signers": "178071",
+   "transactions": "3511364"
+  },
+  {
+   "day": "2026-01-20",
+   "signers": "174717",
+   "transactions": "3577884"
+  },
+  {
+   "day": "2026-01-21",
+   "signers": "170934",
+   "transactions": "3494194"
+  },
+  {
+   "day": "2026-01-22",
+   "signers": "170580",
+   "transactions": "3392561"
+  },
+  {
+   "day": "2026-01-23",
+   "signers": "170480",
+   "transactions": "3372711"
+  },
+  {
+   "day": "2026-01-24",
+   "signers": "167198",
+   "transactions": "3426823"
+  },
+  {
+   "day": "2026-01-25",
+   "signers": "165205",
+   "transactions": "3448570"
+  },
+  {
+   "day": "2026-01-26",
+   "signers": "169950",
+   "transactions": "3485043"
+  },
+  {
+   "day": "2026-01-27",
+   "signers": "174298",
+   "transactions": "3467652"
+  },
+  {
+   "day": "2026-01-28",
+   "signers": "171937",
+   "transactions": "3480999"
+  },
+  {
+   "day": "2026-01-29",
+   "signers": "174583",
+   "transactions": "3430439"
+  },
+  {
+   "day": "2026-01-30",
+   "signers": "167021",
+   "transactions": "3454330"
+  },
+  {
+   "day": "2026-01-31",
+   "signers": "171914",
+   "transactions": "3457212"
+  },
+  {
+   "day": "2026-02-01",
+   "signers": "167981",
+   "transactions": "3410196"
+  },
+  {
+   "day": "2026-02-02",
+   "signers": "172277",
+   "transactions": "3391098"
+  },
+  {
+   "day": "2026-02-03",
+   "signers": "363348",
+   "transactions": "3685228"
+  },
+  {
+   "day": "2026-02-04",
+   "signers": "301580",
+   "transactions": "3595251"
+  },
+  {
+   "day": "2026-02-05",
+   "signers": "266188",
+   "transactions": "3637869"
+  },
+  {
+   "day": "2026-02-06",
+   "signers": "258339",
+   "transactions": "3562713"
+  },
+  {
+   "day": "2026-02-07",
+   "signers": "252619",
+   "transactions": "3447863"
+  },
+  {
+   "day": "2026-02-08",
+   "signers": "251386",
+   "transactions": "3441513"
+  },
+  {
+   "day": "2026-02-09",
+   "signers": "262363",
+   "transactions": "3435600"
+  },
+  {
+   "day": "2026-02-10",
+   "signers": "379672",
+   "transactions": "3534923"
+  },
+  {
+   "day": "2026-02-11",
+   "signers": "380569",
+   "transactions": "3550475"
+  },
+  {
+   "day": "2026-02-12",
+   "signers": "377569",
+   "transactions": "3520045"
+  },
+  {
+   "day": "2026-02-13",
+   "signers": "376533",
+   "transactions": "3596766"
+  },
+  {
+   "day": "2026-02-14",
+   "signers": "333146",
+   "transactions": "3489869"
+  },
+  {
+   "day": "2026-02-15",
+   "signers": "592250",
+   "transactions": "3790938"
+  },
+  {
+   "day": "2026-02-16",
+   "signers": "426088",
+   "transactions": "3568949"
+  },
+  {
+   "day": "2026-02-17",
+   "signers": "541983",
+   "transactions": "3673260"
+  },
+  {
+   "day": "2026-02-18",
+   "signers": "504588",
+   "transactions": "3227703"
+  },
+  {
+   "day": "2026-02-19",
+   "signers": "146971",
+   "transactions": "3270228"
+  },
+  {
+   "day": "2026-02-20",
+   "signers": "143359",
+   "transactions": "3251929"
+  },
+  {
+   "day": "2026-02-21",
+   "signers": "143063",
+   "transactions": "3202198"
+  },
+  {
+   "day": "2026-02-22",
+   "signers": "144950",
+   "transactions": "3249572"
+  },
+  {
+   "day": "2026-02-23",
+   "signers": "155478",
+   "transactions": "3335654"
+  },
+  {
+   "day": "2026-02-24",
+   "signers": "158821",
+   "transactions": "3219737"
+  },
+  {
+   "day": "2026-02-25",
+   "signers": "161206",
+   "transactions": "3793647"
+  },
+  {
+   "day": "2026-02-26",
+   "signers": "156943",
+   "transactions": "3840625"
+  },
+  {
+   "day": "2026-02-27",
+   "signers": "157018",
+   "transactions": "3424852"
+  },
+  {
+   "day": "2026-02-28",
+   "signers": "150870",
+   "transactions": "3532396"
+  },
+  {
+   "day": "2026-03-01",
+   "signers": "138509",
+   "transactions": "3595113"
+  },
+  {
+   "day": "2026-03-02",
+   "signers": "142175",
+   "transactions": "3664541"
+  },
+  {
+   "day": "2026-03-03",
+   "signers": "149175",
+   "transactions": "3336584"
+  },
+  {
+   "day": "2026-03-04",
+   "signers": "151854",
+   "transactions": "3325268"
+  },
+  {
+   "day": "2026-03-05",
+   "signers": "151028",
+   "transactions": "3325419"
+  },
+  {
+   "day": "2026-03-06",
+   "signers": "148857",
+   "transactions": "3306784"
+  },
+  {
+   "day": "2026-03-07",
+   "signers": "146239",
+   "transactions": "3247636"
+  },
+  {
+   "day": "2026-03-08",
+   "signers": "144938",
+   "transactions": "3315460"
+  },
+  {
+   "day": "2026-03-09",
+   "signers": "148494",
+   "transactions": "3351758"
+  },
+  {
+   "day": "2026-03-10",
+   "signers": "150666",
+   "transactions": "3332900"
+  },
+  {
+   "day": "2026-03-11",
+   "signers": "148943",
+   "transactions": "3287695"
+  },
+  {
+   "day": "2026-03-12",
+   "signers": "156082",
+   "transactions": "3335521"
+  },
+  {
+   "day": "2026-03-13",
+   "signers": "146734",
+   "transactions": "3269575"
+  },
+  {
+   "day": "2026-03-14",
+   "signers": "144157",
+   "transactions": "3169552"
+  },
+  {
+   "day": "2026-03-15",
+   "signers": "141444",
+   "transactions": "3178560"
+  },
+  {
+   "day": "2026-03-16",
+   "signers": "145991",
+   "transactions": "3290512"
+  },
+  {
+   "day": "2026-03-17",
+   "signers": "145799",
+   "transactions": "3219245"
+  },
+  {
+   "day": "2026-03-18",
+   "signers": "142216",
+   "transactions": "3237808"
+  },
+  {
+   "day": "2026-03-19",
+   "signers": "143729",
+   "transactions": "3208457"
+  },
+  {
+   "day": "2026-03-20",
+   "signers": "137325",
+   "transactions": "3145237"
+  },
+  {
+   "day": "2026-03-21",
+   "signers": "135621",
+   "transactions": "3114793"
+  },
+  {
+   "day": "2026-03-22",
+   "signers": "137209",
+   "transactions": "3106917"
+  },
+  {
+   "day": "2026-03-23",
+   "signers": "139910",
+   "transactions": "3444711"
+  },
+  {
+   "day": "2026-03-24",
+   "signers": "140101",
+   "transactions": "3891497"
+  },
+  {
+   "day": "2026-03-25",
+   "signers": "140965",
+   "transactions": "4232584"
+  },
+  {
+   "day": "2026-03-26",
+   "signers": "138346",
+   "transactions": "3915239"
+  },
+  {
+   "day": "2026-03-27",
+   "signers": "136891",
+   "transactions": "3618171"
+  },
+  {
+   "day": "2026-03-28",
+   "signers": "133798",
+   "transactions": "4563367"
+  },
+  {
+   "day": "2026-03-29",
+   "signers": "133415",
+   "transactions": "4191688"
+  },
+  {
+   "day": "2026-03-30",
+   "signers": "138598",
+   "transactions": "3464917"
+  },
+  {
+   "day": "2026-03-31",
+   "signers": "139225",
+   "transactions": "4169826"
+  },
+  {
+   "day": "2026-04-01",
+   "signers": "139048",
+   "transactions": "3758663"
+  },
+  {
+   "day": "2026-04-02",
+   "signers": "137183",
+   "transactions": "1063375"
+  },
+  {
+   "day": "2026-04-03",
+   "signers": "131893",
+   "transactions": "907861"
+  },
+  {
+   "day": "2026-04-04",
+   "signers": "130579",
+   "transactions": "908553"
+  },
+  {
+   "day": "2026-04-05",
+   "signers": "129245",
+   "transactions": "896322"
+  },
+  {
+   "day": "2026-04-06",
+   "signers": "134018",
+   "transactions": "959480"
+  },
+  {
+   "day": "2026-04-07",
+   "signers": "132219",
+   "transactions": "957226"
+  },
+  {
+   "day": "2026-04-08",
+   "signers": "133993",
+   "transactions": "971381"
+  },
+  {
+   "day": "2026-04-09",
+   "signers": "133071",
+   "transactions": "972850"
+  },
+  {
+   "day": "2026-04-10",
+   "signers": "132673",
+   "transactions": "992732"
+  },
+  {
+   "day": "2026-04-11",
+   "signers": "131792",
+   "transactions": "960660"
+  },
+  {
+   "day": "2026-04-12",
+   "signers": "131282",
+   "transactions": "992071"
+  },
+  {
+   "day": "2026-04-13",
+   "signers": "139249",
+   "transactions": "895923"
+  },
+  {
+   "day": "2026-04-14",
+   "signers": "127401",
+   "transactions": "785094"
+  },
+  {
+   "day": "2026-04-15",
+   "signers": "133306",
+   "transactions": "763144"
+  },
+  {
+   "day": "2026-04-16",
+   "signers": "133652",
+   "transactions": "1058803"
+  },
+  {
+   "day": "2026-04-17",
+   "signers": "130982",
+   "transactions": "729376"
+  },
+  {
+   "day": "2026-04-18",
+   "signers": "129021",
+   "transactions": "763796"
+  },
+  {
+   "day": "2026-04-19",
+   "signers": "127462",
+   "transactions": "802962"
+  },
+  {
+   "day": "2026-04-20",
+   "signers": "129958",
+   "transactions": "808458"
+  },
+  {
+   "day": "2026-04-21",
+   "signers": "129703",
+   "transactions": "805053"
+  },
+  {
+   "day": "2026-04-22",
+   "signers": "129984",
+   "transactions": "778988"
+  },
+  {
+   "day": "2026-04-23",
+   "signers": "126197",
+   "transactions": "751971"
+  },
+  {
+   "day": "2026-04-24",
+   "signers": "121955",
+   "transactions": "686968"
+  },
+  {
+   "day": "2026-04-25",
+   "signers": "122432",
+   "transactions": "622133"
+  },
+  {
+   "day": "2026-04-26",
+   "signers": "118616",
+   "transactions": "722389"
+  },
+  {
+   "day": "2026-04-27",
+   "signers": "124353",
+   "transactions": "713204"
+  },
+  {
+   "day": "2026-04-28",
+   "signers": "120906",
+   "transactions": "709459"
+  },
+  {
+   "day": "2026-04-29",
+   "signers": "123229",
+   "transactions": "932580"
+  },
+  {
+   "day": "2026-04-30",
+   "signers": "119499",
+   "transactions": "726837"
+  },
+  {
+   "day": "2026-05-01",
+   "signers": "119055",
+   "transactions": "704350"
+  },
+  {
+   "day": "2026-05-02",
+   "signers": "128424",
+   "transactions": "695144"
+  },
+  {
+   "day": "2026-05-03",
+   "signers": "126433",
+   "transactions": "726605"
+  },
+  {
+   "day": "2026-05-04",
+   "signers": "129115",
+   "transactions": "768403"
+  },
+  {
+   "day": "2026-05-05",
+   "signers": "133244",
+   "transactions": "761084"
+  },
+  {
+   "day": "2026-05-06",
+   "signers": "128094",
+   "transactions": "847917"
+  },
+  {
+   "day": "2026-05-07",
+   "signers": "124915",
+   "transactions": "783747"
+  },
+  {
+   "day": "2026-05-08",
+   "signers": "124037",
+   "transactions": "761282"
+  },
+  {
+   "day": "2026-05-09",
+   "signers": "120268",
+   "transactions": "740471"
+  },
+  {
+   "day": "2026-05-10",
+   "signers": "119985",
+   "transactions": "757261"
+  },
+  {
+   "day": "2026-05-11",
+   "signers": "124825",
+   "transactions": "757788"
+  },
+  {
+   "day": "2026-05-12",
+   "signers": "123869",
+   "transactions": "788621"
+  },
+  {
+   "day": "2026-05-13",
+   "signers": "122413",
+   "transactions": "790516"
+  },
+  {
+   "day": "2026-05-14",
+   "signers": "120501",
+   "transactions": "786025"
+  },
+  {
+   "day": "2026-05-15",
+   "signers": "107035",
+   "transactions": "751448"
+  },
+  {
+   "day": "2026-05-16",
+   "signers": "111501",
+   "transactions": "722169"
+  },
+  {
+   "day": "2026-05-17",
+   "signers": "115963",
+   "transactions": "726935"
+  },
+  {
+   "day": "2026-05-18",
+   "signers": "118091",
+   "transactions": "787300"
+  },
+  {
+   "day": "2026-05-19",
+   "signers": "118559",
+   "transactions": "779071"
+  },
+  {
+   "day": "2026-05-20",
+   "signers": "119992",
+   "transactions": "817159"
+  },
+  {
+   "day": "2026-05-21",
+   "signers": "116316",
+   "transactions": "836842"
+  },
+  {
+   "day": "2026-05-22",
+   "signers": "125196",
+   "transactions": "1109094"
+  },
+  {
+   "day": "2026-05-23",
+   "signers": "122630",
+   "transactions": "879647"
+  },
+  {
+   "day": "2026-05-24",
+   "signers": "122760",
+   "transactions": "898928"
+  },
+  {
+   "day": "2026-05-25",
+   "signers": "126133",
+   "transactions": "898740"
+  },
+  {
+   "day": "2026-05-26",
+   "signers": "124386",
+   "transactions": "957320"
+  },
+  {
+   "day": "2026-05-27",
+   "signers": "118211",
+   "transactions": "831632"
+  },
+  {
+   "day": "2026-05-28",
+   "signers": "115174",
+   "transactions": "825571"
+  },
+  {
+   "day": "2026-05-29",
+   "signers": "115762",
+   "transactions": "864412"
+  },
+  {
+   "day": "2026-05-30",
+   "signers": "112655",
+   "transactions": "776204"
+  },
+  {
+   "day": "2026-05-31",
+   "signers": "113585",
+   "transactions": "761360"
+  },
+  {
+   "day": "2026-06-01",
+   "signers": "117957",
+   "transactions": "882995"
+  },
+  {
+   "day": "2026-06-02",
+   "signers": "118358",
+   "transactions": "971904"
+  },
+  {
+   "day": "2026-06-03",
+   "signers": "121069",
+   "transactions": "987134"
+  },
+  {
+   "day": "2026-06-04",
+   "signers": "118953",
+   "transactions": "1020616"
+  },
+  {
+   "day": "2026-06-05",
+   "signers": "115801",
+   "transactions": "1055518"
+  },
+  {
+   "day": "2026-06-06",
+   "signers": "111304",
+   "transactions": "830379"
+  },
+  {
+   "day": "2026-06-07",
+   "signers": "111870",
+   "transactions": "845410"
+  },
+  {
+   "day": "2026-06-08",
+   "signers": "123836",
+   "transactions": "876622"
+  },
+  {
+   "day": "2026-06-09",
+   "signers": "112294",
+   "transactions": "804550"
+  },
+  {
+   "day": "2026-06-10",
+   "signers": "114609",
+   "transactions": "804245"
+  },
+  {
+   "day": "2026-06-11",
+   "signers": "112200",
+   "transactions": "804656"
+  },
+  {
+   "day": "2026-06-12",
+   "signers": "111915",
+   "transactions": "789334"
+  },
+  {
+   "day": "2026-06-13",
+   "signers": "110134",
+   "transactions": "734123"
+  },
+  {
+   "day": "2026-06-14",
+   "signers": "110032",
+   "transactions": "756764"
+  },
+  {
+   "day": "2026-06-15",
+   "signers": "117898",
+   "transactions": "851039"
+  },
+  {
+   "day": "2026-06-16",
+   "signers": "114118",
+   "transactions": "804245"
+  },
+  {
+   "day": "2026-06-17",
+   "signers": "115824",
+   "transactions": "823188"
+  },
+  {
+   "day": "2026-06-18",
+   "signers": "111472",
+   "transactions": "801660"
+  },
+  {
+   "day": "2026-06-19",
+   "signers": "110263",
+   "transactions": "812658"
+  },
+  {
+   "day": "2026-06-20",
+   "signers": "106396",
+   "transactions": "719919"
+  },
+  {
+   "day": "2026-06-21",
+   "signers": "109135",
+   "transactions": "722402"
+  },
+  {
+   "day": "2026-06-22",
+   "signers": "112032",
+   "transactions": "757253"
+  },
+  {
+   "day": "2026-06-23",
+   "signers": "112986",
+   "transactions": "757769"
+  },
+  {
+   "day": "2026-06-24",
+   "signers": "110260",
+   "transactions": "768173"
+  },
+  {
+   "day": "2026-06-25",
+   "signers": "109728",
+   "transactions": "743096"
+  },
+  {
+   "day": "2026-06-26",
+   "signers": "106389",
+   "transactions": "736132"
+  },
+  {
+   "day": "2026-06-27",
+   "signers": "106056",
+   "transactions": "697852"
+  },
+  {
+   "day": "2026-06-28",
+   "signers": "105934",
+   "transactions": "711388"
+  },
+  {
+   "day": "2026-06-29",
+   "signers": "108811",
+   "transactions": "796983"
+  },
+  {
+   "day": "2026-06-30",
+   "signers": "107730",
+   "transactions": "747039"
+  },
+  {
+   "day": "2026-07-01",
+   "signers": "104101",
+   "transactions": "720865"
+  },
+  {
+   "day": "2026-07-02",
+   "signers": "105844",
+   "transactions": "747871"
+  },
+  {
+   "day": "2026-07-03",
+   "signers": "104465",
+   "transactions": "739047"
+  },
+  {
+   "day": "2026-07-04",
+   "signers": "103825",
+   "transactions": "753757"
+  },
+  {
+   "day": "2026-07-05",
+   "signers": "106184",
+   "transactions": "737968"
+  },
+  {
+   "day": "2026-07-06",
+   "signers": "106771",
+   "transactions": "796655"
+  },
+  {
+   "day": "2026-07-07",
+   "signers": "105153",
+   "transactions": "819335"
+  },
+  {
+   "day": "2026-07-08",
+   "signers": "105152",
+   "transactions": "873695"
+  },
+  {
+   "day": "2026-07-09",
+   "signers": "102571",
+   "transactions": "823411"
+  },
+  {
+   "day": "2026-07-10",
+   "signers": "102400",
+   "transactions": "770836"
+  },
+  {
+   "day": "2026-07-11",
+   "signers": "90183",
+   "transactions": "715477"
+  },
+  {
+   "day": "2026-07-12",
+   "signers": "89871",
+   "transactions": "694076"
+  },
+  {
+   "day": "2026-07-13",
+   "signers": "91883",
+   "transactions": "794924"
+  },
+  {
+   "day": "2026-07-14",
+   "signers": "92405",
+   "transactions": "757867"
+  },
+  {
+   "day": "2026-07-15",
+   "signers": "90939",
+   "transactions": "725079"
+  },
+  {
+   "day": "2026-07-16",
+   "signers": "89017",
+   "transactions": "724947"
+  },
+  {
+   "day": "2026-07-17",
+   "signers": "88616",
+   "transactions": "711903"
+  },
+  {
+   "day": "2026-07-18",
+   "signers": "87019",
+   "transactions": "672538"
+  },
+  {
+   "day": "2026-07-19",
+   "signers": "85909",
+   "transactions": "664256"
+  },
+  {
+   "day": "2026-07-20",
+   "signers": "88674",
+   "transactions": "754988"
+  },
+  {
+   "day": "2026-07-21",
+   "signers": "89928",
+   "transactions": "737854"
+  },
+  {
+   "day": "2026-07-22",
+   "signers": "89683",
+   "transactions": "718549"
+  },
+  {
+   "day": "2026-07-23",
+   "signers": "88801",
+   "transactions": "732946"
+  },
+  {
+   "day": "2026-07-24",
+   "signers": "85291",
+   "transactions": "712611"
+  },
+  {
+   "day": "2026-07-25",
+   "signers": "86103",
+   "transactions": "718997"
+  },
+  {
+   "day": "2026-07-26",
+   "signers": "85718",
+   "transactions": "706844"
+  },
+  {
+   "day": "2026-07-27",
+   "signers": "87128",
+   "transactions": "698017"
+  },
+  {
+   "day": "2026-07-28",
+   "signers": "86405",
+   "transactions": "703205"
+  },
+  {
+   "day": "2026-07-29",
+   "signers": "86375",
+   "transactions": "705004"
+  },
+  {
+   "day": "2026-07-30",
+   "signers": "85469",
+   "transactions": "733277"
+  },
+  {
+   "day": "2026-07-31",
+   "signers": "82072",
+   "transactions": "708126"
+  },
+  {
+   "day": "2026-08-01",
+   "signers": "82192",
+   "transactions": "681793"
+  },
+  {
+   "day": "2026-08-02",
+   "signers": "81729",
+   "transactions": "671128"
+  },
+  {
+   "day": "2026-08-03",
+   "signers": "85195",
+   "transactions": "690732"
+  },
+  {
+   "day": "2026-08-04",
+   "signers": "85551",
+   "transactions": "696617"
+  },
+  {
+   "day": "2026-08-05",
+   "signers": "84061",
+   "transactions": "671609"
+  },
+  {
+   "day": "2026-08-06",
+   "signers": "84184",
+   "transactions": "675341"
+  },
+  {
+   "day": "2026-08-07",
+   "signers": "82269",
+   "transactions": "656089"
+  },
+  {
+   "day": "2026-08-08",
+   "signers": "78514",
+   "transactions": "656235"
+  },
+  {
+   "day": "2026-08-09",
+   "signers": "80418",
+   "transactions": "637854"
+  },
+  {
+   "day": "2026-08-10",
+   "signers": "82610",
+   "transactions": "672018"
+  },
+  {
+   "day": "2026-08-11",
+   "signers": "82799",
+   "transactions": "660154"
+  },
+  {
+   "day": "2026-08-12",
+   "signers": "82166",
+   "transactions": "685406"
+  },
+  {
+   "day": "2026-08-13",
+   "signers": "82572",
+   "transactions": "664804"
+  },
+  {
+   "day": "2026-08-14",
+   "signers": "79800",
+   "transactions": "639732"
+  },
+  {
+   "day": "2026-08-15",
+   "signers": "79812",
+   "transactions": "584733"
+  },
+  {
+   "day": "2026-08-16",
+   "signers": "80163",
+   "transactions": "615151"
+  },
+  {
+   "day": "2026-08-17",
+   "signers": "80576",
+   "transactions": "669250"
+  },
+  {
+   "day": "2026-08-18",
+   "signers": "80055",
+   "transactions": "673834"
+  },
+  {
+   "day": "2026-08-19",
+   "signers": "80931",
+   "transactions": "733400"
+  },
+  {
+   "day": "2026-08-20",
+   "signers": "82216",
+   "transactions": "758797"
+  },
+  {
+   "day": "2026-08-21",
+   "signers": "81667",
+   "transactions": "786077"
+  },
+  {
+   "day": "2026-08-22",
+   "signers": "79636",
+   "transactions": "804701"
+  },
+  {
+   "day": "2026-08-23",
+   "signers": "79394",
+   "transactions": "726225"
+  },
+  {
+   "day": "2026-08-24",
+   "signers": "81373",
+   "transactions": "805717"
+  },
+  {
+   "day": "2026-08-25",
+   "signers": "79464",
+   "transactions": "719568"
+  },
+  {
+   "day": "2026-08-26",
+   "signers": "81506",
+   "transactions": "655345"
+  },
+  {
+   "day": "2026-08-27",
+   "signers": "81525",
+   "transactions": "681264"
+  },
+  {
+   "day": "2026-08-28",
+   "signers": "78375",
+   "transactions": "654889"
+  },
+  {
+   "day": "2026-08-29",
+   "signers": "76934",
+   "transactions": "594141"
+  },
+  {
+   "day": "2026-08-30",
+   "signers": "76955",
+   "transactions": "623892"
+  },
+  {
+   "day": "2026-08-31",
+   "signers": "77790",
+   "transactions": "684883"
+  },
+  {
+   "day": "2026-09-01",
+   "signers": "77130",
+   "transactions": "670529"
+  },
+  {
+   "day": "2026-09-02",
+   "signers": "77127",
+   "transactions": "659622"
+  },
+  {
+   "day": "2026-09-03",
+   "signers": "77607",
+   "transactions": "703698"
+  },
+  {
+   "day": "2026-09-04",
+   "signers": "76042",
+   "transactions": "735463"
+  },
+  {
+   "day": "2026-09-05",
+   "signers": "74288",
+   "transactions": "674162"
+  },
+  {
+   "day": "2026-09-06",
+   "signers": "74652",
+   "transactions": "763172"
+  },
+  {
+   "day": "2026-09-07",
+   "signers": "75711",
+   "transactions": "746044"
+  },
+  {
+   "day": "2026-09-08",
+   "signers": "71768",
+   "transactions": "704254"
+  },
+  {
+   "day": "2026-09-09",
+   "signers": "71964",
+   "transactions": "772841"
+  },
+  {
+   "day": "2026-09-10",
+   "signers": "71159",
+   "transactions": "728736"
+  },
+  {
+   "day": "2026-09-11",
+   "signers": "70014",
+   "transactions": "846582"
+  },
+  {
+   "day": "2026-09-12",
+   "signers": "67170",
+   "transactions": "651970"
+  },
+  {
+   "day": "2026-09-13",
+   "signers": "61501",
+   "transactions": "626447"
+  },
+  {
+   "day": "2026-09-14",
+   "signers": "49972",
+   "transactions": "706600"
+  },
+  {
+   "day": "2026-09-15",
+   "signers": "45247",
+   "transactions": "706597"
+  },
+  {
+   "day": "2026-09-16",
+   "signers": "42517",
+   "transactions": "777089"
+  },
+  {
+   "day": "2026-09-17",
+   "signers": "44749",
+   "transactions": "840314"
+  },
+  {
+   "day": "2026-09-18",
+   "signers": "62965",
+   "transactions": "973388"
+  },
+  {
+   "day": "2026-09-19",
+   "signers": "52391",
+   "transactions": "839380"
+  },
+  {
+   "day": "2026-09-20",
+   "signers": "57466",
+   "transactions": "846013"
+  },
+  {
+   "day": "2026-09-21",
+   "signers": "60298",
+   "transactions": "871723"
+  },
+  {
+   "day": "2026-09-22",
+   "signers": "57797",
+   "transactions": "971959"
+  },
+  {
+   "day": "2026-09-23",
+   "signers": "56105",
+   "transactions": "869892"
+  },
+  {
+   "day": "2026-09-24",
+   "signers": "54027",
+   "transactions": "741291"
+  },
+  {
+   "day": "2026-09-25",
+   "signers": "57300",
+   "transactions": "715469"
+  },
+  {
+   "day": "2026-09-26",
+   "signers": "54118",
+   "transactions": "603143"
+  },
+  {
+   "day": "2026-09-27",
+   "signers": "63589",
+   "transactions": "1217209"
+  },
+  {
+   "day": "2026-09-28",
+   "signers": "61771",
+   "transactions": "1129793"
+  },
+  {
+   "day": "2026-09-29",
+   "signers": "62990",
+   "transactions": "987627"
+  },
+  {
+   "day": "2026-09-30",
+   "signers": "58749",
+   "transactions": "923526"
+  },
+  {
+   "day": "2026-10-01",
+   "signers": "62105",
+   "transactions": "1151492"
+  },
+  {
+   "day": "2026-10-02",
+   "signers": "118077",
+   "transactions": "868026"
+  },
+  {
+   "day": "2026-10-03",
+   "signers": "176719",
+   "transactions": "690438"
+  },
+  {
+   "day": "2026-10-04",
+   "signers": "177196",
+   "transactions": "839450"
+  },
+  {
+   "day": "2026-10-05",
+   "signers": "95992",
+   "transactions": "865681"
+  },
+  {
+   "day": "2026-10-06",
+   "signers": "124809",
+   "transactions": "909765"
+  },
+  {
+   "day": "2026-10-07",
+   "signers": "175774",
+   "transactions": "971068"
+  },
+  {
+   "day": "2026-10-08",
+   "signers": "82447",
+   "transactions": "1014850"
+  },
+  {
+   "day": "2026-10-09",
+   "signers": "53950",
+   "transactions": "680332"
+  },
+  {
+   "day": "2026-10-10",
+   "signers": "56881",
+   "transactions": "850344"
+  },
+  {
+   "day": "2026-10-11",
+   "signers": "54865",
+   "transactions": "1109584"
+  },
+  {
+   "day": "2026-10-12",
+   "signers": "59164",
+   "transactions": "712621"
+  },
+  {
+   "day": "2026-10-13",
+   "signers": "55685",
+   "transactions": "731054"
+  },
+  {
+   "day": "2026-10-14",
+   "signers": "58615",
+   "transactions": "767812"
+  },
+  {
+   "day": "2026-10-15",
+   "signers": "55503",
+   "transactions": "911980"
+  },
+  {
+   "day": "2026-10-16",
+   "signers": "54936",
+   "transactions": "658427"
+  },
+  {
+   "day": "2026-10-17",
+   "signers": "54322",
+   "transactions": "557903"
+  },
+  {
+   "day": "2026-10-18",
+   "signers": "51810",
+   "transactions": "569735"
+  },
+  {
+   "day": "2026-10-19",
+   "signers": "53107",
+   "transactions": "607019"
+  },
+  {
+   "day": "2026-10-20",
+   "signers": "52116",
+   "transactions": "617990"
+  },
+  {
+   "day": "2026-10-21",
+   "signers": "53919",
+   "transactions": "658784"
+  },
+  {
+   "day": "2026-10-22",
+   "signers": "51423",
+   "transactions": "547267"
+  },
+  {
+   "day": "2026-10-23",
+   "signers": "51214",
+   "transactions": "609236"
+  },
+  {
+   "day": "2026-10-24",
+   "signers": "50178",
+   "transactions": "635438"
+  },
+  {
+   "day": "2026-10-25",
+   "signers": "49245",
+   "transactions": "550250"
+  },
+  {
+   "day": "2026-10-26",
+   "signers": "49601",
+   "transactions": "573801"
+  },
+  {
+   "day": "2026-10-27",
+   "signers": "61855",
+   "transactions": "604320"
+  },
+  {
+   "day": "2026-10-28",
+   "signers": "49273",
+   "transactions": "520096"
+  },
+  {
+   "day": "2026-10-29",
+   "signers": "49292",
+   "transactions": "649103"
+  },
+  {
+   "day": "2026-10-30",
+   "signers": "47349",
+   "transactions": "691420"
+  },
+  {
+   "day": "2026-10-31",
+   "signers": "46019",
+   "transactions": "502649"
+  },
+  {
+   "day": "2026-11-01",
+   "signers": "46478",
+   "transactions": "509345"
+  },
+  {
+   "day": "2026-11-02",
+   "signers": "48060",
+   "transactions": "522358"
+  },
+  {
+   "day": "2026-11-03",
+   "signers": "72343",
+   "transactions": "597189"
+  },
+  {
+   "day": "2026-11-04",
+   "signers": "79164",
+   "transactions": "706690"
+  },
+  {
+   "day": "2026-11-05",
+   "signers": "78560",
+   "transactions": "848794"
+  },
+  {
+   "day": "2026-11-06",
+   "signers": "78574",
+   "transactions": "717484"
+  },
+  {
+   "day": "2026-11-07",
+   "signers": "77076",
+   "transactions": "682432"
+  },
+  {
+   "day": "2026-11-08",
+   "signers": "79184",
+   "transactions": "609504"
+  },
+  {
+   "day": "2026-11-09",
+   "signers": "77752",
+   "transactions": "895302"
+  },
+  {
+   "day": "2026-11-10",
+   "signers": "177510",
+   "transactions": "970505"
+  }
+ ],
+ "sql": "SELECT CAST(block_date AS STRING) AS day,\n       COUNT(*) AS transactions,\n       COUNT(DISTINCT signer_account_id) AS signers\nFROM `bigquery-public-data.crypto_near_mainnet_us.transactions`\nWHERE block_date BETWEEN @a AND @b\nGROUP BY day\nORDER BY day"
+}

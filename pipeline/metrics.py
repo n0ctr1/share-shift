@@ -448,6 +448,20 @@ def token_check(raw, window):
             "active_accounts_prior": mean(shift(first), shift(last_), "active_accounts"),
             "source": (raw.get("near_l1_daily") or {}).get("source"),
         }
+        bq = (raw.get("bq_l1_daily") or {}).get("rows") or []
+        nb = {r["date"]: r for r in l1}
+        pairs = [(int(r["transactions"]) / nb[r["day"]]["txns"],
+                  int(r["signers"]) / nb[r["day"]]["active_accounts"])
+                 for r in bq if r["day"] in nb and nb[r["day"]]["txns"] and nb[r["day"]]["active_accounts"]]
+        if pairs:
+            med = lambda v: sorted(v)[len(v) // 2]
+            out["l1"]["bigquery"] = {
+                "days": len(pairs), "txns_ratio_median": med([a for a, _ in pairs]),
+                "signers_ratio_median": med([b for _, b in pairs]),
+                "txns_ratio_max": max(a for a, _ in pairs),
+                "within_1pct": sum(1 for a, _ in pairs if abs(a - 1) <= 0.01),
+                "dataset": raw["bq_l1_daily"]["dataset"],
+            }
     return out
 
 
@@ -511,6 +525,64 @@ def events_check(raw, table, subject):
             "one_ratio_mean": sum(d["one_ratio"] for d in valid) / len(valid),
             "both_sides": all(d["reported_in_both_interval"] and not d["reported_in_one_interval"]
                               for d in valid)}
+
+
+def bq_check(raw, table, subject):
+    """Every day of intents.near's DIP-4 events, from NEAR's public BigQuery dataset."""
+    legs, prices = raw.get("bq_intents_legs"), raw.get("bq_prices")
+    if not legs or not prices:
+        return None
+    P = prices["prices"]
+    idx = {d: i for i, d in enumerate(table["dates"])}
+    by_day, legs_n, unpriced = {}, {}, {}
+    for r in legs["rows"]:
+        d = by_day.setdefault(r["day"], {"token_diff": 0.0, "transfer": 0.0, "intents": 0})
+        if r["event"] == "intents_executed":
+            d["intents"] = int(r["n"])
+            continue
+        legs_n[r["event"]] = legs_n.get(r["event"], 0) + int(r["n"])
+        p = P.get(r["asset"])
+        price = 1.0 if p and p["stable"] else (p["daily"].get(r["day"]) if p else None)
+        if price is None:
+            unpriced[r["event"]] = unpriced.get(r["event"], 0) + int(r["n"])
+            continue
+        # token_diff: what every participant gave (user and solver), i.e. both sides;
+        # transfer: every movement between accounts inside the contract.
+        raw_amt = int(r["neg_raw"] if r["event"] == "token_diff" else r["pos_raw"])
+        d[r["event"]] += raw_amt / 10 ** p["decimals"] * price
+    days = []
+    for day in sorted(by_day):
+        if day not in idx:
+            continue
+        rep = table[subject]["volume"][idx[day]]
+        b = by_day[day]
+        days.append({"day": day, "reported": rep, "token_diff_usd": b["token_diff"],
+                     "transfer_usd": b["transfer"], "intents_executed": b["intents"],
+                     "ratio": b["token_diff"] / rep if rep else None})
+    if not days:
+        return None
+    tol = 0.05
+
+    def summary(rows):
+        r = [x["ratio"] for x in rows if x["ratio"] is not None]
+        return {"days": len(r), "mean": sum(r) / len(r), "min": min(r), "max": max(r),
+                "within_5pct": sum(1 for v in r if abs(v - 1) <= tol)} if r else None
+    valid = [d for d in days if d["day"] <= config.EVENTS_VALID_UNTIL]
+    later = [d for d in days if d["day"] > config.EVENTS_VALID_UNTIL]
+    months = {}
+    for d in later:
+        months.setdefault(d["day"][:7], []).append(d)
+    first_off = next((d["day"] for d in days if d["ratio"] is not None and abs(d["ratio"] - 1) > tol), None)
+    rep_total = sum(d["reported"] for d in days)
+    return {
+        "dataset": legs["dataset"], "range": legs["range"],
+        "bytes_billed": legs.get("bytes_billed"), "days": days,
+        "valid": summary(valid), "later_by_month": {k: summary(v) for k, v in sorted(months.items())},
+        "first_day_off": first_off, "tolerance": tol,
+        "token_diff_over_reported": sum(d["token_diff_usd"] for d in days) / rep_total,
+        "unpriced_leg_share": {k: unpriced.get(k, 0) / v for k, v in legs_n.items()},
+        "assets_priced": sum(1 for v in P.values() if v["stable"] or v["daily"]),
+    }
 
 
 def wide_report(raw, table, subject, names, last, w, yoy_prior_end):
@@ -949,6 +1021,7 @@ def _compute(raw, fetched_at):
         c1_text = ("NEAR Intents is the largest venue in the peer set, with more than "
                    "%d%% of volume." % round(100 * t["leader_share"]))
     events = events_check(raw, table, subject)
+    bq = bq_check(raw, table, subject)
     if basis and events:
         measured = shares_measured(basis, table, subject, names, [start_date, end_date],
                                    events["one_ratio_mean"], bridge_volume or None)
@@ -1191,6 +1264,7 @@ def _compute(raw, fetched_at):
         "channels": channels,
         "basis": basis,
         "events": events,
+        "bq": bq,
         "tee": tee,
         "token": token,
         "onchain": oc,

@@ -235,6 +235,33 @@ class Events(unittest.TestCase):
         table = metrics.build_table(raw, "2030-01-01T00:00:00Z")
         self.assertFalse(metrics.events_check(raw, table, config.SUBJECT)["both_sides"])
 
+    def test_bigquery_days_are_priced_and_compared(self):
+        vols = {p["slug"]: [100.0] * 10 for p in config.PEERS}
+        raw, dates = make_raw(10, vols)
+        row = lambda day, event, asset, pos, neg, n=1: {"day": day, "event": event, "asset": asset,
+                                                         "pos_raw": str(pos), "neg_raw": str(neg), "n": str(n)}
+        raw["bq_intents_legs"] = {"dataset": "d", "range": [dates[0], dates[1]], "rows": [
+            # day 0: a user gives 50 USDC, a solver gives 0.5 X at $100: $100 both sides
+            row(dates[0], "token_diff", "usdc", 0, 50 * 10 ** 6),
+            row(dates[0], "token_diff", "x", 0, 5 * 10 ** 17),
+            row(dates[0], "transfer", "usdc", 7 * 10 ** 6, 0),
+            row(dates[0], "intents_executed", "", 0, 0, 4),
+            # day 1: half of it, and a leg in an asset with no price
+            row(dates[1], "token_diff", "usdc", 0, 50 * 10 ** 6),
+            row(dates[1], "token_diff", "junk", 0, 10 ** 30)]}
+        raw["bq_prices"] = {"prices": {
+            "usdc": {"stable": True, "decimals": 6, "daily": {}},
+            "x": {"stable": False, "decimals": 18, "daily": {dates[0]: 100.0, dates[1]: 100.0}}}}
+        table = metrics.build_table(raw, "2030-01-01T00:00:00Z")
+        bq = metrics.bq_check(raw, table, config.SUBJECT)
+        self.assertAlmostEqual(bq["days"][0]["token_diff_usd"], 100.0)
+        self.assertAlmostEqual(bq["days"][0]["transfer_usd"], 7.0)
+        self.assertEqual(bq["days"][0]["intents_executed"], 4)
+        self.assertAlmostEqual(bq["days"][1]["ratio"], 0.5)
+        self.assertEqual(bq["first_day_off"], dates[1])
+        self.assertEqual(bq["valid"]["within_5pct"], 1)
+        self.assertAlmostEqual(bq["unpriced_leg_share"]["token_diff"], 0.25)
+
 
 class Tee(unittest.TestCase):
     def test_tee_output_is_compared_with_the_build(self):

@@ -110,6 +110,774 @@
    }
   }
  },
+ "bq": {
+  "assets_priced": 169,
+  "bytes_billed": 117341945856,
+  "dataset": "bigquery-public-data.crypto_near_mainnet_us",
+  "days": [
+   {
+    "day": "2026-08-13",
+    "intents_executed": 118589,
+    "ratio": 1.0000113733290128,
+    "reported": 69758339.0,
+    "token_diff_usd": 69759132.38454083,
+    "transfer_usd": 30837973.056376632
+   },
+   {
+    "day": "2026-08-14",
+    "intents_executed": 119776,
+    "ratio": 0.9979388992576019,
+    "reported": 77921510.0,
+    "token_diff_usd": 77760905.91789022,
+    "transfer_usd": 32835866.363129966
+   },
+   {
+    "day": "2026-08-15",
+    "intents_executed": 81319,
+    "ratio": 1.0004974112499887,
+    "reported": 31744839.0,
+    "token_diff_usd": 31760629.240047682,
+    "transfer_usd": 34601312.511457406
+   },
+   {
+    "day": "2026-08-16",
+    "intents_executed": 104005,
+    "ratio": 1.0000002565035435,
+    "reported": 50139274.0,
+    "token_diff_usd": 50139286.860901445,
+    "transfer_usd": 18595319.25828656
+   },
+   {
+    "day": "2026-08-17",
+    "intents_executed": 131599,
+    "ratio": 1.0045619605193232,
+    "reported": 90147865.0,
+    "token_diff_usd": 90559116.00103128,
+    "transfer_usd": 46179800.903510846
+   },
+   {
+    "day": "2026-08-18",
+    "intents_executed": 125603,
+    "ratio": 1.000988581696862,
+    "reported": 80870447.0,
+    "token_diff_usd": 80950394.04372124,
+    "transfer_usd": 33281427.66418625
+   },
+   {
+    "day": "2026-08-19",
+    "intents_executed": 146781,
+    "ratio": 1.0013814245876016,
+    "reported": 134181536.0,
+    "token_diff_usd": 134366897.67303255,
+    "transfer_usd": 97828057.21878792
+   },
+   {
+    "day": "2026-08-20",
+    "intents_executed": 163447,
+    "ratio": 1.0344379981411265,
+    "reported": 136215921.0,
+    "token_diff_usd": 140906924.63418984,
+    "transfer_usd": 47369386.61606093
+   },
+   {
+    "day": "2026-08-21",
+    "intents_executed": 157801,
+    "ratio": 1.0291429365452864,
+    "reported": 165407797.0,
+    "token_diff_usd": 170228265.93206662,
+    "transfer_usd": 107013054.39013052
+   },
+   {
+    "day": "2026-08-22",
+    "intents_executed": 129966,
+    "ratio": 1.0200428727384832,
+    "reported": 142407166.0,
+    "token_diff_usd": 145261414.70518604,
+    "transfer_usd": 57704874.18389148
+   },
+   {
+    "day": "2026-08-23",
+    "intents_executed": 125662,
+    "ratio": 0.9970338847332565,
+    "reported": 111313731.0,
+    "token_diff_usd": 110983561.64308272,
+    "transfer_usd": 52802419.00350316
+   },
+   {
+    "day": "2026-08-24",
+    "intents_executed": 144691,
+    "ratio": 1.0037491300144756,
+    "reported": 145642189.0,
+    "token_diff_usd": 146188220.50215384,
+    "transfer_usd": 58852207.946184136
+   },
+   {
+    "day": "2026-08-25",
+    "intents_executed": 152169,
+    "ratio": 1.0034648642080544,
+    "reported": 145152506.0,
+    "token_diff_usd": 145655439.7227488,
+    "transfer_usd": 58039090.371265836
+   },
+   {
+    "day": "2026-08-26",
+    "intents_executed": 119403,
+    "ratio": 0.9962382478322996,
+    "reported": 126010720.0,
+    "token_diff_usd": 125536698.90088652,
+    "transfer_usd": 66698539.520933546
+   },
+   {
+    "day": "2026-08-27",
+    "intents_executed": 140687,
+    "ratio": 1.0082290804156426,
+    "reported": 133221354.0,
+    "token_diff_usd": 134317643.2351468,
+    "transfer_usd": 60321712.99770454
+   },
+   {
+    "day": "2026-08-28",
+    "intents_executed": 127089,
+    "ratio": 1.0001898783854366,
+    "reported": 110622273.0,
+    "token_diff_usd": 110643277.77859056,
+    "transfer_usd": 58281958.771006376
+   },
+   {
+    "day": "2026-08-29",
+    "intents_executed": 105909,
+    "ratio": 0.9939736993440642,
+    "reported": 56604956.0,
+    "token_diff_usd": 56263837.51652798,
+    "transfer_usd": 64126245.57107769
+   },
+   {
+    "day": "2026-08-30",
+    "intents_executed": 124199,
+    "ratio": 1.0039562098666857,
+    "reported": 68306432.0,
+    "token_diff_usd": 68576666.5802365,
+    "transfer_usd": 79226005.57703888
+   },
+   {
+    "day": "2026-08-31",
+    "intents_executed": 164298,
+    "ratio": 0.9984211515759305,
+    "reported": 123658848.0,
+    "token_diff_usd": 123463609.42271295,
+    "transfer_usd": 89765251.35531443
+   },
+   {
+    "day": "2026-09-01",
+    "intents_executed": 151439,
+    "ratio": 0.8248025985709413,
+    "reported": 131320550.0,
+    "token_diff_usd": 108313530.88576522,
+    "transfer_usd": 66314900.00629623
+   },
+   {
+    "day": "2026-09-02",
+    "intents_executed": 139668,
+    "ratio": 0.7978269071739374,
+    "reported": 143225567.0,
+    "token_diff_usd": 114269211.14784355,
+    "transfer_usd": 69288648.59317581
+   },
+   {
+    "day": "2026-09-03",
+    "intents_executed": 156234,
+    "ratio": 0.7906349555639164,
+    "reported": 169508996.0,
+    "token_diff_usd": 134019737.52014408,
+    "transfer_usd": 90528966.61665487
+   },
+   {
+    "day": "2026-09-04",
+    "intents_executed": 154500,
+    "ratio": 0.5241327245245881,
+    "reported": 209382036.0,
+    "token_diff_usd": 109743976.9951854,
+    "transfer_usd": 194592254.55881947
+   },
+   {
+    "day": "2026-09-05",
+    "intents_executed": 132552,
+    "ratio": 0.7902727443872405,
+    "reported": 101244339.0,
+    "token_diff_usd": 80010641.63520212,
+    "transfer_usd": 52117197.083532855
+   },
+   {
+    "day": "2026-09-06",
+    "intents_executed": 135006,
+    "ratio": 0.7383056119192315,
+    "reported": 141010447.0,
+    "token_diff_usd": 104108804.35933936,
+    "transfer_usd": 92167799.36915965
+   },
+   {
+    "day": "2026-09-07",
+    "intents_executed": 150594,
+    "ratio": 0.91053398222694,
+    "reported": 109239532.0,
+    "token_diff_usd": 99466306.08856724,
+    "transfer_usd": 54885795.306032375
+   },
+   {
+    "day": "2026-09-08",
+    "intents_executed": 111744,
+    "ratio": 0.7850291180261839,
+    "reported": 104742194.0,
+    "token_diff_usd": 82225672.17594746,
+    "transfer_usd": 69829328.87859435
+   },
+   {
+    "day": "2026-09-09",
+    "intents_executed": 105666,
+    "ratio": 0.8773438628866415,
+    "reported": 198864845.0,
+    "token_diff_usd": 174472851.3046532,
+    "transfer_usd": 71262673.85718942
+   },
+   {
+    "day": "2026-09-10",
+    "intents_executed": 98095,
+    "ratio": 0.8450180288615506,
+    "reported": 150771716.0,
+    "token_diff_usd": 127404818.26239352,
+    "transfer_usd": 79916731.79415308
+   },
+   {
+    "day": "2026-09-11",
+    "intents_executed": 96153,
+    "ratio": 0.8879064846466393,
+    "reported": 147252230.0,
+    "token_diff_usd": 130746209.8956784,
+    "transfer_usd": 76503882.11787449
+   },
+   {
+    "day": "2026-09-12",
+    "intents_executed": 83449,
+    "ratio": 0.8652590671777124,
+    "reported": 111677869.0,
+    "token_diff_usd": 96630288.75533476,
+    "transfer_usd": 52846834.358601615
+   },
+   {
+    "day": "2026-09-13",
+    "intents_executed": 61501,
+    "ratio": 0.7468332383483333,
+    "reported": 87330458.0,
+    "token_diff_usd": 65221288.754583105,
+    "transfer_usd": 59767546.345365435
+   },
+   {
+    "day": "2026-09-14",
+    "intents_executed": 79463,
+    "ratio": 0.812889059053197,
+    "reported": 121309892.0,
+    "token_diff_usd": 98611483.96172495,
+    "transfer_usd": 79037958.11814736
+   },
+   {
+    "day": "2026-09-15",
+    "intents_executed": 82021,
+    "ratio": 0.8387927755283312,
+    "reported": 131467577.0,
+    "token_diff_usd": 110274053.8038146,
+    "transfer_usd": 69579008.84073082
+   },
+   {
+    "day": "2026-09-16",
+    "intents_executed": 87249,
+    "ratio": 0.9331913889625888,
+    "reported": 134119473.0,
+    "token_diff_usd": 125159137.29580043,
+    "transfer_usd": 91270564.36861189
+   },
+   {
+    "day": "2026-09-17",
+    "intents_executed": 101975,
+    "ratio": 0.8264037783755018,
+    "reported": 303419794.0,
+    "token_diff_usd": 250747264.1955164,
+    "transfer_usd": 191746037.6766381
+   },
+   {
+    "day": "2026-09-18",
+    "intents_executed": 107103,
+    "ratio": 0.8121182486790478,
+    "reported": 227845909.0,
+    "token_diff_usd": 185037820.5857657,
+    "transfer_usd": 152743151.4671565
+   },
+   {
+    "day": "2026-09-19",
+    "intents_executed": 84604,
+    "ratio": 0.7517814333412034,
+    "reported": 126492193.0,
+    "token_diff_usd": 95094482.16001214,
+    "transfer_usd": 114023501.12544715
+   },
+   {
+    "day": "2026-09-20",
+    "intents_executed": 80376,
+    "ratio": 0.6776269239623353,
+    "reported": 118561598.0,
+    "token_diff_usd": 80340530.95279896,
+    "transfer_usd": 100129233.0963739
+   },
+   {
+    "day": "2026-09-21",
+    "intents_executed": 138015,
+    "ratio": 0.6996183858241461,
+    "reported": 270827432.0,
+    "token_diff_usd": 189475850.81273872,
+    "transfer_usd": 221726291.10870588
+   },
+   {
+    "day": "2026-09-22",
+    "intents_executed": 112468,
+    "ratio": 0.6603580855694353,
+    "reported": 223237663.0,
+    "token_diff_usd": 147416795.76567477,
+    "transfer_usd": 201188318.79514447
+   },
+   {
+    "day": "2026-09-23",
+    "intents_executed": 116914,
+    "ratio": 0.6875398045410859,
+    "reported": 215033741.0,
+    "token_diff_usd": 147844256.2568785,
+    "transfer_usd": 217715317.6388254
+   },
+   {
+    "day": "2026-09-24",
+    "intents_executed": 100603,
+    "ratio": 0.7052898384435746,
+    "reported": 175821655.0,
+    "token_diff_usd": 124005226.6498319,
+    "transfer_usd": 125855073.24842882
+   },
+   {
+    "day": "2026-09-25",
+    "intents_executed": 105378,
+    "ratio": 0.6714969857742695,
+    "reported": 180522864.0,
+    "token_diff_usd": 121220559.0393384,
+    "transfer_usd": 172316203.9918924
+   },
+   {
+    "day": "2026-09-26",
+    "intents_executed": 89831,
+    "ratio": 0.7168156221102006,
+    "reported": 93548366.0,
+    "token_diff_usd": 67056930.17168273,
+    "transfer_usd": 73612582.88872294
+   },
+   {
+    "day": "2026-09-27",
+    "intents_executed": 123746,
+    "ratio": 0.777740810775174,
+    "reported": 120587818.0,
+    "token_diff_usd": 93786067.34092912,
+    "transfer_usd": 96193320.21409725
+   },
+   {
+    "day": "2026-09-28",
+    "intents_executed": 132673,
+    "ratio": 0.7412505340996504,
+    "reported": 167864177.0,
+    "token_diff_usd": 124429410.85744825,
+    "transfer_usd": 105161671.9386593
+   },
+   {
+    "day": "2026-09-29",
+    "intents_executed": 131844,
+    "ratio": 0.784099554696645,
+    "reported": 213684038.0,
+    "token_diff_usd": 167549559.04158098,
+    "transfer_usd": 150954576.2738107
+   },
+   {
+    "day": "2026-09-30",
+    "intents_executed": 105020,
+    "ratio": 0.7671465243651321,
+    "reported": 173179408.0,
+    "token_diff_usd": 132853980.93881115,
+    "transfer_usd": 135771146.43412876
+   },
+   {
+    "day": "2026-10-01",
+    "intents_executed": 74801,
+    "ratio": 0.5949392939097412,
+    "reported": 125036685.0,
+    "token_diff_usd": 74389237.08671473,
+    "transfer_usd": 121889887.51081665
+   },
+   {
+    "day": "2026-10-02",
+    "intents_executed": 79675,
+    "ratio": 0.6877750087991469,
+    "reported": 124137317.0,
+    "token_diff_usd": 85378544.29197748,
+    "transfer_usd": 117388261.48872088
+   },
+   {
+    "day": "2026-10-03",
+    "intents_executed": 64728,
+    "ratio": 0.7367393670601801,
+    "reported": 76633486.0,
+    "token_diff_usd": 56458905.97125517,
+    "transfer_usd": 62035170.55250511
+   },
+   {
+    "day": "2026-10-04",
+    "intents_executed": 62658,
+    "ratio": 0.714372995847626,
+    "reported": 64354236.0,
+    "token_diff_usd": 45972928.36680514,
+    "transfer_usd": 95447403.14330485
+   },
+   {
+    "day": "2026-10-05",
+    "intents_executed": 77320,
+    "ratio": 0.838887164876648,
+    "reported": 117176998.0,
+    "token_diff_usd": 98298279.64097665,
+    "transfer_usd": 63625337.2558155
+   },
+   {
+    "day": "2026-10-06",
+    "intents_executed": 95878,
+    "ratio": 0.6452216214511597,
+    "reported": 126234797.0,
+    "token_diff_usd": 81449420.40389799,
+    "transfer_usd": 126903851.94533747
+   },
+   {
+    "day": "2026-10-07",
+    "intents_executed": 92161,
+    "ratio": 0.6470670638739,
+    "reported": 119708258.0,
+    "token_diff_usd": 77459271.0255193,
+    "transfer_usd": 114663980.54387371
+   },
+   {
+    "day": "2026-10-08",
+    "intents_executed": 151015,
+    "ratio": 0.49300259232835864,
+    "reported": 256069392.0,
+    "token_diff_usd": 126242874.07194667,
+    "transfer_usd": 254308837.09367597
+   },
+   {
+    "day": "2026-10-09",
+    "intents_executed": 112361,
+    "ratio": 0.6144874515988028,
+    "reported": 255697796.0,
+    "token_diff_usd": 157123087.04347056,
+    "transfer_usd": 223935131.29525793
+   },
+   {
+    "day": "2026-10-10",
+    "intents_executed": 92050,
+    "ratio": 0.634018926016978,
+    "reported": 153185460.0,
+    "token_diff_usd": 97122480.83061674,
+    "transfer_usd": 154908687.47072026
+   },
+   {
+    "day": "2026-10-11",
+    "intents_executed": 84939,
+    "ratio": 0.6953688114826666,
+    "reported": 122774330.0,
+    "token_diff_usd": 85373439.9326807,
+    "transfer_usd": 93822944.11429492
+   },
+   {
+    "day": "2026-10-12",
+    "intents_executed": 102304,
+    "ratio": 0.6230568695950517,
+    "reported": 139501825.0,
+    "token_diff_usd": 86917570.38729672,
+    "transfer_usd": 129845845.8250959
+   },
+   {
+    "day": "2026-10-13",
+    "intents_executed": 101422,
+    "ratio": 0.66752378102978,
+    "reported": 133642221.0,
+    "token_diff_usd": 89209360.66713747,
+    "transfer_usd": 111836055.97637764
+   },
+   {
+    "day": "2026-10-14",
+    "intents_executed": 101912,
+    "ratio": 0.5344035850020581,
+    "reported": 145432171.0,
+    "token_diff_usd": 77719473.55703235,
+    "transfer_usd": 143449164.6360773
+   },
+   {
+    "day": "2026-10-15",
+    "intents_executed": 80567,
+    "ratio": 0.6490455511299477,
+    "reported": 99643158.0,
+    "token_diff_usd": 64672948.40043845,
+    "transfer_usd": 77758452.60385917
+   },
+   {
+    "day": "2026-10-16",
+    "intents_executed": 75908,
+    "ratio": 0.5632979832506699,
+    "reported": 88174962.0,
+    "token_diff_usd": 49668778.26780446,
+    "transfer_usd": 85440906.68730515
+   },
+   {
+    "day": "2026-10-17",
+    "intents_executed": 65175,
+    "ratio": 0.8626580631170879,
+    "reported": 130727860.0,
+    "token_diff_usd": 112773442.50304183,
+    "transfer_usd": 67327128.20778638
+   },
+   {
+    "day": "2026-10-18",
+    "intents_executed": 61038,
+    "ratio": 0.7902516990567913,
+    "reported": 138807317.0,
+    "token_diff_usd": 109692718.10076463,
+    "transfer_usd": 67703403.05721377
+   },
+   {
+    "day": "2026-10-19",
+    "intents_executed": 75640,
+    "ratio": 0.6389870097906394,
+    "reported": 97672919.0,
+    "token_diff_usd": 62411726.44933333,
+    "transfer_usd": 85862565.46710606
+   },
+   {
+    "day": "2026-10-20",
+    "intents_executed": 62064,
+    "ratio": 0.6495331751484372,
+    "reported": 121452063.0,
+    "token_diff_usd": 78887144.10871804,
+    "transfer_usd": 88233704.59959546
+   },
+   {
+    "day": "2026-10-21",
+    "intents_executed": 86385,
+    "ratio": 0.5564232960941423,
+    "reported": 151452049.0,
+    "token_diff_usd": 84271448.30479155,
+    "transfer_usd": 152038948.76351187
+   },
+   {
+    "day": "2026-10-22",
+    "intents_executed": 74016,
+    "ratio": 0.5250356693290322,
+    "reported": 132262403.0,
+    "token_diff_usd": 69442479.2861712,
+    "transfer_usd": 127694586.86594638
+   },
+   {
+    "day": "2026-10-23",
+    "intents_executed": 72896,
+    "ratio": 0.6870501129433743,
+    "reported": 95545767.0,
+    "token_diff_usd": 65644730.00861132,
+    "transfer_usd": 76056739.2684042
+   },
+   {
+    "day": "2026-10-24",
+    "intents_executed": 74448,
+    "ratio": 0.6162992713809528,
+    "reported": 85994134.0,
+    "token_diff_usd": 52998122.127236016,
+    "transfer_usd": 71656688.80909339
+   },
+   {
+    "day": "2026-10-25",
+    "intents_executed": 66133,
+    "ratio": 0.6277986145906848,
+    "reported": 89290005.0,
+    "token_diff_usd": 56056141.435795315,
+    "transfer_usd": 70015137.44654489
+   },
+   {
+    "day": "2026-10-26",
+    "intents_executed": 79860,
+    "ratio": 0.6801659607286804,
+    "reported": 134322214.0,
+    "token_diff_usd": 91361397.73251341,
+    "transfer_usd": 104815871.48102546
+   },
+   {
+    "day": "2026-10-27",
+    "intents_executed": 80672,
+    "ratio": 0.597590740949127,
+    "reported": 141264151.0,
+    "token_diff_usd": 84418148.66563936,
+    "transfer_usd": 121365499.28356579
+   },
+   {
+    "day": "2026-10-28",
+    "intents_executed": 76459,
+    "ratio": 0.624437709289529,
+    "reported": 112385956.0,
+    "token_diff_usd": 70178028.9209538,
+    "transfer_usd": 107685511.6808514
+   },
+   {
+    "day": "2026-10-29",
+    "intents_executed": 92202,
+    "ratio": 0.32354304458432687,
+    "reported": 141723823.0,
+    "token_diff_usd": 45853757.183550246,
+    "transfer_usd": 208012133.17778677
+   },
+   {
+    "day": "2026-10-30",
+    "intents_executed": 145681,
+    "ratio": 0.4717432309767103,
+    "reported": 191904557.0,
+    "token_diff_usd": 90529675.75833426,
+    "transfer_usd": 209473392.22647488
+   },
+   {
+    "day": "2026-10-31",
+    "intents_executed": 88289,
+    "ratio": 0.3883740667397123,
+    "reported": 73433291.0,
+    "token_diff_usd": 28519585.859750714,
+    "transfer_usd": 116020804.34704916
+   },
+   {
+    "day": "2026-11-01",
+    "intents_executed": 102131,
+    "ratio": 0.47883114745606925,
+    "reported": 81928562.0,
+    "token_diff_usd": 39229947.35188571,
+    "transfer_usd": 105064214.27996193
+   },
+   {
+    "day": "2026-11-02",
+    "intents_executed": 87945,
+    "ratio": 0.4012392147215834,
+    "reported": 155286804.0,
+    "token_diff_usd": 62307155.293584436,
+    "transfer_usd": 223328258.33530676
+   },
+   {
+    "day": "2026-11-03",
+    "intents_executed": 123556,
+    "ratio": 0.1814317268189689,
+    "reported": 137911779.0,
+    "token_diff_usd": 25021572.21264601,
+    "transfer_usd": 237582732.46339515
+   },
+   {
+    "day": "2026-11-04",
+    "intents_executed": 193535,
+    "ratio": 0.07540072650613316,
+    "reported": 143981404.0,
+    "token_diff_usd": 10856302.464973068,
+    "transfer_usd": 272927367.2415724
+   },
+   {
+    "day": "2026-11-05",
+    "intents_executed": 332921,
+    "ratio": 0.02743411469332599,
+    "reported": 131020261.0,
+    "token_diff_usd": 3594424.867423506,
+    "transfer_usd": 257460160.1469715
+   },
+   {
+    "day": "2026-11-06",
+    "intents_executed": 119214,
+    "ratio": 0.01992041979648531,
+    "reported": 141555971.0,
+    "token_diff_usd": 2819854.3670191006,
+    "transfer_usd": 241989758.01057658
+   },
+   {
+    "day": "2026-11-07",
+    "intents_executed": 105679,
+    "ratio": 0.004225124962468024,
+    "reported": 114752674.0,
+    "token_diff_usd": 484844.38742735534,
+    "transfer_usd": 207538736.34564152
+   },
+   {
+    "day": "2026-11-08",
+    "intents_executed": 92475,
+    "ratio": 0.029283729739193614,
+    "reported": 87673580.0,
+    "token_diff_usd": 2567409.4219875704,
+    "transfer_usd": 186549180.2767392
+   },
+   {
+    "day": "2026-11-09",
+    "intents_executed": 120937,
+    "ratio": 0.021521395998214586,
+    "reported": 166233299.0,
+    "token_diff_usd": 3577572.6558686085,
+    "transfer_usd": 286602669.23525834
+   },
+   {
+    "day": "2026-11-10",
+    "intents_executed": 129250,
+    "ratio": 0.08011049163927211,
+    "reported": 152754904.0,
+    "token_diff_usd": 12237270.459749814,
+    "transfer_usd": 276818728.2361618
+   }
+  ],
+  "first_day_off": "2026-09-01",
+  "later_by_month": {
+   "2026-09": {
+    "days": 30,
+    "max": 0.9331913889625888,
+    "mean": 0.7749353026138458,
+    "min": 0.5241327245245881,
+    "within_5pct": 0
+   },
+   "2026-10": {
+    "days": 31,
+    "max": 0.8626580631170879,
+    "mean": 0.6251322494184498,
+    "min": 0.32354304458432687,
+    "within_5pct": 0
+   },
+   "2026-11": {
+    "days": 10,
+    "max": 0.47883114745606925,
+    "mean": 0.13193980923317145,
+    "min": 0.004225124962468024,
+    "within_5pct": 0
+   }
+  },
+  "range": [
+   "2026-08-13",
+   "2026-11-10"
+  ],
+  "token_diff_over_reported": 0.6875413731613954,
+  "tolerance": 0.05,
+  "unpriced_leg_share": {
+   "token_diff": 0.0011291765035236984,
+   "transfer": 0.008384225602625788
+  },
+  "valid": {
+   "days": 19,
+   "max": 1.0344379981411265,
+   "mean": 1.0049610453128777,
+   "min": 0.9939736993440642,
+   "within_5pct": 19
+  }
+ },
  "burst": {
   "chainflip-amm": {
    "cv": 0.6895660947621522,
@@ -2021,6 +2789,14 @@
   "l1": {
    "active_accounts": 71745.22222222222,
    "active_accounts_prior": 291030.3888888889,
+   "bigquery": {
+    "dataset": "bigquery-public-data.crypto_near_mainnet_us",
+    "days": 455,
+    "signers_ratio_median": 1.0,
+    "txns_ratio_max": 1.0458034295826584,
+    "txns_ratio_median": 1.0,
+    "within_1pct": 454
+   },
    "source": "https://api.nearblocks.io/v1/charts",
    "txns_per_day": 741871.9333333333,
    "txns_per_day_prior": 4643881.744444445
