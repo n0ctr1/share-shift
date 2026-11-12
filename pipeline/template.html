@@ -463,17 +463,18 @@ footer p { margin: 0 0 6px; }
   var lead = sentences[0].replace(/\.$/, '') + '.';
   document.getElementById('title').textContent = lead.charAt(0).toUpperCase() + lead.slice(1);
   document.getElementById('sub').textContent = sentences.slice(1).join('. ');
-  document.getElementById('lede').textContent = T.summary;
+  document.getElementById('lede').textContent = T.latest;
   document.getElementById('stamp').textContent = 'Data ' + M.meta.first_day + ' to ' + M.meta.last_day +
     ' · headline window ' + M.meta.window_days + ' days · fetched ' + M.meta.fetched_at.slice(0, 10);
 
   var tr = M.trailing, yoy = M.yoy, stats = [];
-  stats.push(['Share among native-asset swap venues', pct(tr.share[subject]), yoy ? 'was ' + pct(yoy.share_prior[subject]) + ' a year earlier' : '']);
+  stats.push(['Share among native-asset swap venues, 90 days', pct(tr.share[subject]), yoy ? 'was ' + pct(yoy.share_prior[subject]) + ' a year earlier' : '']);
+  var s30 = (M.sensitivity || []).filter(function (x) { return x.days === 30; })[0];
+  stats.push(['Share, latest complete week', pct(M.stability.latest_share), '30 days: ' + (s30 ? pct(s30.share) : 'n/a') + '; warning line: 40% over 90 days']);
   if (M.wide) stats.push(['Share with four bridges added', pct(M.wide.subject_share), 'rank ' + M.wide.subject_rank_volume + ' of ' + M.wide.venues.length + ' by volume']);
-  if (M.halt) stats.push(['Growth while a rival was halted', (M.halt.subject_growth >= 0 ? '+' : '') + pct(M.halt.subject_growth), M.halt.rival + ', ' + M.halt.days + ' days offline']);
   stats.push(['Take rate', bps(tr.take_bps[subject]), 'rival median ' + bps(tr.rival_take_median_bps)]);
   stats.push(['Gross fees reaching NEAR', pct(tr.capture), usd(tr.revenue[subject]) + ' of ' + usd(tr.fees[subject])]);
-  if (M.channels) stats.push(['Largest distribution channel', pct(M.channels.top_channel_share), M.channels.channels[0].channel + ', 1Click swaps']);
+  if (M.token) stats.push(['New NEAR covered by buybacks', pct(M.token.offset_buyback), (M.token.bought_back_near / 1e6).toFixed(2) + 'M of ' + (M.token.net_issued_near / 1e6).toFixed(2) + 'M NEAR, ' + M.token.window_days + ' days']);
   else if (M.implied_value) stats.push(['Market cap backed by Intents revenue', pct(M.implied_value.fraction_of_subject_mcap, 1), 'at the rivals’ median multiple']);
   var statsNode = document.getElementById('stats');
   stats.slice(0, 6).forEach(function (t) {
