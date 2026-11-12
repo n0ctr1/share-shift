@@ -158,6 +158,28 @@ class Outages(unittest.TestCase):
         self.assertAlmostEqual(m["suspensions"][0]["subject_change"], 0.0)
 
 
+class CountingBasis(unittest.TestCase):
+    def test_routed_pairs_halve_and_scenarios_bracket_the_share(self):
+        days = 30
+        vols = {p["slug"]: [100.0] * days for p in config.PEERS}
+        raw, dates = make_raw(days, vols)
+        rival = config.PEERS[1]["slug"]
+        # every swap routed: equal legs in and out of the routing token
+        raw["legs_" + rival] = {"series": {d: {"totalVolume": 100.0, "toRuneVolume": 50.0,
+                                               "toAssetVolume": 50.0, "fromTradeVolume": 0.0,
+                                               "toTradeVolume": 0.0, "fromSecuredVolume": 0.0,
+                                               "toSecuredVolume": 0.0} for d in dates}}
+        table = metrics.build_table(raw, "2030-01-01T00:00:00Z")
+        names = {p["slug"]: p["name"] for p in config.PEERS}
+        b = metrics.counting_basis(raw, table, config.SUBJECT, names, [dates[0], dates[-1]])
+        self.assertAlmostEqual(b["venues"][rival]["once_factor"], 0.5)
+        sc = {x["id"]: x["share"] for x in b["scenarios"]}
+        self.assertAlmostEqual(sc["reported"], 0.25)
+        self.assertAlmostEqual(sc["one_side"], 50.0 / 300.0)   # 50 / (50 + 50 + 100 + 100)
+        self.assertAlmostEqual(sc["worst"], 50.0 / 350.0)
+        self.assertAlmostEqual(sc["best"], 100.0 / 350.0)
+
+
 class Table(unittest.TestCase):
     def test_fetch_day_is_excluded(self):
         vols = {p["slug"]: [10.0] * 10 for p in config.PEERS}

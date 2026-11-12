@@ -56,7 +56,7 @@ Needs Python 3.9 or newer. No packages to install. No key needed for steps 1 to 
 
 | Step | Do | See |
 | --- | --- | --- |
-| 1 | `python3 -m unittest discover -s tests` | `Ran 19 tests` and `OK` |
+| 1 | `python3 -m unittest discover -s tests` | `Ran 20 tests` and `OK` |
 | 2 | `python3 build.py --offline` | Eleven lines `C1` to `C11`, each `SUPPORTED` or `REFUTED`, then `wrote THESIS.md, docs/index.html, data/derived/metrics.json` |
 | 3 | `git status --short` | Nothing: the offline build reproduces the committed files byte for byte |
 | 4 | `python3 build.py` | The same eleven lines computed on today's data; `git diff THESIS.md` shows which numbers moved |

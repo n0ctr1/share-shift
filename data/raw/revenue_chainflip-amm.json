@@ -1050,7 +1050,7 @@
   "2026-11-08": 9389.0,
   "2026-11-09": 14285.0,
   "2026-11-10": 14893.0,
-  "2026-11-11": 24341.0
+  "2026-11-11": 24762.0
  },
  "source": "https://api.llama.fi/summary/fees/chainflip-amm?dataType=dailyRevenue"
 }

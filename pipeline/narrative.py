@@ -37,7 +37,13 @@ def fmt_value(value, unit):
     if value is None:
         return "n/a"
     return {"share": pct(value, 1), "growth": "%+.0f%%" % (100 * value), "bps": bps(value),
-            "ratio": "%.2f" % value}[unit]
+            "ratio": "%.2f" % value, "count": "%d" % value, "rank": "rank %d" % value}[unit]
+
+
+def claim_cells(c):
+    shown = c.get("display") or {}
+    return (shown.get("value") or fmt_value(c["value"], c["unit"]),
+            shown.get("threshold") or fmt_value(c["threshold"], c["unit"]))
 
 
 def findings(m):
@@ -254,6 +260,45 @@ def findings(m):
             "days before each: %s."
             % (len(sus), "" if len(sus) == 1 else "es", sus[0]["rival"], "; ".join(parts))
         )
+    b = m.get("basis")
+    if b:
+        sc = {x["id"]: x for x in b["scenarios"]}
+        legs = "; ".join(
+            "%s: %s of its reported volume is matched pairs of legs into and out of its own "
+            "token, so counting each swap once leaves %s"
+            % (v["name"], pct(v["paired_share"]), pct(v["once_factor"]))
+            for v in b["venues"].values())
+        out["basis"] = (
+            "Venues do not count volume the same way. %s (from each venue's own indexer). "
+            "For NEAR Intents, %s. Two public re-computations from intents.near events "
+            "disagree on what that figure counts: one finds public swaps counted once are "
+            "46%% of it (92%% counting both sides), the other finds it within about 1%% of "
+            "public net volume before confidential intents launched. This analysis cannot "
+            "settle which is right, so it reports every share both ways. The bridges in the "
+            "wider set are taken as one-sided, as their adapters report deposits."
+            % (legs, config.SUBJECT_VOLUME_SOURCE)
+        )
+        out["basis_short"] = (
+            "Counting one side of each swap for every venue gives %s. Only one reading puts "
+            "Intents behind: halving Intents while leaving rivals as reported (%s, %s first). "
+            "That reading is inconsistent with the rivals' own indexers, which count both "
+            "halves of almost every swap."
+            % (pct(sc["one_side"]["share"]), pct(sc["worst"]["share"]), sc["worst"]["leader"])
+            if sc["worst"]["leader"] != names[s] else
+            "Counting one side of each swap for every venue gives %s; even halving Intents "
+            "alone gives %s, still first." % (pct(sc["one_side"]["share"]), pct(sc["worst"]["share"]))
+        )
+    if h:
+        p365 = next((x for x in h["placebo"] if x["lookback_days"] == 365), None)
+        absorbed = (h.get("absorbed_by_basis") or {}).get("one_side", h["absorbed_fraction"])
+        out["halt_short"] = (
+            "%s was halted for %d days after an exploit. Intents grew %+.0f%% over those days "
+            "and kept the higher level afterwards, equal to %s of the flow %s lost. But growth "
+            "of that size was ordinary for Intents over the year before (%s percentile), so "
+            "the halt shows Intents could absorb the flow, not that the halt caused the gain."
+            % (h["rival"], h["days"], 100 * h["subject_growth"], pct(absorbed), h["rival"],
+               ordinal(round(100 * p365["percentile"])) if p365 else "n/a")
+        )
     ct = m["capture_trend"]
     if len(ct) >= 2:
         out["capture_trend"] = (
@@ -288,23 +333,25 @@ def findings(m):
     if holders:
         out["buyback"] = 'DefiLlama\'s adapter note on that revenue: "%s"' % holders
 
+    one_side = None
+    if m.get("basis"):
+        one_side = next(x for x in m["basis"]["scenarios"] if x["id"] == "one_side")
     out["title"] = (
-        "The %d-day stress test: a rival went dark, NEAR Intents grew %.0f%% and kept the "
-        "gain. NEAR keeps %s of the fees." % (h["days"], 100 * h["subject_growth"],
-                                              pct(tr["capture"]))
-        if h else
-        "NEAR Intents leads native cross-chain swaps. NEAR keeps %s of the fees."
+        "NEAR Intents leads native cross-chain swaps whenever volume is counted the same way "
+        "for every venue. The token keeps %s of the fees, and nothing yet proves the lead lasts."
         % pct(tr["capture"])
     )
     out["summary"] = (
         "A test of NEAR's long-term case against the three other venues that swap native "
-        "assets across chains. %s Intents holds %s of the volume, %sand does not undercut "
-        "rivals on price. Against that: %s of gross fees reach NEAR, and in the last 30 "
-        "days Intents volume moved %+.0f%% while %s moved %+.0f%%."
+        "assets across chains. %s Intents holds %s of the volume as reported%s, and does "
+        "not undercut rivals on price. Against that: %s of gross fees reach NEAR; when the "
+        "second-largest venue was halted for %d days, Intents grew, but by an amount that "
+        "was ordinary for its own past year; and in the last 30 days Intents volume moved "
+        "%+.0f%% while %s moved %+.0f%%."
         % (verdict_line(m), pct(tr["share"][s]),
-           ("picked up %s of %s's flow when it halted, " % (pct(h["absorbed_fraction"]), h["rival"])
-            if h else ""),
-           pct(tr["capture"]), 100 * rc[s], names[runner_up], 100 * rc[runner_up])
+           (" and %s if one side of each swap is counted for every venue" % pct(one_side["share"]))
+           if one_side else "",
+           pct(tr["capture"]), h["days"] if h else 0, 100 * rc[s], names[runner_up], 100 * rc[runner_up])
     )
     gaps = [f for f in m["quality_flags"] if not f.get("cause")]
     out["limits"] = [
@@ -351,11 +398,13 @@ def thesis_markdown(m, text):
     add("")
     add("## In three lines")
     add("")
+    add("1. **It is the largest swap venue, at a normal price.** %s %s"
+        % (text["share"], text.get("basis_short", "")))
+    add("2. **The token sees little of it so far, but more each quarter.** %s %s"
+        % (text["capture"], text.get("capture_trend", "")))
     if h:
-        add("1. **The position was tested and held.** %s" % text["halt"])
-    add("%d. **It is the largest venue, at a normal price.** %s"
-        % (2 if h else 1, text["share"]))
-    add("%d. **The token sees little of it so far.** %s" % (3 if h else 2, text["capture"]))
+        add("3. **The one real test is not conclusive.** %s"
+            % text.get("halt_short", text["halt"]))
     add("")
     add("## The claim")
     add("")
@@ -395,8 +444,7 @@ def thesis_markdown(m, text):
     add("| --- | --- | --- | --- | --- |")
     for c in m["claims"]:
         add("| %s | %s | %s | %s | **%s** |" % (
-            c["id"], c["claim"], fmt_value(c["value"], c["unit"]),
-            fmt_value(c["threshold"], c["unit"]), c["verdict"]))
+            c["id"], c["claim"], claim_cells(c)[0], claim_cells(c)[1], c["verdict"]))
     add("")
     add("## Evidence for")
     add("")
@@ -473,12 +521,29 @@ def thesis_markdown(m, text):
     add("- **The rival is coming back.** %s" % text["recent"])
     if "wide" in text:
         add("- **In the wider market it is third.** %s" % text["wide"])
+    if "basis" in text:
+        add("- **The headline share depends on how volume is counted.** See the table below.")
     add("- **The lead swings.** %s" % text["stability"])
     if "decomposition" in text:
         add("- **Less than half of the growth is share gain.** %s" % text["decomposition"])
     if "co_movement" in text:
         add("- **No clean substitution in ordinary weeks.** %s" % text["co_movement"])
     add("")
+    if m.get("basis"):
+        add("### How volume is counted")
+        add("")
+        add(text["basis"])
+        add("")
+        add("| Counting basis | Intents share, four venues | Largest | Intents share, all eight |")
+        add("| --- | --- | --- | --- |")
+        for x in m["basis"]["scenarios"]:
+            add("| %s | %s | %s | %s |" % (x["label"], pct(x["share"], 1), x["leader"],
+                                          pct(x.get("wide_share"), 1)))
+        add("")
+        if m["basis"]["unverified"]:
+            add("Counting basis not checked for: %s; their reported volume is used as is."
+                % ", ".join(m["basis"]["unverified"]))
+            add("")
     if m.get("wide"):
         add("### All eight venues")
         add("")

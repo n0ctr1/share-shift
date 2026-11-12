@@ -228,6 +228,8 @@ footer p { margin: 0 0 6px; }
     if (unit === 'growth') return (v >= 0 ? '+' : '') + pct(v);
     if (unit === 'bps') return bps(v);
     if (unit === 'ratio') return v.toFixed(2);
+    if (unit === 'count') return String(v);
+    if (unit === 'rank') return 'rank ' + v;
     return pct(v, 1);
   }
   function table(head, rows, numCols) {
@@ -500,7 +502,8 @@ footer p { margin: 0 0 6px; }
   });
   s.appendChild(tally);
   s.appendChild(rowsBlock(['#', 'Claim', 'Measured', 'Threshold', 'Verdict'], M.claims.map(function (c) {
-    return [c.id, c.claim, unitFmt(c.value, c.unit), unitFmt(c.threshold, c.unit), c.verdict];
+    var shown = c.display || {};
+    return [c.id, c.claim, shown.value || unitFmt(c.value, c.unit), shown.threshold || unitFmt(c.threshold, c.unit), c.verdict];
   })));
   var note = el('p', {class: 'src'}); note.appendChild(document.createTextNode('Thresholds live in '));
   note.appendChild(el('code', {}, 'pipeline/config.py')); note.appendChild(document.createTextNode('. A verdict is one computed number compared with one threshold.'));
@@ -509,8 +512,8 @@ footer p { margin: 0 0 6px; }
   // ---------- 2. stress test ----------
   if (M.halt) {
     var h = M.halt;
-    s = section('stress-test', 'The stress test', 'Evidence', 'What happened when the second-largest venue stopped');
-    s.appendChild(prose([T.halt, T.after_halt]));
+    s = section('stress-test', 'The stress test', 'Evidence', 'A rival stopped for ' + M.halt.days + ' days. The result is suggestive, not proof');
+    s.appendChild(prose([T.halt_short, T.halt, T.after_halt]));
     var lab = {before: 'Before', during: 'Halt', after_1: 'After, first period', after_2: 'After, second period'};
     var keys = ['before', 'during', 'after_1', 'after_2'].filter(function (k) { return h.periods[k]; });
     var fig = el('div', {class: 'figure'});
@@ -532,6 +535,23 @@ footer p { margin: 0 0 6px; }
 
   // ---------- 3. market position ----------
   s = section('position', 'Market position', 'Evidence', 'First among swap venues, third once bridges are counted');
+  if (M.basis) {
+    var fb = el('div', {class: 'figure'});
+    fb.appendChild(el('h3', {}, 'How volume is counted changes the share, not the leader'));
+    fb.appendChild(prose([T.basis]));
+    fb.appendChild(table(['Counting basis', 'Intents share, four venues', 'Largest', 'Intents share, all eight'],
+      M.basis.scenarios.map(function (x) { return [x.label, pct(x.share, 1), x.leader, pct(x.wide_share, 1)]; }), [0, 1, 0, 1]));
+    var bs = el('p', {class: 'src'}); bs.appendChild(document.createTextNode('Leg data: '));
+    Object.keys(M.basis.venues).forEach(function (k, i) { var v = M.basis.venues[k]; if (i) bs.appendChild(document.createTextNode(', '));
+      bs.appendChild(el('a', {href: v.source, rel: 'noopener'}, v.name + ' indexer')); });
+    bs.appendChild(document.createTextNode('. Re-computations of Intents volume: '));
+    M.basis.subject_notes.forEach(function (n, i) { if (i) bs.appendChild(document.createTextNode(', '));
+      bs.appendChild(el('a', {href: n.source, rel: 'noopener'}, n.source.replace('https://github.com/', ''))); });
+    bs.appendChild(document.createTextNode('. Computed in '));
+    bs.appendChild(el('code', {}, 'metrics.counting_basis()')); bs.appendChild(document.createTextNode('.'));
+    fb.appendChild(bs);
+    s.appendChild(fb);
+  }
   figure(s, {title: 'Share of native cross-chain swap volume, by week', text: [T.share, T.stability], band: band,
     kind: 'area', unit: 'pct', ymax: 1, x: weekX, xLabel: 'Week of ', xHead: 'Week of',
     series: perPeer(weeks, function (r, k) { return r.share[k]; }), query: VOL, fn: 'metrics.weekly()'});

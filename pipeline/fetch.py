@@ -107,6 +107,23 @@ def fetch_all(log=print):
         "series": series,
     })
 
+    # Leg breakdown of the two venues that route through their own token.
+    for slug, url in config.LEG_SOURCES.items():
+        try:
+            log("fetch legs    " + slug)
+            payload = _get(url, tries=2)
+            keys = sorted({k for pair in config.LEG_PAIRS for k in pair} | {"totalVolume"})
+            series = {_day(int(i["startTime"])): {k: float(i.get(k) or 0) for k in keys}
+                      for i in payload.get("intervals", [])}
+        except RuntimeError as err:
+            log("legs unavailable for %s: %s" % (slug, err))
+            series = {}
+        files["legs_" + slug] = _write("legs_" + slug, {
+            "source": url,
+            "note": "Volume by leg type per day, in the venue's own token units (1e8).",
+            "series": series,
+        })
+
     # Market caps are a convenience for one table. If CoinGecko rate-limits the
     # request the build continues and the table says the value is missing.
     ids = ",".join(p["coingecko"] for p in config.PEERS)
@@ -122,9 +139,10 @@ def fetch_all(log=print):
 
     # The Explorer snapshot is refreshed separately (python3 -m pipeline.explorer,
     # needs a key and about an hour). If one is on disk it stays in the manifest.
-    explorer_path = os.path.join(RAW_DIR, "explorer_daily.json")
-    if os.path.exists(explorer_path):
-        files["explorer_daily"] = explorer_path
+    for name in ("explorer_daily", "onchain_revenue"):
+        path = os.path.join(RAW_DIR, name + ".json")
+        if os.path.exists(path):
+            files[name] = path
 
     manifest = {
         "fetched_at": fetched_at,

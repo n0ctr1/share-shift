@@ -1,4 +1,86 @@
 {
+ "basis": {
+  "scenarios": [
+   {
+    "id": "reported",
+    "label": "As reported by every venue",
+    "leader": "NEAR Intents",
+    "runner_up_share": 0.2979830720285163,
+    "share": 0.5808907009163305,
+    "wide_share": 0.1776959194931343
+   },
+   {
+    "id": "one_side",
+    "label": "One side of each swap for every venue (Intents halved, routed pairs counted once)",
+    "leader": "NEAR Intents",
+    "runner_up_share": 0.272613164160988,
+    "share": 0.5311355961221405,
+    "wide_share": 0.10314645819580116
+   },
+   {
+    "id": "worst",
+    "label": "Intents halved, rivals left as reported (inconsistent with the rivals' own leg data)",
+    "leader": "THORChain",
+    "runner_up_share": 0.4199578879807587,
+    "share": 0.40933471529741683,
+    "wide_share": 0.09751167293863984
+   },
+   {
+    "id": "best",
+    "label": "Intents as reported, rivals' routed pairs counted once",
+    "leader": "NEAR Intents",
+    "runner_up_share": 0.17804638913197948,
+    "share": 0.6937799597466495,
+    "wide_share": 0.1870041052654014
+   }
+  ],
+  "subject_notes": [
+   {
+    "finding": "public swaps counted once are 46% of the reported volume on six sampled days, 92% counting both sides",
+    "source": "https://github.com/soldanoandrea/near-thesis"
+   },
+   {
+    "finding": "public net swap volume matches the reported volume within about 1% before confidential intents launched",
+    "source": "https://github.com/EmekaManuel/nearquery"
+   }
+  ],
+  "subject_source": "DefiLlama reads it from NEAR's own Dune table dune.near.dataset_near_intents_metrics (column volume_amount_usd)",
+  "unverified": [
+   "Chainflip"
+  ],
+  "venues": {
+   "maya-protocol": {
+    "days": 90,
+    "leg_shares": {
+     "fromSecuredVolume": 0.0,
+     "fromTradeVolume": 0.3259628992372908,
+     "toAssetVolume": 0.1773716837080415,
+     "toRuneVolume": 0.17080551521189766,
+     "toSecuredVolume": 0.0,
+     "toTradeVolume": 0.32585775114364585
+    },
+    "name": "Maya Protocol",
+    "once_factor": 0.5033367336444565,
+    "paired_share": 0.993326532711087,
+    "source": "https://midgard.mayachain.info/v2/history/swaps?interval=day&count=400"
+   },
+   "thorchain-dex": {
+    "days": 90,
+    "leg_shares": {
+     "fromSecuredVolume": 0.0042250752823048635,
+     "fromTradeVolume": 0.24877313586847036,
+     "toAssetVolume": 0.24703506283494103,
+     "toRuneVolume": 0.2468321411855256,
+     "toSecuredVolume": 0.004473079304169329,
+     "toTradeVolume": 0.24866150552458882
+    },
+    "name": "THORChain",
+    "once_factor": 0.5002812780075807,
+    "paired_share": 0.9994374439848387,
+    "source": "https://gateway.liquify.com/chain/thorchain_midgard/v2/history/swaps?interval=day&count=400"
+   }
+  }
+ },
  "burst": {
   "chainflip-amm": {
    "cv": 0.6895660947621522,
@@ -314,11 +396,11 @@
  },
  "claims": [
   {
-   "claim": "NEAR Intents is the largest venue in the peer set, with more than 50% of volume.",
+   "claim": "NEAR Intents is the largest swap venue with more than 50% of volume, whether volume is taken as reported or one side of each swap is counted for every venue.",
    "id": "C1",
    "threshold": 0.5,
    "unit": "share",
-   "value": 0.5808907009163305,
+   "value": 0.5311355961221405,
    "verdict": "SUPPORTED"
   },
   {
@@ -366,7 +448,7 @@
    "id": "C7",
    "threshold": 0.33,
    "unit": "share",
-   "value": 0.45022106634930686,
+   "value": 0.44996793418130343,
    "verdict": "SUPPORTED"
   },
   {
@@ -379,10 +461,14 @@
   },
   {
    "claim": "The share of fees reaching NEAR rose in every one of the last 4 consecutive 90-day windows.",
+   "display": {
+    "threshold": "3 of 3",
+    "value": "3 of 3 rises"
+   },
    "id": "C9",
-   "threshold": 0.07790973240954711,
-   "unit": "share",
-   "value": 0.2706981404409915,
+   "threshold": 3,
+   "unit": "count",
+   "value": 3,
    "verdict": "SUPPORTED"
   },
   {
@@ -395,10 +481,14 @@
   },
   {
    "claim": "Intents is also the largest venue when the four big bridges are added to the peer set.",
+   "display": {
+    "threshold": "rank 1",
+    "value": "rank 3 of 8"
+   },
    "id": "C11",
-   "threshold": 0.3467789389090459,
-   "unit": "share",
-   "value": 0.1776959194931343,
+   "threshold": 1,
+   "unit": "rank",
+   "value": 3,
    "verdict": "REFUTED"
   }
  ],
@@ -479,6 +569,11 @@
   }
  ],
  "halt": {
+  "absorbed_by_basis": {
+   "one_side": 0.44996793418130343,
+   "reported": 0.45022106634930686,
+   "worst": 0.22511053317465343
+  },
   "absorbed_fraction": 0.45022106634930686,
   "daily_volume": {
    "after_1": {
@@ -564,12 +659,12 @@
   "what": "THORChain halted trading after a $10.7M vault exploit and resumed on 2026-06-23"
  },
  "implied_value": {
-  "fraction_of_subject_mcap": 0.09508967987518417,
-  "implied_value": 461329792.54010355,
-  "rival_median_mcap_to_revenue": 22.402778864073824
+  "fraction_of_subject_mcap": 0.09597358850718617,
+  "implied_value": 452724203.5339738,
+  "rival_median_mcap_to_revenue": 21.984880192414394
  },
  "meta": {
-  "fetched_at": "2026-11-11T19:08:39Z",
+  "fetched_at": "2026-11-11T23:58:12Z",
   "first_day": "2024-12-10",
   "last_day": "2026-11-10",
   "min_month_volume": 50000000.0,
@@ -1629,9 +1724,9 @@
  "valuation": {
   "chainflip-amm": {
    "fees_annualized": 24724086.11111111,
-   "market_cap": 33886165.689131275,
-   "mcap_to_fees": 1.3705730329867558,
-   "mcap_to_revenue": 7.457890982552695,
+   "market_cap": 33926461.81436653,
+   "mcap_to_fees": 1.3722028657358474,
+   "mcap_to_revenue": 7.46675961973581,
    "revenue_annualized": 4543666.0
   },
   "maya-protocol": {
@@ -1643,16 +1738,16 @@
   },
   "near-intents": {
    "fees_annualized": 76071913.0,
-   "market_cap": 4851523247.797768,
-   "mcap_to_fees": 63.77548633222577,
-   "mcap_to_revenue": 235.59632226630663,
+   "market_cap": 4717174907.970388,
+   "mcap_to_fees": 62.00941611617402,
+   "mcap_to_revenue": 229.07219094728592,
    "revenue_annualized": 20592525.388888888
   },
   "thorchain-dex": {
    "fees_annualized": 32744510.944444444,
-   "market_cap": 198644910.34957644,
-   "mcap_to_fees": 6.06651022171639,
-   "mcap_to_revenue": 22.402778864073824,
+   "market_cap": 194939412.71150804,
+   "mcap_to_fees": 5.953346288855848,
+   "mcap_to_revenue": 21.984880192414394,
    "revenue_annualized": 8866976.349444443
   }
  },

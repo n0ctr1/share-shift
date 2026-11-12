@@ -124,6 +124,28 @@ BUYBACK_ACCOUNT = "buybacks.multisignature.near"
 # How many channels and fee recipients to list by name; the rest are "other".
 TOP_N = 8
 
+# How each venue's reported volume is counted. THORChain and Maya route every
+# native swap through their own token, and their indexer adds up both halves;
+# the build measures that from the indexer's own leg breakdown. For NEAR
+# Intents two public re-computations from intents.near events disagree on
+# whether the reported figure counts one side of a swap or both, so every
+# share is also computed with Intents halved.
+LEG_SOURCES = {
+    "thorchain-dex": "https://gateway.liquify.com/chain/thorchain_midgard/v2/history/swaps?interval=day&count=400",
+    "maya-protocol": "https://midgard.mayachain.info/v2/history/swaps?interval=day&count=400",
+}
+# Leg types that are the two halves of one routed swap.
+LEG_PAIRS = [("toRuneVolume", "toAssetVolume"), ("fromTradeVolume", "toTradeVolume"),
+             ("fromSecuredVolume", "toSecuredVolume")]
+SUBJECT_BASIS_NOTES = [
+    {"finding": "public swaps counted once are 46% of the reported volume on six sampled days, 92% counting both sides",
+     "source": "https://github.com/soldanoandrea/near-thesis"},
+    {"finding": "public net swap volume matches the reported volume within about 1% before confidential intents launched",
+     "source": "https://github.com/EmekaManuel/nearquery"},
+]
+SUBJECT_VOLUME_SOURCE = ("DefiLlama reads it from NEAR's own Dune table "
+                         "dune.near.dataset_near_intents_metrics (column volume_amount_usd)")
+
 # Claim thresholds. A claim is SUPPORTED or REFUTED by comparing one computed
 # number with one of these; nothing else decides the verdict.
 THRESHOLDS = {

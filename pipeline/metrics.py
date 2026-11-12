@@ -267,6 +267,64 @@ def halt_experiment(table, subject, slugs, names):
     return None
 
 
+def counting_basis(raw, table, subject, names, window, wide_volumes=None):
+    """How many sides of a swap each venue's reported volume counts, and what
+    the shares look like once every venue is put on the same footing.
+
+    For a venue with a leg breakdown, a matched pair of legs (into the routing
+    token and out of it) is one swap counted twice. `once_factor` is the
+    fraction of reported volume left when each such pair is counted once.
+    """
+    slugs = [p["slug"] for p in config.PEERS]
+    first, last_ = window
+    venues, factor = {}, {s: 1.0 for s in slugs}
+    for slug in slugs:
+        legs = (raw.get("legs_" + slug) or {}).get("series") or {}
+        days = [d for d in legs if first <= d <= last_]
+        if not days:
+            continue
+        total = sum(legs[d]["totalVolume"] for d in days)
+        paired = 0.0
+        shares = {}
+        for a, b in config.LEG_PAIRS:
+            va = sum(legs[d].get(a, 0.0) for d in days)
+            vb = sum(legs[d].get(b, 0.0) for d in days)
+            shares[a], shares[b] = va / total, vb / total
+            paired += 2 * min(va, vb)
+        factor[slug] = 1 - paired / total / 2
+        venues[slug] = {"name": names[slug], "days": len(days), "leg_shares": shares,
+                        "paired_share": paired / total, "once_factor": factor[slug],
+                        "source": config.LEG_SOURCES.get(slug)}
+    if not venues:
+        return None
+    vol = {s: sum(v for d, v in zip(table["dates"], table[s]["volume"]) if first <= d <= last_)
+           for s in slugs}
+
+    def shares_under(subject_factor, use_measured):
+        adj = {s: vol[s] * (subject_factor if s == subject else (factor[s] if use_measured else 1.0))
+               for s in slugs}
+        total = sum(adj.values())
+        out = {"share": adj[subject] / total, "leader": names[max(adj, key=adj.get)],
+               "runner_up_share": max(v for s, v in adj.items() if s != subject) / total}
+        if wide_volumes:
+            out["wide_share"] = adj[subject] / (total + wide_volumes)
+        return out
+
+    scenarios = [
+        {"id": "reported", "label": "As reported by every venue", **shares_under(1.0, False)},
+        {"id": "one_side", "label": "One side of each swap for every venue (Intents halved, "
+                                    "routed pairs counted once)", **shares_under(0.5, True)},
+        {"id": "worst", "label": "Intents halved, rivals left as reported (inconsistent with "
+                                 "the rivals' own leg data)", **shares_under(0.5, False)},
+        {"id": "best", "label": "Intents as reported, rivals' routed pairs counted once",
+         **shares_under(1.0, True)},
+    ]
+    return {"venues": venues, "scenarios": scenarios,
+            "subject_source": config.SUBJECT_VOLUME_SOURCE,
+            "subject_notes": config.SUBJECT_BASIS_NOTES,
+            "unverified": [names[s] for s in slugs if s != subject and s not in venues]}
+
+
 def wide_report(raw, table, subject, names, last, w, yoy_prior_end):
     """The subject's place among all eight venues, bridges included."""
     dates = table["dates"]
@@ -684,14 +742,37 @@ def _compute(raw, fetched_at):
         }
 
     # --- claims ----------------------------------------------------------
+    bridge_volume = 0.0
+    for p in config.WIDE_PEERS:
+        series_ = (raw.get("widevolume_" + p["slug"]) or {}).get("series") or {}
+        bridge_volume += sum(v for d, v in series_.items() if start_date <= d <= end_date)
+    basis = counting_basis(raw, table, subject, names, [start_date, end_date], bridge_volume or None)
+    if basis:
+        by_id = {x["id"]: x for x in basis["scenarios"]}
+        like = [by_id["reported"], by_id["one_side"]]
+        c1_value = min(x["share"] for x in like)
+        c1_ok = all(x["share"] > t["leader_share"] and x["leader"] == names[subject] for x in like)
+        c1_text = ("NEAR Intents is the largest swap venue with more than %d%% of volume, "
+                   "whether volume is taken as reported or one side of each swap is counted "
+                   "for every venue." % round(100 * t["leader_share"]))
+    else:
+        c1_value = share[subject]
+        c1_ok = share[subject] > t["leader_share"] and share[subject] == max(share.values())
+        c1_text = ("NEAR Intents is the largest venue in the peer set, with more than "
+                   "%d%% of volume." % round(100 * t["leader_share"]))
+    if basis and halt and halt["absorbed_fraction"] is not None:
+        f_rival = basis["venues"].get(halt["rival_slug"], {}).get("once_factor", 1.0)
+        halt["absorbed_by_basis"] = {
+            "reported": halt["absorbed_fraction"],
+            "one_side": halt["absorbed_fraction"] * 0.5 / f_rival,
+            "worst": halt["absorbed_fraction"] * 0.5,
+        }
     claims = [
         {
             "id": "C1",
-            "claim": "NEAR Intents is the largest venue in the peer set, with more than "
-                     "%d%% of volume." % round(100 * t["leader_share"]),
-            "value": share[subject], "unit": "share", "threshold": t["leader_share"],
-            "verdict": _verdict(share[subject] > t["leader_share"]
-                                and share[subject] == max(share.values())),
+            "claim": c1_text,
+            "value": c1_value, "unit": "share", "threshold": t["leader_share"],
+            "verdict": _verdict(c1_ok),
         },
         {
             "id": "C2",
@@ -737,8 +818,10 @@ def _compute(raw, fetched_at):
             "id": "C7",
             "claim": "When its largest rival stopped trading, Intents picked up more than "
                      "%d%% of the flow that rival had carried." % round(100 * t["absorbed"]),
-            "value": halt["absorbed_fraction"], "unit": "share", "threshold": t["absorbed"],
-            "verdict": _verdict(halt["absorbed_fraction"] > t["absorbed"]),
+            "value": min(halt.get("absorbed_by_basis", {}).get("one_side", 9), halt["absorbed_fraction"]),
+            "unit": "share", "threshold": t["absorbed"],
+            "verdict": _verdict(min(halt.get("absorbed_by_basis", {}).get("one_side", 9),
+                                    halt["absorbed_fraction"]) > t["absorbed"]),
         })
     rival_cv = [burst[s]["cv"] for s in rivals if burst[s]["cv"] is not None]
     claims.append({
@@ -769,8 +852,9 @@ def _compute(raw, fetched_at):
             "id": "C11",
             "claim": "Intents is also the largest venue when the four big bridges are "
                      "added to the peer set.",
-            "value": wide["subject_share"], "unit": "share",
-            "threshold": wide["venues"][0]["share"],
+            "value": wide["subject_rank_volume"], "unit": "rank", "threshold": 1,
+            "display": {"value": "rank %d of %d" % (wide["subject_rank_volume"], len(wide["venues"])),
+                        "threshold": "rank 1"},
             "verdict": _verdict(wide["subject_rank_volume"] == 1),
         })
 
@@ -780,8 +864,13 @@ def _compute(raw, fetched_at):
             "id": "C9",
             "claim": "The share of fees reaching NEAR rose in every one of the last %d "
                      "consecutive %d-day windows." % (len(capture_trend), w),
-            "value": capture_trend[-1]["capture"], "unit": "share",
-            "threshold": capture_trend[0]["capture"],
+            "value": sum(1 for a, b in zip(capture_trend, capture_trend[1:])
+                         if b["capture"] > a["capture"]),
+            "unit": "count", "threshold": len(capture_trend) - 1,
+            "display": {
+                "value": "%d of %d rises" % (sum(1 for a, b in zip(capture_trend, capture_trend[1:])
+                                               if b["capture"] > a["capture"]), len(capture_trend) - 1),
+                "threshold": "%d of %d" % (len(capture_trend) - 1, len(capture_trend) - 1)},
             "verdict": _verdict(rising),
         })
 
@@ -824,6 +913,7 @@ def _compute(raw, fetched_at):
         "burst": burst,
         "capture_trend": capture_trend,
         "channels": channels,
+        "basis": basis,
         "wide": wide,
         "crosscheck": crosscheck(raw, table, config.MIDGARD_SLUG),
         "suspensions": (suspension_checks(table, subject, names, halt["rival_slug"],

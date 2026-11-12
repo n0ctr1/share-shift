@@ -1,0 +1,3606 @@
+{
+ "note": "Volume by leg type per day, in the venue's own token units (1e8).",
+ "series": {
+  "2025-10-08": {
+   "fromSecuredVolume": 75961584359494.0,
+   "fromTradeVolume": 408769430616076.0,
+   "toAssetVolume": 297939754329210.0,
+   "toRuneVolume": 299771755097707.0,
+   "toSecuredVolume": 62596983226944.0,
+   "toTradeVolume": 387868712246155.0,
+   "totalVolume": 1532908219875586.0
+  },
+  "2025-10-09": {
+   "fromSecuredVolume": 109698612946057.0,
+   "fromTradeVolume": 578859097370352.0,
+   "toAssetVolume": 411681520732031.0,
+   "toRuneVolume": 413572297895214.0,
+   "toSecuredVolume": 104553772216102.0,
+   "toTradeVolume": 571665642322116.0,
+   "totalVolume": 2190030943481872.0
+  },
+  "2025-10-10": {
+   "fromSecuredVolume": 309473461774000.0,
+   "fromTradeVolume": 2240848456214876.0,
+   "toAssetVolume": 681786560407611.0,
+   "toRuneVolume": 619254116720464.0,
+   "toSecuredVolume": 255259972818468.0,
+   "toTradeVolume": 2630898570926443.0,
+   "totalVolume": 6737521138861862.0
+  },
+  "2025-10-11": {
+   "fromSecuredVolume": 294568222521716.0,
+   "fromTradeVolume": 2472541962096034.0,
+   "toAssetVolume": 1382159356332284.0,
+   "toRuneVolume": 1367870739325698.0,
+   "toSecuredVolume": 256698553789122.0,
+   "toTradeVolume": 2535526005214385.0,
+   "totalVolume": 8309364839279239.0
+  },
+  "2025-10-12": {
+   "fromSecuredVolume": 103370049796816.0,
+   "fromTradeVolume": 1658848202555536.0,
+   "toAssetVolume": 834353950450303.0,
+   "toRuneVolume": 768839785034907.0,
+   "toSecuredVolume": 138851433342127.0,
+   "toTradeVolume": 1587698181569519.0,
+   "totalVolume": 5091961602749208.0
+  },
+  "2025-10-13": {
+   "fromSecuredVolume": 102755339348557.0,
+   "fromTradeVolume": 1420098153475732.0,
+   "toAssetVolume": 662657483938028.0,
+   "toRuneVolume": 675570187893986.0,
+   "toSecuredVolume": 125066718208589.0,
+   "toTradeVolume": 1378806205829603.0,
+   "totalVolume": 4364954088694495.0
+  },
+  "2025-10-14": {
+   "fromSecuredVolume": 154523340139961.0,
+   "fromTradeVolume": 1383281711397426.0,
+   "toAssetVolume": 651133663745694.0,
+   "toRuneVolume": 656822493118288.0,
+   "toSecuredVolume": 142988627067265.0,
+   "toTradeVolume": 1435133122537219.0,
+   "totalVolume": 4423882958005853.0
+  },
+  "2025-10-15": {
+   "fromSecuredVolume": 143082309419895.0,
+   "fromTradeVolume": 1000372458669717.0,
+   "toAssetVolume": 660155007848337.0,
+   "toRuneVolume": 609934602639169.0,
+   "toSecuredVolume": 149034733211529.0,
+   "toTradeVolume": 1021708474082892.0,
+   "totalVolume": 3584287585871539.0
+  },
+  "2025-10-16": {
+   "fromSecuredVolume": 101916316289162.0,
+   "fromTradeVolume": 1598301571253259.0,
+   "toAssetVolume": 1108170536294996.0,
+   "toRuneVolume": 1113446124639570.0,
+   "toSecuredVolume": 122791343749917.0,
+   "toTradeVolume": 1647337132082112.0,
+   "totalVolume": 5691963024309016.0
+  },
+  "2025-10-17": {
+   "fromSecuredVolume": 233367414492039.0,
+   "fromTradeVolume": 2972494562413276.0,
+   "toAssetVolume": 2843655198286454.0,
+   "toRuneVolume": 2842088706337762.0,
+   "toSecuredVolume": 234156875810791.0,
+   "toTradeVolume": 2986493409567763.0,
+   "totalVolume": 1.2112256166908084e+16
+  },
+  "2025-10-18": {
+   "fromSecuredVolume": 227532104096880.0,
+   "fromTradeVolume": 2652741591868719.0,
+   "toAssetVolume": 2661855211098815.0,
+   "toRuneVolume": 2662569407680923.0,
+   "toSecuredVolume": 225197170590259.0,
+   "toTradeVolume": 2683603962737104.0,
+   "totalVolume": 1.11134994480727e+16
+  },
+  "2025-10-19": {
+   "fromSecuredVolume": 91493396365206.0,
+   "fromTradeVolume": 1572288930939128.0,
+   "toAssetVolume": 1325734513071192.0,
+   "toRuneVolume": 1324368261768446.0,
+   "toSecuredVolume": 90134339675210.0,
+   "toTradeVolume": 1546828328070765.0,
+   "totalVolume": 5950847769889947.0
+  },
+  "2025-10-20": {
+   "fromSecuredVolume": 76397055239517.0,
+   "fromTradeVolume": 1344044341976484.0,
+   "toAssetVolume": 1063072747534791.0,
+   "toRuneVolume": 1075492540417163.0,
+   "toSecuredVolume": 70281266507412.0,
+   "toTradeVolume": 1345501663009796.0,
+   "totalVolume": 4974789614685163.0
+  },
+  "2025-10-21": {
+   "fromSecuredVolume": 169504037933131.0,
+   "fromTradeVolume": 949465375710005.0,
+   "toAssetVolume": 646776598922316.0,
+   "toRuneVolume": 636389467912697.0,
+   "toSecuredVolume": 168715401397148.0,
+   "toTradeVolume": 954990079021140.0,
+   "totalVolume": 3525840960896437.0
+  },
+  "2025-10-22": {
+   "fromSecuredVolume": 79752841785745.0,
+   "fromTradeVolume": 618867373477810.0,
+   "toAssetVolume": 524432404519810.0,
+   "toRuneVolume": 519494343280609.0,
+   "toSecuredVolume": 78858907674341.0,
+   "toTradeVolume": 652778484837888.0,
+   "totalVolume": 2474184355576203.0
+  },
+  "2025-10-23": {
+   "fromSecuredVolume": 152914942000177.0,
+   "fromTradeVolume": 2296197896893756.0,
+   "toAssetVolume": 1842922400855004.0,
+   "toRuneVolume": 1841805111940137.0,
+   "toSecuredVolume": 136993870933122.0,
+   "toTradeVolume": 2294641125698567.0,
+   "totalVolume": 8565475348320763.0
+  },
+  "2025-10-24": {
+   "fromSecuredVolume": 136923034022163.0,
+   "fromTradeVolume": 719253054354206.0,
+   "toAssetVolume": 692917036226788.0,
+   "toRuneVolume": 717909233562026.0,
+   "toSecuredVolume": 117048659909416.0,
+   "toTradeVolume": 677750985250634.0,
+   "totalVolume": 3061802003325233.0
+  },
+  "2025-10-25": {
+   "fromSecuredVolume": 95464651792667.0,
+   "fromTradeVolume": 566767081508495.0,
+   "toAssetVolume": 553362020604360.0,
+   "toRuneVolume": 559467428779096.0,
+   "toSecuredVolume": 71523474294284.0,
+   "toTradeVolume": 572215170893096.0,
+   "totalVolume": 2418799827871998.0
+  },
+  "2025-10-26": {
+   "fromSecuredVolume": 114382917172527.0,
+   "fromTradeVolume": 1126523315918241.0,
+   "toAssetVolume": 744717837118620.0,
+   "toRuneVolume": 762230316341557.0,
+   "toSecuredVolume": 134381625294348.0,
+   "toTradeVolume": 1015297617149660.0,
+   "totalVolume": 3897533628994953.0
+  },
+  "2025-10-27": {
+   "fromSecuredVolume": 141327382717708.0,
+   "fromTradeVolume": 665315495479622.0,
+   "toAssetVolume": 669999454400661.0,
+   "toRuneVolume": 648567992968908.0,
+   "toSecuredVolume": 116833497920587.0,
+   "toTradeVolume": 752036589197061.0,
+   "totalVolume": 2994080412684547.0
+  },
+  "2025-10-28": {
+   "fromSecuredVolume": 95167543830757.0,
+   "fromTradeVolume": 489460821602458.0,
+   "toAssetVolume": 308373203184841.0,
+   "toRuneVolume": 261194569571710.0,
+   "toSecuredVolume": 88876575574026.0,
+   "toTradeVolume": 491311815735941.0,
+   "totalVolume": 1734384529499733.0
+  },
+  "2025-10-29": {
+   "fromSecuredVolume": 163806250404124.0,
+   "fromTradeVolume": 1266960787874798.0,
+   "toAssetVolume": 1016473744068019.0,
+   "toRuneVolume": 1021032462300995.0,
+   "toSecuredVolume": 176342520822384.0,
+   "toTradeVolume": 1205895951335939.0,
+   "totalVolume": 4850511716806259.0
+  },
+  "2025-10-30": {
+   "fromSecuredVolume": 172133979522404.0,
+   "fromTradeVolume": 1059407548612174.0,
+   "toAssetVolume": 916058466351337.0,
+   "toRuneVolume": 900067511383496.0,
+   "toSecuredVolume": 156484597864119.0,
+   "toTradeVolume": 1117380663173067.0,
+   "totalVolume": 4321532766906597.0
+  },
+  "2025-10-31": {
+   "fromSecuredVolume": 114103750383735.0,
+   "fromTradeVolume": 868023846737044.0,
+   "toAssetVolume": 790054764901789.0,
+   "toRuneVolume": 794972479914749.0,
+   "toSecuredVolume": 129874073702743.0,
+   "toTradeVolume": 863798848738235.0,
+   "totalVolume": 3560827764378295.0
+  },
+  "2025-11-01": {
+   "fromSecuredVolume": 74947088740160.0,
+   "fromTradeVolume": 408119477254442.0,
+   "toAssetVolume": 308301811262271.0,
+   "toRuneVolume": 301594341472163.0,
+   "toSecuredVolume": 96711316152938.0,
+   "toTradeVolume": 419607745224784.0,
+   "totalVolume": 1609281780106758.0
+  },
+  "2025-11-02": {
+   "fromSecuredVolume": 79564596616814.0,
+   "fromTradeVolume": 700453194187132.0,
+   "toAssetVolume": 508739230556107.0,
+   "toRuneVolume": 507567918807754.0,
+   "toSecuredVolume": 106895485576946.0,
+   "toTradeVolume": 696247738406345.0,
+   "totalVolume": 2599468164151098.0
+  },
+  "2025-11-03": {
+   "fromSecuredVolume": 218353235366959.0,
+   "fromTradeVolume": 1119373087047513.0,
+   "toAssetVolume": 858369558093060.0,
+   "toRuneVolume": 853538257174654.0,
+   "toSecuredVolume": 179015137871765.0,
+   "toTradeVolume": 1246067956264237.0,
+   "totalVolume": 4474717231818188.0
+  },
+  "2025-11-04": {
+   "fromSecuredVolume": 159472807654105.0,
+   "fromTradeVolume": 1156529957227845.0,
+   "toAssetVolume": 827060498115502.0,
+   "toRuneVolume": 814719642065069.0,
+   "toSecuredVolume": 166987787776468.0,
+   "toTradeVolume": 1168342923838187.0,
+   "totalVolume": 4293113616677176.0
+  },
+  "2025-11-05": {
+   "fromSecuredVolume": 187255537564630.0,
+   "fromTradeVolume": 1326886461759055.0,
+   "toAssetVolume": 1119291274451971.0,
+   "toRuneVolume": 1010463113668459.0,
+   "toSecuredVolume": 189219123218402.0,
+   "toTradeVolume": 1240817381913005.0,
+   "totalVolume": 5073932892575522.0
+  },
+  "2025-11-06": {
+   "fromSecuredVolume": 64394740294259.0,
+   "fromTradeVolume": 803516205906033.0,
+   "toAssetVolume": 657299149278416.0,
+   "toRuneVolume": 651663893864071.0,
+   "toSecuredVolume": 68439692684858.0,
+   "toTradeVolume": 832134313744380.0,
+   "totalVolume": 3077447995772017.0
+  },
+  "2025-11-07": {
+   "fromSecuredVolume": 63676469105988.0,
+   "fromTradeVolume": 1141095128961733.0,
+   "toAssetVolume": 553284307253021.0,
+   "toRuneVolume": 593192452724630.0,
+   "toSecuredVolume": 67047235716516.0,
+   "toTradeVolume": 962517422223762.0,
+   "totalVolume": 3380813015985650.0
+  },
+  "2025-11-08": {
+   "fromSecuredVolume": 26591887402478.0,
+   "fromTradeVolume": 628095215440469.0,
+   "toAssetVolume": 299319406037713.0,
+   "toRuneVolume": 303056793019969.0,
+   "toSecuredVolume": 27344641124132.0,
+   "toTradeVolume": 627528767210674.0,
+   "totalVolume": 1911936710235435.0
+  },
+  "2025-11-09": {
+   "fromSecuredVolume": 35790563994382.0,
+   "fromTradeVolume": 696909509702872.0,
+   "toAssetVolume": 234302582221974.0,
+   "toRuneVolume": 221371465718065.0,
+   "toSecuredVolume": 40179115300813.0,
+   "toTradeVolume": 687092265649997.0,
+   "totalVolume": 1915645502588103.0
+  },
+  "2025-11-10": {
+   "fromSecuredVolume": 61759979755457.0,
+   "fromTradeVolume": 621647169592769.0,
+   "toAssetVolume": 455186563271170.0,
+   "toRuneVolume": 457207697458415.0,
+   "toSecuredVolume": 67776425358209.0,
+   "toTradeVolume": 638074122189883.0,
+   "totalVolume": 2301651957625903.0
+  },
+  "2025-11-11": {
+   "fromSecuredVolume": 102800484587123.0,
+   "fromTradeVolume": 560662872535752.0,
+   "toAssetVolume": 361426375657034.0,
+   "toRuneVolume": 354994287950039.0,
+   "toSecuredVolume": 84193558628775.0,
+   "toTradeVolume": 672757864455057.0,
+   "totalVolume": 2136835443813780.0
+  },
+  "2025-11-12": {
+   "fromSecuredVolume": 79032402052144.0,
+   "fromTradeVolume": 970307277888738.0,
+   "toAssetVolume": 556240485002157.0,
+   "toRuneVolume": 554251707350913.0,
+   "toSecuredVolume": 86337195569820.0,
+   "toTradeVolume": 954190408843455.0,
+   "totalVolume": 3200359476707227.0
+  },
+  "2025-11-13": {
+   "fromSecuredVolume": 113452093957905.0,
+   "fromTradeVolume": 1196013610537999.0,
+   "toAssetVolume": 762669632835151.0,
+   "toRuneVolume": 756746019951867.0,
+   "toSecuredVolume": 133193456098893.0,
+   "toTradeVolume": 1217278547547501.0,
+   "totalVolume": 4179353360929316.0
+  },
+  "2025-11-14": {
+   "fromSecuredVolume": 191191514975160.0,
+   "fromTradeVolume": 1857512491791495.0,
+   "toAssetVolume": 1346140053380320.0,
+   "toRuneVolume": 1270509564875329.0,
+   "toSecuredVolume": 211169650277098.0,
+   "toTradeVolume": 1839817192093360.0,
+   "totalVolume": 6716340467392762.0
+  },
+  "2025-11-15": {
+   "fromSecuredVolume": 66802837033758.0,
+   "fromTradeVolume": 515850697647841.0,
+   "toAssetVolume": 355961018387185.0,
+   "toRuneVolume": 375490128095554.0,
+   "toSecuredVolume": 81591976531028.0,
+   "toTradeVolume": 511009500908943.0,
+   "totalVolume": 1906706158604309.0
+  },
+  "2025-11-16": {
+   "fromSecuredVolume": 72875080783052.0,
+   "fromTradeVolume": 928765179703713.0,
+   "toAssetVolume": 506413300114787.0,
+   "toRuneVolume": 505932617851819.0,
+   "toSecuredVolume": 66820925893878.0,
+   "toTradeVolume": 939868472094595.0,
+   "totalVolume": 3020675576441844.0
+  },
+  "2025-11-17": {
+   "fromSecuredVolume": 170984390689533.0,
+   "fromTradeVolume": 1896393516914579.0,
+   "toAssetVolume": 1449179588699276.0,
+   "toRuneVolume": 1530954041108623.0,
+   "toSecuredVolume": 176618739838980.0,
+   "toTradeVolume": 1949868448590540.0,
+   "totalVolume": 7173998725841531.0
+  },
+  "2025-11-18": {
+   "fromSecuredVolume": 222135435110445.0,
+   "fromTradeVolume": 1960441082100002.0,
+   "toAssetVolume": 1385995749455729.0,
+   "toRuneVolume": 1372190427137576.0,
+   "toSecuredVolume": 230057008223770.0,
+   "toTradeVolume": 1927089388904174.0,
+   "totalVolume": 7097909090931696.0
+  },
+  "2025-11-19": {
+   "fromSecuredVolume": 122181483273196.0,
+   "fromTradeVolume": 993038153828347.0,
+   "toAssetVolume": 760365892175741.0,
+   "toRuneVolume": 719153702280490.0,
+   "toSecuredVolume": 122986685800394.0,
+   "toTradeVolume": 1003838673984003.0,
+   "totalVolume": 3721564591342171.0
+  },
+  "2025-11-20": {
+   "fromSecuredVolume": 150797206256487.0,
+   "fromTradeVolume": 2323814441071123.0,
+   "toAssetVolume": 1584606014420012.0,
+   "toRuneVolume": 1556736058877841.0,
+   "toSecuredVolume": 154682297374698.0,
+   "toTradeVolume": 2344417145161846.0,
+   "totalVolume": 8115053163162007.0
+  },
+  "2025-11-21": {
+   "fromSecuredVolume": 160676527826880.0,
+   "fromTradeVolume": 2648616474232183.0,
+   "toAssetVolume": 2471698930428052.0,
+   "toRuneVolume": 2418147540528618.0,
+   "toSecuredVolume": 149120940973133.0,
+   "toTradeVolume": 2752889662600264.0,
+   "totalVolume": 1.060115007658913e+16
+  },
+  "2025-11-22": {
+   "fromSecuredVolume": 111985198362550.0,
+   "fromTradeVolume": 1888780028153682.0,
+   "toAssetVolume": 1575630591979136.0,
+   "toRuneVolume": 1445935573079649.0,
+   "toSecuredVolume": 129646300108630.0,
+   "toTradeVolume": 1889060155461428.0,
+   "totalVolume": 7041037847145075.0
+  },
+  "2025-11-23": {
+   "fromSecuredVolume": 17595338075129.0,
+   "fromTradeVolume": 506040674286138.0,
+   "toAssetVolume": 310620189015435.0,
+   "toRuneVolume": 298169166633619.0,
+   "toSecuredVolume": 42331227957052.0,
+   "toTradeVolume": 453286588517000.0,
+   "totalVolume": 1628043184484373.0
+  },
+  "2025-11-24": {
+   "fromSecuredVolume": 145926085871501.0,
+   "fromTradeVolume": 2277748838488443.0,
+   "toAssetVolume": 1836886190849614.0,
+   "toRuneVolume": 1837206196472699.0,
+   "toSecuredVolume": 160514229448091.0,
+   "toTradeVolume": 2292288262612989.0,
+   "totalVolume": 8550569803743337.0
+  },
+  "2025-11-25": {
+   "fromSecuredVolume": 89659120506219.0,
+   "fromTradeVolume": 1299208931923316.0,
+   "toAssetVolume": 1154585294865974.0,
+   "toRuneVolume": 1143637323998863.0,
+   "toSecuredVolume": 101453600432214.0,
+   "toTradeVolume": 1290158186627166.0,
+   "totalVolume": 5078702458353752.0
+  },
+  "2025-11-26": {
+   "fromSecuredVolume": 135104298009959.0,
+   "fromTradeVolume": 2379878559137090.0,
+   "toAssetVolume": 2203154354772657.0,
+   "toRuneVolume": 2202517491026824.0,
+   "toSecuredVolume": 125914841121916.0,
+   "toTradeVolume": 2398091464470739.0,
+   "totalVolume": 9444661008539184.0
+  },
+  "2025-11-27": {
+   "fromSecuredVolume": 151515558130495.0,
+   "fromTradeVolume": 2691546172061708.0,
+   "toAssetVolume": 2708490932716613.0,
+   "toRuneVolume": 2715459612311879.0,
+   "toSecuredVolume": 130232553035577.0,
+   "toTradeVolume": 2750841152049069.0,
+   "totalVolume": 1.114808598030534e+16
+  },
+  "2025-11-28": {
+   "fromSecuredVolume": 64869243231611.0,
+   "fromTradeVolume": 1302216823631895.0,
+   "toAssetVolume": 1160503174873007.0,
+   "toRuneVolume": 1162813302617204.0,
+   "toSecuredVolume": 63338914490368.0,
+   "toTradeVolume": 1281002315043939.0,
+   "totalVolume": 5034743773888024.0
+  },
+  "2025-11-29": {
+   "fromSecuredVolume": 108958130739661.0,
+   "fromTradeVolume": 2500144858609262.0,
+   "toAssetVolume": 2418908942701925.0,
+   "toRuneVolume": 2416005134827286.0,
+   "toSecuredVolume": 113204458309154.0,
+   "toTradeVolume": 2545239961793071.0,
+   "totalVolume": 1.010246148698036e+16
+  },
+  "2025-11-30": {
+   "fromSecuredVolume": 301966836658188.0,
+   "fromTradeVolume": 3317701827345011.0,
+   "toAssetVolume": 3449603467184624.0,
+   "toRuneVolume": 3452852013948125.0,
+   "toSecuredVolume": 300044298930582.0,
+   "toTradeVolume": 3347184804802002.0,
+   "totalVolume": 1.4169353248868532e+16
+  },
+  "2025-12-01": {
+   "fromSecuredVolume": 344697934520893.0,
+   "fromTradeVolume": 4113431988156004.0,
+   "toAssetVolume": 3941967946275972.0,
+   "toRuneVolume": 3895071655482728.0,
+   "toSecuredVolume": 340395411732634.0,
+   "toTradeVolume": 4041190523740060.0,
+   "totalVolume": 1.6676755459908292e+16
+  },
+  "2025-12-02": {
+   "fromSecuredVolume": 210819638828170.0,
+   "fromTradeVolume": 4075898470196186.0,
+   "toAssetVolume": 3996891074441766.0,
+   "toRuneVolume": 4052939443023355.0,
+   "toSecuredVolume": 221642772261899.0,
+   "toTradeVolume": 4053912663546738.0,
+   "totalVolume": 1.6612104062298114e+16
+  },
+  "2025-12-03": {
+   "fromSecuredVolume": 185348000114322.0,
+   "fromTradeVolume": 2579046210883125.0,
+   "toAssetVolume": 2431296273344587.0,
+   "toRuneVolume": 2494385028075555.0,
+   "toSecuredVolume": 203733377819103.0,
+   "toTradeVolume": 2624146394118365.0,
+   "totalVolume": 1.0517955284355056e+16
+  },
+  "2025-12-04": {
+   "fromSecuredVolume": 25245103426644.0,
+   "fromTradeVolume": 634261076886905.0,
+   "toAssetVolume": 540089737180739.0,
+   "toRuneVolume": 535553678637223.0,
+   "toSecuredVolume": 29971582874889.0,
+   "toTradeVolume": 667335100944762.0,
+   "totalVolume": 2432456279951162.0
+  },
+  "2025-12-05": {
+   "fromSecuredVolume": 84321915303609.0,
+   "fromTradeVolume": 1402561047798798.0,
+   "toAssetVolume": 1229824013280040.0,
+   "toRuneVolume": 1224852819404480.0,
+   "toSecuredVolume": 97942971250219.0,
+   "toTradeVolume": 1427154699993631.0,
+   "totalVolume": 5466657467030777.0
+  },
+  "2025-12-06": {
+   "fromSecuredVolume": 141345286856349.0,
+   "fromTradeVolume": 3263811283395075.0,
+   "toAssetVolume": 3225592753895410.0,
+   "toRuneVolume": 3228938286192909.0,
+   "toSecuredVolume": 144253589597779.0,
+   "toTradeVolume": 3250538745751432.0,
+   "totalVolume": 1.3254479945688954e+16
+  },
+  "2025-12-07": {
+   "fromSecuredVolume": 70713365385874.0,
+   "fromTradeVolume": 974171181779768.0,
+   "toAssetVolume": 536219669924446.0,
+   "toRuneVolume": 538005821298811.0,
+   "toSecuredVolume": 64178070135358.0,
+   "toTradeVolume": 965228539886660.0,
+   "totalVolume": 3148516648410917.0
+  },
+  "2025-12-08": {
+   "fromSecuredVolume": 41407128588805.0,
+   "fromTradeVolume": 647465139876001.0,
+   "toAssetVolume": 492573818124011.0,
+   "toRuneVolume": 495365876508091.0,
+   "toSecuredVolume": 45644865981514.0,
+   "toTradeVolume": 606448142354715.0,
+   "totalVolume": 2328904971433137.0
+  },
+  "2025-12-09": {
+   "fromSecuredVolume": 120258679116962.0,
+   "fromTradeVolume": 3004195253562146.0,
+   "toAssetVolume": 2733223071194839.0,
+   "toRuneVolume": 2734874229718856.0,
+   "toSecuredVolume": 123410996521673.0,
+   "toTradeVolume": 2979414614806524.0,
+   "totalVolume": 1.1695376844921e+16
+  },
+  "2025-12-10": {
+   "fromSecuredVolume": 94027992368900.0,
+   "fromTradeVolume": 2028636369329797.0,
+   "toAssetVolume": 1751627283911460.0,
+   "toRuneVolume": 1745435685297119.0,
+   "toSecuredVolume": 99908472629251.0,
+   "toTradeVolume": 2042994510957908.0,
+   "totalVolume": 7762630314494435.0
+  },
+  "2025-12-11": {
+   "fromSecuredVolume": 76615776722823.0,
+   "fromTradeVolume": 1294969518801707.0,
+   "toAssetVolume": 1042485803936799.0,
+   "toRuneVolume": 999250065439283.0,
+   "toSecuredVolume": 74669194972022.0,
+   "toTradeVolume": 1332495155957711.0,
+   "totalVolume": 4820485515830345.0
+  },
+  "2025-12-12": {
+   "fromSecuredVolume": 50243329055261.0,
+   "fromTradeVolume": 1126310990806773.0,
+   "toAssetVolume": 989206571322243.0,
+   "toRuneVolume": 932839575383461.0,
+   "toSecuredVolume": 49224760539140.0,
+   "toTradeVolume": 1156734768578531.0,
+   "totalVolume": 4304559995685409.0
+  },
+  "2025-12-13": {
+   "fromSecuredVolume": 647836649985549.0,
+   "fromTradeVolume": 7738715284677101.0,
+   "toAssetVolume": 7576463990380762.0,
+   "toRuneVolume": 7582090196376114.0,
+   "toSecuredVolume": 669498795141543.0,
+   "toTradeVolume": 7755058376309121.0,
+   "totalVolume": 3.196966329287019e+16
+  },
+  "2025-12-14": {
+   "fromSecuredVolume": 198287371112604.0,
+   "fromTradeVolume": 4859680290411432.0,
+   "toAssetVolume": 4851782706691394.0,
+   "toRuneVolume": 4849543185095018.0,
+   "toSecuredVolume": 191850740879487.0,
+   "toTradeVolume": 4898550290425859.0,
+   "totalVolume": 1.984969458461579e+16
+  },
+  "2025-12-15": {
+   "fromSecuredVolume": 52640553554711.0,
+   "fromTradeVolume": 1385182539707174.0,
+   "toAssetVolume": 1181962826550887.0,
+   "toRuneVolume": 1058663466337630.0,
+   "toSecuredVolume": 48832527505976.0,
+   "toTradeVolume": 1380484614060799.0,
+   "totalVolume": 5107766527717177.0
+  },
+  "2025-12-16": {
+   "fromSecuredVolume": 101693374876000.0,
+   "fromTradeVolume": 1808476357550553.0,
+   "toAssetVolume": 1590593968575807.0,
+   "toRuneVolume": 1611113054567075.0,
+   "toSecuredVolume": 106990614803357.0,
+   "toTradeVolume": 1791408257165101.0,
+   "totalVolume": 7010275627537893.0
+  },
+  "2025-12-17": {
+   "fromSecuredVolume": 79294684016684.0,
+   "fromTradeVolume": 1381014146579104.0,
+   "toAssetVolume": 1218531272893994.0,
+   "toRuneVolume": 1220913012611444.0,
+   "toSecuredVolume": 75840383913643.0,
+   "toTradeVolume": 1479881946753311.0,
+   "totalVolume": 5455475446768180.0
+  },
+  "2025-12-18": {
+   "fromSecuredVolume": 85160908168493.0,
+   "fromTradeVolume": 1517640174541362.0,
+   "toAssetVolume": 1082993968449668.0,
+   "toRuneVolume": 984885364503744.0,
+   "toSecuredVolume": 108238615866222.0,
+   "toTradeVolume": 1532943885493733.0,
+   "totalVolume": 5311862917023222.0
+  },
+  "2025-12-19": {
+   "fromSecuredVolume": 55923844859945.0,
+   "fromTradeVolume": 935833963602688.0,
+   "toAssetVolume": 645051244330244.0,
+   "toRuneVolume": 643373377414589.0,
+   "toSecuredVolume": 51478193774490.0,
+   "toTradeVolume": 945797736918304.0,
+   "totalVolume": 3277458360900260.0
+  },
+  "2025-12-20": {
+   "fromSecuredVolume": 75191123721284.0,
+   "fromTradeVolume": 1015510604972569.0,
+   "toAssetVolume": 1033634944814718.0,
+   "toRuneVolume": 1037236071715151.0,
+   "toSecuredVolume": 61592200949295.0,
+   "toTradeVolume": 1066910840329334.0,
+   "totalVolume": 4290075786502351.0
+  },
+  "2025-12-21": {
+   "fromSecuredVolume": 39556136400475.0,
+   "fromTradeVolume": 401439250041965.0,
+   "toAssetVolume": 304409704445113.0,
+   "toRuneVolume": 308888449783968.0,
+   "toSecuredVolume": 19274831392185.0,
+   "toTradeVolume": 443130370994141.0,
+   "totalVolume": 1516698743057847.0
+  },
+  "2025-12-22": {
+   "fromSecuredVolume": 67145448129329.0,
+   "fromTradeVolume": 1022964498673511.0,
+   "toAssetVolume": 842401992353699.0,
+   "toRuneVolume": 878879764217511.0,
+   "toSecuredVolume": 61013335965729.0,
+   "toTradeVolume": 991487618356503.0,
+   "totalVolume": 3863892657696282.0
+  },
+  "2025-12-23": {
+   "fromSecuredVolume": 74378053925607.0,
+   "fromTradeVolume": 972279196517665.0,
+   "toAssetVolume": 941936995838430.0,
+   "toRuneVolume": 828360283445567.0,
+   "toSecuredVolume": 79236050167236.0,
+   "toTradeVolume": 961521399340696.0,
+   "totalVolume": 3857711979235201.0
+  },
+  "2025-12-24": {
+   "fromSecuredVolume": 50714234701853.0,
+   "fromTradeVolume": 1110759945457280.0,
+   "toAssetVolume": 1020686563793751.0,
+   "toRuneVolume": 1027059456298771.0,
+   "toSecuredVolume": 48531951488802.0,
+   "toTradeVolume": 1147458420942108.0,
+   "totalVolume": 4405210572682565.0
+  },
+  "2025-12-25": {
+   "fromSecuredVolume": 93940704650936.0,
+   "fromTradeVolume": 1298677740657274.0,
+   "toAssetVolume": 1104593508751611.0,
+   "toRuneVolume": 1108643826307755.0,
+   "toSecuredVolume": 94292860546738.0,
+   "toTradeVolume": 1335030799061158.0,
+   "totalVolume": 5035179439975472.0
+  },
+  "2025-12-26": {
+   "fromSecuredVolume": 56458218302346.0,
+   "fromTradeVolume": 1171545152762130.0,
+   "toAssetVolume": 980071627029637.0,
+   "toRuneVolume": 968166582568679.0,
+   "toSecuredVolume": 59961010220999.0,
+   "toTradeVolume": 1145693061818822.0,
+   "totalVolume": 4381895652702613.0
+  },
+  "2025-12-27": {
+   "fromSecuredVolume": 74099457325266.0,
+   "fromTradeVolume": 905676458204264.0,
+   "toAssetVolume": 909936059588653.0,
+   "toRuneVolume": 907952147769700.0,
+   "toSecuredVolume": 79605658153025.0,
+   "toTradeVolume": 873127902797072.0,
+   "totalVolume": 3750397683837980.0
+  },
+  "2025-12-28": {
+   "fromSecuredVolume": 31480576932260.0,
+   "fromTradeVolume": 862620996161675.0,
+   "toAssetVolume": 807541719151508.0,
+   "toRuneVolume": 801804715826331.0,
+   "toSecuredVolume": 31924391750721.0,
+   "toTradeVolume": 898266984930156.0,
+   "totalVolume": 3433639384752651.0
+  },
+  "2025-12-29": {
+   "fromSecuredVolume": 86325581611903.0,
+   "fromTradeVolume": 1441371587452773.0,
+   "toAssetVolume": 1354900424443251.0,
+   "toRuneVolume": 1349334052623901.0,
+   "toSecuredVolume": 96336196602199.0,
+   "toTradeVolume": 1449949278319011.0,
+   "totalVolume": 5778217121053038.0
+  },
+  "2025-12-30": {
+   "fromSecuredVolume": 32811610174070.0,
+   "fromTradeVolume": 1435694760188737.0,
+   "toAssetVolume": 1296676802530466.0,
+   "toRuneVolume": 1288190251997774.0,
+   "toSecuredVolume": 36752332099129.0,
+   "toTradeVolume": 1419005094059585.0,
+   "totalVolume": 5509130851049761.0
+  },
+  "2025-12-31": {
+   "fromSecuredVolume": 74971359397049.0,
+   "fromTradeVolume": 2241055290502336.0,
+   "toAssetVolume": 2109646391061036.0,
+   "toRuneVolume": 2115233504336977.0,
+   "toSecuredVolume": 77668117855419.0,
+   "toTradeVolume": 2218492475979126.0,
+   "totalVolume": 8837067139131943.0
+  },
+  "2026-01-01": {
+   "fromSecuredVolume": 17320241224610.0,
+   "fromTradeVolume": 654632087689471.0,
+   "toAssetVolume": 446602072679189.0,
+   "toRuneVolume": 444131961025400.0,
+   "toSecuredVolume": 24688222091547.0,
+   "toTradeVolume": 620941461484589.0,
+   "totalVolume": 2208316046194806.0
+  },
+  "2026-01-02": {
+   "fromSecuredVolume": 65354421087873.0,
+   "fromTradeVolume": 746902866723878.0,
+   "toAssetVolume": 550881887618434.0,
+   "toRuneVolume": 551184765617558.0,
+   "toSecuredVolume": 64920511932772.0,
+   "toTradeVolume": 757395049238854.0,
+   "totalVolume": 2736639502219369.0
+  },
+  "2026-01-03": {
+   "fromSecuredVolume": 44411960631856.0,
+   "fromTradeVolume": 489733087757634.0,
+   "toAssetVolume": 396905997966723.0,
+   "toRuneVolume": 419583907079226.0,
+   "toSecuredVolume": 48421126297792.0,
+   "toTradeVolume": 552784254312663.0,
+   "totalVolume": 1951840334045894.0
+  },
+  "2026-01-04": {
+   "fromSecuredVolume": 37779266242999.0,
+   "fromTradeVolume": 606350923180835.0,
+   "toAssetVolume": 445046070569200.0,
+   "toRuneVolume": 439877261127957.0,
+   "toSecuredVolume": 53555864122408.0,
+   "toTradeVolume": 558242871128844.0,
+   "totalVolume": 2140852256372243.0
+  },
+  "2026-01-05": {
+   "fromSecuredVolume": 37511582724462.0,
+   "fromTradeVolume": 671941192528039.0,
+   "toAssetVolume": 514412143558546.0,
+   "toRuneVolume": 531173485588267.0,
+   "toSecuredVolume": 35126134869249.0,
+   "toTradeVolume": 689333376487551.0,
+   "totalVolume": 2479497915756114.0
+  },
+  "2026-01-06": {
+   "fromSecuredVolume": 73945144844798.0,
+   "fromTradeVolume": 1094640399879586.0,
+   "toAssetVolume": 953916504738928.0,
+   "toRuneVolume": 954138473950852.0,
+   "toSecuredVolume": 90706440591231.0,
+   "toTradeVolume": 1128246817698208.0,
+   "totalVolume": 4295593781703603.0
+  },
+  "2026-01-07": {
+   "fromSecuredVolume": 30670470904038.0,
+   "fromTradeVolume": 477661230815062.0,
+   "toAssetVolume": 341775668967262.0,
+   "toRuneVolume": 341074903674656.0,
+   "toSecuredVolume": 29318253822705.0,
+   "toTradeVolume": 526675207555506.0,
+   "totalVolume": 1747175735739229.0
+  },
+  "2026-01-08": {
+   "fromSecuredVolume": 63110646122359.0,
+   "fromTradeVolume": 769429255083182.0,
+   "toAssetVolume": 558316851302711.0,
+   "toRuneVolume": 544527998581213.0,
+   "toSecuredVolume": 75833208230054.0,
+   "toTradeVolume": 748942236200228.0,
+   "totalVolume": 2760160195519747.0
+  },
+  "2026-01-09": {
+   "fromSecuredVolume": 30756903535540.0,
+   "fromTradeVolume": 681385348709779.0,
+   "toAssetVolume": 524813035918624.0,
+   "toRuneVolume": 508864381370954.0,
+   "toSecuredVolume": 37106923241503.0,
+   "toTradeVolume": 652863931335912.0,
+   "totalVolume": 2435790524112312.0
+  },
+  "2026-01-10": {
+   "fromSecuredVolume": 28991094609581.0,
+   "fromTradeVolume": 476469330898535.0,
+   "toAssetVolume": 439479734050849.0,
+   "toRuneVolume": 418869016963403.0,
+   "toSecuredVolume": 20205720813568.0,
+   "toTradeVolume": 540991847396249.0,
+   "totalVolume": 1925006744732185.0
+  },
+  "2026-01-11": {
+   "fromSecuredVolume": 41931750328018.0,
+   "fromTradeVolume": 673905362167488.0,
+   "toAssetVolume": 605266810551821.0,
+   "toRuneVolume": 596446341404609.0,
+   "toSecuredVolume": 42367255214549.0,
+   "toTradeVolume": 675396012614710.0,
+   "totalVolume": 2635313532281195.0
+  },
+  "2026-01-12": {
+   "fromSecuredVolume": 108764046371001.0,
+   "fromTradeVolume": 1556041698507849.0,
+   "toAssetVolume": 1274787369117216.0,
+   "toRuneVolume": 1270865586591893.0,
+   "toSecuredVolume": 132102071682784.0,
+   "toTradeVolume": 1495619642634280.0,
+   "totalVolume": 5838180414905023.0
+  },
+  "2026-01-13": {
+   "fromSecuredVolume": 283136637215236.0,
+   "fromTradeVolume": 6155632716245030.0,
+   "toAssetVolume": 6298383365951762.0,
+   "toRuneVolume": 6284593413019053.0,
+   "toSecuredVolume": 308507031281651.0,
+   "toTradeVolume": 6023709340821235.0,
+   "totalVolume": 2.535396250453397e+16
+  },
+  "2026-01-14": {
+   "fromSecuredVolume": 19323091026179.0,
+   "fromTradeVolume": 2273451857672671.0,
+   "toAssetVolume": 1686460905237953.0,
+   "toRuneVolume": 1691811240143995.0,
+   "toSecuredVolume": 23307225880055.0,
+   "toTradeVolume": 2105365020176895.0,
+   "totalVolume": 7799719340137748.0
+  },
+  "2026-01-15": {
+   "fromSecuredVolume": 3267702036185.0,
+   "fromTradeVolume": 4393235097201175.0,
+   "toAssetVolume": 3938915511739370.0,
+   "toRuneVolume": 3947969239478716.0,
+   "toSecuredVolume": 6613028303182.0,
+   "toTradeVolume": 4330070631698845.0,
+   "totalVolume": 1.6620071210457472e+16
+  },
+  "2026-01-16": {
+   "fromSecuredVolume": 4467382947562.0,
+   "fromTradeVolume": 4823408501916143.0,
+   "toAssetVolume": 4409880355625935.0,
+   "toRuneVolume": 4396854513326274.0,
+   "toSecuredVolume": 7031233201669.0,
+   "toTradeVolume": 4806098614208522.0,
+   "totalVolume": 1.8447740601226104e+16
+  },
+  "2026-01-17": {
+   "fromSecuredVolume": 1316208315597.0,
+   "fromTradeVolume": 583278217310504.0,
+   "toAssetVolume": 441246706166173.0,
+   "toRuneVolume": 438127392597146.0,
+   "toSecuredVolume": 4030217147074.0,
+   "toTradeVolume": 636567389938618.0,
+   "totalVolume": 2104566131475112.0
+  },
+  "2026-01-18": {
+   "fromSecuredVolume": 981464517476.0,
+   "fromTradeVolume": 299040139888180.0,
+   "toAssetVolume": 181550274089246.0,
+   "toRuneVolume": 174905423534287.0,
+   "toSecuredVolume": 5267578817511.0,
+   "toTradeVolume": 372881466699723.0,
+   "totalVolume": 1034626347546423.0
+  },
+  "2026-01-19": {
+   "fromSecuredVolume": 2322190744853.0,
+   "fromTradeVolume": 788096423181372.0,
+   "toAssetVolume": 452046854307159.0,
+   "toRuneVolume": 410361088703035.0,
+   "toSecuredVolume": 5966045759531.0,
+   "toTradeVolume": 759197602412690.0,
+   "totalVolume": 2417990205108640.0
+  },
+  "2026-01-20": {
+   "fromSecuredVolume": 3918548785000.0,
+   "fromTradeVolume": 530173831673643.0,
+   "toAssetVolume": 370949885730500.0,
+   "toRuneVolume": 348633990306365.0,
+   "toSecuredVolume": 9178384606310.0,
+   "toTradeVolume": 610187002006465.0,
+   "totalVolume": 1873041643108283.0
+  },
+  "2026-01-21": {
+   "fromSecuredVolume": 4115828023298.0,
+   "fromTradeVolume": 1648142457303333.0,
+   "toAssetVolume": 1287911809634637.0,
+   "toRuneVolume": 1245005374085113.0,
+   "toSecuredVolume": 9343513292783.0,
+   "toTradeVolume": 1605911757758488.0,
+   "totalVolume": 5800430740097652.0
+  },
+  "2026-01-22": {
+   "fromSecuredVolume": 7162821703850.0,
+   "fromTradeVolume": 2832941467382013.0,
+   "toAssetVolume": 1947032146991328.0,
+   "toRuneVolume": 1895707309083164.0,
+   "toSecuredVolume": 12654957622748.0,
+   "toTradeVolume": 2833951522779307.0,
+   "totalVolume": 9529450225562410.0
+  },
+  "2026-01-23": {
+   "fromSecuredVolume": 753622443051.0,
+   "fromTradeVolume": 992881561103605.0,
+   "toAssetVolume": 814904777343499.0,
+   "toRuneVolume": 789545821220071.0,
+   "toSecuredVolume": 5299447046457.0,
+   "toTradeVolume": 1002148275370003.0,
+   "totalVolume": 3605533504526686.0
+  },
+  "2026-01-24": {
+   "fromSecuredVolume": 1469125792964.0,
+   "fromTradeVolume": 540391706846458.0,
+   "toAssetVolume": 462271954603133.0,
+   "toRuneVolume": 482488854358709.0,
+   "toSecuredVolume": 5323078064514.0,
+   "toTradeVolume": 598145062242408.0,
+   "totalVolume": 2090089781908186.0
+  },
+  "2026-01-25": {
+   "fromSecuredVolume": 5417662366752.0,
+   "fromTradeVolume": 1772086852014431.0,
+   "toAssetVolume": 1499655905798487.0,
+   "toRuneVolume": 1486544515992340.0,
+   "toSecuredVolume": 25993693255652.0,
+   "toTradeVolume": 1859823598762733.0,
+   "totalVolume": 6649522228190395.0
+  },
+  "2026-01-26": {
+   "fromSecuredVolume": 3033294651433.0,
+   "fromTradeVolume": 1557682061333944.0,
+   "toAssetVolume": 1417304806469904.0,
+   "toRuneVolume": 1415116459793991.0,
+   "toSecuredVolume": 8288281623075.0,
+   "toTradeVolume": 1548324336551401.0,
+   "totalVolume": 5949749240423748.0
+  },
+  "2026-01-27": {
+   "fromSecuredVolume": 2727066858514.0,
+   "fromTradeVolume": 764551178344981.0,
+   "toAssetVolume": 688421655149301.0,
+   "toRuneVolume": 686237962258689.0,
+   "toSecuredVolume": 6363408572657.0,
+   "toTradeVolume": 772600897124837.0,
+   "totalVolume": 2920902168308979.0
+  },
+  "2026-01-28": {
+   "fromSecuredVolume": 1334025471578.0,
+   "fromTradeVolume": 1058408098998715.0,
+   "toAssetVolume": 957135976692704.0,
+   "toRuneVolume": 950798191534230.0,
+   "toSecuredVolume": 4875930350837.0,
+   "toTradeVolume": 1117880980709676.0,
+   "totalVolume": 4090433203757740.0
+  },
+  "2026-01-29": {
+   "fromSecuredVolume": 13856623138247.0,
+   "fromTradeVolume": 2065310347736603.0,
+   "toAssetVolume": 2458138175574790.0,
+   "toRuneVolume": 2463189292870169.0,
+   "toSecuredVolume": 10549249450801.0,
+   "toTradeVolume": 2155907895522390.0,
+   "totalVolume": 9166951584293000.0
+  },
+  "2026-01-30": {
+   "fromSecuredVolume": 13001688357296.0,
+   "fromTradeVolume": 2931410643470852.0,
+   "toAssetVolume": 2792992042951921.0,
+   "toRuneVolume": 2765928041564150.0,
+   "toSecuredVolume": 41255804235607.0,
+   "toTradeVolume": 2968099761576612.0,
+   "totalVolume": 1.1512687982156438e+16
+  },
+  "2026-01-31": {
+   "fromSecuredVolume": 16319876261260.0,
+   "fromTradeVolume": 3388014549591601.0,
+   "toAssetVolume": 2993690114432465.0,
+   "toRuneVolume": 2979372217508682.0,
+   "toSecuredVolume": 15202383883959.0,
+   "toTradeVolume": 3447278676654170.0,
+   "totalVolume": 1.2839877818332136e+16
+  },
+  "2026-02-01": {
+   "fromSecuredVolume": 17671677323361.0,
+   "fromTradeVolume": 822375765439139.0,
+   "toAssetVolume": 466998230527629.0,
+   "toRuneVolume": 464957955584107.0,
+   "toSecuredVolume": 30388258392246.0,
+   "toTradeVolume": 853736973905357.0,
+   "totalVolume": 2656128861171839.0
+  },
+  "2026-02-02": {
+   "fromSecuredVolume": 7679826029387.0,
+   "fromTradeVolume": 1267028129657073.0,
+   "toAssetVolume": 786847578062028.0,
+   "toRuneVolume": 758092196441214.0,
+   "toSecuredVolume": 10777031197879.0,
+   "toTradeVolume": 1269853172476708.0,
+   "totalVolume": 4100277933864289.0
+  },
+  "2026-02-03": {
+   "fromSecuredVolume": 15299870105922.0,
+   "fromTradeVolume": 1228281205699777.0,
+   "toAssetVolume": 700200913289494.0,
+   "toRuneVolume": 664363445195519.0,
+   "toSecuredVolume": 20687725473151.0,
+   "toTradeVolume": 1205273638362385.0,
+   "totalVolume": 3834106798126248.0
+  },
+  "2026-02-04": {
+   "fromSecuredVolume": 13203580553218.0,
+   "fromTradeVolume": 947275801254888.0,
+   "toAssetVolume": 581260547805083.0,
+   "toRuneVolume": 550346157132614.0,
+   "toSecuredVolume": 14541764568530.0,
+   "toTradeVolume": 918948968279095.0,
+   "totalVolume": 3025576819593428.0
+  },
+  "2026-02-05": {
+   "fromSecuredVolume": 35290364785314.0,
+   "fromTradeVolume": 6668004554789541.0,
+   "toAssetVolume": 5460504860500327.0,
+   "toRuneVolume": 5389151062756069.0,
+   "toSecuredVolume": 39175170938549.0,
+   "toTradeVolume": 6704706079710681.0,
+   "totalVolume": 2.429683209348048e+16
+  },
+  "2026-02-06": {
+   "fromSecuredVolume": 32804798538069.0,
+   "fromTradeVolume": 4467226143314192.0,
+   "toAssetVolume": 3663884097922134.0,
+   "toRuneVolume": 3672615292527873.0,
+   "toSecuredVolume": 38370024688130.0,
+   "toTradeVolume": 4432789507653532.0,
+   "totalVolume": 1.630768986464393e+16
+  },
+  "2026-02-07": {
+   "fromSecuredVolume": 20379768341784.0,
+   "fromTradeVolume": 2070278377787810.0,
+   "toAssetVolume": 1422857916328814.0,
+   "toRuneVolume": 1413035986919195.0,
+   "toSecuredVolume": 11567525276443.0,
+   "toTradeVolume": 2048183285883299.0,
+   "totalVolume": 6986302860537345.0
+  },
+  "2026-02-08": {
+   "fromSecuredVolume": 7045797161019.0,
+   "fromTradeVolume": 1867038628120351.0,
+   "toAssetVolume": 1461133471247376.0,
+   "toRuneVolume": 1461417884006865.0,
+   "toSecuredVolume": 8412494401798.0,
+   "toTradeVolume": 1904404754409802.0,
+   "totalVolume": 6709453029347211.0
+  },
+  "2026-02-09": {
+   "fromSecuredVolume": 5617891986486.0,
+   "fromTradeVolume": 2132459231053115.0,
+   "toAssetVolume": 1819445512741157.0,
+   "toRuneVolume": 1755478911745900.0,
+   "toSecuredVolume": 6987280601577.0,
+   "toTradeVolume": 2124038375540777.0,
+   "totalVolume": 7844027203669012.0
+  },
+  "2026-02-10": {
+   "fromSecuredVolume": 8490666564539.0,
+   "fromTradeVolume": 1289713954055579.0,
+   "toAssetVolume": 1100807336009795.0,
+   "toRuneVolume": 1079591970536335.0,
+   "toSecuredVolume": 10403591384233.0,
+   "toTradeVolume": 1324047804083999.0,
+   "totalVolume": 4813055322634480.0
+  },
+  "2026-02-11": {
+   "fromSecuredVolume": 16602629199339.0,
+   "fromTradeVolume": 2831278456910640.0,
+   "toAssetVolume": 2357098729166594.0,
+   "toRuneVolume": 2237632559200534.0,
+   "toSecuredVolume": 35157414783133.0,
+   "toTradeVolume": 2765753534696810.0,
+   "totalVolume": 1.024352332395705e+16
+  },
+  "2026-02-12": {
+   "fromSecuredVolume": 7149164600776.0,
+   "fromTradeVolume": 1416668437154251.0,
+   "toAssetVolume": 1140570082519966.0,
+   "toRuneVolume": 1130847325011244.0,
+   "toSecuredVolume": 8053328517370.0,
+   "toTradeVolume": 1360758619073993.0,
+   "totalVolume": 5064046956877600.0
+  },
+  "2026-02-13": {
+   "fromSecuredVolume": 8787235210470.0,
+   "fromTradeVolume": 2798997138527871.0,
+   "toAssetVolume": 2392480309065112.0,
+   "toRuneVolume": 2396140348641815.0,
+   "toSecuredVolume": 7797531912547.0,
+   "toTradeVolume": 2688479576161552.0,
+   "totalVolume": 1.0292682139519368e+16
+  },
+  "2026-02-14": {
+   "fromSecuredVolume": 3406356891723.0,
+   "fromTradeVolume": 592527014516967.0,
+   "toAssetVolume": 463785469989931.0,
+   "toRuneVolume": 457533752368735.0,
+   "toSecuredVolume": 6368280279143.0,
+   "toTradeVolume": 620066989050208.0,
+   "totalVolume": 2143687863096707.0
+  },
+  "2026-02-15": {
+   "fromSecuredVolume": 16787129144169.0,
+   "fromTradeVolume": 735248985169317.0,
+   "toAssetVolume": 450925513430314.0,
+   "toRuneVolume": 456712244825798.0,
+   "toSecuredVolume": 5965290710555.0,
+   "toTradeVolume": 794115088835215.0,
+   "totalVolume": 2459754252115368.0
+  },
+  "2026-02-16": {
+   "fromSecuredVolume": 9872831247409.0,
+   "fromTradeVolume": 3022925258596328.0,
+   "toAssetVolume": 2801582049354030.0,
+   "toRuneVolume": 2811126804951324.0,
+   "toSecuredVolume": 18139563051982.0,
+   "toTradeVolume": 3057901615121005.0,
+   "totalVolume": 1.1721548122322078e+16
+  },
+  "2026-02-17": {
+   "fromSecuredVolume": 1938125281185.0,
+   "fromTradeVolume": 2149052935763951.0,
+   "toAssetVolume": 1959677460116391.0,
+   "toRuneVolume": 1961273921663040.0,
+   "toSecuredVolume": 2657677934644.0,
+   "toTradeVolume": 2133753631404619.0,
+   "totalVolume": 8208353752163830.0
+  },
+  "2026-02-18": {
+   "fromSecuredVolume": 1282927362502.0,
+   "fromTradeVolume": 1584593566636924.0,
+   "toAssetVolume": 1383601670771727.0,
+   "toRuneVolume": 1376325464740448.0,
+   "toSecuredVolume": 4518455435031.0,
+   "toTradeVolume": 1589203427266331.0,
+   "totalVolume": 5939525512212963.0
+  },
+  "2026-02-19": {
+   "fromSecuredVolume": 3003267367052.0,
+   "fromTradeVolume": 1019871024613247.0,
+   "toAssetVolume": 847890758821298.0,
+   "toRuneVolume": 845581415010506.0,
+   "toSecuredVolume": 6483309486862.0,
+   "toTradeVolume": 1048965761890720.0,
+   "totalVolume": 3771795537189685.0
+  },
+  "2026-02-20": {
+   "fromSecuredVolume": 3967124384789.0,
+   "fromTradeVolume": 2198950555495280.0,
+   "toAssetVolume": 1740030311672776.0,
+   "toRuneVolume": 1745555435508793.0,
+   "toSecuredVolume": 4677876625349.0,
+   "toTradeVolume": 2082341219696370.0,
+   "totalVolume": 7775522523383357.0
+  },
+  "2026-02-21": {
+   "fromSecuredVolume": 1421825755530.0,
+   "fromTradeVolume": 1987205887620912.0,
+   "toAssetVolume": 1924464479436554.0,
+   "toRuneVolume": 1925896158227420.0,
+   "toSecuredVolume": 4826244405977.0,
+   "toTradeVolume": 2050552197887181.0,
+   "totalVolume": 7894366793333574.0
+  },
+  "2026-02-22": {
+   "fromSecuredVolume": 1532259324816.0,
+   "fromTradeVolume": 1791109680306508.0,
+   "toAssetVolume": 1706132926896418.0,
+   "toRuneVolume": 1704112819196346.0,
+   "toSecuredVolume": 5910050892629.0,
+   "toTradeVolume": 1841546723473539.0,
+   "totalVolume": 7050344460090256.0
+  },
+  "2026-02-23": {
+   "fromSecuredVolume": 17571136666052.0,
+   "fromTradeVolume": 2835358850211256.0,
+   "toAssetVolume": 2380681469957882.0,
+   "toRuneVolume": 2385448587022130.0,
+   "toSecuredVolume": 8432378782982.0,
+   "toTradeVolume": 2844927407642040.0,
+   "totalVolume": 1.0472419830282342e+16
+  },
+  "2026-02-24": {
+   "fromSecuredVolume": 3960939135379.0,
+   "fromTradeVolume": 3890717695607537.0,
+   "toAssetVolume": 3190245541675008.0,
+   "toRuneVolume": 3191799455471429.0,
+   "toSecuredVolume": 7593392392659.0,
+   "toTradeVolume": 3848141532182165.0,
+   "totalVolume": 1.4132458556464176e+16
+  },
+  "2026-02-25": {
+   "fromSecuredVolume": 18578794803091.0,
+   "fromTradeVolume": 7201892617606598.0,
+   "toAssetVolume": 6030715591098732.0,
+   "toRuneVolume": 6020032530845698.0,
+   "toSecuredVolume": 27706734683938.0,
+   "toTradeVolume": 7177230983686100.0,
+   "totalVolume": 2.6476157252724156e+16
+  },
+  "2026-02-26": {
+   "fromSecuredVolume": 6348780796622.0,
+   "fromTradeVolume": 1293986450682156.0,
+   "toAssetVolume": 963978346167461.0,
+   "toRuneVolume": 958323670325436.0,
+   "toSecuredVolume": 8496668912086.0,
+   "toTradeVolume": 1347772859457267.0,
+   "totalVolume": 4578906776341028.0
+  },
+  "2026-02-27": {
+   "fromSecuredVolume": 4709202493399.0,
+   "fromTradeVolume": 1030964298270744.0,
+   "toAssetVolume": 799794216011195.0,
+   "toRuneVolume": 817230895498020.0,
+   "toSecuredVolume": 8033015882693.0,
+   "toTradeVolume": 1030261770947289.0,
+   "totalVolume": 3690993399103340.0
+  },
+  "2026-02-28": {
+   "fromSecuredVolume": 8557759020348.0,
+   "fromTradeVolume": 996515225377253.0,
+   "toAssetVolume": 683148755743867.0,
+   "toRuneVolume": 676032421075256.0,
+   "toSecuredVolume": 13813937864438.0,
+   "toTradeVolume": 1021798639743784.0,
+   "totalVolume": 3399866738824946.0
+  },
+  "2026-03-01": {
+   "fromSecuredVolume": 4521982664188.0,
+   "fromTradeVolume": 1251175210504586.0,
+   "toAssetVolume": 1069533058299705.0,
+   "toRuneVolume": 1071934799680536.0,
+   "toSecuredVolume": 9515422152488.0,
+   "toTradeVolume": 1271185913825365.0,
+   "totalVolume": 4677866387126868.0
+  },
+  "2026-03-02": {
+   "fromSecuredVolume": 20442577750026.0,
+   "fromTradeVolume": 3141265660803352.0,
+   "toAssetVolume": 2761024367957286.0,
+   "toRuneVolume": 2754829247473107.0,
+   "toSecuredVolume": 11088422929387.0,
+   "toTradeVolume": 3122805280345073.0,
+   "totalVolume": 1.1811455557258232e+16
+  },
+  "2026-03-03": {
+   "fromSecuredVolume": 4689663765339.0,
+   "fromTradeVolume": 2382963886719373.0,
+   "toAssetVolume": 2112326577948291.0,
+   "toRuneVolume": 2106098221146807.0,
+   "toSecuredVolume": 7401880813439.0,
+   "toTradeVolume": 2331258236262535.0,
+   "totalVolume": 8944738466655784.0
+  },
+  "2026-03-04": {
+   "fromSecuredVolume": 18371561929596.0,
+   "fromTradeVolume": 3164357724866913.0,
+   "toAssetVolume": 2719559808701460.0,
+   "toRuneVolume": 2732500638659170.0,
+   "toSecuredVolume": 21131073961098.0,
+   "toTradeVolume": 3114179533705664.0,
+   "totalVolume": 1.17701003418239e+16
+  },
+  "2026-03-05": {
+   "fromSecuredVolume": 1663926759192.0,
+   "fromTradeVolume": 5252356073158241.0,
+   "toAssetVolume": 4752857224331140.0,
+   "toRuneVolume": 4755079293365496.0,
+   "toSecuredVolume": 16609142206960.0,
+   "toTradeVolume": 5191946185456771.0,
+   "totalVolume": 1.99705118452778e+16
+  },
+  "2026-03-06": {
+   "fromSecuredVolume": 3116279177761.0,
+   "fromTradeVolume": 1574625584368000.0,
+   "toAssetVolume": 1155566192858208.0,
+   "toRuneVolume": 1161438905363470.0,
+   "toSecuredVolume": 6430393055714.0,
+   "toTradeVolume": 1610004801828717.0,
+   "totalVolume": 5511182156651870.0
+  },
+  "2026-03-07": {
+   "fromSecuredVolume": 1426484968102.0,
+   "fromTradeVolume": 1574392621404078.0,
+   "toAssetVolume": 1334899332771035.0,
+   "toRuneVolume": 1359344616338554.0,
+   "toSecuredVolume": 7748450067717.0,
+   "toTradeVolume": 1607917754287820.0,
+   "totalVolume": 5885729259837306.0
+  },
+  "2026-03-08": {
+   "fromSecuredVolume": 11356662855617.0,
+   "fromTradeVolume": 1488984424013704.0,
+   "toAssetVolume": 1226632402826565.0,
+   "toRuneVolume": 1231594163581885.0,
+   "toSecuredVolume": 4825950782972.0,
+   "toTradeVolume": 1520110885393005.0,
+   "totalVolume": 5483504489453748.0
+  },
+  "2026-03-09": {
+   "fromSecuredVolume": 6102378285702.0,
+   "fromTradeVolume": 1838531905401851.0,
+   "toAssetVolume": 1576766392350020.0,
+   "toRuneVolume": 1598205706911083.0,
+   "toSecuredVolume": 7508204174374.0,
+   "toTradeVolume": 1885824499637049.0,
+   "totalVolume": 6912939086760079.0
+  },
+  "2026-03-10": {
+   "fromSecuredVolume": 13493774484229.0,
+   "fromTradeVolume": 3578489367381386.0,
+   "toAssetVolume": 3319404671581677.0,
+   "toRuneVolume": 3321310038819056.0,
+   "toSecuredVolume": 15666963035510.0,
+   "toTradeVolume": 3559191408372954.0,
+   "totalVolume": 1.3807556223674812e+16
+  },
+  "2026-03-11": {
+   "fromSecuredVolume": 6227424413487.0,
+   "fromTradeVolume": 2021434269286977.0,
+   "toAssetVolume": 1904785979803574.0,
+   "toRuneVolume": 1907105848144515.0,
+   "toSecuredVolume": 8464435097590.0,
+   "toTradeVolume": 2017275472950570.0,
+   "totalVolume": 7865293429696713.0
+  },
+  "2026-03-12": {
+   "fromSecuredVolume": 3643521205967.0,
+   "fromTradeVolume": 1433971308803772.0,
+   "toAssetVolume": 1278832702423320.0,
+   "toRuneVolume": 1273138257701211.0,
+   "toSecuredVolume": 5927600320286.0,
+   "toTradeVolume": 1419361297991297.0,
+   "totalVolume": 5414874688445853.0
+  },
+  "2026-03-13": {
+   "fromSecuredVolume": 15223243384399.0,
+   "fromTradeVolume": 1105579020760509.0,
+   "toAssetVolume": 822605726574509.0,
+   "toRuneVolume": 825172947288475.0,
+   "toSecuredVolume": 16199852769399.0,
+   "toTradeVolume": 989093384598184.0,
+   "totalVolume": 3773874175375475.0
+  },
+  "2026-03-14": {
+   "fromSecuredVolume": 6384280478268.0,
+   "fromTradeVolume": 1426911547194973.0,
+   "toAssetVolume": 1414311549308660.0,
+   "toRuneVolume": 1418760688414170.0,
+   "toSecuredVolume": 14103267610005.0,
+   "toTradeVolume": 1507452222936884.0,
+   "totalVolume": 5787923555942960.0
+  },
+  "2026-03-15": {
+   "fromSecuredVolume": 1707427515957.0,
+   "fromTradeVolume": 894610070393980.0,
+   "toAssetVolume": 835701117814497.0,
+   "toRuneVolume": 786303504698411.0,
+   "toSecuredVolume": 5741949423032.0,
+   "toTradeVolume": 899435046852180.0,
+   "totalVolume": 3423499116698057.0
+  },
+  "2026-03-16": {
+   "fromSecuredVolume": 6572849096281.0,
+   "fromTradeVolume": 1702837455354447.0,
+   "toAssetVolume": 1517444523906461.0,
+   "toRuneVolume": 1464288939412054.0,
+   "toSecuredVolume": 7528358831994.0,
+   "toTradeVolume": 1681864731869342.0,
+   "totalVolume": 6380536858470579.0
+  },
+  "2026-03-17": {
+   "fromSecuredVolume": 3593677590137.0,
+   "fromTradeVolume": 1758038599901632.0,
+   "toAssetVolume": 1677940896327630.0,
+   "toRuneVolume": 1626351976131878.0,
+   "toSecuredVolume": 9496942706493.0,
+   "toTradeVolume": 1800690453604520.0,
+   "totalVolume": 6876112546262290.0
+  },
+  "2026-03-18": {
+   "fromSecuredVolume": 2701527525795.0,
+   "fromTradeVolume": 2106796919632201.0,
+   "toAssetVolume": 1935150920939067.0,
+   "toRuneVolume": 1925029943423697.0,
+   "toSecuredVolume": 6745633785306.0,
+   "toTradeVolume": 2154042946698686.0,
+   "totalVolume": 8130467892004752.0
+  },
+  "2026-03-19": {
+   "fromSecuredVolume": 11342149457056.0,
+   "fromTradeVolume": 1491117940794113.0,
+   "toAssetVolume": 1382895030490908.0,
+   "toRuneVolume": 1384707234256224.0,
+   "toSecuredVolume": 11005424086925.0,
+   "toTradeVolume": 1456382367078212.0,
+   "totalVolume": 5737450146163438.0
+  },
+  "2026-03-20": {
+   "fromSecuredVolume": 2846493981821.0,
+   "fromTradeVolume": 742265484696644.0,
+   "toAssetVolume": 644978387055172.0,
+   "toRuneVolume": 654021805735524.0,
+   "toSecuredVolume": 5756987671081.0,
+   "toTradeVolume": 787720941097345.0,
+   "totalVolume": 2837590100237587.0
+  },
+  "2026-03-21": {
+   "fromSecuredVolume": 4708352577195.0,
+   "fromTradeVolume": 406634856101736.0,
+   "toAssetVolume": 375015995661829.0,
+   "toRuneVolume": 369386943615227.0,
+   "toSecuredVolume": 10639426408554.0,
+   "toTradeVolume": 433559109943935.0,
+   "totalVolume": 1599944684308476.0
+  },
+  "2026-03-22": {
+   "fromSecuredVolume": 6280285185203.0,
+   "fromTradeVolume": 2817697757970706.0,
+   "toAssetVolume": 2772796619985001.0,
+   "toRuneVolume": 2774595657911554.0,
+   "toSecuredVolume": 13463714222288.0,
+   "toTradeVolume": 2880879107271071.0,
+   "totalVolume": 1.1265713142545824e+16
+  },
+  "2026-03-23": {
+   "fromSecuredVolume": 7799689497610.0,
+   "fromTradeVolume": 1212621949842155.0,
+   "toAssetVolume": 984240626781828.0,
+   "toRuneVolume": 984907728213712.0,
+   "toSecuredVolume": 10301781791130.0,
+   "toTradeVolume": 1190058949055671.0,
+   "totalVolume": 4389930725182106.0
+  },
+  "2026-03-24": {
+   "fromSecuredVolume": 4298824663952.0,
+   "fromTradeVolume": 633423651269835.0,
+   "toAssetVolume": 525885152318080.0,
+   "toRuneVolume": 543182208123085.0,
+   "toSecuredVolume": 8748351680306.0,
+   "toTradeVolume": 613685885497932.0,
+   "totalVolume": 2329224073553190.0
+  },
+  "2026-03-25": {
+   "fromSecuredVolume": 2922951991060.0,
+   "fromTradeVolume": 714829890517429.0,
+   "toAssetVolume": 655583234181131.0,
+   "toRuneVolume": 646933119911760.0,
+   "toSecuredVolume": 7350619201963.0,
+   "toTradeVolume": 710652008133267.0,
+   "totalVolume": 2738271823936610.0
+  },
+  "2026-03-26": {
+   "fromSecuredVolume": 2443176662922.0,
+   "fromTradeVolume": 929851975591875.0,
+   "toAssetVolume": 914232786949040.0,
+   "toRuneVolume": 890195614858301.0,
+   "toSecuredVolume": 8308695683826.0,
+   "toTradeVolume": 954191825934322.0,
+   "totalVolume": 3699224075680286.0
+  },
+  "2026-03-27": {
+   "fromSecuredVolume": 4023880723848.0,
+   "fromTradeVolume": 1068177618403060.0,
+   "toAssetVolume": 1001007916766410.0,
+   "toRuneVolume": 995527711882205.0,
+   "toSecuredVolume": 9893805636644.0,
+   "toTradeVolume": 1093871540221355.0,
+   "totalVolume": 4172502473633522.0
+  },
+  "2026-03-28": {
+   "fromSecuredVolume": 1099103979279.0,
+   "fromTradeVolume": 657124724908951.0,
+   "toAssetVolume": 649927200936469.0,
+   "toRuneVolume": 648069025063816.0,
+   "toSecuredVolume": 1749132009239.0,
+   "toTradeVolume": 656123644754801.0,
+   "totalVolume": 2614092831652555.0
+  },
+  "2026-03-29": {
+   "fromSecuredVolume": 1369911465968.0,
+   "fromTradeVolume": 806094795586058.0,
+   "toAssetVolume": 724783179284548.0,
+   "toRuneVolume": 731073223502900.0,
+   "toSecuredVolume": 1501448094959.0,
+   "toTradeVolume": 810579137905759.0,
+   "totalVolume": 3075401695840192.0
+  },
+  "2026-03-30": {
+   "fromSecuredVolume": 3151614873637.0,
+   "fromTradeVolume": 922745456440555.0,
+   "toAssetVolume": 765817544888305.0,
+   "toRuneVolume": 782956898692586.0,
+   "toSecuredVolume": 3429151269212.0,
+   "toTradeVolume": 932319329162555.0,
+   "totalVolume": 3410419995326850.0
+  },
+  "2026-03-31": {
+   "fromSecuredVolume": 4750128970470.0,
+   "fromTradeVolume": 1615564819021074.0,
+   "toAssetVolume": 1430202473695015.0,
+   "toRuneVolume": 1430308197386876.0,
+   "toSecuredVolume": 4054054944681.0,
+   "toTradeVolume": 1533465722734236.0,
+   "totalVolume": 6018345396752352.0
+  },
+  "2026-04-01": {
+   "fromSecuredVolume": 4029244348347.0,
+   "fromTradeVolume": 879954359157933.0,
+   "toAssetVolume": 739111259135072.0,
+   "toRuneVolume": 726638280269594.0,
+   "toSecuredVolume": 2872453915062.0,
+   "toTradeVolume": 905990826615127.0,
+   "totalVolume": 3258596423441135.0
+  },
+  "2026-04-02": {
+   "fromSecuredVolume": 4200829795811.0,
+   "fromTradeVolume": 1153280464044886.0,
+   "toAssetVolume": 999081805325034.0,
+   "toRuneVolume": 1002472873611544.0,
+   "toSecuredVolume": 4339624580333.0,
+   "toTradeVolume": 1223126506210404.0,
+   "totalVolume": 4386502103568012.0
+  },
+  "2026-04-03": {
+   "fromSecuredVolume": 7970547581271.0,
+   "fromTradeVolume": 2272875606831929.0,
+   "toAssetVolume": 2040631987764156.0,
+   "toRuneVolume": 2020741984610938.0,
+   "toSecuredVolume": 7071579844755.0,
+   "toTradeVolume": 2241928344499159.0,
+   "totalVolume": 8591220051132208.0
+  },
+  "2026-04-04": {
+   "fromSecuredVolume": 1391125443397.0,
+   "fromTradeVolume": 603333288573004.0,
+   "toAssetVolume": 525506784546975.0,
+   "toRuneVolume": 520701110824510.0,
+   "toSecuredVolume": 2750712712582.0,
+   "toTradeVolume": 813282133402041.0,
+   "totalVolume": 2466965155502509.0
+  },
+  "2026-04-05": {
+   "fromSecuredVolume": 3464147417869.0,
+   "fromTradeVolume": 1237214955220030.0,
+   "toAssetVolume": 1197817177867576.0,
+   "toRuneVolume": 1207277280640794.0,
+   "toSecuredVolume": 3457576610782.0,
+   "toTradeVolume": 1231562793097939.0,
+   "totalVolume": 4880793930854990.0
+  },
+  "2026-04-06": {
+   "fromSecuredVolume": 8497180281299.0,
+   "fromTradeVolume": 1450559091157418.0,
+   "toAssetVolume": 1353221742760077.0,
+   "toRuneVolume": 1357126797608043.0,
+   "toSecuredVolume": 5618119906629.0,
+   "toTradeVolume": 1435977007835848.0,
+   "totalVolume": 5610999939549314.0
+  },
+  "2026-04-07": {
+   "fromSecuredVolume": 11687345906295.0,
+   "fromTradeVolume": 1809916210271072.0,
+   "toAssetVolume": 1702981377945575.0,
+   "toRuneVolume": 1709745943640256.0,
+   "toSecuredVolume": 6551602177325.0,
+   "toTradeVolume": 1789119470278335.0,
+   "totalVolume": 7030001950218858.0
+  },
+  "2026-04-08": {
+   "fromSecuredVolume": 1482352291429.0,
+   "fromTradeVolume": 2332204409686135.0,
+   "toAssetVolume": 2255813450164387.0,
+   "toRuneVolume": 2247675964823204.0,
+   "toSecuredVolume": 1726181887144.0,
+   "toTradeVolume": 2350185059983106.0,
+   "totalVolume": 9189087418835404.0
+  },
+  "2026-04-09": {
+   "fromSecuredVolume": 3206802816760.0,
+   "fromTradeVolume": 849295782626357.0,
+   "toAssetVolume": 726123577938502.0,
+   "toRuneVolume": 730146175518808.0,
+   "toSecuredVolume": 1915319981312.0,
+   "toTradeVolume": 865685310579331.0,
+   "totalVolume": 3176372969461070.0
+  },
+  "2026-04-10": {
+   "fromSecuredVolume": 2282732166164.0,
+   "fromTradeVolume": 533056896902879.0,
+   "toAssetVolume": 433786098144820.0,
+   "toRuneVolume": 433666220882111.0,
+   "toSecuredVolume": 2556280691697.0,
+   "toTradeVolume": 531728875011702.0,
+   "totalVolume": 1937077103799373.0
+  },
+  "2026-04-11": {
+   "fromSecuredVolume": 1704646404724.0,
+   "fromTradeVolume": 474591201045841.0,
+   "toAssetVolume": 398341792398066.0,
+   "toRuneVolume": 396087164371845.0,
+   "toSecuredVolume": 1247868762466.0,
+   "toTradeVolume": 523406287510375.0,
+   "totalVolume": 1795378960493317.0
+  },
+  "2026-04-12": {
+   "fromSecuredVolume": 3819274790023.0,
+   "fromTradeVolume": 484130346675581.0,
+   "toAssetVolume": 379598092830103.0,
+   "toRuneVolume": 379779280267662.0,
+   "toSecuredVolume": 3900349587319.0,
+   "toTradeVolume": 515965078017054.0,
+   "totalVolume": 1767192422167742.0
+  },
+  "2026-04-13": {
+   "fromSecuredVolume": 1810764063917.0,
+   "fromTradeVolume": 521094740480915.0,
+   "toAssetVolume": 335145415734889.0,
+   "toRuneVolume": 319551388909364.0,
+   "toSecuredVolume": 1141052290215.0,
+   "toTradeVolume": 463803563653298.0,
+   "totalVolume": 1642546925132598.0
+  },
+  "2026-04-14": {
+   "fromSecuredVolume": 2297062969578.0,
+   "fromTradeVolume": 946345965201920.0,
+   "toAssetVolume": 791538140699441.0,
+   "toRuneVolume": 785148489591669.0,
+   "toSecuredVolume": 1986744158533.0,
+   "toTradeVolume": 967879504970923.0,
+   "totalVolume": 3495195907592064.0
+  },
+  "2026-04-15": {
+   "fromSecuredVolume": 2613742143135.0,
+   "fromTradeVolume": 885432573504999.0,
+   "toAssetVolume": 770478585446405.0,
+   "toRuneVolume": 771035693436660.0,
+   "toSecuredVolume": 2261437564889.0,
+   "toTradeVolume": 825680160527868.0,
+   "totalVolume": 3257502192623956.0
+  },
+  "2026-04-16": {
+   "fromSecuredVolume": 7080277105022.0,
+   "fromTradeVolume": 900602835253769.0,
+   "toAssetVolume": 749554087252184.0,
+   "toRuneVolume": 756249591845473.0,
+   "toSecuredVolume": 1580882584734.0,
+   "toTradeVolume": 861663057452064.0,
+   "totalVolume": 3276730731493246.0
+  },
+  "2026-04-17": {
+   "fromSecuredVolume": 6430154417605.0,
+   "fromTradeVolume": 1861024479843899.0,
+   "toAssetVolume": 1410273938885599.0,
+   "toRuneVolume": 1415503064020364.0,
+   "toSecuredVolume": 5936212820888.0,
+   "toTradeVolume": 1809159887717821.0,
+   "totalVolume": 6508327737706176.0
+  },
+  "2026-04-18": {
+   "fromSecuredVolume": 2015984034982.0,
+   "fromTradeVolume": 2135461568862929.0,
+   "toAssetVolume": 2062174932033451.0,
+   "toRuneVolume": 2065691320480204.0,
+   "toSecuredVolume": 3093561364601.0,
+   "toTradeVolume": 2140444332035997.0,
+   "totalVolume": 8408881698812164.0
+  },
+  "2026-04-19": {
+   "fromSecuredVolume": 1111447248398.0,
+   "fromTradeVolume": 1712986040312835.0,
+   "toAssetVolume": 1614545978441151.0,
+   "toRuneVolume": 1612068827874472.0,
+   "toSecuredVolume": 1981334602696.0,
+   "toTradeVolume": 1727100107590034.0,
+   "totalVolume": 6669793736069586.0
+  },
+  "2026-04-20": {
+   "fromSecuredVolume": 20904910649161.0,
+   "fromTradeVolume": 643949310480268.0,
+   "toAssetVolume": 511206206566825.0,
+   "toRuneVolume": 530050577914551.0,
+   "toSecuredVolume": 2548820871692.0,
+   "toTradeVolume": 630662561661552.0,
+   "totalVolume": 2339322388144049.0
+  },
+  "2026-04-21": {
+   "fromSecuredVolume": 22022747866938.0,
+   "fromTradeVolume": 2.112971592719311e+16,
+   "toAssetVolume": 1.6906445039778068e+16,
+   "toRuneVolume": 1.6950879258792192e+16,
+   "toSecuredVolume": 13579928031339.0,
+   "toTradeVolume": 2.0927973889674984e+16,
+   "totalVolume": 7.595061679133664e+16
+  },
+  "2026-04-22": {
+   "fromSecuredVolume": 130885573668379.0,
+   "fromTradeVolume": 2.574285586042114e+16,
+   "toAssetVolume": 2.12446577639182e+16,
+   "toRuneVolume": 2.1292921588719436e+16,
+   "toSecuredVolume": 123781137086987.0,
+   "toTradeVolume": 2.5639767282261016e+16,
+   "totalVolume": 9.417486920607515e+16
+  },
+  "2026-04-23": {
+   "fromSecuredVolume": 11859558981021.0,
+   "fromTradeVolume": 1980965604826878.0,
+   "toAssetVolume": 1795159282263646.0,
+   "toRuneVolume": 1817743683347315.0,
+   "toSecuredVolume": 2161613166086.0,
+   "toTradeVolume": 2058770145617072.0,
+   "totalVolume": 7666659888202018.0
+  },
+  "2026-04-24": {
+   "fromSecuredVolume": 36523402858564.0,
+   "fromTradeVolume": 9599871113950348.0,
+   "toAssetVolume": 8378908877628847.0,
+   "toRuneVolume": 8400942349334934.0,
+   "toSecuredVolume": 29894440711483.0,
+   "toTradeVolume": 9642876034892960.0,
+   "totalVolume": 3.608901621937714e+16
+  },
+  "2026-04-25": {
+   "fromSecuredVolume": 23549470893908.0,
+   "fromTradeVolume": 5269770046125178.0,
+   "toAssetVolume": 4443598649818101.0,
+   "toRuneVolume": 4462689211553546.0,
+   "toSecuredVolume": 22792416364657.0,
+   "toTradeVolume": 5253212669823416.0,
+   "totalVolume": 1.947561246457881e+16
+  },
+  "2026-04-26": {
+   "fromSecuredVolume": 12474503735345.0,
+   "fromTradeVolume": 991806594628206.0,
+   "toAssetVolume": 637918118711779.0,
+   "toRuneVolume": 694638767803370.0,
+   "toSecuredVolume": 3715040734242.0,
+   "toTradeVolume": 874455065555842.0,
+   "totalVolume": 3215008091168784.0
+  },
+  "2026-04-27": {
+   "fromSecuredVolume": 7720420281011.0,
+   "fromTradeVolume": 1254851369939789.0,
+   "toAssetVolume": 973231206421522.0,
+   "toRuneVolume": 995563561761067.0,
+   "toSecuredVolume": 8170231942384.0,
+   "toTradeVolume": 1241246738518679.0,
+   "totalVolume": 4480783528864452.0
+  },
+  "2026-04-28": {
+   "fromSecuredVolume": 3377150410603.0,
+   "fromTradeVolume": 1758581638110856.0,
+   "toAssetVolume": 1696718954497345.0,
+   "toRuneVolume": 1700017744318291.0,
+   "toSecuredVolume": 4247532599332.0,
+   "toTradeVolume": 1744887047776750.0,
+   "totalVolume": 6907830067713177.0
+  },
+  "2026-04-29": {
+   "fromSecuredVolume": 10831402607604.0,
+   "fromTradeVolume": 1523487500782351.0,
+   "toAssetVolume": 1228394229410729.0,
+   "toRuneVolume": 1239419884882966.0,
+   "toSecuredVolume": 10422933765779.0,
+   "toTradeVolume": 1575479738234922.0,
+   "totalVolume": 5588035689684351.0
+  },
+  "2026-04-30": {
+   "fromSecuredVolume": 4523685251128.0,
+   "fromTradeVolume": 1226986527256536.0,
+   "toAssetVolume": 1080901420103605.0,
+   "toRuneVolume": 1084831661300732.0,
+   "toSecuredVolume": 6680664063562.0,
+   "toTradeVolume": 1239257622321252.0,
+   "totalVolume": 4643181580296815.0
+  },
+  "2026-05-01": {
+   "fromSecuredVolume": 8806298790135.0,
+   "fromTradeVolume": 692334398760498.0,
+   "toAssetVolume": 568645220208595.0,
+   "toRuneVolume": 579337091166750.0,
+   "toSecuredVolume": 7761533181652.0,
+   "toTradeVolume": 686336450400081.0,
+   "totalVolume": 2543220992507711.0
+  },
+  "2026-05-02": {
+   "fromSecuredVolume": 11490198916717.0,
+   "fromTradeVolume": 607711242435456.0,
+   "toAssetVolume": 559909642879136.0,
+   "toRuneVolume": 571996233421539.0,
+   "toSecuredVolume": 6322613919477.0,
+   "toTradeVolume": 615875442843259.0,
+   "totalVolume": 2373305374415584.0
+  },
+  "2026-05-03": {
+   "fromSecuredVolume": 5069325456316.0,
+   "fromTradeVolume": 833816103502280.0,
+   "toAssetVolume": 715657035380261.0,
+   "toRuneVolume": 713430547560318.0,
+   "toSecuredVolume": 7996365546396.0,
+   "toTradeVolume": 799884490588929.0,
+   "totalVolume": 3075853868034500.0
+  },
+  "2026-05-04": {
+   "fromSecuredVolume": 13407776885897.0,
+   "fromTradeVolume": 1679133462550683.0,
+   "toAssetVolume": 1374151187792264.0,
+   "toRuneVolume": 1404746235343062.0,
+   "toSecuredVolume": 13114884298675.0,
+   "toTradeVolume": 1701646387215166.0,
+   "totalVolume": 6186199934085747.0
+  },
+  "2026-05-05": {
+   "fromSecuredVolume": 6497831839820.0,
+   "fromTradeVolume": 1034052606734752.0,
+   "toAssetVolume": 732280520697738.0,
+   "toRuneVolume": 710394777387255.0,
+   "toSecuredVolume": 5525781260255.0,
+   "toTradeVolume": 892094544922303.0,
+   "totalVolume": 3380846062842123.0
+  },
+  "2026-05-06": {
+   "fromSecuredVolume": 11952896525388.0,
+   "fromTradeVolume": 917886662644089.0,
+   "toAssetVolume": 769112855308574.0,
+   "toRuneVolume": 803772181570186.0,
+   "toSecuredVolume": 6446407032949.0,
+   "toTradeVolume": 940741524592113.0,
+   "totalVolume": 3449912527673299.0
+  },
+  "2026-05-07": {
+   "fromSecuredVolume": 12726394771281.0,
+   "fromTradeVolume": 1321562240903700.0,
+   "toAssetVolume": 1093756268278826.0,
+   "toRuneVolume": 1138475193298192.0,
+   "toSecuredVolume": 12893525012012.0,
+   "toTradeVolume": 1232915181546199.0,
+   "totalVolume": 4812328803810210.0
+  },
+  "2026-05-08": {
+   "fromSecuredVolume": 6434323733088.0,
+   "fromTradeVolume": 2395219407335707.0,
+   "toAssetVolume": 2001899093893998.0,
+   "toRuneVolume": 1971264417649346.0,
+   "toSecuredVolume": 9523915908041.0,
+   "toTradeVolume": 2184125318782971.0,
+   "totalVolume": 8568466477303151.0
+  },
+  "2026-05-09": {
+   "fromSecuredVolume": 3667137718337.0,
+   "fromTradeVolume": 1047376901841549.0,
+   "toAssetVolume": 1083115245301967.0,
+   "toRuneVolume": 1091859814146767.0,
+   "toSecuredVolume": 13779474579997.0,
+   "toTradeVolume": 1100876858464114.0,
+   "totalVolume": 4340675432052731.0
+  },
+  "2026-05-10": {
+   "fromSecuredVolume": 6160717338076.0,
+   "fromTradeVolume": 1793561349425640.0,
+   "toAssetVolume": 1488146234713165.0,
+   "toRuneVolume": 1498706396748688.0,
+   "toSecuredVolume": 4876402104352.0,
+   "toTradeVolume": 1766378379259712.0,
+   "totalVolume": 6557829479589633.0
+  },
+  "2026-05-11": {
+   "fromSecuredVolume": 21323860898142.0,
+   "fromTradeVolume": 1909013997116299.0,
+   "toAssetVolume": 1462149225121690.0,
+   "toRuneVolume": 1561600888057205.0,
+   "toSecuredVolume": 18760079327861.0,
+   "toTradeVolume": 1891992100766560.0,
+   "totalVolume": 6864840151287757.0
+  },
+  "2026-05-12": {
+   "fromSecuredVolume": 5505671558356.0,
+   "fromTradeVolume": 929530436973623.0,
+   "toAssetVolume": 752899547231149.0,
+   "toRuneVolume": 777750679808495.0,
+   "toSecuredVolume": 5726823169808.0,
+   "toTradeVolume": 1029472866854869.0,
+   "totalVolume": 3500886025596300.0
+  },
+  "2026-05-13": {
+   "fromSecuredVolume": 7651396890823.0,
+   "fromTradeVolume": 687226331616572.0,
+   "toAssetVolume": 547647525332132.0,
+   "toRuneVolume": 470768423964304.0,
+   "toSecuredVolume": 9539305746279.0,
+   "toTradeVolume": 726978265761304.0,
+   "totalVolume": 2449811249311414.0
+  },
+  "2026-05-14": {
+   "fromSecuredVolume": 7594862007698.0,
+   "fromTradeVolume": 905047206844346.0,
+   "toAssetVolume": 790403315464792.0,
+   "toRuneVolume": 795016431240602.0,
+   "toSecuredVolume": 10609111482055.0,
+   "toTradeVolume": 901344395647327.0,
+   "totalVolume": 3410015322686820.0
+  },
+  "2026-05-15": {
+   "fromSecuredVolume": 1223622001177.0,
+   "fromTradeVolume": 253136599271227.0,
+   "toAssetVolume": 217435843219883.0,
+   "toRuneVolume": 204672573562198.0,
+   "toSecuredVolume": 1602093745360.0,
+   "toTradeVolume": 273038240073567.0,
+   "totalVolume": 951108971873412.0
+  },
+  "2026-05-16": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-05-17": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-05-18": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-05-19": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-05-20": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-05-21": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-05-22": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-05-23": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-05-24": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-05-25": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-05-26": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-05-27": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-05-28": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-05-29": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-05-30": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-05-31": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-01": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-02": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-03": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-04": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-05": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-06": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-07": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-08": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-09": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-10": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-11": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-12": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-13": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-14": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-15": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-16": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-17": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-18": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-19": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-20": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-21": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-06-22": {
+   "fromSecuredVolume": 8943544623615.0,
+   "fromTradeVolume": 139144581998022.0,
+   "toAssetVolume": 37552038586801.0,
+   "toRuneVolume": 7108967513798.0,
+   "toSecuredVolume": 6759998977851.0,
+   "toTradeVolume": 265130973873100.0,
+   "totalVolume": 464640105573187.0
+  },
+  "2026-06-23": {
+   "fromSecuredVolume": 27931109910480.0,
+   "fromTradeVolume": 1418320298126683.0,
+   "toAssetVolume": 927866945266405.0,
+   "toRuneVolume": 863276483954568.0,
+   "toSecuredVolume": 28330658034787.0,
+   "toTradeVolume": 1509067208925120.0,
+   "totalVolume": 4774792704218043.0
+  },
+  "2026-06-24": {
+   "fromSecuredVolume": 16626718662447.0,
+   "fromTradeVolume": 780496019239915.0,
+   "toAssetVolume": 584675853567713.0,
+   "toRuneVolume": 570050346471124.0,
+   "toSecuredVolume": 20361543042646.0,
+   "toTradeVolume": 816515267669944.0,
+   "totalVolume": 2788725748653789.0
+  },
+  "2026-06-25": {
+   "fromSecuredVolume": 13566660825849.0,
+   "fromTradeVolume": 911523698429052.0,
+   "toAssetVolume": 500034579343529.0,
+   "toRuneVolume": 463757594518119.0,
+   "toSecuredVolume": 17416802906857.0,
+   "toTradeVolume": 901228336253583.0,
+   "totalVolume": 2807527672276989.0
+  },
+  "2026-06-26": {
+   "fromSecuredVolume": 11599468480540.0,
+   "fromTradeVolume": 677788355686835.0,
+   "toAssetVolume": 384452158145710.0,
+   "toRuneVolume": 370088949946808.0,
+   "toSecuredVolume": 18818684940001.0,
+   "toTradeVolume": 660887831064352.0,
+   "totalVolume": 2123635448264246.0
+  },
+  "2026-06-27": {
+   "fromSecuredVolume": 9366552988788.0,
+   "fromTradeVolume": 1091560692589421.0,
+   "toAssetVolume": 931255221729170.0,
+   "toRuneVolume": 930601475892883.0,
+   "toSecuredVolume": 18419160357573.0,
+   "toTradeVolume": 1146205282241900.0,
+   "totalVolume": 4127408385799735.0
+  },
+  "2026-06-28": {
+   "fromSecuredVolume": 9395172199643.0,
+   "fromTradeVolume": 314577124228412.0,
+   "toAssetVolume": 229610853166135.0,
+   "toRuneVolume": 204885141219229.0,
+   "toSecuredVolume": 13206954093964.0,
+   "toTradeVolume": 321411638155599.0,
+   "totalVolume": 1093086883062982.0
+  },
+  "2026-06-29": {
+   "fromSecuredVolume": 17360621865406.0,
+   "fromTradeVolume": 947590298948948.0,
+   "toAssetVolume": 727946566674287.0,
+   "toRuneVolume": 719832221177826.0,
+   "toSecuredVolume": 30420201161721.0,
+   "toTradeVolume": 987251960957466.0,
+   "totalVolume": 3430401870785654.0
+  },
+  "2026-06-30": {
+   "fromSecuredVolume": 6768157987631.0,
+   "fromTradeVolume": 1363842224436540.0,
+   "toAssetVolume": 1092934567167995.0,
+   "toRuneVolume": 1111729236634027.0,
+   "toSecuredVolume": 14688497127757.0,
+   "toTradeVolume": 1402554657482555.0,
+   "totalVolume": 4992517340836505.0
+  },
+  "2026-07-01": {
+   "fromSecuredVolume": 10876898818547.0,
+   "fromTradeVolume": 1027550218697223.0,
+   "toAssetVolume": 791948808859367.0,
+   "toRuneVolume": 788329165510648.0,
+   "toSecuredVolume": 16646822633035.0,
+   "toTradeVolume": 1005779663636869.0,
+   "totalVolume": 3641131578155689.0
+  },
+  "2026-07-02": {
+   "fromSecuredVolume": 26828384433700.0,
+   "fromTradeVolume": 1669200605182478.0,
+   "toAssetVolume": 1513972245849009.0,
+   "toRuneVolume": 1535647085996564.0,
+   "toSecuredVolume": 26961501683931.0,
+   "toTradeVolume": 1680612849865624.0,
+   "totalVolume": 6453222673011306.0
+  },
+  "2026-07-03": {
+   "fromSecuredVolume": 4931598902522.0,
+   "fromTradeVolume": 1165689744927413.0,
+   "toAssetVolume": 1024317524151693.0,
+   "toRuneVolume": 1022054752867430.0,
+   "toSecuredVolume": 9836343595746.0,
+   "toTradeVolume": 1143137327274177.0,
+   "totalVolume": 4369967291718981.0
+  },
+  "2026-07-04": {
+   "fromSecuredVolume": 5743797242205.0,
+   "fromTradeVolume": 854960583025027.0,
+   "toAssetVolume": 760140942917882.0,
+   "toRuneVolume": 767872756750927.0,
+   "toSecuredVolume": 11019285037640.0,
+   "toTradeVolume": 860871484942243.0,
+   "totalVolume": 3260608849915924.0
+  },
+  "2026-07-05": {
+   "fromSecuredVolume": 5018000705413.0,
+   "fromTradeVolume": 1157429229075175.0,
+   "toAssetVolume": 994136335157933.0,
+   "toRuneVolume": 983343776166416.0,
+   "toSecuredVolume": 7806170830221.0,
+   "toTradeVolume": 1170670524958168.0,
+   "totalVolume": 4318404036893326.0
+  },
+  "2026-07-06": {
+   "fromSecuredVolume": 16809420742790.0,
+   "fromTradeVolume": 1099214967602028.0,
+   "toAssetVolume": 948299127285510.0,
+   "toRuneVolume": 802051891353026.0,
+   "toSecuredVolume": 21753287060819.0,
+   "toTradeVolume": 1047660920144750.0,
+   "totalVolume": 3935789614188923.0
+  },
+  "2026-07-07": {
+   "fromSecuredVolume": 10093159893561.0,
+   "fromTradeVolume": 1389303438993715.0,
+   "toAssetVolume": 1120845626306271.0,
+   "toRuneVolume": 1063417774983830.0,
+   "toSecuredVolume": 15846648396448.0,
+   "toTradeVolume": 1423487960287507.0,
+   "totalVolume": 5022994608861332.0
+  },
+  "2026-07-08": {
+   "fromSecuredVolume": 15267242514280.0,
+   "fromTradeVolume": 964913639183964.0,
+   "toAssetVolume": 836063384651835.0,
+   "toRuneVolume": 855743863169246.0,
+   "toSecuredVolume": 19229415367115.0,
+   "toTradeVolume": 981954652418441.0,
+   "totalVolume": 3673172197304881.0
+  },
+  "2026-07-09": {
+   "fromSecuredVolume": 6303903514689.0,
+   "fromTradeVolume": 2662084572545312.0,
+   "toAssetVolume": 2343322711807545.0,
+   "toRuneVolume": 2396509466433332.0,
+   "toSecuredVolume": 8060789650989.0,
+   "toTradeVolume": 2663798229702511.0,
+   "totalVolume": 1.0080079673654378e+16
+  },
+  "2026-07-10": {
+   "fromSecuredVolume": 7294178271862.0,
+   "fromTradeVolume": 2349049877167773.0,
+   "toAssetVolume": 2341332343106679.0,
+   "toRuneVolume": 2324588169994316.0,
+   "toSecuredVolume": 10642979977600.0,
+   "toTradeVolume": 2337103102789862.0,
+   "totalVolume": 9370010651308092.0
+  },
+  "2026-07-11": {
+   "fromSecuredVolume": 13666702650015.0,
+   "fromTradeVolume": 1724737550062862.0,
+   "toAssetVolume": 1604401541501014.0,
+   "toRuneVolume": 1609789941016645.0,
+   "toSecuredVolume": 16241680854151.0,
+   "toTradeVolume": 1703600316470878.0,
+   "totalVolume": 6672437732555565.0
+  },
+  "2026-07-12": {
+   "fromSecuredVolume": 3842366939066.0,
+   "fromTradeVolume": 1689457607187423.0,
+   "toAssetVolume": 1674135971463444.0,
+   "toRuneVolume": 1674380962139751.0,
+   "toSecuredVolume": 6357441355714.0,
+   "toTradeVolume": 1708027278253525.0,
+   "totalVolume": 6756201627338923.0
+  },
+  "2026-07-13": {
+   "fromSecuredVolume": 22459191820072.0,
+   "fromTradeVolume": 1068508419288322.0,
+   "toAssetVolume": 711450738005644.0,
+   "toRuneVolume": 746985304540153.0,
+   "toSecuredVolume": 25448509474826.0,
+   "toTradeVolume": 1058153785546834.0,
+   "totalVolume": 3633005948675851.0
+  },
+  "2026-07-14": {
+   "fromSecuredVolume": 21555425451139.0,
+   "fromTradeVolume": 2553775605664970.0,
+   "toAssetVolume": 2186080269237648.0,
+   "toRuneVolume": 2198712214952102.0,
+   "toSecuredVolume": 22377852047655.0,
+   "toTradeVolume": 2541338308430657.0,
+   "totalVolume": 9523839675784172.0
+  },
+  "2026-07-15": {
+   "fromSecuredVolume": 6517043786943.0,
+   "fromTradeVolume": 1751719724584360.0,
+   "toAssetVolume": 1577697419900150.0,
+   "toRuneVolume": 1577639598027898.0,
+   "toSecuredVolume": 10040977741359.0,
+   "toTradeVolume": 1768242951842231.0,
+   "totalVolume": 6691857715882941.0
+  },
+  "2026-07-16": {
+   "fromSecuredVolume": 19281222080116.0,
+   "fromTradeVolume": 3413092531953557.0,
+   "toAssetVolume": 3131605918628507.0,
+   "toRuneVolume": 3130407464826517.0,
+   "toSecuredVolume": 22046746422213.0,
+   "toTradeVolume": 3360348728023918.0,
+   "totalVolume": 1.3076782611934828e+16
+  },
+  "2026-07-17": {
+   "fromSecuredVolume": 15588583524776.0,
+   "fromTradeVolume": 1270656041534712.0,
+   "toAssetVolume": 1105673251496893.0,
+   "toRuneVolume": 1086203623892550.0,
+   "toSecuredVolume": 28234991682584.0,
+   "toTradeVolume": 1218422873119261.0,
+   "totalVolume": 4724779365250776.0
+  },
+  "2026-07-18": {
+   "fromSecuredVolume": 4668213196555.0,
+   "fromTradeVolume": 899243702612618.0,
+   "toAssetVolume": 866153513994939.0,
+   "toRuneVolume": 869619095846217.0,
+   "toSecuredVolume": 7179006679165.0,
+   "toTradeVolume": 922330184596151.0,
+   "totalVolume": 3569193716925645.0
+  },
+  "2026-07-19": {
+   "fromSecuredVolume": 3195131139606.0,
+   "fromTradeVolume": 1152837667022022.0,
+   "toAssetVolume": 947865276920142.0,
+   "toRuneVolume": 933783973395514.0,
+   "toSecuredVolume": 7074900074159.0,
+   "toTradeVolume": 1053999523951199.0,
+   "totalVolume": 4098756472502642.0
+  },
+  "2026-07-20": {
+   "fromSecuredVolume": 7676365746955.0,
+   "fromTradeVolume": 1808902819340591.0,
+   "toAssetVolume": 1733072310702274.0,
+   "toRuneVolume": 1744867273609425.0,
+   "toSecuredVolume": 9331786362907.0,
+   "toTradeVolume": 1841276073603633.0,
+   "totalVolume": 7145126629365785.0
+  },
+  "2026-07-21": {
+   "fromSecuredVolume": 6207220366289.0,
+   "fromTradeVolume": 899612976522411.0,
+   "toAssetVolume": 810616717695395.0,
+   "toRuneVolume": 816299174579716.0,
+   "toSecuredVolume": 8960493763465.0,
+   "toTradeVolume": 894693688517015.0,
+   "totalVolume": 3436390271444291.0
+  },
+  "2026-07-22": {
+   "fromSecuredVolume": 5411636198885.0,
+   "fromTradeVolume": 1303059932627388.0,
+   "toAssetVolume": 1271308262061855.0,
+   "toRuneVolume": 1203272611100405.0,
+   "toSecuredVolume": 10618128062379.0,
+   "toTradeVolume": 1321501965183698.0,
+   "totalVolume": 5115172535234610.0
+  },
+  "2026-07-23": {
+   "fromSecuredVolume": 6030938389353.0,
+   "fromTradeVolume": 1362318045473787.0,
+   "toAssetVolume": 1268775455467242.0,
+   "toRuneVolume": 1268677680395858.0,
+   "toSecuredVolume": 9093071960393.0,
+   "toTradeVolume": 1401875260426544.0,
+   "totalVolume": 5316770452113177.0
+  },
+  "2026-07-24": {
+   "fromSecuredVolume": 6187497709424.0,
+   "fromTradeVolume": 1251126870294395.0,
+   "toAssetVolume": 1241044382269671.0,
+   "toRuneVolume": 1228361843512815.0,
+   "toSecuredVolume": 9895484443956.0,
+   "toTradeVolume": 1266961997074759.0,
+   "totalVolume": 5003578075305020.0
+  },
+  "2026-07-25": {
+   "fromSecuredVolume": 65152347302497.0,
+   "fromTradeVolume": 5471138642879297.0,
+   "toAssetVolume": 4553028639489435.0,
+   "toRuneVolume": 4552740579340860.0,
+   "toSecuredVolume": 78429124618999.0,
+   "toTradeVolume": 5460666471216235.0,
+   "totalVolume": 2.0181155804847324e+16
+  },
+  "2026-07-26": {
+   "fromSecuredVolume": 6787642497564.0,
+   "fromTradeVolume": 758977794996471.0,
+   "toAssetVolume": 751133953004755.0,
+   "toRuneVolume": 754798015915254.0,
+   "toSecuredVolume": 8616943732911.0,
+   "toTradeVolume": 753897719143441.0,
+   "totalVolume": 3034212069290396.0
+  },
+  "2026-07-27": {
+   "fromSecuredVolume": 13190771903877.0,
+   "fromTradeVolume": 1090085319903815.0,
+   "toAssetVolume": 869503940246786.0,
+   "toRuneVolume": 931918032797069.0,
+   "toSecuredVolume": 17243992578002.0,
+   "toTradeVolume": 1057941075545708.0,
+   "totalVolume": 3979883132975257.0
+  },
+  "2026-07-28": {
+   "fromSecuredVolume": 14337312813440.0,
+   "fromTradeVolume": 784476179901675.0,
+   "toAssetVolume": 625468399667240.0,
+   "toRuneVolume": 620870360086985.0,
+   "toSecuredVolume": 17710539461509.0,
+   "toTradeVolume": 785913545821821.0,
+   "totalVolume": 2848776337752670.0
+  },
+  "2026-07-29": {
+   "fromSecuredVolume": 25246613722153.0,
+   "fromTradeVolume": 1845618893276619.0,
+   "toAssetVolume": 1652613434113698.0,
+   "toRuneVolume": 1653508868077417.0,
+   "toSecuredVolume": 26916257119988.0,
+   "toTradeVolume": 1877625011639755.0,
+   "totalVolume": 7081529077949630.0
+  },
+  "2026-07-30": {
+   "fromSecuredVolume": 56624333893306.0,
+   "fromTradeVolume": 2791243877429610.0,
+   "toAssetVolume": 2299816294338413.0,
+   "toRuneVolume": 2281722013463015.0,
+   "toSecuredVolume": 58677478060818.0,
+   "toTradeVolume": 2804343180787118.0,
+   "totalVolume": 1.029242717797228e+16
+  },
+  "2026-07-31": {
+   "fromSecuredVolume": 17274585819636.0,
+   "fromTradeVolume": 1122041916694522.0,
+   "toAssetVolume": 1035319277350276.0,
+   "toRuneVolume": 1054364776944786.0,
+   "toSecuredVolume": 18189548734161.0,
+   "toTradeVolume": 1129796293515205.0,
+   "totalVolume": 4376986399058586.0
+  },
+  "2026-08-01": {
+   "fromSecuredVolume": 8828356426439.0,
+   "fromTradeVolume": 738460361732358.0,
+   "toAssetVolume": 644149528911540.0,
+   "toRuneVolume": 644850166147045.0,
+   "toSecuredVolume": 11757865284353.0,
+   "toTradeVolume": 697080696189243.0,
+   "totalVolume": 2745126974690978.0
+  },
+  "2026-08-02": {
+   "fromSecuredVolume": 10897019904850.0,
+   "fromTradeVolume": 678224506536381.0,
+   "toAssetVolume": 608192874443728.0,
+   "toRuneVolume": 610899182638086.0,
+   "toSecuredVolume": 11595370267722.0,
+   "toTradeVolume": 665688977286741.0,
+   "totalVolume": 2585497931077508.0
+  },
+  "2026-08-03": {
+   "fromSecuredVolume": 13369506399222.0,
+   "fromTradeVolume": 1008264435880014.0,
+   "toAssetVolume": 938342962036152.0,
+   "toRuneVolume": 940260325958962.0,
+   "toSecuredVolume": 15895201365527.0,
+   "toTradeVolume": 1030883461856862.0,
+   "totalVolume": 3947015893496739.0
+  },
+  "2026-08-04": {
+   "fromSecuredVolume": 28073370388072.0,
+   "fromTradeVolume": 1967131126984209.0,
+   "toAssetVolume": 1814024767404201.0,
+   "toRuneVolume": 1801976836115779.0,
+   "toSecuredVolume": 30134401288989.0,
+   "toTradeVolume": 1966359392242977.0,
+   "totalVolume": 7607699894424227.0
+  },
+  "2026-08-05": {
+   "fromSecuredVolume": 25916446478646.0,
+   "fromTradeVolume": 1526319435545986.0,
+   "toAssetVolume": 1450696293734116.0,
+   "toRuneVolume": 1439987854937356.0,
+   "toSecuredVolume": 29166669610124.0,
+   "toTradeVolume": 1527277141691323.0,
+   "totalVolume": 5999363841997551.0
+  },
+  "2026-08-06": {
+   "fromSecuredVolume": 10133861010235.0,
+   "fromTradeVolume": 1110803728589812.0,
+   "toAssetVolume": 1057347106081760.0,
+   "toRuneVolume": 1028765643608725.0,
+   "toSecuredVolume": 13541316664763.0,
+   "toTradeVolume": 1100635856511936.0,
+   "totalVolume": 4321227512467231.0
+  },
+  "2026-08-07": {
+   "fromSecuredVolume": 18161796905644.0,
+   "fromTradeVolume": 1755744680089476.0,
+   "toAssetVolume": 1721179632894581.0,
+   "toRuneVolume": 1699154618501585.0,
+   "toSecuredVolume": 21026561291378.0,
+   "toTradeVolume": 1691556054835303.0,
+   "totalVolume": 6906823344517967.0
+  },
+  "2026-08-08": {
+   "fromSecuredVolume": 8690777423636.0,
+   "fromTradeVolume": 800437573941126.0,
+   "toAssetVolume": 783484467997902.0,
+   "toRuneVolume": 744037936128252.0,
+   "toSecuredVolume": 11239069954389.0,
+   "toTradeVolume": 854160179783719.0,
+   "totalVolume": 3202050005229024.0
+  },
+  "2026-08-09": {
+   "fromSecuredVolume": 8079755994628.0,
+   "fromTradeVolume": 706083408012532.0,
+   "toAssetVolume": 658755756114987.0,
+   "toRuneVolume": 680948493457488.0,
+   "toSecuredVolume": 11529994633980.0,
+   "toTradeVolume": 770302221032653.0,
+   "totalVolume": 2835699629246268.0
+  },
+  "2026-08-10": {
+   "fromSecuredVolume": 29829328142388.0,
+   "fromTradeVolume": 1354360978948314.0,
+   "toAssetVolume": 1309473906998092.0,
+   "toRuneVolume": 1298449745722884.0,
+   "toSecuredVolume": 35551138247642.0,
+   "toTradeVolume": 1354677945194628.0,
+   "totalVolume": 5382343043253948.0
+  },
+  "2026-08-11": {
+   "fromSecuredVolume": 19336996549993.0,
+   "fromTradeVolume": 730306505632366.0,
+   "toAssetVolume": 656095721371110.0,
+   "toRuneVolume": 654675352248827.0,
+   "toSecuredVolume": 20851155161164.0,
+   "toTradeVolume": 741607573522262.0,
+   "totalVolume": 2822873304485722.0
+  },
+  "2026-08-12": {
+   "fromSecuredVolume": 10760232370152.0,
+   "fromTradeVolume": 574074809480474.0,
+   "toAssetVolume": 599955710973595.0,
+   "toRuneVolume": 596634935876957.0,
+   "toSecuredVolume": 13681444314032.0,
+   "toTradeVolume": 587742015023860.0,
+   "totalVolume": 2382849148039070.0
+  },
+  "2026-08-13": {
+   "fromSecuredVolume": 23475518963564.0,
+   "fromTradeVolume": 1408765734739766.0,
+   "toAssetVolume": 1539151073968796.0,
+   "toRuneVolume": 1537094254272591.0,
+   "toSecuredVolume": 26315427194727.0,
+   "toTradeVolume": 1378236400797426.0,
+   "totalVolume": 5913038409936870.0
+  },
+  "2026-08-14": {
+   "fromSecuredVolume": 13097874517047.0,
+   "fromTradeVolume": 1022685178737274.0,
+   "toAssetVolume": 1113033738294028.0,
+   "toRuneVolume": 1110453107948639.0,
+   "toSecuredVolume": 16776444468748.0,
+   "toTradeVolume": 1062536907101140.0,
+   "totalVolume": 4338583251066876.0
+  },
+  "2026-08-15": {
+   "fromSecuredVolume": 12424091819970.0,
+   "fromTradeVolume": 830677511086412.0,
+   "toAssetVolume": 845422804299756.0,
+   "toRuneVolume": 845360324105015.0,
+   "toSecuredVolume": 14787495801171.0,
+   "toTradeVolume": 824301176800098.0,
+   "totalVolume": 3372973403912422.0
+  },
+  "2026-08-16": {
+   "fromSecuredVolume": 18429150566600.0,
+   "fromTradeVolume": 506120436542273.0,
+   "toAssetVolume": 471271959941660.0,
+   "toRuneVolume": 466181329389526.0,
+   "toSecuredVolume": 22390705196601.0,
+   "toTradeVolume": 532815190829399.0,
+   "totalVolume": 2017208772466059.0
+  },
+  "2026-08-17": {
+   "fromSecuredVolume": 19688406350195.0,
+   "fromTradeVolume": 641461150625656.0,
+   "toAssetVolume": 608746654692877.0,
+   "toRuneVolume": 608357986606482.0,
+   "toSecuredVolume": 23137654492687.0,
+   "toTradeVolume": 680870269632039.0,
+   "totalVolume": 2582262122399936.0
+  },
+  "2026-08-18": {
+   "fromSecuredVolume": 39672636160266.0,
+   "fromTradeVolume": 931426934355675.0,
+   "toAssetVolume": 1307576761844102.0,
+   "toRuneVolume": 1303686432318927.0,
+   "toSecuredVolume": 43836903831404.0,
+   "toTradeVolume": 1036567527853604.0,
+   "totalVolume": 4662767196363978.0
+  },
+  "2026-08-19": {
+   "fromSecuredVolume": 9292954322542.0,
+   "fromTradeVolume": 2148872199588474.0,
+   "toAssetVolume": 1733781842359371.0,
+   "toRuneVolume": 1734722523786447.0,
+   "toSecuredVolume": 11952743403726.0,
+   "toTradeVolume": 2182256097598186.0,
+   "totalVolume": 7820878361058746.0
+  },
+  "2026-08-20": {
+   "fromSecuredVolume": 5023918017788.0,
+   "fromTradeVolume": 2485948513995576.0,
+   "toAssetVolume": 2389111307997844.0,
+   "toRuneVolume": 2359173976980095.0,
+   "toSecuredVolume": 5401323573151.0,
+   "toTradeVolume": 2465518304120704.0,
+   "totalVolume": 9710177344685158.0
+  },
+  "2026-08-21": {
+   "fromSecuredVolume": 66978066501837.0,
+   "fromTradeVolume": 2228752710213121.0,
+   "toAssetVolume": 2145496822044764.0,
+   "toRuneVolume": 2154532085030118.0,
+   "toSecuredVolume": 62822330191567.0,
+   "toTradeVolume": 2240982275948959.0,
+   "totalVolume": 8899564289930366.0
+  },
+  "2026-08-22": {
+   "fromSecuredVolume": 35463242743552.0,
+   "fromTradeVolume": 1339011444592439.0,
+   "toAssetVolume": 961250320930057.0,
+   "toRuneVolume": 958718908377170.0,
+   "toSecuredVolume": 36084403192418.0,
+   "toTradeVolume": 1286099805471000.0,
+   "totalVolume": 4616628125306636.0
+  },
+  "2026-08-23": {
+   "fromSecuredVolume": 35072260814278.0,
+   "fromTradeVolume": 1345740444633428.0,
+   "toAssetVolume": 1254215432363577.0,
+   "toRuneVolume": 1216690887252551.0,
+   "toSecuredVolume": 38734750768330.0,
+   "toTradeVolume": 1321898820619880.0,
+   "totalVolume": 5212352596452044.0
+  },
+  "2026-08-24": {
+   "fromSecuredVolume": 53051403796468.0,
+   "fromTradeVolume": 1157146523526232.0,
+   "toAssetVolume": 1225226778454423.0,
+   "toRuneVolume": 1221873872832216.0,
+   "toSecuredVolume": 57009568194463.0,
+   "toTradeVolume": 1146389355384768.0,
+   "totalVolume": 4860697502188570.0
+  },
+  "2026-08-25": {
+   "fromSecuredVolume": 43545709999067.0,
+   "fromTradeVolume": 1143150148380244.0,
+   "toAssetVolume": 1302953084290162.0,
+   "toRuneVolume": 1318795958015678.0,
+   "toSecuredVolume": 46166262048399.0,
+   "toTradeVolume": 1112502356593327.0,
+   "totalVolume": 4967113519326877.0
+  },
+  "2026-08-26": {
+   "fromSecuredVolume": 14217727779945.0,
+   "fromTradeVolume": 246457056115180.0,
+   "toAssetVolume": 224749998269060.0,
+   "toRuneVolume": 224770832147721.0,
+   "toSecuredVolume": 17094701869160.0,
+   "toTradeVolume": 269698262361742.0,
+   "totalVolume": 996988578542808.0
+  },
+  "2026-08-27": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  },
+  "2026-08-28": {
+   "fromSecuredVolume": 1970919570488.0,
+   "fromTradeVolume": 328238925208358.0,
+   "toAssetVolume": 243846502125924.0,
+   "toRuneVolume": 242105957849675.0,
+   "toSecuredVolume": 1856844660698.0,
+   "toTradeVolume": 313535405989246.0,
+   "totalVolume": 1131554555404389.0
+  },
+  "2026-08-29": {
+   "fromSecuredVolume": 4143295192658.0,
+   "fromTradeVolume": 409186133025660.0,
+   "toAssetVolume": 490014034669686.0,
+   "toRuneVolume": 490194947382477.0,
+   "toSecuredVolume": 4213822176674.0,
+   "toTradeVolume": 457420432911935.0,
+   "totalVolume": 1855172665359090.0
+  },
+  "2026-08-30": {
+   "fromSecuredVolume": 2234723827200.0,
+   "fromTradeVolume": 1568938814921228.0,
+   "toAssetVolume": 1656784132074779.0,
+   "toRuneVolume": 1660164665996793.0,
+   "toSecuredVolume": 2243424291052.0,
+   "toTradeVolume": 1585106564104648.0,
+   "totalVolume": 6475472325215700.0
+  },
+  "2026-08-31": {
+   "fromSecuredVolume": 5311379125061.0,
+   "fromTradeVolume": 1867208362773577.0,
+   "toAssetVolume": 1764176738455521.0,
+   "toRuneVolume": 1761101617386317.0,
+   "toSecuredVolume": 4799017145030.0,
+   "toTradeVolume": 1844556951077428.0,
+   "totalVolume": 7247154065962934.0
+  },
+  "2026-09-01": {
+   "fromSecuredVolume": 39579407090360.0,
+   "fromTradeVolume": 2463016619435464.0,
+   "toAssetVolume": 2372704790248062.0,
+   "toRuneVolume": 2328582382525339.0,
+   "toSecuredVolume": 40327883911685.0,
+   "toTradeVolume": 2496179965548138.0,
+   "totalVolume": 9740391048759048.0
+  },
+  "2026-09-02": {
+   "fromSecuredVolume": 43598297294772.0,
+   "fromTradeVolume": 1738498748665697.0,
+   "toAssetVolume": 1565538164874033.0,
+   "toRuneVolume": 1524301960199258.0,
+   "toSecuredVolume": 46437652942977.0,
+   "toTradeVolume": 1691760731614283.0,
+   "totalVolume": 6610135555591020.0
+  },
+  "2026-09-03": {
+   "fromSecuredVolume": 49538323141556.0,
+   "fromTradeVolume": 1251449716092824.0,
+   "toAssetVolume": 1147881798994501.0,
+   "toRuneVolume": 1090048557218288.0,
+   "toSecuredVolume": 52832222492468.0,
+   "toTradeVolume": 1223960877782053.0,
+   "totalVolume": 4815711495721690.0
+  },
+  "2026-09-04": {
+   "fromSecuredVolume": 19658339941383.0,
+   "fromTradeVolume": 654637938460109.0,
+   "toAssetVolume": 584808062595057.0,
+   "toRuneVolume": 579762361980782.0,
+   "toSecuredVolume": 23681754430720.0,
+   "toTradeVolume": 673641841304593.0,
+   "totalVolume": 2536190298712644.0
+  },
+  "2026-09-05": {
+   "fromSecuredVolume": 4862437988731.0,
+   "fromTradeVolume": 393484814557154.0,
+   "toAssetVolume": 269330320637707.0,
+   "toRuneVolume": 275392779196428.0,
+   "toSecuredVolume": 6366210691365.0,
+   "toTradeVolume": 372135077186372.0,
+   "totalVolume": 1321571640257757.0
+  },
+  "2026-09-06": {
+   "fromSecuredVolume": 2695085734962.0,
+   "fromTradeVolume": 275898707427772.0,
+   "toAssetVolume": 181122425802722.0,
+   "toRuneVolume": 179093928686762.0,
+   "toSecuredVolume": 2787621181358.0,
+   "toTradeVolume": 276289863309864.0,
+   "totalVolume": 917887632143440.0
+  },
+  "2026-09-07": {
+   "fromSecuredVolume": 10180481371962.0,
+   "fromTradeVolume": 2151180763913793.0,
+   "toAssetVolume": 1450246588125510.0,
+   "toRuneVolume": 1431417421601002.0,
+   "toSecuredVolume": 9614585708291.0,
+   "toTradeVolume": 2131354880286620.0,
+   "totalVolume": 7183994721007178.0
+  },
+  "2026-09-08": {
+   "fromSecuredVolume": 11861132088803.0,
+   "fromTradeVolume": 2608077796725597.0,
+   "toAssetVolume": 1889796189016435.0,
+   "toRuneVolume": 1896468014839645.0,
+   "toSecuredVolume": 10216475849824.0,
+   "toTradeVolume": 2601937813843751.0,
+   "totalVolume": 9018357422364056.0
+  },
+  "2026-09-09": {
+   "fromSecuredVolume": 12770899210405.0,
+   "fromTradeVolume": 2937744309223086.0,
+   "toAssetVolume": 2305976665003438.0,
+   "toRuneVolume": 2314807018038529.0,
+   "toSecuredVolume": 11905291340323.0,
+   "toTradeVolume": 2965483986175253.0,
+   "totalVolume": 1.0548688168991034e+16
+  },
+  "2026-09-10": {
+   "fromSecuredVolume": 26535155769529.0,
+   "fromTradeVolume": 1.517948451923767e+16,
+   "toAssetVolume": 1.333499294885795e+16,
+   "toRuneVolume": 1.3360355115299862e+16,
+   "toSecuredVolume": 26486338697923.0,
+   "toTradeVolume": 1.5080378771036138e+16,
+   "totalVolume": 5.700823284889907e+16
+  },
+  "2026-09-11": {
+   "fromSecuredVolume": 26270692252448.0,
+   "fromTradeVolume": 3718437188644790.0,
+   "toAssetVolume": 3705530923556637.0,
+   "toRuneVolume": 3710446105410542.0,
+   "toSecuredVolume": 22174214765597.0,
+   "toTradeVolume": 3681759527644919.0,
+   "totalVolume": 1.4864618652274932e+16
+  },
+  "2026-09-12": {
+   "fromSecuredVolume": 11645344457316.0,
+   "fromTradeVolume": 627558865245365.0,
+   "toAssetVolume": 533080886100683.0,
+   "toRuneVolume": 524334577533419.0,
+   "toSecuredVolume": 14192534811879.0,
+   "toTradeVolume": 615819380898523.0,
+   "totalVolume": 2326631589047185.0
+  },
+  "2026-09-13": {
+   "fromSecuredVolume": 33725731851449.0,
+   "fromTradeVolume": 3456938058427922.0,
+   "toAssetVolume": 2703541989895572.0,
+   "toRuneVolume": 2710326527213183.0,
+   "toSecuredVolume": 36174350927197.0,
+   "toTradeVolume": 3478336809957455.0,
+   "totalVolume": 1.2419043468272778e+16
+  },
+  "2026-09-14": {
+   "fromSecuredVolume": 29439402323664.0,
+   "fromTradeVolume": 949152320748843.0,
+   "toAssetVolume": 878520344972729.0,
+   "toRuneVolume": 864600437873291.0,
+   "toSecuredVolume": 32637162544198.0,
+   "toTradeVolume": 918739263635773.0,
+   "totalVolume": 3673088932098498.0
+  },
+  "2026-09-15": {
+   "fromSecuredVolume": 36683069810393.0,
+   "fromTradeVolume": 798345503382464.0,
+   "toAssetVolume": 723828689386519.0,
+   "toRuneVolume": 695614980661489.0,
+   "toSecuredVolume": 40631967150158.0,
+   "toTradeVolume": 845936194872990.0,
+   "totalVolume": 3141040405264013.0
+  },
+  "2026-09-16": {
+   "fromSecuredVolume": 26474961192872.0,
+   "fromTradeVolume": 618384740710946.0,
+   "toAssetVolume": 473780007809909.0,
+   "toRuneVolume": 488740806865481.0,
+   "toSecuredVolume": 30081990841460.0,
+   "toTradeVolume": 645615052267315.0,
+   "totalVolume": 2283077559687983.0
+  },
+  "2026-09-17": {
+   "fromSecuredVolume": 27955211108995.0,
+   "fromTradeVolume": 1838464894195538.0,
+   "toAssetVolume": 1654711475489866.0,
+   "toRuneVolume": 1648664101717941.0,
+   "toSecuredVolume": 29212247029660.0,
+   "toTradeVolume": 1810319784708165.0,
+   "totalVolume": 7009327714250165.0
+  },
+  "2026-09-18": {
+   "fromSecuredVolume": 27848166729777.0,
+   "fromTradeVolume": 789575498258998.0,
+   "toAssetVolume": 570514705012073.0,
+   "toRuneVolume": 574698822503719.0,
+   "toSecuredVolume": 29226645430050.0,
+   "toTradeVolume": 737563370040355.0,
+   "totalVolume": 2729427207974972.0
+  },
+  "2026-09-19": {
+   "fromSecuredVolume": 25162454493161.0,
+   "fromTradeVolume": 1318257313044242.0,
+   "toAssetVolume": 1106465505705067.0,
+   "toRuneVolume": 1142938638389126.0,
+   "toSecuredVolume": 27443165071708.0,
+   "toTradeVolume": 1315550354089899.0,
+   "totalVolume": 4935817430793203.0
+  },
+  "2026-09-20": {
+   "fromSecuredVolume": 24697850508031.0,
+   "fromTradeVolume": 1181461311593565.0,
+   "toAssetVolume": 869238836237284.0,
+   "toRuneVolume": 888634568650733.0,
+   "toSecuredVolume": 27487005451331.0,
+   "toTradeVolume": 1165353375494772.0,
+   "totalVolume": 4156872947935716.0
+  },
+  "2026-09-21": {
+   "fromSecuredVolume": 61434180680167.0,
+   "fromTradeVolume": 2579331212027441.0,
+   "toAssetVolume": 2240045400673626.0,
+   "toRuneVolume": 2283443966501621.0,
+   "toSecuredVolume": 78233823482651.0,
+   "toTradeVolume": 2461993199555469.0,
+   "totalVolume": 9704481782920976.0
+  },
+  "2026-09-22": {
+   "fromSecuredVolume": 39980344809368.0,
+   "fromTradeVolume": 1306763488987217.0,
+   "toAssetVolume": 730740395502235.0,
+   "toRuneVolume": 705749589976988.0,
+   "toSecuredVolume": 44839248658929.0,
+   "toTradeVolume": 1282785760503045.0,
+   "totalVolume": 4110858828437782.0
+  },
+  "2026-09-23": {
+   "fromSecuredVolume": 23300950795203.0,
+   "fromTradeVolume": 984882064962487.0,
+   "toAssetVolume": 637470521588223.0,
+   "toRuneVolume": 643987646446155.0,
+   "toSecuredVolume": 26664871562315.0,
+   "toTradeVolume": 1060895628585098.0,
+   "totalVolume": 3377201683939481.0
+  },
+  "2026-09-24": {
+   "fromSecuredVolume": 19830246833077.0,
+   "fromTradeVolume": 2029663676633206.0,
+   "toAssetVolume": 1864014125077125.0,
+   "toRuneVolume": 1858573757409353.0,
+   "toSecuredVolume": 21089206899420.0,
+   "toTradeVolume": 1931470171114822.0,
+   "totalVolume": 7724641183967003.0
+  },
+  "2026-09-25": {
+   "fromSecuredVolume": 219509833270047.0,
+   "fromTradeVolume": 9049064755287656.0,
+   "toAssetVolume": 7273674801938047.0,
+   "toRuneVolume": 7264164649535611.0,
+   "toSecuredVolume": 218698276475340.0,
+   "toTradeVolume": 8999525854954471.0,
+   "totalVolume": 3.3024638171461172e+16
+  },
+  "2026-09-26": {
+   "fromSecuredVolume": 95885096421503.0,
+   "fromTradeVolume": 1.8203655820766256e+16,
+   "toAssetVolume": 1.4557008190539372e+16,
+   "toRuneVolume": 1.4651607354935996e+16,
+   "toSecuredVolume": 88516286040498.0,
+   "toTradeVolume": 1.7964159866531028e+16,
+   "totalVolume": 6.556083261523466e+16
+  },
+  "2026-09-27": {
+   "fromSecuredVolume": 1523131148515.0,
+   "fromTradeVolume": 7018481974798101.0,
+   "toAssetVolume": 4839424928164929.0,
+   "toRuneVolume": 4883868937354471.0,
+   "toSecuredVolume": 1503629255540.0,
+   "toTradeVolume": 7050459486844800.0,
+   "totalVolume": 2.3795262087566356e+16
+  },
+  "2026-09-28": {
+   "fromSecuredVolume": 632352940439.0,
+   "fromTradeVolume": 8683786807701261.0,
+   "toAssetVolume": 7428380772394726.0,
+   "toRuneVolume": 7431626245453868.0,
+   "toSecuredVolume": 615924420501.0,
+   "toTradeVolume": 8653914411409770.0,
+   "totalVolume": 3.2198956514320564e+16
+  },
+  "2026-09-29": {
+   "fromSecuredVolume": 229199548720.0,
+   "fromTradeVolume": 8747374397899109.0,
+   "toAssetVolume": 8148696559159575.0,
+   "toRuneVolume": 8165412642279011.0,
+   "toSecuredVolume": 312038321051.0,
+   "toTradeVolume": 8859168415910171.0,
+   "totalVolume": 3.3921193253117636e+16
+  },
+  "2026-09-30": {
+   "fromSecuredVolume": 2594659171175.0,
+   "fromTradeVolume": 1463919365595411.0,
+   "toAssetVolume": 1027141085466317.0,
+   "toRuneVolume": 1044616633301318.0,
+   "toSecuredVolume": 872159888184.0,
+   "toTradeVolume": 1336074856048476.0,
+   "totalVolume": 4875218759470881.0
+  },
+  "2026-10-01": {
+   "fromSecuredVolume": 3657906592843.0,
+   "fromTradeVolume": 1096803321795348.0,
+   "toAssetVolume": 902204847841503.0,
+   "toRuneVolume": 905702329122268.0,
+   "toSecuredVolume": 3326551801011.0,
+   "toTradeVolume": 1185347489991431.0,
+   "totalVolume": 4097042447144404.0
+  },
+  "2026-10-02": {
+   "fromSecuredVolume": 500353247179.0,
+   "fromTradeVolume": 661980323680984.0,
+   "toAssetVolume": 500590317377521.0,
+   "toRuneVolume": 488255764596277.0,
+   "toSecuredVolume": 528653697475.0,
+   "toTradeVolume": 738630494915604.0,
+   "totalVolume": 2390485907515040.0
+  },
+  "2026-10-03": {
+   "fromSecuredVolume": 449530669532.0,
+   "fromTradeVolume": 700249631262532.0,
+   "toAssetVolume": 684309636433317.0,
+   "toRuneVolume": 670359499201475.0,
+   "toSecuredVolume": 726069900358.0,
+   "toTradeVolume": 702379860115227.0,
+   "totalVolume": 2758474227582441.0
+  },
+  "2026-10-04": {
+   "fromSecuredVolume": 295224463775.0,
+   "fromTradeVolume": 923313016467133.0,
+   "toAssetVolume": 529453915855420.0,
+   "toRuneVolume": 539942554983165.0,
+   "toSecuredVolume": 161463712962.0,
+   "toTradeVolume": 814247083231119.0,
+   "totalVolume": 2807413258713574.0
+  },
+  "2026-10-05": {
+   "fromSecuredVolume": 490856240296.0,
+   "fromTradeVolume": 694869967498035.0,
+   "toAssetVolume": 555866518930814.0,
+   "toRuneVolume": 554113152559795.0,
+   "toSecuredVolume": 402929013741.0,
+   "toTradeVolume": 718567126559562.0,
+   "totalVolume": 2524310550802243.0
+  },
+  "2026-10-06": {
+   "fromSecuredVolume": 772086435414.0,
+   "fromTradeVolume": 683102577885066.0,
+   "toAssetVolume": 709717141912910.0,
+   "toRuneVolume": 703457162998047.0,
+   "toSecuredVolume": 776121618785.0,
+   "toTradeVolume": 751108914404821.0,
+   "totalVolume": 2848934005255043.0
+  },
+  "2026-10-07": {
+   "fromSecuredVolume": 199306194471.0,
+   "fromTradeVolume": 1234540751216763.0,
+   "toAssetVolume": 1295975551872277.0,
+   "toRuneVolume": 1297200969660395.0,
+   "toSecuredVolume": 574068212417.0,
+   "toTradeVolume": 1286289998620603.0,
+   "totalVolume": 5114780645776926.0
+  },
+  "2026-10-08": {
+   "fromSecuredVolume": 1399803116344.0,
+   "fromTradeVolume": 1639230151528425.0,
+   "toAssetVolume": 1590569928535462.0,
+   "toRuneVolume": 1593609575218407.0,
+   "toSecuredVolume": 1371812919348.0,
+   "toTradeVolume": 1734394355975538.0,
+   "totalVolume": 6560575627293524.0
+  },
+  "2026-10-09": {
+   "fromSecuredVolume": 3521436867620.0,
+   "fromTradeVolume": 2239121234430086.0,
+   "toAssetVolume": 2155603660360611.0,
+   "toRuneVolume": 2156904506201673.0,
+   "toSecuredVolume": 3187195955712.0,
+   "toTradeVolume": 2172279820747751.0,
+   "totalVolume": 8730617854563453.0
+  },
+  "2026-10-10": {
+   "fromSecuredVolume": 2969444611643.0,
+   "fromTradeVolume": 2113312534225079.0,
+   "toAssetVolume": 2180323764247958.0,
+   "toRuneVolume": 2184160274683179.0,
+   "toSecuredVolume": 2991506629980.0,
+   "toTradeVolume": 2176637069633053.0,
+   "totalVolume": 8660394594030892.0
+  },
+  "2026-10-11": {
+   "fromSecuredVolume": 978703737505.0,
+   "fromTradeVolume": 2353226778333190.0,
+   "toAssetVolume": 2493963560737463.0,
+   "toRuneVolume": 2497478290613522.0,
+   "toSecuredVolume": 2046892497011.0,
+   "toTradeVolume": 2347230914454047.0,
+   "totalVolume": 9694925140372738.0
+  },
+  "2026-10-12": {
+   "fromSecuredVolume": 5723523147157.0,
+   "fromTradeVolume": 2884167506415459.0,
+   "toAssetVolume": 3136643209729725.0,
+   "toRuneVolume": 3145663651923345.0,
+   "toSecuredVolume": 5547101656600.0,
+   "toTradeVolume": 2989680923440476.0,
+   "totalVolume": 1.2167425916312762e+16
+  },
+  "2026-10-13": {
+   "fromSecuredVolume": 7443416330071.0,
+   "fromTradeVolume": 3051952169876906.0,
+   "toAssetVolume": 2930087186656210.0,
+   "toRuneVolume": 2930871391885173.0,
+   "toSecuredVolume": 7525166248277.0,
+   "toTradeVolume": 3077463600962530.0,
+   "totalVolume": 1.2005342931959168e+16
+  },
+  "2026-10-14": {
+   "fromSecuredVolume": 1867829500174.0,
+   "fromTradeVolume": 1113155030089660.0,
+   "toAssetVolume": 1120993481502356.0,
+   "toRuneVolume": 1096031843719849.0,
+   "toSecuredVolume": 1561900341621.0,
+   "toTradeVolume": 1117601911877465.0,
+   "totalVolume": 4451211997031125.0
+  },
+  "2026-10-15": {
+   "fromSecuredVolume": 8085468599242.0,
+   "fromTradeVolume": 2865995447622274.0,
+   "toAssetVolume": 2601693516394714.0,
+   "toRuneVolume": 2602498069194028.0,
+   "toSecuredVolume": 8136048751267.0,
+   "toTradeVolume": 2870101077166712.0,
+   "totalVolume": 1.0956509627728236e+16
+  },
+  "2026-10-16": {
+   "fromSecuredVolume": 677284762476.0,
+   "fromTradeVolume": 933816636666030.0,
+   "toAssetVolume": 993618103011090.0,
+   "toRuneVolume": 988203630839754.0,
+   "toSecuredVolume": 1154162270862.0,
+   "toTradeVolume": 923908787006942.0,
+   "totalVolume": 3841378604557154.0
+  },
+  "2026-10-17": {
+   "fromSecuredVolume": 4286986514190.0,
+   "fromTradeVolume": 2149358283612583.0,
+   "toAssetVolume": 2067622092774994.0,
+   "toRuneVolume": 2072519312829957.0,
+   "toSecuredVolume": 4219418657092.0,
+   "toTradeVolume": 2171189503195520.0,
+   "totalVolume": 8469195597584336.0
+  },
+  "2026-10-18": {
+   "fromSecuredVolume": 1463482651710.0,
+   "fromTradeVolume": 1941504162261259.0,
+   "toAssetVolume": 1485545903234419.0,
+   "toRuneVolume": 1583907682323881.0,
+   "toSecuredVolume": 1435987939034.0,
+   "toTradeVolume": 1963373796773360.0,
+   "totalVolume": 6977231015183663.0
+  },
+  "2026-10-19": {
+   "fromSecuredVolume": 1120850098506.0,
+   "fromTradeVolume": 1435174321604717.0,
+   "toAssetVolume": 1406092753357296.0,
+   "toRuneVolume": 1326086795286438.0,
+   "toSecuredVolume": 1088401476371.0,
+   "toTradeVolume": 1405989645915724.0,
+   "totalVolume": 5575552767739052.0
+  },
+  "2026-10-20": {
+   "fromSecuredVolume": 684056233629.0,
+   "fromTradeVolume": 1883263782307887.0,
+   "toAssetVolume": 1781660914250434.0,
+   "toRuneVolume": 1785820207427681.0,
+   "toSecuredVolume": 689591329729.0,
+   "toTradeVolume": 1820216449004046.0,
+   "totalVolume": 7272335000553406.0
+  },
+  "2026-10-21": {
+   "fromSecuredVolume": 1432994404290.0,
+   "fromTradeVolume": 2538978213491445.0,
+   "toAssetVolume": 2706433314003721.0,
+   "toRuneVolume": 2726158498982106.0,
+   "toSecuredVolume": 1075172365251.0,
+   "toTradeVolume": 2550424448787010.0,
+   "totalVolume": 1.0524502642033824e+16
+  },
+  "2026-10-22": {
+   "fromSecuredVolume": 1547330745872.0,
+   "fromTradeVolume": 1811530490472079.0,
+   "toAssetVolume": 1074446630605489.0,
+   "toRuneVolume": 1075941882375177.0,
+   "toSecuredVolume": 1478207200004.0,
+   "toTradeVolume": 1898078591365937.0,
+   "totalVolume": 5863023132764558.0
+  },
+  "2026-10-23": {
+   "fromSecuredVolume": 17496038668101.0,
+   "fromTradeVolume": 1566564704754111.0,
+   "toAssetVolume": 1555992464254934.0,
+   "toRuneVolume": 1552943052002214.0,
+   "toSecuredVolume": 23077679120058.0,
+   "toTradeVolume": 1617775090819675.0,
+   "totalVolume": 6333849029619093.0
+  },
+  "2026-10-24": {
+   "fromSecuredVolume": 11674335999124.0,
+   "fromTradeVolume": 1362965272660802.0,
+   "toAssetVolume": 1329203881470752.0,
+   "toRuneVolume": 1321465304341857.0,
+   "toSecuredVolume": 19886485758187.0,
+   "toTradeVolume": 1350586913858490.0,
+   "totalVolume": 5395782194089212.0
+  },
+  "2026-10-25": {
+   "fromSecuredVolume": 11519489331814.0,
+   "fromTradeVolume": 1706490817072304.0,
+   "toAssetVolume": 1688617835852540.0,
+   "toRuneVolume": 1687460253951058.0,
+   "toSecuredVolume": 14276104313139.0,
+   "toTradeVolume": 1716570932163030.0,
+   "totalVolume": 6824935432683885.0
+  },
+  "2026-10-26": {
+   "fromSecuredVolume": 9068406384146.0,
+   "fromTradeVolume": 1979075623704518.0,
+   "toAssetVolume": 2046028796459785.0,
+   "toRuneVolume": 2017394429506018.0,
+   "toSecuredVolume": 13860333867013.0,
+   "toTradeVolume": 1953303038325955.0,
+   "totalVolume": 8018730628247435.0
+  },
+  "2026-10-27": {
+   "fromSecuredVolume": 7394635328886.0,
+   "fromTradeVolume": 1548789753852229.0,
+   "toAssetVolume": 1644442293727011.0,
+   "toRuneVolume": 1644400399328442.0,
+   "toSecuredVolume": 10920901387810.0,
+   "toTradeVolume": 1567907981511889.0,
+   "totalVolume": 6423855965136267.0
+  },
+  "2026-10-28": {
+   "fromSecuredVolume": 9315986055175.0,
+   "fromTradeVolume": 1631341987395308.0,
+   "toAssetVolume": 1650921353505946.0,
+   "toRuneVolume": 1636505536236848.0,
+   "toSecuredVolume": 13088842102205.0,
+   "toTradeVolume": 1650052069630034.0,
+   "totalVolume": 6591225774925516.0
+  },
+  "2026-10-29": {
+   "fromSecuredVolume": 27270116522045.0,
+   "fromTradeVolume": 1308319555443321.0,
+   "toAssetVolume": 838877450412231.0,
+   "toRuneVolume": 825140477966484.0,
+   "toSecuredVolume": 37408144434148.0,
+   "toTradeVolume": 1231827624095227.0,
+   "totalVolume": 4268843368873456.0
+  },
+  "2026-10-30": {
+   "fromSecuredVolume": 187794036445342.0,
+   "fromTradeVolume": 3823762477105330.0,
+   "toAssetVolume": 8024904741560934.0,
+   "toRuneVolume": 8024479184041888.0,
+   "toSecuredVolume": 221934180776331.0,
+   "toTradeVolume": 3768007438267676.0,
+   "totalVolume": 2.40508820581975e+16
+  },
+  "2026-10-31": {
+   "fromSecuredVolume": 127972903093907.0,
+   "fromTradeVolume": 2396393761018332.0,
+   "toAssetVolume": 1.1389874392690684e+16,
+   "toRuneVolume": 1.1395170654271352e+16,
+   "toSecuredVolume": 135314759291198.0,
+   "toTradeVolume": 2303616249040034.0,
+   "totalVolume": 2.7748342719405508e+16
+  },
+  "2026-11-01": {
+   "fromSecuredVolume": 3876220242244.0,
+   "fromTradeVolume": 52030197173518.0,
+   "toAssetVolume": 15140611819608.0,
+   "toRuneVolume": 10841648242624.0,
+   "toSecuredVolume": 2728548128992.0,
+   "toTradeVolume": 70797811441313.0,
+   "totalVolume": 155415037048299.0
+  },
+  "2026-11-02": {
+   "fromSecuredVolume": 2658672635958.0,
+   "fromTradeVolume": 157682424934142.0,
+   "toAssetVolume": 47007059444068.0,
+   "toRuneVolume": 22621153196898.0,
+   "toSecuredVolume": 5022224575979.0,
+   "toTradeVolume": 135139055730026.0,
+   "totalVolume": 370130590517071.0
+  },
+  "2026-11-03": {
+   "fromSecuredVolume": 46660649987330.0,
+   "fromTradeVolume": 3686933287529851.0,
+   "toAssetVolume": 2865740199533552.0,
+   "toRuneVolume": 2856739779969427.0,
+   "toSecuredVolume": 45370419791835.0,
+   "toTradeVolume": 3799193823024943.0,
+   "totalVolume": 1.3300638159836938e+16
+  },
+  "2026-11-04": {
+   "fromSecuredVolume": 92951053966791.0,
+   "fromTradeVolume": 9648865230177682.0,
+   "toAssetVolume": 7656046667417475.0,
+   "toRuneVolume": 7643413652016603.0,
+   "toSecuredVolume": 89706074824620.0,
+   "toTradeVolume": 9715986430147188.0,
+   "totalVolume": 3.484696910855036e+16
+  },
+  "2026-11-05": {
+   "fromSecuredVolume": 174996913542899.0,
+   "fromTradeVolume": 6401038794301480.0,
+   "toAssetVolume": 8041624985869285.0,
+   "toRuneVolume": 8020839605319563.0,
+   "toSecuredVolume": 185362010910083.0,
+   "toTradeVolume": 6405672263971237.0,
+   "totalVolume": 2.9229534573914548e+16
+  },
+  "2026-11-06": {
+   "fromSecuredVolume": 423495631593072.0,
+   "fromTradeVolume": 1.0978381849256664e+16,
+   "toAssetVolume": 1.4042449006763912e+16,
+   "toRuneVolume": 1.4067217182552966e+16,
+   "toSecuredVolume": 405916267341597.0,
+   "toTradeVolume": 1.1014378143423246e+16,
+   "totalVolume": 5.093183808093146e+16
+  },
+  "2026-11-07": {
+   "fromSecuredVolume": 544755945947433.0,
+   "fromTradeVolume": 7986518028509723.0,
+   "toAssetVolume": 9956966058746140.0,
+   "toRuneVolume": 1.0025512468903948e+16,
+   "toSecuredVolume": 436210103040823.0,
+   "toTradeVolume": 7994673818983561.0,
+   "totalVolume": 3.6944636424131624e+16
+  },
+  "2026-11-08": {
+   "fromSecuredVolume": 308348664511497.0,
+   "fromTradeVolume": 7577949785089214.0,
+   "toAssetVolume": 7798358975144413.0,
+   "toRuneVolume": 7763102696461838.0,
+   "toSecuredVolume": 325185665002083.0,
+   "toTradeVolume": 7589995159075725.0,
+   "totalVolume": 3.136294094528477e+16
+  },
+  "2026-11-09": {
+   "fromSecuredVolume": 493181235395501.0,
+   "fromTradeVolume": 1.0428786416376304e+16,
+   "toAssetVolume": 1.222183960658686e+16,
+   "toRuneVolume": 1.2103929533544954e+16,
+   "toSecuredVolume": 622740053526545.0,
+   "toTradeVolume": 1.0385764356726408e+16,
+   "totalVolume": 4.625624120215658e+16
+  },
+  "2026-11-10": {
+   "fromSecuredVolume": 325635339266428.0,
+   "fromTradeVolume": 1.15301899083546e+16,
+   "toAssetVolume": 1.1542931419245252e+16,
+   "toRuneVolume": 1.1481687438130422e+16,
+   "toSecuredVolume": 388506636903945.0,
+   "toTradeVolume": 1.1479352811441068e+16,
+   "totalVolume": 4.674830355334171e+16
+  },
+  "2026-11-11": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 0.0,
+   "toAssetVolume": 0.0,
+   "toRuneVolume": 0.0,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 0.0,
+   "totalVolume": 0.0
+  }
+ },
+ "source": "https://gateway.liquify.com/chain/thorchain_midgard/v2/history/swaps?interval=day&count=400"
+}
