@@ -18,8 +18,17 @@
     "wide_share": 0.10463774920383624
    },
    {
+    "id": "measured",
+    "label": "One side of each swap, every factor measured from the venue's own records (Intents from intents.near events)",
+    "leader": "NEAR Intents",
+    "runner_up_share": 0.31841343442324493,
+    "share": 0.5380817434124994,
+    "subject_factor": 0.43367890086069,
+    "wide_share": 0.09203576761802709
+   },
+   {
     "id": "worst",
-    "label": "Intents halved, rivals left as reported (inconsistent with the rivals' own leg data)",
+    "label": "Intents halved, rivals left as reported (refuted: rivals' indexers and intents.near events both show two-sided counting)",
     "leader": "THORChain",
     "runner_up_share": 0.4199578879807587,
     "share": 0.40933471529741683,
@@ -510,6 +519,18 @@
    "unit": "share",
    "value": 0.015267834152400295,
    "verdict": "SUPPORTED"
+  },
+  {
+   "claim": "The reported Intents volume counts both sides of each swap, like the rivals' figures: on every day rebuilt from intents.near events it sits inside the both-sides interval and outside the one-side interval.",
+   "display": {
+    "threshold": "2 of 2",
+    "value": "2 of 2 days"
+   },
+   "id": "C13",
+   "threshold": 2,
+   "unit": "count",
+   "value": 2,
+   "verdict": "SUPPORTED"
   }
  ],
  "co_movement": {
@@ -537,6 +558,40 @@
   "source": "https://gateway.liquify.com/chain/thorchain_midgard/v2/history/swaps?interval=day&count=400",
   "zero_days_in_both": 38,
   "zero_days_in_one_only": 0
+ },
+ "events": {
+  "both_sides": true,
+  "days": [
+   {
+    "both": 115042327.74385773,
+    "both_p05": 83559907.50403021,
+    "both_p95": 155393040.89159277,
+    "both_ratio": 0.8445586015151468,
+    "day": "2026-08-20",
+    "one": 57521163.87192886,
+    "one_ratio": 0.4222793007575734,
+    "reported": 136215921.0,
+    "reported_in_both_interval": true,
+    "reported_in_one_interval": false,
+    "sampled": 4000,
+    "transactions": 93116
+   },
+   {
+    "both": 118587921.06937723,
+    "both_p05": 88346913.81562048,
+    "both_p95": 154579680.97327882,
+    "both_ratio": 0.8901570019276132,
+    "day": "2026-08-27",
+    "one": 59293960.534688614,
+    "one_ratio": 0.4450785009638066,
+    "reported": 133221354.0,
+    "reported_in_both_interval": true,
+    "reported_in_one_interval": false,
+    "sampled": 4000,
+    "transactions": 83785
+   }
+  ],
+  "one_ratio_mean": 0.43367890086069
  },
  "fee_table": [
   {

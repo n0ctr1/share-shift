@@ -41,6 +41,14 @@
    "path": "raw/fees_thorchain-dex.json",
    "sha256": "72af56b357a4c2405e6f8060fd5e7c3f870b9917416fa3210bd89c9b1c7ff955"
   },
+  "intents_events_2026-08-20": {
+   "path": "raw/intents_events_2026-08-20.json",
+   "sha256": "b366817baf6c03e0f20e5e703e673dcc24d380b65951d3955329cd8202449d78"
+  },
+  "intents_events_2026-08-27": {
+   "path": "raw/intents_events_2026-08-27.json",
+   "sha256": "c907733f2e50fec548abfa326267f239b40d97b6c177e119bf087bcd5d429a26"
+  },
   "legs_chainflip-amm": {
    "path": "raw/legs_chainflip-amm.json",
    "sha256": "1215924ef81efe232c70e0661d169af322321318339035ca4b723c751852e79d"

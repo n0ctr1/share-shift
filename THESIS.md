@@ -4,7 +4,7 @@
 
 ## In three lines
 
-1. **It is the largest swap venue, at a normal price.** Over the 90 days to 2026-11-10, NEAR Intents settled $12.10B of the $20.83B that the four venues moved, a 58% share; THORChain was second with 30%. One year earlier its share was 40%. Counting one side of each swap for every venue gives 57%. Only one reading puts Intents behind: halving Intents while leaving rivals as reported (41%, THORChain first). That reading is inconsistent with the rivals' own indexers, which count both halves of almost every swap.
+1. **It is the largest swap venue, at a normal price.** Over the 90 days to 2026-11-10, NEAR Intents settled $12.10B of the $20.83B that the four venues moved, a 58% share; THORChain was second with 30%. One year earlier its share was 40%. Counting one side of each swap for every venue gives 57%. Only one reading puts Intents behind: halving Intents while leaving rivals as reported (41%, THORChain first). The data refutes it twice: the rivals' own indexers count both halves of almost every routed swap, and intents.near's events show the Intents figure does too.
 2. **The token sees little of it so far, but more each quarter.** Of $18.76M in gross Intents fees over the window, $5.08M (27%) reached NEAR's revenue wallets; the rest stayed with solvers and the third-party front ends that distribute Intents. Over consecutive 90-day windows the share reaching NEAR was 8%, 12%, 20%, 27% (oldest first, the last ending 2026-11-10).
 3. **The one real test is not conclusive.** THORChain was halted for 37 days after an exploit. Intents grew +38% over those days and kept the higher level afterwards, equal to 45% of the flow THORChain lost. But growth of that size was ordinary for Intents over the year before (52nd percentile), so the halt shows Intents could absorb the flow, not that the halt caused the gain.
 
@@ -12,7 +12,7 @@
 
 The long-term case for NEAR rests on NEAR Intents being a business with a durable position, not only a volume number. A durable position should be visible against competitors: a leading share, kept when it is tested, at a price rivals cannot undercut, with the fees reaching the token. This repository tests those things against the three other venues that swap native assets across chains: THORChain, Chainflip, Maya Protocol.
 
-**Result: 12 claims tested: 7 supported, 5 refuted.** The competitive position is supported by the data; the value reaching the token is not.
+**Result: 13 claims tested: 8 supported, 5 refuted.** The competitive position is supported by the data; the value reaching the token is not.
 
 ## Definitions
 
@@ -42,6 +42,7 @@ Thresholds are in `pipeline/config.py`. A verdict is one number compared with on
 | C10 | No single distribution channel carries more than 33% of 1Click swap volume. | 37.8% | 33.0% | **REFUTED** |
 | C11 | Intents is also the largest venue when the four big bridges are added to the peer set. | rank 3 of 8 | rank 1 | **REFUTED** |
 | C12 | The captured-revenue figure used here matches the transfers into NEAR's three revenue wallets within 5%. | 1.5% apart | within 5% | **SUPPORTED** |
+| C13 | The reported Intents volume counts both sides of each swap, like the rivals' figures: on every day rebuilt from intents.near events it sits inside the both-sides interval and outside the one-side interval. | 2 of 2 days | 2 of 2 | **SUPPORTED** |
 
 ## Evidence for
 
@@ -112,13 +113,16 @@ This cuts against the obvious story. If shared routers had moved the halted riva
 
 ### How volume is counted
 
-Venues do not count volume the same way. THORChain: 100% of its reported volume is matched pairs of legs into and out of its own token, so counting each swap once leaves 50%; Chainflip: its reported volume equals input value plus the routed USDC leg (99.6% of the indexer's two-leg sum), so counting each swap once leaves 57%; Maya Protocol: 99% of its reported volume is matched pairs of legs into and out of its own token, so counting each swap once leaves 50% (from each venue's own indexer). For NEAR Intents, DefiLlama reads it from NEAR's own Dune table dune.near.dataset_near_intents_metrics (column volume_amount_usd). Two public re-computations from intents.near events disagree on what that figure counts: one finds public swaps counted once are 46% of it (92% counting both sides), the other finds it within about 1% of public net volume before confidential intents launched. This analysis cannot settle which is right, so it reports every share both ways. The bridges in the wider set are taken as one-sided, as their adapters report deposits.
+Venues do not count volume the same way. THORChain: 100% of its reported volume is matched pairs of legs into and out of its own token, so counting each swap once leaves 50%; Chainflip: its reported volume equals input value plus the routed USDC leg (99.6% of the indexer's two-leg sum), so counting each swap once leaves 57%; Maya Protocol: 99% of its reported volume is matched pairs of legs into and out of its own token, so counting each swap once leaves 50% (from each venue's own indexer). For NEAR Intents, DefiLlama reads it from NEAR's own Dune table dune.near.dataset_near_intents_metrics (column volume_amount_usd). Two public re-computations from intents.near events disagree on what that figure counts: one finds public swaps counted once are 46% of it (92% counting both sides), the other finds it within about 1% of public net volume before confidential intents launched. This analysis cannot settle which is right, so this analysis rebuilt it itself (below). The bridges in the wider set are taken as one-sided, as their adapters report deposits.
+
+Rebuilt from intents.near itself: every transaction touching the contract on 2026-08-20 and 2026-08-27 was listed (93,116 and 83,785), a seeded random sample of 4,000 and 4,000 was read, and every DIP-4 token_diff event was valued at that day's price. The days are before confidential intents launched, so almost all flow is public. 2026-08-20: $115.04M both sides (90% interval $83.56M to $155.39M) against $136.22M reported; 2026-08-27: $118.59M both sides (90% interval $88.35M to $154.58M) against $133.22M reported. Counting one side would give only 43% of the reported figure. The reported figure counts both sides, like THORChain's, Maya's and Chainflip's, so comparing reported volumes compares like with like.
 
 | Counting basis | Intents share, four venues | Largest | Intents share, all eight |
 | --- | --- | --- | --- |
 | As reported by every venue | 58.1% | NEAR Intents | 17.8% |
 | One side of each swap for every venue (Intents halved, routed pairs counted once) | 57.3% | NEAR Intents | 10.5% |
-| Intents halved, rivals left as reported (inconsistent with the rivals' own leg data) | 40.9% | THORChain | 9.8% |
+| One side of each swap, every factor measured from the venue's own records (Intents from intents.near events) | 53.8% | NEAR Intents | 9.2% |
+| Intents halved, rivals left as reported (refuted: rivals' indexers and intents.near events both show two-sided counting) | 40.9% | THORChain | 9.8% |
 | Intents as reported, rivals' routed pairs counted once | 72.9% | NEAR Intents | 18.9% |
 
 ### All eight venues

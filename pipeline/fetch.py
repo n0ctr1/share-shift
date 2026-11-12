@@ -145,6 +145,9 @@ def fetch_all(log=print):
         path = os.path.join(RAW_DIR, name + ".json")
         if os.path.exists(path):
             files[name] = path
+    for fname in sorted(os.listdir(RAW_DIR)):
+        if fname.startswith(("intents_events_", "tee_run")) and fname.endswith(".json"):
+            files[fname[:-5]] = os.path.join(RAW_DIR, fname)
 
     manifest = {
         "fetched_at": fetched_at,

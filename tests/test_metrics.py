@@ -196,6 +196,28 @@ class Onchain(unittest.TestCase):
         self.assertAlmostEqual(oc["buyback_share"], 0.4)
 
 
+class Events(unittest.TestCase):
+    def test_two_sided_reported_figure_is_recognised(self):
+        vols = {p["slug"]: [100.0] * 10 for p in config.PEERS}
+        raw, dates = make_raw(10, vols)
+        raw["intents_events_x"] = {"day": dates[3], "transactions_in_day": 1000, "sampled": 100,
+                                   "both_sides_usd": 95.0, "both_sides_usd_p05": 80.0,
+                                   "both_sides_usd_p95": 115.0, "one_side_usd": 47.5}
+        table = metrics.build_table(raw, "2030-01-01T00:00:00Z")
+        ev = metrics.events_check(raw, table, config.SUBJECT)
+        self.assertTrue(ev["both_sides"])
+        self.assertAlmostEqual(ev["one_ratio_mean"], 0.475)
+
+    def test_one_sided_reported_figure_is_not_called_two_sided(self):
+        vols = {p["slug"]: [100.0] * 10 for p in config.PEERS}
+        raw, dates = make_raw(10, vols)
+        raw["intents_events_x"] = {"day": dates[3], "transactions_in_day": 1000, "sampled": 100,
+                                   "both_sides_usd": 200.0, "both_sides_usd_p05": 170.0,
+                                   "both_sides_usd_p95": 230.0, "one_side_usd": 100.0}
+        table = metrics.build_table(raw, "2030-01-01T00:00:00Z")
+        self.assertFalse(metrics.events_check(raw, table, config.SUBJECT)["both_sides"])
+
+
 class Table(unittest.TestCase):
     def test_fetch_day_is_excluded(self):
         vols = {p["slug"]: [10.0] * 10 for p in config.PEERS}

@@ -365,6 +365,54 @@ def onchain_check(raw, table, subject, window):
     }
 
 
+def shares_measured(basis, table, subject, names, window, subject_factor, wide_volumes):
+    """Every venue scaled by the one-side factor measured from its own records."""
+    slugs = [p["slug"] for p in config.PEERS]
+    first, last_ = window
+    vol = {s: sum(v for d, v in zip(table["dates"], table[s]["volume"]) if first <= d <= last_)
+           for s in slugs}
+    factor = {s: basis["venues"].get(s, {}).get("once_factor", 1.0) for s in slugs}
+    factor[subject] = subject_factor
+    adj = {s: vol[s] * factor[s] for s in slugs}
+    total = sum(adj.values())
+    out = {"id": "measured", "label": "One side of each swap, every factor measured from the venue's "
+                                      "own records (Intents from intents.near events)",
+           "share": adj[subject] / total, "leader": names[max(adj, key=adj.get)],
+           "runner_up_share": max(v for s, v in adj.items() if s != subject) / total,
+           "subject_factor": subject_factor}
+    if wide_volumes:
+        out["wide_share"] = adj[subject] / (total + wide_volumes)
+    return out
+
+
+def events_check(raw, table, subject):
+    """Days on which Intents volume was rebuilt from intents.near token_diff events."""
+    idx = {d: i for i, d in enumerate(table["dates"])}
+    days = []
+    for name in sorted(k for k in raw if k.startswith("intents_events_")):
+        e = raw[name]
+        day = e["day"]
+        if day not in idx:
+            continue
+        reported = table[subject]["volume"][idx[day]]
+        days.append({
+            "day": day, "reported": reported, "transactions": e["transactions_in_day"],
+            "sampled": e["sampled"], "both": e["both_sides_usd"],
+            "both_p05": e["both_sides_usd_p05"], "both_p95": e["both_sides_usd_p95"],
+            "one": e["one_side_usd"],
+            "both_ratio": e["both_sides_usd"] / reported if reported else None,
+            "one_ratio": e["one_side_usd"] / reported if reported else None,
+            "reported_in_both_interval": e["both_sides_usd_p05"] <= reported <= e["both_sides_usd_p95"],
+            "reported_in_one_interval": e["both_sides_usd_p05"] / 2 <= reported <= e["both_sides_usd_p95"] / 2,
+        })
+    if not days:
+        return None
+    return {"days": days,
+            "one_ratio_mean": sum(d["one_ratio"] for d in days) / len(days),
+            "both_sides": all(d["reported_in_both_interval"] and not d["reported_in_one_interval"]
+                              for d in days)}
+
+
 def wide_report(raw, table, subject, names, last, w, yoy_prior_end):
     """The subject's place among all eight venues, bridges included."""
     dates = table["dates"]
@@ -800,6 +848,15 @@ def _compute(raw, fetched_at):
         c1_ok = share[subject] > t["leader_share"] and share[subject] == max(share.values())
         c1_text = ("NEAR Intents is the largest venue in the peer set, with more than "
                    "%d%% of volume." % round(100 * t["leader_share"]))
+    events = events_check(raw, table, subject)
+    if basis and events:
+        measured = shares_measured(basis, table, subject, names, [start_date, end_date],
+                                   events["one_ratio_mean"], bridge_volume or None)
+        basis["scenarios"].insert(2, measured)
+        for x in basis["scenarios"]:
+            if x["id"] == "worst":
+                x["label"] = ("Intents halved, rivals left as reported (refuted: rivals' indexers "
+                              "and intents.near events both show two-sided counting)")
     if basis and halt and halt["absorbed_fraction"] is not None:
         f_rival = basis["venues"].get(halt["rival_slug"], {}).get("once_factor", 1.0)
         halt["absorbed_by_basis"] = {
@@ -898,6 +955,21 @@ def _compute(raw, fetched_at):
             "verdict": _verdict(wide["subject_rank_volume"] == 1),
         })
 
+    if events:
+        claims.append({
+            "id": "C13",
+            "claim": "The reported Intents volume counts both sides of each swap, like the "
+                     "rivals' figures: on every day rebuilt from intents.near events it sits "
+                     "inside the both-sides interval and outside the one-side interval.",
+            "value": sum(1 for d in events["days"] if d["reported_in_both_interval"]
+                         and not d["reported_in_one_interval"]),
+            "unit": "count", "threshold": len(events["days"]),
+            "display": {"value": "%d of %d days" % (
+                sum(1 for d in events["days"] if d["reported_in_both_interval"]
+                    and not d["reported_in_one_interval"]), len(events["days"])),
+                "threshold": "%d of %d" % (len(events["days"]), len(events["days"]))},
+            "verdict": _verdict(events["both_sides"]),
+        })
     oc = onchain_check(raw, table, subject, [start_date, end_date])
     if oc and oc["ratio"]:
         claims.append({
@@ -966,6 +1038,7 @@ def _compute(raw, fetched_at):
         "capture_trend": capture_trend,
         "channels": channels,
         "basis": basis,
+        "events": events,
         "onchain": oc,
         "wide": wide,
         "crosscheck": crosscheck(raw, table, config.MIDGARD_SLUG),

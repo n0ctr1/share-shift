@@ -278,19 +278,37 @@ def findings(m):
             "disagree on what that figure counts: one finds public swaps counted once are "
             "46%% of it (92%% counting both sides), the other finds it within about 1%% of "
             "public net volume before confidential intents launched. This analysis cannot "
-            "settle which is right, so it reports every share both ways. The bridges in the "
-            "wider set are taken as one-sided, as their adapters report deposits."
+            "settle which is right, so this analysis rebuilt it itself (below). The bridges in "
+            "the wider set are taken as one-sided, as their adapters report deposits."
             % (legs, config.SUBJECT_VOLUME_SOURCE)
         )
         out["basis_short"] = (
             "Counting one side of each swap for every venue gives %s. Only one reading puts "
             "Intents behind: halving Intents while leaving rivals as reported (%s, %s first). "
-            "That reading is inconsistent with the rivals' own indexers, which count both "
-            "halves of almost every swap."
+            "The data refutes it twice: the rivals' own indexers count both halves of almost "
+            "every routed swap, and intents.near's events show the Intents figure does too."
             % (pct(sc["one_side"]["share"]), pct(sc["worst"]["share"]), sc["worst"]["leader"])
             if sc["worst"]["leader"] != names[s] else
             "Counting one side of each swap for every venue gives %s; even halving Intents "
             "alone gives %s, still first." % (pct(sc["one_side"]["share"]), pct(sc["worst"]["share"]))
+        )
+    ev = m.get("events")
+    if ev:
+        parts = ["%s: %s both sides (90%% interval %s to %s) against %s reported"
+                 % (d["day"], usd(d["both"]), usd(d["both_p05"]), usd(d["both_p95"]), usd(d["reported"]))
+                 for d in ev["days"]]
+        out["events"] = (
+            "Rebuilt from intents.near itself: every transaction touching the contract on %s "
+            "was listed (%s), a seeded random sample of %s was read, and every DIP-4 "
+            "token_diff event was valued at that day's price. The days are before "
+            "confidential intents launched, so almost all flow is public. %s. Counting one "
+            "side would give only %s of the reported figure. The reported figure counts both "
+            "sides, like THORChain's, Maya's and Chainflip's, so comparing reported volumes "
+            "compares like with like."
+            % (" and ".join(d["day"] for d in ev["days"]),
+               " and ".join("{:,}".format(d["transactions"]) for d in ev["days"]),
+               " and ".join("{:,}".format(d["sampled"]) for d in ev["days"]),
+               "; ".join(parts), pct(ev["one_ratio_mean"]))
         )
     if h:
         p365 = next((x for x in h["placebo"] if x["lookback_days"] == 365), None)
@@ -556,6 +574,9 @@ def thesis_markdown(m, text):
         add("")
         add(text["basis"])
         add("")
+        if "events" in text:
+            add(text["events"])
+            add("")
         add("| Counting basis | Intents share, four venues | Largest | Intents share, all eight |")
         add("| --- | --- | --- | --- |")
         for x in m["basis"]["scenarios"]:
