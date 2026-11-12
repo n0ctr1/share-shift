@@ -364,8 +364,10 @@ def findings(m):
         "could also be Intents' own trend.",
         "%d other weeks are flagged because a venue's volume fell below 20%% of its own prior "
         "eight-week median, with no explanation found. They stay in the data." % len(gaps),
-        "Thresholds were set after a first look at the data. The dated predictions are the "
-        "part fixed in advance.",
+        "Claim thresholds were set after a first look at the data and are not "
+        "pre-registered. The dated predictions are sealed: their SHA-256 is in "
+        "predictions/predictions.json.sha256, timestamped on Bitcoin through OpenTimestamps "
+        "and tagged predictions-v1 in git, and the build refuses to run if they change.",
         "NEAR's market cap prices the whole L1, so the valuation line compares Intents "
         "revenue with rival multiples and is not a price target.",
         "Volume, fees and revenue come from DefiLlama adapters. Only THORChain's volume was "
@@ -568,6 +570,12 @@ def thesis_markdown(m, text):
     add("")
     add("The thesis gets stronger if the dated predictions below hold, and weaker if they "
         "miss. Re-running `python3 build.py` after each date grades them automatically.")
+    add("")
+    add("The predictions are sealed. `predictions/predictions.json` holds them as written; its "
+        "SHA-256 is `%s`. That hash is timestamped on Bitcoin through OpenTimestamps "
+        "(`predictions/predictions.json.ots`) and the commit is tagged `predictions-v1`. "
+        "`python3 build.py` stops if `pipeline/config.py` no longer matches the sealed file."
+        % m["meta"].get("predictions_sha256", "n/a"))
     add("")
     add("| # | Due | Prediction | Now | Status |")
     add("| --- | --- | --- | --- | --- |")

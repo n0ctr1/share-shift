@@ -686,6 +686,7 @@
     "slug": "maya-protocol"
    }
   ],
+  "predictions_sha256": "5415cf8f10704e6bfd688cd453143339258f0907ded84c0e87ddc61faeb46389",
   "subject": "near-intents",
   "subject_methodology": {
    "Fees": "Gross fees charged on NEAR Intents swaps - the protocol fee plus the affiliate (distribution) fee each frontend collects, summed across all integrators.",

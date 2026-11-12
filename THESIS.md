@@ -149,6 +149,8 @@ The headline uses 90 days. The same figures over other windows, all ending 2026-
 
 The thesis gets stronger if the dated predictions below hold, and weaker if they miss. Re-running `python3 build.py` after each date grades them automatically.
 
+The predictions are sealed. `predictions/predictions.json` holds them as written; its SHA-256 is `5415cf8f10704e6bfd688cd453143339258f0907ded84c0e87ddc61faeb46389`. That hash is timestamped on Bitcoin through OpenTimestamps (`predictions/predictions.json.ots`) and the commit is tagged `predictions-v1`. `python3 build.py` stops if `pipeline/config.py` no longer matches the sealed file.
+
 | # | Due | Prediction | Now | Status |
 | --- | --- | --- | --- | --- |
 | P1 | 2027-02-28 | NEAR Intents still holds at least 50% of peer-set volume over the trailing 90 days. | 58.1% | PENDING |
@@ -162,7 +164,7 @@ It would be refuted outright by: trailing share below 40%, a take rate pushed be
 - The headline peer set is four venues that swap native assets. The wider set adds four bridges that mostly move the same asset between chains; which set is the right market is a judgement, so both are shown. Fee methodologies differ between venues, and Relay's fee figure is far above the rest and has not been reconciled.
 - One halt is one event. It shows what happened once when a rival stopped; it is not a law about what happens next time, and the placebo check above shows the growth could also be Intents' own trend.
 - 6 other weeks are flagged because a venue's volume fell below 20% of its own prior eight-week median, with no explanation found. They stay in the data.
-- Thresholds were set after a first look at the data. The dated predictions are the part fixed in advance.
+- Claim thresholds were set after a first look at the data and are not pre-registered. The dated predictions are sealed: their SHA-256 is in predictions/predictions.json.sha256, timestamped on Bitcoin through OpenTimestamps and tagged predictions-v1 in git, and the build refuses to run if they change.
 - NEAR's market cap prices the whole L1, so the valuation line compares Intents revenue with rival multiples and is not a price target.
 - Volume, fees and revenue come from DefiLlama adapters. Only THORChain's volume was checked against a primary source; an adapter error elsewhere is an error here.
 

@@ -11,7 +11,9 @@ import json
 import os
 import sys
 
-from pipeline import fetch, metrics, narrative
+import hashlib
+
+from pipeline import fetch, metrics, narrative, seal
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -22,7 +24,13 @@ def main(argv):
         fetch.fetch_all()
     manifest, raw = fetch.load_all()
 
+    sealed = os.path.join(ROOT, "predictions", "predictions.json")
+    if os.path.exists(sealed) and open(sealed, "rb").read() != seal.canonical():
+        sys.exit("pipeline/config.py PREDICTIONS differ from the sealed predictions/predictions.json")
+
     result = metrics.compute(raw, manifest["fetched_at"])
+    if os.path.exists(sealed):
+        result["meta"]["predictions_sha256"] = hashlib.sha256(open(sealed, "rb").read()).hexdigest()
     text = narrative.findings(result)
 
     os.makedirs(os.path.join(ROOT, "data", "derived"), exist_ok=True)

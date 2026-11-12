@@ -71,6 +71,15 @@ Step 2 uses the snapshot in `data/raw/`, whose hashes are checked against
 Step 7 is not needed to reproduce the thesis: the Explorer aggregates are
 committed. The key is free from https://partners.near-intents.org.
 
+## Checking the predictions were not edited
+
+| Step | Do | See |
+| --- | --- | --- |
+| 1 | `sha256sum predictions/predictions.json` | the hash in `predictions/predictions.json.sha256` |
+| 2 | `git show predictions-v1:predictions/predictions.json \| sha256sum` | the same hash, from the tagged commit |
+| 3 | `pip install opentimestamps-client`, then `ots upgrade predictions/predictions.json.ots` and `ots verify predictions/predictions.json.ots` | a Bitcoin block time no later than the tag date (the proof needs a few hours after sealing to confirm) |
+| 4 | `python3 -m pipeline.seal --check` | `sealed predictions match config` |
+
 ## How a number gets into the thesis
 
 ```
@@ -133,8 +142,9 @@ swap.
   `pipeline/config.py`: what the THORChain halt was, a later short suspension,
   and which distribution channels also route to rival venues (each with its
   source, in `CHANNEL_NOTES`).
-- Claim thresholds were chosen after a first look at the data. The dated
-  predictions in `THESIS.md` are the part fixed in advance.
+- Claim thresholds were chosen after a first look at the data and are not
+  pre-registered. The dated predictions are sealed: see "Checking the
+  predictions were not edited" below.
 
 ## Disclosure
 
