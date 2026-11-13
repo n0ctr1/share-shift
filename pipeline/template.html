@@ -384,6 +384,9 @@ details.appx > summary::after { content: "+"; font: 400 20px/1 var(--mono); colo
 details.appx[open] > summary::after { content: "\2212"; }
 details.appx > section { padding: 0 0 36px; border: 0; }
 nav.toc a.appx-link { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--rule); grid-template-columns: 1fr; color: var(--ink-2); }
+a.file { text-decoration-style: dotted; }
+a.file:hover { color: var(--mark); text-decoration-style: solid; }
+a.file code { color: inherit; }
 footer { padding: 28px 0 64px; font-size: 13px; color: var(--ink-3); border-top: 1px solid var(--ink); display: grid; gap: 6px 40px; }
 @media (min-width: 900px) { footer { grid-template-columns: 1fr 1fr; } }
 footer p { margin: 0; }
@@ -1326,6 +1329,51 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
   det.appendChild(table(['Venue', 'Week of', 'Volume', 'Prior 8-week median', 'Cause'],
     M.quality_flags.map(function (r) { return [r.peer, r.week, usd(r.volume), usd(r.median_prior_8w), r.cause ? 'The halt' : 'Not found']; }), [0, 0, 1, 1, 0]));
   s.appendChild(det);
+
+  // ---------- files named in the text open on GitHub, in a new tab ----------
+  (function () {
+    var REPO = 'https://github.com/n0ctr1/share-shift/';
+    var RE = /\b((?:pipeline|data|tee|predictions|tests|docs)\/[A-Za-z0-9_.\/-]*[A-Za-z0-9_]|(?:THESIS|METHODS|README)\.md|build\.py)\b/g;
+    function href(path) {
+      path = path.replace(/[.,;:]+$/, '');
+      return REPO + (/\.[a-z0-9]+$/i.test(path) ? 'blob/main/' : 'tree/main/') + path;
+    }
+    function link(path, child) {
+      var a = el('a', {href: href(path), target: '_blank', rel: 'noopener', class: 'file', title: 'Open ' + path + ' on GitHub'});
+      a.appendChild(child || document.createTextNode(path));
+      return a;
+    }
+    function skip(n) { return n.closest && n.closest('a, svg, script, style, .cmds, summary, button, .pop'); }
+    var scope = [document.querySelector('header.mast'), main, document.querySelector('footer')];
+    scope.forEach(function (root) {
+      if (!root) return;
+      // a whole <code> that is a path becomes a link
+      Array.prototype.forEach.call(root.querySelectorAll('code'), function (c) {
+        if (skip(c)) return;
+        var t = c.textContent.trim(), m = t.match(RE);
+        if (m && m[0] === t) c.parentNode.replaceChild(link(t, c.cloneNode(true)), c);
+      });
+      // paths inside running text
+      var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null), nodes = [], n;
+      while ((n = walker.nextNode())) {
+        var p = n.parentNode;
+        if (p.tagName === 'CODE' || skip(p)) continue;
+        RE.lastIndex = 0;
+        if (RE.test(n.nodeValue)) nodes.push(n);
+      }
+      nodes.forEach(function (node) {
+        var text = node.nodeValue, frag = document.createDocumentFragment(), last = 0, mm;
+        RE.lastIndex = 0;
+        while ((mm = RE.exec(text))) {
+          frag.appendChild(document.createTextNode(text.slice(last, mm.index)));
+          frag.appendChild(link(mm[1]));
+          last = mm.index + mm[0].length;
+        }
+        frag.appendChild(document.createTextNode(text.slice(last)));
+        node.parentNode.replaceChild(frag, node);
+      });
+    });
+  })();
 
   // ---------- links into the appendix open the parts they point to ----------
   function openTo(hash) {
