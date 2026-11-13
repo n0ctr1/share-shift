@@ -15,7 +15,7 @@
 | ACCUMULATE | buybacks cover at least 50% of new NEAR **and** the 30-day share is at least 50% | 13% of new NEAR; 30-day share 46% |
 | AVOID | the 90-day share falls below 40% **or** the share of fees reaching NEAR falls from one 90-day window to the next | 90-day share 58% (latest week 38%); fees reaching NEAR 27%, up from 20% |
 
-No price target: this measures the business and the token's cut of it, not a fair price. Next review: 2026-12-10, or sooner if a line above is crossed. The rule is `CALL` in `pipeline/config.py`, computed by `metrics.investment_call()`; it was written on 2026-11-12, after the data was seen, and is not sealed.
+No price target: this measures the business and the token's cut of it, not a fair price. Next review: 2026-12-10, or sooner if a line above is crossed. The rule is `CALL` in `pipeline/config.py`, computed by `metrics.investment_call()`. It was written on 2026-11-12, after the data was seen, and sealed the same day in the third seal, so the review on that date applies the rule as it stands.
 
 ## Fourteen claims, each one number against one threshold
 

@@ -1087,8 +1087,9 @@ def call_text(m, cl, tr, s):
     ]
     note = ("No price target: this measures the business and the token's cut of it, not a fair "
             "price. Next review: %s, or sooner if a line above is crossed. The rule is `CALL` in "
-            "`pipeline/config.py`, computed by `metrics.investment_call()`; it was written on "
-            "2026-11-12, after the data was seen, and is not sealed." % cl["review_on"])
+            "`pipeline/config.py`, computed by `metrics.investment_call()`. It was written on "
+            "2026-11-12, after the data was seen, and sealed the same day in the third seal, so "
+            "the review on that date applies the rule as it stands." % cl["review_on"])
     lede = ("%d claims tested against data: %d supported, %d refuted. Every number rebuilds from a "
             "committed snapshot, and the key ones are checked against the chains themselves."
             % (len(m["claims"]), supported, len(m["claims"]) - supported))
