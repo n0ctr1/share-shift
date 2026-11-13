@@ -22,7 +22,10 @@ buybacks cover half of new NEAR and the 30-day share is back above 50%, and to
 AVOID if the 90-day share falls below 40% or the share of fees reaching NEAR
 stops rising. The rule is `CALL` in `pipeline/config.py`; the build computes the
 call from the data (`metrics.investment_call()`), so a re-run can change it.
-Figures here are as of the committed snapshot (data to 2026-11-10). The rule,
+Figures here are as of the committed snapshot: the thesis is computed on data
+to 2026-11-10 (`THESIS_DATA_END` in `pipeline/config.py`, the data it was
+sealed against), and later days in the snapshot only grade the dated
+predictions. P4 and P5, due 2026-11-12, were both MET. The rule,
 the on-chain counting method and three predictions on 2026-11-13 to 2026-12-10
 are sealed (third seal), so none of them can be tuned after that window starts.
 
@@ -147,8 +150,12 @@ checking the run needs no Rust toolchain.
 | 4 | `pip install cryptography`, then `python3 -m pipeline.tdx` | thirteen `PASS` lines: the worker key was added by `register_worker_key` transaction `DXvVB74UDHSUL11KFyP59bJF5jJvz3KKKAYW1ngG4stP`; the TDX quote in it carries SHA-256 of that key, is signed by its attestation key, which is bound to Intel's Quoting Enclave, whose report is signed by a PCK certificate chaining to Intel's SGX Root CA (pinned by public-key hash); nothing is revoked, the QE and TDX module match Intel's signed identities, the TCB is `UpToDate` against Intel's current collateral, and the five measurements were on OutLayer's allowlist at that block. It also prints what OutLayer's contract had stored: June collateral for another FMSPC, past its next update |
 | 5 | Optional. `sh tee/share-check/rebuild.sh` | `IDENTICAL`: the source rebuilds to the same bytes. Needs rustup (the toolchain is pinned to 1.99.1 in `rust-toolchain.toml`) and a host C linker |
 
-The same WASM grades prediction P4 a second time, on its own two days. Once
-DefiLlama shows a complete 2026-11-12 for all four venues, the run is:
+The same WASM grades prediction P4 a second time, on its own two days. It ran
+as transaction `78h8jjw14hrGRzwaffxfvaePMo4cA9AbWzKYZNa7q82n` (2026-11-13 18:37
+UTC, after 2026-11-12 had ended and DefiLlama had all four venues for it) and
+returned a share of 44.52%: P4 is MET, and every venue's volume matches the
+build's to $0.1M. Its worker key has its own TDX quote, which `python3 -m
+pipeline.tdx` verifies too (13 of 13 checks). The run was:
 
 ```
 outlayer run --wasm "https://main.fastfs.io/noctrl.near/outlayer.near/7634f3997a76a5ff6c930374c81d33baaa3f06cbece6e8fae9ab0217e4fdaf0d.wasm" --hash 7634f3997a76a5ff6c930374c81d33baaa3f06cbece6e8fae9ab0217e4fdaf0d --compute-limit 2000000000 --input tee/share-check/input-p4.json --verbose
@@ -288,7 +295,8 @@ user address, transaction hash, single swap or daily series. The API's terms
 - Claim thresholds were chosen after a first look at the data and are not
   pre-registered. They are sealed as they stand (second seal, 2026-11-12), so a
   later change is visible, and two short predictions (P4, P5) resolve on the two
-  days after the data was seen, before the hackathon deadline. The seal's
+  days after the data was seen, before the hackathon deadline; both were MET
+  (44.5% share against 40%, 17.0 bps against 12 bps). The seal's
   Bitcoin timestamp came after the first of those days had ended, so only the
   second is a day that had not yet happened. The call's rule and P6 to P8 are
   in a third seal made before their window starts.

@@ -1,24 +1,6 @@
 {
  "note": "Volume by leg type per day, in the venue's own token units (1e8).",
  "series": {
-  "2025-10-08": {
-   "fromSecuredVolume": 75961584359494.0,
-   "fromTradeVolume": 408769430616076.0,
-   "toAssetVolume": 297939754329210.0,
-   "toRuneVolume": 299771755097707.0,
-   "toSecuredVolume": 62596983226944.0,
-   "toTradeVolume": 387868712246155.0,
-   "totalVolume": 1532908219875586.0
-  },
-  "2025-10-09": {
-   "fromSecuredVolume": 109698612946057.0,
-   "fromTradeVolume": 578859097370352.0,
-   "toAssetVolume": 411681520732031.0,
-   "toRuneVolume": 413572297895214.0,
-   "toSecuredVolume": 104553772216102.0,
-   "toTradeVolume": 571665642322116.0,
-   "totalVolume": 2190030943481872.0
-  },
   "2025-10-10": {
    "fromSecuredVolume": 309473461774000.0,
    "fromTradeVolume": 2240848456214876.0,
@@ -3593,6 +3575,24 @@
    "totalVolume": 4.674830355334171e+16
   },
   "2026-11-11": {
+   "fromSecuredVolume": 72917313754902.0,
+   "fromTradeVolume": 7497113815776051.0,
+   "toAssetVolume": 7172385268434690.0,
+   "toRuneVolume": 7133317507728985.0,
+   "toSecuredVolume": 104684561093840.0,
+   "toTradeVolume": 7526229427936350.0,
+   "totalVolume": 2.9506647894724816e+16
+  },
+  "2026-11-12": {
+   "fromSecuredVolume": 36079583502437.0,
+   "fromTradeVolume": 3454461228119180.0,
+   "toAssetVolume": 3711095279458167.0,
+   "toRuneVolume": 3667358550517742.0,
+   "toSecuredVolume": 108681019985020.0,
+   "toTradeVolume": 3478384999670028.0,
+   "totalVolume": 1.4456060661252574e+16
+  },
+  "2026-11-13": {
    "fromSecuredVolume": 0.0,
    "fromTradeVolume": 0.0,
    "toAssetVolume": 0.0,

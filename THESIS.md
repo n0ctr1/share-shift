@@ -69,8 +69,8 @@ How to rerun each one: [details](METHODS.md#how-this-can-be-checked)
 | P1 | 2027-02-28 | NEAR Intents still holds at least 50% of peer-set volume over the trailing 90 days. | 58.1% | PENDING |
 | P2 | 2027-02-28 | NEAR's captured revenue is at least 30% of gross Intents fees over the trailing 90 days. | 27.1% | PENDING |
 | P3 | 2027-05-31 | The Intents take rate has not been competed below 12 bps over the trailing 90 days. | 15.5 bps | PENDING |
-| P4 | 2026-11-12 | NEAR Intents holds at least 40% of the four swap venues' volume over 2026-11-11 and 2026-11-12, days after the data this thesis was built on. | n/a | PENDING |
-| P5 | 2026-11-12 | The Intents take rate stays at or above 12 bps over 2026-11-11 and 2026-11-12. | n/a | PENDING |
+| P4 | 2026-11-12 | NEAR Intents holds at least 40% of the four swap venues' volume over 2026-11-11 and 2026-11-12, days after the data this thesis was built on. | 44.5% | MET |
+| P5 | 2026-11-12 | The Intents take rate stays at or above 12 bps over 2026-11-11 and 2026-11-12. | 17.0 bps | MET |
 | P6 | 2026-12-10 | NEAR Intents keeps at least 40% of the four swap venues' volume over 2026-11-13 to 2026-12-10 (the thesis's kill line). | n/a | PENDING |
 | P7 | 2026-12-10 | NEAR Intents is still the largest of the four swap venues over 2026-11-13 to 2026-12-10 (its share minus the largest rival's is above zero). | n/a | PENDING |
 | P8 | 2026-12-10 | Intents volume rebuilt from intents.near events with the sealed BigQuery method stays within 0.90 to 1.20 times the reported volume over 2026-11-13 to 2026-12-10, so the headline keeps an on-chain check. | n/a | PENDING |

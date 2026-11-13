@@ -1312,7 +1312,7 @@
  "call": {
   "buyback_offset": 0.12605764127510188,
   "call": "WATCH",
-  "capture": 0.2706981404409915,
+  "capture": 0.2705573295456302,
   "capture_falling": false,
   "capture_prior": 0.19588534147988806,
   "position_lost": false,
@@ -1347,7 +1347,7 @@
    "to": "2026-08-12"
   },
   {
-   "capture": 0.2706981404409915,
+   "capture": 0.2705573295456302,
    "from": "2026-08-13",
    "to": "2026-11-10"
   }
@@ -1599,7 +1599,7 @@
    "id": "C4",
    "threshold": 13.006602761109704,
    "unit": "bps",
-   "value": 15.500541663271859,
+   "value": 15.50002931581885,
    "verdict": "SUPPORTED"
   },
   {
@@ -1607,7 +1607,7 @@
    "id": "C5",
    "threshold": 0.5,
    "unit": "share",
-   "value": 0.2706981404409915,
+   "value": 0.2705573295456302,
    "verdict": "REFUTED"
   },
   {
@@ -1675,7 +1675,7 @@
    "id": "C12",
    "threshold": 0.05,
    "unit": "share",
-   "value": 0.015267834152400295,
+   "value": 0.01472276584352783,
    "verdict": "SUPPORTED"
   },
   {
@@ -1716,11 +1716,11 @@
   }
  ],
  "crosscheck": {
-  "days": 399,
-  "own_api_total": 15697236030.02,
-  "pearson_r": 0.9991702025938626,
-  "provider_total": 15723579300.0,
-  "ratio": 1.0016782107327442,
+  "days": 397,
+  "own_api_total": 15654205620.28,
+  "pearson_r": 0.999169864564131,
+  "provider_total": 15680203217.0,
+  "ratio": 1.0016607419980685,
   "source": "https://gateway.liquify.com/chain/thorchain_midgard/v2/history/swaps?interval=day&count=400",
   "zero_days_in_both": 38,
   "zero_days_in_one_only": 0
@@ -1891,7 +1891,7 @@
   },
   {
    "days_reported": 90,
-   "fees_window": 18757458.0,
+   "fees_window": 18756838.0,
    "in_peer_set": true,
    "name": "NEAR Intents"
   },
@@ -2023,9 +2023,9 @@
   "what": "THORChain halted trading after a $10.7M vault exploit and resumed on 2026-06-23"
  },
  "implied_value": {
-  "fraction_of_subject_mcap": 0.09597358850718617,
-  "implied_value": 452724203.5339738,
-  "rival_median_mcap_to_revenue": 21.984880192414394
+  "fraction_of_subject_mcap": 0.09195930776603763,
+  "implied_value": 422146652.26985186,
+  "rival_median_mcap_to_revenue": 20.51134140344645
  },
  "market_test": {
   "bridge_diversion_adjusted": 0.44537617981555666,
@@ -2188,9 +2188,9 @@
   "swap_diversion_adjusted": 0.6326249030515163
  },
  "meta": {
-  "fetched_at": "2026-11-11T23:58:12Z",
+  "fetched_at": "2026-11-13T18:38:40Z",
   "first_day": "2024-12-10",
-  "graded_through": "2026-11-10",
+  "graded_through": "2026-11-12",
   "last_day": "2026-11-10",
   "min_month_volume": 50000000.0,
   "near_anchor": {
@@ -3021,7 +3021,7 @@
    "total_volume": 6841867293.0
   },
   {
-   "capture": 0.22980617935359757,
+   "capture": 0.22857034274103846,
    "chainflip-amm": {
     "fees": 1090832.0,
     "revenue": 202836.0,
@@ -3036,8 +3036,8 @@
    },
    "month": "2026-11",
    "near-intents": {
-    "fees": 2158284.0,
-    "revenue": 495987.0,
+    "fees": 2157664.0,
+    "revenue": 493178.0,
     "volume": 1313099238.0
    },
    "share": {
@@ -3064,8 +3064,8 @@
    "buybacks.multisignature.near": 3425586.9390711184,
    "fefundsadmin.sputnik-dao.near": 1573502.989640045
   },
-  "provider_usd": 5077609.0,
-  "ratio": 0.9847321658475997,
+  "provider_usd": 5074800.0,
+  "ratio": 0.9852772341564722,
   "source": "https://api.nearblocks.io/v1/account/{wallet}/txns and /ft-txns",
   "window": [
    "2026-08-13",
@@ -3085,7 +3085,7 @@
    "value": 0.5
   },
   {
-   "current": 0.2706981404409915,
+   "current": 0.2705573295456302,
    "due": "2027-02-28",
    "id": "P2",
    "metric": "capture_trailing",
@@ -3096,7 +3096,7 @@
    "value": 0.3
   },
   {
-   "current": 15.500541663271859,
+   "current": 15.50002931581885,
    "due": "2027-05-31",
    "id": "P3",
    "metric": "take_rate_trailing_bps",
@@ -3107,25 +3107,97 @@
    "value": 12.0
   },
   {
-   "current": null,
+   "current": 0.44516727001159573,
    "due": "2026-11-12",
    "id": "P4",
    "metric": "share_window",
    "op": ">=",
    "seal": "v2",
-   "status": "PENDING",
+   "status": "MET",
+   "tee": {
+    "after_due_day": true,
+    "agrees_with_build": true,
+    "block_height": 224401951,
+    "checks_pass": true,
+    "days": [
+     "2026-11-11",
+     "2026-11-12"
+    ],
+    "explorer": "https://nearblocks.io/txns/78h8jjw14hrGRzwaffxfvaePMo4cA9AbWzKYZNa7q82n",
+    "request_tx": "78h8jjw14hrGRzwaffxfvaePMo4cA9AbWzKYZNa7q82n",
+    "right_days": true,
+    "run_time_utc": "2026-11-13 18:37",
+    "share": 0.4452,
+    "status": "MET",
+    "tdx": {
+     "all_pass": true,
+     "checks_passed": 13,
+     "checks_total": 13,
+     "explorer": "https://nearblocks.io/txns/DWzr5HRC1PiaAtPJTWhpnpaZENHDb52xrG9xJbvmbmJ7",
+     "fmspc": "b0c06f000000",
+     "intel_collateral_issued": "2026-11-13T18:17:43Z",
+     "measurements": {
+      "mrtd": "7fe60787222bd394cb516abca2435f22f035ab2cc9c0a4b4b3b148e46297f3d931a237b72f359052c6e657d8c1409173",
+      "rtmr0": "573aadb4d478839c803c4b1d3e03dd748976b63a89622f377e32a54dd60546e88ec2097f595ceafc324f48a0d0d31db6",
+      "rtmr1": "e7b3ffa0e72b50557d85f7ecd8dc98a4ffc3dd6f82d01f122ef522d61361abeac310d70d2877e56be9c9408d9bcc320c",
+      "rtmr2": "764489f277a8540189761e72b4238ba36d4d647e11bd958d8ab5522af2a4867b0ff63e06b0c4967f1857236244040a5d",
+      "rtmr3": "47c899e772738f3ab2bcd82aa00893b12cb298266c578c1aaca2a789c9e84222561dfb857563de35eed94d89689d34a0"
+     },
+     "onchain_collateral": {
+      "current": false,
+      "fmspc_matches": false,
+      "issued": "2026-06-07T06:11:19Z",
+      "next_update": "2026-07-07T06:11:19Z"
+     },
+     "registration_time": "2026-11-11T11:10:55Z",
+     "registration_tx": "DWzr5HRC1PiaAtPJTWhpnpaZENHDb52xrG9xJbvmbmJ7",
+     "runs": [
+      "p4"
+     ],
+     "tcb_date": "2025-08-13T00:00:00Z",
+     "tcb_status": "UpToDate"
+    },
+    "valid": true,
+    "venues": [
+     {
+      "agrees": true,
+      "build_musd": 90.7,
+      "slug": "chainflip-amm",
+      "tee_musd": 90.7
+     },
+     {
+      "agrees": true,
+      "build_musd": 7.8,
+      "slug": "maya-protocol",
+      "tee_musd": 7.8
+     },
+     {
+      "agrees": true,
+      "build_musd": 289.6,
+      "slug": "near-intents",
+      "tee_musd": 289.6
+     },
+     {
+      "agrees": true,
+      "build_musd": 262.3,
+      "slug": "thorchain-dex",
+      "tee_musd": 262.3
+     }
+    ],
+    "volumes_agree": true
+   },
    "text": "NEAR Intents holds at least 40% of the four swap venues' volume over 2026-11-11 and 2026-11-12, days after the data this thesis was built on.",
    "value": 0.4,
    "window_days": 2
   },
   {
-   "current": null,
+   "current": 16.969947937221537,
    "due": "2026-11-12",
    "id": "P5",
    "metric": "take_rate_window_bps",
    "op": ">=",
    "seal": "v2",
-   "status": "PENDING",
+   "status": "MET",
    "text": "The Intents take rate stays at or above 12 bps over 2026-11-11 and 2026-11-12.",
    "value": 12.0,
    "window_days": 2
@@ -3271,32 +3343,32 @@
  },
  "sensitivity": [
   {
-   "capture": 0.3049208611079143,
+   "capture": 0.30448128458167106,
    "days": 30,
    "leader": "NEAR Intents",
    "share": 0.46416847363395664,
-   "take_bps": 15.862722159944173
+   "take_bps": 15.861072228586268
   },
   {
-   "capture": 0.2706981404409915,
+   "capture": 0.2705573295456302,
    "days": 90,
    "leader": "NEAR Intents",
    "share": 0.5808907009163305,
-   "take_bps": 15.500541663271859
+   "take_bps": 15.50002931581885
   },
   {
-   "capture": 0.24661611199785755,
+   "capture": 0.24652008896841668,
    "days": 180,
    "leader": "NEAR Intents",
    "share": 0.6254197635992069,
-   "take_bps": 14.813073232571812
+   "take_bps": 14.812741217015985
   },
   {
-   "capture": 0.1732176756990327,
+   "capture": 0.17316766972425782,
    "days": 365,
    "leader": "NEAR Intents",
    "share": 0.6064993022089917,
-   "take_bps": 16.41594501984004
+   "take_bps": 16.415756632100997
   }
  ],
  "stability": {
@@ -3359,7 +3431,7 @@
    "checks_total": 13,
    "explorer": "https://nearblocks.io/txns/DXvVB74UDHSUL11KFyP59bJF5jJvz3KKKAYW1ngG4stP",
    "fmspc": "b0c06f000000",
-   "intel_collateral_issued": "2026-11-12T16:33:55Z",
+   "intel_collateral_issued": "2026-11-13T18:17:43Z",
    "measurements": {
     "mrtd": "7fe60787222bd394cb516abca2435f22f035ab2cc9c0a4b4b3b148e46297f3d931a237b72f359052c6e657d8c1409173",
     "rtmr0": "573aadb4d478839c803c4b1d3e03dd748976b63a89622f377e32a54dd60546e88ec2097f595ceafc324f48a0d0d31db6",
@@ -3461,18 +3533,18 @@
   "window_days": 90
  },
  "trailing": {
-  "capture": 0.2706981404409915,
+  "capture": 0.2705573295456302,
   "fees": {
    "chainflip-amm": 6096350.0,
    "maya-protocol": 727919.0,
-   "near-intents": 18757458.0,
+   "near-intents": 18756838.0,
    "thorchain-dex": 8073989.0
   },
   "market_volume": 20832082352.0,
   "revenue": {
    "chainflip-amm": 1120356.0,
    "maya-protocol": 72792.25,
-   "near-intents": 5077609.0,
+   "near-intents": 5074800.0,
    "thorchain-dex": 2186377.73
   },
   "rival_take_median_bps": 13.006602761109704,
@@ -3485,7 +3557,7 @@
   "take_bps": {
    "chainflip-amm": 31.357786749958617,
    "maya-protocol": 12.567984065324076,
-   "near-intents": 15.500541663271859,
+   "near-intents": 15.50002931581885,
    "thorchain-dex": 13.006602761109704
   },
   "volume": {
@@ -3498,9 +3570,9 @@
  "valuation": {
   "chainflip-amm": {
    "fees_annualized": 24724086.11111111,
-   "market_cap": 33926461.81436653,
-   "mcap_to_fees": 1.3722028657358474,
-   "mcap_to_revenue": 7.46675961973581,
+   "market_cap": 36452062.80044097,
+   "mcap_to_fees": 1.4743543052157246,
+   "mcap_to_revenue": 8.022610552897367,
    "revenue_annualized": 4543666.0
   },
   "maya-protocol": {
@@ -3511,17 +3583,17 @@
    "revenue_annualized": 295213.0138888889
   },
   "near-intents": {
-   "fees_annualized": 76071913.0,
-   "market_cap": 4717174907.970388,
-   "mcap_to_fees": 62.00941611617402,
-   "mcap_to_revenue": 229.07219094728592,
-   "revenue_annualized": 20592525.388888888
+   "fees_annualized": 76069398.55555555,
+   "market_cap": 4590581013.766166,
+   "mcap_to_fees": 60.347276315239164,
+   "mcap_to_revenue": 223.0480187566363,
+   "revenue_annualized": 20581133.333333332
   },
   "thorchain-dex": {
    "fees_annualized": 32744510.944444444,
-   "market_cap": 194939412.71150804,
-   "mcap_to_fees": 5.953346288855848,
-   "mcap_to_revenue": 21.984880192414394,
+   "market_cap": 181873579.11974028,
+   "mcap_to_fees": 5.554322659706653,
+   "mcap_to_revenue": 20.51134140344645,
    "revenue_annualized": 8866976.349444443
   }
  },
@@ -7066,7 +7138,7 @@
     "volume": 29713566.0
    },
    "near-intents": {
-    "fees": 1448259.0,
+    "fees": 1448260.0,
     "revenue": 347966.0,
     "volume": 912182473.0
    },
@@ -7079,7 +7151,7 @@
    "take_bps": {
     "chainflip-amm": 30.682176059307796,
     "maya-protocol": 8.84612772495903,
-    "near-intents": 15.87685625264146,
+    "near-intents": 15.87686721536032,
     "thorchain-dex": 12.094798344306723
    },
    "thorchain-dex": {
@@ -7125,12 +7197,12 @@
     "volume": 20642381249.0
    },
    {
-    "fees": 18757458.0,
+    "fees": 18756838.0,
     "kind": "swap",
     "name": "NEAR Intents",
     "share": 0.1776959194931343,
     "slug": "near-intents",
-    "take_bps": 15.500541663271859,
+    "take_bps": 15.50002931581885,
     "volume": 12101162919.0
    },
    {

@@ -1127,7 +1127,10 @@ def tee_prediction_text(p):
             "transaction %s at %s UTC, after the due day ended, returned a share of %s, so %s. "
             "%s"
             % (p["id"], tp["request_tx"], tp["run_time_utc"], pct(tp["share"], 2), tp["status"],
-               "Its volume for each venue matches this build's to $0.1M, and so does the verdict."
+               ("Its volume for each venue matches this build's to $0.1M, and so does the verdict."
+                + (" The enclave's TDX quote is verified to Intel's root as well (%d of %d checks, TCB %s)."
+                   % (tp["tdx"]["checks_passed"], tp["tdx"]["checks_total"], tp["tdx"]["tcb_status"])
+                   if tp.get("tdx") else ""))
                if tp["agrees_with_build"] else
                "It does not match this build (%s), so the build's grade and the TEE's are both "
                "shown." % ", ".join("%s %.1f against %s" % (v["slug"], v["tee_musd"], v["build_musd"])

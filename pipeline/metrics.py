@@ -597,7 +597,7 @@ def tdx_summary(raw, public_key):
     if not rec or not public_key:
         return None
     for w in rec["workers"]:
-        if any(r["request_tx"] for r in w["runs"]) and w["checks"]:
+        if w.get("worker_public_key", public_key) == public_key and w["checks"]:
             fresh, onchain = w["collateral_intel_now"], w["collateral_onchain"]
             return {
                 "registration_tx": w["registration_tx"], "registration_time": w["registration_time"],
@@ -667,6 +667,7 @@ def tee_prediction_check(raw, table, p):
                        "build_musd": round(build, 1) if build is not None else None,
                        "agrees": build is not None and abs(build - musd) <= max(0.15, 0.01 * build)})
     run_time = int(run["block_time_ns"]) / 1e9
+    tdx = tdx_summary(raw, (run.get("worker") or {}).get("public_key"))
     share = out["share_reported"]
     return {
         "request_tx": run["request_tx"], "explorer": run.get("explorer"),
@@ -677,6 +678,7 @@ def tee_prediction_check(raw, table, p):
         "checks_pass": all((run.get("checks") or {}).values()),
         "venues": venues, "volumes_agree": all(v["agrees"] for v in venues),
         "share": share, "status": "MET" if share >= p["value"] else "MISSED",
+        "tdx": tdx,
     }
 
 

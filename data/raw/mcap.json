@@ -1,9 +1,9 @@
 {
  "source": "https://api.coingecko.com/api/v3/simple/price?ids=near,thorchain,chainflip,cacao&vs_currencies=usd&include_market_cap=true",
  "usd_market_cap": {
-  "chainflip-amm": 33926461.81436653,
+  "chainflip-amm": 36452062.80044097,
   "maya-protocol": 12301013.273172792,
-  "near-intents": 4717174907.970388,
-  "thorchain-dex": 194939412.71150804
+  "near-intents": 4590581013.766166,
+  "thorchain-dex": 181873579.11974028
  }
 }

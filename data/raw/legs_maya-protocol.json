@@ -1,24 +1,6 @@
 {
  "note": "Volume by leg type per day, in the venue's own token units (1e8).",
  "series": {
-  "2025-10-08": {
-   "fromSecuredVolume": 0.0,
-   "fromTradeVolume": 2.4337149553518344e+16,
-   "toAssetVolume": 4436012530964802.0,
-   "toRuneVolume": 3300432085669093.0,
-   "toSecuredVolume": 0.0,
-   "toTradeVolume": 2.434705860052091e+16,
-   "totalVolume": 5.67768400174591e+16
-  },
-  "2025-10-09": {
-   "fromSecuredVolume": 0.0,
-   "fromTradeVolume": 3.1869386752107784e+16,
-   "toAssetVolume": 6538175281498484.0,
-   "toRuneVolume": 942819276222133.0,
-   "toSecuredVolume": 0.0,
-   "toTradeVolume": 3.187670474183618e+16,
-   "totalVolume": 7.23670634134929e+16
-  },
   "2025-10-10": {
    "fromSecuredVolume": 0.0,
    "fromTradeVolume": 5.212503303144332e+16,
@@ -3594,12 +3576,30 @@
   },
   "2026-11-11": {
    "fromSecuredVolume": 0.0,
-   "fromTradeVolume": 1.4040369826609002e+17,
-   "toAssetVolume": 7.47754955904736e+16,
-   "toRuneVolume": 7.563980198018946e+16,
+   "fromTradeVolume": 1.4053206790904027e+17,
+   "toAssetVolume": 7.477780415124835e+16,
+   "toRuneVolume": 7.564212673304139e+16,
    "toSecuredVolume": 0.0,
-   "toTradeVolume": 1.3988076283496085e+17,
-   "totalVolume": 4.306997586717139e+17
+   "toTradeVolume": 1.400091227918732e+17,
+   "totalVolume": 4.309611215852032e+17
+  },
+  "2026-11-12": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 1.1465504123580515e+17,
+   "toAssetVolume": 6.0921844989273784e+16,
+   "toRuneVolume": 6.2077380204344904e+16,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 1.145700191373254e+17,
+   "totalVolume": 3.5222428556674925e+17
+  },
+  "2026-11-13": {
+   "fromSecuredVolume": 0.0,
+   "fromTradeVolume": 7.283063611846902e+16,
+   "toAssetVolume": 2.635204543876685e+16,
+   "toRuneVolume": 2.511245585576466e+16,
+   "toSecuredVolume": 0.0,
+   "toTradeVolume": 7.313392917638613e+16,
+   "totalVolume": 1.9742906658938666e+17
   }
  },
  "source": "https://midgard.mayachain.info/v2/history/swaps?interval=day&count=400"
