@@ -64,7 +64,10 @@ def main(argv):
         template = fh.read()
     payload = json.dumps({"metrics": result, "text": text}).replace("</", "<\\/")
     with open(os.path.join(ROOT, "docs", "index.html"), "w") as fh:
-        fh.write(template.replace("__DATA__", payload))
+        import html as _html
+        desc = _html.escape(text["title"], quote=True)
+        page = template.replace("__DESC__", desc).replace("__NOSCRIPT__", narrative.noscript_html(result, text))
+        fh.write(page.replace("__DATA__", payload))
 
     print("data   %s to %s (fetched %s%s)" % (
         result["meta"]["first_day"], result["meta"]["last_day"],

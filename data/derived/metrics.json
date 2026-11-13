@@ -1214,6 +1214,14 @@
     "within_10pct": 50,
     "within_20pct": 69
    },
+   "onchain_over_reported_last_14": 1.0725907827462267,
+   "routed_share_by_month": {
+    "2026-08": 0.1307326834266646,
+    "2026-09": 0.2727926220099219,
+    "2026-10": 0.3961793140647,
+    "2026-11": 0.8850371043311457
+   },
+   "routed_share_last_7": 0.9645678060383778,
    "rule": "token_diff (both sides) plus transfers between 1Click routers and other non-solver accounts (both directions); a router is a receiver with at least 500 distinct senders that day",
    "total_over_reported": 1.0635665895717792
   },
@@ -3340,6 +3348,70 @@
    "thorchain-dex": 0.32475821336467536
   },
   "days": 30
+ },
+ "scenarios": {
+  "buyback_part_of_captured": 0.6922335378330386,
+  "horizon": "twelve months after 2026-11-10",
+  "market_volume_year_now": 84485667316.44444,
+  "new_near_per_year": 32463769.0090367,
+  "now": {
+   "capture": 0.2705573295456302,
+   "coverage": 0.12605764127510188,
+   "fees_year": 76069398.55555555,
+   "share": 0.5808907009163305,
+   "take_bps": 15.50002931581885
+  },
+  "price_usd": 3.5006004128034895,
+  "rows": [
+   {
+    "assumptions": {
+     "capture": 0.25,
+     "market_growth": -0.3,
+     "share": 0.4,
+     "story": "THORChain recovers, the lead falls to the kill line, fees are competed down",
+     "take_bps": 12.0
+    },
+    "bought_back_near": 1403370.7538210715,
+    "capture_for_half": 2.891588780142824,
+    "captured_usd": 7096796.054581334,
+    "coverage": 0.043228830066848536,
+    "fees": 28387184.218325336,
+    "intents_volume": 23655986848.604446,
+    "name": "bear"
+   },
+   {
+    "assumptions": {
+     "capture": 0.35,
+     "market_growth": 0.0,
+     "share": 0.5,
+     "story": "the market holds, Intents keeps half, capture keeps its recent climb",
+     "take_bps": 14.0
+    },
+    "bought_back_near": 4093164.6986447913,
+    "capture_for_half": 1.3879626144685557,
+    "captured_usd": 20698988.492528886,
+    "coverage": 0.1260840876949749,
+    "fees": 59139967.12151111,
+    "intents_volume": 42242833658.22222,
+    "name": "base"
+   },
+   {
+    "assumptions": {
+     "capture": 0.5,
+     "market_growth": 0.5,
+     "share": 0.6,
+     "story": "the market grows, the lead holds at today's level, half of fees reach NEAR",
+     "take_bps": 15.5
+    },
+    "bought_back_near": 11652989.295121396,
+    "capture_for_half": 0.6964686954322502,
+    "captured_usd": 58928752.953219995,
+    "coverage": 0.358953678233653,
+    "fees": 117857505.90643999,
+    "intents_volume": 76037100584.79999,
+    "name": "bull"
+   }
+  ]
  },
  "sensitivity": [
   {

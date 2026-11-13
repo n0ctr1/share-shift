@@ -615,6 +615,49 @@ def tdx_summary(raw, public_key):
     return None
 
 
+def scenarios(out, raw):
+    """Bear, base and bull for the next twelve months, from config.SCENARIOS.
+
+    Each scenario sets the market's growth, Intents' share, take rate and the
+    share of fees reaching NEAR. The rest is the current window: its market
+    volume annualised, the part of captured revenue spent on buybacks, NEAR's
+    net issuance rate and price. Output: Intents revenue to NEAR, NEAR bought
+    back, and buyback coverage of new NEAR, plus the capture that coverage of
+    50% would need in that scenario.
+    """
+    tk = out.get("token")
+    sc = getattr(config, "SCENARIOS", None)
+    if not tk or not sc:
+        return None
+    tr = out["trailing"]
+    days = out["meta"]["window_days"]
+    market_year = tr["market_volume"] * 365.0 / days
+    supply = tk["supply_points"][-1]["total_supply_near"] if tk.get("supply_points") else None
+    mcap = (raw.get("mcap") or {}).get("usd_market_cap", {}).get(config.SUBJECT)
+    if not supply or not mcap:
+        return None
+    price = mcap / supply
+    buyback_part = tk["bought_back_near"] / tk["captured_near"] if tk.get("captured_near") else None
+    new_near = tk["annual_issuance_rate"] * supply
+    rows = []
+    for name in ("bear", "base", "bull"):
+        a = sc[name]
+        vol = market_year * (1 + a["market_growth"]) * a["share"]
+        fees = vol * a["take_bps"] / 1e4
+        captured = fees * a["capture"]
+        bought = captured * buyback_part / price
+        cov = bought / new_near if new_near else None
+        rows.append({"name": name, "assumptions": a, "intents_volume": vol, "fees": fees,
+                     "captured_usd": captured, "bought_back_near": bought, "coverage": cov,
+                     "capture_for_half": (0.5 * new_near * price / buyback_part / fees) if fees and buyback_part else None})
+    now_fees = tr["fees"][config.SUBJECT] * 365.0 / days
+    return {"rows": rows, "price_usd": price, "new_near_per_year": new_near,
+            "market_volume_year_now": market_year, "buyback_part_of_captured": buyback_part,
+            "now": {"share": tr["share"][config.SUBJECT], "take_bps": tr["take_bps"][config.SUBJECT],
+                    "capture": tr["capture"], "coverage": tk["offset_buyback"], "fees_year": now_fees},
+            "horizon": "twelve months after %s" % out["meta"]["last_day"]}
+
+
 def investment_call(out):
     """ACCUMULATE, WATCH or AVOID for NEAR, from the computed numbers and config.CALL."""
     c = config.CALL
@@ -804,6 +847,13 @@ def bq_check(raw, table, subject):
             "before_method_change": osum(valid),
             "by_month": {k: osum(v) for k, v in sorted(months_.items())},
             "first_routed_day": next((d["day"] for d in days if d["routed_usd"] > 0), None),
+            # How much of the on-chain volume is visible only where it enters and
+            # leaves a router, with the fill itself off the public contract.
+            "routed_share_by_month": {k: sum(x["routed_usd"] for x in v) / sum(x["onchain_usd"] for x in v)
+                                      for k, v in sorted(months_.items())
+                                      if sum(x["onchain_usd"] for x in v)},
+            "routed_share_last_7": sum(x["routed_usd"] for x in days[-7:]) / sum(x["onchain_usd"] for x in days[-7:]),
+            "onchain_over_reported_last_14": sum(x["onchain_usd"] for x in days[-14:]) / sum(x["reported"] for x in days[-14:]),
             "total_over_reported": sum(d["onchain_usd"] for d in days) / rep_total,
             "bytes_billed": raw["bq_intents_flows"].get("bytes_billed"),
         }
@@ -1045,6 +1095,7 @@ def _verdict(ok):
 def compute(raw, fetched_at):
     out = _compute(raw, fetched_at)
     out["call"] = investment_call(out)
+    out["scenarios"] = scenarios(out, raw)
     return out
 
 

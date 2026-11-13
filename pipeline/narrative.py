@@ -424,6 +424,46 @@ def findings(m):
                 "gives %s, still first. C1 is graded on the lowest of these readings."
                 % (pct(sc_["onchain"]["share"]), pct(sc_["reported"]["share"]),
                    pct(sc_["onchain_low"]["share"])))
+    if oc and oc.get("routed_share_by_month"):
+        rs = oc["routed_share_by_month"]
+        mon = lambda k: datetime.date.fromisoformat(k + "-01").strftime("%B")
+        out["confidential"] = (
+            "Since NEAR launched Confidential Intents, swaps can execute on a private shard that has "
+            "no public RPC or explorer, linked to mainnet by a TEE-based bridge. The public chain then "
+            "sees money enter and leave, not the fill. The data shows that shift: the share of "
+            "on-chain Intents volume that appears only as transfers into and out of 1Click routers, "
+            "with no public fill behind it, was %s. Over the last 7 days it was %s. So the rebuild "
+            "here verifies how much value crossed intents.near, not who filled it or at what price."
+            % (", ".join("%s in %s" % (pct(v), mon(k)) for k, v in rs.items()),
+               pct(oc["routed_share_last_7"])))
+        out["confidential"] += (" The rise fits settlement moving to the private shard, but public data "
+                                "cannot tell a private fill from a router matching orders off chain by "
+                                "itself; either way the fill is not public.")
+        out["confidential_effect"] = (
+            "What it does to the numbers. Volume: the public rebuild stays at %.2f of the reported "
+            "figure over the last 14 days, so the reported series does not count flow the public "
+            "chain cannot see. Swaps that start and end inside the private shard are in neither; "
+            "they are Intents volume, so leaving them out can only make the %s share too low, not "
+            "too high. Capture: the revenue figure matches the transfers into NEAR's revenue wallets, "
+            "so the %s reaching NEAR is real money; whether the gross fees on private flow are all "
+            "in the denominator is not shown by any public source, so capture could be off in "
+            "either direction. The latest-week share (%s) is the number most exposed: if more flow "
+            "now stays inside the shard, the true figure is higher, by an amount this data cannot "
+            "measure. This is a limit of the method, stated as one."
+            % (oc["onchain_over_reported_last_14"], pct(m["trailing"]["share"][s]),
+               pct(m["trailing"]["capture"]), pct((m.get("stability") or {}).get("latest_share"))))
+    scn = m.get("scenarios")
+    if scn:
+        rows_ = {r["name"]: r for r in scn["rows"]}
+        out["scenarios"] = (
+            "A forward view, as assumptions anyone can change in SCENARIOS in pipeline/config.py. "
+            "Over the %s, with NEAR at $%.2f and net issuance of %.1fM NEAR a year, buybacks would "
+            "cover %s of new NEAR in the bear case, %s in the base case and %s in the bull case. "
+            "Even the bull case stays under half; there, %s of fees would have to reach NEAR to "
+            "get to 50%%. Coverage moves inversely with the NEAR price."
+            % (scn["horizon"], scn["price_usd"], scn["new_near_per_year"] / 1e6,
+               pct(rows_["bear"]["coverage"]), pct(rows_["base"]["coverage"]),
+               pct(rows_["bull"]["coverage"]), pct(rows_["bull"]["capture_for_half"])))
     mt = m.get("market_test")
     if mt:
         rows_ = {r["slug"]: r for r in mt["rows"]}
@@ -673,6 +713,26 @@ def brief(m, text):
                       "would take %.1f× today's captured revenue."
                       % (tk["bought_back_near"] / 1e6, tk["net_issued_near"] / 1e6, tk["window_days"],
                          pct(tk["offset_buyback"]), 0.5 / tk["offset_buyback"] if tk["offset_buyback"] else float("nan")))
+    if "confidential" in text:
+        oc_ = (m.get("bq") or {}).get("onchain") or {}
+        b["confidential"] = ("%s of last week's on-chain Intents volume shows only as money entering and "
+                             "leaving 1Click routers, with no public fill behind it, as settlement moves "
+                             "to NEAR's private shard; the public chain verifies the value moved, not "
+                             "who filled it."
+                             % pct(oc_.get("routed_share_last_7")))
+        b["confidential_effect"] = ("The reported series matches what the public chain sees (%.2f×), so private "
+                                    "flow does not inflate the %s share; swaps that stay inside the shard are "
+                                    "missing from both, which can only understate it. Capture could be off "
+                                    "either way."
+                                    % (oc_.get("onchain_over_reported_last_14"), pct(tr["share"][s])))
+    scn = m.get("scenarios")
+    if scn:
+        r_ = {r["name"]: r for r in scn["rows"]}
+        b["scenarios"] = ("Twelve months out, buybacks would cover %s of new NEAR in the bear case, %s in the "
+                          "base and %s in the bull; even the bull case needs %s of fees reaching NEAR to "
+                          "get to half."
+                          % (pct(r_["bear"]["coverage"]), pct(r_["base"]["coverage"]),
+                             pct(r_["bull"]["coverage"]), pct(r_["bull"]["capture_for_half"])))
     b["price"] = ("It does not win on price: %s of volume in gross fees against a rival median of %s."
                   % (bps(tr["take_bps"][s]), bps(tr["rival_take_median_bps"])))
 
@@ -720,10 +780,14 @@ def brief(m, text):
                           "any sealed value changes.", "detail": []})
     trust.append({"id": "build", "title": "Every number rebuilds, byte for byte",
                   "value": "build.py --offline",
-                  "line": "One command regenerates this page, THESIS.md and METHODS.md from the committed "
-                          "snapshot; every raw file is hash-checked.", "detail": []})
+                  "line": "The offline build regenerates the page, THESIS.md and METHODS.md from the committed "
+                          "snapshot, byte for byte, checked on every push; a full build refreshes the data "
+                          "but keeps the thesis on its fixed window.", "detail": []})
     b["trust"] = trust
     b["limits"] = [
+        "Confidential Intents settle on a private shard: the public chain verifies the value that "
+        "crosses intents.near, not the fills behind it, and swaps that stay inside the shard are not "
+        "counted at all.",
         "The router rule that rebuilds Intents volume after August was found by looking at the data; "
         "it is sealed now and tested on days not yet seen (P8).",
         "Which market is the right one rests on one natural experiment, the THORChain halt.",
@@ -934,6 +998,20 @@ def methods_markdown(m, text):
             if "onchain_share" in text:
                 add(text["onchain_share"])
                 add("")
+            if "confidential" in text:
+                add("### Confidential Intents: what the public chain cannot see")
+                add("")
+                add(text["confidential"])
+                add("")
+                rs = m["bq"]["onchain"]["routed_share_by_month"]
+                add("| Month | Share of on-chain Intents volume with no public fill |")
+                add("| --- | --- |")
+                for k, v in rs.items():
+                    add("| %s | %s |" % (k, pct(v)))
+                add("| last 7 days | %s |" % pct(m["bq"]["onchain"]["routed_share_last_7"]))
+                add("")
+                add(text["confidential_effect"])
+                add("")
         bp = m["basis"].get("breakpoints")
         if bp:
             add("Where the conclusion would break: counting one side for every venue, Intents "
@@ -991,6 +1069,32 @@ def methods_markdown(m, text):
         add("| %d days | %s | %s | %s | %s |" % (row["days"], pct(row["share"], 1), row["leader"],
                                                bps(row["take_bps"]), pct(row["capture"], 1)))
     add("")
+    scn = m.get("scenarios")
+    if scn:
+        add("## Twelve months out: three scenarios")
+        add("")
+        add(text["scenarios"])
+        add("")
+        add("| Scenario | Story | Market | Share | Take rate | Capture | Intents volume | To NEAR | NEAR bought back | Coverage of new NEAR | Capture for 50% |")
+        add("| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |")
+        for r in scn["rows"]:
+            a = r["assumptions"]
+            add("| %s | %s | %+.0f%% | %s | %s | %s | %s | %s | %.2fM | %s | %s |" % (
+                r["name"], a["story"], 100 * a["market_growth"], pct(a["share"]), bps(a["take_bps"]),
+                pct(a["capture"]), usd(r["intents_volume"]), usd(r["captured_usd"]),
+                r["bought_back_near"] / 1e6, pct(r["coverage"]), pct(r["capture_for_half"])))
+        now = scn["now"]
+        add("| now | the window, annualised | | %s | %s | %s | | | | %s | |" % (
+            pct(now["share"]), bps(now["take_bps"]), pct(now["capture"]), pct(now["coverage"])))
+        add("")
+        add("How each row is computed (`metrics.scenarios()`): the window's four-venue volume, "
+            "annualised, times (1 + market growth) times share gives Intents volume; times the take "
+            "rate gives gross fees; times capture gives revenue to NEAR; times the part of captured "
+            "revenue spent on buybacks in the window (%s), divided by the NEAR price ($%.2f, market "
+            "cap over block-header supply), gives NEAR bought back; divided by net issuance (%.1fM NEAR "
+            "a year) gives coverage. These are assumptions, not forecasts, and are not sealed."
+            % (pct(scn["buyback_part_of_captured"]), scn["price_usd"], scn["new_near_per_year"] / 1e6))
+        add("")
     add("## What would change my mind")
     add("")
     add("The thesis gets stronger if the dated predictions below hold, and weaker if they "
@@ -1055,7 +1159,9 @@ def methods_markdown(m, text):
     add("## How this can be checked")
     add("")
     add("- **Every number:** `python3 build.py --offline` rebuilds this file and the dashboard "
-        "from the committed snapshot, byte for byte; `python3 build.py` refetches.")
+        "from the committed snapshot, byte for byte. `python3 build.py` refreshes the snapshot from "
+        "the APIs; the thesis is still computed on the fixed window to %s (`THESIS_DATA_END`), and "
+        "the new days only grade the dated predictions." % config.THESIS_DATA_END)
     add("- **The data, against primary sources:** THORChain, Maya and Chainflip volume against "
         "their own indexers; Intents volume against intents.near's events (sampled days, and "
         "every day from NEAR's public BigQuery dataset); captured revenue against the revenue "
@@ -1151,14 +1257,20 @@ def call_text(m, cl, tr, s):
     c4_ok = any(c["id"] == "C4" and c["verdict"] == "SUPPORTED" for c in m["claims"])
     trend = m.get("capture_trend") or []
     word = CALL_WORD[cl["call"]]
+    w_ = m.get("wide") or {}
+    where = ("%s of the four native-swap venues over 90 days, %s over 30 days, %s in the latest "
+             "week; third, with %s, once four bridges count."
+             % (pct(cl["share_90d"]), pct(cl["share_30d"]), pct(cl["share_latest_week"]),
+                pct(w_.get("subject_share")))) if w_ else ""
     if cl["call"] == "WATCH":
-        title = ("NEAR Intents leads cross-chain swaps, but too little of it reaches the NEAR token "
-                 "yet. The call is to %s, until buybacks cover %s of new NEAR and the 30-day share "
-                 "is back above %s." % (word, pct(r["buyback_offset_accumulate"]), pct(r["share_30d_hold"])))
+        title = ("NEAR Intents leads the native-swap venues, but too little of it reaches the NEAR "
+                 "token yet. %s The call is to %s, until buybacks cover %s of new NEAR and the 30-day "
+                 "share is back above %s." % (where, word, pct(r["buyback_offset_accumulate"]),
+                                               pct(r["share_30d_hold"])))
         line = ("The business is real and leading; the token's cut of it is not yet large enough, "
                 "and the lead is slipping in the latest weeks.")
     elif cl["call"] == "ACCUMULATE":
-        title = ("NEAR Intents leads cross-chain swaps and the NEAR token now captures enough of it. "
+        title = ("NEAR Intents leads the native-swap venues and the NEAR token now captures enough of it. "
                  "The call is to accumulate while the 90-day share stays above %s." % pct(r["share_90d_kill"]))
         line = "The lead holds and buybacks cover at least %s of new NEAR." % pct(r["buyback_offset_accumulate"])
     else:
@@ -1257,6 +1369,26 @@ def thesis_markdown(m, text):
         add("- %s %s" % (B["token"], M("What it means for the NEAR token")))
     add("- %s" % text["recent"].split("; every rival grew")[0].rstrip(".") + ".")
     add("")
+    if "confidential" in B:
+        add("## Confidential Intents: what the public chain cannot see")
+        add("")
+        add("- %s" % B["confidential"])
+        add("- %s %s" % (B["confidential_effect"], M("Confidential Intents: what the public chain cannot see")))
+        add("")
+    scn = m.get("scenarios")
+    if scn:
+        add("## Twelve months out")
+        add("")
+        add("| Scenario | Market | Share | Take rate | Capture | Buybacks cover new NEAR |")
+        add("| --- | --- | --- | --- | --- | --- |")
+        for r in scn["rows"]:
+            a = r["assumptions"]
+            add("| %s | %+.0f%% | %s | %s | %s | **%s** |" % (r["name"], 100 * a["market_growth"], pct(a["share"]),
+                                                          bps(a["take_bps"]), pct(a["capture"]), pct(r["coverage"])))
+        add("")
+        add("%s Assumptions are `SCENARIOS` in `pipeline/config.py`; the build recomputes the outcome. %s"
+            % (B["scenarios"], M("Twelve months out: three scenarios")))
+        add("")
     add("## Why these numbers can be trusted")
     add("")
     add("| Check | Result |")
@@ -1294,3 +1426,27 @@ def thesis_markdown(m, text):
     add("Every other limit: %s" % M("What this analysis cannot say"))
     add("")
     return "\n".join(lines)
+
+
+def noscript_html(m, text):
+    """A static summary for readers and crawlers that do not run JavaScript."""
+    import html
+    e = html.escape
+    B = text["brief"]
+    parts = ['<div class="frame">', "<h1>%s</h1>" % e(text["title"]),
+             "<p><b>The call: %s.</b> %s</p>" % (e(text.get("call", "")), e(text.get("call_line", "")))]
+    def ul(title, items):
+        items = [i for i in items if i]
+        if items:
+            parts.append("<h2>%s</h2><ul>%s</ul>" % (e(title), "".join("<li>%s</li>" % e(i) for i in items)))
+    ul("Is Intents the leader?", [B.get("lead"), B.get("counts"), B.get("halt"), B.get("bridges"), B.get("price")])
+    ul("Does it reach the NEAR token?", [B.get("capture"), B.get("token"), B.get("scenarios")])
+    ul("What the public chain cannot see", [B.get("confidential"), B.get("confidential_effect")])
+    ul("Why these numbers can be trusted", ["%s: %s. %s" % (t["title"], t["value"], t["line"]) for t in B["trust"]])
+    ul("%d claims" % len(m["claims"]), ["%s %s: %s" % (c["id"], c["verdict"], c["claim"]) for c in m["claims"]])
+    ul("Dated predictions", ["%s, due %s, %s: %s" % (p["id"], p["due"], p["status"], p["text"]) for p in m["predictions"]])
+    ul("What this cannot say", B["limits"])
+    parts.append('<p>The short thesis is <a href="https://github.com/n0ctr1/share-shift/blob/main/THESIS.md">THESIS.md</a>; '
+                 'every method and check is <a href="https://github.com/n0ctr1/share-shift/blob/main/METHODS.md">METHODS.md</a>. '
+                 'Turn on JavaScript for the charts.</p></div>')
+    return "".join(parts)

@@ -142,6 +142,20 @@ The later flow is not hidden; it moved. From September most swaps settle as plai
 
 With Intents volume taken from intents.near itself for every day of the window, its share is 60%, against 58% as reported. Taking each day the lower of the on-chain and the reported figure, and one side of each swap for every venue, gives 55%, still first. C1 is graded on the lowest of these readings.
 
+### Confidential Intents: what the public chain cannot see
+
+Since NEAR launched Confidential Intents, swaps can execute on a private shard that has no public RPC or explorer, linked to mainnet by a TEE-based bridge. The public chain then sees money enter and leave, not the fill. The data shows that shift: the share of on-chain Intents volume that appears only as transfers into and out of 1Click routers, with no public fill behind it, was 13% in August, 27% in September, 40% in October, 89% in November. Over the last 7 days it was 96%. So the rebuild here verifies how much value crossed intents.near, not who filled it or at what price. The rise fits settlement moving to the private shard, but public data cannot tell a private fill from a router matching orders off chain by itself; either way the fill is not public.
+
+| Month | Share of on-chain Intents volume with no public fill |
+| --- | --- |
+| 2026-08 | 13% |
+| 2026-09 | 27% |
+| 2026-10 | 40% |
+| 2026-11 | 89% |
+| last 7 days | 96% |
+
+What it does to the numbers. Volume: the public rebuild stays at 1.07 of the reported figure over the last 14 days, so the reported series does not count flow the public chain cannot see. Swaps that start and end inside the private shard are in neither; they are Intents volume, so leaving them out can only make the 58% share too low, not too high. Capture: the revenue figure matches the transfers into NEAR's revenue wallets, so the 27% reaching NEAR is real money; whether the gross fees on private flow are all in the denominator is not shown by any public source, so capture could be off in either direction. The latest-week share (38%) is the number most exposed: if more flow now stays inside the shard, the true figure is higher, by an amount this data cannot measure. This is a limit of the method, stated as one.
+
 Where the conclusion would break: counting one side for every venue, Intents would fall to 50% only if fewer than 33% of THORChain's swap value went through two pools, and would lose the lead only below 3% (Intents halved; Chainflip and Maya at their measured factors). Measured from individual swaps, the figure is 80%.
 
 | Counting basis | Intents share, four venues | Largest | Intents share, all eight |
@@ -192,6 +206,19 @@ The headline uses 90 days. The same figures over other windows, all ending 2026-
 | 180 days | 62.5% | NEAR Intents | 14.8 bps | 24.7% |
 | 365 days | 60.6% | NEAR Intents | 16.4 bps | 17.3% |
 
+## Twelve months out: three scenarios
+
+A forward view, as assumptions anyone can change in SCENARIOS in pipeline/config.py. Over the twelve months after 2026-11-10, with NEAR at $3.50 and net issuance of 32.5M NEAR a year, buybacks would cover 4% of new NEAR in the bear case, 13% in the base case and 36% in the bull case. Even the bull case stays under half; there, 70% of fees would have to reach NEAR to get to 50%. Coverage moves inversely with the NEAR price.
+
+| Scenario | Story | Market | Share | Take rate | Capture | Intents volume | To NEAR | NEAR bought back | Coverage of new NEAR | Capture for 50% |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| bear | THORChain recovers, the lead falls to the kill line, fees are competed down | -30% | 40% | 12.0 bps | 25% | $23.66B | $7.10M | 1.40M | 4% | 289% |
+| base | the market holds, Intents keeps half, capture keeps its recent climb | +0% | 50% | 14.0 bps | 35% | $42.24B | $20.70M | 4.09M | 13% | 139% |
+| bull | the market grows, the lead holds at today's level, half of fees reach NEAR | +50% | 60% | 15.5 bps | 50% | $76.04B | $58.93M | 11.65M | 36% | 70% |
+| now | the window, annualised | | 58% | 15.5 bps | 27% | | | | 13% | |
+
+How each row is computed (`metrics.scenarios()`): the window's four-venue volume, annualised, times (1 + market growth) times share gives Intents volume; times the take rate gives gross fees; times capture gives revenue to NEAR; times the part of captured revenue spent on buybacks in the window (69%), divided by the NEAR price ($3.50, market cap over block-header supply), gives NEAR bought back; divided by net issuance (32.5M NEAR a year) gives coverage. These are assumptions, not forecasts, and are not sealed.
+
 ## What would change my mind
 
 The thesis gets stronger if the dated predictions below hold, and weaker if they miss. Re-running `python3 build.py` after each date grades them automatically.
@@ -221,7 +248,7 @@ It would be refuted outright by: a trailing 90-day share below 40%, a take rate 
 
 ## How this can be checked
 
-- **Every number:** `python3 build.py --offline` rebuilds this file and the dashboard from the committed snapshot, byte for byte; `python3 build.py` refetches.
+- **Every number:** `python3 build.py --offline` rebuilds this file and the dashboard from the committed snapshot, byte for byte. `python3 build.py` refreshes the snapshot from the APIs; the thesis is still computed on the fixed window to 2026-11-10 (`THESIS_DATA_END`), and the new days only grade the dated predictions.
 - **The data, against primary sources:** THORChain, Maya and Chainflip volume against their own indexers; Intents volume against intents.near's events (sampled days, and every day from NEAR's public BigQuery dataset); captured revenue against the revenue wallets; supply against block headers; L1 activity in two indexers. Scripts and outputs are listed in the README.
 - **The computation:** The headline share was also recomputed inside a trusted execution environment: tee/share-check (SHA-256 7634f3997a76...) fetched DefiLlama's and Midgard's data by itself inside an Intel TDX enclave run by OutLayer, requested by NEAR mainnet transaction Aw6Vz41optzWmAEDvmzq7wk3YHypfhFt3pssrxPnDjk7. It returned 58.09% against 58.09% in this build, and every venue's volume to the same $0.1M; the result was delivered on chain by worker.outlayer.near with a key that OutLayer's register contract adds only after checking a TDX quote against its allowlist. What that proves is narrow: the published program, unmodified, produced the published numbers from what those APIs served at that moment. It does not prove the APIs are right; the primary-source checks do that (each venue's own indexer, intents.near's events, the revenue wallets, block-header supply).
 - **The enclave:** The TDX quote behind that key is verified here too, not taken from OutLayer (pipeline/tdx.py). The key was added by transaction DXvVB74UDHSUL11KFyP59bJF5jJvz3KKKAYW1ngG4stP on 2026-11-11; the quote passed to it carries the SHA-256 of that exact key, is signed by an attestation key bound to Intel's Quoting Enclave, whose report is signed by a PCK certificate that chains to Intel's SGX Root CA (pinned by public-key hash). Against Intel's current collateral nothing is revoked and the TDX TCB level is UpToDate; the five measurements were on OutLayer's allowlist at that block. 13 of 13 checks pass. One finding about OutLayer itself: the Intel collateral its contract held at that block was issued on 2026-06-07, past its next update (2026-07-07), and for another platform, so the contract's own check was weaker than this one. `python3 -m pipeline.tdx` repeats it (needs the `cryptography` package).

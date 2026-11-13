@@ -300,3 +300,20 @@ SEAL_V3 = {"sealed_on": "2026-11-12", "data_seen_through": "2026-11-11",
 # on and sealed against. A later fetch extends the data only to grade the dated
 # predictions; it does not move the headline window. Not sealed.
 THESIS_DATA_END = "2026-11-10"
+
+
+# Forward scenarios for the twelve months after the thesis window. These are
+# assumptions, not findings: each row is a story the reader can disagree with
+# and change here, and build.py recomputes the outcome. Not sealed.
+#   market_growth  change in four-venue swap volume against the current window, annualised
+#   share          Intents' share of that volume
+#   take_bps       gross fees per dollar of Intents volume
+#   capture        share of gross fees that reaches NEAR's revenue wallets
+SCENARIOS = {
+    "bear": {"market_growth": -0.30, "share": 0.40, "take_bps": 12.0, "capture": 0.25,
+             "story": "THORChain recovers, the lead falls to the kill line, fees are competed down"},
+    "base": {"market_growth": 0.00, "share": 0.50, "take_bps": 14.0, "capture": 0.35,
+             "story": "the market holds, Intents keeps half, capture keeps its recent climb"},
+    "bull": {"market_growth": 0.50, "share": 0.60, "take_bps": 15.5, "capture": 0.50,
+             "story": "the market grows, the lead holds at today's level, half of fees reach NEAR"},
+}

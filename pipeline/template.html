@@ -4,7 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Share Shift: NEAR Intents against its rivals</title>
-<meta name="description" content="An investment thesis on NEAR, testing NEAR Intents against its rivals with every number rebuilt from public data.">
+<meta name="description" content="__DESC__">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Share Shift: NEAR Intents against its rivals">
+<meta property="og:description" content="__DESC__">
+<meta property="og:url" content="https://n0ctr1.github.io/share-shift/">
+<meta property="og:image" content="https://n0ctr1.github.io/share-shift/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Share Shift: NEAR Intents against its rivals">
+<meta name="twitter:description" content="__DESC__">
+<meta name="twitter:image" content="https://n0ctr1.github.io/share-shift/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -387,6 +398,21 @@ nav.toc a.appx-link { margin-top: 10px; padding-top: 10px; border-top: 1px solid
 a.file { text-decoration-style: dotted; }
 a.file:hover { color: var(--mark); text-decoration-style: solid; }
 a.file code { color: inherit; }
+/* ---- Easy / Pro ---- */
+.modes { display: inline-flex; border: 1px solid var(--rule); border-radius: 2px; }
+.modes button { border: 0 !important; border-radius: 0; padding: 4px 10px; }
+.modes button + button { border-left: 1px solid var(--rule) !important; }
+.modes button[aria-pressed="true"] { background: var(--ink); color: var(--page); }
+body.easy .appendix, body.easy nav.toc a.appx-link, body.easy .src, body.easy .figure > details,
+body.easy details.method, body.easy .stats .n, body.easy .ledger .key { display: none; }
+.blind { margin: 0 0 30px; padding: 18px clamp(16px, 2.4vw, 24px); border: 1px solid var(--rule); border-left: 3px solid var(--warn); background: var(--surface); }
+.blind h3 { margin-bottom: 8px; }
+.blind .hbars { margin: 12px 0 14px; }
+.blind .hbar { grid-template-columns: 110px minmax(0, 1fr) 150px; }
+@media (max-width: 560px) { .blind .hbar { grid-template-columns: minmax(0, 1fr) auto; } }
+noscript .frame { padding-top: 32px; padding-bottom: 32px; }
+noscript h1 { font-size: 34px; margin-bottom: 16px; }
+noscript li { margin-bottom: 8px; }
 footer { padding: 28px 0 64px; font-size: 13px; color: var(--ink-3); border-top: 1px solid var(--ink); display: grid; gap: 6px 40px; }
 @media (min-width: 900px) { footer { grid-template-columns: 1fr 1fr; } }
 footer p { margin: 0; }
@@ -394,10 +420,11 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
 </style>
 </head>
 <body>
+<noscript>__NOSCRIPT__</noscript>
 <div class="frame">
   <div class="bar">
     <span class="brand">Share<b>/</b>Shift</span>
-    <span class="meta"><span id="barmeta"></span><button type="button" id="theme" aria-label="Switch colour theme">Theme</button></span>
+    <span class="meta"><span id="barmeta"></span><span class="modes" role="group" aria-label="Detail level"><button type="button" data-mode="easy">Easy</button><button type="button" data-mode="pro">Pro</button></span><button type="button" id="theme" aria-label="Switch colour theme">Theme</button></span>
   </div>
   <header class="mast">
     <div class="hero">
@@ -728,6 +755,24 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
     ' · ' + M.meta.window_days + '-day window · fetched ' + M.meta.fetched_at.slice(0, 10);
   document.getElementById('barmeta').textContent = 'Investment thesis · Data to ' + M.meta.last_day;
 
+  // Easy shows the short layer only; Pro adds sources, data tables and the appendix
+  (function () {
+    var q = (location.search.match(/[?&]mode=(easy|pro)/) || [])[1], saved = null;
+    try { saved = localStorage.getItem('mode'); } catch (e) {}
+    var mode = q || saved || 'easy';
+    function set(m) {
+      mode = m; document.body.classList.toggle('easy', m === 'easy'); document.body.classList.toggle('pro', m === 'pro');
+      Array.prototype.forEach.call(document.querySelectorAll('.modes button'), function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-mode') === m)); });
+      try { localStorage.setItem('mode', m); } catch (e) {}
+      window.dispatchEvent(new Event('resize'));
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('.modes button'), function (b) {
+      b.addEventListener('click', function () { set(b.getAttribute('data-mode')); });
+    });
+    window.__setMode = set;
+    set(mode);
+  })();
+
   // theme toggle: follows the system until the reader picks one
   (function () {
     var root = document.documentElement, btn = document.getElementById('theme'), saved = null;
@@ -851,12 +896,11 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
   var tr = M.trailing, yoy = M.yoy, stats = [];
   var wkShare = M.weekly.map(function (r) { return r.share[subject]; });
   var cMonths = M.monthly.filter(function (r) { return r.complete; });
-  stats.push(['Share of native-asset swap volume, 90 days', pct(tr.share[subject]), yoy ? 'was ' + pct(yoy.share_prior[subject]) + ' a year earlier' : '', wkShare]);
   var s30 = (M.sensitivity || []).filter(function (x) { return x.days === 30; })[0];
-  stats.push(['Share, latest complete week', pct(M.stability.latest_share), '30 days: ' + (s30 ? pct(s30.share) : 'n/a') + '; kill line 40% over 90 days', wkShare.slice(-13)]);
-  if (M.wide) stats.push(['Share with four bridges added', pct(M.wide.subject_share), 'rank ' + M.wide.subject_rank_volume + ' of ' + M.wide.venues.length + ' by volume']);
-  stats.push(['Take rate', bps(tr.take_bps[subject]), 'rival median ' + bps(tr.rival_take_median_bps),
-    cMonths.map(function (r) { return r[subject].volume ? 1e4 * r[subject].fees / r[subject].volume : null; })]);
+  stats.push(['Share of the four native-swap venues, 90 days', pct(tr.share[subject]), yoy ? 'was ' + pct(yoy.share_prior[subject]) + ' a year earlier' : '', wkShare]);
+  stats.push(['Same, last 30 days', s30 ? pct(s30.share) : 'n/a', 'accumulate needs 50% or more', null]);
+  stats.push(['Same, latest complete week', pct(M.stability.latest_share), 'kill line: 40% over 90 days', wkShare.slice(-13)]);
+  if (M.wide) stats.push(['With four bridges added', pct(M.wide.subject_share), 'rank ' + M.wide.subject_rank_volume + ' of ' + M.wide.venues.length + ' by volume']);
   stats.push(['Gross fees reaching NEAR', pct(tr.capture), usd(tr.revenue[subject]) + ' of ' + usd(tr.fees[subject]),
     cMonths.filter(function (r) { return r.capture != null; }).map(function (r) { return r.capture; })]);
   if (M.token) stats.push(['New NEAR covered by buybacks', pct(M.token.offset_buyback), (M.token.bought_back_near / 1e6).toFixed(2) + 'M of ' + (M.token.net_issued_near / 1e6).toFixed(2) + 'M NEAR, ' + M.token.window_days + ' days']);
@@ -1046,11 +1090,40 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
     sl.appendChild(el('span', {}, 'Newly issued ' + (tk2.net_issued_near / 1e6).toFixed(2) + 'M NEAR'));
     tkp.appendChild(sl);
   }
+  if (M.scenarios) {
+    var sp3 = point(s, 'Twelve months out: three scenarios', B.scenarios);
+    sp3.appendChild(table(['Scenario', 'Market', 'Share', 'Take rate', 'Capture', 'Buybacks cover new NEAR'],
+      M.scenarios.rows.map(function (r) { var a = r.assumptions; return [r.name.charAt(0).toUpperCase() + r.name.slice(1),
+        (a.market_growth >= 0 ? '+' : '') + pct(a.market_growth), pct(a.share), bps(a.take_bps), pct(a.capture), pct(r.coverage)]; })
+        .concat([['Now', '', pct(M.scenarios.now.share), bps(M.scenarios.now.take_bps), pct(M.scenarios.now.capture), pct(M.scenarios.now.coverage)]]),
+      [0, 1, 1, 1, 1, 1]));
+    var sn = el('p', {class: 'src'}); sn.appendChild(document.createTextNode('Assumptions, not forecasts: SCENARIOS in pipeline/config.py; computed in '));
+    sn.appendChild(el('code', {}, 'metrics.scenarios()')); sn.appendChild(document.createTextNode('. NEAR at $' + M.scenarios.price_usd.toFixed(2) + '; coverage moves inversely with price.'));
+    sp3.appendChild(sn);
+  }
   say(s, B.price);
 
   // 04 trust
   if (B.trust) {
     s = section('trust', 'Why trust it', 'Checks', 'Why these numbers can be trusted');
+    if (B.confidential) {
+      var cf = el('div', {class: 'blind'});
+      cf.appendChild(el('h3', {}, 'What the public chain cannot see: Confidential Intents'));
+      say(cf, B.confidential);
+      var rs = ((M.bq || {}).onchain || {}).routed_share_by_month || {}, cb = el('div', {class: 'hbars'});
+      Object.keys(rs).concat(['last 7 days']).forEach(function (k) {
+        var v = k === 'last 7 days' ? M.bq.onchain.routed_share_last_7 : rs[k];
+        var r = el('div', {class: 'hbar'}); r.appendChild(el('span', {class: 'l'}, k === 'last 7 days' ? 'Last 7 days' : k));
+        var t = el('span', {class: 't'}), f = el('i'); f.style.width = (100 * v) + '%'; f.style.background = 'var(--ink-3)'; t.appendChild(f); r.appendChild(t);
+        r.appendChild(el('span', {class: 'v'}, pct(v) + ' no public fill')); cb.appendChild(r);
+      });
+      cf.appendChild(cb);
+      say(cf, B.confidential_effect);
+      var cl2 = el('p', {class: 'src'}); cl2.appendChild(document.createTextNode('Method and the full effect on each number: '));
+      cl2.appendChild(el('a', {href: '#position'}, 'the appendix')); cl2.appendChild(document.createTextNode(', and METHODS.md.'));
+      cf.appendChild(cl2);
+      s.appendChild(cf);
+    }
     var tl2 = el('div', {class: 'trust'});
     B.trust.forEach(function (t) {
       var d = el(t.detail && t.detail.filter(Boolean).length ? 'details' : 'div', {class: 'tr'});
@@ -1295,7 +1368,7 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
   // ---------- 7b. checks ----------
   s = section('checks', 'How to check', 'Reproducibility', 'How every part of this can be checked');
   var ul2 = el('ul', {class: 'limits'});
-  [['Every number', 'python3 build.py --offline rebuilds THESIS.md, METHODS.md and this page from the committed snapshot, byte for byte; python3 build.py refetches.'],
+  [['Every number', 'python3 build.py --offline rebuilds THESIS.md, METHODS.md and this page from the committed snapshot, byte for byte, on every push. python3 build.py refreshes the data, but the thesis stays on its fixed window; new days only grade the predictions.'],
    ['The data', 'THORChain, Maya and Chainflip volume against their own indexers; Intents volume against intents.near events, sampled and on every day from NEAR’s public BigQuery dataset; captured revenue against the revenue wallets; NEAR supply against block headers; L1 activity in two indexers.'],
    ['The computation', T.tee ? T.tee + ' ' + T.tee_scope : null],
    ['The enclave', T.tdx ? T.tdx + ' python3 -m pipeline.tdx repeats it.' : null],
@@ -1303,7 +1376,7 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
     .forEach(function (r) { if (!r[1]) return; var li = el('li'), sp = el('span'); sp.appendChild(el('b', {}, r[0] + '. ')); sp.appendChild(document.createTextNode(r[1])); li.appendChild(sp); ul2.appendChild(li); });
   s.appendChild(ul2);
   var cmds = el('div', {class: 'cmds'});
-  [['python3 build.py --offline', 'Rebuilds THESIS.md, METHODS.md and this page from the committed snapshot, byte for byte.'],
+  [['python3 build.py --offline', 'Rebuilds THESIS.md, METHODS.md and this page from the committed snapshot, byte for byte. A full python3 build.py refreshes the data but keeps the thesis on its fixed window to ' + (M.meta.window || ['', ''])[1] + '.'],
    ['python3 -m unittest discover -s tests', 'The arithmetic, on small hand-made inputs.'],
    ['python3 -m pipeline.seal --check', 'All three sealed files still match the config the build uses.'],
    ['python3 -m pipeline.anchor --account noctrl.near --seal v3 --verify', 'Reads the third seal’s hash back from NEAR mainnet.'],
@@ -1380,6 +1453,7 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
     if (!hash || hash.length < 2) return;
     var t = document.getElementById(decodeURIComponent(hash.slice(1)));
     if (!t) return;
+    if (t.closest('.appendix') && document.body.classList.contains('easy') && window.__setMode) window.__setMode('pro');
     for (var p = t; p; p = p.parentElement) if (p.tagName === 'DETAILS') p.open = true;
     [30, 400, 900].forEach(function (ms) { setTimeout(function () { t.scrollIntoView({block: 'start'}); }, ms); });
   }

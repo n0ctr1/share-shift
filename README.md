@@ -9,7 +9,10 @@ Built at NEAR HACKATHON, track `thesis` (Investment Thesis). The badge is a GitH
 the seal check, `python build.py --offline`, then `git diff --exit-code`, so it
 is green only if the committed files are exactly what the snapshot rebuilds.
 
-- Live dashboard: https://n0ctr1.github.io/share-shift/
+[![The dashboard: share by week with the lead and kill lines, and the call](docs/screenshot.jpg)](https://n0ctr1.github.io/share-shift/)
+
+- Live dashboard: https://n0ctr1.github.io/share-shift/ (Easy shows the short version;
+  Pro adds sources, data tables and the full evidence)
 - The thesis, about two pages: [`THESIS.md`](THESIS.md)
 - Method, every check and every limit: [`METHODS.md`](METHODS.md)
 
@@ -47,6 +50,16 @@ What a careful reader should not have to take on trust, and does not:
   (`pipeline/tdx.py`).
 - **Explorer API data** is not kept beyond the report built from it (the API
   terms forbid storing it for more than 24 hours).
+- **Confidential Intents** are measured, not ignored: in November 89% of the
+  on-chain Intents volume (96% in the last week) shows only as money entering
+  and leaving 1Click routers, with no public fill. The public chain verifies the
+  value that crosses `intents.near`, not the fills; swaps that stay inside the
+  private shard are counted nowhere, which can only understate the share. See
+  "Confidential Intents" in `THESIS.md` and `METHODS.md`.
+- **A forward view** in three scenarios (`SCENARIOS` in `pipeline/config.py`,
+  `metrics.scenarios()`): buybacks would cover 4%, 13% and 36% of new NEAR over
+  the next twelve months in the bear, base and bull cases. Even the bull case
+  stays under half.
 
 ## What it is
 
@@ -116,7 +129,7 @@ Needs Python 3.9 or newer. No packages to install. No key needed for steps 1 to 
 | 1 | `python3 -m unittest discover -s tests` | `Ran 38 tests` and `OK` |
 | 2 | `python3 build.py --offline` | Fourteen lines `C1` to `C14`, each `SUPPORTED` or `REFUTED`, then `wrote THESIS.md, METHODS.md, docs/index.html, data/derived/metrics.json` |
 | 3 | `git status --short` | Nothing: the offline build reproduces the committed files byte for byte |
-| 4 | `python3 build.py` | The same fourteen lines computed on today's data; `git diff THESIS.md METHODS.md` shows which numbers moved |
+| 4 | `python3 build.py` | Refreshes the snapshot from the APIs. The thesis itself is still computed on the fixed window to 2026-11-10 (`THESIS_DATA_END`); the new days only grade the dated predictions. `git diff` shows what the sources revised. Only the offline rebuild (step 2) is byte for byte |
 | 5 | Open `docs/index.html` in a browser, or https://n0ctr1.github.io/share-shift/ | A row of six headline numbers; the call with what would change it; fourteen claims with verdicts; six charts (three with the THORChain halt shaded, one with the days on which intents.near's token_diff events match the reported volume) and one split bar; tables for the halt, the counting bases, all eight venues, channels and fee recipients. Hovering a chart shows every series' value for that week or month |
 | 6 | Change `WINDOW = 90` to `WINDOW = 30` in `pipeline/config.py`, then run step 2 | Every figure in `THESIS.md` and `METHODS.md` is recomputed for a 30-day window |
 | 7 | Optional. Put `INTENTS_EXPLORER_JWT=...` in `.env`, then `python3 -m pipeline.explorer --from 2026-04-09 --to 2026-11-10` | `page 5, reached ...` lines, then `wrote data/raw/channels_report.json; deleted the daily aggregates`. About three hours: the API allows one request per five seconds. An interrupted run resumes. Then run `python3 build.py` so the manifest picks up the new file |

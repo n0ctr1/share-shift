@@ -1,4 +1,4 @@
-# NEAR Intents leads cross-chain swaps, but too little of it reaches the NEAR token yet. The call is to watch, not buy, until buybacks cover 50% of new NEAR and the 30-day share is back above 50%.
+# NEAR Intents leads the native-swap venues, but too little of it reaches the NEAR token yet. 58% of the four native-swap venues over 90 days, 46% over 30 days, 38% in the latest week; third, with 18%, once four bridges count. The call is to watch, not buy, until buybacks cover 50% of new NEAR and the 30-day share is back above 50%.
 
 > Data 2024-12-10 to 2026-11-10. Every figure is computed by `python3 build.py`; none is typed by hand. The method, every check and every limit: [METHODS.md](METHODS.md). Dashboard: https://n0ctr1.github.io/share-shift/
 
@@ -26,6 +26,21 @@ The rule is `CALL` in `pipeline/config.py`, sealed on 2026-11-12; next review 20
 - 27% of gross Intents fees reach NEAR's revenue wallets, rising every 90 days: 8% → 12% → 20% → 27%; the rest stays with solvers and the front ends that distribute Intents. [details](METHODS.md#evidence-against)
 - Buybacks took 1.00M NEAR against 7.96M newly issued over 90 days, 13%. Covering half would take 4.0× today's captured revenue. [details](METHODS.md#what-it-means-for-the-near-token)
 - In the last 30 days Intents volume changed by -21% against the 30 days before, while THORChain changed by +32%.
+
+## Confidential Intents: what the public chain cannot see
+
+- 96% of last week's on-chain Intents volume shows only as money entering and leaving 1Click routers, with no public fill behind it, as settlement moves to NEAR's private shard; the public chain verifies the value moved, not who filled it.
+- The reported series matches what the public chain sees (1.07×), so private flow does not inflate the 58% share; swaps that stay inside the shard are missing from both, which can only understate it. Capture could be off either way. [details](METHODS.md#confidential-intents-what-the-public-chain-cannot-see)
+
+## Twelve months out
+
+| Scenario | Market | Share | Take rate | Capture | Buybacks cover new NEAR |
+| --- | --- | --- | --- | --- | --- |
+| bear | -30% | 40% | 12.0 bps | 25% | **4%** |
+| base | +0% | 50% | 14.0 bps | 35% | **13%** |
+| bull | +50% | 60% | 15.5 bps | 50% | **36%** |
+
+Twelve months out, buybacks would cover 4% of new NEAR in the bear case, 13% in the base and 36% in the bull; even the bull case needs 70% of fees reaching NEAR to get to half. Assumptions are `SCENARIOS` in `pipeline/config.py`; the build recomputes the outcome. [details](METHODS.md#twelve-months-out-three-scenarios)
 
 ## Why these numbers can be trusted
 
@@ -79,6 +94,7 @@ Sealed in three seals, timestamped on Bitcoin; the first and third are written o
 
 ## What this cannot say
 
+- Confidential Intents settle on a private shard: the public chain verifies the value that crosses intents.near, not the fills behind it, and swaps that stay inside the shard are not counted at all.
 - The router rule that rebuilds Intents volume after August was found by looking at the data; it is sealed now and tested on days not yet seen (P8).
 - Which market is the right one rests on one natural experiment, the THORChain halt.
 - Claim thresholds and the call's rule were set after a first look at the data; they are sealed so any later change shows.
