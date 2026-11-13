@@ -294,3 +294,9 @@ PREDICTIONS_V3 = [
 ]
 SEAL_V3 = {"sealed_on": "2026-11-12", "data_seen_through": "2026-11-11",
            "window_starts": "2026-11-13", "router_min_senders": 500}
+
+
+# The thesis is computed on data through this day: the snapshot it was written
+# on and sealed against. A later fetch extends the data only to grade the dated
+# predictions; it does not move the headline window. Not sealed.
+THESIS_DATA_END = "2026-11-10"

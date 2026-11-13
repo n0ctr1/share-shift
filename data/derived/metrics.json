@@ -2190,6 +2190,7 @@
  "meta": {
   "fetched_at": "2026-11-11T23:58:12Z",
   "first_day": "2024-12-10",
+  "graded_through": "2026-11-10",
   "last_day": "2026-11-10",
   "min_month_volume": 50000000.0,
   "near_anchor": {

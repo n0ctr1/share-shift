@@ -3,14 +3,19 @@
 An investment thesis on NEAR that tests NEAR Intents against its competitors,
 with every number rebuilt from public data by one command.
 
-Built at NEAR HACKATHON, track `thesis` (Investment Thesis).
+[![Reproducible](https://github.com/n0ctr1/share-shift/actions/workflows/reproduce.yml/badge.svg)](https://github.com/n0ctr1/share-shift/actions/workflows/reproduce.yml)
+
+Built at NEAR HACKATHON, track `thesis` (Investment Thesis). The badge is a GitHub Actions run on every push: tests,
+the seal check, `python build.py --offline`, then `git diff --exit-code`, so it
+is green only if the committed files are exactly what the snapshot rebuilds.
 
 - Live dashboard: https://n0ctr1.github.io/share-shift/
 - The thesis, about two pages: [`THESIS.md`](THESIS.md)
 - Method, every check and every limit: [`METHODS.md`](METHODS.md)
 
 **The call: WATCH, not buy.** NEAR Intents is the largest venue that swaps
-native assets across chains (58% of four-venue volume over 90 days), but its
+native assets across chains (58% of four-venue volume over 90 days; with four
+large bridges added it is third, 18%, so claim C11 is refuted), but its
 lead is slipping in the latest weeks and the NEAR token captures too little of
 it: buybacks offset 13% of newly issued NEAR. The call turns to ACCUMULATE when
 buybacks cover half of new NEAR and the 30-day share is back above 50%, and to
@@ -20,6 +25,11 @@ call from the data (`metrics.investment_call()`), so a re-run can change it.
 Figures here are as of the committed snapshot (data to 2026-11-10). The rule,
 the on-chain counting method and three predictions on 2026-11-13 to 2026-12-10
 are sealed (third seal), so none of them can be tuned after that window starts.
+
+Why the market is four swap venues: they, like Intents, turn one native asset
+into another across chains, while bridges mostly move the same asset; when
+THORChain halted, only swap venues behaved as its substitutes
+(`metrics.market_test()`).
 
 What a careful reader should not have to take on trust, and does not:
 

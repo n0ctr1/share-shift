@@ -1,0 +1,26 @@
+name: Reproduce
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+      - name: Tests
+        run: python -m unittest discover -s tests
+      - name: Seals match the config
+        run: python -m pipeline.seal --check
+      - name: Rebuild every file from the committed snapshot
+        run: python build.py --offline
+      - name: The rebuild is byte for byte the committed files
+        run: git diff --exit-code

@@ -1046,8 +1046,19 @@ def compute(raw, fetched_at):
     return out
 
 
+def truncate(table, end):
+    """The same table, ending on `end` (inclusive)."""
+    if end not in table["dates"]:
+        return table
+    n = table["dates"].index(end) + 1
+    return {k: ({f: v[:n] for f, v in val.items()} if k != "dates" else val[:n]) for k, val in table.items()}
+
+
 def _compute(raw, fetched_at):
-    table = build_table(raw, fetched_at)
+    # The thesis is computed on the data it was written and sealed on; days after
+    # that are used only to grade the dated predictions.
+    table_all = build_table(raw, fetched_at)
+    table = truncate(table_all, getattr(config, "THESIS_DATA_END", None))
     slugs = [p["slug"] for p in config.PEERS]
     names = {p["slug"]: p["name"] for p in config.PEERS}
     subject = config.SUBJECT
@@ -1465,14 +1476,19 @@ def _compute(raw, fetched_at):
         "take_rate_trailing_bps": take_bps[subject],
     }
     predictions = []
+    idx_ = {d: i for i, d in enumerate(table_all["dates"])}
     for p in config.PREDICTIONS:
-        value = current[p["metric"]]
-        if end_date < p["due"]:
-            status = "PENDING"
-        else:
+        value, status = current[p["metric"]], "PENDING"
+        if p["due"] in idx_:
+            hi = idx_[p["due"]]
+            v_ = {x: window_sum(table_all[x]["volume"], hi, w) for x in slugs}
+            f_ = window_sum(table_all[subject]["fees"], hi, w)
+            r_ = window_sum(table_all[subject]["revenue"], hi, w)
+            value = {"share_trailing": v_[subject] / sum(v_.values()) if sum(v_.values()) else None,
+                     "capture_trailing": r_ / f_ if f_ else None,
+                     "take_rate_trailing_bps": 1e4 * f_ / v_[subject] if v_[subject] else None}[p["metric"]]
             status = "MET" if value is not None and value >= p["value"] else "MISSED"
         predictions.append({**p, "seal": "v1", "current": value, "status": status})
-    idx_ = {d: i for i, d in enumerate(table["dates"])}
     onchain_days = {d["day"]: d for d in (bq or {}).get("days", []) if "onchain_usd" in d}
     for seal_id, plist in (("v2", config.PREDICTIONS_V2), ("v3", getattr(config, "PREDICTIONS_V3", []))):
         for p in plist:
@@ -1480,11 +1496,11 @@ def _compute(raw, fetched_at):
             if p["due"] in idx_:
                 hi = idx_[p["due"]]
                 lo = hi - p["window_days"] + 1
-                v_sub = sum(table[subject]["volume"][lo:hi + 1])
-                v_riv = [sum(table[x]["volume"][lo:hi + 1]) for x in slugs if x != subject]
+                v_sub = sum(table_all[subject]["volume"][lo:hi + 1])
+                v_riv = [sum(table_all[x]["volume"][lo:hi + 1]) for x in slugs if x != subject]
                 v_all = v_sub + sum(v_riv)
-                f_sub = sum(table[subject]["fees"][lo:hi + 1])
-                window_days_ = table["dates"][lo:hi + 1]
+                f_sub = sum(table_all[subject]["fees"][lo:hi + 1])
+                window_days_ = table_all["dates"][lo:hi + 1]
                 if p["metric"] == "share_window":
                     value = v_sub / v_all if v_all else None
                 elif p["metric"] == "take_rate_window_bps":
@@ -1504,7 +1520,7 @@ def _compute(raw, fetched_at):
                 status = "MET" if value >= p["value"] else "MISSED"
             entry = {**p, "seal": seal_id, "current": value, "status": status}
             if seal_id == "v2" and p["metric"] == "share_window":
-                tp = tee_prediction_check(raw, table, p)
+                tp = tee_prediction_check(raw, table_all, p)
                 if tp:
                     tp["valid"] = tp["right_days"] and tp["after_due_day"] and tp["checks_pass"]
                     tp["agrees_with_build"] = tp["valid"] and tp["volumes_agree"] and tp["status"] == status
@@ -1519,6 +1535,7 @@ def _compute(raw, fetched_at):
             "last_day": end_date,
             "window_days": w,
             "window": [start_date, end_date],
+            "graded_through": table_all["dates"][-1],
             "min_month_volume": config.MIN_MONTH_VOLUME,
             "subject_methodology": raw["revenue_" + subject].get("methodology") or {},
             "peers": [{"slug": s, "name": names[s]} for s in slugs],
