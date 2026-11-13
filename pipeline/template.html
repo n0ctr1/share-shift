@@ -330,6 +330,60 @@ ul.limits li { counter-increment: l; display: grid; grid-template-columns: 34px 
 ul.limits li::before { content: counter(l, decimal-leading-zero); font: 500 12px/1.9 var(--mono); color: var(--ink-3); }
 ul.limits li b { color: var(--ink); }
 ul.limits li:last-child { border-bottom: 0; }
+
+/* ---- the short layer ---- */
+.say { margin: 0 0 6px; max-width: 40em; color: var(--ink-2); font-size: 1.02em; overflow-wrap: anywhere; }
+.say.big { font: 400 clamp(20px, 2vw, 26px)/1.4 var(--serif); color: var(--ink); max-width: 30em; margin-bottom: 4px; text-wrap: pretty; }
+.point { margin: clamp(30px, 4vw, 48px) 0 0; padding-top: 14px; border-top: 1px solid var(--ink); }
+.point .say { margin-bottom: 14px; }
+.pair { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 40px; }
+@media (min-width: 860px) { .pair { grid-template-columns: 1fr 1fr; } }
+.hbars { display: grid; gap: 8px; margin: 6px 0 0; max-width: 760px; }
+.hbar { display: grid; grid-template-columns: 170px minmax(0, 1fr) 180px; gap: 14px; align-items: center; font-size: 13.5px; }
+.hbar .l { color: var(--ink-2); }
+.hbar .t { position: relative; height: 14px; background: var(--sunk); border-radius: 1px; }
+.hbar .t i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--s1); border-radius: 1px; }
+.hbar.lost .t i { background: var(--ink-3); }
+.hbar .t b { position: absolute; top: -4px; bottom: -4px; width: 1.5px; background: var(--ink); }
+.hbar .v { font: 13px var(--mono); color: var(--ink); }
+.hbar.lost .v { color: var(--ink-3); }
+@media (max-width: 560px) {
+  .hbar { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "l v" "t t"; gap: 4px 12px; }
+  .hbar .l { grid-area: l; } .hbar .v { grid-area: v; text-align: right; } .hbar .t { grid-area: t; }
+}
+.trust { border-top: 1px solid var(--ink); }
+.tr { border-bottom: 1px solid var(--grid); }
+.trh { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; gap: 4px 16px; align-items: baseline; padding: 14px 0;
+  list-style: none; cursor: default; width: auto; font: inherit; letter-spacing: 0; color: inherit; }
+details.tr > summary.trh { cursor: pointer; }
+details.tr > summary.trh::before { content: none; }
+.trh .ok { color: var(--good); font-weight: 600; }
+.trh .tt b { display: block; color: var(--ink); font-weight: 600; font-size: 15px; }
+.trh .tt span { display: block; color: var(--ink-3); font-size: 13.5px; margin-top: 2px; }
+.trh .tv { font: 500 13px var(--mono); color: var(--ink); white-space: nowrap; text-align: right; }
+details.tr > summary.trh .tv::after { content: "  +"; color: var(--mark); }
+details.tr[open] > summary.trh .tv::after { content: "  \2212"; }
+details.tr[open] { padding-bottom: 12px; }
+details.tr .prose { padding-left: 42px; }
+@media (max-width: 560px) {
+  .trh { grid-template-columns: 22px minmax(0, 1fr); }
+  .trh .tv { grid-column: 2; text-align: left; }
+  details.tr .prose { padding-left: 0; }
+}
+/* ---- the appendix ---- */
+.appendix { padding: clamp(44px, 7vw, 84px) 0 24px; }
+.apphead { margin-bottom: 18px; }
+.apphead .eyebrow::after { background: var(--ink); }
+details.appx { border-top: 1px solid var(--rule); margin: 0; font-size: inherit; }
+details.appx:last-child { border-bottom: 1px solid var(--rule); }
+details.appx > summary { display: flex; gap: 16px; align-items: baseline; padding: 16px 0; width: auto; font: 500 clamp(17px, 1.6vw, 21px)/1.3 var(--serif); letter-spacing: 0; color: var(--ink); }
+details.appx > summary::before { content: none; }
+details.appx > summary .no { font: 500 11.5px/1 var(--mono); color: var(--mark); flex: none; width: 34px; }
+details.appx > summary .tl { flex: 1; }
+details.appx > summary::after { content: "+"; font: 400 20px/1 var(--mono); color: var(--ink-3); }
+details.appx[open] > summary::after { content: "\2212"; }
+details.appx > section { padding: 0 0 36px; border: 0; }
+nav.toc a.appx-link { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--rule); grid-template-columns: 1fr; color: var(--ink-2); }
 footer { padding: 28px 0 64px; font-size: 13px; color: var(--ink-3); border-top: 1px solid var(--ink); display: grid; gap: 6px 40px; }
 @media (min-width: 900px) { footer { grid-template-columns: 1fr 1fr; } }
 footer p { margin: 0; }
@@ -429,7 +483,7 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
     return d;
   }
   var sectionNo = 0;
-  function section(id, navLabel, eyebrow, title) {
+  var section = function (id, navLabel, eyebrow, title) {
     var s = el('section', {id: id}), no = (++sectionNo < 10 ? '0' : '') + sectionNo;
     var eb = el('p', {class: 'eyebrow'}); eb.appendChild(el('span', {class: 'no'}, no));
     if (eyebrow) eb.appendChild(el('span', {}, eyebrow));
@@ -439,7 +493,7 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
     var a = el('a', {href: '#' + id}); a.appendChild(el('span', {}, no)); a.appendChild(document.createTextNode(navLabel));
     toc.appendChild(a);
     return s;
-  }
+  };
   function method(parent, title) {  // a collapsed block for method detail
     var d = el('details', {class: 'method'});
     d.appendChild(el('summary', {}, title));
@@ -899,6 +953,146 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
     cs.appendChild(tf);
   }
 
+  function predictionsInto(s) {
+  s.appendChild(rowsBlock(['#', 'Prediction', 'Now', 'Due', 'Status'], M.predictions.map(function (p) {
+    var now = p.current == null ? 'n/a' : p.metric === 'onchain_ratio_window' ? p.current.toFixed(2)
+      : p.metric === 'lead_window' ? (p.current >= 0 ? '+' : '') + (100 * p.current).toFixed(1) + ' pts'
+      : unitFmt(p.current, /bps$/.test(p.metric) ? 'bps' : 'share');
+    return [p.id, p.text, now, p.due, p.status];
+  })));
+  var seal = el('p', {class: 'src'});
+  seal.appendChild(document.createTextNode('Sealed: SHA-256 '));
+  seal.appendChild(el('code', {}, (M.meta.predictions_sha256 || '').slice(0, 16) + '\u2026'));
+  seal.appendChild(document.createTextNode(', OpenTimestamps proof and git tag predictions-v1'));
+  if (M.meta.near_anchor) {
+    seal.appendChild(document.createTextNode(', and written on NEAR mainnet by '));
+    seal.appendChild(el('a', {href: M.meta.near_anchor.explorer, rel: 'noopener'}, 'this transaction'));
+    seal.appendChild(document.createTextNode(' (' + M.meta.near_anchor.key + ' on ' + M.meta.near_anchor.contract + ')'));
+  }
+  seal.appendChild(document.createTextNode('. P4 and P5 are in a second seal, timestamped on Bitcoin but not written on NEAR.'));
+  if (M.meta.seal_v3_sha256) {
+    seal.appendChild(document.createTextNode(' P6 to P8, the call’s rule and the on-chain counting method are in a third seal made before their window starts (SHA-256 '));
+    seal.appendChild(el('code', {}, M.meta.seal_v3_sha256.slice(0, 16) + '\u2026'));
+    if (M.meta.near_anchor_v3) {
+      seal.appendChild(document.createTextNode('), written on NEAR mainnet by '));
+      seal.appendChild(el('a', {href: M.meta.near_anchor_v3.explorer, rel: 'noopener'}, 'this transaction'));
+      seal.appendChild(document.createTextNode('.'));
+    } else seal.appendChild(document.createTextNode(', OpenTimestamps proof).'));
+  }
+  seal.appendChild(document.createTextNode(' The build stops if any seal changes.'));
+  s.appendChild(seal);
+  if (T.tee_prediction) s.appendChild(prose([T.tee_prediction]));
+  }
+
+  // ================= the short layer: one point, one sentence, one figure =================
+  var B = T.brief || {};
+  function say(parent, text, cls) { if (text) parent.appendChild(el('p', {class: cls || 'say'}, text)); }
+  function point(parent, title, text) {
+    var d = el('div', {class: 'point'});
+    d.appendChild(el('h3', {}, title)); say(d, text); parent.appendChild(d); return d;
+  }
+  function small(cfg) {  // a figure with no prose, its sentence comes from the caller
+    cfg.text = null; return cfg;
+  }
+
+  // 02 the position
+  s = section('lead', 'Leader?', 'Is Intents the leader', 'First among swap venues, on every consistent count');
+  say(s, B.lead, 'say big');
+  figure(s, small({title: 'Share of four-venue swap volume, by week', band: band,
+    kind: 'area', unit: 'pct', ymax: 1, x: weekX, xLabel: 'Week of ', xHead: 'Week of',
+    series: perPeer(weeks, function (r, k) { return r.share[k]; }), query: VOL, fn: 'metrics.weekly()'}));
+  if (M.basis) {
+    var pc = point(s, 'The share under each way of counting', B.counts);
+    var bars = el('div', {class: 'hbars'}), ids = ['reported', 'one_side', 'onchain', 'onchain_low', 'worst'];
+    var LBL = {reported: 'As reported', one_side: 'One side of each swap', onchain: 'Rebuilt from the chain',
+      onchain_low: 'Strictest reading', worst: 'Intents halved, rivals not'};
+    M.basis.scenarios.filter(function (x) { return ids.indexOf(x.id) >= 0; })
+      .sort(function (a, b) { return ids.indexOf(a.id) - ids.indexOf(b.id); })
+      .forEach(function (x) {
+        var r = el('div', {class: 'hbar' + (x.leader !== peers.filter(function (p) { return p.slug === subject; })[0].name ? ' lost' : '')});
+        r.appendChild(el('span', {class: 'l'}, LBL[x.id]));
+        var t = el('span', {class: 't'}), f = el('i'); f.style.width = (100 * x.share) + '%'; t.appendChild(f);
+        var half = el('b'); half.style.left = '50%'; t.appendChild(half); r.appendChild(t);
+        r.appendChild(el('span', {class: 'v'}, pct(x.share) + (x.leader.indexOf('NEAR') === 0 ? '' : ', ' + x.leader + ' leads')));
+        bars.appendChild(r);
+      });
+    pc.appendChild(bars);
+    var nt2 = el('p', {class: 'src'}); nt2.appendChild(document.createTextNode('The tick marks 50%. Every reading and how each factor was measured: '));
+    nt2.appendChild(el('a', {href: '#position'}, 'the appendix')); nt2.appendChild(document.createTextNode('.')); pc.appendChild(nt2);
+  }
+  var two = el('div', {class: 'pair'}); s.appendChild(two);
+  if (B.halt) point(two, 'Tested when a rival stopped', B.halt);
+  if (B.bridges) point(two, 'Third once bridges count', B.bridges);
+
+  // 03 the token
+  s = section('to-token', 'To the token?', 'Does it reach NEAR', 'The business is real; the token’s cut of it is small');
+  say(s, B.capture, 'say big');
+  var capM = months.filter(function (r) { return r.capture != null; });
+  figure(s, small({title: 'Share of gross Intents fees that reaches NEAR, by month',
+    kind: 'bar', unit: 'pct', x: capM.map(function (r) { return r.month; }), xHead: 'Month',
+    series: [{name: 'Reaching NEAR', color: COLORS[0], values: capM.map(function (r) { return r.capture; })}],
+    query: REV + ' ÷ ' + FEE, fn: 'metrics.monthly()'}));
+  if (M.token) {
+    var tkp = point(s, 'Buybacks against new NEAR, ' + M.token.window_days + ' days', B.token), tk2 = M.token;
+    var sb = el('div', {class: 'split'}), x1 = el('div'), x2 = el('div');
+    x1.style.cssText = 'background:var(--s1);flex:' + tk2.bought_back_near;
+    x2.style.cssText = 'background:var(--sunk);box-shadow:inset 0 0 0 1px var(--rule);flex:' + Math.max(0, tk2.net_issued_near - tk2.bought_back_near);
+    sb.appendChild(x1); sb.appendChild(x2); tkp.appendChild(sb);
+    var sl = el('div', {class: 'splitlab'});
+    sl.appendChild(el('span', {}, 'Bought back ' + (tk2.bought_back_near / 1e6).toFixed(2) + 'M NEAR'));
+    sl.appendChild(el('span', {}, 'Newly issued ' + (tk2.net_issued_near / 1e6).toFixed(2) + 'M NEAR'));
+    tkp.appendChild(sl);
+  }
+  say(s, B.price);
+
+  // 04 trust
+  if (B.trust) {
+    s = section('trust', 'Why trust it', 'Checks', 'Why these numbers can be trusted');
+    var tl2 = el('div', {class: 'trust'});
+    B.trust.forEach(function (t) {
+      var d = el(t.detail && t.detail.filter(Boolean).length ? 'details' : 'div', {class: 'tr'});
+      var hd = el(d.tagName === 'DETAILS' ? 'summary' : 'div', {class: 'trh'});
+      hd.appendChild(el('span', {class: 'ok'}, '✓'));
+      var tt = el('span', {class: 'tt'}); tt.appendChild(el('b', {}, t.title)); tt.appendChild(el('span', {}, t.line)); hd.appendChild(tt);
+      hd.appendChild(el('span', {class: 'tv'}, t.value));
+      d.appendChild(hd);
+      if (d.tagName === 'DETAILS') d.appendChild(prose(t.detail));
+      tl2.appendChild(d);
+    });
+    s.appendChild(tl2);
+  }
+
+  // 05 predictions
+  s = section('predictions', 'Predictions', 'What would change the conclusion', 'Dated predictions, graded by re-running the build');
+  predictionsInto(s);
+
+  // 06 limits
+  if (B.limits) {
+    s = section('caveats', 'Limits', 'Caveats', 'What this cannot say');
+    var ul3 = el('ul', {class: 'limits'});
+    B.limits.forEach(function (t) { ul3.appendChild(el('li', {}, t)); });
+    s.appendChild(ul3);
+    s.appendChild(el('p', {class: 'src'}, 'Every other limit, with the full method and every table: the appendix below and METHODS.md.'));
+  }
+
+  // ================= the appendix: everything behind it, one click away =================
+  var appx = el('div', {class: 'appendix', id: 'appendix'});
+  var ah = el('div', {class: 'apphead'});
+  ah.appendChild(el('p', {class: 'eyebrow'}, 'Appendix'));
+  ah.appendChild(el('h2', {}, 'The full evidence'));
+  ah.appendChild(el('p', {class: 'say'}, 'Every test, table, chart and limit behind the page above. Each part opens on its own.'));
+  appx.appendChild(ah);
+  main.appendChild(appx);
+  toc.appendChild(el('a', {href: '#appendix', class: 'appx-link'}, 'Full evidence'));
+  var appNo = 0;
+  section = function (id, navLabel, eyebrow, title) {
+    var d = el('details', {class: 'appx', id: id}), sm = el('summary'), no = (++appNo < 10 ? '0' : '') + appNo;
+    sm.appendChild(el('span', {class: 'no'}, 'A' + no)); sm.appendChild(el('span', {class: 'tl'}, title));
+    d.appendChild(sm);
+    var body = el('section'); d.appendChild(body); appx.appendChild(d);
+    return body;
+  };
+
   // ---------- 1. verdicts ----------
   var s = section('verdicts', 'Verdicts', 'The test', M.claims.length + ' claims, each checked against one number');
   var counts = {}; M.claims.forEach(function (c) { counts[c.verdict] = (counts[c.verdict] || 0) + 1; });
@@ -1095,37 +1289,6 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
   s.appendChild(table(['Window', 'Intents share', 'Largest venue', 'Take rate', 'Fees reaching NEAR'],
     M.sensitivity.map(function (r) { return [r.days + ' days', pct(r.share, 1), r.leader, bps(r.take_bps), pct(r.capture, 1)]; }), [0, 1, 0, 1, 1]));
 
-  // ---------- 7. predictions ----------
-  s = section('predictions', 'Predictions', 'What would change the conclusion', 'Dated predictions, graded by re-running the build');
-  s.appendChild(rowsBlock(['#', 'Prediction', 'Now', 'Due', 'Status'], M.predictions.map(function (p) {
-    var now = p.current == null ? 'n/a' : p.metric === 'onchain_ratio_window' ? p.current.toFixed(2)
-      : p.metric === 'lead_window' ? (p.current >= 0 ? '+' : '') + (100 * p.current).toFixed(1) + ' pts'
-      : unitFmt(p.current, /bps$/.test(p.metric) ? 'bps' : 'share');
-    return [p.id, p.text, now, p.due, p.status];
-  })));
-  var seal = el('p', {class: 'src'});
-  seal.appendChild(document.createTextNode('Sealed: SHA-256 '));
-  seal.appendChild(el('code', {}, (M.meta.predictions_sha256 || '').slice(0, 16) + '\u2026'));
-  seal.appendChild(document.createTextNode(', OpenTimestamps proof and git tag predictions-v1'));
-  if (M.meta.near_anchor) {
-    seal.appendChild(document.createTextNode(', and written on NEAR mainnet by '));
-    seal.appendChild(el('a', {href: M.meta.near_anchor.explorer, rel: 'noopener'}, 'this transaction'));
-    seal.appendChild(document.createTextNode(' (' + M.meta.near_anchor.key + ' on ' + M.meta.near_anchor.contract + ')'));
-  }
-  seal.appendChild(document.createTextNode('. P4 and P5 are in a second seal, timestamped on Bitcoin but not written on NEAR.'));
-  if (M.meta.seal_v3_sha256) {
-    seal.appendChild(document.createTextNode(' P6 to P8, the call’s rule and the on-chain counting method are in a third seal made before their window starts (SHA-256 '));
-    seal.appendChild(el('code', {}, M.meta.seal_v3_sha256.slice(0, 16) + '\u2026'));
-    if (M.meta.near_anchor_v3) {
-      seal.appendChild(document.createTextNode('), written on NEAR mainnet by '));
-      seal.appendChild(el('a', {href: M.meta.near_anchor_v3.explorer, rel: 'noopener'}, 'this transaction'));
-      seal.appendChild(document.createTextNode('.'));
-    } else seal.appendChild(document.createTextNode(', OpenTimestamps proof).'));
-  }
-  seal.appendChild(document.createTextNode(' The build stops if any seal changes.'));
-  s.appendChild(seal);
-  if (T.tee_prediction) s.appendChild(prose([T.tee_prediction]));
-
   // ---------- 7b. checks ----------
   s = section('checks', 'How to check', 'Reproducibility', 'How every part of this can be checked');
   var ul2 = el('ul', {class: 'limits'});
@@ -1163,6 +1326,21 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
   det.appendChild(table(['Venue', 'Week of', 'Volume', 'Prior 8-week median', 'Cause'],
     M.quality_flags.map(function (r) { return [r.peer, r.week, usd(r.volume), usd(r.median_prior_8w), r.cause ? 'The halt' : 'Not found']; }), [0, 0, 1, 1, 0]));
   s.appendChild(det);
+
+  // ---------- links into the appendix open the parts they point to ----------
+  function openTo(hash) {
+    if (!hash || hash.length < 2) return;
+    var t = document.getElementById(decodeURIComponent(hash.slice(1)));
+    if (!t) return;
+    for (var p = t; p; p = p.parentElement) if (p.tagName === 'DETAILS') p.open = true;
+    [30, 400, 900].forEach(function (ms) { setTimeout(function () { t.scrollIntoView({block: 'start'}); }, ms); });
+  }
+  window.addEventListener('hashchange', function () { openTo(location.hash); });
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (a && a.getAttribute('href') === location.hash) openTo(location.hash);
+  });
+  openTo(location.hash);
 
   // ---------- nav highlight ----------
   if (window.IntersectionObserver) {

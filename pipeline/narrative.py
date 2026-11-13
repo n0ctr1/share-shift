@@ -626,7 +626,115 @@ def findings(m):
         "day of the window, but the router rule behind it was found by looking at the data; it "
         "is sealed now, and P8 tests it on days not yet seen.",
     ]
+    out["brief"] = brief(m, out)
     return out
+
+
+def brief(m, text):
+    """The short layer: one computed sentence per point, for the page and THESIS.md."""
+    s = m["meta"]["subject"]
+    names = {p["slug"]: p["name"] for p in m["meta"]["peers"]}
+    tr = m["trailing"]
+    share = tr["share"]
+    second = max((k for k in share if k != s), key=lambda k: share[k])
+    b = {}
+    b["lead"] = ("%s of four-venue swap volume over %d days, up from %s a year earlier; %s is second "
+                 "with %s." % (pct(share[s]), m["meta"]["window_days"],
+                               pct(m["yoy"]["share_prior"][s]) if m.get("yoy") else "n/a",
+                               names[second], pct(share[second])))
+    sc = {x["id"]: x for x in (m.get("basis") or {}).get("scenarios", [])}
+    if sc:
+        b["counts"] = ("First on every consistent way of counting: %s as reported, %s counting one side "
+                       "of each swap, %s on volume rebuilt from the chain. Only halving Intents alone, "
+                       "against the rivals' own indexers, puts %s ahead."
+                       % (pct(sc["reported"]["share"]), pct(sc["one_side"]["share"]),
+                          pct(sc.get("onchain", sc["reported"])["share"]), sc["worst"]["leader"]))
+    h = m.get("halt")
+    if h:
+        p365 = next((x for x in h["placebo"] if x["lookback_days"] == 365), None)
+        b["halt"] = ("When %s halted for %d days, Intents took %s of the flow it lost, but growth that "
+                     "size was ordinary for Intents%s, so it shows capacity, not cause."
+                     % (h["rival"], h["days"], pct((h.get("absorbed_by_basis") or {}).get("one_side", h["absorbed_fraction"])),
+                        " (%s percentile of the year before)" % ordinal(round(100 * p365["percentile"])) if p365 else ""))
+    w, mt = m.get("wide"), m.get("market_test")
+    if w:
+        b["bridges"] = ("Add the four large bridges and Intents has %s, rank %d of %d.%s"
+                        % (pct(w["subject_share"]), w["subject_rank_volume"], len(w["venues"]),
+                           " When %s halted, swap venues behaved as its substitutes and no bridge did."
+                           % h["rival"] if mt and not mt["bridges_substituting"] and h else ""))
+    ct = m.get("capture_trend") or []
+    b["capture"] = ("%s of gross Intents fees reach NEAR's revenue wallets%s; the rest stays with "
+                    "solvers and the front ends that distribute Intents."
+                    % (pct(tr["capture"]), ", rising every 90 days: " + " → ".join(pct(x["capture"]) for x in ct)
+                       if len(ct) > 1 else ""))
+    tk = m.get("token")
+    if tk:
+        b["token"] = ("Buybacks took %.2fM NEAR against %.2fM newly issued over %d days, %s. Covering half "
+                      "would take %.1f× today's captured revenue."
+                      % (tk["bought_back_near"] / 1e6, tk["net_issued_near"] / 1e6, tk["window_days"],
+                         pct(tk["offset_buyback"]), 0.5 / tk["offset_buyback"] if tk["offset_buyback"] else float("nan")))
+    b["price"] = ("It does not win on price: %s of volume in gross fees against a rival median of %s."
+                  % (bps(tr["take_bps"][s]), bps(tr["rival_take_median_bps"])))
+
+    trust = []
+    bq = m.get("bq") or {}
+    oc = bq.get("onchain") or {}
+    if oc:
+        f = oc["from_method_change"]
+        trust.append({"id": "volume", "title": "Intents volume rebuilt from the chain, every day",
+                      "value": "%.2f× reported" % f["median"],
+                      "line": "Every log line intents.near wrote (NEAR's public BigQuery dataset); within 20%% "
+                              "on %d of %d days since the settlement method changed." % (f["within_20pct"], f["days"]),
+                      "detail": [text.get("bq"), text.get("onchain_rebuild"), text.get("onchain_share")]})
+    th = ((m.get("basis") or {}).get("venues") or {}).get("thorchain-dex")
+    if th:
+        trust.append({"id": "basis", "title": "Rivals' double counting measured from their own indexers",
+                      "value": "%s swaps read" % "{:,}".format(th["swaps_read"]),
+                      "line": "THORChain, Maya and Chainflip volume is reduced to one side of each swap with "
+                              "factors read from Midgard and the Chainflip indexer.",
+                      "detail": [text.get("basis_source"), text.get("events_lead"), text.get("events_others")]})
+    if m.get("onchain"):
+        trust.append({"id": "revenue", "title": "Revenue matches the revenue wallets",
+                      "value": pct(m["onchain"]["ratio"], 1),
+                      "line": "Transfers into NEAR's three revenue wallets against the revenue figure used.",
+                      "detail": [text.get("onchain")]})
+    if tk and tk.get("l1", {}).get("bigquery"):
+        l1b = tk["l1"]["bigquery"]
+        trust.append({"id": "supply", "title": "Supply from block headers, activity from two indexers",
+                      "value": "%d of %d days agree" % (l1b["within_1pct"], l1b["days"]),
+                      "line": "NEAR issuance is read from total_supply in block headers; daily L1 counts from "
+                              "NearBlocks and BigQuery agree to within 1%.",
+                      "detail": [text.get("token"), text.get("token_l1")]})
+    tdx = (m.get("tee") or {}).get("tdx")
+    if tdx:
+        trust.append({"id": "tee", "title": "Headline recomputed in a TEE, checked to Intel's root",
+                      "value": "%d/%d checks" % (tdx["checks_passed"], tdx["checks_total"]),
+                      "line": "The same WASM recomputed the share inside an Intel TDX enclave; its quote is "
+                              "verified here down to Intel's root CA, TCB %s." % tdx["tcb_status"],
+                      "detail": [text.get("tee"), text.get("tee_scope"), text.get("tdx")]})
+    seals = 1 + bool(m["meta"].get("seal_v2_sha256")) + bool(m["meta"].get("seal_v3_sha256"))
+    on_near = bool(m["meta"].get("near_anchor")) + bool(m["meta"].get("near_anchor_v3"))
+    trust.append({"id": "seals", "title": "Thresholds, the call's rule and predictions sealed",
+                  "value": "%d seals, %d on NEAR" % (seals, on_near),
+                  "line": "Hashes timestamped on Bitcoin and written on NEAR mainnet; the build stops if "
+                          "any sealed value changes.", "detail": []})
+    trust.append({"id": "build", "title": "Every number rebuilds, byte for byte",
+                  "value": "build.py --offline",
+                  "line": "One command regenerates this page, THESIS.md and METHODS.md from the committed "
+                          "snapshot; every raw file is hash-checked.", "detail": []})
+    b["trust"] = trust
+    b["limits"] = [
+        "The router rule that rebuilds Intents volume after August was found by looking at the data; "
+        "it is sealed now and tested on days not yet seen (P8).",
+        "Which market is the right one rests on one natural experiment, the THORChain halt.",
+        "Claim thresholds and the call's rule were set after a first look at the data; they are "
+        "sealed so any later change shows.",
+    ]
+    return b
+
+
+def ordinal(n):
+    return "%d%s" % (n, "th" if 10 <= n % 100 <= 20 else {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th"))
 
 
 def verdict_line(m):
@@ -1104,35 +1212,60 @@ def anchor(heading):
 
 
 def thesis_markdown(m, text):
-    """The short thesis: the call, the verdicts, the case each way, and why it can be trusted."""
-    s = m["meta"]["subject"]
+    """The short thesis: the call, the case each way, why it can be trusted. Detail is in METHODS.md."""
+    B = text["brief"]
     M = lambda heading: "[details](METHODS.md%s)" % anchor(heading)
     lines = []
     add = lines.append
     add("# " + text["title"])
     add("")
-    add("> Data %s to %s, fetched %s. Every figure is computed by `python3 build.py`; none is "
-        "typed by hand. The method, every check and every limit: [METHODS.md](METHODS.md)."
-        % (m["meta"]["first_day"], m["meta"]["last_day"], m["meta"]["fetched_at"][:10]))
+    add("> Data %s to %s. Every figure is computed by `python3 build.py`; none is typed by hand. "
+        "The method, every check and every limit: [METHODS.md](METHODS.md). Dashboard: "
+        "https://n0ctr1.github.io/share-shift/" % (m["meta"]["first_day"], m["meta"]["last_day"]))
     add("")
     if "call" in text:
         add("## The call: %s" % text["call_word"])
         add("")
         add("**%s.** %s" % (text["call"], text["call_line"]))
         add("")
-        for i, r in enumerate(text["call_reasons"], 1):
-            add("%d. %s" % (i, r))
-        add("")
         add("| Moves the call to | When | Now |")
         add("| --- | --- | --- |")
         for to, when, now in text["call_triggers"]:
             add("| %s | %s | %s |" % (to, when, now))
         add("")
-        add(text["call_note"])
+        add("The rule is `CALL` in `pipeline/config.py`, sealed on %s; next review %s."
+            % ((m["meta"].get("seal_v3") or {}).get("sealed_on", "n/a"), m["call"]["review_on"]))
         add("")
-    add("## Fourteen claims, each one number against one threshold")
+    add("## Is Intents the leader? Yes")
     add("")
-    add("**%s** Thresholds are in `pipeline/config.py`." % verdict_line(m))
+    add("- %s" % B["lead"])
+    if "counts" in B:
+        add("- %s %s" % (B["counts"], M("How volume is counted")))
+    if "halt" in B:
+        add("- %s %s" % (B["halt"], M("The stress test")))
+    if "bridges" in B:
+        add("- %s %s" % (B["bridges"], M("Which market: a substitution test")))
+    add("- %s" % B["price"])
+    add("")
+    add("## Does it reach the NEAR token? Not yet")
+    add("")
+    add("- %s %s" % (B["capture"], M("Evidence against")))
+    if "token" in B:
+        add("- %s %s" % (B["token"], M("What it means for the NEAR token")))
+    add("- %s" % text["recent"].split("; every rival grew")[0].rstrip(".") + ".")
+    add("")
+    add("## Why these numbers can be trusted")
+    add("")
+    add("| Check | Result |")
+    add("| --- | --- |")
+    for t in B["trust"]:
+        add("| %s | %s |" % (t["title"], t["value"]))
+    add("")
+    add("How to rerun each one: %s" % M("How this can be checked"))
+    add("")
+    add("## %d claims, each one number against one threshold" % len(m["claims"]))
+    add("")
+    add("**%s**" % verdict_line(m))
     add("")
     add("| # | Claim | Measured | Threshold | Verdict |")
     add("| --- | --- | --- | --- | --- |")
@@ -1140,94 +1273,20 @@ def thesis_markdown(m, text):
         add("| %s | %s | %s | %s | **%s** |" % (
             c["id"], c["claim"], claim_cells(c)[0], claim_cells(c)[1], c["verdict"]))
     add("")
-    add("## Why it could work")
-    add("")
-    add("- **The largest venue, on every consistent count.** %s %s %s"
-        % (text["share"], text.get("basis_short", "").split(". Only one reading")[0] + ".",
-           M("How volume is counted")))
-    if m.get("halt"):
-        add("- **It held up when a rival stopped.** %s %s" % (text["halt_short"], M("The stress test")))
-    add("- **It does not win on price.** %s %s" % (text["take_rate"], M("The rest")))
-    add("")
-    add("## What could break it")
-    add("")
-    add("- **Most fees do not reach NEAR.** %s %s %s"
-        % (text["capture"], text.get("capture_trend", ""), M("Evidence against")))
-    if "token" in text:
-        tk = m["token"]
-        add("- **Buybacks are small next to issuance.** NEAR's supply grew %.2fM over %d days "
-            "(from block headers); buybacks took %.2fM, %s of it. %s"
-            % (tk["net_issued_near"] / 1e6, tk["window_days"], tk["bought_back_near"] / 1e6,
-               pct(tk["offset_buyback"]), M("What it means for the NEAR token")))
-    add("- **The rival is coming back.** %s %s"
-        % (text["recent"].split("; every rival grew")[0] + ".", M("Evidence against")))
-    if m.get("wide"):
-        w = m["wide"]
-        add("- **Bridges are bigger.** With the four large bridges added, Intents has %s of the "
-            "eight venues' volume and ranks %d of %d. %s"
-            % (pct(w["subject_share"]), w["subject_rank_volume"], len(w["venues"]), M("All eight venues"))
-            + (" When THORChain halted, no bridge behaved as a substitute; swap venues did. %s"
-               % M("Which market: a substitution test") if m.get("market_test") else ""))
-    add("")
-    add("## Why these numbers can be trusted")
-    add("")
-    bq = m.get("bq")
-    if bq and bq.get("valid"):
-        oc = bq.get("onchain") or {}
-        sc_ = {x["id"]: x for x in (m.get("basis") or {}).get("scenarios", [])}
-        add("- **Intents volume is rebuilt from the chain for every day, not taken on trust.** "
-            "Each rival's double counting is measured from its own indexer. For Intents, every "
-            "log line intents.near wrote (NEAR's public BigQuery dataset) rebuilds the reported "
-            "figure: token_diff events through August, and from September the transfers through "
-            "1Click routers that replaced them (median %.2f of reported, within 20%% on %d of %d "
-            "days). With on-chain volume the share is %s; the strictest reading gives %s. %s"
-            % (oc.get("from_method_change", {}).get("median", float("nan")),
-               oc.get("from_method_change", {}).get("within_20pct", 0),
-               oc.get("from_method_change", {}).get("days", 0),
-               pct(sc_.get("onchain", {}).get("share")), pct(sc_.get("onchain_low", {}).get("share")),
-               M("How volume is counted")))
-    if m.get("onchain"):
-        add("- **Revenue matches the chain.** Transfers into NEAR's three revenue wallets come to "
-            "%s of the revenue figure used. %s"
-            % (pct(m["onchain"]["ratio"], 1), M("Evidence against")))
-    if m.get("token"):
-        add("- **Supply and activity come from the chain.** Issuance is read from block headers; "
-            "L1 activity is counted by two indexers that agree. %s" % M("What it means for the NEAR token"))
-    tdx = (m.get("tee") or {}).get("tdx")
-    if tdx:
-        add("- **The TEE run is checked down to Intel's root.** The headline share was recomputed "
-            "inside an Intel TDX enclave through OutLayer. This repository verifies the enclave's "
-            "quote itself: it binds the key that delivered the result, chains to Intel's root CA, "
-            "and its TCB is %s against Intel's current collateral (%d of %d checks pass). %s"
-            % (tdx["tcb_status"], tdx["checks_passed"], tdx["checks_total"], M("How this can be checked")))
-    add("- **Anyone can rebuild it.** `python3 build.py --offline` reproduces this file and the "
-        "dashboard byte for byte from the committed snapshot; the predictions, the call's rule "
-        "and the on-chain method are sealed on Bitcoin. %s" % M("How this can be checked"))
-    add("")
     add("## Dated predictions")
     add("")
     add("| # | Due | Prediction | Now | Status |")
     add("| --- | --- | --- | --- | --- |")
     for p in m["predictions"]:
-        add("| %s | %s | %s | %s | %s |" % (p["id"], p["due"], p["text"],
-                                           pred_value(p), p["status"]))
+        add("| %s | %s | %s | %s | %s |" % (p["id"], p["due"], p["text"], pred_value(p), p["status"]))
     add("")
-    add("P1 to P3 are sealed by hash, timestamped on Bitcoin and written on NEAR mainnet; P4 and "
-        "P5 are in a second seal, timestamped on Bitcoin after the first of their two days had "
-        "ended. P6 to P8 are in a third seal made before their window starts, together with the "
-        "call's rule and the on-chain method. %s %s"
-        % (text.get("tee_prediction", ""), M("What would change my mind")))
+    add("Sealed in three seals, timestamped on Bitcoin; the first and third are written on NEAR "
+        "mainnet. %s" % M("What would change my mind"))
     add("")
     add("## What this cannot say")
     add("")
-    add("- The on-chain router rule that rebuilds Intents volume after August was found by "
-        "looking at the data. It is sealed now and P8 tests it on days not yet seen.")
-    add("- Which market is the right one is tested once, with the THORChain halt: only swap "
-        "venues behaved as substitutes, no bridge did. One event is thin evidence, so both "
-        "market sets are shown. %s" % M("Which market: a substitution test"))
-    add("- Claim thresholds and the call's rule were set after a first look at the data. They "
-        "are sealed so any later change shows, and P6 to P8 grade the thesis on days after the "
-        "seal.")
+    for item in B["limits"]:
+        add("- " + item)
     add("")
     add("Every other limit: %s" % M("What this analysis cannot say"))
     add("")
