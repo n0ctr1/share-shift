@@ -817,14 +817,20 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
     var fig = document.getElementById('hero'), wk = M.weekly.filter(function (r) { return r.share[subject] != null; });
     if (!wk.length) return;
     var rules = (M.call && M.call.rules) || {share_90d_kill: 0.4};
+    var roll = wk.map(function (r, i) {
+      if (i < 12) return null;
+      var v = 0, t = 0;
+      for (var j = i - 12; j <= i; j++) { v += (wk[j][subject] || {}).volume || 0; t += wk[j].total_volume || 0; }
+      return t ? v / t : null;
+    });
     var cap = el('figcaption', {class: 'cap'});
-    cap.appendChild(el('span', {}, 'NEAR Intents, share of four-venue swap volume, by week'));
+    cap.appendChild(el('span', {}, 'NEAR Intents, share of four-venue swap volume: trailing 13 weeks (solid) and each week (thin)'));
     cap.appendChild(el('b', {}, wk[0].week.slice(0, 7) + ' → ' + wk[wk.length - 1].week.slice(0, 7)));
     fig.appendChild(cap);
     var box = el('div'); fig.appendChild(box);
     var nt = el('p', {class: 'note'});
     nt.textContent = 'Shaded: ' + (M.halt ? M.halt.rival + ' halted, ' + M.halt.first_day + ' to ' + M.halt.last_day + '. ' : '') +
-      'The 90-day share is ' + pct(M.trailing.share[subject]) + '; the latest complete week, ' + pct(M.stability.latest_share) + '.';
+      'The avoid line applies to the 90-day share, the solid line: ' + pct(M.trailing.share[subject]) + ' to ' + M.meta.window[1] + ', above it. A single week, the thin line, can dip below it without moving the call; the latest complete week was ' + pct(M.stability.latest_share) + '.';
     fig.appendChild(nt);
     var drawn = false;
     function draw() {
@@ -849,25 +855,32 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
           svg.appendChild(el('text', {x: (X(a) + X(b)) / 2, y: m.t - 8, 'text-anchor': 'middle'}, M.halt.rival + ' halted'));
         }
       }
-      [[0.5, 'lead line 50%', 'var(--good)'], [rules.share_90d_kill, 'kill line ' + pct(rules.share_90d_kill), 'var(--bad)']].forEach(function (r) {
+      [[0.5, 'lead line 50%', 'var(--good)'], [rules.share_90d_kill, 'avoid if 90-day share < ' + pct(rules.share_90d_kill), 'var(--bad)']].forEach(function (r) {
         svg.appendChild(el('line', {x1: m.l, x2: m.l + iw, y1: Y(r[0]) + 0.5, y2: Y(r[0]) + 0.5, stroke: r[2], 'stroke-width': 1, 'stroke-dasharray': '4 3'}));
         svg.appendChild(el('text', {x: m.l + 6, y: Y(r[0]) - 5, class: 'lab'}, r[1]));
       });
-      var d = '', area = '';
-      wk.forEach(function (r, i) { d += (i ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(r.share[subject]).toFixed(1); });
-      area = d + 'L' + X(n - 1).toFixed(1) + ' ' + Y(0) + 'L' + X(0) + ' ' + Y(0) + 'Z';
+      var dw = '', d = '', area = '', r0 = -1;
+      wk.forEach(function (r, i) { dw += (i ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(r.share[subject]).toFixed(1); });
+      svg.appendChild(el('path', {d: dw, fill: 'none', stroke: 'var(--s1)', 'stroke-opacity': 0.4, 'stroke-width': 1.25, 'stroke-linejoin': 'round', class: MOTION && !drawn ? 'fade' : ''}));
+      roll.forEach(function (v, i) { if (v == null) return; if (r0 < 0) r0 = i; d += (i === r0 ? 'M' : 'L') + X(i).toFixed(1) + ' ' + Y(v).toFixed(1); });
+      area = d + 'L' + X(n - 1).toFixed(1) + ' ' + Y(0) + 'L' + X(r0).toFixed(1) + ' ' + Y(0) + 'Z';
       svg.appendChild(el('path', {d: area, fill: 'var(--s1)', 'fill-opacity': 0.09, class: MOTION && !drawn ? 'fade' : ''}));
-      var line = el('path', {d: d, fill: 'none', stroke: 'var(--s1)', 'stroke-width': 2.25, 'stroke-linejoin': 'round', 'stroke-linecap': 'round'});
+      var line = el('path', {d: d, fill: 'none', stroke: 'var(--s1)', 'stroke-width': 2.5, 'stroke-linejoin': 'round', 'stroke-linecap': 'round'});
       svg.appendChild(line);
       if (MOTION && !drawn) { var L = line.getTotalLength(); line.style.setProperty('--len', L); line.setAttribute('class', 'draw'); }
       svg.appendChild(el('line', {x1: m.l, x2: m.l + iw, y1: Y(0) + 0.5, y2: Y(0) + 0.5, stroke: 'var(--ink-3)'}));
-      var last = wk[n - 1].share[subject], first = wk[0].share[subject];
+      var last = roll[n - 1], wlast = wk[n - 1].share[subject];
       var dot = el('circle', {cx: X(n - 1), cy: Y(last), r: 4.5, fill: 'var(--s1)', stroke: 'var(--page)', 'stroke-width': 2});
       svg.appendChild(dot);
+      svg.appendChild(el('circle', {cx: X(n - 1), cy: Y(wlast), r: 3, fill: 'var(--page)', stroke: 'var(--s1)', 'stroke-width': 1.5}));
       var narrowH = W < 560;
-      var big = el('text', narrowH ? {x: X(n - 1), y: Y(last) + 34, 'text-anchor': 'end', class: 'big'}
-                                   : {x: X(n - 1) + 10, y: Y(last) + 10, class: 'big'}, pct(last));
+      var big = el('text', narrowH ? {x: X(n - 1), y: Y(last) - 12, 'text-anchor': 'end', class: 'big'}
+                                   : {x: X(n - 1) + 10, y: Y(last) + 10, class: 'big'}, pct(M.trailing.share[subject]));
       svg.appendChild(big);
+      svg.appendChild(el('text', narrowH ? {x: X(n - 1), y: Y(last) - 44, 'text-anchor': 'end', class: 'lab'}
+                                         : {x: X(n - 1) + 10, y: Y(last) + 28, class: 'lab'}, '90 days'));
+      svg.appendChild(el('text', narrowH ? {x: X(n - 1) - 8, y: Y(wlast) + 18, 'text-anchor': 'end', class: 'lab'}
+                                         : {x: X(n - 1) + 10, y: Y(wlast) + 4, class: 'lab'}, pct(wlast) + ' week'));
       // ticks: first week of each half-year
       var lastX = -99;
       wk.forEach(function (r, i) {
@@ -918,7 +931,7 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
   var s30 = (M.sensitivity || []).filter(function (x) { return x.days === 30; })[0];
   stats.push(['Share of the four native-swap venues, 90 days', pct(tr.share[subject]), yoy ? 'was ' + pct(yoy.share_prior[subject]) + ' a year earlier' : '', wkShare]);
   stats.push(['Same, last 30 days', s30 ? pct(s30.share) : 'n/a', 'accumulate needs 50% or more', null]);
-  stats.push(['Same, latest complete week', pct(M.stability.latest_share), 'kill line: 40% over 90 days', wkShare.slice(-13)]);
+  stats.push(['Same, latest complete week', pct(M.stability.latest_share), 'avoid line: 40%, over 90 days only', wkShare.slice(-13)]);
   if (M.wide) stats.push(['With four bridges added', pct(M.wide.subject_share), 'rank ' + M.wide.subject_rank_volume + ' of ' + M.wide.venues.length + ' by volume']);
   stats.push(['Gross fees reaching NEAR', pct(tr.capture), usd(tr.revenue[subject]) + ' of ' + usd(tr.fees[subject]),
     cMonths.filter(function (r) { return r.capture != null; }).map(function (r) { return r.capture; })]);
