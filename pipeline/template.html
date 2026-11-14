@@ -134,6 +134,11 @@ h1 em { font-style: italic; color: var(--mark); }
 .hero-chart text { font-family: var(--mono); font-size: .7em; fill: var(--ink-3); }
 .hero-chart text.big { font: 500 1.85em var(--serif); fill: var(--ink); }
 .hero-chart text.lab { fill: var(--ink-2); }
+.hero-chart text.lab, .hero-chart text.halo { paint-order: stroke; stroke: var(--page); stroke-width: 4px; stroke-linejoin: round; }
+.hero-chart text.big.sm { font-size: 1.35em; }
+.hero-chart .hkey { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 8px 0 0; font: .72em var(--mono); color: var(--ink-2); }
+.hero-chart .hkey i { display: inline-block; width: 18px; height: 0; border-top: 2px solid; vertical-align: middle; margin-right: 6px; }
+.hero-chart .hkey i.d { border-top-style: dashed; border-top-width: 1px; }
 .hero-chart .note { margin: 8px 0 0; font-size: 13px; color: var(--ink-3); }
 .draw { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); animation: draw 1.6s cubic-bezier(.3,.1,.2,1) .15s forwards; }
 @keyframes draw { to { stroke-dashoffset: 0; } }
@@ -828,6 +833,12 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
     cap.appendChild(el('b', {}, wk[0].week.slice(0, 7) + ' → ' + wk[wk.length - 1].week.slice(0, 7)));
     fig.appendChild(cap);
     var box = el('div'); fig.appendChild(box);
+    var key = el('div', {class: 'hkey'});
+    [['var(--s1)', '', '13 weeks'], ['var(--s1)', 'opacity:.45', 'each week'], ['var(--good)', '', 'lead 50%', 1], ['var(--bad)', '', 'avoid if 90-day < ' + pct(rules.share_90d_kill), 1]].forEach(function (k) {
+      var sp = el('span'), sw = el('i', k[3] ? {class: 'd'} : {}); sw.style.borderColor = k[0]; if (k[1]) sw.style.opacity = .45;
+      sp.appendChild(sw); sp.appendChild(document.createTextNode(k[2])); key.appendChild(sp);
+    });
+    fig.appendChild(key);
     var nt = el('p', {class: 'note'});
     nt.textContent = 'Shaded: ' + (M.halt ? M.halt.rival + ' halted, ' + M.halt.first_day + ' to ' + M.halt.last_day + '. ' : '') +
       'The avoid line applies to the 90-day share, the solid line: ' + pct(M.trailing.share[subject]) + ' to ' + M.meta.window[1] + ', above it. A single week, the thin line, can dip below it without moving the call; the latest complete week was ' + pct(M.stability.latest_share) + '.';
@@ -836,7 +847,7 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
     function draw() {
       var W = Math.max(280, box.clientWidth), H = Math.round(Math.max(220, Math.min(W > 720 ? 420 : 330, W * 0.5)));
       var fs = parseFloat(getComputedStyle(box).fontSize) || 16;
-      var m = {l: Math.round(fs * 2.2), r: W < 560 ? 8 : Math.round(fs * 4.8), t: Math.round(fs * 1.4), b: Math.round(fs * 1.5)}, iw = W - m.l - m.r, ih = H - m.t - m.b, n = wk.length;
+      var m = {l: Math.round(fs * 2.2), r: W < 560 ? Math.round(fs * 3.3) : Math.round(fs * 4.8), t: Math.round(fs * 1.4), b: Math.round(fs * 1.5)}, iw = W - m.l - m.r, ih = H - m.t - m.b, n = wk.length;
       var X = function (i) { return m.l + iw * i / (n - 1); }, Y = function (v) { return m.t + ih * (1 - v); };
       box.textContent = '';
       var svg = el('svg', {width: W, height: H, viewBox: '0 0 ' + W + ' ' + H, role: 'img',
@@ -857,8 +868,9 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
       }
       [[0.5, 'lead line 50%', 'var(--good)'], [rules.share_90d_kill, 'avoid if 90-day share < ' + pct(rules.share_90d_kill), 'var(--bad)']].forEach(function (r) {
         svg.appendChild(el('line', {x1: m.l, x2: m.l + iw, y1: Y(r[0]) + 0.5, y2: Y(r[0]) + 0.5, stroke: r[2], 'stroke-width': 1, 'stroke-dasharray': '4 3'}));
-        svg.appendChild(el('text', {x: m.l + 6, y: Y(r[0]) - 5, class: 'lab'}, r[1]));
+        if (W >= 560) svg.appendChild(el('text', {x: m.l + 6, y: Y(r[0]) - 5, class: 'lab'}, r[1]));
       });
+      key.style.display = W >= 560 ? 'none' : '';
       var dw = '', d = '', area = '', r0 = -1;
       wk.forEach(function (r, i) { dw += (i ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(r.share[subject]).toFixed(1); });
       svg.appendChild(el('path', {d: dw, fill: 'none', stroke: 'var(--s1)', 'stroke-opacity': 0.4, 'stroke-width': 1.25, 'stroke-linejoin': 'round', class: MOTION && !drawn ? 'fade' : ''}));
@@ -874,13 +886,16 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
       svg.appendChild(dot);
       svg.appendChild(el('circle', {cx: X(n - 1), cy: Y(wlast), r: 3, fill: 'var(--page)', stroke: 'var(--s1)', 'stroke-width': 1.5}));
       var narrowH = W < 560;
-      var big = el('text', narrowH ? {x: X(n - 1), y: Y(last) - 12, 'text-anchor': 'end', class: 'big'}
-                                   : {x: X(n - 1) + 10, y: Y(last) + 10, class: 'big'}, pct(M.trailing.share[subject]));
+      var ex = X(n - 1) + (narrowH ? 7 : 10);
+      var big = el('text', {x: ex, y: Y(last) + (narrowH ? 6 : 10), class: narrowH ? 'big sm' : 'big'}, pct(M.trailing.share[subject]));
       svg.appendChild(big);
-      svg.appendChild(el('text', narrowH ? {x: X(n - 1), y: Y(last) - 44, 'text-anchor': 'end', class: 'lab'}
-                                         : {x: X(n - 1) + 10, y: Y(last) + 28, class: 'lab'}, '90 days'));
-      svg.appendChild(el('text', narrowH ? {x: X(n - 1) - 8, y: Y(wlast) + 18, 'text-anchor': 'end', class: 'lab'}
-                                         : {x: X(n - 1) + 10, y: Y(wlast) + 4, class: 'lab'}, pct(wlast) + ' week'));
+      var y90 = Y(last) + (narrowH ? 20 : 28);
+      svg.appendChild(el('text', {x: ex, y: y90, class: 'lab'}, narrowH ? '90 d' : '90 days'));
+      var yw = Math.max(Y(wlast) + 4, y90 + (narrowH ? 22 : 18));
+      if (narrowH) {
+        svg.appendChild(el('text', {x: ex, y: yw, class: 'lab'}, pct(wlast)));
+        svg.appendChild(el('text', {x: ex, y: yw + 13, class: 'lab'}, 'week'));
+      } else svg.appendChild(el('text', {x: ex, y: yw, class: 'lab'}, pct(wlast) + ' week'));
       // ticks: first week of each half-year
       var lastX = -99;
       wk.forEach(function (r, i) {
