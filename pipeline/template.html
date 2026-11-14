@@ -105,7 +105,7 @@ h1 { margin: 0; font: 500 clamp(34px, 4.7vw, 62px)/1.03 var(--serif); letter-spa
 h1 em { font-style: italic; color: var(--mark); }
 @media (min-width: 1680px) { h1 { font-size: clamp(56px, 3.9vw, 72px); } .sub { font-size: 23px; } .stat .v { font-size: 46px; } h2 { font-size: 42px; } }
 @media (min-width: 2200px) { h1 { font-size: clamp(72px, 3.6vw, 88px); } .sub { font-size: 26px; } .stat .v { font-size: 54px; } h2 { font-size: 48px; } .call .word { font-size: 128px; } }
-.sub { margin: 22px 0 0; font: 400 clamp(18px, 1.9vw, 22px)/1.4 var(--serif); color: var(--ink-2); text-wrap: pretty; max-width: 34em; }
+.sub { margin: 22px 0 0; font: 400 clamp(18px, 1.9vw, 22px)/1.4 var(--serif); color: var(--ink-2); text-wrap: pretty; max-width: 48em; }
 .stamp { margin: 22px 0 0; font: 12px/1.5 var(--mono); color: var(--ink-3); }
 
 .hero-chart { margin: 0; position: relative; }
@@ -176,8 +176,7 @@ section:last-of-type { border-bottom: 0; }
 h2 { margin: 0 0 22px; font: 500 clamp(27px, 3.3vw, 40px)/1.1 var(--serif); letter-spacing: -.018em; text-wrap: balance; max-width: 22em;
   font-variation-settings: "opsz" 60; }
 h3 { margin: 0 0 10px; font: 600 16.5px/1.35 var(--sans); letter-spacing: -.005em; }
-.prose { max-width: 46em; }
-@media (min-width: 1680px) { .prose { max-width: 50em; } }
+.prose { max-width: 75em; }
 .prose p { margin: 0 0 14px; color: var(--ink-2); overflow-wrap: anywhere; }
 .prose p.lead { color: var(--ink); font: 400 1.14em/1.55 var(--serif); }
 .figure { margin: clamp(32px, 4.5vw, 52px) 0 0; }
@@ -291,7 +290,7 @@ tbody tr:last-child td { border-bottom: 0; }
 .trigger p { margin: 10px 0 0; }
 .trigger small { display: block; color: var(--ink-3); font: 500 10.5px/1.6 var(--mono); text-transform: uppercase; letter-spacing: .1em; }
 .trigger .now { font: 13px/1.5 var(--mono); color: var(--ink-2); }
-.figure .note { color: var(--ink-3); font-size: 13.5px; max-width: 46em; }
+.figure .note { color: var(--ink-3); font-size: 13.5px; max-width: 75em; }
 
 /* ---- claims and predictions ---- */
 .rows { margin: 4px 0 0; border-top: 1px solid var(--ink); }
@@ -336,15 +335,15 @@ tbody tr:last-child td { border-bottom: 0; }
 .cmd button { grid-row: 1 / span 2; grid-column: 2; font: 500 11px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2);
   background: var(--surface); border: 1px solid var(--rule); padding: 7px 10px; cursor: pointer; border-radius: 2px; }
 .cmd button:hover { color: var(--ink); border-color: var(--ink-3); }
-ul.limits { margin: 0; padding: 0; list-style: none; counter-reset: l; max-width: 52em; }
+ul.limits { margin: 0; padding: 0; list-style: none; counter-reset: l; max-width: 75em; }
 ul.limits li { counter-increment: l; display: grid; grid-template-columns: 34px minmax(0, 1fr); overflow-wrap: anywhere; padding: 14px 0; border-bottom: 1px solid var(--grid); color: var(--ink-2); }
 ul.limits li::before { content: counter(l, decimal-leading-zero); font: 500 12px/1.9 var(--mono); color: var(--ink-3); }
 ul.limits li b { color: var(--ink); }
 ul.limits li:last-child { border-bottom: 0; }
 
 /* ---- the short layer ---- */
-.say { margin: 0 0 6px; max-width: 40em; color: var(--ink-2); font-size: 1.02em; overflow-wrap: anywhere; }
-.say.big { font: 400 clamp(20px, 2vw, 26px)/1.4 var(--serif); color: var(--ink); max-width: 30em; margin-bottom: 4px; text-wrap: pretty; }
+.say { margin: 0 0 6px; max-width: 75em; color: var(--ink-2); font-size: 1.02em; overflow-wrap: anywhere; }
+.say.big { font: 400 clamp(20px, 2vw, 26px)/1.4 var(--serif); color: var(--ink); max-width: 48em; margin-bottom: 4px; text-wrap: pretty; }
 .point { margin: clamp(30px, 4vw, 48px) 0 0; padding-top: 14px; border-top: 1px solid var(--ink); }
 .point .say { margin-bottom: 14px; }
 .pair { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 40px; }
@@ -468,9 +467,11 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
     var svg = /^(svg|g|path|line|rect|text|circle)$/.test(tag);
     var n = svg ? document.createElementNS(NS, tag) : document.createElement(tag);
     for (var k in attrs || {}) n.setAttribute(k, attrs[k]);
-    if (text != null) n.textContent = text;
+    if (text != null) n.textContent = svg ? text : glue(String(text));
     return n;
   }
+  // keep a number with its unit, so a line never ends on "13.0" and starts on "bps"
+  function glue(t) { return t.replace(/(\d) (bps|days|weeks|months|NEAR\b|M\b|B\b)/g, '$1\u00a0$2'); }
   function usd(x) {
     if (x == null) return 'n/a';
     var a = Math.abs(x);
@@ -480,7 +481,7 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
     return '$' + x.toFixed(0);
   }
   function pct(x, d) { return x == null ? 'n/a' : (100 * x).toFixed(d == null ? 0 : d) + '%'; }
-  function bps(x) { return x == null ? 'n/a' : x.toFixed(1) + ' bps'; }
+  function bps(x) { return x == null ? 'n/a' : x.toFixed(1) + '\u00a0bps'; }
   function fmtBy(unit) { return unit === 'usd' ? usd : unit === 'bps' ? bps : function (x) { return pct(x, 1); }; }
   function unitFmt(v, unit) {
     if (v == null) return 'n/a';
