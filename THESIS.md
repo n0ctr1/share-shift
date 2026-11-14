@@ -1,4 +1,4 @@
-# NEAR Intents leads the native-swap venues, but too little of it reaches the NEAR token yet. 58% of the four native-swap venues over 90 days, 46% over 30 days, 38% in the latest week; third, with 18%, once four bridges count. The call is to watch, not buy, until buybacks cover 50% of new NEAR and the 30-day share is back above 50%.
+# NEAR Intents leads the native-swap venues, but too little of it reaches the NEAR token yet. First of four native-swap venues with 58% over 90 days (46% over 30, 38% in the latest week); third of eight, with 18%, once four bridges count. The call is to watch, not buy, until buybacks cover 50% of new NEAR and the 30-day share is back above 50%.
 
 > Data 2024-12-10 to 2026-11-10. Every figure is computed by `python3 build.py`; none is typed by hand. The method, every check and every limit: [METHODS.md](METHODS.md). Dashboard: https://n0ctr1.github.io/share-shift/
 
@@ -17,6 +17,7 @@ The rule is `CALL` in `pipeline/config.py`, sealed on 2026-11-12; next review 20
 
 - 58% of four-venue swap volume over 90 days, up from 40% a year earlier; THORChain is second with 30%.
 - First on every consistent way of counting: 58% as reported, 56% counting one side of each swap, 60% on volume rebuilt from the chain. Only halving Intents alone, against the rivals' own indexers, puts THORChain ahead. [details](METHODS.md#how-volume-is-counted)
+- Counted four ways (as reported, one side of every swap, rebuilt from intents.near, and the lowest of those each day) the share is 55–60% over 90 days, 43–47% over 30 and 35–40% in the latest week.
 - When THORChain halted for 37 days, Intents took 41% of the flow it lost, but growth that size was ordinary for Intents (52nd percentile of the year before), so it shows capacity, not cause. [details](METHODS.md#the-stress-test)
 - Add the four large bridges and Intents has 18%, rank 3 of 8. When THORChain halted, swap venues behaved as its substitutes and no bridge did. [details](METHODS.md#which-market-a-substitution-test)
 - It does not win on price: 15.5 bps of volume in gross fees against a rival median of 13.0 bps.
@@ -25,6 +26,7 @@ The rule is `CALL` in `pipeline/config.py`, sealed on 2026-11-12; next review 20
 
 - 27% of gross Intents fees reach NEAR's revenue wallets, rising every 90 days: 8% → 12% → 20% → 27%; the rest stays with solvers and the front ends that distribute Intents. [details](METHODS.md#evidence-against)
 - Buybacks took 1.00M NEAR against 7.96M newly issued over 90 days, 13%. Covering half would take 4.0× today's captured revenue. [details](METHODS.md#what-it-means-for-the-near-token)
+- The buybacks are purchases, not transfers: 99.6% of the NEAR the wallet received from intents.near over 90 days was the output of a swap into NEAR, 51% through a 1Click router and 48% swapped by the paying account itself; nothing left the wallet in the window, so it is held. [details](METHODS.md#are-the-buybacks-purchases)
 - In the last 30 days Intents volume changed by -21% against the 30 days before, while THORChain changed by +32%.
 
 ## Confidential Intents: what the public chain cannot see
@@ -42,6 +44,28 @@ The rule is `CALL` in `pipeline/config.py`, sealed on 2026-11-12; next review 20
 
 Twelve months out, buybacks would cover 4% of new NEAR in the bear case, 13% in the base and 36% in the bull; even the bull case needs 70% of fees reaching NEAR to get to half. Assumptions are `SCENARIOS` in `pipeline/config.py`; the build recomputes the outcome. [details](METHODS.md#twelve-months-out-three-scenarios)
 
+## What is priced in
+
+NEAR's price is not paying for Intents. Valued as a perpetuity at 13.5% discount and 7.5% growth, the cash Intents sends NEAR is worth $0.26 a token, 7% of the $3.50 price (4% to 22% across the range), and 21% in the bull case. On its own it would need 13× today's cash to justify the price. New NEAR costs holders $114M a year in dilution against $14M of buybacks.
+
+| Case | Intents cash to NEAR, a year | Worth per NEAR | Part of $3.50 | Buybacks less dilution, a year |
+| --- | --- | --- | --- | --- |
+| now | $20.57M | $0.26 | 7% | −$99.40M |
+| bear | $7.10M | $0.09 | 3% | −$108.73M |
+| base | $20.70M | $0.26 | 8% | −$99.31M |
+| bull | $58.93M | $0.75 | 21% | −$72.85M |
+
+So the call does not rest on a re-rating: an investor in NEAR today is buying the L1 and an option on Intents' cut rising. ACCUMULATE needs that cut to rise until buybacks cover half of new NEAR, which in the model means about 30% of today's price backed by Intents cash; AVOID fires if the cut starts to fall. Assumptions are `VALUATION` in `pipeline/config.py`. The dashboard has the same model with sliders. [details](METHODS.md#what-is-priced-in)
+
+## Where the lead could break
+
+- **Distribution is rented.** SwapKit brings 38% of 1Click volume and 55% comes through front ends that also route to THORChain, Chainflip or Maya. They pick the best quote each swap; nothing locks the flow to Intents.
+- **It is not the cheapest.** Intents charges 15.5 bps of volume; THORChain and Maya Protocol charge less. An aggregator that routes on price moves flow the day a rival undercuts.
+- **The front ends earn more than NEAR.** Front ends add 43.0 bps in their own fees on top of the protocol's 15.5 bps, and 73% of the protocol's fees stay with solvers and front ends. Raising NEAR's cut means taking from the parties that bring the volume.
+- **THORChain is back.** THORChain took 49% of the four venues in the latest week against Intents' 38%, up from 19% four weeks earlier; the first week it has led since the week of 2026-04-20.
+- **Per dollar of volume, NEAR is priced far above its rivals.** Intents keeps 4.2 bps of revenue per dollar of volume, THORChain 3.5 bps, Chainflip 5.8 bps; the market pays 21× revenue for THORChain's token and 223× for NEAR's, because NEAR's price is for the whole L1.
+- **Less of it can be checked.** As settlement moves to the private shard, the public chain shows the value moving but not who filled it; a loss of share to internal flow would be invisible here.
+
 ## Why these numbers can be trusted
 
 | Check | Result |
@@ -49,6 +73,7 @@ Twelve months out, buybacks would cover 4% of new NEAR in the bear case, 13% in 
 | Intents volume rebuilt from the chain, every day | 1.04× reported |
 | Rivals' double counting measured from their own indexers | 8,886 swaps read |
 | Revenue matches the revenue wallets | 98.5% |
+| Buybacks traced to the swaps that bought them | 99.6% swapped |
 | Supply from block headers, activity from two indexers | 454 of 455 days agree |
 | Headline recomputed in a TEE, checked to Intel's root | 13/13 checks |
 | Thresholds, the call's rule and predictions sealed | 3 seals, 2 on NEAR |

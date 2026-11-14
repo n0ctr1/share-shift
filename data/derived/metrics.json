@@ -65,6 +65,53 @@
     "wide_share": 0.18845038029656377
    }
   ],
+  "share_ranges": [
+   {
+    "days": 90,
+    "high": 0.5958153176289185,
+    "low": 0.5519291224641033,
+    "shares": {
+     "onchain": 0.5958153176289185,
+     "onchain_low": 0.5519291224641033,
+     "one_side": 0.555377372499471,
+     "reported": 0.5808907009163305
+    },
+    "window": [
+     "2026-08-13",
+     "2026-11-10"
+    ]
+   },
+   {
+    "days": 30,
+    "high": 0.4705950341877167,
+    "low": 0.43493638638337184,
+    "shares": {
+     "onchain": 0.4705950341877167,
+     "onchain_low": 0.43493638638337184,
+     "one_side": 0.4395038949081212,
+     "reported": 0.46416847363395664
+    },
+    "window": [
+     "2026-10-12",
+     "2026-11-10"
+    ]
+   },
+   {
+    "days": 7,
+    "high": 0.39546591597815844,
+    "low": 0.351052693929113,
+    "shares": {
+     "onchain": 0.39546591597815844,
+     "onchain_low": 0.351052693929113,
+     "one_side": 0.351052693929113,
+     "reported": 0.37589480713095696
+    },
+    "window": [
+     "2026-11-02",
+     "2026-11-08"
+    ]
+   }
+  ],
   "subject_notes": [
    {
     "finding": "public swaps counted once are 46% of the reported volume on six sampled days, 92% counting both sides",
@@ -1316,6 +1363,24 @@
    ],
    "top10_share": 0.4559705552317314
   }
+ },
+ "buyback_provenance": {
+  "days": 90,
+  "near_sent": 0,
+  "outflow_range": [
+   "2026-08-13",
+   "2026-11-10"
+  ],
+  "outflows": 0,
+  "paid_by_intents_near": 994658.9609231163,
+  "part_of_wallet_inflow": 0.991743512836175,
+  "router_part": 0.5143704227045452,
+  "swapped": 991160.8423289212,
+  "swapped_by_payer": 479537.69215203414,
+  "swapped_part": 0.9964830974920805,
+  "via_router_swap": 511623.15017688705,
+  "wallet_received": 1002939.719846116,
+  "withdrawals": 2267
  },
  "call": {
   "buyback_offset": 0.12605764127510188,
@@ -3250,6 +3315,83 @@
    "window_days": 28
   }
  ],
+ "priced_in": {
+  "buyback_minus_dilution_usd_now": -99404068.893988,
+  "buyback_usd_year_now": 14238614.300203005,
+  "captured_usd_year_now": 20569090.519328818,
+  "cash_to_justify_price": 275434860.82597,
+  "dilution_usd_year": 113642683.19419101,
+  "grid": [
+   {
+    "buyback_per_near": 0.15511170418475126,
+    "captured_per_near": 0.22407424042225904,
+    "discount": 0.12,
+    "growth": 0.05
+   },
+   {
+    "buyback_per_near": 0.5428909646466296,
+    "captured_per_near": 0.7842598414779068,
+    "discount": 0.12,
+    "growth": 0.1
+   },
+   {
+    "buyback_per_near": 0.1085781929293259,
+    "captured_per_near": 0.15685196829558132,
+    "discount": 0.15,
+    "growth": 0.05
+   },
+   {
+    "buyback_per_near": 0.2171563858586518,
+    "captured_per_near": 0.3137039365911627,
+    "discount": 0.15,
+    "growth": 0.1
+   }
+  ],
+  "market_cap_usd": 4590581013.766166,
+  "mid": {
+   "discount": 0.135,
+   "growth": 0.075
+  },
+  "multiple_of_now_to_justify": 13.39071654953063,
+  "now_part_of_price_mid": 0.07467860262004067,
+  "now_part_of_price_range": [
+   0.04480716157202441,
+   0.22403580786012214
+  ],
+  "now_per_near_mid": 0.2614199471593021,
+  "now_per_near_range": [
+   0.15685196829558132,
+   0.7842598414779068
+  ],
+  "price_usd": 3.5006004128034895,
+  "rows": [
+   {
+    "buyback_minus_dilution_usd": -108730042.95404862,
+    "buyback_usd": 4912640.240142387,
+    "captured_per_near": 0.09019572585601775,
+    "captured_usd": 7096796.054581334,
+    "name": "bear",
+    "part_of_price": 0.025765787356399138
+   },
+   {
+    "buyback_minus_dilution_usd": -99314149.16044238,
+    "buyback_usd": 14328534.033748627,
+    "captured_per_near": 0.26307086708005173,
+    "captured_usd": 20698988.492528886,
+    "name": "base",
+    "part_of_price": 0.07515021312283081
+   },
+   {
+    "buyback_minus_dilution_usd": -72850224.0572944,
+    "buyback_usd": 40792459.1368966,
+    "captured_per_near": 0.7489466521972902,
+    "captured_usd": 58928752.953219995,
+    "name": "bull",
+    "part_of_price": 0.21394805572724282
+   }
+  ],
+  "supply_near": 1311369614.474151
+ },
  "quality_flags": [
   {
    "cause": "THORChain halted trading after a $10.7M vault exploit and resumed on 2026-06-23",

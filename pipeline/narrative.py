@@ -9,13 +9,17 @@ import datetime
 from . import config  # noqa: F401  (used for channel sources)
 
 
+CHANNEL_NAMES = {"swapkit": "SwapKit", "lifi": "LI.FI", "rango": "Rango"}
+WORDS = {4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten"}
+
+
 def usd(x):
     if x is None:
         return "n/a"
     for limit, suffix in ((1e9, "B"), (1e6, "M"), (1e3, "K")):
         if abs(x) >= limit:
-            return "$%.2f%s" % (x / limit, suffix)
-    return "$%.0f" % x
+            return "%s$%.2f%s" % ("−" if x < 0 else "", abs(x) / limit, suffix)
+    return "%s$%.0f" % ("−" if x < 0 else "", abs(x))
 
 
 def pct(x, digits=0):
@@ -735,6 +739,42 @@ def brief(m, text):
                              pct(r_["bull"]["coverage"]), pct(r_["bull"]["capture_for_half"])))
     b["price"] = ("It does not win on price: %s of volume in gross fees against a rival median of %s."
                   % (bps(tr["take_bps"][s]), bps(tr["rival_take_median_bps"])))
+    rg = {x["days"]: x for x in (m.get("basis") or {}).get("share_ranges") or []}
+    if rg:
+        b["ranges"] = ("Counted four ways (as reported, one side of every swap, rebuilt from intents.near, "
+                       "and the lowest of those each day) the share is %s over 90 days, %s over 30 and %s "
+                       "in the latest week."
+                       % tuple(span(rg[d]) for d in sorted(rg, reverse=True)))
+    bp = m.get("buyback_provenance")
+    if bp and bp.get("swapped_part") is not None:
+        held = ("; nothing left the wallet in the window, so it is held"
+                if bp.get("outflows") == 0 else
+                "; %d transfers left the wallet in the window (%.0f NEAR)" % (bp["outflows"], bp["near_sent"])
+                if bp.get("outflows") is not None else "")
+        b["bought"] = ("The buybacks are purchases, not transfers: %s of the NEAR the wallet received from "
+                       "intents.near over %d days was the output of a swap into NEAR, %s through a 1Click "
+                       "router and %s swapped by the paying account itself%s."
+                       % (pct(bp["swapped_part"], 1), bp["days"], pct(bp["router_part"]),
+                          pct(bp["swapped_by_payer"] / bp["paid_by_intents_near"]), held))
+    pi = m.get("priced_in")
+    if pi:
+        rows_ = {r["name"]: r for r in pi["rows"]}
+        b["priced"] = ("NEAR's price is not paying for Intents. Valued as a perpetuity at %s discount and %s "
+                       "growth, the cash Intents sends NEAR is worth $%.2f a token, %s of the $%.2f price "
+                       "(%s to %s across the range), and %s in the bull case. On its own it would need %.0f× "
+                       "today's cash to justify the price. New NEAR costs holders $%.0fM a year in dilution "
+                       "against $%.0fM of buybacks."
+                       % (pct(pi["mid"]["discount"], 1), pct(pi["mid"]["growth"], 1), pi["now_per_near_mid"],
+                          pct(pi["now_part_of_price_mid"]), pi["price_usd"],
+                          pct(pi["now_part_of_price_range"][0]), pct(pi["now_part_of_price_range"][1]),
+                          pct(rows_["bull"]["part_of_price"]), pi["multiple_of_now_to_justify"],
+                          pi["dilution_usd_year"] / 1e6, pi["buyback_usd_year_now"] / 1e6))
+        b["priced_call"] = ("So the call does not rest on a re-rating: an investor in NEAR today is buying the "
+                            "L1 and an option on Intents' cut rising. ACCUMULATE needs that cut to rise until "
+                            "buybacks cover half of new NEAR, which in the model means about %s of today's "
+                            "price backed by Intents cash; AVOID fires if the cut starts to fall."
+                            % pct(half_backed(pi, m)))
+    b["risks"] = risks(m)
 
     trust = []
     bq = m.get("bq") or {}
@@ -758,6 +798,13 @@ def brief(m, text):
                       "value": pct(m["onchain"]["ratio"], 1),
                       "line": "Transfers into NEAR's three revenue wallets against the revenue figure used.",
                       "detail": [text.get("onchain")]})
+    bp_ = m.get("buyback_provenance")
+    if bp_ and bp_.get("swapped_part") is not None:
+        trust.append({"id": "buyback", "title": "Buybacks traced to the swaps that bought them",
+                      "value": "%s swapped" % pct(bp_["swapped_part"], 1),
+                      "line": "Every payout from intents.near to the buyback wallet is matched to the wNEAR a "
+                              "1Click router delivered, or to a swap the paying account signed.",
+                      "detail": [b.get("bought")]})
     if tk and tk.get("l1", {}).get("bigquery"):
         l1b = tk["l1"]["bigquery"]
         trust.append({"id": "supply", "title": "Supply from block headers, activity from two indexers",
@@ -795,6 +842,72 @@ def brief(m, text):
         "sealed so any later change shows.",
     ]
     return b
+
+
+def span(r):
+    lo, hi = round(100 * r["low"]), round(100 * r["high"])
+    return "%d%%" % lo if lo == hi else "%d–%d%%" % (lo, hi)
+
+
+def half_backed(pi, m):
+    """Part of today's price backed by Intents cash once buybacks cover half of new NEAR."""
+    scn = m["scenarios"]
+    cash = 0.5 * scn["new_near_per_year"] * pi["price_usd"] / scn["buyback_part_of_captured"]
+    r, g = pi["mid"]["discount"], pi["mid"]["growth"]
+    return cash / (r - g) / pi["market_cap_usd"]
+
+
+def risks(m):
+    """What would take the lead away, from the window's own numbers."""
+    s = m["meta"]["subject"]
+    tr = m["trailing"]
+    names = {p["slug"]: p["name"] for p in m["meta"]["peers"]}
+    out = []
+    c = m.get("channels") or {}
+    if c.get("channels"):
+        top = c["channels"][0]
+        out.append({"title": "Distribution is rented",
+                    "text": "%s brings %s of 1Click volume and %s comes through front ends that also route to "
+                            "THORChain, Chainflip or Maya. They pick the best quote each swap; nothing locks "
+                            "the flow to Intents."
+                            % (CHANNEL_NAMES.get(top["channel"], top["channel"]),
+                               pct(c["top_channel_share"]), pct(c["multi_venue_share"]))})
+    cheaper = [names[x] for x in tr["take_bps"] if x != s and tr["take_bps"][x] < tr["take_bps"][s]]
+    out.append({"title": "It is not the cheapest",
+                "text": "Intents charges %s of volume; %s charge%s less. An aggregator that routes on price "
+                        "moves flow the day a rival undercuts." % (bps(tr["take_bps"][s]), " and ".join(cheaper),
+                                                                   "" if len(cheaper) > 1 else "s")})
+    if c.get("app_fee_bps") is not None:
+        out.append({"title": "The front ends earn more than NEAR",
+                    "text": "Front ends add %s in their own fees on top of the protocol's %s, and %s of the "
+                            "protocol's fees stay with solvers and front ends. Raising NEAR's cut means taking "
+                            "from the parties that bring the volume."
+                            % (bps(c["app_fee_bps"]), bps(tr["take_bps"][s]), pct(1 - tr["capture"]))})
+    wk = m.get("weekly") or []
+    if wk and "thorchain-dex" in wk[-1]["share"]:
+        th = [w["share"]["thorchain-dex"] for w in wk[-5:]]
+        led = [w["week"] for w in wk[:-1] if w["share"]["thorchain-dex"] > w["share"][s]]
+        out.append({"title": "THORChain is back",
+                    "text": "THORChain took %s of the four venues in the latest week against Intents' %s, up "
+                            "from %s four weeks earlier%s."
+                            % (pct(th[-1]), pct(wk[-1]["share"][s]), pct(th[0]),
+                               "; the first week it has led since the week of %s" % led[-1] if led else
+                               "; the first week it has led in the data"
+                               if th[-1] > wk[-1]["share"][s] else "")})
+    v = m.get("valuation") or {}
+    if v.get(s) and v.get("thorchain-dex"):
+        out.append({"title": "Per dollar of volume, NEAR is priced far above its rivals",
+                    "text": "Intents keeps %s of revenue per dollar of volume, THORChain %s, Chainflip %s; "
+                            "the market pays %.0f× revenue for THORChain's token and %.0f× for NEAR's, "
+                            "because NEAR's price is for the whole L1."
+                            % (bps(1e4 * tr["revenue"][s] / tr["volume"][s]),
+                               bps(1e4 * tr["revenue"]["thorchain-dex"] / tr["volume"]["thorchain-dex"]),
+                               bps(1e4 * tr["revenue"]["chainflip-amm"] / tr["volume"]["chainflip-amm"]),
+                               v["thorchain-dex"]["mcap_to_revenue"], v[s]["mcap_to_revenue"])})
+    out.append({"title": "Less of it can be checked",
+                "text": "As settlement moves to the private shard, the public chain shows the value moving "
+                        "but not who filled it; a loss of share to internal flow would be invisible here."})
+    return out
 
 
 def ordinal(n):
@@ -1095,6 +1208,71 @@ def methods_markdown(m, text):
             "a year) gives coverage. These are assumptions, not forecasts, and are not sealed."
             % (pct(scn["buyback_part_of_captured"]), scn["price_usd"], scn["new_near_per_year"] / 1e6))
         add("")
+    pi = m.get("priced_in")
+    if pi:
+        add("## What is priced in")
+        add("")
+        add(text["brief"]["priced"])
+        add("")
+        add("`metrics.priced_in()` values the cash Intents sends to NEAR's three revenue wallets as a "
+            "perpetuity: value = cash next year / (discount − growth), divided by the %.0fM NEAR in "
+            "block-header supply, at NEAR's $%.2f. Cash now is the window's captured NEAR, annualised, at "
+            "today's price: %s a year, of which %s went to buybacks. The grid below shows how the result "
+            "moves with the two assumptions. Cash that would on its own justify the $%s market cap at "
+            "the mid pair: %s a year, %.1f× today's. New NEAR, %.1fM a year at $%.2f, costs holders %s a "
+            "year in dilution whatever Intents earns."
+            % (pi["supply_near"] / 1e6, pi["price_usd"], usd(pi["captured_usd_year_now"]),
+               usd(pi["buyback_usd_year_now"]), "%.2fB" % (pi["market_cap_usd"] / 1e9),
+               usd(pi["cash_to_justify_price"]), pi["multiple_of_now_to_justify"],
+               m["scenarios"]["new_near_per_year"] / 1e6, pi["price_usd"], usd(pi["dilution_usd_year"])))
+        add("")
+        add("| Discount | Growth | Captured cash, per NEAR | Buyback cash only, per NEAR | Part of price |")
+        add("| --- | --- | --- | --- | --- |")
+        for g in pi["grid"]:
+            add("| %s | %s | $%.2f | $%.2f | %s |" % (pct(g["discount"], 1), pct(g["growth"], 1), g["captured_per_near"],
+                                                     g["buyback_per_near"], pct(g["captured_per_near"] / pi["price_usd"])))
+        add("")
+        add("The scenarios above, valued the same way at the mid pair:")
+        add("")
+        add("| Scenario | Intents cash to NEAR | Worth per NEAR | Part of price | Buybacks less dilution |")
+        add("| --- | --- | --- | --- | --- |")
+        for r in pi["rows"]:
+            add("| %s | %s | $%.2f | %s | %s |" % (r["name"], usd(r["captured_usd"]), r["captured_per_near"],
+                                                 pct(r["part_of_price"]), usd(r["buyback_minus_dilution_usd"])))
+        add("")
+        add("This is a floor from Intents, not a fair value of NEAR, and not a price target: NEAR's price "
+            "also pays for the L1, its other applications and its staking yield. It does not change the "
+            "sealed call; it explains why the call does not ask the price to move. The dashboard runs the "
+            "same arithmetic in the browser with sliders; `tests/test_model.py` checks that the browser "
+            "function and the Python one give the same numbers.")
+        add("")
+    bp = m.get("buyback_provenance")
+    if bp:
+        add("## Are the buybacks purchases?")
+        add("")
+        add(text["brief"].get("bought", ""))
+        add("")
+        add("`python3 -m pipeline.bq buyback` reads every `native_withdraw` that intents.near paid to "
+            "`buybacks.multisignature.near` (%s withdrawals, %s NEAR over %d days, %s of what the wallet "
+            "received in the window; the rest came from two outside accounts). For each, it looks for "
+            "wNEAR delivered to the paying account in the same amount beforehand, and whether the sender "
+            "was a 1Click router (an account receiving transfers from at least 500 distinct senders that "
+            "day): that is the output leg of a 1Click swap into NEAR (%s). If the paying account instead "
+            "gained wNEAR in a `token_diff` it signed itself that day, it swapped directly (%s). %s is "
+            "neither. The input leg, which fee tokens were sold, is not traced: the router mixes thousands "
+            "of swaps a day."
+            % ("{:,}".format(bp["withdrawals"]), "{:,.0f}".format(bp["paid_by_intents_near"]), bp["days"],
+               pct(bp.get("part_of_wallet_inflow"), 1), pct(bp["router_part"], 1),
+               pct(bp["swapped_by_payer"] / bp["paid_by_intents_near"], 1),
+               pct(1 - bp["swapped_part"], 1).capitalize()))
+        if bp.get("outflows") is not None:
+            add("")
+            add("`python3 -m pipeline.onchain --outflows` lists every action the wallet signed and every token "
+                "that left it from %s to %s: %s."
+                % (bp["outflow_range"][0], bp["outflow_range"][1],
+                   "none, so the NEAR bought is held" if bp["outflows"] == 0 else
+                   "%d, carrying %.0f NEAR" % (bp["outflows"], bp["near_sent"])))
+        add("")
     add("## What would change my mind")
     add("")
     add("The thesis gets stronger if the dated predictions below hold, and weaker if they "
@@ -1127,9 +1305,10 @@ def methods_markdown(m, text):
             "counting method (the SHA-256 of both BigQuery queries and the router rule of %d "
             "senders) and P6 to P8, three predictions on %s to their due date, a window that "
             "starts after the seal. `predictions/predictions-v3.json`, SHA-256 `%s`, timestamped "
-            "through OpenTimestamps.%s"
+            "in Bitcoin block %s (%s UTC).%s"
             % (s3["sealed_on"], s3["data_seen_through"], s3["router_min_senders"],
                s3["window_starts"], m["meta"]["seal_v3_sha256"],
+               "{:,}".format(config.SEAL_V3_BITCOIN["block"]), config.SEAL_V3_BITCOIN["time_utc"],
                (" Written on NEAR mainnet at `%s` by transaction `%s` (block %s)."
                 % (m["meta"]["near_anchor_v3"]["key"], m["meta"]["near_anchor_v3"]["tx"],
                    "{:,}".format(m["meta"]["near_anchor_v3"]["block_height"])))
@@ -1258,10 +1437,10 @@ def call_text(m, cl, tr, s):
     trend = m.get("capture_trend") or []
     word = CALL_WORD[cl["call"]]
     w_ = m.get("wide") or {}
-    where = ("%s of the four native-swap venues over 90 days, %s over 30 days, %s in the latest "
-             "week; third, with %s, once four bridges count."
+    where = ("First of four native-swap venues with %s over 90 days (%s over 30, %s in the latest "
+             "week); third of %s, with %s, once four bridges count."
              % (pct(cl["share_90d"]), pct(cl["share_30d"]), pct(cl["share_latest_week"]),
-                pct(w_.get("subject_share")))) if w_ else ""
+                WORDS.get(len(w_.get("venues") or []), "all"), pct(w_.get("subject_share")))) if w_ else ""
     if cl["call"] == "WATCH":
         title = ("NEAR Intents leads the native-swap venues, but too little of it reaches the NEAR "
                  "token yet. %s The call is to %s, until buybacks cover %s of new NEAR and the 30-day "
@@ -1356,6 +1535,8 @@ def thesis_markdown(m, text):
     add("- %s" % B["lead"])
     if "counts" in B:
         add("- %s %s" % (B["counts"], M("How volume is counted")))
+    if "ranges" in B:
+        add("- %s" % B["ranges"])
     if "halt" in B:
         add("- %s %s" % (B["halt"], M("The stress test")))
     if "bridges" in B:
@@ -1367,6 +1548,8 @@ def thesis_markdown(m, text):
     add("- %s %s" % (B["capture"], M("Evidence against")))
     if "token" in B:
         add("- %s %s" % (B["token"], M("What it means for the NEAR token")))
+    if "bought" in B:
+        add("- %s %s" % (B["bought"], M("Are the buybacks purchases?")))
     add("- %s" % text["recent"].split("; every rival grew")[0].rstrip(".") + ".")
     add("")
     if "confidential" in B:
@@ -1388,6 +1571,30 @@ def thesis_markdown(m, text):
         add("")
         add("%s Assumptions are `SCENARIOS` in `pipeline/config.py`; the build recomputes the outcome. %s"
             % (B["scenarios"], M("Twelve months out: three scenarios")))
+        add("")
+    pi = m.get("priced_in")
+    if pi:
+        add("## What is priced in")
+        add("")
+        add(B["priced"])
+        add("")
+        add("| Case | Intents cash to NEAR, a year | Worth per NEAR | Part of $%.2f | Buybacks less dilution, a year |"
+            % pi["price_usd"])
+        add("| --- | --- | --- | --- | --- |")
+        add("| now | %s | $%.2f | %s | %s |" % (usd(pi["captured_usd_year_now"]), pi["now_per_near_mid"],
+                                             pct(pi["now_part_of_price_mid"]), usd(pi["buyback_minus_dilution_usd_now"])))
+        for r in pi["rows"]:
+            add("| %s | %s | $%.2f | %s | %s |" % (r["name"], usd(r["captured_usd"]), r["captured_per_near"],
+                                                 pct(r["part_of_price"]), usd(r["buyback_minus_dilution_usd"])))
+        add("")
+        add("%s Assumptions are `VALUATION` in `pipeline/config.py`. The dashboard has the same model with "
+            "sliders. %s" % (B["priced_call"], M("What is priced in")))
+        add("")
+    if B.get("risks"):
+        add("## Where the lead could break")
+        add("")
+        for r in B["risks"]:
+            add("- **%s.** %s" % (r["title"], r["text"]))
         add("")
     add("## Why these numbers can be trusted")
     add("")
@@ -1440,7 +1647,9 @@ def noscript_html(m, text):
         if items:
             parts.append("<h2>%s</h2><ul>%s</ul>" % (e(title), "".join("<li>%s</li>" % e(i) for i in items)))
     ul("Is Intents the leader?", [B.get("lead"), B.get("counts"), B.get("halt"), B.get("bridges"), B.get("price")])
-    ul("Does it reach the NEAR token?", [B.get("capture"), B.get("token"), B.get("scenarios")])
+    ul("Does it reach the NEAR token?", [B.get("capture"), B.get("token"), B.get("bought"), B.get("scenarios")])
+    ul("What is priced in", [B.get("priced"), B.get("priced_call")])
+    ul("Where the lead could break", ["%s. %s" % (r["title"], r["text"]) for r in B.get("risks") or []])
     ul("What the public chain cannot see", [B.get("confidential"), B.get("confidential_effect")])
     ul("Why these numbers can be trusted", ["%s: %s. %s" % (t["title"], t["value"], t["line"]) for t in B["trust"]])
     ul("%d claims" % len(m["claims"]), ["%s %s: %s" % (c["id"], c["verdict"], c["claim"]) for c in m["claims"]])

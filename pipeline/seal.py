@@ -33,6 +33,11 @@ CALENDARS = [
 OTS_MAGIC = b"\x00OpenTimestamps\x00\x00Proof\x00\xbf\x89\xe2\xe8\x84\xe8\x92\x94"
 
 
+def _bytes(path):
+    with open(path, "rb") as fh:
+        return fh.read()
+
+
 def canonical():
     body = {"predictions": config.PREDICTIONS,
             "note": "Each prediction is graded by re-running python3 build.py after its due date."}
@@ -73,7 +78,7 @@ SEALS = [(JSON_PATH, canonical), (JSON_PATH_V2, canonical_v2), (JSON_PATH_V3, ca
 def mismatches():
     """Sealed files that exist and no longer match config."""
     return [os.path.relpath(path, ROOT) for path, body in SEALS
-            if os.path.exists(path) and open(path, "rb").read() != body()]
+            if os.path.exists(path) and _bytes(path) != body()]
 
 
 def stamp(digest):

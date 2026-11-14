@@ -219,6 +219,37 @@ A forward view, as assumptions anyone can change in SCENARIOS in pipeline/config
 
 How each row is computed (`metrics.scenarios()`): the window's four-venue volume, annualised, times (1 + market growth) times share gives Intents volume; times the take rate gives gross fees; times capture gives revenue to NEAR; times the part of captured revenue spent on buybacks in the window (69%), divided by the NEAR price ($3.50, market cap over block-header supply), gives NEAR bought back; divided by net issuance (32.5M NEAR a year) gives coverage. These are assumptions, not forecasts, and are not sealed.
 
+## What is priced in
+
+NEAR's price is not paying for Intents. Valued as a perpetuity at 13.5% discount and 7.5% growth, the cash Intents sends NEAR is worth $0.26 a token, 7% of the $3.50 price (4% to 22% across the range), and 21% in the bull case. On its own it would need 13× today's cash to justify the price. New NEAR costs holders $114M a year in dilution against $14M of buybacks.
+
+`metrics.priced_in()` values the cash Intents sends to NEAR's three revenue wallets as a perpetuity: value = cash next year / (discount − growth), divided by the 1311M NEAR in block-header supply, at NEAR's $3.50. Cash now is the window's captured NEAR, annualised, at today's price: $20.57M a year, of which $14.24M went to buybacks. The grid below shows how the result moves with the two assumptions. Cash that would on its own justify the $4.59B market cap at the mid pair: $275.43M a year, 13.4× today's. New NEAR, 32.5M a year at $3.50, costs holders $113.64M a year in dilution whatever Intents earns.
+
+| Discount | Growth | Captured cash, per NEAR | Buyback cash only, per NEAR | Part of price |
+| --- | --- | --- | --- | --- |
+| 12.0% | 5.0% | $0.22 | $0.16 | 6% |
+| 12.0% | 10.0% | $0.78 | $0.54 | 22% |
+| 15.0% | 5.0% | $0.16 | $0.11 | 4% |
+| 15.0% | 10.0% | $0.31 | $0.22 | 9% |
+
+The scenarios above, valued the same way at the mid pair:
+
+| Scenario | Intents cash to NEAR | Worth per NEAR | Part of price | Buybacks less dilution |
+| --- | --- | --- | --- | --- |
+| bear | $7.10M | $0.09 | 3% | −$108.73M |
+| base | $20.70M | $0.26 | 8% | −$99.31M |
+| bull | $58.93M | $0.75 | 21% | −$72.85M |
+
+This is a floor from Intents, not a fair value of NEAR, and not a price target: NEAR's price also pays for the L1, its other applications and its staking yield. It does not change the sealed call; it explains why the call does not ask the price to move. The dashboard runs the same arithmetic in the browser with sliders; `tests/test_model.py` checks that the browser function and the Python one give the same numbers.
+
+## Are the buybacks purchases?
+
+The buybacks are purchases, not transfers: 99.6% of the NEAR the wallet received from intents.near over 90 days was the output of a swap into NEAR, 51% through a 1Click router and 48% swapped by the paying account itself; nothing left the wallet in the window, so it is held.
+
+`python3 -m pipeline.bq buyback` reads every `native_withdraw` that intents.near paid to `buybacks.multisignature.near` (2,267 withdrawals, 994,659 NEAR over 90 days, 99.2% of what the wallet received in the window; the rest came from two outside accounts). For each, it looks for wNEAR delivered to the paying account in the same amount beforehand, and whether the sender was a 1Click router (an account receiving transfers from at least 500 distinct senders that day): that is the output leg of a 1Click swap into NEAR (51.4%). If the paying account instead gained wNEAR in a `token_diff` it signed itself that day, it swapped directly (48.2%). 0.4% is neither. The input leg, which fee tokens were sold, is not traced: the router mixes thousands of swaps a day.
+
+`python3 -m pipeline.onchain --outflows` lists every action the wallet signed and every token that left it from 2026-08-13 to 2026-11-10: none, so the NEAR bought is held.
+
 ## What would change my mind
 
 The thesis gets stronger if the dated predictions below hold, and weaker if they miss. Re-running `python3 build.py` after each date grades them automatically.
@@ -227,7 +258,7 @@ The predictions are sealed. `predictions/predictions.json` holds them as written
 
 A second seal, made on 2026-11-12 with data seen only through 2026-11-10, fixes the claim thresholds as they stand and adds P4 and P5 on the two days after that data, graded by the build before the hackathon deadline: `predictions/predictions-v2.json`, SHA-256 `4e9e2e5b883c27a959ba47feca6a62ad5003eab235cf63218ad5a9fce723cb35`, timestamped in Bitcoin block 975,532 (2026-11-12 08:26 UTC). That timestamp came after the first of the two days had ended, when its data may already have been public; the seal cannot show it was not looked at. The second day had not yet happened. This does not make the thresholds pre-registered: they were set after a first look. It makes any later change to them visible.
 
-A third seal, made on 2026-11-12 with data seen through 2026-11-11, fixes what a reader could suspect of being tuned after the fact: the investment call's rule, the on-chain counting method (the SHA-256 of both BigQuery queries and the router rule of 500 senders) and P6 to P8, three predictions on 2026-11-13 to their due date, a window that starts after the seal. `predictions/predictions-v3.json`, SHA-256 `22fb6be08719f7bd12f8820daa6450a15c9364ea4248dbad6f515a74a9473e20`, timestamped through OpenTimestamps. Written on NEAR mainnet at `noctrl.near/share_shift/predictions_v3_sha256` by transaction `45k7GsThxpBiEv9pZxX8nmquWw8jyxjvMgnGoqY5YWB2` (block 224,246,371).
+A third seal, made on 2026-11-12 with data seen through 2026-11-11, fixes what a reader could suspect of being tuned after the fact: the investment call's rule, the on-chain counting method (the SHA-256 of both BigQuery queries and the router rule of 500 senders) and P6 to P8, three predictions on 2026-11-13 to their due date, a window that starts after the seal. `predictions/predictions-v3.json`, SHA-256 `22fb6be08719f7bd12f8820daa6450a15c9364ea4248dbad6f515a74a9473e20`, timestamped in Bitcoin block 975,582 (2026-11-12 19:02 UTC). Written on NEAR mainnet at `noctrl.near/share_shift/predictions_v3_sha256` by transaction `45k7GsThxpBiEv9pZxX8nmquWw8jyxjvMgnGoqY5YWB2` (block 224,246,371).
 
 The same hash is written on NEAR mainnet at `noctrl.near/share_shift/predictions_sha256` on `social.near`, by transaction `F75hY9zdcipcUSrgXPjLx7mAw2Rzer4vAgA9VLo8MmhE` (block 224,148,508, 2026-11-12T02:02:04Z). `python3 -m pipeline.anchor --account noctrl.near --verify` reads it back from public RPC.
 

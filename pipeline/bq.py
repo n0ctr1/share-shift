@@ -3,6 +3,7 @@
     python3 -m pipeline.bq schema                     table metadata and columns (free)
     python3 -m pipeline.bq legs --from 2026-08-13 --to 2026-11-10 [--max-gb 300]
     python3 -m pipeline.bq flows --from 2026-08-13 --to 2026-11-10 [--max-gb 300]
+    python3 -m pipeline.bq buyback --from 2026-08-13 --to 2026-11-10 [--max-gb 300]
     python3 -m pipeline.bq l1   --from 2025-08-13 --to 2026-11-10 [--max-gb 50]
     python3 -m pipeline.bq prices                     price the assets in the legs file
 
@@ -20,6 +21,14 @@ written to the output.
 `flows` writes data/raw/bq_intents_flows.json: per day, sender class, receiver
 class (router, solver, other) and asset, the summed raw amounts of DIP-4
 transfer entries; see FLOWS_SQL.
+`buyback` writes data/raw/bq_buyback_provenance.json: per day, the NEAR that
+intents.near paid out to buybacks.multisignature.near (native_withdraw), how
+much of it was first delivered as wNEAR, in the same amount, to the paying
+account, and how much of that came from a 1Click router (an account receiving
+transfers from at least 500 distinct senders that day). That is the output leg
+of a 1Click swap into NEAR. A payer that instead gained wNEAR in a token_diff
+(a swap it signed itself) that day is counted as swapped by the payer. Either
+way it is a purchase, not a transfer of NEAR already held.
 `legs` writes data/raw/bq_intents_legs.json: per day, event and asset, the
 summed positive and negative raw amounts of every DIP-4 token_diff and
 transfer entry emitted by intents.near in successful receipts, and the number
@@ -115,6 +124,65 @@ SELECT CAST(block_date AS STRING) AS day, sc, rc, TRIM(k, '"') AS asset,
 FROM c, UNNEST(JSON_KEYS(t, 1)) AS k
 GROUP BY day, sc, rc, asset
 ORDER BY day, sc, rc, asset
+""" % DATASET
+
+BUYBACK_SQL = """
+WITH ev AS (
+  SELECT block_date, block_timestamp, SAFE.PARSE_JSON(SUBSTR(l.element, 12)) AS j
+  FROM `%s.execution_outcomes`, UNNEST(logs.list) AS l
+  WHERE block_date BETWEEN @a AND @b
+    AND executor_account_id = 'intents.near'
+    AND STARTS_WITH(l.element, 'EVENT_JSON:{"standard":"dip4"')
+    AND NOT STARTS_WITH(UPPER(status), 'FAIL')
+),
+entries AS (
+  SELECT block_date, block_timestamp, JSON_VALUE(j, '$.event') AS event, d
+  FROM ev, UNNEST(JSON_QUERY_ARRAY(j, '$.data')) AS d
+  WHERE JSON_VALUE(j, '$.event') IN ('native_withdraw', 'transfer', 'token_diff')
+),
+paid AS (
+  SELECT block_date, block_timestamp, JSON_VALUE(d, '$.account_id') AS payer,
+         CAST(JSON_VALUE(d, '$.amount') AS BIGNUMERIC) AS amount
+  FROM entries
+  WHERE event = 'native_withdraw' AND JSON_VALUE(d, '$.receiver_id') = 'buybacks.multisignature.near'
+),
+wnear_in AS (
+  SELECT e.block_timestamp, JSON_VALUE(e.d, '$.account_id') AS sender,
+         JSON_VALUE(e.d, '$.receiver_id') AS payer,
+         CAST(JSON_VALUE(e.d, '$.tokens."nep141:wrap.near"') AS BIGNUMERIC) AS amount
+  FROM entries e
+  WHERE e.event = 'transfer' AND JSON_VALUE(e.d, '$.tokens."nep141:wrap.near"') IS NOT NULL
+    AND JSON_VALUE(e.d, '$.receiver_id') IN (SELECT payer FROM paid)
+),
+senders AS (
+  SELECT block_date, JSON_VALUE(d, '$.receiver_id') AS account,
+         COUNT(DISTINCT JSON_VALUE(d, '$.account_id')) AS distinct_senders
+  FROM entries
+  WHERE event = 'transfer' AND JSON_VALUE(d, '$.receiver_id') IN (SELECT sender FROM wnear_in)
+  GROUP BY 1, 2
+),
+swapped AS (
+  SELECT block_date, JSON_VALUE(d, '$.account_id') AS payer
+  FROM entries
+  WHERE event = 'token_diff' AND JSON_VALUE(d, '$.account_id') IN (SELECT payer FROM paid)
+    AND SAFE_CAST(JSON_VALUE(d, '$.diff."nep141:wrap.near"') AS BIGNUMERIC) > 0
+  GROUP BY 1, 2
+)
+SELECT CAST(p.block_date AS STRING) AS day,
+       COUNT(*) AS withdrawals,
+       CAST(SUM(p.amount) AS STRING) AS near_raw,
+       CAST(SUM(IF(w.sender IS NOT NULL, p.amount, 0)) AS STRING) AS near_raw_matched,
+       CAST(SUM(IF(s.distinct_senders >= 500, p.amount, 0)) AS STRING) AS near_raw_from_router,
+       CAST(SUM(IF(x.payer IS NOT NULL AND (s.distinct_senders IS NULL OR s.distinct_senders < 500), p.amount, 0))
+            AS STRING) AS near_raw_swapped_by_payer,
+       COUNT(DISTINCT w.sender) AS delivering_accounts,
+       COUNT(DISTINCT p.payer) AS paying_accounts
+FROM paid p
+LEFT JOIN wnear_in w ON w.payer = p.payer AND w.amount = p.amount AND w.block_timestamp <= p.block_timestamp
+LEFT JOIN senders s ON s.account = w.sender AND s.block_date = p.block_date
+LEFT JOIN swapped x ON x.payer = p.payer AND x.block_date = p.block_date
+GROUP BY day
+ORDER BY day
 """ % DATASET
 
 L1_SQL = """
@@ -228,7 +296,7 @@ def write(name, body):
 
 def main(argv):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("what", choices=["schema", "legs", "flows", "l1", "prices"])
+    ap.add_argument("what", choices=["schema", "legs", "flows", "buyback", "l1", "prices"])
     ap.add_argument("--from", dest="first")
     ap.add_argument("--to", dest="last")
     ap.add_argument("--max-gb", type=float, default=300)
@@ -246,11 +314,12 @@ def main(argv):
             for f in meta["schema"]["fields"]:
                 print("  %-28s %s" % (f["name"], f["type"]))
         return
-    sql = {"legs": LEGS_SQL, "flows": FLOWS_SQL, "l1": L1_SQL}[a.what]
+    sql = {"legs": LEGS_SQL, "flows": FLOWS_SQL, "buyback": BUYBACK_SQL, "l1": L1_SQL}[a.what]
     rows, scan, billed = query(sql, {"a": a.first, "b": a.last}, a.max_gb)
     meta = {"dataset": DATASET, "range": [a.first, a.last], "sql": sql.strip(),
             "bytes_processed": scan, "bytes_billed": billed}
-    name = {"legs": "bq_intents_legs.json", "flows": "bq_intents_flows.json", "l1": "bq_l1_daily.json"}[a.what]
+    name = {"legs": "bq_intents_legs.json", "flows": "bq_intents_flows.json",
+            "buyback": "bq_buyback_provenance.json", "l1": "bq_l1_daily.json"}[a.what]
     write(name, dict(meta, rows=rows))
 
 

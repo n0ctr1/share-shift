@@ -7,6 +7,11 @@ to the three revenue wallets from the NearBlocks indexer (no key), drops
 transfers between the three wallets, and writes daily sums to
 data/raw/onchain_revenue.json together with the daily NEAR price used to
 value them. The free tier is slow: a 90-day range takes about 20 minutes.
+
+    python3 -m pipeline.onchain --outflows --from 2026-08-13 --to 2026-11-10
+
+lists everything that left the buyback wallet in the range, to
+data/raw/buyback_outflows.json: whether the NEAR bought back is held.
 """
 
 import argparse
@@ -149,12 +154,71 @@ def run(first_day, last_day, log=print):
     log("wrote %s (%d days, %d pages)" % (os.path.relpath(OUT, ROOT), len(days), pages))
 
 
+def outflows(first_day, last_day, log=print):
+    """Everything that left the buyback wallet in the window: native NEAR sent
+    and any fungible token with a negative delta. Writes
+    data/raw/buyback_outflows.json. An empty list means the wallet only held."""
+    sent, pages, cursor = [], 0, ""
+    while True:
+        data = call(API % (BUYBACK, "txns", ("&cursor=" + cursor) if cursor else ""))
+        rows = data.get("txns") or []
+        pages += 1
+        stop = not rows
+        for row in rows:
+            day = day_of(row["block_timestamp"])
+            if day < first_day:
+                stop = True
+                continue
+            if day > last_day or row.get("predecessor_account_id") != BUYBACK:
+                continue
+            for action in row.get("actions") or []:
+                sent.append({"day": day, "kind": "native", "to": row.get("receiver_account_id"),
+                             "action": action.get("action"), "method": action.get("method"),
+                             "near": float(action.get("deposit") or 0) / YOCTO,
+                             "tx": row.get("transaction_hash")})
+        cursor = data.get("cursor") or ""
+        if stop or not cursor:
+            break
+        time.sleep(PAUSE)
+    cursor = ""
+    while True:
+        time.sleep(PAUSE)
+        data = call(API % (BUYBACK, "ft-txns", ("&cursor=" + cursor) if cursor else ""))
+        rows = data.get("txns") or []
+        pages += 1
+        stop = not rows
+        for row in rows:
+            day = day_of(row["block_timestamp"])
+            if day < first_day:
+                stop = True
+                continue
+            if day > last_day or float(row.get("delta_amount") or 0) >= 0:
+                continue
+            ft = row.get("ft") or {}
+            sent.append({"day": day, "kind": "ft", "to": row.get("involved_account_id"),
+                         "token": ft.get("contract"), "raw": row.get("delta_amount"),
+                         "decimals": ft.get("decimals"), "tx": row.get("transaction_hash")})
+        cursor = data.get("cursor") or ""
+        if stop or not cursor:
+            break
+    path = os.path.join(ROOT, "data", "raw", "buyback_outflows.json")
+    with open(path, "w") as fh:
+        json.dump({"source": "https://api.nearblocks.io/v1/account/%s/txns and /ft-txns" % BUYBACK,
+                   "wallet": BUYBACK, "range": [first_day, last_day], "pages": pages,
+                   "note": "Every native action signed by the wallet and every token transfer out of it.",
+                   "outflows": sent}, fh, indent=1, sort_keys=True)
+        fh.write("\n")
+    log("wrote %s: %d outflows, %d pages" % (os.path.relpath(path, ROOT), len(sent), pages))
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--from", dest="first", required=True)
     ap.add_argument("--to", dest="last", required=True)
+    ap.add_argument("--outflows", action="store_true",
+                    help="list what left the buyback wallet instead of what came in")
     args = ap.parse_args()
     try:
-        run(args.first, args.last)
+        (outflows if args.outflows else run)(args.first, args.last)
     except RuntimeError as err:
         sys.exit("error: %s" % err)

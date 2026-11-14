@@ -615,6 +615,40 @@ def tdx_summary(raw, public_key):
     return None
 
 
+def buyback_provenance(raw, window, token):
+    """Was the NEAR that reached the buyback wallet bought, and is it held?
+
+    From data/raw/bq_buyback_provenance.json: NEAR paid out by intents.near to
+    the wallet, split into the output leg of a 1Click swap (wNEAR delivered by a
+    router in the same amount), a swap the paying account signed itself (a
+    token_diff that gained wNEAR that day), and the rest. From
+    data/raw/buyback_outflows.json: everything that left the wallet."""
+    pv = raw.get("bq_buyback_provenance")
+    if not pv:
+        return None
+    first, last = window
+    rows = [r for r in pv["rows"] if first <= r["day"] <= last]
+    y = 1e24
+    total = sum(int(r["near_raw"]) for r in rows) / y
+    router = sum(int(r["near_raw_from_router"]) for r in rows) / y
+    payer = sum(int(r["near_raw_swapped_by_payer"]) for r in rows) / y
+    out = {"days": len(rows), "paid_by_intents_near": total, "via_router_swap": router,
+           "swapped_by_payer": payer, "swapped": router + payer,
+           "swapped_part": (router + payer) / total if total else None,
+           "router_part": router / total if total else None,
+           "withdrawals": sum(int(r["withdrawals"]) for r in rows),
+           "wallet_received": token.get("bought_back_near") if token else None}
+    if out["wallet_received"]:
+        out["part_of_wallet_inflow"] = total / out["wallet_received"]
+    of = raw.get("buyback_outflows")
+    if of:
+        sent = [x for x in of["outflows"] if first <= x["day"] <= last]
+        out["outflows"] = len(sent)
+        out["near_sent"] = sum(x.get("near") or 0 for x in sent)
+        out["outflow_range"] = of["range"]
+    return out
+
+
 def scenarios(out, raw):
     """Bear, base and bull for the next twelve months, from config.SCENARIOS.
 
@@ -656,6 +690,63 @@ def scenarios(out, raw):
             "now": {"share": tr["share"][config.SUBJECT], "take_bps": tr["take_bps"][config.SUBJECT],
                     "capture": tr["capture"], "coverage": tk["offset_buyback"], "fees_year": now_fees},
             "horizon": "twelve months after %s" % out["meta"]["last_day"]}
+
+
+def priced_in(out, raw):
+    """What NEAR's price says about Intents, and what Intents is worth to NEAR.
+
+    A perpetuity on the cash Intents sends to NEAR's wallets, value = cash next
+    year / (discount - growth), for each discount and growth in
+    config.VALUATION, per NEAR and as a part of today's price; the same for each
+    scenario at the mid pair; the yearly cash that would on its own justify
+    today's market cap; and the yearly cost of new NEAR at today's price, which
+    holders pay through dilution whatever Intents earns. NEAR's price also pays
+    for the L1, so this is a floor from Intents, not a fair value of NEAR.
+    """
+    sc, v = out.get("scenarios"), getattr(config, "VALUATION", None)
+    tk = out.get("token")
+    if not sc or not v or not tk:
+        return None
+    price = sc["price_usd"]
+    supply = tk["supply_points"][-1]["total_supply_near"]
+    mcap = price * supply
+    days = out["meta"]["window_days"]
+    captured_now = tk["captured_near"] * price * 365.0 / days
+    bought_now = tk["bought_back_near"] * price * 365.0 / days
+    dilution = sc["new_near_per_year"] * price
+
+    def per_near(cash, r, g):
+        return cash / (r - g) / supply
+
+    grid = [{"discount": r, "growth": g,
+             "captured_per_near": per_near(captured_now, r, g),
+             "buyback_per_near": per_near(bought_now, r, g)}
+            for r in v["discount"] for g in v["growth"] if r > g]
+    r, g = v["mid"]
+    rows = []
+    for row in sc["rows"]:
+        cash = row["captured_usd"]
+        bb = cash * sc["buyback_part_of_captured"]
+        rows.append({"name": row["name"], "captured_usd": cash, "buyback_usd": bb,
+                     "captured_per_near": per_near(cash, r, g),
+                     "part_of_price": per_near(cash, r, g) / price,
+                     "buyback_minus_dilution_usd": bb - dilution})
+    lo = min(x["captured_per_near"] for x in grid)
+    hi = max(x["captured_per_near"] for x in grid)
+    return {
+        "price_usd": price, "supply_near": supply, "market_cap_usd": mcap,
+        "captured_usd_year_now": captured_now, "buyback_usd_year_now": bought_now,
+        "dilution_usd_year": dilution,
+        "buyback_minus_dilution_usd_now": bought_now - dilution,
+        "mid": {"discount": r, "growth": g},
+        "now_per_near_mid": per_near(captured_now, r, g),
+        "now_part_of_price_mid": per_near(captured_now, r, g) / price,
+        "now_per_near_range": [lo, hi],
+        "now_part_of_price_range": [lo / price, hi / price],
+        "cash_to_justify_price": mcap * (r - g),
+        "multiple_of_now_to_justify": mcap * (r - g) / captured_now if captured_now else None,
+        "grid": grid, "rows": rows,
+    }
 
 
 def investment_call(out):
@@ -1095,7 +1186,9 @@ def _verdict(ok):
 def compute(raw, fetched_at):
     out = _compute(raw, fetched_at)
     out["call"] = investment_call(out)
+    out["buyback_provenance"] = buyback_provenance(raw, out["meta"]["window"], out.get("token"))
     out["scenarios"] = scenarios(out, raw)
+    out["priced_in"] = priced_in(out, raw)
     return out
 
 
@@ -1345,6 +1438,24 @@ def _compute(raw, fetched_at):
         if extra:
             at = next(i for i, x in enumerate(basis["scenarios"]) if x["id"] == "worst")
             basis["scenarios"][at:at] = extra
+        # The same four ways of counting, over 90 days, 30 days and the latest
+        # week: the headline shares as ranges rather than points.
+        share_ranges = []
+        wk = [x["week"] for x in weekly(table)]
+        spans = [(w, [table["dates"][last - w + 1], end_date]), (30, [table["dates"][last - 29], end_date])]
+        if wk:
+            d0 = datetime.date.fromisoformat(wk[-1])
+            spans.append((7, [wk[-1], (d0 + datetime.timedelta(days=6)).isoformat()]))
+        for days, win in spans:
+            v_ = {s_: sum(v for d, v in zip(table["dates"], table[s_]["volume"]) if win[0] <= d <= win[1])
+                  for s_ in slugs_}
+            vals = {"reported": v_[subject] / sum(v_.values()),
+                    "one_side": v_[subject] * fac_[subject] / sum(v_[s_] * fac_[s_] for s_ in slugs_)}
+            for x in shares_onchain(table, subject, names, win, bq, None, fac_) or []:
+                vals[x["id"]] = x["share"]
+            share_ranges.append({"days": days, "window": win, "shares": vals,
+                                 "low": min(vals.values()), "high": max(vals.values())})
+        basis["share_ranges"] = share_ranges
         by_id = {x["id"]: x for x in basis["scenarios"]}
         like = [by_id[k] for k in ("reported", "one_side", "onchain", "onchain_low") if k in by_id]
         c1_value = min(x["share"] for x in like)

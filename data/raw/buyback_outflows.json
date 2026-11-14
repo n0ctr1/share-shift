@@ -1,0 +1,11 @@
+{
+ "note": "Every native action signed by the wallet and every token transfer out of it.",
+ "outflows": [],
+ "pages": 25,
+ "range": [
+  "2026-08-13",
+  "2026-11-10"
+ ],
+ "source": "https://api.nearblocks.io/v1/account/buybacks.multisignature.near/txns and /ft-txns",
+ "wallet": "buybacks.multisignature.near"
+}

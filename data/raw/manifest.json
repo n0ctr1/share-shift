@@ -5,6 +5,10 @@
    "path": "raw/actions_thorchain-dex.json",
    "sha256": "98a8b0f97733abf74b044854b269a273bf085490f38a667e388cd93765ddb056"
   },
+  "bq_buyback_provenance": {
+   "path": "raw/bq_buyback_provenance.json",
+   "sha256": "949405fbd3bfb218e93957eab42357a18a83c4b805e0925c8d346ad9a8ecba61"
+  },
   "bq_intents_flows": {
    "path": "raw/bq_intents_flows.json",
    "sha256": "cda5e0bc6935d93d6e4bb164f83ed59f867847d8b7b74fc99b2b8ff8d46a94dc"
@@ -20,6 +24,10 @@
   "bq_prices": {
    "path": "raw/bq_prices.json",
    "sha256": "923d58921ee17a47c4e3d11eac01207910902d4aaac0ba9e77e260f7245393e8"
+  },
+  "buyback_outflows": {
+   "path": "raw/buyback_outflows.json",
+   "sha256": "92ec6b5cea7aa05ff0c87a34d600e4b5526b8caf79b2be025de1ea124ec950a2"
   },
   "channels_report": {
    "path": "raw/channels_report.json",

@@ -141,7 +141,7 @@ def fetch_all(log=print):
 
     # The Explorer channel report is refreshed separately (python3 -m pipeline.explorer,
     # needs a key and about an hour). If one is on disk it stays in the manifest.
-    for name in ("channels_report", "onchain_revenue", "legs_chainflip-amm"):
+    for name in ("channels_report", "onchain_revenue", "buyback_outflows", "legs_chainflip-amm"):
         path = os.path.join(RAW_DIR, name + ".json")
         if os.path.exists(path):
             files[name] = path

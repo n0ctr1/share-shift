@@ -1,0 +1,912 @@
+{
+ "bytes_billed": 120541151232,
+ "bytes_processed": 120540136106,
+ "dataset": "bigquery-public-data.crypto_near_mainnet_us",
+ "range": [
+  "2026-08-13",
+  "2026-11-10"
+ ],
+ "rows": [
+  {
+   "day": "2026-08-13",
+   "delivering_accounts": "1",
+   "near_raw": "4140145712603139780863419968",
+   "near_raw_from_router": "0",
+   "near_raw_matched": "609310979065729248544269363",
+   "near_raw_swapped_by_payer": "3530834733537410532319150605",
+   "paying_accounts": "3",
+   "withdrawals": "6"
+  },
+  {
+   "day": "2026-08-14",
+   "delivering_accounts": "1",
+   "near_raw": "6504916953702528042333139502",
+   "near_raw_from_router": "0",
+   "near_raw_matched": "1228095437873232453942325796",
+   "near_raw_swapped_by_payer": "5276821515829295588390813706",
+   "paying_accounts": "3",
+   "withdrawals": "8"
+  },
+  {
+   "day": "2026-08-15",
+   "delivering_accounts": "1",
+   "near_raw": "3189276142448751259069726381",
+   "near_raw_from_router": "0",
+   "near_raw_matched": "670812177256139844086767263",
+   "near_raw_swapped_by_payer": "2518463965192611414982959118",
+   "paying_accounts": "3",
+   "withdrawals": "5"
+  },
+  {
+   "day": "2026-08-16",
+   "delivering_accounts": "0",
+   "near_raw": "3433260555742324289832612415",
+   "near_raw_from_router": "0",
+   "near_raw_matched": "0",
+   "near_raw_swapped_by_payer": "3433260555742324289832612415",
+   "paying_accounts": "1",
+   "withdrawals": "5"
+  },
+  {
+   "day": "2026-08-17",
+   "delivering_accounts": "1",
+   "near_raw": "9952042435983982072723886587",
+   "near_raw_from_router": "2919815530239496680289019027",
+   "near_raw_matched": "2919815530239496680289019027",
+   "near_raw_swapped_by_payer": "7032226905744485392434867560",
+   "paying_accounts": "6",
+   "withdrawals": "13"
+  },
+  {
+   "day": "2026-08-18",
+   "delivering_accounts": "1",
+   "near_raw": "6117720104427647759810925767",
+   "near_raw_from_router": "1253017279390577769931576291",
+   "near_raw_matched": "1253017279390577769931576291",
+   "near_raw_swapped_by_payer": "4864702825037069989879349476",
+   "paying_accounts": "4",
+   "withdrawals": "9"
+  },
+  {
+   "day": "2026-08-19",
+   "delivering_accounts": "1",
+   "near_raw": "23410291982698658599639478471",
+   "near_raw_from_router": "12547087792023118598663711906",
+   "near_raw_matched": "12547087792023118598663711906",
+   "near_raw_swapped_by_payer": "10863204190675540000975766565",
+   "paying_accounts": "15",
+   "withdrawals": "24"
+  },
+  {
+   "day": "2026-08-20",
+   "delivering_accounts": "1",
+   "near_raw": "15512767841726530316938989111",
+   "near_raw_from_router": "5166395901878215674100255931",
+   "near_raw_matched": "5166395901878215674100255931",
+   "near_raw_swapped_by_payer": "10346371939848314642838733180",
+   "paying_accounts": "9",
+   "withdrawals": "17"
+  },
+  {
+   "day": "2026-08-21",
+   "delivering_accounts": "1",
+   "near_raw": "23677353923234846151155360209",
+   "near_raw_from_router": "8474985493534195705459240818",
+   "near_raw_matched": "8474985493534195705459240818",
+   "near_raw_swapped_by_payer": "15202368429700650445696119391",
+   "paying_accounts": "12",
+   "withdrawals": "27"
+  },
+  {
+   "day": "2026-08-22",
+   "delivering_accounts": "1",
+   "near_raw": "16389715830835108605535798250",
+   "near_raw_from_router": "1416638700467604776456707356",
+   "near_raw_matched": "1416638700467604776456707356",
+   "near_raw_swapped_by_payer": "14973077130367503829079090894",
+   "paying_accounts": "4",
+   "withdrawals": "17"
+  },
+  {
+   "day": "2026-08-23",
+   "delivering_accounts": "1",
+   "near_raw": "11264714984506955320859202228",
+   "near_raw_from_router": "2972925881339279521085541911",
+   "near_raw_matched": "2972925881339279521085541911",
+   "near_raw_swapped_by_payer": "8291789103167675799773660317",
+   "paying_accounts": "7",
+   "withdrawals": "16"
+  },
+  {
+   "day": "2026-08-24",
+   "delivering_accounts": "1",
+   "near_raw": "13524301726034280485170065102",
+   "near_raw_from_router": "3237983349294072986141872186",
+   "near_raw_matched": "3237983349294072986141872186",
+   "near_raw_swapped_by_payer": "10286318376740207499028192916",
+   "paying_accounts": "7",
+   "withdrawals": "18"
+  },
+  {
+   "day": "2026-08-25",
+   "delivering_accounts": "1",
+   "near_raw": "11190551367377573167578351238",
+   "near_raw_from_router": "3165422526808240007932061233",
+   "near_raw_matched": "3165422526808240007932061233",
+   "near_raw_swapped_by_payer": "8025128840569333159646290005",
+   "paying_accounts": "5",
+   "withdrawals": "15"
+  },
+  {
+   "day": "2026-08-26",
+   "delivering_accounts": "1",
+   "near_raw": "11664338935283834447989981862",
+   "near_raw_from_router": "2146613956553245863276846727",
+   "near_raw_matched": "2146613956553245863276846727",
+   "near_raw_swapped_by_payer": "9517724978730588584713135135",
+   "paying_accounts": "5",
+   "withdrawals": "14"
+  },
+  {
+   "day": "2026-08-27",
+   "delivering_accounts": "1",
+   "near_raw": "10803812139878782162113791028",
+   "near_raw_from_router": "2282645306294509415771440906",
+   "near_raw_matched": "2282645306294509415771440906",
+   "near_raw_swapped_by_payer": "8521166833584272746342350122",
+   "paying_accounts": "5",
+   "withdrawals": "15"
+  },
+  {
+   "day": "2026-08-28",
+   "delivering_accounts": "1",
+   "near_raw": "10101865181781858810781251595",
+   "near_raw_from_router": "2056736622465420964263807678",
+   "near_raw_matched": "2056736622465420964263807678",
+   "near_raw_swapped_by_payer": "8045128559316437846517443917",
+   "paying_accounts": "5",
+   "withdrawals": "14"
+  },
+  {
+   "day": "2026-08-29",
+   "delivering_accounts": "1",
+   "near_raw": "7560216989387698454634242077",
+   "near_raw_from_router": "5808977316751863347550282922",
+   "near_raw_matched": "5808977316751863347550282922",
+   "near_raw_swapped_by_payer": "1751239672635835107083959155",
+   "paying_accounts": "11",
+   "withdrawals": "12"
+  },
+  {
+   "day": "2026-08-30",
+   "delivering_accounts": "1",
+   "near_raw": "8762243244093574095992528833",
+   "near_raw_from_router": "6308818124308047437028178250",
+   "near_raw_matched": "6308818124308047437028178250",
+   "near_raw_swapped_by_payer": "2453425119785526658964350583",
+   "paying_accounts": "10",
+   "withdrawals": "12"
+  },
+  {
+   "day": "2026-08-31",
+   "delivering_accounts": "1",
+   "near_raw": "8535574461063697641114129631",
+   "near_raw_from_router": "2819215165099756362437740002",
+   "near_raw_matched": "2819215165099756362437740002",
+   "near_raw_swapped_by_payer": "5716359295963941278676389629",
+   "paying_accounts": "7",
+   "withdrawals": "14"
+  },
+  {
+   "day": "2026-09-01",
+   "delivering_accounts": "1",
+   "near_raw": "8304381634239276847474873079",
+   "near_raw_from_router": "3184358542223549501801613969",
+   "near_raw_matched": "3184358542223549501801613969",
+   "near_raw_swapped_by_payer": "5120023092015727345673259110",
+   "paying_accounts": "8",
+   "withdrawals": "13"
+  },
+  {
+   "day": "2026-09-02",
+   "delivering_accounts": "1",
+   "near_raw": "10344943196149948274925412275",
+   "near_raw_from_router": "5098606206466613266658538729",
+   "near_raw_matched": "5098606206466613266658538729",
+   "near_raw_swapped_by_payer": "5246336989683335008266873546",
+   "paying_accounts": "11",
+   "withdrawals": "17"
+  },
+  {
+   "day": "2026-09-03",
+   "delivering_accounts": "1",
+   "near_raw": "24758575676307459266301777657",
+   "near_raw_from_router": "13452997176060487439128668149",
+   "near_raw_matched": "13452997176060487439128668149",
+   "near_raw_swapped_by_payer": "11305578500246971827173109508",
+   "paying_accounts": "20",
+   "withdrawals": "33"
+  },
+  {
+   "day": "2026-09-04",
+   "delivering_accounts": "1",
+   "near_raw": "34096331310741124203816453256",
+   "near_raw_from_router": "26242803168090146838128948553",
+   "near_raw_matched": "26242803168090146838128948553",
+   "near_raw_swapped_by_payer": "7853528142650977365687504703",
+   "paying_accounts": "34",
+   "withdrawals": "41"
+  },
+  {
+   "day": "2026-09-05",
+   "delivering_accounts": "1",
+   "near_raw": "10331450052446064500787511037",
+   "near_raw_from_router": "5578834264174030121903086770",
+   "near_raw_matched": "5578834264174030121903086770",
+   "near_raw_swapped_by_payer": "4752615788272034378884424267",
+   "paying_accounts": "13",
+   "withdrawals": "20"
+  },
+  {
+   "day": "2026-09-06",
+   "delivering_accounts": "1",
+   "near_raw": "20495632194793084646362447876",
+   "near_raw_from_router": "11225716556300977276119861078",
+   "near_raw_matched": "11225716556300977276119861078",
+   "near_raw_swapped_by_payer": "9269915638492107370242586798",
+   "paying_accounts": "19",
+   "withdrawals": "30"
+  },
+  {
+   "day": "2026-09-07",
+   "delivering_accounts": "1",
+   "near_raw": "7021200449866268594664197914",
+   "near_raw_from_router": "3679683502873321605016349544",
+   "near_raw_matched": "3679683502873321605016349544",
+   "near_raw_swapped_by_payer": "3341516946992946989647848370",
+   "paying_accounts": "10",
+   "withdrawals": "15"
+  },
+  {
+   "day": "2026-09-08",
+   "delivering_accounts": "1",
+   "near_raw": "8492501971706023969668250858",
+   "near_raw_from_router": "3668982143329029013901222774",
+   "near_raw_matched": "3668982143329029013901222774",
+   "near_raw_swapped_by_payer": "4823519828376994955767028084",
+   "paying_accounts": "10",
+   "withdrawals": "18"
+  },
+  {
+   "day": "2026-09-09",
+   "delivering_accounts": "1",
+   "near_raw": "11892975458546649870667347145",
+   "near_raw_from_router": "4613829101478743982042734861",
+   "near_raw_matched": "4613829101478743982042734861",
+   "near_raw_swapped_by_payer": "6289246357067905888624612284",
+   "paying_accounts": "14",
+   "withdrawals": "24"
+  },
+  {
+   "day": "2026-09-10",
+   "delivering_accounts": "1",
+   "near_raw": "9862029781393305136401311443",
+   "near_raw_from_router": "4818944374516724821026428256",
+   "near_raw_matched": "4818944374516724821026428256",
+   "near_raw_swapped_by_payer": "5043085406876580315374883187",
+   "paying_accounts": "12",
+   "withdrawals": "21"
+  },
+  {
+   "day": "2026-09-11",
+   "delivering_accounts": "1",
+   "near_raw": "11303194936338876619103172782",
+   "near_raw_from_router": "4389718775518063998108121407",
+   "near_raw_matched": "4389718775518063998108121407",
+   "near_raw_swapped_by_payer": "6913476160820812620995051375",
+   "paying_accounts": "12",
+   "withdrawals": "25"
+  },
+  {
+   "day": "2026-09-12",
+   "delivering_accounts": "1",
+   "near_raw": "9216848161732274343006327093",
+   "near_raw_from_router": "2249263298468621108899076863",
+   "near_raw_matched": "2249263298468621108899076863",
+   "near_raw_swapped_by_payer": "6967584863263653234107250230",
+   "paying_accounts": "7",
+   "withdrawals": "15"
+  },
+  {
+   "day": "2026-09-13",
+   "delivering_accounts": "1",
+   "near_raw": "6251417134817504407944461325",
+   "near_raw_from_router": "3192496943063590041530162497",
+   "near_raw_matched": "3192496943063590041530162497",
+   "near_raw_swapped_by_payer": "3058920191753914366414298828",
+   "paying_accounts": "8",
+   "withdrawals": "12"
+  },
+  {
+   "day": "2026-09-14",
+   "delivering_accounts": "1",
+   "near_raw": "9820766204059633626547602633",
+   "near_raw_from_router": "5027905318485128787222159911",
+   "near_raw_matched": "5027905318485128787222159911",
+   "near_raw_swapped_by_payer": "4792860885574504839325442722",
+   "paying_accounts": "12",
+   "withdrawals": "20"
+  },
+  {
+   "day": "2026-09-15",
+   "delivering_accounts": "1",
+   "near_raw": "11362457562002231241071600290",
+   "near_raw_from_router": "3653921996871172372564370019",
+   "near_raw_matched": "3653921996871172372564370019",
+   "near_raw_swapped_by_payer": "7708535565131058868507230271",
+   "paying_accounts": "10",
+   "withdrawals": "22"
+  },
+  {
+   "day": "2026-09-16",
+   "delivering_accounts": "1",
+   "near_raw": "11709328133727542445064993636",
+   "near_raw_from_router": "4095209554303385649385335984",
+   "near_raw_matched": "4095209554303385649385335984",
+   "near_raw_swapped_by_payer": "7614118579424156795679657652",
+   "paying_accounts": "11",
+   "withdrawals": "22"
+  },
+  {
+   "day": "2026-09-17",
+   "delivering_accounts": "1",
+   "near_raw": "23626779982476848177174016551",
+   "near_raw_from_router": "10773586288757809159831908339",
+   "near_raw_matched": "10773586288757809159831908339",
+   "near_raw_swapped_by_payer": "12853193693719039017342108212",
+   "paying_accounts": "25",
+   "withdrawals": "45"
+  },
+  {
+   "day": "2026-09-18",
+   "delivering_accounts": "1",
+   "near_raw": "25549878070130956009640111002",
+   "near_raw_from_router": "9786369173927758340802336448",
+   "near_raw_matched": "9786369173927758340802336448",
+   "near_raw_swapped_by_payer": "15763508896203197668837774554",
+   "paying_accounts": "26",
+   "withdrawals": "45"
+  },
+  {
+   "day": "2026-09-19",
+   "delivering_accounts": "1",
+   "near_raw": "11509641270554592970008065578",
+   "near_raw_from_router": "6180191697240962506333178315",
+   "near_raw_matched": "6180191697240962506333178315",
+   "near_raw_swapped_by_payer": "5329449573313630463674887263",
+   "paying_accounts": "19",
+   "withdrawals": "30"
+  },
+  {
+   "day": "2026-09-20",
+   "delivering_accounts": "1",
+   "near_raw": "7536885183432418764186668606",
+   "near_raw_from_router": "4783734050936662017135056790",
+   "near_raw_matched": "4783734050936662017135056790",
+   "near_raw_swapped_by_payer": "2753151132495756747051611816",
+   "paying_accounts": "17",
+   "withdrawals": "24"
+  },
+  {
+   "day": "2026-09-21",
+   "delivering_accounts": "1",
+   "near_raw": "18573324347685681137947092232",
+   "near_raw_from_router": "12980623060385456863128095056",
+   "near_raw_matched": "12980623060385456863128095056",
+   "near_raw_swapped_by_payer": "5592701287300224274818997176",
+   "paying_accounts": "38",
+   "withdrawals": "53"
+  },
+  {
+   "day": "2026-09-22",
+   "delivering_accounts": "1",
+   "near_raw": "16842484188469575254042524656",
+   "near_raw_from_router": "12084472319669629680514345367",
+   "near_raw_matched": "12084472319669629680514345367",
+   "near_raw_swapped_by_payer": "4758011868799945573528179289",
+   "paying_accounts": "39",
+   "withdrawals": "51"
+  },
+  {
+   "day": "2026-09-23",
+   "delivering_accounts": "1",
+   "near_raw": "16871699845582770239501257349",
+   "near_raw_from_router": "9198692749571078996581235721",
+   "near_raw_matched": "9198692749571078996581235721",
+   "near_raw_swapped_by_payer": "7673007096011691242920021628",
+   "paying_accounts": "34",
+   "withdrawals": "52"
+  },
+  {
+   "day": "2026-09-24",
+   "delivering_accounts": "1",
+   "near_raw": "11886038115773702555984644413",
+   "near_raw_from_router": "7137573876605073966833950542",
+   "near_raw_matched": "7137573876605073966833950542",
+   "near_raw_swapped_by_payer": "4748464239168628589150693871",
+   "paying_accounts": "27",
+   "withdrawals": "40"
+  },
+  {
+   "day": "2026-09-25",
+   "delivering_accounts": "1",
+   "near_raw": "13054897313128691572457422793",
+   "near_raw_from_router": "8573805660885132471275871999",
+   "near_raw_matched": "8573805660885132471275871999",
+   "near_raw_swapped_by_payer": "4481091652243559101181550794",
+   "paying_accounts": "34",
+   "withdrawals": "46"
+  },
+  {
+   "day": "2026-09-26",
+   "delivering_accounts": "1",
+   "near_raw": "5397392305163810506426113514",
+   "near_raw_from_router": "3195302171255165399912117288",
+   "near_raw_matched": "3195302171255165399912117288",
+   "near_raw_swapped_by_payer": "2202090133908645106513996226",
+   "paying_accounts": "16",
+   "withdrawals": "23"
+  },
+  {
+   "day": "2026-09-27",
+   "delivering_accounts": "1",
+   "near_raw": "5936321398509940770312099055",
+   "near_raw_from_router": "3212869472962467500596061629",
+   "near_raw_matched": "3212869472962467500596061629",
+   "near_raw_swapped_by_payer": "2723451925547473269716037426",
+   "paying_accounts": "16",
+   "withdrawals": "25"
+  },
+  {
+   "day": "2026-09-28",
+   "delivering_accounts": "1",
+   "near_raw": "9910565138665580556015012506",
+   "near_raw_from_router": "4954392028133898937990820313",
+   "near_raw_matched": "4954392028133898937990820313",
+   "near_raw_swapped_by_payer": "4956173110531681618024192193",
+   "paying_accounts": "21",
+   "withdrawals": "35"
+  },
+  {
+   "day": "2026-09-29",
+   "delivering_accounts": "1",
+   "near_raw": "10907620375615216619410387268",
+   "near_raw_from_router": "5129998913425973945074390639",
+   "near_raw_matched": "5129998913425973945074390639",
+   "near_raw_swapped_by_payer": "5777621462189242674335996629",
+   "paying_accounts": "22",
+   "withdrawals": "36"
+  },
+  {
+   "day": "2026-09-30",
+   "delivering_accounts": "1",
+   "near_raw": "13918052537264683014548004734",
+   "near_raw_from_router": "7124576497337453193222680339",
+   "near_raw_matched": "7124576497337453193222680339",
+   "near_raw_swapped_by_payer": "6793476039927229821325324395",
+   "paying_accounts": "24",
+   "withdrawals": "39"
+  },
+  {
+   "day": "2026-10-01",
+   "delivering_accounts": "1",
+   "near_raw": "10164486210168632262290575800",
+   "near_raw_from_router": "5797079508596278666771525588",
+   "near_raw_matched": "5797079508596278666771525588",
+   "near_raw_swapped_by_payer": "4367406701572353595519050212",
+   "paying_accounts": "20",
+   "withdrawals": "30"
+  },
+  {
+   "day": "2026-10-02",
+   "delivering_accounts": "1",
+   "near_raw": "7874504906295539666871932368",
+   "near_raw_from_router": "4605847164799578168500891938",
+   "near_raw_matched": "4605847164799578168500891938",
+   "near_raw_swapped_by_payer": "3268657741495961498371040430",
+   "paying_accounts": "19",
+   "withdrawals": "29"
+  },
+  {
+   "day": "2026-10-03",
+   "delivering_accounts": "1",
+   "near_raw": "3742589817793090226779832726",
+   "near_raw_from_router": "1881359030016775522498366336",
+   "near_raw_matched": "1881359030016775522498366336",
+   "near_raw_swapped_by_payer": "1861230787776314704281466390",
+   "paying_accounts": "9",
+   "withdrawals": "13"
+  },
+  {
+   "day": "2026-10-04",
+   "delivering_accounts": "1",
+   "near_raw": "4971243500531038198059105200",
+   "near_raw_from_router": "1921901181870906144458107018",
+   "near_raw_matched": "1921901181870906144458107018",
+   "near_raw_swapped_by_payer": "3049342318660132053600998182",
+   "paying_accounts": "9",
+   "withdrawals": "14"
+  },
+  {
+   "day": "2026-10-05",
+   "delivering_accounts": "1",
+   "near_raw": "8263189538105123759244634414",
+   "near_raw_from_router": "1943295602882960756359880736",
+   "near_raw_matched": "1943295602882960756359880736",
+   "near_raw_swapped_by_payer": "6319893935222163002884753678",
+   "paying_accounts": "10",
+   "withdrawals": "24"
+  },
+  {
+   "day": "2026-10-06",
+   "delivering_accounts": "1",
+   "near_raw": "7344463269494671248244188792",
+   "near_raw_from_router": "5624552912583247167210477801",
+   "near_raw_matched": "5624552912583247167210477801",
+   "near_raw_swapped_by_payer": "1719910356911424081033710991",
+   "paying_accounts": "23",
+   "withdrawals": "29"
+  },
+  {
+   "day": "2026-10-07",
+   "delivering_accounts": "1",
+   "near_raw": "7651225165671668744434893094",
+   "near_raw_from_router": "4900895727775980020368275549",
+   "near_raw_matched": "4900895727775980020368275549",
+   "near_raw_swapped_by_payer": "2750329437895688724066617545",
+   "paying_accounts": "21",
+   "withdrawals": "30"
+  },
+  {
+   "day": "2026-10-08",
+   "delivering_accounts": "1",
+   "near_raw": "16238330713898337848335308714",
+   "near_raw_from_router": "12725006767328822651142746192",
+   "near_raw_matched": "12725006767328822651142746192",
+   "near_raw_swapped_by_payer": "3513323946569515197192562522",
+   "paying_accounts": "42",
+   "withdrawals": "52"
+  },
+  {
+   "day": "2026-10-09",
+   "delivering_accounts": "1",
+   "near_raw": "16897283871222488259637274966",
+   "near_raw_from_router": "7835283438819211450601289313",
+   "near_raw_matched": "7835283438819211450601289313",
+   "near_raw_swapped_by_payer": "9062000432403276809035985653",
+   "paying_accounts": "27",
+   "withdrawals": "44"
+  },
+  {
+   "day": "2026-10-10",
+   "delivering_accounts": "1",
+   "near_raw": "10674437777523784823107863718",
+   "near_raw_from_router": "4908966602968677515339226380",
+   "near_raw_matched": "4908966602968677515339226380",
+   "near_raw_swapped_by_payer": "5765471174555107307768637338",
+   "paying_accounts": "17",
+   "withdrawals": "27"
+  },
+  {
+   "day": "2026-10-11",
+   "delivering_accounts": "1",
+   "near_raw": "10364797810473373690584201771",
+   "near_raw_from_router": "4689735361180841656190051562",
+   "near_raw_matched": "4689735361180841656190051562",
+   "near_raw_swapped_by_payer": "5675062449292532034394150209",
+   "paying_accounts": "17",
+   "withdrawals": "30"
+  },
+  {
+   "day": "2026-10-12",
+   "delivering_accounts": "1",
+   "near_raw": "8212099085610174897129838900",
+   "near_raw_from_router": "5297011365511166443722575374",
+   "near_raw_matched": "5297011365511166443722575374",
+   "near_raw_swapped_by_payer": "2915087720099008453407263526",
+   "paying_accounts": "24",
+   "withdrawals": "35"
+  },
+  {
+   "day": "2026-10-13",
+   "delivering_accounts": "1",
+   "near_raw": "7055229136644349495207531732",
+   "near_raw_from_router": "4779133467145442779625120537",
+   "near_raw_matched": "4779133467145442779625120537",
+   "near_raw_swapped_by_payer": "2276095669498906715582411195",
+   "paying_accounts": "19",
+   "withdrawals": "25"
+  },
+  {
+   "day": "2026-10-14",
+   "delivering_accounts": "1",
+   "near_raw": "10688464714750680167907027510",
+   "near_raw_from_router": "7737250099984601480752256205",
+   "near_raw_matched": "7737250099984601480752256205",
+   "near_raw_swapped_by_payer": "2951214614766078687154771305",
+   "paying_accounts": "26",
+   "withdrawals": "35"
+  },
+  {
+   "day": "2026-10-15",
+   "delivering_accounts": "1",
+   "near_raw": "19930326627139993141771643506",
+   "near_raw_from_router": "17589843391947540043016439231",
+   "near_raw_matched": "17589843391947540043016439231",
+   "near_raw_swapped_by_payer": "2340483235192453098755204275",
+   "paying_accounts": "18",
+   "withdrawals": "24"
+  },
+  {
+   "day": "2026-10-16",
+   "delivering_accounts": "1",
+   "near_raw": "5932766985853974652485725619",
+   "near_raw_from_router": "3630987732689816928142706601",
+   "near_raw_matched": "3630987732689816928142706601",
+   "near_raw_swapped_by_payer": "2301779253164157724343019018",
+   "paying_accounts": "16",
+   "withdrawals": "24"
+  },
+  {
+   "day": "2026-10-17",
+   "delivering_accounts": "1",
+   "near_raw": "4728322811261541403025452378",
+   "near_raw_from_router": "2562075510983958408218902716",
+   "near_raw_matched": "2562075510983958408218902716",
+   "near_raw_swapped_by_payer": "2166247300277582994806549662",
+   "paying_accounts": "12",
+   "withdrawals": "18"
+  },
+  {
+   "day": "2026-10-18",
+   "delivering_accounts": "1",
+   "near_raw": "6073035707996584357963341488",
+   "near_raw_from_router": "3810567505199418736039681858",
+   "near_raw_matched": "3810567505199418736039681858",
+   "near_raw_swapped_by_payer": "2262468202797165621923659630",
+   "paying_accounts": "13",
+   "withdrawals": "20"
+  },
+  {
+   "day": "2026-10-19",
+   "delivering_accounts": "1",
+   "near_raw": "7653620617008538703803580889",
+   "near_raw_from_router": "4073595904047497398165455661",
+   "near_raw_matched": "4073595904047497398165455661",
+   "near_raw_swapped_by_payer": "3580024712961041305638125228",
+   "paying_accounts": "15",
+   "withdrawals": "24"
+  },
+  {
+   "day": "2026-10-20",
+   "delivering_accounts": "1",
+   "near_raw": "11537942244103160465187542885",
+   "near_raw_from_router": "5895745147229422535665869958",
+   "near_raw_matched": "5895745147229422535665869958",
+   "near_raw_swapped_by_payer": "5642197096873737929521672927",
+   "paying_accounts": "18",
+   "withdrawals": "28"
+  },
+  {
+   "day": "2026-10-21",
+   "delivering_accounts": "1",
+   "near_raw": "7997519013387809392803425605",
+   "near_raw_from_router": "4936351587881860227382023360",
+   "near_raw_matched": "4936351587881860227382023360",
+   "near_raw_swapped_by_payer": "3061167425505949165421402245",
+   "paying_accounts": "19",
+   "withdrawals": "30"
+  },
+  {
+   "day": "2026-10-22",
+   "delivering_accounts": "1",
+   "near_raw": "8221425977965043790724264183",
+   "near_raw_from_router": "4964796322559376672064374933",
+   "near_raw_matched": "4964796322559376672064374933",
+   "near_raw_swapped_by_payer": "3256629655405667118659889250",
+   "paying_accounts": "18",
+   "withdrawals": "27"
+  },
+  {
+   "day": "2026-10-23",
+   "delivering_accounts": "1",
+   "near_raw": "6507878259887337933667770309",
+   "near_raw_from_router": "2585601195540193492744331636",
+   "near_raw_matched": "2585601195540193492744331636",
+   "near_raw_swapped_by_payer": "3922277064347144440923438673",
+   "paying_accounts": "11",
+   "withdrawals": "23"
+  },
+  {
+   "day": "2026-10-24",
+   "delivering_accounts": "1",
+   "near_raw": "7209961418929315380091978615",
+   "near_raw_from_router": "4131362401724452548640561891",
+   "near_raw_matched": "4131362401724452548640561891",
+   "near_raw_swapped_by_payer": "3078599017204862831451416724",
+   "paying_accounts": "16",
+   "withdrawals": "22"
+  },
+  {
+   "day": "2026-10-25",
+   "delivering_accounts": "1",
+   "near_raw": "10001794080036209030147661772",
+   "near_raw_from_router": "3709349663341793892108640914",
+   "near_raw_matched": "3709349663341793892108640914",
+   "near_raw_swapped_by_payer": "6292444416694415138039020858",
+   "paying_accounts": "15",
+   "withdrawals": "30"
+  },
+  {
+   "day": "2026-10-26",
+   "delivering_accounts": "1",
+   "near_raw": "13065287920112310821511936578",
+   "near_raw_from_router": "5689027715919191017964886227",
+   "near_raw_matched": "5689027715919191017964886227",
+   "near_raw_swapped_by_payer": "7376260204193119803547050351",
+   "paying_accounts": "21",
+   "withdrawals": "39"
+  },
+  {
+   "day": "2026-10-27",
+   "delivering_accounts": "1",
+   "near_raw": "11701384130964311899939261626",
+   "near_raw_from_router": "5726584437143102479710212466",
+   "near_raw_matched": "5726584437143102479710212466",
+   "near_raw_swapped_by_payer": "5974799693821209420229049160",
+   "paying_accounts": "18",
+   "withdrawals": "33"
+  },
+  {
+   "day": "2026-10-28",
+   "delivering_accounts": "1",
+   "near_raw": "9733147228906620028758169944",
+   "near_raw_from_router": "4836662625792675347674777051",
+   "near_raw_matched": "4836662625792675347674777051",
+   "near_raw_swapped_by_payer": "4896484603113944681083392893",
+   "paying_accounts": "18",
+   "withdrawals": "29"
+  },
+  {
+   "day": "2026-10-29",
+   "delivering_accounts": "1",
+   "near_raw": "15945782570488731500255758026",
+   "near_raw_from_router": "10372201198474047515317571457",
+   "near_raw_matched": "10372201198474047515317571457",
+   "near_raw_swapped_by_payer": "5573581372014683984938186569",
+   "paying_accounts": "32",
+   "withdrawals": "40"
+  },
+  {
+   "day": "2026-10-30",
+   "delivering_accounts": "1",
+   "near_raw": "12997326396149539852788499910",
+   "near_raw_from_router": "7516993567655506427212395779",
+   "near_raw_matched": "7516993567655506427212395779",
+   "near_raw_swapped_by_payer": "5480332828494033425576104131",
+   "paying_accounts": "30",
+   "withdrawals": "42"
+  },
+  {
+   "day": "2026-10-31",
+   "delivering_accounts": "1",
+   "near_raw": "7877112679190539486141558150",
+   "near_raw_from_router": "3803540377577089959464159324",
+   "near_raw_matched": "3803540377577089959464159324",
+   "near_raw_swapped_by_payer": "4073572301613449526677398826",
+   "paying_accounts": "14",
+   "withdrawals": "24"
+  },
+  {
+   "day": "2026-11-01",
+   "delivering_accounts": "1",
+   "near_raw": "5220826338784225343077834891",
+   "near_raw_from_router": "2348451524010433733100202375",
+   "near_raw_matched": "2348451524010433733100202375",
+   "near_raw_swapped_by_payer": "2872374814773791609977632516",
+   "paying_accounts": "11",
+   "withdrawals": "19"
+  },
+  {
+   "day": "2026-11-02",
+   "delivering_accounts": "1",
+   "near_raw": "7148267343386601640834276878",
+   "near_raw_from_router": "2515930486437358273057536740",
+   "near_raw_matched": "2515930486437358273057536740",
+   "near_raw_swapped_by_payer": "4632336856949243367776740138",
+   "paying_accounts": "11",
+   "withdrawals": "21"
+  },
+  {
+   "day": "2026-11-03",
+   "delivering_accounts": "1",
+   "near_raw": "7540619859324032312144189367",
+   "near_raw_from_router": "4942266544584067274665090545",
+   "near_raw_matched": "4942266544584067274665090545",
+   "near_raw_swapped_by_payer": "2598353314739965037479098822",
+   "paying_accounts": "17",
+   "withdrawals": "22"
+  },
+  {
+   "day": "2026-11-04",
+   "delivering_accounts": "1",
+   "near_raw": "9232341489140217058352138294",
+   "near_raw_from_router": "7230735301170802095230407764",
+   "near_raw_matched": "7230735301170802095230407764",
+   "near_raw_swapped_by_payer": "2001606187969414963121730530",
+   "paying_accounts": "20",
+   "withdrawals": "24"
+  },
+  {
+   "day": "2026-11-05",
+   "delivering_accounts": "1",
+   "near_raw": "12524785860553031873234571506",
+   "near_raw_from_router": "10476967882536971038748469751",
+   "near_raw_matched": "10476967882536971038748469751",
+   "near_raw_swapped_by_payer": "2047817978016060834486101755",
+   "paying_accounts": "19",
+   "withdrawals": "21"
+  },
+  {
+   "day": "2026-11-06",
+   "delivering_accounts": "1",
+   "near_raw": "15624318777060507319286874711",
+   "near_raw_from_router": "13060084655004582354693754405",
+   "near_raw_matched": "13060084655004582354693754405",
+   "near_raw_swapped_by_payer": "2564234122055924964593120306",
+   "paying_accounts": "24",
+   "withdrawals": "28"
+  },
+  {
+   "day": "2026-11-07",
+   "delivering_accounts": "1",
+   "near_raw": "8100727975267254800936533876",
+   "near_raw_from_router": "7053349575652104511928099548",
+   "near_raw_matched": "7053349575652104511928099548",
+   "near_raw_swapped_by_payer": "1047378399615150289008434328",
+   "paying_accounts": "21",
+   "withdrawals": "23"
+  },
+  {
+   "day": "2026-11-08",
+   "delivering_accounts": "1",
+   "near_raw": "7279936654851907588541261837",
+   "near_raw_from_router": "3164380441433927428419988144",
+   "near_raw_matched": "3164380441433927428419988144",
+   "near_raw_swapped_by_payer": "4115556213417980160121273693",
+   "paying_accounts": "9",
+   "withdrawals": "11"
+  },
+  {
+   "day": "2026-11-09",
+   "delivering_accounts": "1",
+   "near_raw": "11790870061027080409355569369",
+   "near_raw_from_router": "9284955677987576733926479410",
+   "near_raw_matched": "9284955677987576733926479410",
+   "near_raw_swapped_by_payer": "2505914383039503675429089959",
+   "paying_accounts": "23",
+   "withdrawals": "27"
+  },
+  {
+   "day": "2026-11-10",
+   "delivering_accounts": "1",
+   "near_raw": "10418561932023335770058089798",
+   "near_raw_from_router": "9196685741131990889125903845",
+   "near_raw_matched": "9196685741131990889125903845",
+   "near_raw_swapped_by_payer": "1221876190891344880932185953",
+   "paying_accounts": "24",
+   "withdrawals": "24"
+  }
+ ],
+ "sql": "WITH ev AS (\n  SELECT block_date, block_timestamp, SAFE.PARSE_JSON(SUBSTR(l.element, 12)) AS j\n  FROM `bigquery-public-data.crypto_near_mainnet_us.execution_outcomes`, UNNEST(logs.list) AS l\n  WHERE block_date BETWEEN @a AND @b\n    AND executor_account_id = 'intents.near'\n    AND STARTS_WITH(l.element, 'EVENT_JSON:{\"standard\":\"dip4\"')\n    AND NOT STARTS_WITH(UPPER(status), 'FAIL')\n),\nentries AS (\n  SELECT block_date, block_timestamp, JSON_VALUE(j, '$.event') AS event, d\n  FROM ev, UNNEST(JSON_QUERY_ARRAY(j, '$.data')) AS d\n  WHERE JSON_VALUE(j, '$.event') IN ('native_withdraw', 'transfer', 'token_diff')\n),\npaid AS (\n  SELECT block_date, block_timestamp, JSON_VALUE(d, '$.account_id') AS payer,\n         CAST(JSON_VALUE(d, '$.amount') AS BIGNUMERIC) AS amount\n  FROM entries\n  WHERE event = 'native_withdraw' AND JSON_VALUE(d, '$.receiver_id') = 'buybacks.multisignature.near'\n),\nwnear_in AS (\n  SELECT e.block_timestamp, JSON_VALUE(e.d, '$.account_id') AS sender,\n         JSON_VALUE(e.d, '$.receiver_id') AS payer,\n         CAST(JSON_VALUE(e.d, '$.tokens.\"nep141:wrap.near\"') AS BIGNUMERIC) AS amount\n  FROM entries e\n  WHERE e.event = 'transfer' AND JSON_VALUE(e.d, '$.tokens.\"nep141:wrap.near\"') IS NOT NULL\n    AND JSON_VALUE(e.d, '$.receiver_id') IN (SELECT payer FROM paid)\n),\nsenders AS (\n  SELECT block_date, JSON_VALUE(d, '$.receiver_id') AS account,\n         COUNT(DISTINCT JSON_VALUE(d, '$.account_id')) AS distinct_senders\n  FROM entries\n  WHERE event = 'transfer' AND JSON_VALUE(d, '$.receiver_id') IN (SELECT sender FROM wnear_in)\n  GROUP BY 1, 2\n),\nswapped AS (\n  SELECT block_date, JSON_VALUE(d, '$.account_id') AS payer\n  FROM entries\n  WHERE event = 'token_diff' AND JSON_VALUE(d, '$.account_id') IN (SELECT payer FROM paid)\n    AND SAFE_CAST(JSON_VALUE(d, '$.diff.\"nep141:wrap.near\"') AS BIGNUMERIC) > 0\n  GROUP BY 1, 2\n)\nSELECT CAST(p.block_date AS STRING) AS day,\n       COUNT(*) AS withdrawals,\n       CAST(SUM(p.amount) AS STRING) AS near_raw,\n       CAST(SUM(IF(w.sender IS NOT NULL, p.amount, 0)) AS STRING) AS near_raw_matched,\n       CAST(SUM(IF(s.distinct_senders >= 500, p.amount, 0)) AS STRING) AS near_raw_from_router,\n       CAST(SUM(IF(x.payer IS NOT NULL AND (s.distinct_senders IS NULL OR s.distinct_senders < 500), p.amount, 0))\n            AS STRING) AS near_raw_swapped_by_payer,\n       COUNT(DISTINCT w.sender) AS delivering_accounts,\n       COUNT(DISTINCT p.payer) AS paying_accounts\nFROM paid p\nLEFT JOIN wnear_in w ON w.payer = p.payer AND w.amount = p.amount AND w.block_timestamp <= p.block_timestamp\nLEFT JOIN senders s ON s.account = w.sender AND s.block_date = p.block_date\nLEFT JOIN swapped x ON x.payer = p.payer AND x.block_date = p.block_date\nGROUP BY day\nORDER BY day"
+}

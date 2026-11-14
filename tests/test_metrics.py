@@ -367,7 +367,8 @@ class Tdx(unittest.TestCase):
         from pipeline import tdx
         path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                             "data", "raw", "tdx_quote.json")
-        w = json.load(open(path))["workers"][0]
+        with open(path) as fh:
+            w = json.load(fh)["workers"][0]
         q = bytes.fromhex(w["quote_hex"])
         p = tdx.parse_quote(q)
         key = tdx.b58decode(w["worker_public_key"].split(":", 1)[1])

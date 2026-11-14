@@ -65,6 +65,24 @@ code { font: 0.84em var(--mono); overflow-wrap: anywhere; }
 b, strong { font-weight: 600; }
 .num, .mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
 
+/* ---- model and risks ---- */
+.model { margin-top: 26px; padding: 22px 22px 18px; border: 1px solid var(--rule); border-radius: 6px; background: var(--sunk); }
+.mgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px 28px; margin: 16px 0 20px; }
+.mrow { display: grid; gap: 8px; font-size: 14px; color: var(--ink-2); }
+.mtop { display: flex; justify-content: space-between; gap: 12px; }
+.mtop b { font: 500 13px var(--mono); color: var(--ink); white-space: nowrap; }
+.mrow input[type=range] { width: 100%; accent-color: var(--s1); margin: 0; }
+.mout { display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); gap: 0; border-top: 1px solid var(--rule); }
+.mcell { padding: 14px 14px 10px 0; display: grid; gap: 4px; }
+.mn { font: 400 clamp(26px, 2.6vw, 34px)/1 var(--serif); color: var(--ink); font-variant-numeric: tabular-nums; }
+.ml { font-size: 12.5px; color: var(--ink-3); }
+.mverdict { margin: 10px 0 12px; color: var(--ink-2); }
+.mreset { font: 500 12px var(--mono); letter-spacing: .04em; color: var(--ink-2); background: none; border: 1px solid var(--rule); border-radius: 4px; padding: 6px 10px; cursor: pointer; }
+.mreset:hover { color: var(--ink); border-color: var(--ink-3); }
+.risks { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0 36px; }
+.risk { padding: 16px 0; border-top: 1px solid var(--rule); }
+.risk h3 { margin: 0 0 6px; font-size: 16px; }
+
 /* ---- frame ---- */
 .frame { max-width: 1240px; margin: 0 auto; padding: 0 var(--gutter); }
 @media (min-width: 1680px) { .frame { max-width: 1440px; } }
@@ -474,11 +492,11 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
   function glue(t) { return t.replace(/(\d) (bps|days|weeks|months|NEAR\b|M\b|B\b)/g, '$1\u00a0$2'); }
   function usd(x) {
     if (x == null) return 'n/a';
-    var a = Math.abs(x);
-    if (a >= 1e9) return '$' + (x / 1e9).toFixed(2) + 'B';
-    if (a >= 1e6) return '$' + (x / 1e6).toFixed(1) + 'M';
-    if (a >= 1e3) return '$' + (x / 1e3).toFixed(0) + 'K';
-    return '$' + x.toFixed(0);
+    var a = Math.abs(x), sg = x < 0 ? '\u2212$' : '$';
+    if (a >= 1e9) return sg + (a / 1e9).toFixed(2) + 'B';
+    if (a >= 1e6) return sg + (a / 1e6).toFixed(1) + 'M';
+    if (a >= 1e3) return sg + (a / 1e3).toFixed(0) + 'K';
+    return sg + a.toFixed(0);
   }
   function pct(x, d) { return x == null ? 'n/a' : (100 * x).toFixed(d == null ? 0 : d) + '%'; }
   function bps(x) { return x == null ? 'n/a' : x.toFixed(1) + '\u00a0bps'; }
@@ -1035,6 +1053,65 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
   // ================= the short layer: one point, one sentence, one figure =================
   var B = T.brief || {};
   function say(parent, text, cls) { if (text) parent.appendChild(el('p', {class: cls || 'say'}, text)); }
+  /* model:start - the same arithmetic as metrics.scenarios() and metrics.priced_in(); tests/test_model.py checks they agree */
+  function model(p, k) {
+    var vol = k.market_year * (1 + p.market_growth) * p.share;
+    var fees = vol * p.take_bps / 1e4;
+    var captured = fees * p.capture;
+    var bought = captured * k.buyback_part / p.price;
+    var perNear = captured / (k.discount - k.growth) / k.supply;
+    return {intents_volume: vol, fees: fees, captured_usd: captured, bought_back_near: bought,
+      coverage: bought / k.new_near, captured_per_near: perNear, part_of_price: perNear / p.price,
+      capture_for_half: 0.5 * k.new_near * p.price / k.buyback_part / fees};
+  }
+  /* model:end */
+  function modelInto(parent, PI, SC) {
+    var k = {market_year: SC.market_volume_year_now, buyback_part: SC.buyback_part_of_captured, new_near: SC.new_near_per_year,
+      supply: PI.supply_near, discount: PI.mid.discount, growth: PI.mid.growth};
+    var base = SC.rows.filter(function (r) { return r.name === 'base'; })[0].assumptions;
+    var p = {market_growth: base.market_growth, share: base.share, take_bps: base.take_bps, capture: base.capture, price: PI.price_usd};
+    var box = el('div', {class: 'model point'});
+    box.appendChild(el('h3', {}, 'Run it yourself'));
+    say(box, 'Move the assumptions; the numbers are recomputed in your browser with the same formula the build uses.');
+    var grid = el('div', {class: 'mgrid'}), outs = el('div', {class: 'mout'});
+    var F = [['market_growth', 'Market growth, a year', -0.6, 1.5, 0.05, function (v) { return (v >= 0 ? '+' : '') + pct(v); }],
+      ['share', 'Intents share', 0.1, 0.9, 0.01, function (v) { return pct(v); }],
+      ['take_bps', 'Take rate', 5, 30, 0.5, function (v) { return bps(v); }],
+      ['capture', 'Share of fees reaching NEAR', 0.05, 1, 0.01, function (v) { return pct(v); }],
+      ['price', 'NEAR price', 1, 15, 0.05, function (v) { return '$' + v.toFixed(2); }]];
+    var shown = {};
+    F.forEach(function (f) {
+      var lab = el('label', {class: 'mrow'}), top = el('span', {class: 'mtop'});
+      top.appendChild(el('span', {}, f[1])); var val = el('b', {}, f[5](p[f[0]])); top.appendChild(val); lab.appendChild(top);
+      var inp = el('input', {type: 'range', min: f[2], max: f[3], step: f[4], value: p[f[0]], 'aria-label': f[1]});
+      inp.addEventListener('input', function () { p[f[0]] = parseFloat(inp.value); val.textContent = f[5](p[f[0]]); draw(); });
+      lab.appendChild(inp); grid.appendChild(lab);
+    });
+    [['coverage', 'Buybacks cover new NEAR'], ['captured_usd', 'Intents cash to NEAR, a year'],
+     ['part_of_price', 'Part of the price backed by it'], ['capture_for_half', 'Capture needed for half']].forEach(function (o) {
+      var c = el('div', {class: 'mcell'}); var n = el('span', {class: 'mn'}); c.appendChild(n); c.appendChild(el('span', {class: 'ml'}, o[1]));
+      outs.appendChild(c); shown[o[0]] = n;
+    });
+    var verdict = el('p', {class: 'mverdict'});
+    function draw() {
+      var r = model(p, k);
+      shown.coverage.textContent = pct(r.coverage);
+      shown.captured_usd.textContent = usd(r.captured_usd);
+      shown.part_of_price.textContent = pct(r.part_of_price);
+      shown.capture_for_half.textContent = r.capture_for_half > 1 ? 'over 100%' : pct(r.capture_for_half);
+      verdict.textContent = r.coverage >= M.call.rules.buyback_offset_accumulate
+        ? 'Buybacks would clear the ' + pct(M.call.rules.buyback_offset_accumulate) + ' bar the call needs to turn to accumulate (with a 30-day share of at least ' + pct(M.call.rules.share_30d_hold) + ').'
+        : 'Still short of the ' + pct(M.call.rules.buyback_offset_accumulate) + ' of new NEAR the call needs to turn to accumulate.';
+    }
+    box.appendChild(grid); box.appendChild(outs); box.appendChild(verdict);
+    var reset = el('button', {type: 'button', class: 'mreset'}, 'Reset to base case');
+    reset.addEventListener('click', function () {
+      p = {market_growth: base.market_growth, share: base.share, take_bps: base.take_bps, capture: base.capture, price: PI.price_usd};
+      Array.prototype.forEach.call(grid.querySelectorAll('input'), function (inp, i) { inp.value = p[F[i][0]]; inp.dispatchEvent(new Event('input')); });
+    });
+    box.appendChild(reset);
+    draw(); parent.appendChild(box);
+  }
   function point(parent, title, text) {
     var d = el('div', {class: 'point'});
     d.appendChild(el('h3', {}, title)); say(d, text); parent.appendChild(d); return d;
@@ -1067,6 +1144,7 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
     pc.appendChild(bars);
     var nt2 = el('p', {class: 'src'}); nt2.appendChild(document.createTextNode('The tick marks 50%. Every reading and how each factor was measured: '));
     nt2.appendChild(el('a', {href: '#position'}, 'the appendix')); nt2.appendChild(document.createTextNode('.')); pc.appendChild(nt2);
+    if (B.ranges) say(pc, B.ranges);
   }
   var two = el('div', {class: 'pair'}); s.appendChild(two);
   if (B.halt) point(two, 'Tested when a rival stopped', B.halt);
@@ -1090,6 +1168,7 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
     sl.appendChild(el('span', {}, 'Bought back ' + (tk2.bought_back_near / 1e6).toFixed(2) + 'M NEAR'));
     sl.appendChild(el('span', {}, 'Newly issued ' + (tk2.net_issued_near / 1e6).toFixed(2) + 'M NEAR'));
     tkp.appendChild(sl);
+    if (B.bought) say(tkp, B.bought);
   }
   if (M.scenarios) {
     var sp3 = point(s, 'Twelve months out: three scenarios', B.scenarios);
@@ -1103,6 +1182,31 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
     sp3.appendChild(sn);
   }
   say(s, B.price);
+
+  // what is priced in, and a model the reader can move
+  if (M.priced_in && M.scenarios) {
+    var PI = M.priced_in, SC = M.scenarios;
+    s = section('priced', 'Priced in?', 'Valuation', 'What NEAR’s price says about Intents');
+    say(s, B.priced, 'say big');
+    s.appendChild(table(['Case', 'Intents cash to NEAR, a year', 'Worth per NEAR', 'Part of $' + PI.price_usd.toFixed(2), 'Buybacks less dilution, a year'],
+      [['Now', usd(PI.captured_usd_year_now), '$' + PI.now_per_near_mid.toFixed(2), pct(PI.now_part_of_price_mid), usd(PI.buyback_minus_dilution_usd_now)]]
+        .concat(PI.rows.map(function (r) { return [r.name.charAt(0).toUpperCase() + r.name.slice(1), usd(r.captured_usd),
+          '$' + r.captured_per_near.toFixed(2), pct(r.part_of_price), usd(r.buyback_minus_dilution_usd)]; })),
+      [0, 1, 1, 1, 1]));
+    var pn = el('p', {class: 'src'}); pn.appendChild(document.createTextNode('A perpetuity at ' + pct(PI.mid.discount, 1) + ' discount and ' + pct(PI.mid.growth, 1) +
+      ' growth (VALUATION in pipeline/config.py); computed in ')); pn.appendChild(el('code', {}, 'metrics.priced_in()'));
+    pn.appendChild(document.createTextNode('. A floor from Intents, not a fair value of NEAR: the price also pays for the L1.')); s.appendChild(pn);
+    say(s, B.priced_call);
+    modelInto(s, PI, SC);
+  }
+
+  // where the lead could break
+  if (B.risks && B.risks.length) {
+    s = section('risks', 'Risks', 'What would end the lead', 'Where the lead could break');
+    var rl = el('div', {class: 'risks'});
+    B.risks.forEach(function (r) { var d = el('div', {class: 'risk'}); d.appendChild(el('h3', {}, r.title)); say(d, r.text); rl.appendChild(d); });
+    s.appendChild(rl);
+  }
 
   // 04 trust
   if (B.trust) {
@@ -1407,7 +1511,7 @@ footer .mark { font: 500 11.5px/1.6 var(--mono); letter-spacing: .14em; text-tra
   // ---------- files named in the text open on GitHub, in a new tab ----------
   (function () {
     var REPO = 'https://github.com/n0ctr1/share-shift/';
-    var RE = /\b((?:pipeline|data|tee|predictions|tests|docs)\/[A-Za-z0-9_.\/-]*[A-Za-z0-9_]|(?:THESIS|METHODS|README)\.md|build\.py)\b/g;
+    var RE = /\b((?:pipeline|data|tee|predictions|tests|docs)\/[A-Za-z0-9_.\/-]*[A-Za-z0-9_]|(?:THESIS|METHODS|README|REPRODUCE)\.md|build\.py)\b/g;
     function href(path) {
       path = path.replace(/[.,;:]+$/, '');
       return REPO + (/\.[a-z0-9]+$/i.test(path) ? 'blob/main/' : 'tree/main/') + path;

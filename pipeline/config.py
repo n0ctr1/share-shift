@@ -233,6 +233,7 @@ SEAL_V2 = {"sealed_on": "2026-11-12", "data_seen_through": "2026-11-10"}
 # Where the second seal's OpenTimestamps proof lands; check with
 # `python3 -m pipeline.ots --file predictions/predictions-v2.json`. Not sealed.
 SEAL_V2_BITCOIN = {"block": 975532, "time_utc": "2026-11-12 08:26"}
+SEAL_V3_BITCOIN = {"block": 975582, "time_utc": "2026-11-12 19:02"}
 
 
 # The investment call: a rule on computed numbers, so the call moves with the
@@ -317,3 +318,12 @@ SCENARIOS = {
     "bull": {"market_growth": 0.50, "share": 0.60, "take_bps": 15.5, "capture": 0.50,
              "story": "the market grows, the lead holds at today's level, half of fees reach NEAR"},
 }
+
+
+# What is priced in: discount rates and long-run growth for a perpetuity on the
+# cash NEAR receives from Intents. Assumptions, not findings. Not sealed.
+#   discount  required return on a volatile token's cash flow
+#   growth    long-run growth of that cash flow after the first year
+#   mid       the pair used for the single numbers in the text
+VALUATION = {"discount": [0.12, 0.15], "growth": [0.05, 0.10], "mid": [0.135, 0.075]}
+
