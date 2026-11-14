@@ -9,7 +9,7 @@ Built at NEAR HACKATHON, track `thesis` (Investment Thesis). The badge is a GitH
 the seal check, `python build.py --offline`, then `git diff --exit-code`, so it
 is green only if the committed files are exactly what the snapshot rebuilds.
 
-[![The dashboard: share by week with the lead and kill lines, and the call](docs/screenshot.jpg)](https://n0ctr1.github.io/share-shift/)
+[![The dashboard: the 90-day and weekly share with the lead and avoid lines, and the call](docs/screenshot.jpg)](https://n0ctr1.github.io/share-shift/)
 
 - Live dashboard: https://n0ctr1.github.io/share-shift/ (Easy shows the short version;
   Pro adds sources, data tables and the full evidence)
